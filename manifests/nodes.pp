@@ -1,8 +1,8 @@
 # svn, big important server
 node valstar {
-	include default_mageia_server
+    include default_mageia_server
+    #timezone { "Europe/Paris": }
     include rsyncd
-    timezone { "Europe/Paris": }
 
     # for puppet svn checkout
     package {"subversion":
@@ -38,18 +38,18 @@ node valstar {
 
 # web apps
 node alamut {
-    timezone { "Europe/Paris": }
+    #timezone { "Europe/Paris": }
 	include default_mageia_server
 }
 
 # buildnode
 node jonund {
-    timezone { "Europe/Paris": }
+    #timezone { "Europe/Paris": }
 	include default_mageia_server
 }
 
 node ecosse {
-    timezone { "Europe/Paris": }
+    #timezone { "Europe/Paris": }
 	include default_mageia_server
 }
 
@@ -61,7 +61,7 @@ node fiona {
 
 # gandi-vm
 node krampouezh {
-    timezone { "Europe/Paris": }
+    #timezone { "Europe/Paris": }
 	include default_mageia_server
 }
 
