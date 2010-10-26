@@ -1,6 +1,10 @@
 # svn, big important server
 node valstar {
 	include default_mageia_server
+    # for puppet svn checkout
+    package {"subversion":
+        ensure => "installed"
+    }
 }
 
 # web apps
