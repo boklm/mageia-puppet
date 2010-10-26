@@ -1,6 +1,6 @@
-define timezone( $tz = "GMT" ) {
+define timezone() {
     file { "/etc/localetime": 
         ensure => link, 
-        target => "/usr/share/zoneinfo/$tz" 
+        target => "/usr/share/zoneinfo/$name" 
     }
 }
