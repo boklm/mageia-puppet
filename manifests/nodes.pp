@@ -1,6 +1,7 @@
 # svn, big important server
 node valstar {
 	include default_mageia_server
+    include rsyncd
     timezone { "Europe/Paris": }
 
     # for puppet svn checkout
