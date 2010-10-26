@@ -56,7 +56,7 @@ class default_ssh_root_key {
 
 class default_mageia_server {
 # to include later
-#   include openssh
+    include openssh
 #   include puppet
     include default_ssh_root_key
     include base_packages
