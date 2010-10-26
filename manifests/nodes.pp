@@ -5,6 +5,13 @@ node valstar {
     package {"subversion":
         ensure => "installed"
     }
+
+    # update the puppet snapshot 
+    cron { puppet_update:
+           command => "cd /etc/puppet && /usr/bin/svn update -q",
+           user => root,
+           minute => '*/5'
+    }
 }
 
 # web apps
