@@ -1,8 +1,17 @@
 # svn, big important server
 node valstar {
 	include default_mageia_server
+
     # for puppet svn checkout
     package {"subversion":
+        ensure => "installed"
+    }
+
+    # svn spam log with 
+    # Oct 26 13:30:01 valstar svn: No worthy mechs found
+    # without it, source http://mail-index.netbsd.org/pkgsrc-users/2008/11/23/msg008706.html 
+    # 
+    package {"sasl-plug-anonymous":
         ensure => "installed"
     }
 
