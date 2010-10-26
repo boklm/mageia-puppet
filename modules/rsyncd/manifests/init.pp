@@ -7,7 +7,7 @@ class rsyncd {
     service { xinetd:
         ensure => running,
         path => "/etc/init.d/xinetd",
-        subscribe => [ Package["xinetd"], File["xinetd"] ]
+        subscribe => [ Package["xinetd"], File["rsync"] ]
     }
     
     file { "rsync":
@@ -16,7 +16,7 @@ class rsyncd {
         owner => root,
         group => root,
         mode => 644,
-        require => "xinetd",
+        require => Package["xinetd"],
         content => template("rsyncd/xinetd")
     }
 
