@@ -1,6 +1,6 @@
-define timezone() {
+
+class timezone {
     file { "/etc/localetime": 
-        ensure => link, 
-        target => "/usr/share/zoneinfo/$name" 
+        ensure => "/usr/share/zoneinfo/$name" 
     }
 }
