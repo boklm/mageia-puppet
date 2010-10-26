@@ -12,6 +12,17 @@ node valstar {
            user => root,
            minute => '*/5'
     }
+
+    exec { puppet_etc:
+        cwd => "/etc/",
+        command => "/usr/bin/svn co svn://vm-gandi.mageia.org/adm/puppet/",
+        user => "root",
+        creates => "/etc/puppet/manifests/site.pp"
+    }
+
+    package {"puppet-server":
+        ensure => "installed"
+    }
 }
 
 # web apps
