@@ -1,8 +1,5 @@
 class rsyncd {
 
-    package { rsync: 
-        ensure => installed
-    }
     package { xinetd:
         ensure => installed
     }
