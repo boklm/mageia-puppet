@@ -60,4 +60,5 @@ class default_mageia_server {
 #   include puppet
     include default_ssh_root_key
     include base_packages
+    include ntp
 }
