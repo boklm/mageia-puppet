@@ -13,7 +13,7 @@ class rsyncd {
         subscribe => [ Package["xinetd"], File["xinetd"] ]
     }
     
-    file { "rsync"
+    file { "rsync":
         path => "/etc/xinetd.d/rsync",
         ensure => present,
         owner => root,
