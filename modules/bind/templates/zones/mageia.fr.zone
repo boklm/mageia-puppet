@@ -1,0 +1,27 @@
+; cfengine-distributed file
+; local modifications will be lost
+; $Id$
+$TTL	3D
+@       IN      SOA     ns0.zarb.org.   mageia.fr.  (
+        2008111801	; Serial
+        21600		; Refresh
+        3600		; Retry
+        2419200		; Expire
+        86400		; Minmun TTL
+        )
+
+; nameservers
+@	IN      NS      ns0.zarb.org.
+@	IN      NS      ns1.zarb.org.
+
+@   IN      MX 10   mx0.zarb.org.
+@   IN      MX 20   mx1.zarb.org.
+
+; MX
+;@	IN	MX	10 mx0.zarb.org.
+
+; machines
+mageia.fr.	IN	A   	212.85.158.22
+
+; aliases
+www             IN      CNAME   mageia.fr.
