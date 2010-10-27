@@ -4,7 +4,7 @@ class ntp {
         ensure => installed
     }
 
-    service { ntp:
+    service { ntpd:
         ensure => running,
         path => "/etc/init.d/ntpd",
         subscribe => [ Package["ntp"], File["ntp.conf"] ]
