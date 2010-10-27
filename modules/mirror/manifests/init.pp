@@ -9,14 +9,12 @@ class mirror {
         content => template("mirror/update_timestamp")
     }
 
-    file { "mirror.cron":
-        path => "/etc/cron.d/mirror",
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
+    cron { mirror:
+        user => mirror,
+        hour => 10,
+        minute => 14,
+        command => "~mirror/bin/update_timestamp",
         require => File["update_timestamp"],
-        content => template("mirror/cron")
     }
 
 }
