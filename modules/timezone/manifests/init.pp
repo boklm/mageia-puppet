@@ -1,6 +1,6 @@
 
 class timezone {
-    file { "/etc/localetime": 
+    file { "/etc/localtime": 
         ensure => "/usr/share/zoneinfo/$name" 
     }
 }
