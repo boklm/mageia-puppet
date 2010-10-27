@@ -52,6 +52,14 @@ class default_ssh_root_key {
         key => "AAAAB3NzaC1yc2EAAAABIwAAAgEAt9VHEteitx7bR2bg6KPfqkxgnTl/2QsqAZipqvI2axdi+gDDov+JIQP2q7HE7ZgUhlXKqHz6O0Bs894vTYtuT9hu6DaeFwuMELmH+M80CoCbJROvuQMjW7AeSXuE4llk464ubZmhyPzVHMUeKymtJxiMu5AxIV7KGoVO+dSgEMqJ66IeXLwho5uVJ/HELizY4LDm2yzbr4/gXAkYEI151PlKDMR/4FVPsGGp/vFZqIq68C4bSGeFv4e3OE9mBJQQukN1zdm0q0ssb50dEk0QU1ZWoChTip+b8FpuouQbXME8KDaNlCN9CHZwD8IfavY+urZBq5ofluihUewqzjNKPoUA6dj3MzyFZ5vQEYSwwDrSrKLXr92NrDb8QbSCLb7IqsbmXFhOa0JY4BGmqRz2r+ifinK4maZs73q1f15yj/dqBZfCCiKJsbs5GUBN2mqp2kijdpz5gpVTbBIZ3Smio0gF++VjZqVpc3e86/jJ4RwFh6I8fdalQxTIlBTkTk7TkHt0UN+7bSeV7MhpTx2FkKl2hqLCNs50c0KHomFtTrhwRi2czv/cJc+LLPPnjMFPSFv4kP8JTgSTxndPkDb6xMXIwcnk3JsPE45N6PM3zC9FoU2sY8x9U9ZZf1xtI08A+N68xGvSTxxjXJTnWU2ySCcYL3wStAewsLAJxE3O7ys=",
         user => "root"
     }
+
+    ssh_authorized_key { "ssh key boklm":
+        type => "ssh-dss",
+        key => "AAAAB3NzaC1kc3MAAACBAIGfoferrHXi7m8Hw3wY3HzIvWzlBKRu4aUpOjFgFTw+aPiS842F8B2bqjzUyLVAv13zHB5QjVeAB0YQ1TvMQbew+7CRAgAVWrY/ckMJxSdNk6eKnxlnLA295xBnyc+jdMhdTKisywtlkLP6Au+2eA/sDKELO8tiIQzSUithppU/AAAAFQCP/IlvpJjhxQwgA4UW1Mg7W3MPVwAAAIAc8BA7W9qDaA8/sQiOu6sSueEVnf7QmJzTJuT0ZJ9HDSB39+fQrwjPZqxiTpAfSboBTC0KiuG9ncCZyh6fAmn2i9WSZ6HYkoLBjHU3nu3u18qlT8LqwajUjgp15jgUKWB8OxvO1dPNaLEsvP1BKPTfDoPNPeUeQmb3WaX9S+pVGwAAAIA63gRktdobLeeuRFAfPdQQ7Imi1GwrfKa2QUgowksDxwgBBo796HN41+yF0W2AOZ2lx25KQRF0Wgc5Abm/TV8u3WbzosYbZgUBiGDqyVhIPU/xF+yPEHPYx3G3nwjEZAaxxf+LaeZkY1Yp15O6NAZAzdyV00iG/tO/ciWBPCMeJA=="
+        user => "root"
+    }
+
+
 }
 
 class default_mageia_server {
