@@ -33,7 +33,7 @@ class postfix {
 
     class simple_relay inherits base {
         file { '/etc/postfix/main.cf':
-            content => template("postfix/simple_relay_main.conf"),
+            content => template("postfix/simple_relay_main.cf"),
         }
     }
 }
