@@ -40,9 +40,9 @@ node valstar {
 node alamut {
     #timezone { "Europe/Paris": }
 	include default_mageia_server
-    include bind_master
-    zone_master { "mageia.org": }
-    zone_master { "mageia.fr": } 
+    include bind::bind_master
+    bind::zone_master { "mageia.org": }
+    bind::zone_master { "mageia.fr": } 
 }
 
 # buildnode
@@ -66,7 +66,7 @@ node fiona {
 node krampouezh {
     #timezone { "Europe/Paris": }
 	include default_mageia_server
-    include bind_slave
+    include bind::bind_slave
 }
 
 node champagne {
