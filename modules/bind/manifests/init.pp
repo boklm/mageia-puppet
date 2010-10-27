@@ -42,13 +42,13 @@ class bind {
     }
 
     class bind_master inherits bind_base {
-        file { '/etc/named.conf':
+        file { '/var/lib/named/etc/named.conf':
             content => template("bind/named_base.conf", "bind/named_master.conf"),
         }
     }
 
     class bind_slave inherits bind_base {
-        file { '/etc/named.conf':
+        file { '/var/lib/named/etc/named.conf':
             content => template("bind/named_base.conf", "bind/named_slave.conf"),
         }
     }
