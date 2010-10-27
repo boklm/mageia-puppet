@@ -63,6 +63,8 @@ class default_ssh_root_key {
 }
 
 class default_mageia_server {
+    include timezone
+
 # to include later
     include openssh
 #   include puppet

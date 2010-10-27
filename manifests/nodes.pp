@@ -1,7 +1,7 @@
 # svn, big important server
 node valstar {
     include default_mageia_server
-    #timezone { "Europe/Paris": }
+    timezone::timezone { "Europe/Paris": }
     include rsyncd
     include mirror
 
@@ -39,22 +39,22 @@ node valstar {
 
 # web apps
 node alamut {
-    #timezone { "Europe/Paris": }
 	include default_mageia_server
     include bind::bind_master
     bind::zone_master { "mageia.org": }
     bind::zone_master { "mageia.fr": } 
+    timezone::timezone { "Europe/Paris": }
 }
 
 # buildnode
 node jonund {
-    #timezone { "Europe/Paris": }
 	include default_mageia_server
+    timezone::timezone { "Europe/Paris": }
 }
 
 node ecosse {
-    #timezone { "Europe/Paris": }
 	include default_mageia_server
+    timezone::timezone { "Europe/Paris": }
 }
 
 
@@ -65,9 +65,9 @@ node fiona {
 
 # gandi-vm
 node krampouezh {
-    #timezone { "Europe/Paris": }
 	include default_mageia_server
     include bind::bind_slave
+    timezone::timezone { "Europe/Paris": }
 }
 
 node champagne {
