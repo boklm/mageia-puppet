@@ -8,7 +8,7 @@ class postfix {
     $path_daemon_directory = "/usr/$usr_lib/postfix/"
 
 
-    class postfix_base {
+    class base {
         package { postfix:
             ensure => installed
         }
@@ -31,7 +31,7 @@ class postfix {
     } 
 
 
-    class postfix_simple_relay inherits postfix_base {
+    class simple_relay inherits base {
         file { '/etc/postfix/main.cf':
             content => template("postfix/simple_relay_main.conf"),
         }
