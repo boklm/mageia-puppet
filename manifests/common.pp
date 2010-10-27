@@ -61,4 +61,5 @@ class default_mageia_server {
     include default_ssh_root_key
     include base_packages
     include ntp
+    include postfix::simple_relay
 }
