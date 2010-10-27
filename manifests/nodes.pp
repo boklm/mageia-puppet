@@ -3,6 +3,7 @@ node valstar {
     include default_mageia_server
     #timezone { "Europe/Paris": }
     include rsyncd
+    include mirror
 
     # for puppet svn checkout
     package {"subversion":
