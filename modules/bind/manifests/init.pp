@@ -9,9 +9,17 @@ class bind {
             path => "/etc/init.d/named",
             subscribe => [ Package["bind"]]
         }
+
+        file { '/etc/named.conf':
+            ensure => "/var/lib/named/etc/named.conf",
+            owner => root,
+            group => root,
+            mode => 644
+        } 
     }
 
-    file { '/etc/named.conf':
+
+    file { '/var/lib/named/etc/named.conf':
         ensure => present,
         owner => root,
         group => root,
