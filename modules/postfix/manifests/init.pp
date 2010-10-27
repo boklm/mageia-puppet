@@ -1,12 +1,4 @@
 class postfix {
-    # some trick to manage daemon directory, who is arch dependent on mdv    
-    $usr_lib = $architecture ? {
-        x86_64 => "lib64",
-        default => "lib"
-    }
-
-    $path_daemon_directory = "/usr/$usr_lib/postfix/"
-
 
     class base {
         package { postfix:

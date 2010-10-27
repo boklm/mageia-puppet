@@ -3,6 +3,10 @@
 # This file contains only the parameters changed from a default install
 # see /etc/postfix/main.cf.dist for a commented, fuller version of this file.
 
+<%
+path_daemon_directory = "/usr/lib" + ( architecture == "x86_64" ? '64' : '') + "/postfix/"
+%>
+
 # These are changed by postfix install script
 readme_directory = /usr/share/doc/postfix/README_FILES
 html_directory = /usr/share/doc/postfix/html
