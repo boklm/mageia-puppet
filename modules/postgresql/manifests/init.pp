@@ -1,5 +1,5 @@
 class postgresql {
-    package { postgresql9.0-server:
+    package { 'postgresql9.0-server':
         ensure => installed
     }
 
@@ -12,8 +12,8 @@ class postgresql {
         owner => postgres,
         group => postgres,
         mode => 644,
+        content => template("postgresql/postgresql.conf")
         require => Package["postgresql9.0-server"],
-        content => "",
         notify => [Service['postgreql']]
     }
     
@@ -22,8 +22,8 @@ class postgresql {
         owner => postgres,
         group => postgres,
         mode => 644,
+        content => template("postgresql/pg_hba.conf")
         require => Package["postgresql9.0-server"],
-        content => "",
         notify => [Service['postgresql']]
     }
 }
