@@ -62,6 +62,7 @@ node alamut {
 # - wiki
 # - pastbin
 # - LDAP slave
+# - transiflex
 # 
 	include default_mageia_server
     include bind::bind_master
