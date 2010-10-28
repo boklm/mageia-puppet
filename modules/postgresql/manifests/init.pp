@@ -14,7 +14,7 @@ class postgresql {
         mode => 644,
         content => template("postgresql/postgresql.conf"),
         require => Package["postgresql9.0-server"],
-        notify => [Service['postgreql']]
+        notify => [Service['postgresql']]
     }
     
     file { '/var/lib/pgsql/data/pg_hba.conf':
