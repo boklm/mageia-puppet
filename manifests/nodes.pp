@@ -68,7 +68,7 @@ node alamut {
 # 
 	include default_mageia_server
     include bind::bind_master
-    include postgresl
+    include postgresql
     bind::zone_master { "mageia.org": }
     bind::zone_master { "mageia.fr": } 
     timezone::timezone { "Europe/Paris": }
