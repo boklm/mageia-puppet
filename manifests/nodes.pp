@@ -1,5 +1,17 @@
 # svn, big important server
 node valstar {
+# Location: IELO datacenter (marseille)
+#
+# TODO:
+# - SVN server
+# - GIT server
+# - setup urli build scheduler
+# - setup youri
+# - setup restricted shell access to allow "mdvsys submit" to work
+# - setup maintainers database (with web interface)
+# - mirroring (Nanar)
+# - LDAP master
+#
     include default_mageia_server
     timezone::timezone { "Europe/Paris": }
     include rsyncd
@@ -39,6 +51,18 @@ node valstar {
 
 # web apps
 node alamut {
+# Location: IELO datacenter (marseille)
+#
+# TODO:
+# - bugzilla
+# - nagios
+# - api
+# - mail server
+# - mailing list server
+# - wiki
+# - pastbin
+# - LDAP slave
+# 
 	include default_mageia_server
     include bind::bind_master
     bind::zone_master { "mageia.org": }
@@ -48,11 +72,21 @@ node alamut {
 
 # buildnode
 node jonund {
+# Location: IELO datacenter (marseille)
+#
+# TODO:
+# - iurt
+#
 	include default_mageia_server
     timezone::timezone { "Europe/Paris": }
 }
 
 node ecosse {
+# Location: IELO datacenter (marseille)
+#
+# TODO:
+# - iurt
+#
 	include default_mageia_server
     timezone::timezone { "Europe/Paris": }
 }
@@ -60,17 +94,37 @@ node ecosse {
 
 # backup server
 node fiona {
+# Location: IELO datacenter (marseille)
+#
+# TODO:
+# - buy the server
+# - install the server in datacenter
+#
 	include default_mageia_server
 } 
 
 # gandi-vm
 node krampouezh {
+# Location: gandi VM
+#
+# TODO:
+# - secondary MX
+# - LDAP slave (for external traffic maybe)
+#
 	include default_mageia_server
     include bind::bind_slave
     timezone::timezone { "Europe/Paris": }
+# Other services running on this server :
+# - meetbot
 }
 
 node champagne {
+# Location: gandi VM
+#
+# TODO:
+# - setup mageia.org web site
+# - setup blog
+#
 	include default_mageia_server
 }
 
