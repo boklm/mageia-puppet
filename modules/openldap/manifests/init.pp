@@ -40,7 +40,7 @@ class openldap {
         }
 
         file { '/etc/openldap/slapd.conf':
-            content => template("bind/slapd.conf"),
+            content => template("openldap/slapd.conf"),
         }
     }
 }
