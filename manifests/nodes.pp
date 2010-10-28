@@ -16,6 +16,7 @@ node valstar {
     timezone::timezone { "Europe/Paris": }
     include rsyncd
     include mirror
+    include openldap::master 
 
     # for puppet svn checkout
     package {"subversion":
