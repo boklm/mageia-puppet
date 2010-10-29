@@ -42,12 +42,18 @@ jonund      IN  A       212.85.158.149
 jonund      IN  AAAA    2a02:2178:2:7::5
 fiona       IN  A       212.85.158.150
 fiona       IN  AAAA    2a02:2178:2:7::6
-  
+
+; alamut  
+ns0         IN  A       212.85.158.146
+; krampouezh            
+ns1         IN  A       95.142.164.207 
 
 ; aliases
 www         IN  CNAME www-zarb
 blog        IN  CNAME www-zarb
 rsync       IN  CNAME www-zarb
+
+ldap        IN  CNAME valstar
 
 svn         IN  CNAME krampouezh
 meetbot     IN  CNAME krampouezh
