@@ -5,7 +5,7 @@ class postgresql {
 
     service { postgresql:
         ensure => running,
-        subscribe => Package[postgresql9.0-server"],
+        subscribe => Package["postgresql9.0-server"],
         restart => "/etc/rc.d/init.d/postgresql reload"
     }
 
@@ -24,7 +24,7 @@ class postgresql {
         mode => 600,
         content => template("postgresql/postgresql.conf"),
         require => Package["postgresql9.0-server"],
-        notify => [Service['postgresql']]
+        notify => [Service["postgresql"]]
     }
     
     file { '/var/lib/pgsql/data/pg_hba.conf':
@@ -34,6 +34,6 @@ class postgresql {
         mode => 600,
         content => template("postgresql/pg_hba.conf"),
         require => Package["postgresql9.0-server"],
-        notify => [Service['postgresql']]
+        notify => [Service["postgresql"]]
     }
 }
