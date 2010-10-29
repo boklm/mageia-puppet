@@ -34,6 +34,16 @@ class openldap {
         notify => [Service['ldap']]
     }
 
+    file { '/etc/sysconfig/ldap':
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => 644,
+        require => Package["openldap-servers"],
+        content => "",
+        notify => [Service['ldap']]
+    } 
+
     class master inherits base {
         file { '/etc/openldap/mandriva-dit-access.conf':
             content => template("openldap/mandriva-dit-access.conf"),
@@ -41,6 +51,10 @@ class openldap {
 
         file { '/etc/openldap/slapd.conf':
             content => template("openldap/slapd.conf"),
+        }
+
+        file { '/etc/sysconfig/ldap':
+            content => template("openldap/ldap.sysconfig"),
         }
     }
 }
