@@ -4,6 +4,8 @@ class postgresql {
     }
 
     service { postgresql:
+        ensure => running,
+        subscribe => Package[postgresql9.0-server"],
         restart => "/etc/rc.d/init.d/postgresql reload"
     }
 
