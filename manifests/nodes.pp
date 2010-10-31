@@ -48,6 +48,10 @@ node valstar {
     package {"puppet-server":
         ensure => "installed"
     }
+
+    package {"task-bs-cluster-main":
+        ensure => "installed"
+    }
 }
 
 # web apps
