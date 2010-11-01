@@ -72,6 +72,9 @@ class default_mageia_server {
     include base_packages
     include ntp
     include postfix::simple_relay
+
+# TODO:
+# - run urpmi.update -a in a cron job
 }
 
 class default_mageia_buildnode {
