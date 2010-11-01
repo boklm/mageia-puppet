@@ -62,6 +62,16 @@ class default_ssh_root_key {
 
 }
 
+class urpmi_update {
+    cron { urpmi_update:
+        user => root,
+        hour => 3,
+        minute => 14,
+        command => "urpmi.update -a",
+    }
+
+}
+
 class default_mageia_server {
     include timezone
 
@@ -72,9 +82,7 @@ class default_mageia_server {
     include base_packages
     include ntp
     include postfix::simple_relay
-
-# TODO:
-# - run urpmi.update -a in a cron job
+    include urpmi_update
 }
 
 class default_mageia_buildnode {
