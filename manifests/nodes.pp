@@ -82,20 +82,16 @@ node alamut {
 node jonund {
 # Location: IELO datacenter (marseille)
 #
-# TODO:
-# - iurt
-#
 	include default_mageia_server
+	include default_mageia_buildnode
     timezone::timezone { "Europe/Paris": }
 }
 
 node ecosse {
 # Location: IELO datacenter (marseille)
 #
-# TODO:
-# - iurt
-#
 	include default_mageia_server
+	include default_mageia_buildnode
     timezone::timezone { "Europe/Paris": }
 }
 
