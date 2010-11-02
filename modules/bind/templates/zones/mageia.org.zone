@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	3D
 @       IN      SOA     ns0.zarb.org.   mageia.org.  (
-        2010100507	; Serial
+        2010110200	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -62,6 +62,7 @@ donate      IN  CNAME www-aufml
 donation    IN  CNAME www-aufml
 
 puppetmaster  IN  CNAME valstar
+pkgsubmit   IN CNAME valstar
 
 ; temporary
 ;forum       IN A 140.211.167.148
