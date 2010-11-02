@@ -2,8 +2,8 @@
 ; local modifications will be lost
 ; $Id$
 $TTL	3D
-@       IN      SOA     ns0.zarb.org.   mageia.fr.  (
-        2008111801	; Serial
+@       IN      SOA     ns0.mageia.org.   mageia.fr.  (
+        2010110200	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -11,8 +11,8 @@ $TTL	3D
         )
 
 ; nameservers
-@	IN      NS      ns0.zarb.org.
-@	IN      NS      ns1.zarb.org.
+@	IN      NS      ns0.mageia.org.
+@	IN      NS      ns1.mageia.org.
 
 @   IN      MX 10   mx0.zarb.org.
 @   IN      MX 20   mx1.zarb.org.
