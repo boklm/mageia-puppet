@@ -116,7 +116,7 @@ node krampouezh {
 # - LDAP slave (for external traffic maybe)
 #
 	include default_mageia_server
-    include bind::bind_slave
+    include bind::bind_master
     timezone::timezone { "Europe/Paris": }
 # Other services running on this server :
 # - meetbot
