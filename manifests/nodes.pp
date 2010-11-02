@@ -117,6 +117,8 @@ node krampouezh {
 #
 	include default_mageia_server
     include bind::bind_master
+    bind::zone_master { "mageia.org": }
+    bind::zone_master { "mageia.fr": } 
     timezone::timezone { "Europe/Paris": }
 # Other services running on this server :
 # - meetbot
