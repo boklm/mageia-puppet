@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	3D
 @       IN      SOA     ns0.zarb.org.   mageia.org.  (
-        2010110201	; Serial
+        2010110202	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -27,6 +27,7 @@ www-zarb    IN  A       212.85.158.22
 vm-gandi     IN A       95.142.164.207
 kouign-amann IN A       95.142.164.207
 krampouezh   IN A       95.142.164.207
+champagne    IN A	217.70.188.116
 
 www-aufml   IN  A       91.121.11.63
 forum       IN  A       88.191.127.89
