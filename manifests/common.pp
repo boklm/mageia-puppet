@@ -59,6 +59,13 @@ class default_ssh_root_key {
         user => "root"
     }
 
+    ssh_authorized_key { "ssh key buchan":
+        type => "ssh-dss",
+        key => "AAAAB3NzaC1kc3MAAACBALpYDQtkZcfXdOILynCGa7IAbW4+etmzpIMjw6BfvZOfLT6UPfDwajhDBMBNSbgigxkxxEdsa0/UMIE3Yrpr8YivhbL79sFw2N/FeWCs3Vk8JXNjBGA6itAIz9nwfh6qCDUj2t8LTdOQdYrSFOO7x2dFgeCwi21V27Ga2vqsvkUnAAAAFQD708pfON6Itq/5S+4kkNdNNDKWCwAAAIEAkRQeugul6KmOC0C2EmgVJvKK1qImlwHir08W1LTESnujmRIWLRst8sDoKjJpNevFuHGybPQ3palvM9qTQ84k3NMsJYJZSjSexsKydHJbD4ErKk8W6k+Xo7GAtH4nUcNskbnLHUpfvzm0jWs2yeHS0TCrljuTQwX1UsvGKJanzEoAAACBAIurf3TAfN2FKKIpKt5vyNv2ENBVcxAHN36VH8JP4uDUERg/T0OyLrIxW8px9naI6AQ1o+fPLquJ3Byn9A1RZsvWAQJI/J0oUit1KQM5FKBtXNBuFhIMSLPwbtp5pZ+m0DAFo6IcY1pl1TimGa20ajrToUhDh1NpE2ZK//8fw2i7",
+        user => "root"
+    }
+
+
 
 }
 
