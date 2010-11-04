@@ -76,6 +76,8 @@ node alamut {
     bind::zone_master { "mageia.org": }
     bind::zone_master { "mageia.fr": } 
     timezone::timezone { "Europe/Paris": }
+    # for catdap and epoll
+    include apache::mod_perl
 }
 
 # buildnode
@@ -132,6 +134,7 @@ node champagne {
 # - setup blog
 #
 	include default_mageia_server
+    include apache::base
 }
 
 
