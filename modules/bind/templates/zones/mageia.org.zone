@@ -2,8 +2,8 @@
 ; local modifications will be lost
 ; $Id$
 $TTL	3D
-@       IN      SOA     ns0.mageia.org.   mageia.org.  (
-        2010110401	; Serial
+@       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
+        2010110402	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -68,7 +68,7 @@ ldap        IN CNAME valstar
 
 identity    IN CNAME alamut
 mirrors     IN CNAME alamut
-
+pgsql       IN CNAME alamut
 ; temporary
 ;forum       IN A 140.211.167.148
 ;wiki            IN      A       88.191.83.84
