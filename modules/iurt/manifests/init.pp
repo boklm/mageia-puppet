@@ -1,4 +1,4 @@
-class default_mageia_buildnode {
+class iurt {
 
     # build node common settings
     # we could have the following skip list to use less space:
@@ -13,8 +13,7 @@ class default_mageia_buildnode {
         owner => buildbot,
         group => buildbot,
         mode => 644,
-        require => Package["iurt"],
-        content => "template("buildsystem/.iurt.cauldron.conf")"
+        content => template("iurt/.iurt.cauldron.conf")
     }
 
 }
