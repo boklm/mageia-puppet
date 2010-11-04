@@ -5,10 +5,10 @@ class apache {
             ensure => installed
         }
     
-        service { apache: 
+        service { httpd: 
+            alias => apache,
             ensure => running,
             subscribe => [ Package['apache-mpm-prefork'] ],
-            path => "/etc/init.d/httpd"
         }
     }
     
