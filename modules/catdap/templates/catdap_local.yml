@@ -1,0 +1,37 @@
+<%
+# domain come from facter
+
+dc_suffix = 'dc=' + domain.gsub('.',',dc=')
+
+ldap_server = 'ldap' + domain
+
+ldap_password = extlookup('catdap_password')
+
+ldap_account = 'cn=catdap-valstar,ou=System Accounts,' + dc_suffix
+%>
+
+organisation: Mageia
+apptitle: Mageia Identity Management
+emailfrom: noreply@<%= domain %>
+
+Model::Proxy:
+    base:      ou=People,<%= dc_suffix %>
+    dn:        <%= ldap_account %>
+    password:  <%= ldap_password %>
+
+Model::User:
+    base:      <%= dc_suffix %>
+    host:      <%= ldap_server %>
+    start_tls: 1
+
+authentication:
+    default_realm: ldap
+    realms:
+        ldap:
+            store:
+                ldap_server: <%= ldap_server %>
+                binddn: <%= dc_suffix %>
+                bindpw: <%= ldap_password %>
+                user_basedn: ou=People,<%= dc_suffix %>
+                role_basedn: <%= dc_suffix %>
+
