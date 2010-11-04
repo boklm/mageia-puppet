@@ -83,7 +83,7 @@ node jonund {
 # Location: IELO datacenter (marseille)
 #
 	include default_mageia_server
-	include default_mageia_buildnode
+	include iurt
     timezone::timezone { "Europe/Paris": }
 }
 
@@ -91,7 +91,7 @@ node ecosse {
 # Location: IELO datacenter (marseille)
 #
 	include default_mageia_server
-	include default_mageia_buildnode
+	include iurt
     timezone::timezone { "Europe/Paris": }
 }
 
