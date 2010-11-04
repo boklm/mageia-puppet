@@ -76,8 +76,6 @@ node alamut {
     bind::zone_master { "mageia.org": }
     bind::zone_master { "mageia.fr": } 
     timezone::timezone { "Europe/Paris": }
-    # for catdap and epoll
-    include apache::mod_perl
 }
 
 # buildnode
