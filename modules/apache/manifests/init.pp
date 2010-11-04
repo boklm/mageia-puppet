@@ -24,6 +24,13 @@ class apache {
         }
     }
 
+    class mod_fcgid inherits base {
+        package { "apache-mod_fcgid":
+            ensure => installed
+        }
+    }
+
+
     class mod_wsgi inherits base {
         package { "apache-mod_wsgi":
             ensure => installed
