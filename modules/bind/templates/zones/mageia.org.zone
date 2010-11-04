@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	3D
 @       IN      SOA     ns0.zarb.org.   mageia.org.  (
-        2010110204	; Serial
+        2010110401	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -67,6 +67,7 @@ pkgsubmit   IN CNAME valstar
 ldap        IN CNAME valstar
 
 identity    IN CNAME alamut
+mirrors     IN CNAME alamut
 
 ; temporary
 ;forum       IN A 140.211.167.148
