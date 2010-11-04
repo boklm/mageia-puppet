@@ -45,6 +45,15 @@ node valstar {
         creates => "/etc/puppet/manifests/site.pp"
     }
 
+    file { "extdata":
+        path => "/etc/puppet/extdata",
+        ensure => directory,
+        owner => puppet,
+        group => puppet,
+        mode => 700,
+        recurse => true
+    }
+
     package {"puppet-server":
         ensure => "installed"
     }
