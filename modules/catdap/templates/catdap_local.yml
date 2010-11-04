@@ -3,9 +3,9 @@
 
 dc_suffix = 'dc=' + domain.gsub('.',',dc=')
 
-ldap_server = 'ldap' + domain
+ldap_server = 'ldap.' + domain
 
-ldap_password = extlookup('catdap_password')
+ldap_password = catdap_password
 
 ldap_account = 'cn=catdap-valstar,ou=System Accounts,' + dc_suffix
 %>

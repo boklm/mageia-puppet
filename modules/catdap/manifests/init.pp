@@ -5,6 +5,7 @@ class catdap {
     include apache::mod_fcgid
 
     $catdap_location = "/var/www/identity"
+    $catdap_vhost = "identity.$domain"
 
     # TODO switch to a proper rpm packaging
     $rpm_requirement = ['perl-Catalyst-Runtime', 
@@ -19,7 +20,7 @@ class catdap {
     }
 
     subversion::snapshot { $catdap_location:
-        source =>   "svn+ssh://svn.mageia.org/srv/mx2-dd0/svn/soft/identity/CatDap/branches/live"
+        source => "svn://svn.mageia.org/soft/identity/CatDap/branches/live"
     }
 
     # add a catdap config file
@@ -27,12 +28,14 @@ class catdap {
         ensure => present,
         owner => apache,
         mode => 600,
-        content => template("catdap/catdap_local.yml") 
+        content => template("catdap/catdap_local.yml"),
+        require => Subversion::Snapshot[$catdap_location]
     }
 
+    $catdap_password = extlookup('catdap_password')
     # add a apache vhost
-    file { "identity.$domain.conf":
-        path => "/etc/httpd/conf/vhosts.d/$name",
+    file { "$catdap_vhost.conf":
+        path => "/etc/httpd/conf/vhosts.d/$catdap_vhost.conf",
         ensure => "present",
         owner => root,
         group => root,
