@@ -37,7 +37,7 @@ class subversion {
 
     # TODO ensure that subversion ishere
     #      allow to configure the snapshot refresh interval
-    define snapshot($source, $refresh, $user = 'root')  {
+    define snapshot($source, $refresh = '*/5', $user = 'root')  {
         exec { "/usr/bin/svn co $source $name":
             creates => $name,           
             user => $user,  
@@ -46,7 +46,7 @@ class subversion {
         cron { "update $name":
            command => "cd $name && /usr/bin/svn update -q",
            user => $user,
-           minute => '*/5'
+           minute => $refresh
         }   
     }
 }
