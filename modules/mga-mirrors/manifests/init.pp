@@ -15,5 +15,16 @@ class mga-mirrors {
         mode => 644,
         notify => Service['apache'],
         content => template("mga-mirrors/mirrors_vhost.conf")
-    }    
+    }
+ 
+    $password = extlookup("mga_mirror_password")
+ 
+    file { "mga-mirrors.ini": 
+        path => "/etc/mga-mirrors.ini",    
+        ensure => "present",
+        owner => apache,
+        group => apache,
+        mode => 600,
+        content => template("mga-mirrors/mga-mirrors.ini")
+    }
 }
