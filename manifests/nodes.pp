@@ -66,6 +66,7 @@ node alamut {
     timezone::timezone { "Europe/Paris": }
 
     include catdap
+    include mga-mirrors
 }
 
 # buildnode
