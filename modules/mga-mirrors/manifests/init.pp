@@ -8,7 +8,7 @@ class mga-mirrors {
 
     # add a apache vhost
     file { "mirrors.$domain.conf":
-        path => "/etc/httpd/conf/vhosts.d/$name",
+        path => "/etc/httpd/conf/vhosts.d/$name.$domain.conf",
         ensure => "present",
         owner => root,
         group => root,
