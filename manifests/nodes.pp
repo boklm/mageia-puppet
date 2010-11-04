@@ -17,32 +17,11 @@ node valstar {
     include rsyncd
     include mirror
     include openldap::master 
+    include subversion::client
+    
 
-    # for puppet svn checkout
-    package {"subversion":
-        ensure => "installed"
-    }
-
-    # svn spam log with 
-    # Oct 26 13:30:01 valstar svn: No worthy mechs found
-    # without it, source http://mail-index.netbsd.org/pkgsrc-users/2008/11/23/msg008706.html 
-    # 
-    package {"lib64sasl2-plug-anonymous":
-        ensure => "installed"
-    }
-
-    # update the puppet snapshot 
-    cron { puppet_update:
-           command => "cd /etc/puppet && /usr/bin/svn update -q",
-           user => root,
-           minute => '*/5'
-    }
-
-    exec { puppet_etc:
-        cwd => "/etc/",
-        command => "/usr/bin/svn co svn://vm-gandi.mageia.org/adm/puppet/",
-        user => "root",
-        creates => "/etc/puppet/manifests/site.pp"
+    subversion::snapshot { "/etc/puppet":
+        source => "svn://vm-gandi.mageia.org/adm/puppet/"
     }
 
     file { "extdata":
