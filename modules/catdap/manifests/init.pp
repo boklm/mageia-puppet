@@ -23,7 +23,8 @@ class catdap {
         source => "svn://svn.mageia.org/soft/identity/CatDap/branches/live"
     }
 
-    # add a catdap config file
+    $catdap_password = extlookup('catdap_password')
+    
     file { "$catdap_location/catdap_local.yml":
         ensure => present,
         owner => apache,
@@ -32,7 +33,6 @@ class catdap {
         require => Subversion::Snapshot[$catdap_location]
     }
 
-    $catdap_password = extlookup('catdap_password')
     # add a apache vhost
     file { "$catdap_vhost.conf":
         path => "/etc/httpd/conf/vhosts.d/$catdap_vhost.conf",
