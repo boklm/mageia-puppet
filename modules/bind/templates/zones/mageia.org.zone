@@ -2,7 +2,7 @@
 ; local modifications will be lost
 ; $Id$
 $TTL	3D
-@       IN      SOA     ns0.zarb.org.   mageia.org.  (
+@       IN      SOA     ns0.mageia.org.   mageia.org.  (
         2010110401	; Serial
         21600		; Refresh
         3600		; Retry
