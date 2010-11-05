@@ -23,7 +23,6 @@ class blog {
         }
 	cron { blog:
         	user => blog,
-        	hour => 0,
         	minute => 15,
         	command => "/usr/local/bin/check_new-blog-post.sh",
         	require => File["check_new-blog-post"],
