@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Initialization
-PATH_TO_FILE="/home/blog"
+PATH_TO_FILE="/var/lib/blog"
 /usr/bin/wget -qO $PATH_TO_FILE"/RSS_new" http://blog.mageia.org/?feed=rss2
 /bin/date +"%d:%m:%Y %H:%M" > $PATH_TO_FILE"/last_check"
 

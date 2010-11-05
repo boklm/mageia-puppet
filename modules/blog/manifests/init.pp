@@ -7,7 +7,7 @@ class blog {
                 ensure => installed
         }
 	file { "check_new-blog-post":
-        	path => "/home/blog/check_new-blog-post.sh",
+        	path => "/usr/local/bin/check_new-blog-post.sh",
         	ensure => present,
         	owner => blog,
         	group => blog,
@@ -18,7 +18,7 @@ class blog {
         	user => blog,
         	hour => 0,
         	minute => 15,
-        	command => "/home/blog/check_new-blog-post.sh",
+        	command => "/usr/local/bin/check_new-blog-post.sh",
         	require => File["check_new-blog-post"],
     	}
 }
