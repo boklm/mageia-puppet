@@ -15,11 +15,12 @@ class blog {
         	mode => 755,
         	content => template("blog/check_new-blog-post.sh")
     	}
-	file { "/var/lib/blog/":
-                ensure => present,
+	file { "/var/lib/blog":
+                ensure => directory,
                 owner => blog,
                 group => blog,
-                mode => 644
+                mode => 644,
+		recurse  => true
         }
 	cron { blog:
         	user => blog,
