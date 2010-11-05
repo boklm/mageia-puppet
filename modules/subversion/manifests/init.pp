@@ -50,6 +50,9 @@ class subversion {
     # TODO ensure that subversion ishere
     #      allow to configure the snapshot refresh interval
     define snapshot($source, $refresh = '*/5', $user = 'root')  {
+
+        include svn::client
+
         exec { "/usr/bin/svn co $source $name":
             creates => $name,           
             user => $user,  
