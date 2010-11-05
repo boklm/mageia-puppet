@@ -18,7 +18,7 @@ node valstar {
     include openldap::master 
     include subversion::client
     include subversion::server
-    
+    include puppet::master
 
     subversion::snapshot { "/etc/puppet":
         source => "svn://svn.mageia.org/adm/puppet/"
@@ -31,10 +31,6 @@ node valstar {
         group => puppet,
         mode => 700,
         recurse => true
-    }
-
-    package {"puppet-server":
-        ensure => "installed"
     }
 
     package {"task-bs-cluster-main":
