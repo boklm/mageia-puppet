@@ -14,7 +14,7 @@ class apache {
 
         file { "customization.conf":
             ensure => present,
-            path => "/etc/httpd/conf/customization.conf",
+            path => "/etc/httpd/conf.d/customization.conf",
             content => template("apache/customization.conf"),
             require => Package["apache"],
             notify => Service["apache"],
