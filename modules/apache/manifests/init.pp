@@ -42,6 +42,11 @@ class apache {
         }
     }
 
+    class mod_fastcgi inherits base {
+        package { "apache-mod_fastcgi":
+            ensure => installed
+        }
+    }
 
     class mod_wsgi inherits base {
         package { "apache-mod_wsgi":
