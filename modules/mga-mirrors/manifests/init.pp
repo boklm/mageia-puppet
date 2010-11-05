@@ -2,23 +2,14 @@ class mga-mirrors {
     
     $vhost = "mirrors.$domain"
 
-    include apache::mod_fastcgi
-
     package { 'mga-mirrors':
         ensure => installed
     }
 
-    # add a apache vhost
-    file { "$vhost.conf":
-        path => "/etc/httpd/conf/vhosts.d/$vhost.conf",
-        ensure => "present",
-        owner => root,
-        group => root,
-        mode => 644,
-        notify => Service['apache'],
-        content => template("mga-mirrors/mirrors_vhost.conf")
+    apache::vhost_catalyst_app { $vhost:
+        script => /usr/bin/mga_mirrors_fastcgi.pl 
     }
- 
+
     $password = extlookup("mga_mirror_password")
  
     file { "mga-mirrors.ini": 

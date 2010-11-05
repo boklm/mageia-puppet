@@ -1,23 +1,15 @@
 class epoll {
 
-    include apache::mod_fastcgi
-
     $vhost = "epoll.$domain"
+
     package { 'Epoll':
         ensure => installed
     }
-
-    # add a apache vhost
-    file { "$vhost.conf":
-        path => "/etc/httpd/conf/vhosts.d/$vhost.conf",
-        ensure => "present",
-        owner => root,
-        group => root,
-        mode => 644,
-        notify => Service['apache'],
-        content => template("epoll/epoll_vhost.conf")
+    
+    apache::vhost_catalyst_app { $vhost:
+        script => /usr/bin/epoll_fastcgi.pl 
     }
- 
+     
     $password = extlookup("epoll_password")
  
     file { "epoll.yml": 
