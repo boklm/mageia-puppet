@@ -30,7 +30,7 @@ authentication:
         ldap:
             store:
                 ldap_server: <%= ldap_server %>
-                binddn: <%= dc_suffix %>
+                binddn: <%= ldap_account %>
                 bindpw: <%= ldap_password %>
                 user_basedn: ou=People,<%= dc_suffix %>
                 role_basedn: <%= dc_suffix %>
