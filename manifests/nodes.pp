@@ -21,7 +21,7 @@ node valstar {
     
 
     subversion::snapshot { "/etc/puppet":
-        source => "svn://vm-gandi.mageia.org/adm/puppet/"
+        source => "svn://svn.mageia.org/adm/puppet/"
     }
 
     file { "extdata":
