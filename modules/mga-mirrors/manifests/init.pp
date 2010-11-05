@@ -7,7 +7,7 @@ class mga-mirrors {
     }
 
     apache::vhost_catalyst_app { $vhost:
-        script => /usr/bin/mga_mirrors_fastcgi.pl 
+        script => "/usr/bin/mga_mirrors_fastcgi.pl" 
     }
 
     $password = extlookup("mga_mirror_password")
