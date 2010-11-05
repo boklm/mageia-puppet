@@ -68,6 +68,7 @@ ldap        IN CNAME valstar
 
 identity    IN CNAME alamut
 mirrors     IN CNAME alamut
+epoll       IN CNAME alamut
 pgsql       IN CNAME alamut
 ; temporary
 ;forum       IN A 140.211.167.148
