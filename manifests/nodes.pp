@@ -125,6 +125,8 @@ node champagne {
 #
 	include default_mageia_server
     include apache::base
+    #include postfix
+    include blog
 }
 
 
