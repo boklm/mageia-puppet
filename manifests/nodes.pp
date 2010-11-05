@@ -3,7 +3,6 @@ node valstar {
 # Location: IELO datacenter (marseille)
 #
 # TODO:
-# - SVN server
 # - GIT server
 # - setup urli build scheduler
 # - setup youri
