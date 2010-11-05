@@ -3,9 +3,9 @@ class blog {
 	package { 'wget':
         	ensure => installed
     	}
-	package { 'postfix':
-                ensure => installed
-        }
+	#package { 'postfix':
+        #        ensure => installed
+        #}
 	file { "check_new-blog-post":
         	path => "/usr/local/bin/check_new-blog-post.sh",
         	ensure => present,
