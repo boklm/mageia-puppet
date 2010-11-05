@@ -1,4 +1,5 @@
-#TODO: add the creation of the user 'blog' in puppet
+#TODO: 
+# - add the creation of the user 'blog' in puppet
 class blog {
 	package { 'wget':
         	ensure => installed
@@ -14,6 +15,12 @@ class blog {
         	mode => 755,
         	content => template("blog/check_new-blog-post.sh")
     	}
+	file { "/var/lib/blog/":
+                ensure => present,
+                owner => blog,
+                group => blog,
+                mode => 644
+        }
 	cron { blog:
         	user => blog,
         	hour => 0,
