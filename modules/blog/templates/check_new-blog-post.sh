@@ -3,15 +3,15 @@
 # Initialization
 PATH_TO_FILE="/var/lib/blog"
 /usr/bin/wget -qO $PATH_TO_FILE"/RSS_new" http://blog.mageia.org/?feed=rss2
-/bin/date +"%d:%m:%Y %H:%M" > $PATH_TO_FILE"/last_check"
 
 # Check if RSS_old exists
 if [ ! -f $PATH_TO_FILE"/RSS_old" ]
 	then
-		/bin/cp $PATH_TO_FILE"/RSS_new" $PATH_TO_FILE"/RSS_old"
-		/bin/rm -rf $PATH_TO_FILE"/RSS_new" $PATH_TO_FILE"/last_check"
+		/bin/mv -f $PATH_TO_FILE"/RSS_new" $PATH_TO_FILE"/RSS_old"
 		exit 1
 fi
+
+/bin/date +"%d:%m:%Y %H:%M" > $PATH_TO_FILE"/last_check"
 
 # Check if a new blog post on EN needs to be translated on other blogs
 tmp_new=$(/bin/grep 'lastBuildDate' $PATH_TO_FILE"/RSS_new")
@@ -28,5 +28,4 @@ if [ "$tmp_old" = "$tmp_new" ]
 fi
 
 # Clean tmp files and copy RSS_new to RSS_old
-/bin/cp $PATH_TO_FILE"/RSS_new" $PATH_TO_FILE"/RSS_old"
-/bin/rm -rf $PATH_TO_FILE"/RSS_new"
+/bin/mv -f $PATH_TO_FILE"/RSS_new" $PATH_TO_FILE"/RSS_old"
