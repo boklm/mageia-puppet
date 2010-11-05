@@ -8,6 +8,11 @@ class subversion {
         package { "subversion-server":
             ensure => installed,
         }
+
+        package { "perl-SVN-Notify-Config":
+            ensure => installed,
+        }
+
     }
 
     # TODO create proper hook directory ( see zarb.org )

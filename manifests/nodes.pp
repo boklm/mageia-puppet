@@ -18,6 +18,7 @@ node valstar {
     include mirror
     include openldap::master 
     include subversion::client
+    include subversion::server
     
 
     subversion::snapshot { "/etc/puppet":
