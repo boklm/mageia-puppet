@@ -6,7 +6,8 @@ class postgresql {
     service { postgresql:
         ensure => running,
         subscribe => Package["postgresql9.0-server"],
-        restart => "/etc/rc.d/init.d/postgresql reload"
+        restart => "/etc/rc.d/init.d/postgresql reload",
+        hasstatus => true,
     }
 
     file { '/etc/pam.d/postgresql':
