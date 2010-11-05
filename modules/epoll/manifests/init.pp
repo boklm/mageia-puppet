@@ -1,6 +1,6 @@
 class epoll {
 
-    include apache::mod_fcgid
+    include apache::mod_fastcgi
 
     $vhost = "epoll.$domain"
     package { 'Epoll':

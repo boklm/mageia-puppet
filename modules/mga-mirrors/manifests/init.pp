@@ -2,7 +2,7 @@ class mga-mirrors {
     
     $vhost = "mirrors.$domain"
 
-    include apache::mod_fcgid
+    include apache::mod_fastcgi
 
     package { 'mga-mirrors':
         ensure => installed
