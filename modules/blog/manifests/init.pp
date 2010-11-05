@@ -20,7 +20,6 @@ class blog {
                 owner => blog,
                 group => blog,
                 mode => 644,
-		recurse  => true
         }
 	cron { blog:
         	user => blog,
