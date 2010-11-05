@@ -2,13 +2,14 @@ class epoll {
 
     include apache::mod_fcgid
 
+    $vhost = "epoll.$domain"
     package { 'Epoll':
         ensure => installed
     }
 
     # add a apache vhost
-    file { "epoll.$domain.conf":
-        path => "/etc/httpd/conf/vhosts.d/$name.$domain.conf",
+    file { "$vhost.conf":
+        path => "/etc/httpd/conf/vhosts.d/$vhost.conf",
         ensure => "present",
         owner => root,
         group => root,
