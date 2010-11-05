@@ -23,16 +23,6 @@ node valstar {
     subversion::snapshot { "/etc/puppet":
         source => "svn://svn.mageia.org/adm/puppet/"
     }
-
-    file { "extdata":
-        path => "/etc/puppet/extdata",
-        ensure => directory,
-        owner => puppet,
-        group => puppet,
-        mode => 700,
-        recurse => true
-    }
-
     package {"task-bs-cluster-main":
         ensure => "installed"
     }

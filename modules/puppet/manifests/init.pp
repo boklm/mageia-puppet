@@ -30,5 +30,14 @@ class puppet {
             path => "/etc/init.d/puppetmaster",
             subscribe => [ Package[puppet-server], File["/etc/puppet/puppet.conf"]]
         }
+
+        file { "extdata":
+            path => "/etc/puppet/extdata",
+            ensure => directory,
+            owner => puppet,
+            group => puppet,
+            mode => 700,
+            recurse => true
+        }
     }
 }
