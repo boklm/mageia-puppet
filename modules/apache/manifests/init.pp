@@ -53,4 +53,19 @@ class apache {
             ensure => installed
         }
     }
+
+    define vhost_catalyst_app($script, $process = 4, $force_ssl = false) {
+
+        include apache::mod_fastcgi 
+
+        file { "$name.conf":
+            path => "/etc/httpd/conf/vhosts.d/$name.conf",
+            ensure => "present",
+            owner => root,
+            group => root,
+            mode => 644,
+            notify => Service['apache'],
+            content => template("apache/vhost_catalyst_app.conf")
+        }
+    }
 }
