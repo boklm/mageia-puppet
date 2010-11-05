@@ -13,7 +13,9 @@ class catdap {
 "perl-Catalyst-Plugin-ConfigLoader", "perl-Catalyst-Plugin-I18N", "perl-Catalyst-Plugin-Session-Store-File", "perl-Catalyst-Plugin-Static-Simple",
 "perl-Catalyst-P-S-State-Cookie", "perl-Catalyst-P-S-Store-File", "perl-Catalyst-View-Email",
 "perl-Catalyst-View-TT", "perl-Config-General", "perl-Crypt-CBC", "perl-Data-UUID",
-"perl-Email-Valid", "perl-Moose", "perl-namespace-autoclean", "perl-Test-Simple" ]
+"perl-Email-Valid", "perl-Moose", "perl-namespace-autoclean", "perl-Test-Simple",
+"perl-Crypt-Blowfish", "perl-Email-Date-Format", "perl-YAML-LibYAML",
+]
 
     package { $rpm_requirement:
         ensure => installed
