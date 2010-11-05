@@ -3,7 +3,7 @@ SLAPDSYSLOGLEVEL="0"
 SLAPDSYSLOGLOCALUSER="local4"
 
 # SLAPD URL list 
-SLAPDURLLIST="ldap://127.0.0.1/ ldaps://127.0.0.1/"
+SLAPDURLLIST="ldap:/// ldaps:/// ldapi:///"
 
 # Config file to use for slapd
 #SLAPDCONF=/etc/openldap/slapd.conf
