@@ -2,6 +2,7 @@ class apache {
 
     class base {
         package { "apache-mpm-prefork":
+            alias => apache,
             ensure => installed
         }
     
@@ -9,6 +10,17 @@ class apache {
             alias => apache,
             ensure => running,
             subscribe => [ Package['apache-mpm-prefork'] ],
+        }
+
+        file { "customization.conf":
+            ensure => present,
+            path => "/etc/httpd/conf/customization.conf",
+            content => template("apache/customization.conf"),
+            require => Package["apache"],
+            notify => Service["apache"],
+            owner => root,
+            group => root,
+            mode => 644,
         }
     }
     
