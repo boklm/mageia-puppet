@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	3D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2010110402	; Serial
+        2010110500	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -56,7 +56,7 @@ rsync       IN  CNAME www-zarb
 
 ldap        IN  CNAME valstar
 
-svn         IN  CNAME krampouezh
+svn         IN  CNAME valstar
 meetbot     IN  CNAME krampouezh
 
 donate      IN  CNAME www-aufml
