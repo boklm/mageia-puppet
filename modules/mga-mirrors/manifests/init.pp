@@ -1,4 +1,6 @@
 class mga-mirrors {
+    
+    $vhost = "mirrors.$domain"
 
     include apache::mod_fcgid
 
@@ -7,8 +9,8 @@ class mga-mirrors {
     }
 
     # add a apache vhost
-    file { "mirrors.$domain.conf":
-        path => "/etc/httpd/conf/vhosts.d/$name.$domain.conf",
+    file { "$vhost.conf":
+        path => "/etc/httpd/conf/vhosts.d/$vhost.conf",
         ensure => "present",
         owner => root,
         group => root,
