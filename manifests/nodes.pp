@@ -41,10 +41,9 @@ node alamut {
 # - wiki
 # - pastbin
 # - LDAP slave
-# - transifex
 # - SQL server
 # 
-	include default_mageia_server
+	  include default_mageia_server
     include bind::bind_master
     include postgresql
     bind::zone_master { "mageia.org": }
@@ -61,16 +60,16 @@ node alamut {
 node jonund {
 # Location: IELO datacenter (marseille)
 #
-	include default_mageia_server
-	include iurt
+	  include default_mageia_server
+	  include iurt
     timezone::timezone { "Europe/Paris": }
 }
 
 node ecosse {
 # Location: IELO datacenter (marseille)
 #
-	include default_mageia_server
-	include iurt
+	  include default_mageia_server
+	  include iurt
     timezone::timezone { "Europe/Paris": }
 }
 
@@ -83,7 +82,7 @@ node fiona {
 # - buy the server
 # - install the server in datacenter
 #
-	include default_mageia_server
+	  include default_mageia_server
 } 
 
 # gandi-vm
@@ -94,7 +93,7 @@ node krampouezh {
 # - secondary MX
 # - LDAP slave (for external traffic maybe)
 #
-	include default_mageia_server
+	  include default_mageia_server
     include bind::bind_master
     bind::zone_master { "mageia.org": }
     bind::zone_master { "mageia.fr": } 
@@ -110,7 +109,7 @@ node champagne {
 # - setup mageia.org web site
 # - setup blog
 #
-	include default_mageia_server
+	  include default_mageia_server
     include apache::base
     timezone::timezone { "Europe/Paris": }
     #include postfix
