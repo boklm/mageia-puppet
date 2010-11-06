@@ -37,4 +37,14 @@ class postgresql {
         require => Package["postgresql9.0-server"],
         notify => [Service["postgresql"]]
     }
+
+    file { '/var/lib/pgsql/data/pg_ident.conf':
+        ensure => present,
+        owner => postgres,
+        group => postgres,
+        mode => 600,
+        content => template("postgresql/pg_ident.conf"),
+        require => Package["postgresql9.0-server"],
+        notify => [Service["postgresql"]]
+    }
 }
