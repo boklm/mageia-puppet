@@ -23,7 +23,7 @@ if [ "$tmp_old" = "$tmp_new" ]
 	else
 		# New post to translate
 		echo "YES" >> $PATH_TO_FILE"/last_check"
-		echo "A new blog post is waiting for translation" /bin/mail -s "New entry on English Blog" mageia-blogteam@mageia.org
+		echo "A new blog post is waiting for translation" | /bin/mail -s "New entry on English Blog" mageia-blogteam@mageia.org
 		echo $DATE
 fi
 
