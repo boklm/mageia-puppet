@@ -54,6 +54,7 @@ node alamut {
     include catdap
     include mga-mirrors
     include epoll
+    include transifex
 }
 
 # buildnode
