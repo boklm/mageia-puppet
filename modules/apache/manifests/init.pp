@@ -54,7 +54,19 @@ class apache {
         }
     }
 
-    define vhost_catalyst_app($script, $process = 4, $force_ssl = false) {
+    define vhost_redirect_ssl() {
+        file { "redirect_ssl_$name.conf":
+            path => "/etc/httpd/conf/vhosts.d/redirect_ssl_$name.conf",
+            ensure => "present",
+            owner => root,
+            group => root,
+            mode => 644,
+            notify => Service['apache'],
+            content => template("apache/vhost_ssl_redirect.conf")
+        }
+    }
+
+    define vhost_catalyst_app($script, $process = 4, $use_ssl = false) {
 
         include apache::mod_fastcgi 
 
