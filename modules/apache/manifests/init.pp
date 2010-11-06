@@ -1,5 +1,7 @@
 class apache {
 
+    $vhost_dir = "/etc/httpd/conf/vhosts.d"
+ 
     class base {
         package { "apache-mpm-prefork":
             alias => apache,
@@ -56,7 +58,7 @@ class apache {
 
     define vhost_redirect_ssl() {
         file { "redirect_ssl_$name.conf":
-            path => "/etc/httpd/conf/vhosts.d/redirect_ssl_$name.conf",
+            path => "$vhost_dir/redirect_ssl_$name.conf",
             ensure => "present",
             owner => root,
             group => root,
@@ -71,7 +73,7 @@ class apache {
         include apache::mod_fastcgi 
 
         file { "$name.conf":
-            path => "/etc/httpd/conf/vhosts.d/$name.conf",
+            path => "$vhost_dir/$name.conf",
             ensure => "present",
             owner => root,
             group => root,
