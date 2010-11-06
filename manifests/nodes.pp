@@ -33,7 +33,7 @@ node alamut {
 # Location: IELO datacenter (marseille)
 #
 # TODO:
-# - bugzilla
+# - Bug Tracker
 # - nagios
 # - api
 # - mail server
