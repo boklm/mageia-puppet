@@ -51,6 +51,12 @@ class apache {
         }
     }
 
+    class mod_ssl inherits base {
+        package { "apache-mod_ssl":
+            ensure => installed
+        }
+    }
+
     class mod_wsgi inherits base {
         package { "apache-mod_wsgi":
             ensure => installed
