@@ -3,7 +3,7 @@ class transifex {
     ensure => installed
   }
   
-  file { "check_new-blog-post":
+  file { "20-engines.conf":
     path => "/etc/transifex/20-engines.conf",
     ensure => present,
     owner => root,
