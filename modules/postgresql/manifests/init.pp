@@ -29,7 +29,7 @@ class postgresql {
     }
 
     file { "postgresql.conf":
-        path => "$pgsql_data/$name",
+        path => "$pgsql_data/postgresql.conf",
         ensure => present,
         owner => postgres,
         group => postgres,
@@ -39,7 +39,7 @@ class postgresql {
     }
     
     file { 'pg_hba.conf':
-        path => "$pgsql_data/$name",
+        path => "$pgsql_data/pg_hba.conf",
         ensure => present,
         owner => postgres,
         group => postgres,
@@ -49,7 +49,7 @@ class postgresql {
     }
 
     file { 'pg_ident.conf':
-        path => "$pgsql_data/$name",
+        path => "$pgsql_data/pg_ident.conf",
         ensure => present,
         owner => postgres,
         group => postgres,
