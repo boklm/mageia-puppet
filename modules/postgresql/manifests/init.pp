@@ -1,13 +1,23 @@
 class postgresql {
+    
+    $pgsql_data = "/var/lib/pgsql/data/"
+
     package { 'postgresql9.0-server':
+        alias => "postgresql-server",
         ensure => installed
     }
 
     service { postgresql:
         ensure => running,
-        subscribe => Package["postgresql9.0-server"],
-        restart => "/etc/rc.d/init.d/postgresql reload",
+        subscribe => Package["postgresql-server"],
         hasstatus => true,
+    }
+
+    exec { "service postgresql reload":
+        refreshonly => true,
+        subscribe => [ File["postgresql.conf"], 
+                       File["pg_ident.conf"],
+                       File["pg_hba.conf"] ]
     }
 
     file { '/etc/pam.d/postgresql':
@@ -18,33 +28,33 @@ class postgresql {
         content => template("postgresql/pam"),
     }
 
-    file { '/var/lib/pgsql/data/postgresql.conf':
+    file { "postgresql.conf":
+        path => "$pgsql_data/$name",
         ensure => present,
         owner => postgres,
         group => postgres,
         mode => 600,
         content => template("postgresql/postgresql.conf"),
-        require => Package["postgresql9.0-server"],
-        notify => [Service["postgresql"]]
+        require => Package["postgresql-server"],
     }
     
-    file { '/var/lib/pgsql/data/pg_hba.conf':
+    file { 'pg_hba.conf':
+        path => "$pgsql_data/$name",
         ensure => present,
         owner => postgres,
         group => postgres,
         mode => 600,
         content => template("postgresql/pg_hba.conf"),
-        require => Package["postgresql9.0-server"],
-        notify => [Service["postgresql"]]
+        require => Package["postgresql-server"],
     }
 
-    file { '/var/lib/pgsql/data/pg_ident.conf':
+    file { 'pg_ident.conf':
+        path => "$pgsql_data/$name",
         ensure => present,
         owner => postgres,
         group => postgres,
         mode => 600,
         content => template("postgresql/pg_ident.conf"),
-        require => Package["postgresql9.0-server"],
-        notify => [Service["postgresql"]]
+        require => Package["postgresql-server"],
     }
 }
