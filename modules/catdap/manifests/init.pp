@@ -35,14 +35,21 @@ class catdap {
         require => Subversion::Snapshot[$catdap_location]
     }
 
+    apache::vhost_catalyst_app { $catdap_vhost:
+        location => $catdap_location,
+        use_ssl => true,
+    }
+
+    apache::vhost_redirect_ssl { $catdap_vhost: }
+
     # add a apache vhost
-    file { "$catdap_vhost.conf":
-        path => "/etc/httpd/conf/vhosts.d/$catdap_vhost.conf",
-        ensure => "present",
-        owner => root,
-        group => root,
-        mode => 644,
-        notify => Service['apache'],
-        content => template("catdap/catdap_vhost.conf")
-    }    
+#    file { "$catdap_vhost.conf":
+#        path => "/etc/httpd/conf/vhosts.d/$catdap_vhost.conf",
+#        ensure => "present",
+#        owner => root,
+#        group => root,
+#        mode => 644,
+#        notify => Service['apache'],
+#        content => template("catdap/catdap_vhost.conf")
+#    }    
 }
