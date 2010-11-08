@@ -1,8 +1,5 @@
 class apache {
 
-    $vhost_dir = "/etc/httpd/conf/vhosts.d"
-    $wsgi_dir = "/usr/local/lib/wsgi"
- 
     class base {
         package { "apache-mpm-prefork":
             alias => apache,
@@ -62,7 +59,7 @@ class apache {
             ensure => installed
         }
 
-        file { $wsgi_dir:
+        file { "/usr/local/lib/wsgi":
             ensure => directory,
             owner => root,
             group => root,
@@ -72,7 +69,7 @@ class apache {
 
     define vhost_redirect_ssl() {
         file { "redirect_ssl_$name.conf":
-            path => "$vhost_dir/redirect_ssl_$name.conf",
+            path => "/etc/httpd/conf/vhosts.d/redirect_ssl_$name.conf",
             ensure => "present",
             owner => root,
             group => root,
@@ -87,7 +84,7 @@ class apache {
         include apache::mod_fastcgi 
 
         file { "$name.conf":
-            path => "$vhost_dir/$name.conf",
+            path => "/etc/httpd/conf/vhosts.d/$name.conf",
             ensure => "present",
             owner => root,
             group => root,
@@ -101,7 +98,7 @@ class apache {
         include apache::mod_wsgi
 
         file { "$name.conf":
-            path => "$vhost_dir/$name.conf",
+            path => "/etc/httpd/conf/vhosts.d/$name.conf",
             ensure => "present",
             owner => root,
             group => root,
@@ -112,7 +109,7 @@ class apache {
 
         # fichier django wsgi
         file { "$name.wsgi":
-            path => "$wsgi_dir/$name.wsgi",
+            path => "/usr/local/lib/wsgi/$name.wsgi",
             ensure => "present",
             owner => root,
             group => root,
