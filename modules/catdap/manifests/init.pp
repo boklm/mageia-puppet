@@ -1,9 +1,5 @@
 class catdap {
 
-    include subversion
-    include subversion::client
-    include apache::mod_fcgid
-
     $catdap_location = "/var/www/identity"
     $catdap_vhost = "identity.$domain"
 
@@ -42,15 +38,4 @@ class catdap {
     }
 
     apache::vhost_redirect_ssl { $catdap_vhost: }
-
-    # add a apache vhost
-#    file { "$catdap_vhost.conf":
-#        path => "/etc/httpd/conf/vhosts.d/$catdap_vhost.conf",
-#        ensure => "present",
-#        owner => root,
-#        group => root,
-#        mode => 644,
-#        notify => Service['apache'],
-#        content => template("catdap/catdap_vhost.conf")
-#    }    
 }
