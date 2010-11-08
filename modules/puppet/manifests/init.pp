@@ -45,7 +45,6 @@ class puppet {
             owner => puppet,
             group => puppet,
             mode => 700,
-            recurse => true
             content => template("puppet/tagmail.conf"),
        } 
         
