@@ -13,7 +13,7 @@ class iurt {
         owner => buildbot,
         group => buildbot,
         mode => 644,
-        content => template("iurt/.iurt.cauldron.conf")
+        content => template("iurt/iurt.cauldron.conf")
     }
 
 }
