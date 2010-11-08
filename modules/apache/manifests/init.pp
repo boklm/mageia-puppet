@@ -82,7 +82,7 @@ class apache {
         }
     }
 
-    define vhost_catalyst_app($script, $process = 4, $use_ssl = false) {
+    define vhost_catalyst_app($script, $location = '', $process = 4, $use_ssl = false) {
 
         include apache::mod_fastcgi 
 
