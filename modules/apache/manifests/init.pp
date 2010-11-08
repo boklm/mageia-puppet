@@ -22,6 +22,16 @@ class apache {
             group => root,
             mode => 644,
         }
+
+        file { "00_default_vhosts.conf":
+            path => "/etc/httpd/conf/vhosts.d/00_default_vhosts.conf",
+            ensure => "present",
+            owner => root,
+            group => root,
+            mode => 644,
+            notify => Service['apache'],
+            content => template("apache/00_default_vhosts.conf")
+        }
     }
     
     class mod_php inherits base {
