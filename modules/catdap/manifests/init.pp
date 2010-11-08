@@ -36,6 +36,7 @@ class catdap {
     }
 
     apache::vhost_catalyst_app { $catdap_vhost:
+        script => "$catdap_location/script/catdap_fastcgi.pl",
         location => $catdap_location,
         use_ssl => true,
     }
