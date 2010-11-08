@@ -60,7 +60,7 @@ node jonund {
 # Location: IELO datacenter (marseille)
 #
     include default_mageia_server
-    include iurt
+    #include iurt
     timezone::timezone { "Europe/Paris": }
 }
 
