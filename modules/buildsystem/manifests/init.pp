@@ -39,7 +39,7 @@ class buildsystem {
 
         user {"$build_login":
             ensure => present,
-            comment => "System user use to run build bots"    
+            comment => "System user use to run build bots",
             managehome => true,
             shell => "/bin/bash",
         }
