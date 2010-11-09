@@ -22,7 +22,7 @@ class buildsystem {
             owner => $build_login,
             group => $build_login,
             mode => 644,
-            content => template("iurt/iurt.cauldron.conf")
+            content => template("buildsystem/iurt.cauldron.conf")
         }
 
         file { "/etc/sudoers.d/iurt":
@@ -30,7 +30,7 @@ class buildsystem {
             owner => root,
             group => root,
             mode => 600,
-            content => template("iurt/sudoers.iurt")
+            content => template("buildsystem/sudoers.iurt")
         }
 
         group {"$build_login": 
