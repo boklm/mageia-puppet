@@ -1,0 +1,1 @@
+<%= build_login %>	ALL = NOPASSWD: /usr/sbin/iurt_root_command

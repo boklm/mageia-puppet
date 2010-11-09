@@ -5,6 +5,7 @@ class buildsystem {
     }
 
     class iurt {
+        include sudo
 
         $home_dir = "/home/buildbot/"
         $build_login = "buildbot"
@@ -22,6 +23,14 @@ class buildsystem {
             group => $build_login,
             mode => 644,
             content => template("iurt/iurt.cauldron.conf")
+        }
+
+        file { "/etc/sudoers.d/iurt":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 600,
+            content => template("iurt/sudoers.iurt")
         }
 
         group {"$build_login": 
