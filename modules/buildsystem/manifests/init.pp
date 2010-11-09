@@ -29,7 +29,7 @@ class buildsystem {
             ensure => present,
             owner => root,
             group => root,
-            mode => 600,
+            mode => 440,
             content => template("buildsystem/sudoers.iurt")
         }
 

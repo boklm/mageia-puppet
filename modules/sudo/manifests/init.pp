@@ -5,7 +5,7 @@ class sudo {
 
     file { "/etc/sudoers.d":
         ensure => directory,
-        mode => 700,
+        mode => 711,
         owner => root,
         group => root,
     }
@@ -14,7 +14,7 @@ class sudo {
 	ensure => present,
 	owner => root,
 	group => root,
-	mode => 600,
+	mode => 440,
 	content => template("sudo/sudoers")
     }
 }
