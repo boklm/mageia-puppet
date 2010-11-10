@@ -81,8 +81,8 @@ class default_ssh_root_key {
 class urpmi_update {
     cron { urpmi_update:
         user => root,
-        hour => 4,
-	minute => *,
+        hour => */4,
+	minute => 0,
         command => "urpmi.update -a",
     }
 
