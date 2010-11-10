@@ -1,0 +1,11 @@
+dn: cn=[% list.alias %],cn=[% list.domain %],[% ldap_base_dn %]
+objectClass: top
+objectClass: mailAlias
+objectClass: mailRecipient
+cn: [% list.alias %]
+mail: [% list.alias %]@[% list.domain %]
+mailTransportMode: [% list.command %]
+mailAccountStatus: active
+mailHost: mail1.example.com
+
+# vim: ft=ldif

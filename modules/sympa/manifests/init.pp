@@ -24,5 +24,21 @@ class sympa {
         mode => 644,
         content => template("sympa/ldap_alias_manager.conf")
     }
+
+    file { '/etc/sympa/auth.conf':
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => 644,
+        content => template("sympa/auth.conf")
+    }
+
+    file { '/etc/sympa/ldap_alias_entry.tt2':
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => 644,
+        content => template("sympa/ldap_alias_entry.tt2")
+    }
 }
 
