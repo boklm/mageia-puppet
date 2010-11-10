@@ -4,6 +4,7 @@ class bugzilla {
         ensure => installed;
     }
 
+    $password = extlookup("bugzilla_password")
     file { '/etc/bugzilla/localconfig':
         ensure => present,
         owner => root,
