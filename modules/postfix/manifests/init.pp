@@ -4,7 +4,9 @@ class postfix {
         package { postfix:
             ensure => installed
         }
-
+	package { 'mailx':
+                ensure => installed
+        }
         service { postfix:
             ensure => running,
             subscribe => [ Package['postfix']],

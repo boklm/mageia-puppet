@@ -4,9 +4,6 @@ class blog {
 	package { 'wget':
         	ensure => installed
     	}
-	package { 'nail':
-                ensure => installed
-        }
 	file { "check_new-blog-post":
         	path => "/usr/local/bin/check_new-blog-post.sh",
         	ensure => present,
