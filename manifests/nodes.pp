@@ -111,6 +111,7 @@ node champagne {
     include default_mageia_server
     include apache::base
     include apache::mod_php
+    include mysql
     timezone::timezone { "Europe/Paris": }
     include blog
 }
