@@ -4,7 +4,7 @@ class postfix {
         package { postfix:
             ensure => installed
         }
-	package { 'mailx':
+	package { 'nail':
                 ensure => installed
         }
         service { postfix:
