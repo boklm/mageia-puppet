@@ -3,7 +3,7 @@ class mysql {
     package { 'mysql':
         ensure => installed
     }
-    package { 'lighttpd-mod_mysql_vhost':
+    package { 'php-mysql':
         ensure => installed
     }
 
