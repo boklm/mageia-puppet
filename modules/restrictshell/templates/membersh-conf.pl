@@ -11,3 +11,6 @@ $use_rsync = "<%= allow_rsync %>";
 $bin_rsync = "/usr/bin/rsync";
 $regexp_rsync = "^rsync --server";
 $regexp_dir_rsync = "^/.*";
+
+$use_pkgsubmit = "<%= allow_pkgsubmit %>";
+

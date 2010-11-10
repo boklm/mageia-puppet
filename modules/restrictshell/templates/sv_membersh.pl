@@ -61,6 +61,10 @@ our @prepend_args_svn = ( '-r', '/svn' );
 our $use_git = "0";
 our $bin_git = "/usr/bin/git-shell";
 
+our $use_pkgsubmit = "0";
+our $regexp_pkgsubmit = "^/usr/share/repsys/create-srpm ";
+our $bin_pkgsubmit = "/usr/share/repsys/create-srpm";
+
 # Open configuration file
 if (-e "/etc/membersh-conf.pl") {
     do "/etc/membersh-conf.pl" or die "System misconfiguration, contact administrators. Exiting";
@@ -86,6 +90,8 @@ if (-e "/etc/membersh-conf.pl") {
 # $bin_rsync = "/usr/bin/rsync";
 # $regexp_rsync = "^rsync --server";
 # $regexp_dir_rsync = "^(/upload)|(/var/ftp)";
+#
+# $use_pkgsubmit = "1";
 
 
 if ($#ARGV == 1 and $ARGV[0] eq "-c") {
@@ -133,7 +139,12 @@ if ($#ARGV == 1 and $ARGV[0] eq "-c") {
 	
 	# Delegate filtering to git-shell
         exec($bin_git, @ARGV) or die("Failed to exec $bin_git: $!");
+    } elsif ($use_pkgsubmit and 
+	     $ARGV[1] =~ m:$regexp_pkgsubmit:) {
 
+	my ($createsrpm, @rest) = split(' ', $ARGV[1]);
+
+	exec($bin_pkgsubmit, @rest) or die("Failed to exec $bin_pkgsubmit: $!");
     }
 }
 
