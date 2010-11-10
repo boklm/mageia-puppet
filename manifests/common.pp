@@ -82,6 +82,7 @@ class urpmi_update {
     cron { urpmi_update:
         user => root,
         hour => 4,
+	minute => *,
         command => "urpmi.update -a",
     }
 
