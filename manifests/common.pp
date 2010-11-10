@@ -73,19 +73,15 @@ class default_ssh_root_key {
         key => "AAAAB3NzaC1kc3MAAACBAMFaCUsen6ZYH8hsjGK0tlaguduw4YT2KD3TaDEK24ltKzvQ+NDiPRms1zPhTpRL0p0U5QVdIMxm/asAtuiMLMxdmU+Crry6s110mKKY2930ZEk6N4YJ4DbqSiYe2JBmpJVIEJ6Betgn7yZRR2mRM7j134PddAl8BGG+RUvzib7JAAAAFQDzu/G2R+6oe3vjIbbFpOTyR3PAbwAAAIEAmqXAGybY9CVgGChSztPEdvaZ1xOVGJtmxmlWvitWGpu8m5JBf57VhzdpT4Fsf4fiVZ7NWiwPm1DzqNX7xCH7IPLPK0jQSd937xG9Un584CguNB76aEQXv0Yl5VjOrC3DggIEfZ1KLV7GcpOukw0RerxKz99rYAThp6+qzBIrv38AAACBAKhXi7uNlajescWFjiCZ3fpnxdyGAgtKzvlz60mGKwwNyaQCVmPSmYeBI2tg1qk+0I5K6LZUxWkdhuE1UfvAbIrEdwyD8p53dPg1J9DpdQ1KqApeKqLxO02KJtfomuy3cRQXmdfOTovYN7zAu1NCp51uUNTzhIpDHx0MZ6bsWSFv",
         user => "root"
     }
-
-
-
 }
 
 class urpmi_update {
     cron { urpmi_update:
         user => root,
-        hour => */4,
-	minute => 0,
+        hour => '*/4',
+        minute => 0,
         command => "urpmi.update -a",
     }
-
 }
 
 class default_mageia_server {
