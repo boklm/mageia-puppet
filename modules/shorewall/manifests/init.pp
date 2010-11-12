@@ -1,8 +1,10 @@
 class shorewall {
   include concat::setup
 
+  $shorewalldir = "/tmp/shorewall"
+
   define shorewallfile () {
-     $filename = "/tmp/shorewall/${name}"
+     $filename = "${shorewalldir}/${name}"
      $header = "puppet:///modules/shorewall/headers/${name}"
      $footer = "puppet:///modules/shorewall/footers/${name}"
      concat{$filename:
@@ -27,7 +29,7 @@ class shorewall {
   ### Rules
   shorewallfile{ rules: }
   define rule_line($order = 50) {
-     $filename = "/tmp/shorewall/rules"
+     $filename = "${shorewalldir}/rules"
      $line = "${name}\n"
      concat::fragment{"newline_${name}":
 	target => $filename,
@@ -54,7 +56,7 @@ class shorewall {
   ### Zones
   shorewallfile{ zones: }
   define zone_line($order = 50) {
-     $filename = "/tmp/shorewall/zones"
+     $filename = "${shorewalldir}/zones"
      $line = "${name}\n"
      concat::fragment{"newline_${name}":
 	target => $filename,
@@ -74,7 +76,7 @@ class shorewall {
   ### Policy
   shorewallfile{ policy: }
   define policy_line($order = 50) {
-     $filename = "/tmp/shorewall/policy"
+     $filename = "${shorewalldir}/policy"
      $line = "${name}\n"
      concat::fragment{"newline_${name}":
 	target => $filename,
