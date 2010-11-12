@@ -43,14 +43,14 @@ class shorewall {
      }
   }
   class allow_dns_in {
-     rule_line { "ACCEPT net fw tcp 53" }
-     rule_line { "ACCEPT net fw udp 53" }
+     rule_line { "ACCEPT net fw tcp 53": }
+     rule_line { "ACCEPT net fw udp 53": }
   }
   class allow_smtp_in {
-     rule_line { "ACCEPT net fw tcp 25" }
+     rule_line { "ACCEPT net fw tcp 25": }
   }
   class allow_www_in {
-     rule_line { "ACCEPT net fw tcp 80" }
+     rule_line { "ACCEPT net fw tcp 80": }
   }
 
   ### Zones
