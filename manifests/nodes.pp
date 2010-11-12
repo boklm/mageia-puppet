@@ -62,6 +62,7 @@ node jonund {
     include default_mageia_server
     #include buildsystem::buildnode
     timezone::timezone { "Europe/Paris": }
+    include shorewall::default_firewall
 }
 
 node ecosse {
