@@ -66,10 +66,10 @@ class shorewall {
   }
   class default_zones {
      zone_line { "net     ipv4":
-	$order => 2,
+	order => 2,
      }
      zone_line { "fw      firewall":
-	$order => 3,
+	order => 3,
      }
   }
 
@@ -86,13 +86,13 @@ class shorewall {
   }
   class default_policy {
      policy_line{ "fw	net	ACCEPT":
-     	$order => 2,
+     	order => 2,
      }
      policy_line{ "net	all	DROP	info":
-     	$order => 3,
+     	order => 3,
      }
      policy_line{ "all	all	REJECT	info":
-     	$order => 4,
+     	order => 4,
      }
   }
 
