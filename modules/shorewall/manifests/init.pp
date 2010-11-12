@@ -96,7 +96,7 @@ class shorewall {
      }
   }
 
-  class default_firewall() {
+  class default_firewall {
      include default_zones
      include default_policy
      include allow_ssh_in
