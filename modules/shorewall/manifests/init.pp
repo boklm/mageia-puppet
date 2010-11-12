@@ -28,7 +28,7 @@ class shorewall {
   shorewallfile{ rules: }
   define rule_line($order = 50) {
      $filename = "/tmp/shorewall/rules"
-     $line = $name
+     $line = "${name}\n"
      concat::fragment{"newline_${name}":
 	target => $filename,
 	order => $order,
@@ -55,7 +55,7 @@ class shorewall {
   shorewallfile{ zones: }
   define zone_line($order = 50) {
      $filename = "/tmp/shorewall/zones"
-     $line = $name
+     $line = "${name}\n"
      concat::fragment{"newline_${name}":
 	target => $filename,
 	order => $order,
@@ -75,7 +75,7 @@ class shorewall {
   shorewallfile{ policy: }
   define policy_line($order = 50) {
      $filename = "/tmp/shorewall/policy"
-     $line = $name
+     $line = "${name}\n"
      concat::fragment{"newline_${name}":
 	target => $filename,
 	order => $order,
