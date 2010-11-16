@@ -22,8 +22,11 @@ if [ "$tmp_old" = "$tmp_new" ]
 		echo "NO" >> $PATH_TO_FILE"/last_check"
 	else
 		# New post to translate
+		cat $PATH_TO_FILE"/last_check" > $PATH_TO_FILE"/last_need_translation"
+		new_post=$(grep "title" $PATH_TO_FILE"/RSS_new" | head -n 2 | sed '1d' | sed 's/<title>//' | sed 's/<\/title>//' | sed 's/^[ \t]*//')
+		echo $new_post >> $PATH_TO_FILE"/last_need_translation"
 		echo "YES" >> $PATH_TO_FILE"/last_check"
-		echo "A new blog post is waiting for translation" | /bin/mail -s "New entry on English Blog" mageia-blogteam@mageia.org
+		echo "A new blog post is waiting for translation\n\"$new_post\"" | /bin/mail -s "New entry on English Blog" mageia-blogteam@mageia.org
 		echo $DATE
 fi
 
