@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	3D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2010111000	; Serial
+        2010111600	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -16,6 +16,9 @@ $TTL	3D
 
 @   IN      MX 10   mx0.zarb.org.
 @   IN      MX 20   mx1.zarb.org.
+
+ml  IN      MX 10   alamut.mageia.org.
+ml  IN      MX 20   krampouezh.mageia.org.
 
 ; MX
 ;@	IN	MX	10 mx0.zarb.org.
