@@ -1,9 +1,10 @@
-#TODO: add support for pkgsubmit
 class restrictshell {
   $allow_svn = "0"
   $allow_git = "0"
   $allow_rsync = "0"
   $allow_pkgsubmit = "0"
+
+  $ldap_pwfile = "/etc/ldap.secret"
 
   class allow_svn_git_pkgsubmit {
     $allow_svn = "1"

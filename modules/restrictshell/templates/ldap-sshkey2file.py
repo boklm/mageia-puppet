@@ -18,8 +18,8 @@ uris=['ldap://ldap.<%= domain %>']
 random.shuffle(uris)
 uri = " ".join(uris)
 timeout=5
-binddn="uid=sshkeyreader,ou=System Accounts,%s" % basedn
-pwfile="/etc/sshkeyreader.pw"
+binddn="cn=<%= fqdn %>,ou=Hosts," % basedn
+pwfile="<%= ldap_pwfile %>"
 # filter out disabled accounts also
 # too bad uidNumber doesn't support >= filters
 filter="(&(objectClass=inetOrgPerson)(objectClass=ldapPublicKey)(objectClass=posixAccount)(sshPublicKey=*)(!(shadowExpire=*)))"
