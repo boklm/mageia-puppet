@@ -1,0 +1,12 @@
+# change default configuration option here
+
+# SOCKET=$(postconf -h queue_directory)/extern/postgrey/socket
+# OPTIONS="--unix=$SOCKET"
+# DBPATH=/var/lib/postgrey
+# OPTIONS="$OPTIONS --dbdir=$DBPATH"
+
+# to use an inet connection instead of a socket
+#OPTIONS="--inet=127.0.0.1:10031"
+
+# enable whitelisting
+OPTIONS="$OPTIONS --auto-whitelist-clients"
