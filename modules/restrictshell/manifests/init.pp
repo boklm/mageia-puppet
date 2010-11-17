@@ -31,6 +31,14 @@ class restrictshell {
     ensure => installed,
   }
 
+  $pubkeys_directory = "/var/lib/pubkeys"
+  file { $pubkeys_directory:
+    ensure => directory,
+    owner => root,
+    group => root,
+    mode => 755,
+  }
+
   file { '/usr/local/bin/ldap-sshkey2file.py':
     ensure => present,
     owner => root,

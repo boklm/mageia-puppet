@@ -9,10 +9,12 @@ try:
 except ImportError, e:
     print "Please install python-ldap before running this program"
     sys.exit(1)
-
-basedn="dc=mandriva,dc=com"
+<%
+dc_suffix = 'dc=' + domain.gsub('.',',dc=')
+%>
+basedn="<%= dc_suffix %>"
 peopledn="ou=people,%s" % basedn
-uris=['ldap://kenobi.mandriva.com','ldap://svn.mandriva.com']
+uris=['ldap://ldap.<%= domain %>']
 random.shuffle(uris)
 uri = " ".join(uris)
 timeout=5
@@ -21,7 +23,7 @@ pwfile="/etc/sshkeyreader.pw"
 # filter out disabled accounts also
 # too bad uidNumber doesn't support >= filters
 filter="(&(objectClass=inetOrgPerson)(objectClass=ldapPublicKey)(objectClass=posixAccount)(sshPublicKey=*)(!(shadowExpire=*)))"
-keypathprefix="/var/lib/config/pubkeys"
+keypathprefix="<%= pubkeys_directory %>"
 
 def usage():
     print "%s" % sys.argv[0]
