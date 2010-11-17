@@ -10,7 +10,15 @@ class pam {
          owner => root,
          group => root,
          mode => 644,
-         content => template("openldap/system-auth")
+         content => template("pam/system-auth")
+      }
+
+      file { "nsswitch.conf":
+         path => "/etc/nsswitch.conf",
+         owner => root,
+         group => root,
+         mode => 644,
+         content => template("pam/system-auth")
       }
   } 
   
