@@ -18,7 +18,14 @@ class pam {
          owner => root,
          group => root,
          mode => 644,
-         content => template("pam/system-auth")
+         content => template("pam/nsswitch.conf")
+      }
+      file { "ldap.conf":
+         path => "/etc/ldap.conf",
+         owner => root,
+         group => root,
+         mode => 644,
+         content => template("pam/ldap.conf")
       }
   } 
   
