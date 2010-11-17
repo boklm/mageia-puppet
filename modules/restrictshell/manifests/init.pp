@@ -26,4 +26,21 @@ class restrictshell {
     mode => 755,
     content => template("restrictshell/membersh-conf.pl"),
   }
+
+  package { 'python-ldap':
+    ensure => installed,
+  }
+
+  file { '/usr/local/bin/ldap-sshkey2file.py':
+    ensure => present,
+    owner => root,
+    group => root,
+    mode => 755,
+    content => template("restrictshell/ldap-sshkey2file.py"),
+    requires => Package['python-ldap']
+  } 
+
+
+
+
 }
