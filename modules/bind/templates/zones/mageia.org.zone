@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	3D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2010111600	; Serial
+        2010111700	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
