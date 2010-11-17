@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	3D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2010111700	; Serial
+        2010111701	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -17,8 +17,8 @@ $TTL	3D
 @   IN      MX 10   mx0.zarb.org.
 @   IN      MX 20   mx1.zarb.org.
 
-;ml  IN      MX 10   alamut.mageia.org.
-;ml  IN      MX 20   krampouezh.mageia.org.
+ml  IN      MX 10   alamut.mageia.org.
+ml  IN      MX 20   krampouezh.mageia.org.
 
 ; MX
 ;@	IN	MX	10 mx0.zarb.org.
@@ -38,6 +38,10 @@ forum       IN  A       88.191.127.89
 ; lost oasis
 alamut      IN  A       212.85.158.146
 alamut      IN  AAAA    2a02:2178:2:7::2
+; since we have a subdomain, we cannot use a CNAME
+ml          IN  A       212.85.158.146
+ml          IN  AAAA    2a02:2178:2:7::2
+
 valstar     IN  A       212.85.158.147
 valstar     IN  AAAA    2a02:2178:2:7::3
 ecosse      IN  A       212.85.158.148
@@ -74,7 +78,6 @@ mirrors     IN CNAME alamut
 epoll       IN CNAME alamut
 pgsql       IN CNAME alamut
 bugs        IN CNAME alamut
-ml          IN CNAME alamut
 lists       IN CNAME alamut
 ; temporary
 ;forum       IN A 140.211.167.148
