@@ -4,7 +4,7 @@ class postfix {
         package { postfix:
             ensure => installed
         }
-	package { 'nail':
+    	package { 'nail':
                 ensure => installed
         }
         service { postfix:
@@ -30,4 +30,17 @@ class postfix {
             content => template("postfix/simple_relay_main.cf"),
         }
     }
+
+    class primary_smtp inherits base {
+        file { '/etc/postfix/main.cf':
+            content => template("postfix/primary_main.cf"),
+        }
+    }
+
+    class secondary_smtp inherits base {
+        file { '/etc/postfix/main.cf':
+            content => template("postfix/secondary_main.cf"),
+        }
+    }
+
 }

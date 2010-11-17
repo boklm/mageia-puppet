@@ -1,0 +1,35 @@
+auth    required    pam_env.so
+# this part is here if the module don't exist
+# basically, the idea is to copy the exact detail of sufficient,
+# and add abort=ignore
+auth    [abort=ignore success=done new_authtok_reqd=done default=ignore]  pam_tcb.so shadow fork nullok prefix=$2a$ count=8
+auth    sufficient   pam_unix.so likeauth nullok
+auth    sufficient   pam_ldap.so use_first_pass
+<% if access_class = 'admin' %>
+auth    required     pam_wheel.so group=mga-sysadmin
+<% end %>
+<% if access_class = 'commiters' %>
+auth    required     pam_wheel.so group=mga-commiters
+<% end %>
+auth    required     pam_deny.so
+
+
+account sufficient  pam_localuser.so
+account sufficient  pam_ldap.so
+account required    pam_deny.so
+
+
+password    required    pam_cracklib.so retry=3 minlen=8 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1 dcredit=0  ucredit=0 ucredit=0
+# TODO check this part too
+password    sufficient  pam_tcb.so use_authtok shadow write_to=shadow fork nullok prefix=$2a$ count=8 abort=ignore
+password    sufficient  pam_ldap.so use_authtok
+password    sufficient  pam_unix.so use_authtok nullok md5 shadow
+password    required    pam_deny.so
+
+session optional    pam_keyinit.so revoke
+# optional if there is a problem when creating the account
+session optional    pam_mkhomedir.so
+session required    pam_limits.so
+session required    pam_unix.so
+session optional    pam_ldap.so
+

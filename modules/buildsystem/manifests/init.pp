@@ -4,6 +4,22 @@ class buildsystem {
         include iurt
     }
 
+    class scheduler {
+        # ulri        
+    }
+
+    class dispatcher {
+        # emi
+    }
+    
+    class repsys {
+        package { 'repsys':
+
+        }
+
+
+    }
+
     class iurt {
         include sudo
 
