@@ -13,7 +13,7 @@ class transifex {
     content => template("transifex/20-engines.conf")
   }
 
-  apache::vhost_django_app { "transifex.$domain":
-    module => "transifex" 
-  }  
+#  apache::vhost_django_app { "transifex.$domain":
+#    module => "transifex" 
+#  }  
 }
