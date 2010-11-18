@@ -116,11 +116,12 @@ cyrus-inet	unix	-	-	y	-	-	lmtp
 #mailman   unix  -       n       n       -       -       pipe
 #  flags=FR user=list argv=/usr/lib/mailman/bin/postfix-to-mailman.py
 #  ${nexthop} ${user}
-
+<% if classes.include?('sympa') %>
 sympa        unix  -       n       n       -       -       pipe
   flags=R user=sympa argv=/usr/sbin/queue ${recipient}
 sympabounce  unix  -       n       n       -       -       pipe
   flags=R user=sympa argv=/usr/sbin/bouncequeue ${user}
+<% end %>
 
 #
 ##### START OF CONTENT FILTER CUSTOMIZATIONS #####
