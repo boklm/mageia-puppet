@@ -32,7 +32,6 @@ node alamut {
 # Location: IELO datacenter (marseille)
 #
 # TODO:
-# - Bug Tracker
 # - Review board
 # - nagios
 # - api
