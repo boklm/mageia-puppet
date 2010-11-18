@@ -128,4 +128,29 @@ class apache {
             content => template("apache/django.wsgi")
         }
     }
+
+   define vhost_other_app($vhost_file) {
+        file { "$name.conf":
+            path => "/etc/httpd/conf/vhosts.d/$name.conf",
+            ensure => "present",
+            owner => root,
+            group => root,
+            mode => 644,
+            notify => Service['apache'],
+            content => template($vhost_file)
+        }
+   }
+
+   define webapp_other($webapp_file) {
+        $webappname = $name
+        file { "webapp_$name.conf":
+            path => "/etc/httpd/conf/webapps.d/$webappname.conf",
+            ensure => "present",
+            owner => root,
+            group => root,
+            mode => 644,
+            notify => Service['apache'],
+            content => template($webapp_file)
+        }
+   }
 }
