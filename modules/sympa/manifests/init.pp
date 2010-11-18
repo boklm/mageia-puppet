@@ -32,7 +32,7 @@ class sympa {
     }
 
    apache::vhost_other_app { "ml.$domain":
-        vhost_file => "sympa/vhost_sympa.mageia.org.conf",
+        vhost_file => "sympa/vhost_ml.conf",
    }
 }
 
