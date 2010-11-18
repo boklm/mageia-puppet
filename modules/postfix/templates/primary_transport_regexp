@@ -1,5 +1,8 @@
 <%
 ml_domain = 'ml\.' + domain.gsub('.','\.')
 %>
+<%- if classes.include?('sympa') -%>
 /^.*+owner\@<%= ml_domain %>$/ sympabounce:
 /^.*\@<%= ml_domain %>$/       sympa:
+<%- end -%>
+

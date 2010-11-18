@@ -30,7 +30,16 @@ myhostname = <%= fqdn %>
 mydomain = <%= domain %>
 mydestination = <%= fqdn %>
 myorigin = $mydomain
-relay_domains = $mydestination, ml.<%= domain %>, <%= domain %>
+relay_domains = $mydestination, 
+                ml.<%= domain %>, 
+<%- if classes.include?('primary_smtp') -%> 
+                <%= domain %>
+<%- end -%>
+transport_maps = regexp:/etc/postfix/transport_regexp
+<% if classes.include?('sympa') %>
+sympa_destination_recipient_limit = 1
+sympabounce_destination_recipient_limit = 1
+<% end %>
 #delay_warning_time = 4h
 smtpd_banner = $myhostname ESMTP $mail_name ($mail_version) (Mandriva Linux)
 unknown_local_recipient_reject_code = 450
