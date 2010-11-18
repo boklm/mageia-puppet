@@ -35,6 +35,10 @@ class postfix {
         file { '/etc/postfix/main.cf':
             content => template("postfix/primary_main.cf"),
         }
+
+        file { '/etc/postfix/master.cf':
+            content => template("postfix/primary_master.cf"),
+        }
     }
 
     class secondary_smtp inherits base {
