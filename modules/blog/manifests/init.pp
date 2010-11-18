@@ -1,9 +1,14 @@
 #TODO: 
 # - add the creation of the user 'blog' in puppet
-class mysql {
+class blog {
 	package { 'mysql':
         	ensure => installed
     	}
+
+        package { 'wget':
+                ensure => installed
+        }
+
     	package { 'php-mysql':
         	ensure => installed
     	}
@@ -12,12 +17,7 @@ class mysql {
         	ensure => running,
         	subscribe => Package["mysql"],
     	}
-}
-
-class check_new-blog-post {
-	package { 'wget':
-        	ensure => installed
-    	}
+	
 	file { "check_new-blog-post":
         	path => "/usr/local/bin/check_new-blog-post.sh",
         	ensure => present,
@@ -26,12 +26,14 @@ class check_new-blog-post {
         	mode => 755,
         	content => template("blog/check_new-blog-post.sh")
     	}
+
 	file { "/var/lib/blog":
                 ensure => directory,
                 owner => blog,
                 group => blog,
                 mode => 644,
         }
+
 	cron { blog:
         	user => blog,
         	minute => '*/15',
