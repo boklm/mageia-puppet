@@ -1,2 +1,5 @@
-/^.*+owner\@ml\.mageia\.org$/ sympabounce:
-/^.*\@ml\.mageia\.org$/       sympa:
+<%
+ml_domain = 'ml\.' + domain.gsub('.','\.')
+%>
+/^.*+owner\@<%= ml_domain %>$/ sympabounce:
+/^.*\@<%= ml_domain %>$/       sympa:
