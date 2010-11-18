@@ -40,5 +40,14 @@ class sympa {
         mode => 644,
         content => template("sympa/ldap_alias_entry.tt2")
     }
+
+    include apache::mod_fcgid
+    apache::webapp_other{"sympa":
+	webapp_file => "sympa/webapp_sympa.conf",
+    }
+
+   apache::vhost_other_app { "ml.$domain":
+        vhost_file => "sympa/vhost_sympa.mageia.org.conf",
+   }
 }
 
