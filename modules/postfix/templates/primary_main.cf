@@ -28,8 +28,12 @@ inet_protocols = all
 mynetworks_style = host
 myhostname = <%= fqdn %>
 mydomain = <%= domain %>
-mydestination = <%= fqdn %>, ml.<%= domain %>
+mydestination = <%= fqdn %>
 myorigin = $mydomain
+relay_domains = $mydestination, ml.<%= domain %>
+transport_maps = regexp:/etc/postfix/transport_regexp
+sympa_destination_recipient_limit = 1
+sympabounce_destination_recipient_limit = 1
 #delay_warning_time = 4h
 smtpd_banner = $myhostname ESMTP $mail_name ($mail_version) (Mandriva Linux)
 unknown_local_recipient_reject_code = 450

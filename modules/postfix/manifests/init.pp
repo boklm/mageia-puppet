@@ -39,6 +39,10 @@ class postfix {
         file { '/etc/postfix/master.cf':
             content => template("postfix/primary_master.cf"),
         }
+
+        file { '/etc/postfix/transport_regexp':
+            content => template("postfix/primary_transport_regexp"),
+        }
     }
 
     class secondary_smtp inherits base {
