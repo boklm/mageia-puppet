@@ -114,8 +114,7 @@ node champagne {
     timezone::timezone { "Europe/Paris": }
     include apache::base
     include apache::mod_php
-    include blog::mysql
-    include blog::check_new-blog-post
+    include blog
 }
 
 
