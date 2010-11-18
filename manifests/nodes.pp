@@ -53,6 +53,7 @@ node alamut {
     include mga-mirrors
     include epoll
     include transifex
+    include bugzilla
 }
 
 # buildnode
