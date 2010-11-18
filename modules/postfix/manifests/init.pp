@@ -31,7 +31,11 @@ class postfix {
         }
     }
 
-    class primary_smtp inherits base {
+    class smtp_server inherits base {
+        include postgrey
+    }
+
+    class primary_smtp inherits smtp_server {
         file { '/etc/postfix/main.cf':
             content => template("postfix/primary_main.cf"),
         }
@@ -45,7 +49,7 @@ class postfix {
         }
     }
 
-    class secondary_smtp inherits base {
+    class secondary_smtp inherits smtp_server {
         file { '/etc/postfix/main.cf':
             content => template("postfix/secondary_main.cf"),
         }
