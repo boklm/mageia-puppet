@@ -23,16 +23,22 @@ mail_owner = postfix
 
 # User configurable parameters
 
+<% if classes.include?('postfix::simple_relay') %>
 inet_interfaces = localhost
+<% else %>
+inet_interfaces = all
+<% end %>
+
 inet_protocols = all
 mynetworks_style = host
 myhostname = <%= fqdn %>
 mydomain = <%= domain %>
 mydestination = <%= fqdn %>
 myorigin = $mydomain
+<%- if classes.include?('postfix::smtp_server') -%> 
 relay_domains = $mydestination, 
                 ml.<%= domain %>, 
-<%- if classes.include?('primary_smtp') -%> 
+<%- if classes.include?('postfix::primary_smtp') -%> 
                 <%= domain %>
 <%- end -%>
 transport_maps = regexp:/etc/postfix/transport_regexp
@@ -49,3 +55,23 @@ smtpd_use_tls = yes
 smtpd_tls_cert_file = /etc/pki/tls/certs/postfix.pem
 smtpd_tls_key_file = /etc/pki/tls/private/postfix.pem
 smtpd_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt
+
+<% if classes.include?('postfix::smtp_server') %>
+smtpd_recipient_restrictions =
+#    not done yet
+#    permit_sasl_authenticated
+    permit_mynetworks
+    reject_unauth_destination
+    reject_unauth_pipelining
+    reject_non_fqdn_recipient
+    reject_non_fqdn_sender
+    reject_non_fqdn_hostname
+    reject_invalid_hostname
+    reject_unknown_recipient_domain
+    reject_unknown_sender_domain
+    reject_unknown_client
+  <% if classes.include?('postgrey') %>
+    check_policy_service unix:extern/postgrey/socket
+  <% end %>
+<% end %>
+
