@@ -1,6 +1,6 @@
 class bugzilla {
 
-    package { bugzilla
+    package { 'bugzilla':
         ensure => installed;
     }
 
