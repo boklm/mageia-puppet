@@ -33,26 +33,27 @@ class postfix {
 
     class smtp_server inherits base {
         include postgrey
-    }
-
-    class primary_smtp inherits smtp_server {
         file { '/etc/postfix/main.cf':
-            content => template("postfix/primary_main.cf"),
-        }
-
-        file { '/etc/postfix/master.cf':
-            content => template("postfix/primary_master.cf"),
+            content => template("postfix/main.cf"),
         }
 
         file { '/etc/postfix/transport_regexp':
-            content => template("postfix/primary_transport_regexp"),
+            ensure => present,
+            owner => root, 
+            group => root, 
+            mode => 644, 
+            content => template("postfix/transport_regexp"),
+        }
+
+    }
+
+    class primary_smtp inherits smtp_server {
+        file { '/etc/postfix/master.cf':
+            content => template("postfix/primary_master.cf"),
         }
     }
 
     class secondary_smtp inherits smtp_server {
-        file { '/etc/postfix/main.cf':
-            content => template("postfix/secondary_main.cf"),
-        }
     }
 
 }
