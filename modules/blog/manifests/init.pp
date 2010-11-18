@@ -1,6 +1,20 @@
 #TODO: 
 # - add the creation of the user 'blog' in puppet
-class blog {
+class mysql {
+	package { 'mysql':
+        	ensure => installed
+    	}
+    	package { 'php-mysql':
+        	ensure => installed
+    	}
+
+	service { mysqld:
+        	ensure => running,
+        	subscribe => Package["mysql"],
+    	}
+}
+
+class check_new-blog-post {
 	package { 'wget':
         	ensure => installed
     	}
