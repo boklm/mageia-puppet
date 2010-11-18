@@ -13,6 +13,15 @@ class transifex {
     content => template("transifex/20-engines.conf")
   }
 
+  file { "30-site.conf":
+    path => "/etc/transifex/30-site.conf",
+    ensure => present,
+    owner => root,
+    group => root,
+    mode => 755,
+    content => template("transifex/30-site.conf")
+  }
+
 #  apache::vhost_django_app { "transifex.$domain":
 #    module => "transifex" 
 #  }  
