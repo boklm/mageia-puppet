@@ -1,0 +1,12 @@
+#!/bin/sh
+
+REP="$1"
+TXN="$2"
+
+LOG=$(svnlook log -t "$TXN" "$REP")
+
+if ! echo "$LOG" | grep -qv '^$'; then
+    echo "no empty commit message allowed" >&2
+    exit 1
+fi
+

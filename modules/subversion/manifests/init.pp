@@ -30,6 +30,22 @@ class subversion {
         }
 
         # mettre tout les scripts dans le repertoire
+        file { "$local_dir/pre-commit.d/no_root_commit":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            content => template('subversion/no_root_commit') 
+        }
+
+        file { "$local_dir/pre-commit.d/no_empty_message":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            content => template('subversion/no_empty_message') 
+        }
+
         syntax_check{"check_perl":
             regexp_ext => ".p[lm]$",
             check_cmd => "perl -c"

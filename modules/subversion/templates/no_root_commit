@@ -1,0 +1,12 @@
+#!/bin/sh
+
+REP="$1"
+TXN="$2"
+
+author=$(svnlook author -t "$TXN" "$REP")
+
+if [ "$author" == 'root' ]; then
+    echo "no root commit allowed" >&2
+    exit 1
+fi
+
