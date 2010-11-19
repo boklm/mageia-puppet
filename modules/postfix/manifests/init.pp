@@ -49,6 +49,10 @@ class postfix {
 
     class primary_smtp inherits smtp_server {
         file { '/etc/postfix/master.cf':
+            ensure => present,
+            owner => root, 
+            group => root, 
+            mode => 644, 
             content => template("postfix/primary_master.cf"),
         }
     }
