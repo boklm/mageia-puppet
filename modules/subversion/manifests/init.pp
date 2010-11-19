@@ -126,8 +126,18 @@ class subversion {
                 content => template("subversion/hook_extract.pl")
             }
         }
-    
-    }   
+
+        $pre_commit_check = ['no_commit_log','no_root']
+        $pre_commit_check += $syntax_check
+
+        file { "$name/hooks/pre-commit.d/$pre_commit_check":
+            ensure => "/usr/local/share/subversion/pre-commit.d/$pre_commit_check",
+            owner => root,
+            group => root,
+            mode => 755
+        }
+
+    }
 
 
     class client {
