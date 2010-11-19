@@ -45,8 +45,15 @@ mydestination = <%= fqdn %>
 <%-   if classes.include?('sympa') -%>
                 ml.<%= domain %>
 <%-   end -%>
+
+alias_maps = hash:/etc/aliases
+	     # uncomment if we want to enable ldap based alias 
+             # and create the file
+             #ldap:/etc/postfix/ldap_aliases.conf
 <%- end -%>
+
 transport_maps = regexp:/etc/postfix/transport_regexp
+
 <%- end -%>
 
 <%- if classes.include?('sympa') -%>
