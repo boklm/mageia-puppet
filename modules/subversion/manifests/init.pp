@@ -9,7 +9,7 @@ class subversion {
             ensure => installed,
         }
 
-        package { "perl-SVN-Notify-Config":
+        package { ["perl-SVN-Notify-Config", "perl-SVN-Notify-Mirror"]:
             ensure => installed,
         }
        
@@ -158,7 +158,7 @@ class subversion {
                 group => root,
                 mode => 755,
                 content => template("subversion/hook_extract.pl"),
-	    	require => Exec["svnadmin create $name"],
+	    	require => [Package['perl-SVN-Notify-Mirror']],
             }
         }
 
