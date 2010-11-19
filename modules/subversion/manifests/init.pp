@@ -76,12 +76,13 @@ class subversion {
         # check permissions
         # http://svnbook.red-bean.com/nightly/fr/svn.serverconfig.multimethod.html
         # $name ==> directory of the repo
-
+	include subversion::server
         # TODO set umask -> requires puppet 2.7.0
         exec { "svnadmin create $name":
             user => root,
             group => $group,
-            creates => $name
+            creates => "$name/hooks",
+	    require => Package['subversion-tools'],
         }
 #        # TODO complete documentation
 #
