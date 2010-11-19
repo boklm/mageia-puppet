@@ -83,6 +83,15 @@ class subversion {
             mode => 755,
         }
 
+        if $commit_mail {
+            file { "$name/hooks/post-commit.d/send_mail":
+                ensure => present,
+                owner => root,
+                group => root,
+                mode => 755,
+                content => template("subversion/hook_sendmail.pl")
+            }
+        }  
     
     }   
 
