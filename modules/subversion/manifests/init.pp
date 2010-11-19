@@ -5,7 +5,7 @@ class subversion {
 
 
     class server {
-        package { "subversion-server":
+        package { ["subversion-server", "subversion-tools"]:
             ensure => installed,
         }
 
