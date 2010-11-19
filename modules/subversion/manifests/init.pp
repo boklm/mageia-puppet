@@ -38,19 +38,32 @@ class subversion {
     #   - puppet
     #   - perl/ php syntax
 
-    define repository ($group = "svn" ) {
-#        # $name ==> lieu du checkout 
-#        exec { "svnadmin create $name":
-#            path => "/usr/bin:/usr/sbin:/bin",
-#            creates => $name             
-#        }
+    
+    define repository ($group = "svn",
+                       $public = true) {
+        # faire un script qui mets les permissions comme il faut
+        # http://svnbook.red-bean.com/nightly/fr/svn.serverconfig.multimethod.html
+        # $name ==> lieu du checkout
+
+        # TODO set umask -> requires puppet 2.7.0
+        exec { "svnadmin create $name":
+            user => root,
+            group => $group,
+            creates => $name
+        }
 #        # TODO complete documentation
-#        file { "$name":
-#            mode => 660
-#            recurse => true
-#        } 
-#        un hook par defaut qui fait un for i en pre, un hook par defaut qui fait un post
-    }
+#
+        file { "$name":
+            group => $group,
+            user => root,
+            mode => $public ? {
+                        true => 644,
+                        false => 640
+                    },
+            ensure => directory
+        }
+
+    }   
 
 
     class client {
