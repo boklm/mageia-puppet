@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	3D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2010111701	; Serial
+        2010111900	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -58,7 +58,9 @@ ns1         IN  A       95.142.164.207
 
 ; aliases
 www         IN  CNAME www-zarb
+www-test    IN  CNAME champagne
 blog        IN  CNAME www-zarb
+blog-test   IN  CNAME champagne
 rsync       IN  CNAME www-zarb
 
 ldap        IN  CNAME valstar
