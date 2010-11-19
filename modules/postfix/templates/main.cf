@@ -41,7 +41,10 @@ relay_domains = <%= domain %>, ml.<%= domain %>
 
 mydestination = <%= fqdn %>
 <%- if all_tags.include?('postfix::primary_smtp') -%>
-                <%= domain %>
+                <%= domain %>,
+<%-   if classes.include?('sympa') -%>
+                ml.<%= domain %>
+<%-   end -%>
 <%- end -%>
 transport_maps = regexp:/etc/postfix/transport_regexp
 <%- end -%>
