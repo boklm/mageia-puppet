@@ -52,8 +52,9 @@ alias_maps = hash:/etc/aliases
              #ldap:/etc/postfix/ldap_aliases.conf
 <%- end -%>
 
-transport_maps = regexp:/etc/postfix/transport_regexp
 
+<%- if all_tags.include?('postfix::smtp_server') -%>
+transport_maps = regexp:/etc/postfix/transport_regexp
 <%- end -%>
 
 <%- if classes.include?('sympa') -%>
