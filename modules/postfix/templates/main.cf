@@ -23,7 +23,7 @@ mail_owner = postfix
 
 # User configurable parameters
 
-<% if classes.include?('postfix::simple_relay') %>
+<% if all_tags.include?('postfix::simple_relay') %>
 inet_interfaces = localhost
 <% else %>
 inet_interfaces = all
@@ -35,19 +35,19 @@ myhostname = <%= fqdn %>
 mydomain = <%= domain %>
 mydestination = <%= fqdn %>
 myorigin = $mydomain
-<%- if classes.include?('postfix::smtp_server') -%> 
+<%- if all_tags.include?('postfix::smtp_server') -%> 
 relay_domains = $mydestination, 
                 ml.<%= domain %>, 
-<%- if classes.include?('postfix::primary_smtp') -%> 
+<%- if all_tags.include?('postfix::primary_smtp') -%>
                 <%= domain %>
 <%- end -%>
 transport_maps = regexp:/etc/postfix/transport_regexp
 <%- end -%>
 
-<% if classes.include?('sympa') %>
+<%- if classes.include?('sympa') -%>
 sympa_destination_recipient_limit = 1
 sympabounce_destination_recipient_limit = 1
-<% end %>
+<%- end -%>
 
 #delay_warning_time = 4h
 smtpd_banner = $myhostname ESMTP $mail_name ($mail_version) (Mandriva Linux)
@@ -59,7 +59,7 @@ smtpd_tls_cert_file = /etc/pki/tls/certs/postfix.pem
 smtpd_tls_key_file = /etc/pki/tls/private/postfix.pem
 smtpd_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt
 
-<% if classes.include?('postfix::smtp_server') %>
+<%- if all_tags.include?('postfix::smtp_server') -%>
 smtpd_etrn_restrictions = reject
 
 smtpd_helo_required = yes
@@ -67,18 +67,17 @@ smtpd_helo_required = yes
 smtpd_data_restrictions = reject_unauth_pipelining 
                           reject_multi_recipient_bounce
 
-smtpd_recipient_restrictions =
-#    not done yet
-#    permit_sasl_authenticated
-    reject_non_fqdn_recipient
+smtpd_recipient_restrictions = reject_non_fqdn_recipient
     reject_non_fqdn_sender
+#    not done yet, not sure if we need to offer this kind of service
+#    permit_sasl_authenticated
     permit_mynetworks
     reject_unauth_destination
     reject_non_fqdn_helo_hostname
     reject_unknown_sender_domain
     reject_unknown_client
-  <% if classes.include?('postgrey') %>
+  <%- if classes.include?('postgrey') -%>
     check_policy_service unix:extern/postgrey/socket
-  <% end %>
-<% end %>
+  <%- end -%>
+<%- end -%>
 
