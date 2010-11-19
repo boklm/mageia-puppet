@@ -18,15 +18,23 @@ class subversion {
         file { $local_dir:
             ensure => directory,
         }
+
+        define syntax_check($regexp_ext,$check_cmd) {
+            file { "$local_dir/pre-commit.d/$name":
+                ensure => present,
+                owner => root,
+                group => root,
+                mode => 755,
+                content => template('subversion/syntax_check.sh') 
+            }
+        }
+
         # mettre tout les scripts dans le repertoire
-
+        syntax_check{"check_perl":
+            regexp_ext => ".p[lm]$",
+            check_cmd => "perl -c"
+        }
     }
-
-    # TODO create proper hook directory ( see zarb.org )
-    # create documentation
-    # - group who can commit 
-    # - array for who get mail on what ( hash )
-    # - array of where the directory is updated
 
     # later, deploy a backup file ( ie, cron job to do a dump in some directory )
     # TODO 
