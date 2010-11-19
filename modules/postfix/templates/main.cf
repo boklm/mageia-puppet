@@ -35,9 +35,11 @@ myhostname = <%= fqdn %>
 mydomain = <%= domain %>
 mydestination = <%= fqdn %>
 myorigin = $mydomain
-<%- if all_tags.include?('postfix::smtp_server') -%> 
-relay_domains = $mydestination, 
-                ml.<%= domain %>, 
+<%- if all_tags.include?('postfix::secondary_smtp') -%>
+relay_domains = <%= domain %>, ml.<%= domain %> 
+<%- end -%>
+
+mydestination = <%= fqdn %>
 <%- if all_tags.include?('postfix::primary_smtp') -%>
                 <%= domain %>
 <%- end -%>
