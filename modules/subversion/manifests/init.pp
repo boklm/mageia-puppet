@@ -79,6 +79,18 @@ class subversion {
         }
     }
 
+   
+    # FIXME ugly
+    define pre_commit_link($directory) {
+	file { "pre_commit_link-${name}":
+	    path => "$directory/$name",
+	    ensure => "/usr/local/share/subversion/pre-commit.d/$name",
+	    owner => root,
+	    group => root,
+	    mode => 755,
+	}
+    } 
+
     # TODO 
     #   deploy a cronjob to make a backup file ( ie, dump in some directory )
 
@@ -148,15 +160,10 @@ class subversion {
             }
         }
 
-        $pre_commit_check = ['no_commit_log','no_root', $syntax_check]
 
-        file { "$name/hooks/pre-commit.d/$pre_commit_check":
-            ensure => "/usr/local/share/subversion/pre-commit.d/$pre_commit_check",
-            owner => root,
-            group => root,
-            mode => 755
-        }
-
+	pre_commit_link { ['no_empty_message','no_root_commit', $syntax_check]: 
+		directory => "$name/hooks/pre-commit.d/"
+	}
     }
 
 
