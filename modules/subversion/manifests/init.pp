@@ -18,8 +18,20 @@ class subversion {
     # TODO create proper hook directory ( see zarb.org )
     # create documentation
     # - group who can commit 
+    # - array for who get mail on what ( hash )
+    # - array of where the directory is updated
 
-#    define repository ($group => "svn") {
+    # later, deploy a backup file ( ie, cron job to do a dump in some directory )
+    # TODO 
+    # what about pre commit ?
+    # - name of a template file ?
+    # - prepare a template for file checking ?
+    #   - openldap
+    #   - named
+    #   - puppet
+    #   - perl/ php syntax
+
+    define repository ($group = "svn" ) {
 #        # $name ==> lieu du checkout 
 #        exec { "svnadmin create $name":
 #            path => "/usr/bin:/usr/sbin:/bin",
@@ -30,8 +42,8 @@ class subversion {
 #            mode => 660
 #            recurse => true
 #        } 
-#        # file pour les hooks
-#    }
+#        un hook par defaut qui fait un for i en pre, un hook par defaut qui fait un post
+    }
 
 
     class client {
