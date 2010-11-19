@@ -123,8 +123,7 @@ class subversion {
             ensure => directory
         }
 
-        $hooks = ["$name/hooks/pre-commit","$name/hooks/post-commit"]
-        file { "$hooks":
+        file { ["$name/hooks/pre-commit","$name/hooks/post-commit"]:
             ensure => present,
             owner => root,
             group => root,
@@ -132,8 +131,7 @@ class subversion {
             content => template("subversion/hook_commit.sh")
         }
 
-        $hooks_dir = ["$name/hooks/pre-commit.d","$name/hooks/post-commit.d"]
-        file { "$hooks_dir":
+        file { ["$name/hooks/post-commit.d", "$name/hooks/pre-commit.d"]:
             ensure => directory,
             owner => root,
             group => root,
