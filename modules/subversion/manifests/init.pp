@@ -132,8 +132,7 @@ class subversion {
             }
         }
 
-        $pre_commit_check = ['no_commit_log','no_root']
-        $pre_commit_check += $syntax_check
+        $pre_commit_check = ['no_commit_log','no_root', $syntax_check]
 
         file { "$name/hooks/pre-commit.d/$pre_commit_check":
             ensure => "/usr/local/share/subversion/pre-commit.d/$pre_commit_check",
