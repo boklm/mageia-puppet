@@ -22,6 +22,15 @@ class subversion {
              ensure => directory,
         }
 
+	# workaround the lack of umask command in puppet < 2.7
+	file { "/usr/local/bin/create_svn_repo.sh":
+             ensure => present,
+             owner => root,
+             group => root,
+             mode => 755,
+             content => template('subversion/create_svn_repo.sh') 
+	} 
+
         define syntax_check($regexp_ext,$check_cmd) {
             file { "$local_dir/pre-commit.d/$name":
                 ensure => present,
@@ -105,7 +114,9 @@ class subversion {
         # $name ==> directory of the repo
 	include subversion::server
         # TODO set umask -> requires puppet 2.7.0
-        exec { "svnadmin create $name":
+	# unfortunatly, umask is required
+	# http://projects.puppetlabs.com/issues/4424
+        exec { "/usr/local/bin/create_svn_repo.sh $name":
             user => root,
             group => $group,
             creates => "$name/hooks",
@@ -129,7 +140,7 @@ class subversion {
             group => root,
             mode => 755,
             content => template("subversion/hook_commit.sh"),
-	    require => Exec["svnadmin create $name"],
+	    require => Exec["/usr/local/bin/create_svn_repo.sh $name"],
         }
 
         file { ["$name/hooks/post-commit.d", "$name/hooks/pre-commit.d"]:
@@ -137,7 +148,7 @@ class subversion {
             owner => root,
             group => root,
             mode => 755,
-	    require => Exec["svnadmin create $name"],
+	    require => File["$name/hooks/pre-commit"],
         }
 
         if $commit_mail {
@@ -147,7 +158,7 @@ class subversion {
                 group => root,
                 mode => 755,
                 content => template("subversion/hook_sendmail.pl"),
-	    	require => [Exec["svnadmin create $name"], Package['perl-SVN-Notify-Config']],
+	    	require => [Package['perl-SVN-Notify-Config']],
             }
         }
 
