@@ -22,7 +22,7 @@ class subversion {
              ensure => directory,
         }
 
-	# workaround the lack of umask command in puppet < 2.7
+ 	# workaround the lack of umask command in puppet < 2.7
 	file { "/usr/local/bin/create_svn_repo.sh":
              ensure => present,
              owner => root,
@@ -31,17 +31,6 @@ class subversion {
              content => template('subversion/create_svn_repo.sh') 
 	} 
 
-        define syntax_check($regexp_ext,$check_cmd) {
-            file { "$local_dir/pre-commit.d/$name":
-                ensure => present,
-                owner => root,
-                group => root,
-                mode => 755,
-                content => template('subversion/syntax_check.sh') 
-            }
-        }
-
-        # mettre tout les scripts dans le repertoire
         file { "$local_dir/pre-commit.d/no_root_commit":
             ensure => present,
             owner => root,
@@ -66,6 +55,17 @@ class subversion {
         #    - named    named-checkzone/named-checkconf ( may requires some interaction with facter/erb )
         #    - po       msgfmt -c
         #    - openldap , like named
+
+        define syntax_check($regexp_ext,$check_cmd) {
+            file { "$local_dir/pre-commit.d/$name":
+                ensure => present,
+                owner => root,
+                group => root,
+                mode => 755,
+                content => template('subversion/syntax_check.sh') 
+            }
+        }
+
 
         syntax_check{"check_perl":
             regexp_ext => "\.p[lm]$",
@@ -103,7 +103,15 @@ class subversion {
     # TODO 
     #   deploy a cronjob to make a backup file ( ie, dump in some directory )
 
-    
+    # documentation :
+    #    group : group that have commit access on the svn
+    #    public : boolean if the svn is readable by anybody or not
+    #    commit_mail : array of people who will receive mail after each commit
+    #    syntax_check : array of pre-commit script with syntax check to add
+    #    extract_dir : hash of directory to update upon commit ( with svn update ), 
+    #            initial checkout is not handled, nor the permission
+    #            TODO, handle the tags ( see svn::notify::mirror )
+
     define repository ($group = "svn",
                        $public = true,
                        $commit_mail = [],
@@ -122,9 +130,8 @@ class subversion {
             creates => "$name/hooks",
 	    require => Package['subversion-tools'],
         }
-#        # TODO complete documentation
-#
-        file { "$name":
+        
+	file { "$name":
             group => $group,
             owner => root,
             mode => $public ? {
@@ -172,7 +179,6 @@ class subversion {
 	    	require => [Package['perl-SVN-Notify-Mirror']],
             }
         }
-
 
 	pre_commit_link { ['no_empty_message','no_root_commit', $syntax_check]: 
 		directory => "$name/hooks/pre-commit.d/"
