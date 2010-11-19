@@ -42,6 +42,7 @@ relay_domains = $mydestination,
                 <%= domain %>
 <%- end -%>
 transport_maps = regexp:/etc/postfix/transport_regexp
+<%- end -%>
 
 <% if classes.include?('sympa') %>
 sympa_destination_recipient_limit = 1
