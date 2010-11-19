@@ -91,7 +91,17 @@ class subversion {
                 mode => 755,
                 content => template("subversion/hook_sendmail.pl")
             }
-        }  
+        }
+
+        if $extract_dir {
+            file { "$name/hooks/post-commit.d/extract_dir":
+                ensure => present,
+                owner => root,
+                group => root,
+                mode => 755,
+                content => template("subversion/hook_extract.pl")
+            }
+        }
     
     }   
 
