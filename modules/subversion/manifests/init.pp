@@ -46,21 +46,23 @@ class subversion {
             content => template('subversion/no_empty_message') 
         }
 
+        # TODO : add check for
+        #    - ym       perl -MYAML -e 'YAML::LoadFile("-");'
+        #    - tt       ( do not seem to be possible, but this would be great )
+        #    - php      php -l
+        #    - python
+        #    - named    named-checkzone/named-checkconf ( may requires some interaction with facter/erb )
+        #    - po       msgfmt -c
+        #    - openldap , like named
+
         syntax_check{"check_perl":
             regexp_ext => ".p[lm]$",
             check_cmd => "perl -c"
         }
     }
 
-    # later, deploy a backup file ( ie, cron job to do a dump in some directory )
     # TODO 
-    # what about pre commit ?
-    # - name of a template file ?
-    # - prepare a template for file checking ?
-    #   - openldap
-    #   - named
-    #   - puppet
-    #   - perl/ php syntax
+    #   deploy a cronjob to make a backup file ( ie, dump in some directory )
 
     
     define repository ($group = "svn",
@@ -68,9 +70,9 @@ class subversion {
                        $commit_mail = [],
                        $syntax_check = [],
                        $extract_dir = []) {
-        # faire un script qui mets les permissions comme il faut
+        # check permissions
         # http://svnbook.red-bean.com/nightly/fr/svn.serverconfig.multimethod.html
-        # $name ==> lieu du checkout
+        # $name ==> directory of the repo
 
         # TODO set umask -> requires puppet 2.7.0
         exec { "svnadmin create $name":
@@ -153,8 +155,6 @@ class subversion {
         }
     }
 
-    # TODO ensure that subversion ishere
-    #      allow to configure the snapshot refresh interval
     define snapshot($source, $refresh = '*/5', $user = 'root')  {
 
         include subversion::client
