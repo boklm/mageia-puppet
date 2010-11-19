@@ -7,7 +7,7 @@
   alternative: HTML::ColorDiff
   with-diff: 1
   to:
-<% commit_mail.each do |mail|  %>
+<%- commit_mail.each do |mail|  -%>
     - <%= mail %>
-<% end %>
+<%- end -%>
   from: root@<%= domain %>
