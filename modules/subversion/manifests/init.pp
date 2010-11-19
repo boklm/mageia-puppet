@@ -12,6 +12,13 @@ class subversion {
         package { "perl-SVN-Notify-Config":
             ensure => installed,
         }
+       
+        $local_dir = "/usr/local/share/subversion/"
+        $local_dirs = ["$local_dir/pre-commit.d", "$local_dir/post-commit.d"] 
+        file { $local_dir:
+            ensure => directory,
+        }
+        # mettre tout les scripts dans le repertoire
 
     }
 
