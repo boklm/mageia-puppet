@@ -128,7 +128,8 @@ class subversion {
             owner => root,
             group => root,
             mode => 755,
-            content => template("subversion/hook_commit.sh")
+            content => template("subversion/hook_commit.sh"),
+	    require => Exec["svnadmin create $name"],
         }
 
         file { ["$name/hooks/post-commit.d", "$name/hooks/pre-commit.d"]:
@@ -136,6 +137,7 @@ class subversion {
             owner => root,
             group => root,
             mode => 755,
+	    require => Exec["svnadmin create $name"],
         }
 
         if $commit_mail {
@@ -144,7 +146,8 @@ class subversion {
                 owner => root,
                 group => root,
                 mode => 755,
-                content => template("subversion/hook_sendmail.pl")
+                content => template("subversion/hook_sendmail.pl"),
+	    	require => [Exec["svnadmin create $name"], Package['perl-SVN-Notify-Config']],
             }
         }
 
@@ -154,7 +157,8 @@ class subversion {
                 owner => root,
                 group => root,
                 mode => 755,
-                content => template("subversion/hook_extract.pl")
+                content => template("subversion/hook_extract.pl"),
+	    	require => Exec["svnadmin create $name"],
             }
         }
 
