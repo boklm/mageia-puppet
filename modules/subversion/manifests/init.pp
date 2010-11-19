@@ -40,7 +40,10 @@ class subversion {
 
     
     define repository ($group = "svn",
-                       $public = true) {
+                       $public = true,
+                       $commit_mail = [],
+                       $syntax_check = [],
+                       $extract_dir = []) {
         # faire un script qui mets les permissions comme il faut
         # http://svnbook.red-bean.com/nightly/fr/svn.serverconfig.multimethod.html
         # $name ==> lieu du checkout
