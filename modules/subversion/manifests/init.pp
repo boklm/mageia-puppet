@@ -59,8 +59,23 @@ class subversion {
         #    - openldap , like named
 
         syntax_check{"check_perl":
-            regexp_ext => ".p[lm]$",
+            regexp_ext => "\.p[lm]$",
             check_cmd => "perl -c"
+        }
+
+        syntax_check{"check_puppet":
+            regexp_ext => "\.pp$",
+            check_cmd => "puppet --color=false --confdir=/tmp --vardir=/tmp --parseonly"
+        }
+
+        syntax_check{"check_ruby":
+            regexp_ext => "\.rb$",
+            check_cmd => "ruby -c"
+        }
+
+        syntax_check{"check_puppet_templates":
+            regexp_ext => "modules/.*/templates/.*$",
+            check_cmd => "erb -x -T - | ruby -c"
         }
     }
 
