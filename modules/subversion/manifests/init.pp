@@ -15,8 +15,11 @@ class subversion {
        
         $local_dir = "/usr/local/share/subversion/"
         $local_dirs = ["$local_dir/pre-commit.d", "$local_dir/post-commit.d"] 
-        file { $local_dir:
-            ensure => directory,
+        file { [$local_dir,$local_dirs]:
+             owner => root,
+             group => root,
+             mode => 755,
+             ensure => directory,
         }
 
         define syntax_check($regexp_ext,$check_cmd) {
