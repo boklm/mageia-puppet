@@ -87,7 +87,7 @@ class subversion {
 #
         file { "$name":
             group => $group,
-            user => root,
+            owner => root,
             mode => $public ? {
                         true => 644,
                         false => 640
