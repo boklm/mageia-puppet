@@ -15,9 +15,9 @@ class mga-mirrors {
     file { "mga-mirrors.ini": 
         path => "/etc/mga-mirrors.ini",    
         ensure => "present",
-        owner => apache,
+        owner => root,
         group => apache,
-        mode => 600,
+        mode => 640,
         content => template("mga-mirrors/mga-mirrors.ini")
     }
 }

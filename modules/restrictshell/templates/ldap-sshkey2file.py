@@ -9,9 +9,7 @@ try:
 except ImportError, e:
     print "Please install python-ldap before running this program"
     sys.exit(1)
-<%
-dc_suffix = 'dc=' + domain.gsub('.',',dc=')
-%>
+
 basedn="<%= dc_suffix %>"
 peopledn="ou=people,%s" % basedn
 uris=['ldap://ldap.<%= domain %>']

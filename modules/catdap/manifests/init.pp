@@ -25,8 +25,9 @@ class catdap {
     
     file { "$catdap_location/catdap_local.yml":
         ensure => present,
-        owner => apache,
-        mode => 600,
+	owner => root,
+        group => apache,
+        mode => 640,
         content => template("catdap/catdap_local.yml"),
         require => Subversion::Snapshot[$catdap_location]
     }

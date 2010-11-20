@@ -15,9 +15,9 @@ class epoll {
     file { "epoll.yml": 
         path => "/etc/epoll.yml",    
         ensure => "present",
-        owner => apache,
+        owner => root,
         group => apache,
-        mode => 600,
+        mode => 640,
         content => template("epoll/epoll.yml")
     }
 }

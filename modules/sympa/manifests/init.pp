@@ -11,9 +11,11 @@ class sympa {
 
     file { '/etc/sympa/sympa.conf':
         ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
+	# should be cleaner to have it root owned, but puppet do not support acl
+	# and in any case, config will be reset if it change
+        owner => sympa,
+        group => apache,
+        mode => 640,
         content => template("sympa/sympa.conf")
     }
 

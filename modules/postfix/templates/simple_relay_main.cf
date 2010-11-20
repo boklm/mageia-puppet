@@ -3,9 +3,6 @@
 # This file contains only the parameters changed from a default install
 # see /etc/postfix/main.cf.dist for a commented, fuller version of this file.
 
-<%
-path_daemon_directory = "/usr/lib" + ( architecture == "x86_64" ? '64' : '') + "/postfix/"
-%>
 
 # These are changed by postfix install script
 readme_directory = /usr/share/doc/postfix/README_FILES
@@ -14,7 +11,7 @@ sendmail_path = /usr/sbin/sendmail.postfix
 setgid_group = postdrop
 command_directory = /usr/sbin
 manpage_directory = /usr/share/man
-daemon_directory = <%= path_daemon_directory %>
+daemon_directory = <%= lib_dir %>/postfix/
 data_directory = /var/lib/postfix
 newaliases_path = /usr/bin/newaliases
 mailq_path = /usr/bin/mailq

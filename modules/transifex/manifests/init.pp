@@ -8,8 +8,8 @@ class transifex {
     path => "/etc/transifex/20-engines.conf",
     ensure => present,
     owner => root,
-    group => root,
-    mode => 755,
+    group => apache,
+    mode => 640,
     content => template("transifex/20-engines.conf")
   }
 
@@ -18,7 +18,7 @@ class transifex {
     ensure => present,
     owner => root,
     group => root,
-    mode => 755,
+    mode => 644,
     content => template("transifex/30-site.conf")
   }
 

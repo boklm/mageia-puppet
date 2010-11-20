@@ -1,12 +1,7 @@
 class openssh {
 
     # some trick to manage sftp server, who is arch dependent on mdv    
-    $usr_lib = $architecture ? {
-        x86_64 => "lib64",
-        default => "lib"
-    }
-
-    $path_to_sftp = "/usr/$usr_lib/ssh/"
+    $path_to_sftp = "$lib_dir/ssh/"
 
     package { "openssh-server":
         ensure => installed

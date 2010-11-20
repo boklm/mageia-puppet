@@ -10,8 +10,8 @@ class bugzilla {
     file { '/etc/bugzilla/localconfig':
       ensure => present,
       owner => root,
-      group => root,
-      mode => 644,
+      group => apache,
+      mode => 640,
       content => template("bugzilla/localconfig")
     }
 
@@ -19,8 +19,8 @@ class bugzilla {
     file { '/var/lib/bugzilla/params':
       ensure => present,
       owner => root,
-      group => root,
-      mode => 644,
+      group => apache,
+      mode => 640,
       content => template("bugzilla/params")
     }
 
@@ -30,7 +30,7 @@ class bugzilla {
       }
 
     apache::vhost_other_app { "bugs.$domain":
-      vhost_file => "bugzilla/vhost_bugs.mageia.org.conf",
+      vhost_file => "bugzilla/vhost_bugs.conf",
     }
 }
 

@@ -1,8 +1,4 @@
 <%
-# domain come from facter
-
-dc_suffix = 'dc=' + domain.gsub('.',',dc=')
-
 ldap_server = 'ldap.' + domain
 
 ldap_password = catdap_password
