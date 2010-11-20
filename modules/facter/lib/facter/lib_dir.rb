@@ -1,4 +1,4 @@
-Facter.add("libdir") do
+Facter.add("lib_dir") do
     setcode do
         begin
             Facter.architecture
