@@ -17,10 +17,8 @@ class openldap {
             mode => 755,
         }
 
-        $pem_file = 'ldap.pem'
-        exec { "openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout $pem_file -out $pem_file -subj  '/CN=ldap.$domain'":
-            cwd => "/etc/ssl/openldap/",
-            creates => "/etc/ssl/openldap/$pem_file"
+        openssl::self_signed_cert{ 'ldap':
+            directory => "/etc/ssl/openldap/"
         }
     }
 
