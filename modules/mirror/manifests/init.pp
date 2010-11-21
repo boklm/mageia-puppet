@@ -9,6 +9,26 @@ class mirror {
         content => template("mirror/update_timestamp")
     }
 
+    file { "/home/mirror/bin/":
+        ensure => directory,
+        owner => mirror,
+        group => mirror,
+        mode => 755
+    }
+
+    group {"mirror":
+        ensure => present,
+    }
+
+    user {"mirror":
+        ensure => present,
+        comment => "System user use to run mirror scripts",
+        managehome => true,
+        gid => mirror,
+        shell => "/bin/bash",
+    }
+
+
     cron { mirror:
         user => mirror,
         hour => 10,
