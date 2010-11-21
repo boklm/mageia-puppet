@@ -60,7 +60,7 @@ node jonund {
 # Location: IELO datacenter (marseille)
 #
     include default_mageia_server
-    #include buildsystem::buildnode
+    include buildsystem::buildnode
     timezone::timezone { "Europe/Paris": }
     include shorewall
     include shorewall::default_firewall
