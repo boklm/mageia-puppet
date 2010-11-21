@@ -1,6 +1,8 @@
 class buildsystem {
 
     class mainnode {
+        include iurtuser
+
         package { "task-bs-cluster-main":
             ensure => "installed"
         }
