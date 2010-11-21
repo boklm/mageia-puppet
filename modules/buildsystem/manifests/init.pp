@@ -1,5 +1,8 @@
 class buildsystem {
 
+    $build_login = "iurt"
+    $build_home_dir = "/home/iurt/"
+
     class mainnode {
         include iurtuser
 
@@ -27,9 +30,6 @@ class buildsystem {
 
 
     }
-
-    $build_login = "iurt"
-    $build_home_dir = "/home/iurt/"
 
     class iurtuser {
         group {"$build_login": 
