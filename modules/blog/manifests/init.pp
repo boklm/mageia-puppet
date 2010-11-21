@@ -9,15 +9,13 @@ class blog {
                 ensure => installed
         }
 
+    include apache::mod_php
+
     	package { 'php-mysql':
         	ensure => installed
     	}
 
-	service { mysqld:
-        	ensure => running,
-        	subscribe => Package["mysql"],
-    	}
-	
+
 	file { "check_new-blog-post":
         	path => "/usr/local/bin/check_new-blog-post.sh",
         	ensure => present,
