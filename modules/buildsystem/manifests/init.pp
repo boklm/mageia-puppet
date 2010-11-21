@@ -1,5 +1,11 @@
 class buildsystem {
 
+    class mainnode {
+        package { "task-bs-cluster-main":
+            ensure => "installed"
+        }
+    }
+
     class buildnode {
         include iurt
     }

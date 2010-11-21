@@ -18,12 +18,10 @@ node valstar {
     include subversion::client
     include subversion::server
     include puppet::master
+    include buildsystem::mainnode
 
     subversion::snapshot { "/etc/puppet":
         source => "svn://svn.mageia.org/adm/puppet/"
-    }
-    package {"task-bs-cluster-main":
-        ensure => "installed"
     }
 }
 
