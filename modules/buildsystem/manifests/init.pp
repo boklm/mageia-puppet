@@ -1,9 +1,11 @@
 class buildsystem {
 
-    $build_login = "iurt"
-    $build_home_dir = "/home/iurt/"
+    class base {
+	$build_login = "iurt"
+	$build_home_dir = "/home/iurt/"
+    }
 
-    class mainnode {
+    class mainnode inherits base {
         include iurtuser
 
         package { "task-bs-cluster-main":
@@ -11,7 +13,7 @@ class buildsystem {
         }
     }
 
-    class buildnode {
+    class buildnode inherits base {
         include iurt
     }
 
