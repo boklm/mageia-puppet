@@ -1,0 +1,53 @@
+#!/bin/sh
+
+test -z $vmname && exit 1
+
+vmdir="$HOME/VMs"
+piddir="$HOME/PIDs"
+logdir="$HOME/log"
+vmfile="$vmdir/$vmname"
+pidfile="$piddir/$vmname"
+logfile="$logdir/$vmname"
+qemucmd="qemu-kvm -nographic -pidfile $pidfile -hda $vmfile -net nic,vlan=0 -net user,vlan=0,hostfwd=tcp::$sshport-:22 $QEMUOPT"
+
+function running()
+{
+	test -f $pidfile || return 1
+	pid=`cat $pidfile`
+	test -d "/proc/$pid"
+}
+
+function stop()
+{
+	test -f $pidfile || return 1
+	pid=`cat $pidfile`
+	kill "$pid" && rm -f "$pidfile"
+}
+
+function start()
+{
+	running && echo "VM is already running" && return 1
+	nohup $qemucmd > $logfile 2>&1 &
+}
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		start
+		stop
+		;;
+	status)
+		running
+		vmrunning=$?
+		test $vmrunning -eq 0 && echo "VM $vmname is running"
+		test $vmrunning -eq 0 || echo "VM $vmname is stopped"
+		;;
+	ssh)
+		running && ssh -p $sshport localhost
+		;;
+esac

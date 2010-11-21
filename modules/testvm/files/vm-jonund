@@ -1,0 +1,5 @@
+#!/bin/sh
+vmname=jonund
+sshport=5051
+SCRIPTSDIR=$(dirname $0)
+. "$SCRIPTSDIR/_vm"
