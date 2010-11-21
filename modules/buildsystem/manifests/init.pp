@@ -23,8 +23,8 @@ class buildsystem {
     class iurt {
         include sudo
 
-        $home_dir = "/home/buildbot/"
-        $build_login = "buildbot"
+        $home_dir = "/home/iurt/"
+        $build_login = "iurt"
         # build node common settings
         # we could have the following skip list to use less space:
         # '/(drakx-installer-binaries|drakx-installer-advertising|gfxboot|drakx-installer-stage2|mandriva-theme)/'
