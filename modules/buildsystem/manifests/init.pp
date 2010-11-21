@@ -45,6 +45,7 @@ class buildsystem {
 
     class iurt {
         include sudo
+        include iurtuser
 
         # build node common settings
         # we could have the following skip list to use less space:
