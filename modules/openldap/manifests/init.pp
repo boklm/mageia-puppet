@@ -9,6 +9,19 @@ class openldap {
             subscribe => [ Package['openldap-servers']],
             path => "/etc/init.d/ldap"
         }
+
+        file {"/etc/ssl/openldap/":
+            ensure => directory,
+            owner => root,
+            group => root,
+            mode => 755,
+        }
+
+        $pem_file = 'ldap.pem'
+        exec { "openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout $pem_file -out $pem_file -subj  '/CN=ldap.$domain'":
+            cwd => "/etc/ssl/openldap/",
+            creates => "/etc/ssl/openldap/$pem_file"
+        }
     }
 
     # /etc/
