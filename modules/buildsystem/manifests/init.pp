@@ -57,6 +57,7 @@ class buildsystem {
             ensure => present,
             comment => "System user use to run build bots",
             managehome => true,
+            gid => $build_login,
             shell => "/bin/bash",
         }
     }
