@@ -13,13 +13,14 @@ class buildsystem {
 
     class mainnode inherits base {
         include iurtuser
-        ssh::auth::client { $sched_login: }
-        ssh::auth::server { $build_login: }
 
         sshuser { $sched_login:
           homedir => $sched_home_dir,
           comment => "System user used to schedule builds",
         }
+
+        ssh::auth::client { $sched_login: }
+        ssh::auth::server { $build_login: }
 
         $package_list = ['task-bs-cluster-main', 'iurt']
         package { $package_list:
