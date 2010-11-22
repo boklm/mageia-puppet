@@ -9,7 +9,7 @@ class buildsystem {
     }
 
     class mainnode inherits base {
-        include iurtuser
+        require iurtuser
         ssh::auth::server { $build_login: }
 
         package { "task-bs-cluster-main":
@@ -60,7 +60,7 @@ class buildsystem {
 
     class iurt {
         include sudo
-        include iurtuser
+        require iurtuser
         ssh::auth::client { $build_login: }
 
         # build node common settings
