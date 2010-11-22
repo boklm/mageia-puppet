@@ -1,9 +1,14 @@
 class pam {
 
   class base {
-      package { ["pam_ldap","nss_ldap"]:
+      package { ["pam_ldap","nss_ldap","nscd"]:
         ensure => installed,  
       }
+
+      service { nscd:
+        ensure => running,
+        path => '/etc/init.d/nscd',
+      } 
 
       file { "system-auth":
          path => "/etc/pam.d/system-auth",
