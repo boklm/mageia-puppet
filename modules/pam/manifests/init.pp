@@ -33,12 +33,10 @@ class pam {
   class admin_access inherits base {
     $access_class = "admin"
     # not sure if this line is needed anymore, wil check later
-    file { "system-auth": }
   }
 
   # for server where people can connect with ssh ( git, svn )
   class commiters_access inherits base {
     $access_class = "commiters"
-    file { "system-auth": }
   }
 }
