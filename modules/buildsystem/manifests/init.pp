@@ -8,11 +8,17 @@ class buildsystem {
 
 	include ssh::auth
 	ssh::auth::key { $build_login: } # declare a key for build bot: RSA, 2048 bits
+	ssh::auth::key { $sched_login: } # declare a key for sched bot: RSA, 2048 bits
     }
 
     class mainnode inherits base {
         include iurtuser
         ssh::auth::server { $build_login: }
+
+        sshuser { $sched_login:
+          homedir => $sched_home_dir,
+          comment => "System user used to schedule builds",
+        }
 
         package { "task-bs-cluster-main":
             ensure => "installed"
