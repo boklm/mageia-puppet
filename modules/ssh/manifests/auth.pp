@@ -237,10 +237,6 @@ define ssh_auth_key_master ($ensure, $force, $keytype, $length, $maxdays, $minda
 
 define ssh_auth_key_client ($ensure, $filename, $group, $home, $user) {
 
-  file { $home:
-    ensure => "directory",
-  }
-
   File {
     owner   => $user,
     group   => $group,
