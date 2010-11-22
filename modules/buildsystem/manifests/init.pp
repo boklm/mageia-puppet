@@ -13,6 +13,7 @@ class buildsystem {
 
     class mainnode inherits base {
         include iurtuser
+        ssh::auth::client { $sched_login: }
         ssh::auth::server { $build_login: }
 
         sshuser { $sched_login:
@@ -88,6 +89,7 @@ class buildsystem {
         include sudo
         include iurtuser
         ssh::auth::client { $build_login: }
+        ssh::auth::server { $sched_login: user => $build_login }
 
         # build node common settings
         # we could have the following skip list to use less space:
