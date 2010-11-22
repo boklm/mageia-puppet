@@ -2,7 +2,7 @@ class buildsystem {
 
     class base {
 	$build_login = "iurt"
-	$build_home_dir = "/home/iurt/"
+	$build_home_dir = "/home/iurt"
 
 	include ssh::auth
 	ssh::auth::key { $build_login: } # declare a key for build bot: RSA, 2048 bits
