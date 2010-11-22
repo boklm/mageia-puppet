@@ -49,6 +49,13 @@ class buildsystem {
             gid => $build_login,
             shell => "/bin/bash",
         }
+
+        file { "/home/${build_login}/.ssh":
+            ensure => "directory",
+            mode   => 600,
+            owner  => $build_login,
+            group  => $build_login,
+        }
     }
 
     class iurt {
