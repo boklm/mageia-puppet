@@ -18,9 +18,9 @@ node valstar {
     include subversion::client
     include subversion::server
     include puppet::master
-    include buildsystem::mainnode
     include ssh::auth
     include ssh::auth::keymaster
+    include buildsystem::mainnode
 
     subversion::snapshot { "/etc/puppet":
         source => "svn://svn.mageia.org/adm/puppet/"
