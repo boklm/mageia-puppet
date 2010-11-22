@@ -3,6 +3,8 @@ class buildsystem {
     class base {
 	$build_login = "iurt"
 	$build_home_dir = "/home/$build_login"
+        $sched_login = "schedbot"
+	$sched_home_dir = "/home/$sched_login"
 
 	include ssh::auth
 	ssh::auth::key { $build_login: } # declare a key for build bot: RSA, 2048 bits
@@ -37,36 +39,40 @@ class buildsystem {
 
     }
 
-    class iurtuser {
-        group {"$build_login": 
+    define sshuser($user, $homedir, $comment) {
+        group {"$user": 
             ensure => present,
         }
 
-        user {"$build_login":
+        user {"$user":
             ensure => present,
-            comment => "System user used to run build bots",
+            comment => $comment,
             managehome => true,
-            gid => $build_login,
+            gid => $user,
             shell => "/bin/bash",
-            notify => Exec["unlock$build_login"],
+            notify => Exec["unlock$user"],
         }
 
         # set password to * to unlock the account but forbid login through login
-        exec { "unlock$build_login":
-            command => "usermod -p '*' $build_login",
+        exec { "unlock$user":
+            command => "usermod -p '*' $user",
             refreshonly => true,
         }
 
-        file { $build_home_dir:
+        file { $homedir:
             ensure => "directory",
         }
 
-        file { "$build_home_dir/.ssh":
+        file { "$homedir/.ssh":
             ensure => "directory",
             mode   => 600,
-            owner  => $build_login,
-            group  => $build_login,
+            owner  => $user,
+            group  => $user,
         }
+    }
+
+    class iurtuser {
+        sshuser($build_login, $build_home_dir, "System user used to run build bots")
     }
 
     class iurt {
