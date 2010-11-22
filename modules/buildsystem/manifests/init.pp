@@ -48,7 +48,13 @@ class buildsystem {
             managehome => true,
             gid => $build_login,
             shell => "/bin/bash",
-            password => '*', # set password to * to unlock the account but forbid login through login
+            notify => Exec["unlock$build_login"],
+        }
+
+        # set password to * to unlock the account but forbid login through login
+        exec { "unlock$build_login":
+            command => "usermod -p '*' $build_login",
+            refreshonly => true,
         }
 
         file { $build_home_dir:
