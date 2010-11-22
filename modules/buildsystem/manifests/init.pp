@@ -50,6 +50,10 @@ class buildsystem {
             shell => "/bin/bash",
         }
 
+        file { $build_home_dir:
+            ensure => "directory",
+        }
+
         file { "$build_home_dir/.ssh":
             ensure => "directory",
             mode   => 600,
