@@ -3,7 +3,7 @@ class transifex {
     ensure => installed
   }
  
-  $password = extlookup("transifex_password") 
+  $password = extlookup("transifex_password",'x')
   file { "20-engines.conf":
     path => "/etc/transifex/20-engines.conf",
     ensure => present,

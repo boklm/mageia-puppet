@@ -10,7 +10,7 @@ class mga-mirrors {
         script => "/usr/bin/mga_mirrors_fastcgi.pl" 
     }
 
-    $password = extlookup("mga_mirror_password")
+    $password = extlookup("mga_mirror_password",'x')
  
     file { "mga-mirrors.ini": 
         path => "/etc/mga-mirrors.ini",    

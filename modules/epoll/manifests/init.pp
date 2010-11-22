@@ -10,7 +10,7 @@ class epoll {
         script => "/usr/bin/epoll_fastcgi.pl" 
     }
      
-    $password = extlookup("epoll_password")
+    $password = extlookup("epoll_password",'x')
  
     file { "epoll.yml": 
         path => "/etc/epoll.yml",    

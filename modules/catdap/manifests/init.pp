@@ -21,7 +21,7 @@ class catdap {
         source => "svn://svn.mageia.org/soft/identity/CatDap/branches/live"
     }
 
-    $catdap_password = extlookup('catdap_password')
+    $catdap_password = extlookup('catdap_password','x')
     
     file { "$catdap_location/catdap_local.yml":
         ensure => present,

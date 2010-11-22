@@ -21,7 +21,7 @@ class pam {
          content => template("pam/nsswitch.conf")
       }
 
-      $nssldap_password = extlookup("nssldap_password")
+      $nssldap_password = extlookup("nssldap_password",'x')
  
       file { "ldap.conf":
          path => "/etc/ldap.conf",

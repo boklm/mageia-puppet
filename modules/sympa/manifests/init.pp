@@ -6,8 +6,8 @@ class sympa {
         ensure => installed;
     }
 
-    $password = extlookup("sympa_password")
-    $ldappass = extlookup("sympa_ldap")
+    $password = extlookup("sympa_password",'x')
+    $ldappass = extlookup("sympa_ldap",'x')
 
     file { '/etc/sympa/sympa.conf':
         ensure => present,
