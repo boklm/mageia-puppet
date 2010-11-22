@@ -3,7 +3,7 @@ class buildsystem {
     class base {
 	$build_login = "iurt"
 	$build_home_dir = "/home/$build_login"
-        $sched_login = "schedbot"
+	$sched_login = "schedbot"
 	$sched_home_dir = "/home/$sched_login"
 
 	include ssh::auth
