@@ -45,6 +45,10 @@ class buildsystem {
             gid => $build_login,
             shell => "/bin/bash",
         }
+
+        include ssh::auth
+        ssh::auth::key { $build_login: } # declare a key for build bot: RSA, 2048 bits
+        ssh::auth::client { $build_login: }
     }
 
     class iurt {
