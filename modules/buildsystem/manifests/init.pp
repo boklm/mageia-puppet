@@ -3,10 +3,14 @@ class buildsystem {
     class base {
 	$build_login = "iurt"
 	$build_home_dir = "/home/iurt/"
+
+	include ssh::auth
+	ssh::auth::key { $build_login: } # declare a key for build bot: RSA, 2048 bits
     }
 
     class mainnode inherits base {
         include iurtuser
+        ssh::auth::server { $build_login: }
 
         package { "task-bs-cluster-main":
             ensure => "installed"
@@ -45,15 +49,12 @@ class buildsystem {
             gid => $build_login,
             shell => "/bin/bash",
         }
-
-        include ssh::auth
-        ssh::auth::key { $build_login: } # declare a key for build bot: RSA, 2048 bits
-        ssh::auth::client { $build_login: }
     }
 
     class iurt {
         include sudo
         include iurtuser
+        ssh::auth::client { $build_login: }
 
         # build node common settings
         # we could have the following skip list to use less space:
