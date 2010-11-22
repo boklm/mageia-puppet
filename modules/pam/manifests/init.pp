@@ -1,7 +1,7 @@
 class pam {
 
   class base {
-      package { ["pam_ldap","nss_ldap", "pam_mkhomedir"]:
+      package { ["pam_ldap","nss_ldap"]:
         ensure => installed,  
       }
 
