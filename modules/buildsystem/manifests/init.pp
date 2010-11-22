@@ -26,6 +26,12 @@ class buildsystem {
         package { $package_list:
             ensure => "installed"
         }
+
+        include apache
+        apache::vhost_other_app { "repository.$domain":
+            vhost_file => "buildsystem/vhost_bugs.conf",
+        }
+
     }
 
     class buildnode inherits base {
