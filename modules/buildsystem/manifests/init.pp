@@ -39,23 +39,23 @@ class buildsystem {
 
     }
 
-    define sshuser($user, $homedir, $comment) {
-        group {"$user": 
+    define sshuser($homedir, $comment) {
+        group {"$title": 
             ensure => present,
         }
 
-        user {"$user":
+        user {"$title":
             ensure => present,
             comment => $comment,
             managehome => true,
-            gid => $user,
+            gid => $title,
             shell => "/bin/bash",
-            notify => Exec["unlock$user"],
+            notify => Exec["unlock$title"],
         }
 
         # set password to * to unlock the account but forbid login through login
-        exec { "unlock$user":
-            command => "usermod -p '*' $user",
+        exec { "unlock$title":
+            command => "usermod -p '*' $title",
             refreshonly => true,
         }
 
@@ -66,13 +66,16 @@ class buildsystem {
         file { "$homedir/.ssh":
             ensure => "directory",
             mode   => 600,
-            owner  => $user,
-            group  => $user,
+            owner  => $title,
+            group  => $title,
         }
     }
 
     class iurtuser {
-        sshuser($build_login, $build_home_dir, "System user used to run build bots")
+        sshuser { $build_login:
+          homedir => $build_home_dir,
+          comment => "System user used to run build bots",
+        }
     }
 
     class iurt {
