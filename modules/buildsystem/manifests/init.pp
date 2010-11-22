@@ -21,7 +21,8 @@ class buildsystem {
           comment => "System user used to schedule builds",
         }
 
-        package { "task-bs-cluster-main":
+        $package_list = ['task-bs-cluster-main', 'iurt']
+        package { $package_list:
             ensure => "installed"
         }
     }
