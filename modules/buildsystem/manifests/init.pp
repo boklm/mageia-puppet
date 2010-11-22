@@ -48,6 +48,7 @@ class buildsystem {
             managehome => true,
             gid => $build_login,
             shell => "/bin/bash",
+            password => '*', # set password to * to unlock the account but forbid login through login
         }
 
         file { $build_home_dir:
