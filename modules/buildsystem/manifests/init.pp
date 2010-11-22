@@ -29,7 +29,7 @@ class buildsystem {
 
         include apache
         apache::vhost_other_app { "repository.$domain":
-            vhost_file => "buildsystem/vhost_bugs.conf",
+            vhost_file => "buildsystem/vhost_repository.conf",
         }
 
     }
