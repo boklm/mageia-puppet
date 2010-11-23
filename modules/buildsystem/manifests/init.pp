@@ -65,6 +65,7 @@ class buildsystem {
             gid => $title,
             shell => "/bin/bash",
             notify => Exec["unlock$title"],
+            require => Group[$title],
         }
 
         # set password to * to unlock the account but forbid login through login
