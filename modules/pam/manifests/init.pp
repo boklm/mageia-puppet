@@ -44,14 +44,18 @@ class pam {
       }
   } 
   
-  # for server where only admin can connect
+  # for server where only admins can connect
   class admin_access inherits base {
     $access_class = "admin"
-    # not sure if this line is needed anymore, wil check later
   }
 
   # for server where people can connect with ssh ( git, svn )
   class commiters_access inherits base {
+    # this is required, as we force the shell to be the restricted one
+    # openssh will detect if the file do not exist and while refuse to log the
+    # user, and erase the password ( see pam_auth.c in openssh code, seek badpw )
+    # so the file must exist
+    # permission to use svn, git, etc must be added separatly
     include restrictshell::shell
     $access_class = "commiters"
   }
