@@ -38,6 +38,18 @@ class restrictshell {
             mode => 755,
         }
 
+        file { "$pubkeys_directory/root":
+            ensure => directory,
+            owner => root,
+            group => root,
+            mode => 700,
+        }
+
+        file { "$pubkeys_directory/root/authorized_keys":
+            ensure => "/root/.ssh/authorized_keys",
+            mode => 700,
+        }
+
         $ldap_pwfile = "/etc/ldap.secret"
         file { '/usr/local/bin/ldap-sshkey2file.py':
             ensure => present,
