@@ -77,4 +77,16 @@ class restrictshell {
     class allow_svn {
         allow{ "svn": }
     }
+
+    class allow_scp {
+        allow{ "scp": }
+    }
+
+    class allow_sftp {
+        allow{ "sftp": }
+    }
+    # technically, we could add cvs too
+    # but I doubt we will use it one day
+
+
 }
