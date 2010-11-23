@@ -27,7 +27,6 @@ class buildsystem {
             ensure => "installed"
         }
 
-        include apache::base
         apache::vhost_other_app { "repository.$domain":
             vhost_file => "buildsystem/vhost_repository.conf",
         }

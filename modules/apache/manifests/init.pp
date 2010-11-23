@@ -130,6 +130,7 @@ class apache {
     }
 
    define vhost_other_app($vhost_file) {
+        include apache::base
         file { "$name.conf":
             path => "/etc/httpd/conf/vhosts.d/$name.conf",
             ensure => "present",
