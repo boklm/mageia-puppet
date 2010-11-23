@@ -143,6 +143,7 @@ class apache {
    }
 
    define webapp_other($webapp_file) {
+        include apache::base
         $webappname = $name
         file { "webapp_$name.conf":
             path => "/etc/httpd/conf/webapps.d/$webappname.conf",
