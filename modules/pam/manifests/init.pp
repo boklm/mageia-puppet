@@ -52,6 +52,7 @@ class pam {
 
   # for server where people can connect with ssh ( git, svn )
   class commiters_access inherits base {
+    include restricted_shell::shell
     $access_class = "commiters"
   }
 }
