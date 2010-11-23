@@ -23,43 +23,6 @@ class restrictshell {
             content => template("restrictshell/membersh-conf.pl"),
         }
     }
-    
-    class ssh_keys_from_ldap {
-
-        package { 'python-ldap':
-            ensure => installed,
-        }
-
-        $pubkeys_directory = "/var/lib/pubkeys"
-        file { $pubkeys_directory:
-            ensure => directory,
-            owner => root,
-            group => root,
-            mode => 755,
-        }
-
-        file { "$pubkeys_directory/root":
-            ensure => directory,
-            owner => root,
-            group => root,
-            mode => 700,
-        }
-
-        file { "$pubkeys_directory/root/authorized_keys":
-            ensure => "/root/.ssh/authorized_keys",
-            mode => 700,
-        }
-
-        $ldap_pwfile = "/etc/ldap.secret"
-        file { '/usr/local/bin/ldap-sshkey2file.py':
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 755,
-            content => template("restrictshell/ldap-sshkey2file.py"),
-            requires => Package['python-ldap']
-        } 
-    }
 
     define allow {
         include shell
