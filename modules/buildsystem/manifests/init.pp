@@ -93,6 +93,10 @@ class buildsystem {
           homedir => $build_home_dir,
           comment => "System user used to run build bots",
         }
+
+        file { "/etc/iurt":
+            ensure => "directory",
+        }
     }
 
     class iurt {
@@ -107,10 +111,6 @@ class buildsystem {
         $package_list = ['task-bs-cluster-chroot', 'iurt']
         package { $package_list:
             ensure => installed;
-        }
-
-        file { "/etc/iurt":
-            ensure => "directory",
         }
 
         file { "/etc/iurt/build":
