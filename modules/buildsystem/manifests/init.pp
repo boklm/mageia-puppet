@@ -50,7 +50,7 @@ class buildsystem {
     }
 
     class iurtupload {
-        file { "/etc/iurt/update.conf":
+        file { "/etc/iurt/upload.conf":
             ensure => present,
             owner => $build_login,
             group => $build_login,
