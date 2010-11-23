@@ -111,6 +111,7 @@ class buildsystem {
 
         file { "/etc/iurt/build":
             ensure => "directory",
+            recurse => true,
         }
 
         file { "/etc/iurt/build/cauldron.conf":
