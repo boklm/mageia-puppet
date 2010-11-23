@@ -90,3 +90,6 @@ ifplugin Mail::SpamAssassin::Plugin::AWL
 auto_whitelist_path        /var/spool/spamassassin/auto-whitelist
 auto_whitelist_file_mode   0666
 endif # Mail::SpamAssassin::Plugin::AWL
+
+loadplugin Mail::SpamAssassin::Plugin::Rule2XSBody
+

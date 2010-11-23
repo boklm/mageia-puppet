@@ -1,6 +1,11 @@
 class spamassassin {
 
-    package { "spamassassin", "spamassassin-sa-compile":
+    package { "spamassassin-sa-compile":
+        ensure => installed,
+        notify => "sa-compile",
+    }
+
+    package { "spamassassin":
         ensure => installed, 
     }
 
@@ -11,5 +16,9 @@ class spamassassin {
         mode => 644,
         requires => Package["spamassassin"],
         content => template('spamassassin/local.cf')
+    }
+
+    exec { "sa-compile":
+        refreshonly => true,
     }
 }
