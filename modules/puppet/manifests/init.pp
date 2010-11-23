@@ -42,9 +42,9 @@ class puppet {
 
         file { '/etc/puppet/tagmail.conf':
             ensure => present,
-            owner => puppet,
-            group => puppet,
-            mode => 700,
+            owner => root,
+            group => root,
+            mode => 644,
             content => template("puppet/tagmail.conf"),
        } 
         
