@@ -109,11 +109,16 @@ class buildsystem {
             ensure => installed;
         }
 
+        file { "/etc/iurt/build":
+            ensure => "directory",
+        }
+
         file { "/etc/iurt/build/cauldron.conf":
             ensure => present,
             owner => $build_login,
             group => $build_login,
             mode => 644,
+            require => File["/etc/iurt/build"],
             content => template("buildsystem/iurt.cauldron.conf")
         }
 
