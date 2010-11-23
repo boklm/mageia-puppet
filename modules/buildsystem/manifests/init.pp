@@ -32,7 +32,7 @@ class buildsystem {
         }
 
         include scheduler
-        include dispatcher
+        include gatherer
     }
 
     class buildnode inherits base {
@@ -44,7 +44,7 @@ class buildsystem {
         include iurtupload
     }
 
-    class dispatcher {
+    class gatherer {
         # emi
         include iurtupload
     }
