@@ -1,5 +1,12 @@
 class restrictshell {
     class shell {
+        file {"/etc/membersh-conf.d":
+            ensure => directory,
+            owner => root,
+            group => root,
+            mode => 755,
+        }
+
         file { '/usr/local/bin/sv_membersh.pl':
             ensure => present,
             owner => root,
@@ -7,16 +14,7 @@ class restrictshell {
             mode => 755,
             content => template("restrictshell/sv_membersh.pl"),
         }
-    }
 
-    class base {
-        include shell
-        $allow_svn = "0"
-        $allow_git = "0"
-        $allow_rsync = "0"
-        $allow_pkgsubmit = "0"
-
-        $ldap_pwfile = "/etc/ldap.secret"
         file { '/etc/membersh-conf.pl':
             ensure => present,
             owner => root,
@@ -24,6 +22,9 @@ class restrictshell {
             mode => 755,
             content => template("restrictshell/membersh-conf.pl"),
         }
+    }
+    
+    class ssh_keys_from_ldap {
 
         package { 'python-ldap':
             ensure => installed,
@@ -37,6 +38,7 @@ class restrictshell {
             mode => 755,
         }
 
+        $ldap_pwfile = "/etc/ldap.secret"
         file { '/usr/local/bin/ldap-sshkey2file.py':
             ensure => present,
             owner => root,
@@ -47,9 +49,32 @@ class restrictshell {
         } 
     }
 
-    class allow_svn_git_pkgsubmit inherits base {
-        $allow_svn = "1"
-        $allow_git = "1"
-        $allow_pkgsubmit = "1"
+    define allow {
+        include shell
+        file { "/etc/membersh-conf.d/allow_$name.pl":
+            ensure => "present",
+            owner => root,
+            group => root,
+            mode => 755,
+            content => "\$use_$name = 1;\n",
+        }
+    }
+
+    # yes, we could directly use the allow, but this is
+    # a nicer syntax
+    class allow_git {
+        allow{ "git": }
+    }
+
+    class allow_rsync {
+        allow{ "rsync": }
+    }
+
+    class allow_pkgsubmit {
+        allow{ "pkgsubmit": }
+    }
+
+    class allow_svn {
+        allow{ "svn": }
     }
 }
