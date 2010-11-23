@@ -75,6 +75,7 @@ class buildsystem {
 
         file { $homedir:
             ensure => "directory",
+            require => User[$title],
         }
 
         file { "$homedir/.ssh":
@@ -82,6 +83,7 @@ class buildsystem {
             mode   => 600,
             owner  => $title,
             group  => $title,
+            require => File[$homedir],
         }
     }
 
