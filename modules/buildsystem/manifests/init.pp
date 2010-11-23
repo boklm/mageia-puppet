@@ -31,6 +31,8 @@ class buildsystem {
             vhost_file => "buildsystem/vhost_repository.conf",
         }
 
+        include scheduler
+        include dispatcher
     }
 
     class buildnode inherits base {
@@ -39,10 +41,23 @@ class buildsystem {
 
     class scheduler {
         # ulri        
+        include iurtupload
     }
 
     class dispatcher {
         # emi
+        include iurtupload
+    }
+
+    class iurtupload {
+        file { "/etc/iurt/update.conf":
+            ensure => present,
+            owner => $build_login,
+            group => $build_login,
+            mode => 644,
+            require => File["/etc/iurt"],
+            content => template("buildsystem/upload.conf")
+        }
     }
     
     class repsys {
