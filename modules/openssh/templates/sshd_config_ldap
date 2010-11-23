@@ -1,0 +1,3 @@
+
+AuthorizedKeysFile /var/lib/config/pubkeys/%u/authorized_keys
+

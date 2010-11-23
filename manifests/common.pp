@@ -87,7 +87,7 @@ class urpmi_update {
 class default_mageia_server {
     include timezone
 
-    include openssh
+    include openssh::server
     include default_ssh_root_key
     include base_packages
     include ntp

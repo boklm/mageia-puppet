@@ -1,30 +1,35 @@
 class openssh {
+    class server {
+        # some trick to manage sftp server, who is arch dependent on mdv    
+        $path_to_sftp = "$lib_dir/ssh/"
 
-    # some trick to manage sftp server, who is arch dependent on mdv    
-    $path_to_sftp = "$lib_dir/ssh/"
+        package { "openssh-server":
+            ensure => installed
+        }
 
-    package { "openssh-server":
-        ensure => installed
+        service { sshd:
+            ensure => running,
+            path => "/etc/init.d/sshd",
+            subscribe => [ Package["openssh-server"] ]
+        }
+
+
+        file { "/etc/ssh/sshd_config":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 644,
+            require => Package["openssh-server"],
+            content => template("openssh/sshd_config"),
+            notify => Service["sshd"]
+        }
     }
 
-    service { sshd:
-        ensure => running,
-        path => "/etc/init.d/sshd",
-        subscribe => [ Package["openssh-server"], File["sshd_config"] ]
-    }
+    class ssh_keys_from_ldap inherits server {
 
-    file { "sshd_config":
-        path => "/etc/ssh/sshd_config",
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
-        require => Package["openssh-server"],
-        content => template("openssh/sshd_config")
-    }
-
- 
-    class ssh_keys_from_ldap {
+        File ["/etc/ssh/sshd_config"] {
+            content => template("openssh/sshd_config","openssh/sshd_config_ldap")
+        }
 
         package { 'python-ldap':
             ensure => installed,
