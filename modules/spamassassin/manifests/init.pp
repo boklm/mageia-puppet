@@ -14,7 +14,7 @@ class spamassassin {
         owner => root,
         group => root,
         mode => 644,
-        requires => Package["spamassassin"],
+        require => Package["spamassassin"],
         content => template('spamassassin/local.cf')
     }
 
