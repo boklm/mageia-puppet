@@ -1,16 +1,16 @@
-auth    required    pam_env.so
-# this part is here if the module don't exist
-# basically, the idea is to copy the exact detail of sufficient,
-# and add abort=ignore
-auth    [abort=ignore success=done new_authtok_reqd=done default=ignore]  pam_tcb.so shadow fork nullok prefix=$2a$ count=8
-auth    sufficient   pam_unix.so likeauth nullok try_first_pass
-auth    sufficient   pam_ldap.so use_first_pass
+auth    required     pam_env.so
 <%- if access_class = 'admin' -%>
 auth    required     pam_succeed_if.so quiet user ingroup mga-sysadmin
 <%- end -%>
 <%- if access_class = 'commiters' -%>
 auth    required     pam_succeed_if.so quiet user ingroup mga-commiters
 <%- end -%>
+# this part is here if the module don't exist
+# basically, the idea is to copy the exact detail of sufficient,
+# and add abort=ignore
+auth    [abort=ignore success=done new_authtok_reqd=done default=ignore]  pam_tcb.so shadow fork nullok prefix=$2a$ count=8
+auth    sufficient   pam_unix.so likeauth nullok try_first_pass
+auth    sufficient   pam_ldap.so use_first_pass
 auth    required     pam_deny.so
 
 
