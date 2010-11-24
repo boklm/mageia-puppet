@@ -149,7 +149,11 @@ if ($#ARGV == 1 and $ARGV[0] eq "-c") {
 }
 
 unless (-e "/etc/membersh-errormsg") {
-    print STDERR "You tried to execute: @ARGV[1..$#ARGV]\n";
+    if ($ARGV) {
+        print STDERR "You tried to execute: @ARGV[1..$#ARGV]\n";
+    } else {
+        print STDERR "You tried to run a interactive shell.\n"
+    }
     print STDERR "Sorry, you are not allowed to execute that command.\n";
 } else {
     open(ERRORMSG, "< /etc/membersh-errormsg");
