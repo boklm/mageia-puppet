@@ -14,7 +14,7 @@ class amavis {
         owner => root,
         group => root,
         mode => 644,
-        requires => Package["amavisd-new"],
+        require => Package["amavisd-new"],
         content => template('amavis/amavisd.conf')
     }
 }
