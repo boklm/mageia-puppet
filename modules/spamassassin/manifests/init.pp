@@ -2,7 +2,7 @@ class spamassassin {
 
     package { "spamassassin-sa-compile":
         ensure => installed,
-        notify => "sa-compile",
+        notify => Exec["sa-compile"],
     }
 
     package { "spamassassin":
@@ -20,5 +20,6 @@ class spamassassin {
 
     exec { "sa-compile":
         refreshonly => true,
+        require => Package["spamassassin-sa-compile"],
     }
 }
