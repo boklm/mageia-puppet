@@ -1,10 +1,4 @@
 auth    required     pam_env.so
-<%- if access_class = 'admin' -%>
-auth    required     pam_succeed_if.so quiet user ingroup mga-sysadmin
-<%- end -%>
-<%- if access_class = 'committers' -%>
-auth    required     pam_succeed_if.so quiet user ingroup mga-committers
-<%- end -%>
 # this part is here if the module don't exist
 # basically, the idea is to copy the exact detail of sufficient,
 # and add abort=ignore
@@ -15,6 +9,12 @@ auth    required     pam_deny.so
 
 
 account sufficient  pam_localuser.so
+<%- if access_class == 'admin' -%>
+account required    pam_succeed_if.so quiet user ingroup mga-sysadmin
+<%- end -%>
+<%- if access_class == 'committers' -%>
+account required    pam_succeed_if.so quiet user ingroup mga-committers
+<%- end -%>
 account sufficient  pam_ldap.so
 account required    pam_deny.so
 

@@ -43,14 +43,17 @@ class pam {
          content => template("pam/ldap.conf")
       }
   } 
-  
+ 
+  # beware , this two classes are exclusive
+ 
   # for server where only admins can connect
-  class admin_access inherits base {
+  class admin_access {
     $access_class = "admin"
+    include base
   }
 
   # for server where people can connect with ssh ( git, svn )
-  class committers_access inherits base {
+  class committers_access {
     # this is required, as we force the shell to be the restricted one
     # openssh will detect if the file do not exist and while refuse to log the
     # user, and erase the password ( see pam_auth.c in openssh code, seek badpw )
@@ -58,5 +61,6 @@ class pam {
     # permission to use svn, git, etc must be added separatly
     include restrictshell::shell
     $access_class = "committers"
+    include base
   }
 }
