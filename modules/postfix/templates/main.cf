@@ -43,7 +43,7 @@ mydestination = <%= fqdn %>
                 ml.<%= domain %>
 <%-   end -%>
 
-alias_maps = hash:/etc/aliases
+alias_maps = hash:/etc/postfix/aliases
 	     # uncomment if we want to enable ldap based alias 
              # and create the file
              #ldap:/etc/postfix/ldap_aliases.conf
