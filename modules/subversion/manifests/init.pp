@@ -114,9 +114,9 @@ class subversion {
 
     define repository ($group = "svn",
                        $public = true,
-                       $commit_mail = [],
-                       $syntax_check = [],
-                       $extract_dir = []) {
+                       $commit_mail = '',
+                       $syntax_check = '',
+                       $extract_dir = '') {
         # check permissions
         # http://svnbook.red-bean.com/nightly/fr/svn.serverconfig.multimethod.html
         # $name ==> directory of the repo
