@@ -6,10 +6,10 @@ auth    [abort=ignore success=done new_authtok_reqd=done default=ignore]  pam_tc
 auth    sufficient   pam_unix.so likeauth nullok try_first_pass
 auth    sufficient   pam_ldap.so use_first_pass
 <%- if access_class = 'admin' -%>
-auth    required     pam_wheel.so group=mga-sysadmin
+auth    required     pam_succeed_if.so quiet user ingroup mga-sysadmin
 <%- end -%>
 <%- if access_class = 'commiters' -%>
-auth    required     pam_wheel.so group=mga-commiters
+auth    required     pam_succeed_if.so quiet user ingroup mga-commiters
 <%- end -%>
 auth    required     pam_deny.so
 
