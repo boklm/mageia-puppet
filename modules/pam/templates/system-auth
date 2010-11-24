@@ -5,12 +5,12 @@ auth    required    pam_env.so
 auth    [abort=ignore success=done new_authtok_reqd=done default=ignore]  pam_tcb.so shadow fork nullok prefix=$2a$ count=8
 auth    sufficient   pam_unix.so likeauth nullok try_first_pass
 auth    sufficient   pam_ldap.so use_first_pass
-<% if access_class = 'admin' %>
+<%- if access_class = 'admin' -%>
 auth    required     pam_wheel.so group=mga-sysadmin
-<% end %>
-<% if access_class = 'commiters' %>
+<%- end -%>
+<%- if access_class = 'commiters' -%>
 auth    required     pam_wheel.so group=mga-commiters
-<% end %>
+<%- end -%>
 auth    required     pam_deny.so
 
 
