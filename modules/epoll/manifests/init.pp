@@ -7,7 +7,8 @@ class epoll {
     }
     
     apache::vhost_catalyst_app { $vhost:
-        script => "/usr/bin/epoll_fastcgi.pl" 
+        script => "/usr/bin/epoll_fastcgi.pl", 
+        require => Package['Epoll']
     }
      
     $password = extlookup("epoll_password",'x')

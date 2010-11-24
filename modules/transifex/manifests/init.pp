@@ -10,7 +10,8 @@ class transifex {
     owner => root,
     group => apache,
     mode => 640,
-    content => template("transifex/20-engines.conf")
+    content => template("transifex/20-engines.conf"),
+    require => Package['transifex']
   }
 
   file { "30-site.conf":
@@ -19,7 +20,8 @@ class transifex {
     owner => root,
     group => root,
     mode => 644,
-    content => template("transifex/30-site.conf")
+    content => template("transifex/30-site.conf"),
+    require => Package['transifex']
   }
 
 #  apache::vhost_django_app { "transifex.$domain":
