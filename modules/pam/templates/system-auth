@@ -2,8 +2,8 @@ auth    required     pam_env.so
 <%- if access_class = 'admin' -%>
 auth    required     pam_succeed_if.so quiet user ingroup mga-sysadmin
 <%- end -%>
-<%- if access_class = 'commiters' -%>
-auth    required     pam_succeed_if.so quiet user ingroup mga-commiters
+<%- if access_class = 'committers' -%>
+auth    required     pam_succeed_if.so quiet user ingroup mga-committers
 <%- end -%>
 # this part is here if the module don't exist
 # basically, the idea is to copy the exact detail of sufficient,

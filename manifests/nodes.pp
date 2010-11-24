@@ -22,7 +22,7 @@ node valstar {
     include ssh::auth::keymaster
     include buildsystem::mainnode
 
-    include pam::commiters_access
+    include pam::committers_access
     include restrictshell::allow_svn
 
     subversion::snapshot { "/etc/puppet":
