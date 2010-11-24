@@ -14,7 +14,8 @@ class bind {
             ensure => "/var/lib/named/etc/named.conf",
             owner => root,
             group => root,
-            mode => 644
+            mode => 644,
+            require => Package[bind]
         } 
     }
 
