@@ -1,5 +1,5 @@
 class spamassassin {
-
+    # it should also requires make, bug fixed in cooker
     package { "spamassassin-sa-compile":
         ensure => installed,
         notify => Exec["sa-compile"],
