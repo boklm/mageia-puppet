@@ -26,7 +26,7 @@ node valstar {
     include restrictshell::allow_svn
 
     subversion::snapshot { "/etc/puppet":
-        source => "svn://svn.mageia.org/adm/puppet/"
+        source => "svn://svn.mageia.org/svn/adm/puppet/"
     }
 }
 
