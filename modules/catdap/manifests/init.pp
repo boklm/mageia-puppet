@@ -18,7 +18,7 @@ class catdap {
     }
 
     subversion::snapshot { $catdap_location:
-        source => "svn://svn.mageia.org/soft/identity/CatDap/branches/live"
+        source => "svn://svn.mageia.org/svn/soft/identity/CatDap/branches/live"
     }
 
     $catdap_password = extlookup('catdap_password','x')
