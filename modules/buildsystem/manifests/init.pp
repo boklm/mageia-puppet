@@ -31,6 +31,10 @@ class buildsystem {
             vhost_file => "buildsystem/vhost_repository.conf",
         }
 
+        apache::vhost_other_app { "pkgsubmit.$domain":
+            vhost_file => "buildsystem/vhost_pkgsubmit.conf",
+        }
+
         include scheduler
         include gatherer
     }
