@@ -20,6 +20,6 @@ class spamassassin {
 
     exec { "sa-compile":
         refreshonly => true,
-        require => Package["spamassassin-sa-compile"],
+        require => [Package["spamassassin-sa-compile"],Package["spamassassin"]]
     }
 }
