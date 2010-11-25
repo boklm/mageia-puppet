@@ -52,6 +52,7 @@ alias_maps = hash:/etc/postfix/aliases
 
 <%- if all_tags.include?('postfix::smtp_server') -%>
 transport_maps = regexp:/etc/postfix/transport_regexp
+content_filter = smtp-filter:[127.0.0.1]:10025
 <%- end -%>
 
 <%- if classes.include?('sympa') -%>
