@@ -33,6 +33,8 @@ class postfix {
 
     class smtp_server inherits base {
         include postgrey
+        include amavis
+        include spamassassin
         file { '/etc/postfix/main.cf':
             content => template("postfix/main.cf"),
         }
