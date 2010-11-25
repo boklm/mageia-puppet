@@ -7,10 +7,11 @@ class amavis {
     service { "amavisd":
         ensure => running,
         path => "/etc/init.d/amavisd",
-        subscribe  => Package["amavisd-new"],
+        subscribe  => [Package["amavisd-new"], File["amavisd.conf"]], 
     }
 
-    file { "/etc/amavisd/amavisd.conf":
+    file { "amavisd.conf":
+        path => "/etc/amavisd/amavisd.conf",
         ensure => present,
         owner => root,
         group => root,
