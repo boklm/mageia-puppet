@@ -3,7 +3,7 @@
 # Initialization
 PATH_TO_FILE=${PATH_TO_FILE:-/var/lib/blog}
 /usr/bin/wget -qO $PATH_TO_FILE"/RSS_new" http://blog.mageia.org/?feed=rss2
-if [ -n $? ] 
+if [ $? -ne 0 ] 
 then
         exit 2
 fi

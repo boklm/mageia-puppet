@@ -5,13 +5,13 @@ class blog {
         	ensure => installed
     	}
 
-        package { 'wget':
+        package { 'php-mysql':
                 ensure => installed
         }
 
     include apache::mod_php
 
-    	package { 'php-mysql':
+    	package { 'wget':
         	ensure => installed
     	}
 
