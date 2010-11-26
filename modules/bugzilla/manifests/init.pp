@@ -1,5 +1,7 @@
 class bugzilla {
 
+   $bugzilla_location = "/usr/share/bugzilla/template/en/custom"
+
     package { 'bugzilla':
         ensure => installed;
     }
@@ -32,4 +34,9 @@ class bugzilla {
       vhost_file => "bugzilla/vhost_bugs.conf",
     }
 }
+
+    subversion::snapshot { $bugzilla_location:
+      source => "svn://svn.mageia.org/svn/web/templates/bugzilla/trunk"
+    }
+
 
