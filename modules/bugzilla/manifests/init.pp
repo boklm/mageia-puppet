@@ -33,10 +33,17 @@ class bugzilla {
     apache::vhost_other_app { "bugs.$domain":
       vhost_file => "bugzilla/vhost_bugs.conf",
     }
-}
+
+    file { "custom":
+      path => "/usr/share/bugzilla/template/en/custom",
+      ensure => directory,
+      owner => root,
+      group => apache,
+      mode => 700,
+      recurse => true
+    }
 
     subversion::snapshot { $bugzilla_location:
       source => "svn://svn.mageia.org/svn/web/templates/bugzilla/trunk"
     }
-
-
+}
