@@ -25,7 +25,7 @@ class catdap {
     
     file { "$catdap_location/catdap_local.yml":
         ensure => present,
-	owner => root,
+        owner => root,
         group => apache,
         mode => 640,
         content => template("catdap/catdap_local.yml"),
