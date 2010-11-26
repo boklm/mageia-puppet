@@ -40,7 +40,8 @@ class bugzilla {
       owner => root,
       group => apache,
       mode => 700,
-      recurse => true
+      recurse => true,
+      require => Subversion::Snapshot[$bugzilla_location]
     }
 
     subversion::snapshot { $bugzilla_location:
