@@ -17,7 +17,7 @@ class openldap {
             mode => 755,
         }
 
-        openssl::self_signed_cert{ 'ldap':
+        openssl::self_signed_cert{ "ldap.$domain":
             directory => "/etc/ssl/openldap/"
         }
     }
