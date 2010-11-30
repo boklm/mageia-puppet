@@ -11,7 +11,8 @@ class openssl {
         $pem_file = "$name.pem"
 	    exec { "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout $pem_file -out $pem_file -subj  '/CN=$name.$domain'":
             cwd => "$directory",
-            creates => "$directory/$name.pem"
+            creates => "$directory/$name.pem",
+            require => Package['openssl']
         }
 	}
 }
