@@ -8,8 +8,11 @@ class epoll {
     
     apache::vhost_catalyst_app { $vhost:
         script => "/usr/bin/epoll_fastcgi.pl", 
+        use_ssl => true, 
         require => Package['Epoll']
     }
+
+    apache::vhost_redirect_ssl { $vhost: }
      
     $password = extlookup("epoll_password",'x')
  
