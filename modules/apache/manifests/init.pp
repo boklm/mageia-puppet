@@ -59,6 +59,10 @@ class apache {
     }
 
     class mod_ssl inherits base {
+        file { "/etc/ssl/apache/":
+            ensure => directory
+        }
+
         package { "apache-mod_ssl":
             ensure => installed
         }
