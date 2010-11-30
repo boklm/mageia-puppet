@@ -97,6 +97,13 @@ class apache {
 
         include apache::mod_fastcgi 
 
+        if $use_ssl {
+            include apache::mod_ssl
+            openssl::self_signed_cert{ "$name":
+                directory => "/etc/ssl/apache/"
+            }
+        }
+
         file { "$name.conf":
             path => "/etc/httpd/conf/vhosts.d/$name.conf",
             ensure => "present",
