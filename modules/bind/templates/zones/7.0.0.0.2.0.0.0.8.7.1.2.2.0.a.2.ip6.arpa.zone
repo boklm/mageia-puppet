@@ -1,0 +1,21 @@
+$TTL 3D
+@   IN  SOA ns0.mageia.org. root.mageia.org. (
+        2010120101  ; Serial
+        3600        ; Refresh
+        3600        ; Retry
+        2419200     ; Expire
+        86400       ; Minimum TTL
+)
+
+; nameservers
+@	IN      NS      ns0.mageia.org.
+@	IN      NS      ns1.mageia.org.
+
+
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN  PTR gw-ipv6.mageia.org.
+2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN  PTR alamut.mageia.org.
+3.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN  PTR valstar.mageia.org.
+4.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN  PTR ecosse.mageia.org.
+5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN  PTR jonund.mageia.org.
+6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN  PTR fiona.mageia.org.
+
