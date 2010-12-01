@@ -47,9 +47,7 @@ node alamut {
     include default_mageia_server
     include bind::bind_master
     include postgresql
-    bind::zone_master { "mageia.org": }
-    bind::zone_master { "mageia.fr": } 
-    bind::zone_reverse { "7.0.0.0.2.0.0.0.8.7.1.2.2.0.a.2.ip6.arpa": }
+    include dns_server 
     timezone::timezone { "Europe/Paris": }
 
     include catdap
@@ -100,10 +98,7 @@ node krampouezh {
 # - LDAP slave (for external traffic maybe)
 #
     include default_mageia_server
-    include bind::bind_master
-    bind::zone_master { "mageia.org": }
-    bind::zone_master { "mageia.fr": } 
-    bind::zone_reverse { "7.0.0.0.2.0.0.0.8.7.1.2.2.0.a.2.ip6.arpa": }
+    include dns_server 
     timezone::timezone { "Europe/Paris": }
 # Other services running on this server :
 # - meetbot
