@@ -49,6 +49,7 @@ node alamut {
     include postgresql
     bind::zone_master { "mageia.org": }
     bind::zone_master { "mageia.fr": } 
+    bind::zone_reverse { "7.0.0.0.2.0.0.0.8.7.1.2.2.0.a.2.ip6.arpa": }
     timezone::timezone { "Europe/Paris": }
 
     include catdap
@@ -102,6 +103,7 @@ node krampouezh {
     include bind::bind_master
     bind::zone_master { "mageia.org": }
     bind::zone_master { "mageia.fr": } 
+    bind::zone_reverse { "7.0.0.0.2.0.0.0.8.7.1.2.2.0.a.2.ip6.arpa": }
     timezone::timezone { "Europe/Paris": }
 # Other services running on this server :
 # - meetbot

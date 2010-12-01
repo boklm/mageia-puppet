@@ -42,6 +42,19 @@ class bind {
         }
     }
 
+    define zone_reverse {
+        file { "/var/lib/named/var/named/reverse/$name.zone":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 644,
+            content => template("bind/zones/$name.zone"),
+            require => Package[bind],
+            notify => Service[named]
+        }
+    }
+
+
     class bind_master inherits bind_base {
         file { '/var/lib/named/etc/named.conf':
             content => template("bind/named_base.conf", "bind/named_master.conf"),
