@@ -100,7 +100,8 @@ class apache {
         if $use_ssl {
             include apache::mod_ssl
             openssl::self_signed_cert{ "$name":
-                directory => "/etc/ssl/apache/"
+                directory => "/etc/ssl/apache/",
+                before => File["$name.conf"],
             }
         }
 
