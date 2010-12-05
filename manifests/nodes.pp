@@ -24,6 +24,7 @@ node valstar {
 
     include pam::committers_access
     include restrictshell::allow_svn
+    include restrictshell::allow_pkgsubmit
 
     subversion::snapshot { "/etc/puppet":
         source => "svn://svn.mageia.org/svn/adm/puppet/"
