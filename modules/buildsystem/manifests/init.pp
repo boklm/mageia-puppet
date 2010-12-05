@@ -37,6 +37,7 @@ class buildsystem {
 
         include scheduler
         include gatherer
+        include repsys
     }
 
     class buildnode inherits base {
@@ -69,7 +70,13 @@ class buildsystem {
 
         }
 
-
+        file { "repsys.conf":
+          path => "/etc/repsys.conf",
+          owner  => root,
+          group => root,
+          mode => 644,
+          content => template("buildsystem/repsys.conf")
+        }
     }
 
     define sshuser($homedir, $comment) {
