@@ -85,6 +85,8 @@ class buildsystem {
 
         file { "$sched_home_dir/repsys/tmp":
             ensure => "directory",
+            group => "mga-committers",
+            mode => 775,
             require => File["$sched_home_dir/repsys"],
         }
 
