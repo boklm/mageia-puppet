@@ -77,6 +77,21 @@ class buildsystem {
           mode => 644,
           content => template("buildsystem/repsys.conf")
         }
+
+        file { "$sched_home_dir/repsys":
+            ensure => "directory",
+            require => File[$sched_home_dir],
+        }
+
+        file { "$sched_home_dir/repsys/tmp":
+            ensure => "directory",
+            require => File["$sched_home_dir/repsys"],
+        }
+
+        file { "$sched_home_dir/repsys/srpms":
+            ensure => "directory",
+            require => File["$sched_home_dir/repsys"],
+        }
     }
 
     define sshuser($homedir, $comment) {
