@@ -1,3 +1,4 @@
 Cmnd_Alias	YOURI = /usr/local/bin/mdv-youri-submit.wrapper
 Defaults!YOURI	always_set_home
+Defaults!YOURI	runas_default = <%= sched_login %>
 %mga-packagers	ALL = (<%= sched_login %>) NOPASSWD: YOURI
