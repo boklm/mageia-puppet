@@ -104,6 +104,29 @@ class buildsystem {
         }
     }
 
+    class youri_submit {
+        file { "/usr/local/bin/mdv-youri-submit":
+          owner  => root,
+          group => root,
+          mode => 755,
+          content => template("buildsystem/mdv-youri-submit")
+        }
+
+        file { "/usr/local/bin/mdv-youri-submit.wrapper":
+          owner  => root,
+          group => root,
+          mode => 755,
+          content => template("buildsystem/mdv-youri-submit.wrapper")
+        }
+
+        file { "/etc/sudoers.d/mdv-youri-submit":
+            owner => root,
+            group => root,
+            mode => 440,
+            content => template("buildsystem/sudoers.youri")
+        }
+    }
+
     define sshuser($homedir, $comment) {
         group {"$title": 
             ensure => present,
