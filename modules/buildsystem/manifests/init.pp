@@ -38,6 +38,7 @@ class buildsystem {
         include scheduler
         include gatherer
         include repsys
+        include youri_submit
     }
 
     class buildnode inherits base {
