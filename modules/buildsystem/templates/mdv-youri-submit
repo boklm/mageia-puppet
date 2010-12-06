@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo mdv-youri-submit.wrapper "$@"
+exec sudo /usr/local/bin/mdv-youri-submit.wrapper "$@"
