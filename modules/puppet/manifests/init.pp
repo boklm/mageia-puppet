@@ -26,7 +26,7 @@ class puppet {
         }
 
         # for stored config
-        package { "ruby-sqlite3":
+        package { ["ruby-sqlite3","rails"]:
             ensure => installed
         }    
 
