@@ -70,6 +70,9 @@ class buildsystem {
 
         }
 
+        package { 'rpm-build':
+        }
+
         file { "repsys.conf":
           path => "/etc/repsys.conf",
           owner  => root,
