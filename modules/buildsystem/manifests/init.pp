@@ -91,7 +91,7 @@ class buildsystem {
             ensure => "directory",
             owner  => $sched_login,
             group => "mga-committers",
-            mode => 775,
+            mode => 1775,
             require => File["$sched_home_dir/repsys"],
         }
 
@@ -99,7 +99,7 @@ class buildsystem {
             ensure => "directory",
             owner  => $sched_login,
             group => "mga-committers",
-            mode => 775,
+            mode => 1775,
             require => File["$sched_home_dir/repsys"],
         }
     }
