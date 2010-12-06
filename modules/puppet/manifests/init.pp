@@ -24,7 +24,12 @@ class puppet {
         package { puppet-server:
             ensure => installed
         }
-    
+
+        # for stored config
+        package { "ruby-sqlite3":
+            ensure => installed
+        }    
+
         service { puppetmaster:
             ensure => running,
             path => "/etc/init.d/puppetmaster",
