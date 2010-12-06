@@ -83,11 +83,13 @@ class buildsystem {
 
         file { "$sched_home_dir/repsys":
             ensure => "directory",
+            owner  => $sched_login,
             require => File[$sched_home_dir],
         }
 
         file { "$sched_home_dir/repsys/tmp":
             ensure => "directory",
+            owner  => $sched_login,
             group => "mga-committers",
             mode => 775,
             require => File["$sched_home_dir/repsys"],
@@ -95,6 +97,7 @@ class buildsystem {
 
         file { "$sched_home_dir/repsys/srpms":
             ensure => "directory",
+            owner  => $sched_login,
             require => File["$sched_home_dir/repsys"],
         }
     }
