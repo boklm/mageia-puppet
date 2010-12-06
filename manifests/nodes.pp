@@ -4,9 +4,7 @@ node valstar {
 #
 # TODO:
 # - GIT server
-# - setup urli build scheduler
 # - setup youri
-# - setup restricted shell access to allow "mdvsys submit" to work
 # - setup maintainers database (with web interface)
 # - mirroring (Nanar)
 #
