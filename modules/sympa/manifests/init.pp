@@ -1,7 +1,10 @@
 class sympa {
     
     # perl-CGI-Fast is needed for fast cgi
-    $package_list = ['sympa', 'sympa-www', 'perl-CGI-Fast']
+    # perl-Socket6 is required by perl-IO-Socket-SSL
+    #  (optional requirement)
+    $package_list = ['sympa', 'sympa-www', 'perl-CGI-Fast',
+                     'perl-Socket6']
 
     package { $package_list:
         ensure => installed;
