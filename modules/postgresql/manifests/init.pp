@@ -1,10 +1,20 @@
 class postgresql {
     
     $pgsql_data = "/var/lib/pgsql/data/"
+    $pg_version = '9.0'
 
-    package { 'postgresql9.0-server':
+    # missing requires is corrected in cooker, 
+    # should be removed
+    # once the fix is in a stable release 
+    package { "postgresql$pg_version-plpgsql":
+        alias => "postgresql-plpgsql",
+        ensure => installed,
+    }
+
+    package { "postgresql$pg_version-server":
         alias => "postgresql-server",
-        ensure => installed
+        ensure => installed,
+        require => Package['postgresql-plpgsql'],
     }
 
     service { postgresql:
