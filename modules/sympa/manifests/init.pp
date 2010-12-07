@@ -1,6 +1,7 @@
 class sympa {
-
-    $package_list = ['sympa', 'sympa-www']
+    
+    # perl-CGI-Fast is needed for fast cgi
+    $package_list = ['sympa', 'sympa-www', 'perl-CGI-Fast']
 
     package { $package_list:
         ensure => installed;
