@@ -29,7 +29,16 @@ class postgresql {
                            File["pg_ident.conf"],
                            File["pg_hba.conf"] ]
         }
-    
+   
+        openssl::self_signed_splitted_cert { "pgsql.$domain":
+            filename => "server",
+            directory => $pgsql_data,
+            owner => "postgres",
+            group => "postgres",
+            require => Package['postgresql-server']
+        }
+
+
         file { '/etc/pam.d/postgresql':
             ensure => present,
             owner  => root,
