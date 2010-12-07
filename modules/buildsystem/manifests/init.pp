@@ -106,6 +106,8 @@ class buildsystem {
     }
 
     class youri_submit {
+        include sudo
+
         file { "/usr/local/bin/mdv-youri-submit":
           owner  => root,
           group => root,
