@@ -67,4 +67,13 @@ class postgresql {
         content => template("postgresql/pg_ident.conf"),
         require => Package["postgresql-server"],
     }
+
+    define user($password) {
+        $sql = "CREATE ROLE $name ENCRYPTED PASSWORD '$password' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;"
+
+        exec { "psql -U postgres -c \"$sql\" ":
+            user => root,
+            unless => "psql -A -t -U postgres -c '\du $name' | grep '$name'",
+        }
+    }
 }
