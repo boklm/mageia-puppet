@@ -84,7 +84,7 @@ class postgresql {
 
     # TODO convert it to a regular type ( so we can later change user and so on )
     define database($description="", $user="postgres") {
-        exec { "createdb -U postgres $name '$description'":
+        exec { "createdb -O $user -U postgres $name '$description'":
             user => root,
             unless => "psql -l -U postgres | grep '^$name|'",
         }
