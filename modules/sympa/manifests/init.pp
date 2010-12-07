@@ -9,6 +9,10 @@ class sympa {
     $password = extlookup("sympa_password",'x')
     $ldappass = extlookup("sympa_ldap",'x')
 
+    @@postgresql::user { 'sympa':
+        password => $password,
+    }
+
     file { '/etc/sympa/sympa.conf':
         ensure => present,
 	# should be cleaner to have it root owned, but puppet do not support acl
@@ -33,8 +37,16 @@ class sympa {
 	webapp_file => "sympa/webapp_sympa.conf",
     }
 
-   apache::vhost_other_app { "ml.$domain":
+    apache::vhost_other_app { "ml.$domain":
         vhost_file => "sympa/vhost_ml.conf",
-   }
+    }
+
+    @@postgresql::database { 'sympa':
+        description => "Sympa database",
+        user => "sympa",
+        require => Postgresql::User["sympa"]
+    }
+
+
 }
 
