@@ -11,7 +11,7 @@ class sympa {
     }
 
     $password = extlookup("sympa_password",'x')
-    $ldappass = extlookup("sympa_ldap",'x')
+    $ldap_passwd = extlookup("sympa_ldap",'x')
 
     @@postgresql::user { 'sympa':
         password => $password,
