@@ -67,6 +67,9 @@ class postgresql {
             content => template("postgresql/pg_ident.conf"),
             require => Package["postgresql-server"],
         }
+
+        Postgresql::User <<| |>>
+        Postgresql::Database <<| |>>
     }
 
 
