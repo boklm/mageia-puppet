@@ -86,7 +86,7 @@ class postgresql {
     define database($description="", $user="postgres") {
         exec { "createdb -O $user -U postgres $name '$description'":
             user => root,
-            unless => "psql -l -U postgres | grep '^$name|'",
+            unless => "psql -A -t -U postgres -l | grep '^$name|'",
         }
     }
 
