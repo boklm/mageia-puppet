@@ -68,6 +68,14 @@ class postgresql {
         require => Package["postgresql-server"],
     }
 
+    # TODO convert it to a regular type ( so we can later change user and so on )
+    define database($description="", $user="postgres") {
+        exec { "createdb -U postgres $name '$description'":
+            user => root,
+            unless => "psql -l -U postgres | grep '^$name|'",
+        }
+    }
+
     define user($password) {
         $sql = "CREATE ROLE $name ENCRYPTED PASSWORD '$password' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;"
 
