@@ -44,7 +44,6 @@ node alamut {
 # - LDAP slave
 # 
     include default_mageia_server
-    include bind::bind_master
     include postgresql::server
     include dns_server 
     timezone::timezone { "Europe/Paris": }
