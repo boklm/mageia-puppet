@@ -5,6 +5,7 @@ class buildsystem {
 	$build_home_dir = "/home/$build_login"
 	$sched_login = "schedbot"
 	$sched_home_dir = "/home/$sched_login"
+	$repository_root = "/distrib/bootstrap"
 
 	include ssh::auth
 	ssh::auth::key { $build_login: } # declare a key for build bot: RSA, 2048 bits
