@@ -131,7 +131,6 @@ class buildsystem {
 
         file { "/etc/youri":
             ensure => "directory",
-            require => File["/etc/youri"],
         }
 
         file { "/etc/youri/submit-todo.conf":
