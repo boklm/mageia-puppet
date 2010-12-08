@@ -128,6 +128,18 @@ class buildsystem {
             mode => 440,
             content => template("buildsystem/sudoers.youri")
         }
+
+        file { "/etc/youri":
+            ensure => "directory",
+            require => File["/etc/youri"],
+        }
+
+        file { "/etc/youri/submit-todo.conf":
+            ensure => present,
+            mode => 644,
+            require => File["/etc/youri"],
+            content => template("buildsystem/submit-todo.conf")
+        }
     }
 
     define sshuser($homedir, $comment) {
