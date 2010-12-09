@@ -12,6 +12,10 @@ class epoll {
         require => Package['Epoll']
     }
 
+    openssl::self_signed_cert{ "$vhost":
+        directory => "/etc/ssl/apache/"
+    }
+
     apache::vhost_redirect_ssl { $vhost: }
      
     $password = extlookup("epoll_password",'x')
