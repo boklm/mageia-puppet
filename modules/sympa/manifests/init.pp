@@ -62,6 +62,13 @@ class sympa {
         subversion::snapshot { "/etc/sympa/web_tt2":
             source => "svn://svn.mageia.org/svn/web/templates/sympa/trunk"
         }
+
+        file { "/etc/sympa/lists_xml/":
+            ensure => directory,
+            owner => root,
+            group => root,
+            mode => 755,
+        }
     }
 }
 
