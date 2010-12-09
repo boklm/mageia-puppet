@@ -56,6 +56,12 @@ node alamut {
     include sympa::server
     include postfix::primary_smtp
    
+
+    sympa::list {"test_sympa":
+        subject => "Just a test, will be erased later",
+        profile => "discussion_list",
+        language => 'en',
+    }
 }
 
 # buildnode
