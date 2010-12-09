@@ -43,7 +43,7 @@ node alamut {
 # - pastebin
 # - LDAP slave
 # 
-    include default_mageia_server
+    include default_mageia_server_no_smtp
     include postgresql::server
     include dns_server 
     timezone::timezone { "Europe/Paris": }
@@ -53,6 +53,9 @@ node alamut {
     include epoll
     include transifex
     include bugzilla
+    include sympa::server
+    include postfix::primary_smtp
+   
 }
 
 # buildnode
@@ -96,6 +99,10 @@ node krampouezh {
 # - LDAP slave (for external traffic maybe)
 #
     include default_mageia_server
+    # TODO uncomment when ready to be tested
+    #include default_mageia_server_no_smtp
+    #include postfix::secondary_smtp
+
     include dns_server 
     timezone::timezone { "Europe/Paris": }
 # Other services running on this server :
