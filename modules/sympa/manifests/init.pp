@@ -80,6 +80,15 @@ class sympa {
             group => root,
             mode => 755,
         }
+
+        # directory that will hold the list data
+        # i am not sure of the name ( misc, 09/12/10 )
+        file { "/var/lib/sympa/expl/":
+            ensure => directory,
+            owner => sympa,
+            group => root,
+            mode => 755,
+        }
     }
 
     define list($subject, $profile, $language = 'en') {
