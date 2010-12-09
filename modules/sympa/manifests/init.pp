@@ -44,7 +44,8 @@ class sympa {
             owner => root,
             group => root,
             mode => 644,
-            content => template("sympa/auth.conf")
+            content => template("sympa/auth.conf"),
+            notify => Service['httpd']
         }
     
     
