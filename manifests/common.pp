@@ -84,16 +84,23 @@ class urpmi_update {
     }
 }
 
-class default_mageia_server {
+class default_mageia_server_no_smtp {
     include timezone
 
     include openssh::server
     include default_ssh_root_key
     include base_packages
     include ntp
-    include postfix::simple_relay
     include urpmi_update
     include puppet::client
+
+
+}
+
+class default_mageia_server inherits default_mageia_server_no_smtp {
+
+    include postfix::simple_relay
+#    include ssmtp
 }
 
 class dns_server {
