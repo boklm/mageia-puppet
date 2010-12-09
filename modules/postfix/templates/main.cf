@@ -39,9 +39,6 @@ relay_domains = <%= domain %>, ml.<%= domain %>
 mydestination = <%= fqdn %>
 <%- if all_tags.include?('postfix::primary_smtp') -%>
                 <%= domain %>,
-<%-   if classes.include?('sympa::server') -%>
-                ml.<%= domain %>
-<%-   end -%>
 
 alias_maps = hash:/etc/postfix/aliases
 	     # uncomment if we want to enable ldap based alias 
