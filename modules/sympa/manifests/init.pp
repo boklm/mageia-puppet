@@ -10,6 +10,14 @@ class sympa {
         ensure => installed;
     }
 
+    # sympa script start 5 differents script, I am not
+    # sure that puppet will correctly handle this
+    service { "sympa":
+        ensure => running,
+        hasstatus => true,
+        subscribe => [ Package["sympa"]]
+    }
+
     $password = extlookup("sympa_password",'x')
     $ldap_passwd = extlookup("sympa_ldap",'x')
 
