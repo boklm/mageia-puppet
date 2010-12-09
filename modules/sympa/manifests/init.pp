@@ -70,5 +70,21 @@ class sympa {
             mode => 755,
         }
     }
+
+    define list($subject, $profile, $language = 'en') {
+
+        $xml_file = "/etc/sympa/lists_xml/$name.xml"
+
+        file { "$xml_file":
+            owner => root,
+            group => root,
+            content => template('sympa/list.xml')    
+        }
+
+        exec { "sympa.pl --create_list --robot=ml.$domain --input_file=$xml_file":
+            refreshonly => true,
+            subscribe => File["$xml_file"]
+        }
+    }
 }
 

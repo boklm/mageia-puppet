@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<list>
+        <listname><%= name %></listname>
+        <type><%= profile%></type>
+        <subject><%= subject %></subject>
+        <description/>
+        <status>open</status>
+        <language><%= language %></language>
+        <!-- <owner_include multiple="1">
+                <source>my_file</source>
+        </owner_include>
+        -->
+        <!-- TODO adjust later, add moderators pulled by ldap -->
+        <owner multiple="1"><email>misc@zarb.org</email> </owner>
+</list>
