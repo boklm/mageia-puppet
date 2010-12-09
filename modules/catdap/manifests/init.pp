@@ -39,4 +39,8 @@ class catdap {
     }
 
     apache::vhost_redirect_ssl { $catdap_vhost: }
+
+    openssl::self_signed_cert{ "$catdap_vhost":
+        directory => "/etc/ssl/apache/"
+    }
 }
