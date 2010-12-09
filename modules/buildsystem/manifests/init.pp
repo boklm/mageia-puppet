@@ -21,6 +21,7 @@ class buildsystem {
         }
 
         ssh::auth::client { $sched_login: }
+        ssh::auth::server { $sched_login: }
         ssh::auth::server { $build_login: }
 
         $package_list = ['task-bs-cluster-main', 'iurt']
