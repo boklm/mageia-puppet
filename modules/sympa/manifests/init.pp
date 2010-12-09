@@ -1,5 +1,9 @@
 class sympa {
-    class server {
+    class variable {
+        $vhost = "ml.$domain"
+    }
+
+    class server inherits variable {
         # perl-CGI-Fast is needed for fast cgi
         # perl-Socket6 is required by perl-IO-Socket-SSL
         #  (optional requirement)
@@ -49,13 +53,13 @@ class sympa {
              webapp_file => "sympa/webapp_sympa.conf",
         }
    
-        apache::vhost_redirect_ssl { "ml.$domain": }
+        apache::vhost_redirect_ssl { "$vhost": }
  
-        apache::vhost_other_app { "ml.$domain":
+        apache::vhost_other_app { "$vhost":
             vhost_file => "sympa/vhost_ml.conf",
         }
 
-        openssl::self_signed_cert{ "ml.$domain":
+        openssl::self_signed_cert{ "$vhost":
             directory => "/etc/ssl/apache/"
         }
     
@@ -80,6 +84,8 @@ class sympa {
 
     define list($subject, $profile, $language = 'en') {
 
+        include sympa::variable
+
         $xml_file = "/etc/sympa/lists_xml/$name.xml"
 
         file { "$xml_file":
@@ -88,7 +94,7 @@ class sympa {
             content => template('sympa/list.xml')    
         }
 
-        exec { "sympa.pl --create_list --robot=ml.$domain --input_file=$xml_file":
+        exec { "sympa.pl --create_list --robot=$sympa::variable::vhost --input_file=$xml_file":
             refreshonly => true,
             subscribe => File["$xml_file"]
         }
