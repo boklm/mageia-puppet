@@ -39,7 +39,7 @@ relay_domains = <%= domain %>, ml.<%= domain %>
 mydestination = <%= fqdn %>
 <%- if all_tags.include?('postfix::primary_smtp') -%>
                 <%= domain %>,
-<%-   if classes.include?('sympa') -%>
+<%-   if classes.include?('sympa::server') -%>
                 ml.<%= domain %>
 <%-   end -%>
 
@@ -55,7 +55,7 @@ transport_maps = regexp:/etc/postfix/transport_regexp
 content_filter = smtp-filter:[127.0.0.1]:10025
 <%- end -%>
 
-<%- if classes.include?('sympa') -%>
+<%- if classes.include?('sympa::server') -%>
 sympa_destination_recipient_limit = 1
 sympabounce_destination_recipient_limit = 1
 <%- end -%>
