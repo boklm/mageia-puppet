@@ -59,6 +59,8 @@ class sympa {
         require => Postgresql::User["sympa"]
     }
 
-
+    subversion::snapshot { "/etc/sympa/web_tt2":
+        source => "svn://svn.mageia.org/svn/web/templates/sympa/trunk"
+    }
 }
 
