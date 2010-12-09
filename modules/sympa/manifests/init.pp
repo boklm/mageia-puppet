@@ -46,13 +46,20 @@ class sympa {
     
         include apache::mod_fcgid
         apache::webapp_other{"sympa":
-    	webapp_file => "sympa/webapp_sympa.conf",
+             webapp_file => "sympa/webapp_sympa.conf",
         }
-    
+   
+        apache::vhost_redirect_ssl { "ml.$domain": }
+ 
         apache::vhost_other_app { "ml.$domain":
             vhost_file => "sympa/vhost_ml.conf",
         }
+
+        openssl::self_signed_cert{ "ml.$domain":
+            directory => "/etc/ssl/apache/"
+        }
     
+
         @@postgresql::database { 'sympa':
             description => "Sympa database",
             user => "sympa",
