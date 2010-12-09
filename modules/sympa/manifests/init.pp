@@ -19,7 +19,7 @@ class sympa {
         service { "sympa":
             ensure => running,
             hasstatus => true,
-            subscribe => [ Package["sympa"]]
+            subscribe => [ Package["sympa"], File['/etc/sympa/sympa.conf']]
         }
     
         $password = extlookup("sympa_password",'x')
