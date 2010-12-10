@@ -1,0 +1,18 @@
+include_ldap_2level_query
+        host     ldap.<%= domain %>
+        port     389
+        user     cn=alamut-sympa,ou=System Accounts,<%= dc_suffix %>
+        passwd   <%= ldap_passwd %>
+
+        suffix1  ou=Groups,<%= dc_suffix %>
+        scope1   one
+        filter1  (&(objectClass=groupOfUniqueNames)(cn=<%= name %>))
+        attrs1   uniquemember
+        select1  all
+
+        suffix2  [attrs1]
+        scope2   base
+        filter2  (objectClass=inetOrgPerson)
+        attrs2   mail
+        select2  first
+
