@@ -75,12 +75,27 @@ class sympa {
             source => "svn://svn.mageia.org/svn/web/templates/sympa/trunk"
         }
 
-        file { "/etc/sympa/lists_xml/":
+        file { ["/etc/sympa/lists_xml/","/etc/sympa/data_sources/"]:
             ensure => directory,
             owner => root,
             group => root,
             mode => 755,
         }
+
+        define ldap_group_datasource {
+            file { "/etc/sympa/data_sources/ldap-$name.incl":
+                ensure => present,
+                owner => root,
+                group => root,
+                mode => 755,
+                content => template('sympa/ldap_group.incl') 
+            }
+        }
+        # add each group that could be used in a sympa ml either as 
+        # - owner
+        # - editor ( moderation )
+        ldap_group_datasource { "mga-sysadm": }
+        ldap_group_datasource { "mga-ml_moderators": }
 
         # directory that will hold the list data
         # i am not sure of the name ( misc, 09/12/10 )
