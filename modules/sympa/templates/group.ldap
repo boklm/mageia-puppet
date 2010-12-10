@@ -1,0 +1,4 @@
+host        ldap.<%= domain %>:389
+suffix      ou=People,<%= dc_suffix %>
+filter      (&(mail = [sender])(memberOf=cn=<%= name %>,ou=Group,<%= dc_suffix %>))
+scope       sub

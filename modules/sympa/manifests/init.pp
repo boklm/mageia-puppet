@@ -75,11 +75,23 @@ class sympa {
             source => "svn://svn.mageia.org/svn/web/templates/sympa/trunk"
         }
 
-        file { ["/etc/sympa/lists_xml/","/etc/sympa/data_sources/"]:
+        file { ["/etc/sympa/lists_xml/",
+                "/etc/sympa/data_sources/",
+                "/etc/sympa/search_filters/"]:
             ensure => directory,
             owner => root,
             group => root,
             mode => 755,
+        }
+
+        define ldap_search_filter {
+            file { "/etc/sympa/search_filters/ldap-$name.ldap":
+                ensure => present,
+                owner => root,
+                group => root,
+                mode => 755,
+                content => template('sympa/group.ldap') 
+            }
         }
 
         define ldap_group_datasource {
@@ -96,6 +108,8 @@ class sympa {
         # - editor ( moderation )
         ldap_group_datasource { "mga-sysadm": }
         ldap_group_datasource { "mga-ml_moderators": }
+
+        ldap_search_filter { "mga-board": }
 
         # directory that will hold the list data
         # i am not sure of the name ( misc, 09/12/10 )
