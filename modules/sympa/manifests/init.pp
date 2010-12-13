@@ -104,6 +104,16 @@ class sympa {
                 content => template('sympa/ldap_group.incl') 
             }
         }
+
+        define scenario_sender_ldap_group {
+            # TODO
+
+        }
+
+        define scenario_sender_email {
+            # TODO
+        }
+
         # add each group that could be used in a sympa ml either as 
         # - owner
         # - editor ( moderation )
@@ -152,6 +162,24 @@ class sympa {
             group => sympa,
             mode => 750,
             content => template("sympa/config"), 
+        }
+
+        if $sender_ldap_group {
+            if ! defined(Sympa::Server::Scenario_sender_ldap_group[$sender_ldap_group]) {
+                sympa::server::scenario_sender_ldap_group { $sender_ldap_group: }
+            }
+        }
+
+        if $sender_email {
+            if ! defined(Sympa::Server::Scenario_sender_email[$sender_email]) {
+                sympa::server::scenario_sender_email { $sender_email: }
+            }
+        }
+        
+        if $subscriber_ldap_group {
+            if ! defined(Sympa::Server::Ldap_search_filter[$subscriber_ldap_group]) {
+                sympa::server::ldap_search_filter { $subscriber_ldap_group: }
+            }
         }
     }
 }
