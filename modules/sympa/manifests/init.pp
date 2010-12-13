@@ -115,12 +115,23 @@ class sympa {
         }
 
         define scenario_sender_ldap_group {
-            # TODO
-
+            file { "/etc/sympa/scenari/send.sender_$name":
+                ensure => present,
+                owner => root,
+                group => root,
+                mode => 755,
+                content => template('sympa/scenari/sender.ldap_group') 
+            }
         }
 
         define scenario_sender_email {
-            # TODO
+            file { "/etc/sympa/scenari/send.sender_$name":
+                ensure => present,
+                owner => root,
+                group => root,
+                mode => 755,
+                content => template('sympa/scenari/sender.email') 
+            }
         }
 
         # add each group that could be used in a sympa ml either as 
