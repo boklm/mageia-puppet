@@ -127,4 +127,12 @@ node champagne {
     include blog
 }
 
+node friteuse {
+# Location: VM hosted by nfrance
+# 
+# TODO:
+# - setup forum
 
+    include default_mageia_server
+    timezone::timezone { "Europe/Paris": }
+}
