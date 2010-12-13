@@ -6,10 +6,10 @@
         <description/>
         <status>open</status>
         <language><%= language %></language>
-        <!-- <owner_include multiple="1">
-                <source>my_file</source>
+        <owner_include>
+            <source>ldap-mga-sysadm</source>
         </owner_include>
-        -->
-        <!-- TODO adjust later, add moderators pulled by ldap -->
-        <owner multiple="1"><email>misc@zarb.org</email> </owner>
+        <editor_include>
+            <source>ldap-mga-ml_moderators</source>
+        </editor_include>
 </list>
