@@ -76,6 +76,7 @@ class sympa {
         }
 
         file { ["/etc/sympa/lists_xml/",
+                "/etc/sympa/scenari/",
                 "/etc/sympa/data_sources/",
                 "/etc/sympa/search_filters/"]:
             ensure => directory,
