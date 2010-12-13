@@ -182,5 +182,106 @@ class sympa {
             }
         }
     }
+
+#
+#   various types of list that can be directly used
+#
+#
+    define public_list($subject, $language = 'en') {
+        list { $name:
+            subject => $subject,
+           # profile => "public",
+            language => $language,
+        }
+    }
+
+    # list where announce are sent by member of ldap_group
+    # reply_to is set to $reply_to
+    define announce_list_group($subject, $reply_to, $sender_ldap_group, $language = 'en') {
+        # profile + scenario
+        list{ $name:
+            subject => $subject,
+            profile => "",
+            language => $language,
+            reply_to => $reply_to,
+            sender_ldap_group => $sender_ldap_group,
+        }
+ 
+    }
+
+
+    # list where announce are sent by $email only 
+    # reply_to is set to $reply_to    
+    define announce_list_email($subject, $reply_to, $sender_email, $language = 'en') {
+       list{ $name:
+            subject => $subject,
+            profile => "",
+            language => $language,
+            reply_to => $reply_to,
+            sender_email => $sender_email,
+        }
+    }
+
+    # list where people cannot subscribe, where people from $ldap_group receive
+    # mail, with public archive
+    define restricted_list($subject, $subscriber_ldap_group, $language = 'en') {
+       list{ $name:
+            subject => $subject,
+            profile => "",
+            language => $language,
+            subscriber_ldap_group => $subscriber_ldap_group,
+            sender_ldap_group => $subscriber_ldap_group,
+        }
+    }
+
+    # same as restricted list, but anybody can post
+    define restricted_list_open($subject, $subscriber_ldap_group, $language = 'en') {
+       list{ $name:
+            subject => $subject,
+            profile => "",
+            language => $language,
+            subscriber_ldap_group => $subscriber_ldap_group,
+            sender_ldap_group => $subscriber_ldap_group,
+        }        
+    }
+
+    # list with private archive, restricted to member of $ldap_group
+    define private_list($subject, $subscriber_ldap_group, $language ='en') {
+       list{ $name:
+            subject => $subject,
+            profile => "",
+            language => $language,
+            subscriber_ldap_group => $subscriber_ldap_group,
+            sender_ldap_group => $subscriber_ldap_group,
+            public_archive => false,
+        }
+    }
+    
+    # list with private archive, restricted to member of $ldap_group
+    # everybody can post 
+    # used for contact alias
+    define private_list_open($subject, $subscriber_ldap_group, $language ='en') {
+       list{ $name:
+            subject => $subject,
+            profile => "",
+            language => $language,
+            subscriber_ldap_group => $subscriber_ldap_group,
+            public_archive => false,
+        }
+    }
+
+    # same as private_list, but post are restricted to $email
+    # ( scripting )
+    define private_list_email($subject, $subscriber_ldap_group, $sender_email, $language ='en') {
+        list{ $name:
+            subject => $subject,
+            profile => "",
+            language => $language,
+            subscriber_ldap_group => $subscriber_ldap_group,
+            sender_email => $sender_email,
+            public_archive => false,
+        }
+    }
+
 }
 
