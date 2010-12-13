@@ -85,6 +85,15 @@ class sympa {
             mode => 755,
         }
 
+        file { ["/etc/sympa/scenari/subscribe.open_web_only_notify",
+                "/etc/sympa/scenari/unsubscribe.open_web_only_notify"]:
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            source => "puppet:///modules/sympa/scenari/open_web_only_notify",
+        }
+
         define ldap_search_filter {
             file { "/etc/sympa/search_filters/ldap-$name.ldap":
                 ensure => present,
@@ -206,7 +215,6 @@ class sympa {
             reply_to => $reply_to,
             sender_ldap_group => $sender_ldap_group,
         }
- 
     }
 
 
@@ -282,6 +290,5 @@ class sympa {
             public_archive => false,
         }
     }
-
 }
 
