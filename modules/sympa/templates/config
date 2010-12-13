@@ -1,0 +1,87 @@
+subject <%= subject %>
+
+status open
+
+visibility noconceal
+
+lang <%= language %>
+
+<% if subscriber_ldap_group %>
+# TODO check scenari
+subscribe    closed
+unsubscribe  closed
+<% else %>
+subscribe    open_web_only_notify
+unsubscribe  open_web_only_notify
+<% end %>
+
+# TODO reception nomail
+# profile normal
+owner_include 
+source mga-sysadm
+reception nomail
+profile normal
+
+editor_include 
+source mga-ml_moderators
+reception nomail
+profile normal
+
+
+<% if reply_to %>
+# TODO 
+reply_to_header
+value other_email
+other_email <%= reply_to %>
+apply forced
+<% end %>
+
+
+
+<% if sender_email  %>
+#TODO write scenari
+send restricted_<%= sender_email %>
+
+<% elsif sender_ldap_group %>
+#TODO write scenari
+send restricted_<%= sender_ldap_group %>
+
+<% else %>
+#TODO write scenari
+send subscriber_moderated
+
+<% end %>
+
+
+#TODO topics
+# topics 
+
+<% if subscriber_ldap_group %>
+include_ldap_query
+    host ldap.<% domain %>
+    suffix ou=People,<%= dc_suffix %>
+    timeout 10
+    filter (memberOf=<%= subscriber_ldap_group %>))
+    attrs mail
+    select first
+    scope one
+<% end %> 
+
+web_archive
+
+<% if public_archive %> 
+#TODO check
+access public
+<% else %>
+#TODO check
+access private
+<% end %>
+archive
+access owner
+period month
+
+digest 1,4 13:26
+
+review owner
+
+

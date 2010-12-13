@@ -121,7 +121,14 @@ class sympa {
         }
     }
 
-    define list($subject, $profile, $language = 'en') {
+    define list($subject, 
+                $profile = false, 
+                $language = 'en',
+                $reply_to = false,
+                $sender_email = false,
+                $sender_ldap_group = false,
+                $subscriber_ldap_group = false,
+                $public_archive = true ) {
 
         include sympa::variable
 
@@ -135,7 +142,16 @@ class sympa {
 
         exec { "sympa.pl --create_list --robot=$sympa::variable::vhost --input_file=$xml_file":
             refreshonly => true,
-            subscribe => File["$xml_file"]
+            subscribe => File["$xml_file"],
+            before => File["/var/lib/sympa/expl/$name/config"],
+        }
+
+        file { "/var/lib/sympa/expl/$name/config":
+            ensure => present,
+            owner => sympa,
+            group => sympa,
+            mode => 750,
+            content => template("sympa/config"), 
         }
     }
 }
