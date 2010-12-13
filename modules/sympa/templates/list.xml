@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <list>
         <listname><%= name %></listname>
-        <type><%= profile%></type>
+        <type>discussion_list</type>
         <subject><%= subject %></subject>
         <description/>
         <status>open</status>
