@@ -91,7 +91,7 @@ class sympa {
                 owner => root,
                 group => root,
                 mode => 755,
-                content => template('sympa/group.ldap') 
+                content => template('sympa/search_filters/group.ldap') 
             }
         }
 
@@ -101,7 +101,7 @@ class sympa {
                 owner => root,
                 group => root,
                 mode => 755,
-                content => template('sympa/ldap_group.incl') 
+                content => template('sympa/data_sources/ldap_group.incl') 
             }
         }
 
