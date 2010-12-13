@@ -110,7 +110,6 @@ class sympa {
         ldap_group_datasource { "mga-sysadm": }
         ldap_group_datasource { "mga-ml_moderators": }
 
-        ldap_search_filter { "mga-board": }
 
         # directory that will hold the list data
         # i am not sure of the name ( misc, 09/12/10 )
