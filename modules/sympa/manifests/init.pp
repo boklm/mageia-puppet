@@ -115,7 +115,7 @@ class sympa {
         }
 
         define scenario_sender_ldap_group {
-            file { "/etc/sympa/scenari/send.sender_$name":
+            file { "/etc/sympa/scenari/send.restricted_$name":
                 ensure => present,
                 owner => root,
                 group => root,
@@ -125,7 +125,7 @@ class sympa {
         }
 
         define scenario_sender_email {
-            file { "/etc/sympa/scenari/send.sender_$name":
+            file { "/etc/sympa/scenari/send.restricted_$name":
                 ensure => present,
                 owner => root,
                 group => root,
