@@ -94,6 +94,14 @@ class sympa {
             source => "puppet:///modules/sympa/scenari/open_web_only_notify",
         }
 
+        file { ["/etc/sympa/scenari/send.subscriber_moderated"]:
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            source => "puppet:///modules/sympa/scenari/subscriber_moderated",
+        }
+
         define ldap_search_filter {
             file { "/etc/sympa/search_filters/$name.ldap":
                 ensure => present,
