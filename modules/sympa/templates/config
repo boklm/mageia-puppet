@@ -19,6 +19,11 @@ unsubscribe  open_web_only_notify
 
 # TODO reception nomail
 # profile normal
+
+owner 
+email postmaster@<%= domain %>
+reception nomail 
+
 owner_include 
 source mga-sysadmin
 reception nomail
