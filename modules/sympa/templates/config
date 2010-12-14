@@ -20,7 +20,7 @@ unsubscribe  open_web_only_notify
 # TODO reception nomail
 # profile normal
 owner_include 
-source mga-sysadm
+source mga-sysadmin
 reception nomail
 profile normal
 

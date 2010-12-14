@@ -137,7 +137,7 @@ class sympa {
         # add each group that could be used in a sympa ml either as 
         # - owner
         # - editor ( moderation )
-        ldap_group_datasource { "mga-sysadm": }
+        ldap_group_datasource { "mga-sysadmin": }
         ldap_group_datasource { "mga-ml_moderators": }
 
 
