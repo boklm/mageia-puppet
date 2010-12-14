@@ -2,6 +2,7 @@
 
 REPOS="$1"
 TXN="$2"
+export PATH="/bin/:/sbin/:/usr/bin/:/usr/sbin/:/usr/local/bin:/usr/local/sbin/"
 
 changed=`svnlook changed -t "$TXN" "$REPOS"`
 files=`echo $changed | awk '{print $2}'`
