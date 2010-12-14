@@ -27,7 +27,6 @@ profile normal
 editor_include 
 source mga-ml_moderators
 reception nomail
-profile normal
 
 
 <% if reply_to %>
