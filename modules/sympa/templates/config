@@ -9,9 +9,11 @@ lang <%= language %>
 <% if subscriber_ldap_group %>
 # TODO check scenari
 subscribe    closed
+
 unsubscribe  closed
 <% else %>
 subscribe    open_web_only_notify
+
 unsubscribe  open_web_only_notify
 <% end %>
 
