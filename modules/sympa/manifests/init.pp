@@ -95,7 +95,7 @@ class sympa {
         }
 
         define ldap_search_filter {
-            file { "/etc/sympa/search_filters/ldap-$name.ldap":
+            file { "/etc/sympa/search_filters/$name.ldap":
                 ensure => present,
                 owner => root,
                 group => root,
