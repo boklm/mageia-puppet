@@ -164,6 +164,12 @@ class sympa {
 
         $xml_file = "/etc/sympa/lists_xml/$name.xml"
 
+        if $sender_email {
+            $sender_email_file = regsubst($sender_email,'\@','-at-')
+        } else { 
+            $sender_email_file = '' 
+        }
+
         file { "$xml_file":
             owner => root,
             group => root,
@@ -191,8 +197,8 @@ class sympa {
         }
 
         if $sender_email {
-            if ! defined(Sympa::Server::Scenario_sender_email[$sender_email]) {
-                sympa::server::scenario_sender_email { $sender_email: }
+            if ! defined(Sympa::Server::Scenario_sender_email[$sender_email_file]) {
+                sympa::server::scenario_sender_email { $sender_email_file: }
             }
         }
         

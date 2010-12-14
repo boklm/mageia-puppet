@@ -42,7 +42,7 @@ apply forced
 
 <% if sender_email  %>
 #TODO write scenari
-send restricted_<%= sender_email %>
+send restricted_<%= sender_email_file %>
 
 <% elsif sender_ldap_group %>
 #TODO write scenari
