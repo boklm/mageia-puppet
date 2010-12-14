@@ -7,10 +7,17 @@ class puppet {
     
         service { puppet:
             ensure => running,
-            subscribe => [ Package[puppet], File["/etc/puppet/puppet.conf"]]
+            hasstatus => true,
+            subscribe => [ Package[puppet]]
         }
 
-        file { "/etc/puppet/puppet.conf":
+        exec { "service puppet reload":
+            refreshonly => true,
+            subscribe => [ File["puppet.conf"] ],
+        }
+
+        file { "puppet.conf":
+            path => "/etc/puppet/puppet.conf",
             ensure => present,
             owner => root,
             group => root,
@@ -33,7 +40,7 @@ class puppet {
         service { puppetmaster:
             ensure => running,
             path => "/etc/init.d/puppetmaster",
-            subscribe => [ Package[puppet-server], File["/etc/puppet/puppet.conf"]]
+            subscribe => [ Package[puppet-server], File["puppet.conf"]]
         }
 
         file { "extdata":
