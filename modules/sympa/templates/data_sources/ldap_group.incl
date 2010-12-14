@@ -1,6 +1,6 @@
 include_ldap_2level_query
         host     ldap.<%= domain %>
-        port     389
+        use_ssl  yes
         user     cn=alamut-sympa,ou=System Accounts,<%= dc_suffix %>
         passwd   <%= ldap_passwd %>
         suffix1  ou=Groups,<%= dc_suffix %>
