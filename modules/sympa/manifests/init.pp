@@ -105,7 +105,7 @@ class sympa {
         }
 
         define ldap_group_datasource {
-            file { "/etc/sympa/data_sources/ldap-$name.incl":
+            file { "/etc/sympa/data_sources/$name.incl":
                 ensure => present,
                 owner => root,
                 group => root,
