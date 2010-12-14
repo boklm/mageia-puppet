@@ -171,8 +171,8 @@ class sympa {
         }
 
         exec { "sympa.pl --create_list --robot=$sympa::variable::vhost --input_file=$xml_file":
-            refreshonly => true,
-            subscribe => File["$xml_file"],
+            require => File["$xml_file"],
+            create => "/var/lib/sympa/expl/$name",
             before => File["/var/lib/sympa/expl/$name/config"],
         }
 
