@@ -74,7 +74,7 @@ class transifex {
     notify => Service['apache']
   }
 
-  svn::snapshot { $templates_dir:
+  subversion::snapshot { $templates_dir:
     source => "svn://svn.mageia.org/svn/web/templates/transifex/trunk"
   }
 
