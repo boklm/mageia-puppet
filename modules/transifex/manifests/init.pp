@@ -37,6 +37,17 @@ class transifex {
     notify => Service['apache']
   }
 
+  file { "40-apps.conf":
+    path => "/etc/transifex/40-apps.conf",
+    ensure => present,
+    owner => root,
+    group => root,
+    mode => 644,
+    content => template("transifex/40-apps.conf"),
+    require => Package['transifex'],
+    notify => Service['apache']
+  }
+
   apache::vhost_django_app { "transifex.$domain":
     module => "transifex",
     module_path => ["/usr/share/transifex","/usr/share"] 
