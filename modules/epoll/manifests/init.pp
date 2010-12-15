@@ -14,10 +14,10 @@ class epoll {
 
     apache::vhost_redirect_ssl { $vhost: }
      
-    $password = extlookup("epoll_password",'x')
+    $pgsql_password = extlookup("epoll_pgsql",'x')
 
     @@postgresql::user { 'epoll':
-        password => $password,
+        password => $pgsql_password,
     }
 
  

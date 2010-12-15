@@ -1,8 +1,6 @@
 <%
 ldap_server = 'ldap.' + domain
 
-ldap_password = catdap_password
-
 ldap_account = 'cn=catdap-valstar,ou=System Accounts,' + dc_suffix
 %>
 

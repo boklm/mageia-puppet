@@ -2,7 +2,7 @@
 name: Vote
 # db: connection, see libpq documentation
 # dbname=BASENAME;host=SERVER;user=USER;password=PASS
-db: dbname=epoll;host=localhost;user=epoll;password=<%= password %>
+db: dbname=epoll;host=localhost;user=epoll;password=<%= pgsql_password %>
 # The smtp serveur to use, default is localhost
 # smtp:
 # This change the poll creation behavior, instead ask want confirmation by

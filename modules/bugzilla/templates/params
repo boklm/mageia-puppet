@@ -1,6 +1,6 @@
 %param = (
            'LDAPBaseDN' => 'ou=People,<%= dc_suffix %>',
-           'LDAPbinddn' => 'cn=bugzilla-alamut,ou=System Accounts,<%= dc_suffix %>:<%= passwordLdap %>',
+           'LDAPbinddn' => 'cn=bugzilla-alamut,ou=System Accounts,<%= dc_suffix %>:<%= ldap_password %>',
            'LDAPfilter' => '',
            'LDAPmailattribute' => 'mail',
            'LDAPserver' => 'ldap.<%= domain %>',

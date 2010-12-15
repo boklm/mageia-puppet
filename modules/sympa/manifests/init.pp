@@ -22,11 +22,11 @@ class sympa {
             subscribe => [ Package["sympa"], File['/etc/sympa/sympa.conf']]
         }
     
-        $password = extlookup("sympa_password",'x')
-        $ldap_passwd = extlookup("sympa_ldap",'x')
+        $pgsql_password = extlookup("sympa_pgsql",'x')
+        $ldap_password = extlookup("sympa_ldap",'x')
     
         @@postgresql::user { 'sympa':
-            password => $password,
+            password => $pgsql_password,
         }
     
         file { '/etc/sympa/sympa.conf':

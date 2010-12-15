@@ -6,8 +6,8 @@ class bugzilla {
         ensure => installed;
     }
 
-    $password = extlookup("bugzilla_password",'x')
-    $passwordLdap = extlookup("bugzilla_ldap",'x')
+    $pgsql_password = extlookup("bugzilla_pgsql",'x')
+    $ldap_password = extlookup("bugzilla_ldap",'x')
 
     file { '/etc/bugzilla/localconfig':
       ensure => present,

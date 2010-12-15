@@ -11,7 +11,7 @@ class mga-mirrors {
         require => Package['mga-mirrors']
     }
 
-    $password = extlookup("mga_mirror_password",'x')
+    $pgsql_password = extlookup("mga_mirror_pgsql",'x')
  
     file { "mga-mirrors.ini": 
         path => "/etc/mga-mirrors.ini",    

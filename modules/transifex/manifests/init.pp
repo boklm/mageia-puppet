@@ -4,11 +4,11 @@ class transifex {
     ensure => installed
   }
  
-  $password = extlookup("transifex_password",'x')
+  $pgsql_password = extlookup("transifex_pgsql",'x')
   $ldap_password = extlookup("transifex_ldap",'x')
 
   @@postgresql::user { 'transifex':
-        password => $password,
+        password => $pgsql_password,
   }
 
   @@postgresql::database { 'transifex':
