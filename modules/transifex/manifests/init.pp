@@ -37,7 +37,8 @@ class transifex {
     notify => Service['apache']
   }
 
-#  apache::vhost_django_app { "transifex.$domain":
-#    module => "transifex" 
-#  }  
+  apache::vhost_django_app { "transifex.$domain":
+    module => "transifex",
+    module_path => ["/usr/share/transifex","/usr/share"] 
+  }  
 }
