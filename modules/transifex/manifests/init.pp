@@ -63,6 +63,10 @@ class transifex {
 
   apache::vhost_django_app { "transifex.$domain":
     module => "transifex",
+    use_ssl => true,
     module_path => ["/usr/share/transifex","/usr/share"] 
-  }  
+  }
+
+  apache::vhost_redirect_ssl { "transifex.$domain": }
+  
 }
