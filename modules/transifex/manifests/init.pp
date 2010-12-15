@@ -1,9 +1,11 @@
 class transifex {
-  package { ['transifex','python-psycopg2']:
+  
+  package { ['transifex','python-psycopg2','python-django-auth-ldap']:
     ensure => installed
   }
  
   $password = extlookup("transifex_password",'x')
+  $ldap_password = extlookup("transifex_ldap",'x')
 
   @@postgresql::user { 'transifex':
         password => $password,
@@ -44,6 +46,17 @@ class transifex {
     group => root,
     mode => 644,
     content => template("transifex/40-apps.conf"),
+    require => Package['transifex'],
+    notify => Service['apache']
+  }
+
+  file { "45-ldap.conf":
+    path => "/etc/transifex/45-ldap.conf",
+    ensure => present,
+    owner => root,
+    group => root,
+    mode => 644,
+    content => template("transifex/45-ldap.conf"),
     require => Package['transifex'],
     notify => Service['apache']
   }
