@@ -9,6 +9,16 @@ class bugzilla {
     $pgsql_password = extlookup("bugzilla_pgsql",'x')
     $ldap_password = extlookup("bugzilla_ldap",'x')
 
+    @@postgresql::user { 'bugs':
+        password => $pgsql_password,
+    }
+
+    @@postgresql::database { 'bugs':
+        description => "Bugzilla database",
+        user => "bugs",
+        require => Postgresql::User['bugs']
+    }
+
     file { '/etc/bugzilla/localconfig':
       ensure => present,
       owner => root,
