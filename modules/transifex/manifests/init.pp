@@ -74,6 +74,16 @@ class transifex {
     notify => Service['apache']
   }
 
+  file { "custom_backend.py":
+    path => "/usr/local/lib/custom_backend.py",
+    ensure => present,
+    owner => root,
+    group => root,
+    mode => 644,
+    source => "puppet:///modules/transifex/custom_backend.py",
+    notify => Service['apache']
+  }
+
   subversion::snapshot { $templates_dir:
     source => "svn://svn.mageia.org/svn/web/templates/transifex/trunk"
   }
@@ -81,7 +91,7 @@ class transifex {
   apache::vhost_django_app { "transifex.$domain":
     module => "transifex",
     use_ssl => true,
-    module_path => ["/usr/share/transifex","/usr/share"] 
+    module_path => ["/usr/share/transifex","/usr/share","/usr/local/lib/"] 
   }
 
   apache::vhost_redirect_ssl { "transifex.$domain": }
