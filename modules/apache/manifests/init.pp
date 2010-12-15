@@ -116,8 +116,16 @@ class apache {
         }
     }
 
-    define vhost_django_app($module = false, $module_path = false) {
+    define vhost_django_app($module = false, $module_path = false, $use_ssl = false) {
         include apache::mod_wsgi
+
+        if $use_ssl {
+            include apache::mod_ssl
+            openssl::self_signed_cert{ "$name":
+                directory => "/etc/ssl/apache/",
+                before => File["$name.conf"],
+            }
+        }
 
         # module is a ruby reserved keyword, cannot be used in templates
         $django_module = $module
