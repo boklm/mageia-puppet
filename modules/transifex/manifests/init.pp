@@ -7,6 +7,8 @@ class transifex {
   $pgsql_password = extlookup("transifex_pgsql",'x')
   $ldap_password = extlookup("transifex_ldap",'x')
 
+  $templates_dir = "/var/lib/transifex/templates"
+
   @@postgresql::user { 'transifex':
         password => $pgsql_password,
   }
@@ -70,6 +72,10 @@ class transifex {
     content => template("transifex/50-apps.conf"),
     require => Package['transifex'],
     notify => Service['apache']
+  }
+
+  svn::snapshot { $templates_dir:
+    source => "svn://svn.mageia.org/svn/web/templates/transifex/trunk"
   }
 
   apache::vhost_django_app { "transifex.$domain":
