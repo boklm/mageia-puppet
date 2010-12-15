@@ -1,5 +1,5 @@
 class transifex {
-  package { 'transifex':
+  package { ['transifex','python-psycopg2']:
     ensure => installed
   }
  
