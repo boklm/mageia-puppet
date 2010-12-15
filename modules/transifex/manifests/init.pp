@@ -4,6 +4,17 @@ class transifex {
   }
  
   $password = extlookup("transifex_password",'x')
+
+  @@postgresql::user { 'transifex':
+        password => $password,
+  }
+
+  @@postgresql::database { 'transifex':
+        description => "Transifex database",
+        user => "transifex",
+        require => Postgresql::User['transifex']
+  }
+
   file { "20-engines.conf":
     path => "/etc/transifex/20-engines.conf",
     ensure => present,
