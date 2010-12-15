@@ -61,6 +61,17 @@ class transifex {
     notify => Service['apache']
   }
 
+  file { "50-apps.conf":
+    path => "/etc/transifex/50-apps.conf",
+    ensure => present,
+    owner => root,
+    group => root,
+    mode => 644,
+    content => template("transifex/50-apps.conf"),
+    require => Package['transifex'],
+    notify => Service['apache']
+  }
+
   apache::vhost_django_app { "transifex.$domain":
     module => "transifex",
     use_ssl => true,
