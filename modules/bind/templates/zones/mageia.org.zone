@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	3D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2010112201	; Serial
+        2010121501	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -81,6 +81,7 @@ mirrors     IN CNAME alamut
 epoll       IN CNAME alamut
 pgsql       IN CNAME alamut
 bugs        IN CNAME alamut
+transifex   IN CNAME alamut
 lists       IN CNAME alamut
 ; temporary
 ;forum       IN A 140.211.167.148
