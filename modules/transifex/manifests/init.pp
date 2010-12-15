@@ -63,13 +63,13 @@ class transifex {
     notify => Service['apache']
   }
 
-  file { "50-apps.conf":
-    path => "/etc/transifex/50-apps.conf",
+  file { "50-project.conf":
+    path => "/etc/transifex/50-project.conf",
     ensure => present,
     owner => root,
     group => root,
     mode => 644,
-    content => template("transifex/50-apps.conf"),
+    content => template("transifex/50-project.conf"),
     require => Package['transifex'],
     notify => Service['apache']
   }
