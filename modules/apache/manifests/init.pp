@@ -119,6 +119,8 @@ class apache {
     define vhost_django_app($module, $module_path = '/usr/share') {
         include apache::mod_wsgi
 
+        # module is a ruby reserved keyword, cannot be used in templates
+        $django_module = $module
         file { "$name.conf":
             path => "/etc/httpd/conf/vhosts.d/$name.conf",
             ensure => "present",
