@@ -83,6 +83,9 @@ class sympa {
             owner => root,
             group => root,
             mode => 755,
+            purge => true,
+            recurse => true,
+            force => true,
         }
 
         file { ["/etc/sympa/scenari/subscribe.open_web_only_notify",
