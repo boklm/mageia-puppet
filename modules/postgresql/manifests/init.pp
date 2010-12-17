@@ -91,10 +91,11 @@ class postgresql {
     }
 
     define user($password) {
-        $sql = "CREATE ROLE $name ENCRYPTED PASSWORD '$password' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;"
+        $sql = "CREATE ROLE $name ENCRYPTED PASSWORD '\$pass' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;"
 
         exec { "psql -U postgres -c \"$sql\" ":
             user => root,
+            environment => "pass=$password", 
             unless => "psql -A -t -U postgres -c '\du $name' | grep '$name'",
         }
     }
