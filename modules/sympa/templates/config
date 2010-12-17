@@ -67,8 +67,9 @@ send subscriber_moderated
 <% end %>
 
 
-#TODO topics
-# topics 
+<% if topics %>
+topics <%= topics %>
+<% end %>
 
 <% if subscriber_ldap_group %>
 include_ldap_query
