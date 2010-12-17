@@ -105,6 +105,14 @@ class sympa {
             source => "puppet:///modules/sympa/scenari/subscriber_moderated",
         }
 
+        file { ["/etc/sympa/topics.conf"]:
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            source => "puppet:///modules/sympa/topics.conf",
+        }
+
         define ldap_search_filter {
             file { "/etc/sympa/search_filters/$name.ldap":
                 ensure => present,
