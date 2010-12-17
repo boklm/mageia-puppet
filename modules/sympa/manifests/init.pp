@@ -208,6 +208,7 @@ class sympa {
             group => sympa,
             mode => 750,
             content => template("sympa/config"), 
+            notify => Service['sympa'],
         }
 
         if $sender_ldap_group {
