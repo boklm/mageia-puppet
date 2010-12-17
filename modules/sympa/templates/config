@@ -22,16 +22,24 @@ unsubscribe  open_web_only_notify
 
 owner 
 email postmaster@<%= domain %>
+gecos Sysadmin team
 reception nomail 
 
 owner_include 
 source mga-sysadmin
 reception nomail
 profile normal
+visibility conceal
+
+editor 
+email listmaster@<%= domain %>
+gecos Moderator team 
+reception nomail
 
 editor_include 
 source mga-ml_moderators
 reception nomail
+visibility conceal
 
 
 <% if reply_to %>
