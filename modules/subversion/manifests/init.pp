@@ -31,6 +31,14 @@ class subversion {
              content => template('subversion/create_svn_repo.sh') 
 	} 
 
+        file { "$local_dir/pre-commit.d/no_binary":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            content => template('subversion/no_binary') 
+        }
+
         file { "$local_dir/pre-commit.d/no_root_commit":
             ensure => present,
             owner => root,

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+REP="$1"
+TXN="$2"
+
+# Filter some binary files based on common filename extentions.
+# It does not fully prevent commit of binary files, this script is only
+# here to avoid simple mistakes
+if svnlook changed -t "$TXN" "$REP" | grep -qi '\.\(gz\|bz2\|xz\|lzma\|Z\|7z\|tar\|tgz\|zip\|jpg\|gif\|png\|ogg\|mp3\|wav\|rar\|pdf\)$'
+then
+    echo 'no binary files allowed on this repository'
+    exit 1
+fi
+
