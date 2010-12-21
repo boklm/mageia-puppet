@@ -8,7 +8,7 @@ TXN="$2"
 # here to avoid simple mistakes
 if svnlook changed -t "$TXN" "$REP" | grep -qi '\.\(gz\|bz2\|xz\|lzma\|Z\|7z\|tar\|tgz\|zip\|jpg\|gif\|png\|ogg\|mp3\|wav\|rar\|pdf\)$'
 then
-    echo 'no binary files allowed on this repository'
+    echo 'no binary files allowed on this repository' >&2
     exit 1
 fi
 
