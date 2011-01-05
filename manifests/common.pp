@@ -73,6 +73,12 @@ class default_ssh_root_key {
         key => "AAAAB3NzaC1kc3MAAACBAMFaCUsen6ZYH8hsjGK0tlaguduw4YT2KD3TaDEK24ltKzvQ+NDiPRms1zPhTpRL0p0U5QVdIMxm/asAtuiMLMxdmU+Crry6s110mKKY2930ZEk6N4YJ4DbqSiYe2JBmpJVIEJ6Betgn7yZRR2mRM7j134PddAl8BGG+RUvzib7JAAAAFQDzu/G2R+6oe3vjIbbFpOTyR3PAbwAAAIEAmqXAGybY9CVgGChSztPEdvaZ1xOVGJtmxmlWvitWGpu8m5JBf57VhzdpT4Fsf4fiVZ7NWiwPm1DzqNX7xCH7IPLPK0jQSd937xG9Un584CguNB76aEQXv0Yl5VjOrC3DggIEfZ1KLV7GcpOukw0RerxKz99rYAThp6+qzBIrv38AAACBAKhXi7uNlajescWFjiCZ3fpnxdyGAgtKzvlz60mGKwwNyaQCVmPSmYeBI2tg1qk+0I5K6LZUxWkdhuE1UfvAbIrEdwyD8p53dPg1J9DpdQ1KqApeKqLxO02KJtfomuy3cRQXmdfOTovYN7zAu1NCp51uUNTzhIpDHx0MZ6bsWSFv",
         user => "root"
     }
+
+    ssh_authorized_key { "ssh key pterjan":
+	type => "ssh-rsa",
+	key => "AAAAB3NzaC1yc2EAAAABIwAAAQEAspyZMl5zAkk5SL45zFvtJF7UhXTRb0bEaZ3nuCC1Ql5wM3GWuftqd5zLH88dCu7ZO/BVh213LZTq/UHb6lI7kWalygk53qtdEx2cywjWFOW23Rg6xybatCEZ2/ZrpGZoBGnu63otAp4h2Nnj/VkOio3pGwD8vavmZ4xPrcECPAwtMPJsYf44Ptu2JdXizi4iY8I0/HKitQ113I4NbDcAiMKbTXSbOfqC+ldcgW3+9xShx/kuMFTKeJOy4LI4GR6gykzkV6+vfnalp24x/SIEjuohBarCRQKo4megHqZOzdMYAHqq0QuNubXURNb0Mvz1sE7Y8AFIxwSfXdQGi5hcQQ==",
+	user => "root"
+    }
 }
 
 class urpmi_update {
