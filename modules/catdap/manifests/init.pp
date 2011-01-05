@@ -1,7 +1,6 @@
 class catdap {
 
-    $catdap_location = "/var/www/identity"
-    $catdap_vhost = "identity.$domain"
+    $upstream_svn = "svn://svn.mageia.org/svn/soft/identity/CatDap/" 
 
     # TODO switch to a proper rpm packaging
     $rpm_requirement = ['perl-Catalyst-Runtime',"perl-FCGI", 'perl-Catalyst-Plugin-Authorization-Roles', 
@@ -17,27 +16,41 @@ class catdap {
         ensure => installed
     }
 
-    subversion::snapshot { $catdap_location:
-        source => "svn://svn.mageia.org/svn/soft/identity/CatDap/branches/live"
-    }
-
     $ldap_password = extlookup('catdap_ldap','x')
     
-    file { "$catdap_location/catdap_local.yml":
-        ensure => present,
-        owner => root,
-        group => apache,
-        mode => 640,
-        content => template("catdap/catdap_local.yml"),
-        require => Subversion::Snapshot[$catdap_location]
+   
+
+    define catdap_snapshot($location, $svn_location) {
+        file { "$location/catdap_local.yml":
+            ensure => present,
+            owner => root,
+            group => apache,
+            mode => 640,
+            content => template("catdap/catdap_local.yml"),
+            require => Subversion::Snapshot[$location],
+        }
+
+        subversion::snapshot { $location:
+            source => $svn_location
+        }
+
+        apache::vhost_catalyst_app { $name:
+            script => "$location/script/catdap_fastcgi.pl",
+            location => $location,
+            use_ssl => true,
+        }
+
+        apache::vhost_redirect_ssl { $name: }
     }
 
-    apache::vhost_catalyst_app { $catdap_vhost:
-        script => "$catdap_location/script/catdap_fastcgi.pl",
-        location => $catdap_location,
-        use_ssl => true,
+    catdap_snapshot { "identity.$domain":
+        location => "/var/www/identity",
+        svn_location => "$upstream_svn/branches/live" 
     }
 
-    apache::vhost_redirect_ssl { $catdap_vhost: }
+    catdap_snapshot { "identity-trunk.$domain":
+        location => "/var/www/identity-trunk",
+        svn_location => "$upstream_svn/trunk" 
+    }
 
 }
