@@ -77,6 +77,7 @@ repository  IN CNAME valstar
 ldap        IN CNAME valstar
 
 identity    IN CNAME alamut
+identity-trunk    IN CNAME alamut
 mirrors     IN CNAME alamut
 epoll       IN CNAME alamut
 pgsql       IN CNAME alamut
