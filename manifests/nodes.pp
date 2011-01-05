@@ -49,6 +49,7 @@ node alamut {
     timezone::timezone { "Europe/Paris": }
 
     include catdap
+    include websites::donate
     include mga-mirrors
     include epoll
     include transifex
