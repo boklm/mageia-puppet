@@ -9,7 +9,7 @@ class catdap {
 "perl-Catalyst-P-S-State-Cookie", "perl-Catalyst-P-S-Store-File", "perl-Catalyst-View-Email",
 "perl-Catalyst-View-TT", "perl-Config-General", "perl-Crypt-CBC", "perl-Data-UUID",
 "perl-Email-Valid", "perl-Moose", "perl-namespace-autoclean", "perl-Test-Simple",
-"perl-Crypt-Blowfish", "perl-Email-Date-Format", "perl-YAML-LibYAML","perl-Catalyst-Plugin-Unicode-Encoding",
+"perl-Crypt-Blowfish", "perl-Email-Date-Format", "perl-YAML-LibYAML","perl-Catalyst-Plugin-Unicode-Encoding", "perl-IO-Socket-INET6",
 ]
 
     package { $rpm_requirement:
