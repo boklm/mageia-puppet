@@ -24,6 +24,12 @@ node valstar {
     include restrictshell::allow_svn
     include restrictshell::allow_pkgsubmit
 
+    subversion::repository { "/svn/adm/":
+        group => "mga-sysadmin",
+        commit_mail => "mageia-sysadm@mageia.org",
+        syntax_check => ['check_puppet_templates','check_puppet'],
+    }
+
     subversion::snapshot { "/etc/puppet":
         source => "svn://svn.mageia.org/svn/adm/puppet/"
     }
