@@ -56,7 +56,53 @@ node alamut {
     include bugzilla
     include sympa::server
     include postfix::primary_smtp
-   
+  
+    # please check that the list use the proper code for
+    # language ( not to be confused with tld or country code )
+    sympa::public_list {"i18n-af":
+        subject => "List about translation in Afrikaans",
+        topics => "i18n",
+    }
+
+    sympa::public_list {"i18n-de":
+        subject => "List about translation in German",
+        topics => "i18n",
+    }
+
+    sympa::public_list {"i18n-et":
+        subject => "List about translation in Estonian",
+        topics => "i18n",
+    }
+
+    sympa::public_list {"i18n-fr":
+        subject => "List about translation in French",
+        topics => "i18n",
+    }
+
+    sympa::public_list {"i18n-nl":
+        subject => "List about translation in Dutch",
+        topics => "i18n",
+    }
+
+    sympa::public_list {"i18n-pt_br":
+        subject => "List about translation in Brazilian Portuguese",
+        topics => "i18n",
+    }
+
+    sympa::public_list {"i18n-pl":
+        subject => "List about translation in Polish",
+        topics => "i18n",
+    }
+
+    sympa::public_list {"i18n-ru":
+        subject => "List about translation in Russian",
+        topics => "i18n",
+    }
+
+    sympa::public_list {"i18n-tr":
+        subject => "List about translation in Turkish",
+        topics => "i18n",
+    }
 
 }
 
