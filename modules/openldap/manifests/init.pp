@@ -1,5 +1,5 @@
 class openldap {
-    class base {
+    class common {
         package { 'openldap-servers':
             ensure => installed 
         }
@@ -55,7 +55,7 @@ class openldap {
         notify => [Service['ldap']]
     } 
 
-    class master inherits base {
+    class master inherits common {
         file { '/etc/openldap/mandriva-dit-access.conf':
             content => template("openldap/mandriva-dit-access.conf"),
         }
