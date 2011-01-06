@@ -239,6 +239,7 @@ class sympa {
             subject => $subject,
            # profile => "public",
             language => $language,
+            topics => $topics,
         }
     }
 
@@ -250,6 +251,7 @@ class sympa {
             subject => $subject,
             profile => "",
             language => $language,
+            topics => $topics,
             reply_to => $reply_to,
             sender_ldap_group => $sender_ldap_group,
         }
@@ -263,6 +265,7 @@ class sympa {
             subject => $subject,
             profile => "",
             language => $language,
+            topics => $topics,
             reply_to => $reply_to,
             sender_email => $sender_email,
         }
@@ -274,6 +277,7 @@ class sympa {
        list{ $name:
             subject => $subject,
             profile => "",
+            topics => $topics,
             language => $language,
             subscriber_ldap_group => $subscriber_ldap_group,
             sender_ldap_group => $subscriber_ldap_group,
@@ -286,6 +290,7 @@ class sympa {
             subject => $subject,
             profile => "",
             language => $language,
+            topics => $topics,
             subscriber_ldap_group => $subscriber_ldap_group,
             sender_ldap_group => $subscriber_ldap_group,
         }        
@@ -297,6 +302,7 @@ class sympa {
             subject => $subject,
             profile => "",
             language => $language,
+            topics => $topics,
             subscriber_ldap_group => $subscriber_ldap_group,
             sender_ldap_group => $subscriber_ldap_group,
             public_archive => false,
@@ -311,6 +317,7 @@ class sympa {
             subject => $subject,
             profile => "",
             language => $language,
+            topics => $topics,
             subscriber_ldap_group => $subscriber_ldap_group,
             public_archive => false,
         }
@@ -323,6 +330,7 @@ class sympa {
             subject => $subject,
             profile => "",
             language => $language,
+            topics => $topics,
             subscriber_ldap_group => $subscriber_ldap_group,
             sender_email => $sender_email,
             public_archive => false,
