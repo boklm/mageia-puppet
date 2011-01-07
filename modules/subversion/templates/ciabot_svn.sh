@@ -64,7 +64,7 @@
 #       putting that here.
 #
 project_name="Mageia"
-return_address="root@mageia.org"
+return_address="root@<%= domain %>"
 
 # System
 sendmail_command="/usr/sbin/sendmail -t"
