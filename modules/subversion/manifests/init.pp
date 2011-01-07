@@ -124,6 +124,7 @@ class subversion {
                        $public = true,
                        $commit_mail = '',
                        $cia_post = true,
+                       $cia_module = 'default',
                        $syntax_check = '',
                        $extract_dir = '') {
         # check permissions

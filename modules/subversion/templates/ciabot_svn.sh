@@ -64,6 +64,7 @@
 #       putting that here.
 #
 project_name="Mageia"
+module_name="<% cia_module %>"
 return_address="root@<%= domain %>"
 
 # System
@@ -98,6 +99,7 @@ Subject: DeliverXML
     </generator>
     <source>
         <project>$project_name</project>
+	<module>$module_name</module>
     </source>
     <body>
         <commit>
