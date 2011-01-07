@@ -63,7 +63,7 @@ node alamut {
     include sympa::server
     include postfix::primary_smtp
   
-    import "lists"
+    include lists
 }
 
 # buildnode
