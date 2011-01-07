@@ -90,7 +90,7 @@ AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
 AcceptEnv LC_IDENTIFICATION LC_ALL
 
 #AllowAgentForwarding yes
-#AllowTcpForwarding yes
+AllowTcpForwarding no
 #GatewayPorts no
 X11Forwarding yes
 #X11DisplayOffset 10
