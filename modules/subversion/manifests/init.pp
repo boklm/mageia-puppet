@@ -195,7 +195,7 @@ class subversion {
 	}
 
 	if $no_binary {
-	    pre_commit_link { '$name/hooks/pre-commit.d/no_binary': 
+	    pre_commit_link { "$name/hooks/pre-commit.d/no_binary":
 		scriptname => 'no_binary',
 	    }
 	}
