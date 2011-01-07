@@ -32,7 +32,7 @@ node valstar {
 	syntax_check1 => 'check_puppet_templates',
 	syntax_check2 => 'check_puppet',
 	cia_post => true,
-	cia_module => "mageia-sysadm",
+	cia_module => "sysadm",
     }
 
     subversion::repository { "/svn/packages/":
