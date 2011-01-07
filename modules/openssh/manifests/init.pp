@@ -27,9 +27,9 @@ class openssh {
 
     class ssh_keys_from_ldap inherits server {
 
-        File ["/etc/ssh/sshd_config"] {
-            content => template("openssh/sshd_config","openssh/sshd_config_ldap")
-        }
+#        File ["/etc/ssh/sshd_config"] {
+#            content => template("openssh/sshd_config","openssh/sshd_config_ldap")
+#        }
 
         package { 'python-ldap':
             ensure => installed,
