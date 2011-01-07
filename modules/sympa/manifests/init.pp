@@ -105,6 +105,15 @@ class sympa {
             source => "puppet:///modules/sympa/scenari/subscriber_moderated",
         }
 
+        file { ["/etc/sympa/scenari/create_list.forbidden"]:
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            source => "puppet:///modules/sympa/scenari/forbidden",
+        }
+
+
         file { ["/etc/sympa/topics.conf"]:
             ensure => present,
             owner => root,
