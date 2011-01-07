@@ -64,7 +64,7 @@
 #       putting that here.
 #
 project_name="Mageia"
-module_name="<% cia_module %>"
+module_name="<%= cia_module %>"
 return_address="root@<%= domain %>"
 
 # System
