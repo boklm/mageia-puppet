@@ -19,6 +19,7 @@ node valstar {
     include ssh::auth
     include ssh::auth::keymaster
     include buildsystem::mainnode
+    include buildsystem::mgacreatehome
 
     include pam::committers_access
     include restrictshell::allow_svn

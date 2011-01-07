@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# script to create home directory with ssh key
+# takes two arguments :
+# - login
+# - URL for ssh key
+
+test $# -eq 2 || exit 1
+login="$1"
+sshkeyurl="$2"
+sshkeyfile=`mktemp`
+homeroot='/home'
+
+id "$login" || exit 2
+wget -O "$sshkeyfile" "$sshkeyurl" || exit 2
+cat "$sshkeyfile"
+echo "Press enter to validate"
+read z
+
+test ! -d "$homeroot/$login" && cp -a /etc/skel "$homeroot/$login"
+mkdir "$homeroot/$login/.ssh"
+cat "$sshkeyfile" >> "$homeroot/$login/.ssh/authorized_keys"
+rm -f "$sshkeyfile"
+chmod 700 "$homeroot/$login/.ssh"
+chmod 600 "$homeroot/$login/.ssh/authorized_keys"
+chown -R "$login":mga-users "$homeroot/$login"
+
