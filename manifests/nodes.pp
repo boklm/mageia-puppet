@@ -24,6 +24,7 @@ node valstar {
     include pam::committers_access
     include restrictshell::allow_svn
     include restrictshell::allow_pkgsubmit
+    include openssh::ssh_keys_from_ldap
 
     subversion::repository { "/svn/adm/":
         group => "mga-sysadmin",
