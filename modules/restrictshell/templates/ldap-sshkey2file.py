@@ -20,7 +20,7 @@ binddn="cn=<%= fqdn %>,ou=Hosts,%s" % basedn
 pwfile="<%= ldap_pwfile %>"
 # filter out disabled accounts also
 # too bad uidNumber doesn't support >= filters
-filter="(&(objectClass=inetOrgPerson)(objectClass=ldapPublicKey)(objectClass=posixAccount)(sshPublicKey=*)(!(shadowExpire=*)))"
+filter="(&(objectClass=inetOrgPerson)(objectClass=ldapPublicKey)(objectClass=posixAccount)(sshPublicKey=*))"
 keypathprefix="<%= pubkeys_directory %>"
 
 def usage():
