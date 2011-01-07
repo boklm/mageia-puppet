@@ -34,6 +34,19 @@ node valstar {
 	cia_module => "mageia-sysadm",
     }
 
+    subversion::repository { "/svn/packages/":
+        group => "mga-packagers",
+	no_binary => true,
+	cia_post => true,
+	cia_module => "packages",
+    }
+
+    subversion::repository { "/svn/binrepos/cauldron/":
+        group => "mga-packagers",
+	cia_post => true,
+	cia_module => "binrepos",
+    }
+
     subversion::snapshot { "/etc/puppet":
         source => "svn://svn.mageia.org/svn/adm/puppet/"
     }
