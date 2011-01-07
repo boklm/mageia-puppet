@@ -211,9 +211,6 @@ class subversion {
             }
         }
 
-	pre_commit_link { ['no_empty_message','no_root_commit', $syntax_check]: 
-	    directory => "$name/hooks/pre-commit.d/"
-	}
 	pre_commit_link { "$name/hooks/post-commit.d/no_empty_message":
 	    scriptname => 'no_empty_message',
 	}
