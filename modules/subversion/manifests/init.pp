@@ -98,10 +98,9 @@ class subversion {
 
    
     # FIXME ugly
-    define pre_commit_link($directory) {
-	file { "pre_commit_link-$directory/${name}":
-	    path => "$directory/$name",
-	    ensure => "/usr/local/share/subversion/pre-commit.d/$name",
+    define pre_commit_link($scriptname) {
+	file { "${name}":
+	    ensure => "/usr/local/share/subversion/pre-commit.d/$scriptname",
 	    owner => root,
 	    group => root,
 	    mode => 755,
@@ -115,7 +114,9 @@ class subversion {
     #    group : group that have commit access on the svn
     #    public : boolean if the svn is readable by anybody or not
     #    commit_mail : array of people who will receive mail after each commit
-    #    syntax_check : array of pre-commit script with syntax check to add
+    #    syntax_check1 : pre-commit script with syntax check to add
+    #    syntax_check2 : pre-commit script with syntax check to add
+    #    syntax_check3 : pre-commit script with syntax check to add
     #    extract_dir : hash of directory to update upon commit ( with svn update ), 
     #            initial checkout is not handled, nor the permission
     #            TODO, handle the tags ( see svn::notify::mirror )
@@ -126,7 +127,9 @@ class subversion {
                        $cia_post = true,
                        $cia_module = 'default',
 		       $no_binary = false,
-                       $syntax_check = '',
+                       $syntax_check1 = '',
+                       $syntax_check2 = '',
+                       $syntax_check3 = '',
                        $extract_dir = '') {
         # check permissions
         # http://svnbook.red-bean.com/nightly/fr/svn.serverconfig.multimethod.html
@@ -192,8 +195,8 @@ class subversion {
 	}
 
 	if $no_binary {
-	    pre_commit_link { 'no_binary': 
-		directory => "$name/hooks/pre-commit.d/"
+	    pre_commit_link { '$name/hooks/pre-commit.d/no_binary': 
+		scriptname => 'no_binary',
 	    }
 	}
 
@@ -209,7 +212,28 @@ class subversion {
         }
 
 	pre_commit_link { ['no_empty_message','no_root_commit', $syntax_check]: 
-		directory => "$name/hooks/pre-commit.d/"
+	    directory => "$name/hooks/pre-commit.d/"
+	}
+	pre_commit_link { "$name/hooks/post-commit.d/no_empty_message":
+	    scriptname => 'no_empty_message',
+	}
+	pre_commit_link { "$name/hooks/post-commit.d/no_root_commit":
+	    scriptname => 'no_root_commit',
+	}
+	if $syntax_check1 {
+	    pre_commit_link { "$name/hooks/post-commit.d/${syntax_check1}":
+	        scriptname => $syntax_check1,
+	    }
+	}
+	if $syntax_check2 {
+	    pre_commit_link { "$name/hooks/post-commit.d/${syntax_check2}":
+		scriptname => $syntax_check2,
+	    }
+	}
+	if $syntax_check3 {
+	    pre_commit_link { "$name/hooks/post-commit.d/${syntax_check3}":
+		scriptname => $syntax_check3,
+	    }
 	}
     }
 
