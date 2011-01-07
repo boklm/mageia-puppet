@@ -142,11 +142,11 @@ class buildsystem {
             content => template("buildsystem/submit-todo.conf")
         }
 
-        file { "/etc/youri/submit-queue.conf":
+        file { "/etc/youri/submit-upload.conf":
             ensure => present,
             mode => 644,
             require => File["/etc/youri"],
-            content => template("buildsystem/submit-queue.conf")
+            content => template("buildsystem/submit-upload.conf")
         }
     }
 
