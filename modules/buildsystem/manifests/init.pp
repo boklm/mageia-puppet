@@ -24,7 +24,8 @@ class buildsystem {
         ssh::auth::server { $sched_login: }
         ssh::auth::server { $build_login: }
 
-        $package_list = ['task-bs-cluster-main', 'iurt']
+        # FIXME Add again task-bs-cluster-main when it will require mgarepo instead of repsys
+        $package_list = ['iurt']
         package { $package_list:
             ensure => "installed"
         }
