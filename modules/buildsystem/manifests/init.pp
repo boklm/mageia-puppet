@@ -141,6 +141,13 @@ class buildsystem {
             require => File["/etc/youri"],
             content => template("buildsystem/submit-todo.conf")
         }
+
+        file { "/etc/youri/submit-queue.conf":
+            ensure => present,
+            mode => 644,
+            require => File["/etc/youri"],
+            content => template("buildsystem/submit-queue.conf")
+        }
     }
 
     define sshuser($homedir, $comment) {
