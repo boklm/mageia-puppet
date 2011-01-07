@@ -99,7 +99,7 @@ class subversion {
    
     # FIXME ugly
     define pre_commit_link($directory) {
-	file { "pre_commit_link-${name}":
+	file { "pre_commit_link-$directory/${name}":
 	    path => "$directory/$name",
 	    ensure => "/usr/local/share/subversion/pre-commit.d/$name",
 	    owner => root,
