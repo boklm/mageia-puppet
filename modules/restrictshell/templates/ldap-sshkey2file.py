@@ -16,7 +16,7 @@ uris=['ldap://ldap.<%= domain %>']
 random.shuffle(uris)
 uri = " ".join(uris)
 timeout=5
-binddn="cn=<%= fqdn %>,ou=Hosts," % basedn
+binddn="cn=<%= fqdn %>,ou=Hosts,%s" % basedn
 pwfile="<%= ldap_pwfile %>"
 # filter out disabled accounts also
 # too bad uidNumber doesn't support >= filters
