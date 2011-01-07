@@ -39,7 +39,7 @@ class buildsystem {
 
         include scheduler
         include gatherer
-        include repsys
+        include mgarepo
         include youri_submit
     }
 
@@ -68,8 +68,8 @@ class buildsystem {
         }
     }
     
-    class repsys {
-        package { 'repsys':
+    class mgarepo {
+        package { 'mgarepo':
 
         }
 
