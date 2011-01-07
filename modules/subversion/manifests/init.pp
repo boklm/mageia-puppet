@@ -123,6 +123,7 @@ class subversion {
     define repository ($group = "svn",
                        $public = true,
                        $commit_mail = '',
+                       $cia_post = true,
                        $syntax_check = '',
                        $extract_dir = '') {
         # check permissions
@@ -176,6 +177,17 @@ class subversion {
 	    	require => [Package['perl-SVN-Notify-Config']],
             }
         }
+
+	if $cia_post {
+	    file { "$name/hooks/post-commit.d/cia.vc":
+		ensure => present,
+                owner => root,
+                group => root,
+                mode => 755,
+                content => template("subversion/ciabot_svn.py"),
+            }
+		
+	}
 
         if $extract_dir {
             file { "$name/hooks/post-commit.d/extract_dir":
