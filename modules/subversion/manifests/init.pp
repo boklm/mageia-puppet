@@ -211,24 +211,24 @@ class subversion {
             }
         }
 
-	pre_commit_link { "$name/hooks/post-commit.d/no_empty_message":
+	pre_commit_link { "$name/hooks/pre-commit.d/no_empty_message":
 	    scriptname => 'no_empty_message',
 	}
-	pre_commit_link { "$name/hooks/post-commit.d/no_root_commit":
+	pre_commit_link { "$name/hooks/pre-commit.d/no_root_commit":
 	    scriptname => 'no_root_commit',
 	}
 	if $syntax_check1 {
-	    pre_commit_link { "$name/hooks/post-commit.d/${syntax_check1}":
+	    pre_commit_link { "$name/hooks/pre-commit.d/${syntax_check1}":
 	        scriptname => $syntax_check1,
 	    }
 	}
 	if $syntax_check2 {
-	    pre_commit_link { "$name/hooks/post-commit.d/${syntax_check2}":
+	    pre_commit_link { "$name/hooks/pre-commit.d/${syntax_check2}":
 		scriptname => $syntax_check2,
 	    }
 	}
 	if $syntax_check3 {
-	    pre_commit_link { "$name/hooks/post-commit.d/${syntax_check3}":
+	    pre_commit_link { "$name/hooks/pre-commit.d/${syntax_check3}":
 		scriptname => $syntax_check3,
 	    }
 	}
