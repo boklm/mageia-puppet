@@ -88,7 +88,6 @@ node ecosse {
     timezone::timezone { "Europe/Paris": }
 }
 
-
 # backup server
 node fiona {
 # Location: IELO datacenter (marseille)
