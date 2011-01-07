@@ -47,3 +47,19 @@ sympa::public_list {"i18n-tr":
 }
 
 
+sympa::announce_list_email {"sysadmin-commits":
+    subject => "List receiving commits mail from sysadmin team repository",
+    # FIXME change once we migrate
+    reply_to => "mageia-sysadm@$domain",
+    sender_email => "root@$domain",
+    topics => "sysadmin",
+}
+
+sympa::announce_list_email {"sysadmin-reports":
+    subject => "List receiving automated reports from various pieces of infrastructure",
+    # FIXME change once we migrate
+    reply_to => "mageia-sysadm@$domain",
+    sender_email => "root@$domain",
+    topics => "sysadmin",
+}
+
