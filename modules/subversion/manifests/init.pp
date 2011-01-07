@@ -125,6 +125,7 @@ class subversion {
                        $commit_mail = '',
                        $cia_post = true,
                        $cia_module = 'default',
+		       $no_binary = false,
                        $syntax_check = '',
                        $extract_dir = '') {
         # check permissions
@@ -188,6 +189,12 @@ class subversion {
                 content => template("subversion/ciabot_svn.sh"),
             }
 		
+	}
+
+	if $no_binary {
+	    pre_commit_link { 'no_binary': 
+		directory => "$name/hooks/pre-commit.d/"
+	    }
 	}
 
         if $extract_dir {
