@@ -184,7 +184,7 @@ class subversion {
                 owner => root,
                 group => root,
                 mode => 755,
-                content => template("subversion/ciabot_svn.py"),
+                content => template("subversion/ciabot_svn.sh"),
             }
 		
 	}
