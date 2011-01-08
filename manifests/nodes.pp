@@ -40,12 +40,14 @@ node valstar {
 	no_binary => true,
 	cia_post => true,
 	cia_module => "packages",
+	cia_ignore_author => '^schedbot$',
     }
 
     subversion::repository { "/svn/binrepos/cauldron/":
         group => "mga-packagers",
 	cia_post => true,
 	cia_module => "binrepos",
+	cia_ignore_author => '^schedbot$',
     }
 
     subversion::snapshot { "/etc/puppet":
