@@ -114,6 +114,10 @@ class subversion {
     #    group : group that have commit access on the svn
     #    public : boolean if the svn is readable by anybody or not
     #    commit_mail : array of people who will receive mail after each commit
+    #    cia_post : send commits to cia.vc
+    #    cia_module : name of the module to send to cia.vc
+    #    cia_ignore_author : a regexp to ignore commits from some authors
+    #    no_binary : do not accept files with common binary extentions on this repository
     #    syntax_check1 : pre-commit script with syntax check to add
     #    syntax_check2 : pre-commit script with syntax check to add
     #    syntax_check3 : pre-commit script with syntax check to add
