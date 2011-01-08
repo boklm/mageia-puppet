@@ -126,6 +126,7 @@ class subversion {
                        $commit_mail = '',
                        $cia_post = true,
                        $cia_module = 'default',
+		       $cia_ignore_author = '',
 		       $no_binary = false,
                        $syntax_check1 = '',
                        $syntax_check2 = '',

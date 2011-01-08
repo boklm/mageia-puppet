@@ -66,6 +66,7 @@
 project_name="Mageia"
 module_name="<%= cia_module %>"
 return_address="root@<%= domain %>"
+ignore_author="<%= cia_ignore_author %>"
 
 # System
 sendmail_command="/usr/sbin/sendmail -t"
@@ -80,6 +81,10 @@ REV="$2"
 cia_address="cia@cia.navi.cx"
 
 author=`svnlook author -r "$REV" "$REPOS" | sed 's/\&/\&amp;/g;s/</\&lt;/g;s/>/\&gt;/g'`
+if test -n "$ignore_author" && echo "$author" | grep -q "$ignore_author"
+then
+    exit 0
+fi
 log=`svnlook log -r "$REV" "$REPOS" | sed 's/\&/\&amp;/g;s/</\&lt;/g;s/>/\&gt;/g'`
 diff_lines=`svnlook diff -r "$REV" "$REPOS" | wc -l`
 for file in `svnlook changed -r "$REV" "$REPOS" | cut -c 3- | sed 's/\&/\&amp;/g;s/</\&lt;/g;s/>/\&gt;/g'`; do
