@@ -4,9 +4,9 @@ Exec { path => "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin/" }
 
 class base_packages {
     # packages installed everywhere 
-    # asked by misc : screen, vim-enhanced, htop, lsof, tcpdump, less
+    # asked by misc : screen, vim-enhanced, htop, lsof, tcpdump, less, lvm2, lshw
     # asked by nanar : rsync
-    $package_list = ['screen', 'vim-enhanced', 'htop', 'lsof', 'tcpdump', 'rsync', 'less']
+    $package_list = ['screen', 'vim-enhanced', 'htop', 'lsof', 'tcpdump', 'rsync', 'less','lshw', 'lvm2']
 
     package { $package_list:
         ensure => installed;
