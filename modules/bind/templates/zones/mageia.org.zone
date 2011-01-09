@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	3D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2011010901	; Serial
+        2011010902	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -50,6 +50,9 @@ jonund      IN  A       212.85.158.149
 jonund      IN  AAAA    2a02:2178:2:7::5
 fiona       IN  A       212.85.158.150
 fiona       IN  AAAA    2a02:2178:2:7::6
+
+rabbit      IN  A       88.190.12.224
+
 
 ; alamut  
 ns0         IN  A       212.85.158.146
