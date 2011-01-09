@@ -1,0 +1,30 @@
+Puppet layout
+=============
+
+deployment
+----------
+
+Contains code specific to our deployment ( static website, mailling list
+definition ), most of it should not be reusable 
+
+external
+--------
+
+Modules that were not written by us, and should be synced ( either by hand,
+or with svn:externals, or something appropriate ). We should make sure that
+proper credit is given, as well as proper location
+
+modules
+-------
+
+Our own modules
+
+manifests
+---------
+
+Main puppet manifests
+
+extdata
+-------
+
+Puppet extlookup datafie, should not be in svn ( mainly used for password )
