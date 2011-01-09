@@ -30,6 +30,10 @@ class repositories::subversion {
         cia_ignore_author => '^schedbot$',
     }
 
+    file { "/svn/binrepos/":
+        ensure => directory
+    }
+
     subversion::repository { "/svn/binrepos/cauldron/":
         group => "mga-packagers",
         cia_post => true,
