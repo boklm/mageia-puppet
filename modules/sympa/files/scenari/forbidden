@@ -1,2 +1,2 @@
-title nobody
+title.gettext nobody
 true()                         smtp,md5,smime -> reject
