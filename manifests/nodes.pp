@@ -35,6 +35,19 @@ node valstar {
 	cia_module => "sysadm",
     }
 
+    subversion::repository { "/svn/soft/":
+	group => "mga-packagers",
+	commit_mail => ['mageia-sysadm@mageia.org'],
+	cia_post => true,
+	cia_module => "soft",
+    }
+
+    subversion::repository { "/svn/web/":
+	group => "mga-committers",
+	cia_post => true,
+	cia_module => "web",
+    }
+
     subversion::repository { "/svn/packages/":
         group => "mga-packagers",
 	no_binary => true,
