@@ -164,6 +164,19 @@ class apache {
         }
    }
 
+    define vhost_simple($location) {
+        include apache::base
+        file { "$name.conf":
+            path => "/etc/httpd/conf/vhosts.d/$name.conf",
+            ensure => "present",
+            owner => root,
+            group => root,
+            mode => 644,
+            notify => Service['apache'],
+            content => template("apache/vhost_simple.conf")
+        }
+    } 
+
    define webapp_other($webapp_file) {
         include apache::base
         $webappname = $name
