@@ -153,7 +153,8 @@ class sympa {
         }
 
         define scenario_sender_email {
-            file { "/etc/sympa/scenari/send.restricted_$name":
+            $sender_email_file = regsubst($name,'\@','-at-')
+            file { "/etc/sympa/scenari/send.restricted_$sender_email_file":
                 ensure => present,
                 owner => root,
                 group => root,
@@ -227,8 +228,8 @@ class sympa {
         }
 
         if $sender_email {
-            if ! defined(Sympa::Server::Scenario_sender_email[$sender_email_file]) {
-                sympa::server::scenario_sender_email { $sender_email_file: }
+            if ! defined(Sympa::Server::Scenario_sender_email[$sender_email]) {
+                sympa::server::scenario_sender_email { $sender_email: }
             }
         }
         
