@@ -162,11 +162,20 @@ node champagne {
 }
 
 node friteuse {
-# Location: VM hosted by nfrance
+# Location: VM hosted by nfrance (toulouse)
 # 
 # TODO:
 # - setup forum
 
+    include default_mageia_server
+    timezone::timezone { "Europe/Paris": }
+}
+
+node rabbit {
+# Location: Server offered by Dedibox (paris)
+# 
+# TODO:
+# - setup bcd
     include default_mageia_server
     timezone::timezone { "Europe/Paris": }
 }
