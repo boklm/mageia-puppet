@@ -2,5 +2,5 @@
 ryu.zarb.org
 cthulhu.zarb.org
 # mageia
-*.mageia.org
+*.<%= domain %>
 
