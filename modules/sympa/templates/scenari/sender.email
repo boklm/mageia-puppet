@@ -1,5 +1,5 @@
 title.gettext restricted to email <%= name %>
 
-equal([sender], <%= name %>) smtp,md5,smime -> do_it
+equal([sender], '<%= name %>') smtp,md5,smime -> do_it
 true()                       smtp,md5,smime -> reject(reason='send_subscriber')
 
