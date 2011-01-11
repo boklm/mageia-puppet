@@ -23,7 +23,7 @@ class repositories::subversion {
     }
 
     subversion::repository { "/svn/packages/":
-        group => "mga-packagers",
+        group => "mga-packagers-committers",
         no_binary => true,
         cia_post => true,
         cia_module => "packages",
@@ -35,7 +35,7 @@ class repositories::subversion {
     }
 
     subversion::repository { "/svn/binrepos/cauldron/":
-        group => "mga-packagers",
+        group => "mga-packagers-committers",
         cia_post => true,
         cia_module => "binrepos",
         cia_ignore_author => '^schedbot$',
