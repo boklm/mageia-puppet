@@ -1,0 +1,6 @@
+<%= bcd_login %> ALL=(root) NOPASSWD:/bin/mount, /bin/umount, \
+/usr/sbin/chroot, \
+/usr/sbin/urpmi, \
+/usr/sbin/urpmi.addmedia, \
+/usr/sbin/urpmi.removemedia, \
+/bin/rm
