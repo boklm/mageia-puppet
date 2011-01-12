@@ -146,6 +146,13 @@ class buildsystem {
             require => File["/etc/youri"],
             content => template("buildsystem/submit-upload.conf")
         }
+
+        file { "/etc/youri/acl.conf":
+            ensure => present,
+            mode => 644,
+            require => File["/etc/youri"],
+            content => template("buildsystem/youri_acl.conf")
+        }
     }
 
     define sshuser($homedir, $comment) {
