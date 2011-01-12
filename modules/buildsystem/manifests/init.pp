@@ -125,10 +125,7 @@ class buildsystem {
           content => template("buildsystem/mdv-youri-submit.wrapper")
         }
 
-        file { "/etc/sudoers.d/mdv-youri-submit":
-            owner => root,
-            group => root,
-            mode => 440,
+	sudoers_config { "mdv-youri-submit":
             content => template("buildsystem/sudoers.youri")
         }
 
@@ -234,11 +231,7 @@ class buildsystem {
             content => template("buildsystem/iurt.mandriva2010.1.conf")
         }
 
-        file { "/etc/sudoers.d/iurt":
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 440,
+	sudoers_config { "iurt":
             content => template("buildsystem/sudoers.iurt")
         }
     }
