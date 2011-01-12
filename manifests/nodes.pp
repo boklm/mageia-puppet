@@ -141,10 +141,4 @@ node rabbit {
 # 
     include default_mageia_server
     timezone::timezone { "Europe/Paris": }
-
-    include bcd::base
-    bcd::ssh_access { "ssh key for ennael":
-	type => 'ssh-rsa',
-	key => 'AAAAB3NzaC1yc2EAAAABIwAAAIEA6CZNPpCrAcVIm6DIC2PBLNIG6uobO7lN/X1MZdEIaTAeF21n8jm7bIyKj3+4faZfaZFwHFeoIcvAv8OcwZJOAAd0itqIZeA9wN8yOxhLNWX4CgUj1uZrWG6DxysIvb0jJ4E5avewkTOw0vOxvM/DJtLnIgRFpdyztUrZyXws7CU=',
-    }
 }
