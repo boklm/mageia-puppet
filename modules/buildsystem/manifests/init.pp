@@ -125,7 +125,7 @@ class buildsystem {
           content => template("buildsystem/mdv-youri-submit.wrapper")
         }
 
-	sudoers_config { "mdv-youri-submit":
+	sudo::sudoers_config { "mdv-youri-submit":
             content => template("buildsystem/sudoers.youri")
         }
 
@@ -231,7 +231,7 @@ class buildsystem {
             content => template("buildsystem/iurt.mandriva2010.1.conf")
         }
 
-	sudoers_config { "iurt":
+	sudo::sudoers_config { "iurt":
             content => template("buildsystem/sudoers.iurt")
         }
     }
