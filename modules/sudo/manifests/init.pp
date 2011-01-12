@@ -17,4 +17,13 @@ class sudo {
 	mode => 440,
 	content => template("sudo/sudoers")
     }
+
+    define sudoers_config($content) {
+	file { "/etc/sudoers.d/$name":
+            owner => root,
+            group => root,
+            mode => 440,
+            content => $content,
+	}
+    }
 }
