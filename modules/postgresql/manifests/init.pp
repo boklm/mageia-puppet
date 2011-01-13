@@ -57,6 +57,9 @@ class postgresql {
             require => Package["postgresql-server"],
         }
         
+        # TODO use augeas to manage this file once augeas 0.7.4 is installed
+        # on our server, as this would allow use to autodeclare database in it without
+        # much trouble
         file { 'pg_hba.conf':
             path => "$pgsql_data/pg_hba.conf",
             ensure => present,
@@ -77,6 +80,8 @@ class postgresql {
             require => Package["postgresql-server"],
         }
 
+        # TODO add a system of tag so we can declare database on more than one
+        # server 
         Postgresql::User <<| |>>
         Postgresql::Database <<| |>>
     }
@@ -89,7 +94,9 @@ class postgresql {
             unless => "psql -A -t -U postgres -l | grep '^$name|'",
         }
     }
-
+    
+    # TODO convert to a regular type, so we can later change password without erasing the 
+    # current user
     define user($password) {
         $sql = "CREATE ROLE $name ENCRYPTED PASSWORD '\$pass' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;"
 
