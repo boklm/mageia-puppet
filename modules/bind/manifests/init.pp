@@ -30,28 +30,35 @@ class bind {
         notify => [Service['named']]
     }
 
-    define zone_master {
-        file { "/var/lib/named/var/named/master/$name.zone":
+    define zone_base($content = false) {
+        if ! $content {
+            $zone_content = template("bind/zones/$name.zone")
+        } else {
+            $zone_content = $content
+        }
+        file { "/var/lib/named/var/named/$zone_subdir/$name.zone":
             ensure => present,
             owner => root,
             group => root,
             mode => 644,
-            content => template("bind/zones/$name.zone"),
+            content => $zone_content,
             require => Package[bind],
             notify => Service[named]
         }
     }
 
-    define zone_reverse {
-        file { "/var/lib/named/var/named/reverse/$name.zone":
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 644,
-            content => template("bind/zones/$name.zone"),
-            require => Package[bind],
-            notify => Service[named]
+    define zone_master(content = false) {
+        $zone_subdir = "master"
+        zone_base { $name : 
+            content => $content 
         }
+    }
+
+    define zone_reverse(content = false) {
+        $zone_subdir = "reverse"
+        zone_base { $name : 
+            content => $content 
+        } 
     }
 
 
