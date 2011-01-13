@@ -21,7 +21,7 @@ node valstar {
     include buildsystem::mainnode
     include buildsystem::mgacreatehome
 
-    include pam::committers_access
+    include access_class::committers
     include restrictshell::allow_svn
     include restrictshell::allow_pkgsubmit
     include openssh::ssh_keys_from_ldap
