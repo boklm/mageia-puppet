@@ -20,7 +20,7 @@ class access_class {
     # permission to use svn, git, etc must be added separatly
 
     pam::multiple_ldap_access { "committers":
-        access_classes => ['mga-committers']
+        access_classes => ['mga-committers'],
         restricted_shell => true,
     }
   }
