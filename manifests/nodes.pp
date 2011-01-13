@@ -21,7 +21,7 @@ node valstar {
     include buildsystem::mainnode
     include buildsystem::mgacreatehome
 
-    include access_class::committers
+    include access_classes::committers
     include restrictshell::allow_svn
     include restrictshell::allow_pkgsubmit
     include openssh::ssh_keys_from_ldap
@@ -144,6 +144,6 @@ node rabbit {
     include default_mageia_server
     timezone::timezone { "Europe/Paris": }
     include bcd
-    include access_class::iso_makers
+    include access_classes::iso_makers
     include openssh::ssh_keys_from_ldap
 }
