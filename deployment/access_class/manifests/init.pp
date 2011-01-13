@@ -22,7 +22,7 @@ class access_class {
     include restrictshell::shell
 
     pam::multiple_ldap_access { "committers":
-        access_classes => ['mga-commiters']
+        access_classes => ['mga-committers']
     }
   }
 
