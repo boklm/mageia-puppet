@@ -1,22 +1,6 @@
 class rsyncd {
 
-    package { xinetd:
-        ensure => installed
-    }
-
-    service { xinetd:
-        ensure => running,
-        path => "/etc/init.d/xinetd",
-        subscribe => [ Package["xinetd"], File["rsync"] ]
-    }
-    
-    file { "rsync":
-        path => "/etc/xinetd.d/rsync",
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
-        require => Package["xinetd"],
+    xinetd::service { "rsync":
         content => template("rsyncd/xinetd")
     }
 
