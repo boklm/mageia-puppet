@@ -139,6 +139,10 @@ node friteuse {
 node rabbit {
 # Location: Server offered by Dedibox (paris)
 # 
+# - used to create isos ( and live, and so on )
+# 
     include default_mageia_server
     timezone::timezone { "Europe/Paris": }
+    include bcd
+    include access_class::iso_makers
 }
