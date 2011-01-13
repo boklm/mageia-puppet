@@ -9,13 +9,13 @@ auth    required     pam_deny.so
 
 
 account sufficient  pam_localuser.so
-<%- if access_class == 'admin' -%>
-account required    pam_succeed_if.so quiet user ingroup mga-sysadmin
+# not sure if the following bring something useful
+account required  pam_ldap.so
+<%- if access_classes -%>
+<%- access_classes.each { |ldap_group| -%>
+account sufficient   pam_succeed_if.so quiet user ingroup <%= ldap_group %>
+<%- } -%>
 <%- end -%>
-<%- if access_class == 'committers' -%>
-account required    pam_succeed_if.so quiet user ingroup mga-committers
-<%- end -%>
-account sufficient  pam_ldap.so
 account required    pam_deny.so
 
 

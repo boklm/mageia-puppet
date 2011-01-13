@@ -43,13 +43,20 @@ class pam {
          content => template("pam/ldap.conf")
       }
   } 
+
+  define multiple_ldap_access($access_classes) {
+    include base
+  }
  
-  # beware , this two classes are exclusive
+  # beware , this two classes are exclusives
+  # if you need multiple group access, you need to define you own class
+  # of access  
  
   # for server where only admins can connect
   class admin_access {
-    $access_class = "admin"
-    include base
+    multiple_ldap_access { "admin_access":
+        access_classes => ['mga-sysadmin']
+    }
   }
 
   # for server where people can connect with ssh ( git, svn )
@@ -59,8 +66,11 @@ class pam {
     # user, and erase the password ( see pam_auth.c in openssh code, seek badpw )
     # so the file must exist
     # permission to use svn, git, etc must be added separatly
+     
     include restrictshell::shell
-    $access_class = "committers"
-    include base
+
+    multiple_ldap_access { "committers_access":
+        access_classes => ['mga-commiters']
+    }
   }
 }
