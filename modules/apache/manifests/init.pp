@@ -80,6 +80,12 @@ class apache {
             mode => 644,
         }
     }
+    
+    class mod_proxy inherits base {
+        package { "apache-mod_proxy":
+            ensure => installed
+        }
+    }
 
     define vhost_redirect_ssl() {
         file { "redirect_ssl_$name.conf":
@@ -176,6 +182,19 @@ class apache {
             content => template("apache/vhost_simple.conf")
         }
     } 
+
+    define vhost_reverse_proxy($url) {
+        include apache::mod_proxy
+        file { "$name.conf":
+            path => "/etc/httpd/conf/vhosts.d/$name.conf",
+            ensure => "present",
+            owner => root,
+            group => root,
+            mode => 644,
+            notify => Service['apache'],
+            content => template("apache/vhost_reverse_proxy.conf")
+        }
+    }
 
    define webapp_other($webapp_file) {
         include apache::base
