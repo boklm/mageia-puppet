@@ -18,11 +18,10 @@ class access_class {
     # user, and erase the password ( see pam_auth.c in openssh code, seek badpw )
     # so the file must exist
     # permission to use svn, git, etc must be added separatly
-     
-    include restrictshell::shell
 
     pam::multiple_ldap_access { "committers":
         access_classes => ['mga-committers']
+        restricted_shell => true,
     }
   }
 
