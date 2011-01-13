@@ -46,7 +46,7 @@ class pam {
 
   define multiple_ldap_access($access_classes,$restricted_shell = false) {
     if $restricted_shell {
-      include restricted_shell
+      include restrictshell
     }
     include base
   }
