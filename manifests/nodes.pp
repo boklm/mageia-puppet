@@ -145,4 +145,5 @@ node rabbit {
     timezone::timezone { "Europe/Paris": }
     include bcd
     include access_class::iso_makers
+    include openssh::ssh_keys_from_ldap
 }
