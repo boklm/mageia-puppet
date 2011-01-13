@@ -49,7 +49,6 @@ node alamut {
 # 
     include default_mageia_server_no_smtp
     include postgresql::server
-    include dns_server 
     timezone::timezone { "Europe/Paris": }
 
     include catdap
@@ -62,6 +61,7 @@ node alamut {
     include postfix::primary_smtp
   
     include lists
+    include dns::server 
 }
 
 # buildnode
@@ -108,7 +108,7 @@ node krampouezh {
     #include default_mageia_server_no_smtp
     #include postfix::secondary_smtp
 
-    include dns_server 
+    include dns::server 
     timezone::timezone { "Europe/Paris": }
 # Other services running on this server :
 # - meetbot
