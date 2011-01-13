@@ -9,18 +9,15 @@ class bcd {
         include sudo
 
         buildsystem::sshuser { $bcd_login:
-	    homedir => $bcd_home,
- 	    comment => "User for creating ISOs",
-	}
+            homedir => $bcd_home,
+            comment => "User for creating ISOs",
+	    }
 
-	package { bcd:
-	    ensure => 'installed',
-	}
+        package { bcd:
+            ensure => 'installed',
+        }
 
-       file { "/etc/sudoers.d/bcd":
-            owner => root,
-            group => root,
-            mode => 440,
+        sudo::sudoers_config { "bcd":
             content => template("bcd/sudoers.bcd")
         }
     }
