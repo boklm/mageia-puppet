@@ -5,9 +5,17 @@ class git {
     }
 
     class server inherits common {
+        $git_base_path = '/git/'
+
+        xinetd::service { "git":
+            content => template('git/xinetd')
+        }
+
+        file { "$git_base_path":
+            ensure => directory
+        }
+
         # TODO
-        # integration with xinetd for anonymous co
-        # creation of /git
         # define common syntax check, see svn 
         #        proper policy : no-fast-forward
         #            no branch ?
