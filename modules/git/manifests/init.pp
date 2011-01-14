@@ -5,6 +5,7 @@ class git {
     }
 
     class server inherits common {
+        # http://www.kernel.org/pub/software/scm/git/docs/everyday.html#Repository%20Administration
         $git_base_path = '/git/'
 
         xinetd::service { "git":
@@ -17,17 +18,25 @@ class git {
 
         # TODO
         # define common syntax check, see svn 
-        #        proper policy : no-fast-forward
+        #          http://stackoverflow.com/questions/3719883/git-hook-syntax-check
+        #        proper policy : fast-forward-only 
+        #              ( http://progit.org/book/ch7-4.html ) 
         #            no branch ?
         #            no binary
         #            no big file
-        #            no empty commit message, no root 
+        #            no empty commit message
+        #            no commit from root
+        #        see http://www.itk.org/Wiki/Git/Hooks 
         #        automated push to another git repo ( see http://noone.org/blog/English/Computer/VCS/Thoughts%20on%20Gitorious%20and%20GitHub%20plus%20a%20useful%20git%20hook.futile
         # 
         # how do we handle commit permission ?
+        #   mail sending
+        # 
     }
 
     define repository($description = '') {
+        # http://eagleas.livejournal.com/18907.html
+        # TODO --shared=group + set g+ws 
         exec { "git init --bare $name":
             creates => $name,
         }
