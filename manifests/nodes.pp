@@ -24,7 +24,9 @@ node valstar {
     include access_classes::committers
     include restrictshell::allow_svn
     include restrictshell::allow_pkgsubmit
-    include openssh::ssh_keys_from_ldap
+    # disabled the ldap key here instead of disabling for the
+    # whole module ( see r698 )
+    #include openssh::ssh_keys_from_ldap
 
     include repositories::subversion
 
