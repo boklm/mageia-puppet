@@ -28,7 +28,9 @@ class git {
     }
 
     define repository {
-        # TODO
+        exec { "git init --bare $name":
+            creates => $name,
+        }
 
     }
 
