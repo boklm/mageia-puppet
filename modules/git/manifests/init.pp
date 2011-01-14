@@ -27,7 +27,7 @@ class git {
         # how do we handle commit permission ?
     }
 
-    define repository {
+    define repository($description = '') {
         exec { "git init --bare $name":
             creates => $name,
         }
@@ -35,6 +35,11 @@ class git {
         file { "$name/git-daemon-export-ok":
             ensure => present,
             requires => Exec["git init --bare $name"]
+        }
+        
+        file { "$name/description":
+            ensure => present,
+            content => $description
         }
     }
 
