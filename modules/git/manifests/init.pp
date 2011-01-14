@@ -32,6 +32,10 @@ class git {
             creates => $name,
         }
 
+        file { "$name/git-daemon-export-ok":
+            ensure => present,
+            requires => Exec["git init --bare $name"]
+        }
     }
 
     class client inherits common {
