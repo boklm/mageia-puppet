@@ -3,9 +3,15 @@
 # but not integrated in puppet directly for the moment
 class subversion {
 
+    class tools {
+        package { "subversion-tools":
+            ensure => installed,
+        }
+    }
 
     class server {
-        package { ["subversion-server", "subversion-tools"]:
+        include subversion::tools
+        package { "subversion-server":
             ensure => installed,
         }
 
