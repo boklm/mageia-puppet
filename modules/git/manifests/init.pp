@@ -15,6 +15,15 @@ class git {
         file { "$git_base_path":
             ensure => directory
         }
+        
+        file { "/usr/local/bin/create_git_repo.sh":
+             ensure => present,
+             owner => root,
+             group => root,
+             mode => 755,
+             content => template('git/create_git_repo.sh')
+        }
+
 
         # TODO
         # define common syntax check, see svn 
