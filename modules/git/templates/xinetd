@@ -1,0 +1,13 @@
+service git
+{
+        disable         = no
+        type            = UNLISTED
+        port            = 9418
+        socket_type     = stream
+        server          = /usr/lib/git-core/git-daemon
+        wait            = no
+        user            = nobody
+        server_args     = --inetd --verbose --export-all --base-path=<%= git_base_path %>
+        log_on_failure  += HOST
+}
+
