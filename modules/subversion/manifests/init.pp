@@ -55,6 +55,14 @@ class subversion {
             content => template('subversion/no_empty_message') 
         }
 
+        file { "$local_dir/pre-revprop-change":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            content => template('subversion/pre-revprop-change') 
+        }
+
         # TODO : add check for
         #    - ym       perl -MYAML -e 'YAML::LoadFile("-");'
         #    - tt       ( do not seem to be possible, but this would be great )
