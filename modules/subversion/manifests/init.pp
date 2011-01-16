@@ -132,9 +132,7 @@ class subversion {
                        $cia_module = 'default',
 		       $cia_ignore_author = '',
 		       $no_binary = false,
-                       $syntax_check1 = '',
-                       $syntax_check2 = '',
-                       $syntax_check3 = '',
+                       $syntax_check = '',
                        $extract_dir = '') {
         # check permissions
         # http://svnbook.red-bean.com/nightly/fr/svn.serverconfig.multimethod.html
@@ -222,21 +220,11 @@ class subversion {
 	pre_commit_link { "$name/hooks/pre-commit.d/no_root_commit":
 	    scriptname => 'no_root_commit',
 	}
-	if $syntax_check1 {
-	    pre_commit_link { "$name/hooks/pre-commit.d/${syntax_check1}":
-	        scriptname => $syntax_check1,
+	if $syntax_check {
+	    pre_commit_link { "$name/hooks/pre-commit.d/$syntax_check":
+		scriptname => $syntax_check,
 	    }
-	}
-	if $syntax_check2 {
-	    pre_commit_link { "$name/hooks/pre-commit.d/${syntax_check2}":
-		scriptname => $syntax_check2,
-	    }
-	}
-	if $syntax_check3 {
-	    pre_commit_link { "$name/hooks/pre-commit.d/${syntax_check3}":
-		scriptname => $syntax_check3,
-	    }
-	}
+        }
     }
 
 
