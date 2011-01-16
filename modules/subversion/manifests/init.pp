@@ -132,9 +132,7 @@ class subversion {
     #    cia_module : name of the module to send to cia.vc
     #    cia_ignore_author : a regexp to ignore commits from some authors
     #    no_binary : do not accept files with common binary extentions on this repository
-    #    syntax_check1 : pre-commit script with syntax check to add
-    #    syntax_check2 : pre-commit script with syntax check to add
-    #    syntax_check3 : pre-commit script with syntax check to add
+    #    syntax_check : array of pre-commit script with syntax check to add
     #    extract_dir : hash of directory to update upon commit ( with svn update ), 
     #            initial checkout is not handled, nor the permission
     #            TODO, handle the tags ( see svn::notify::mirror )
