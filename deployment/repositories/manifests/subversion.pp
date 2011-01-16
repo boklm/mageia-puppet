@@ -3,8 +3,7 @@ class repositories::subversion {
     subversion::repository { "/svn/adm/":
         group => "mga-sysadmin",
         commit_mail => ['mageia-sysadm@mageia.org', "sysadmin-commits@ml.$domain"],
-        syntax_check1 => 'check_puppet_templates',
-        syntax_check2 => 'check_puppet',
+        syntax_check => ['check_puppet_templates','check_puppet'],
         cia_post => true,
         cia_module => "sysadm",
     }
