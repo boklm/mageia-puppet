@@ -273,4 +273,30 @@ class subversion {
            minute => $refresh
         }   
     }
+    
+    class mirror { 
+        include subversion::tools
+        file { "/usr/local/bin/create_svn_mirror.sh":
+             ensure => present,
+             owner => root,
+             group => root,
+             mode => 755,
+             content => template('subversion/create_svn_mirror.sh') 
+        }
+    }
+
+    define mirror_repository($source,
+                             $refresh = '*/5') {
+        include subversion::mirror 
+
+        exec { "/usr/local/bin/create_svn_mirror.sh $name $source":
+            creates => $name,           
+            require => Package['subversion-tools']
+        }
+
+        cron { "update $name":
+           command => "/usr/bin/svnsync synchronize file://$name",
+           minute => $refresh,
+        }   
+    } 
 }
