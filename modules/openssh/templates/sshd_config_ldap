@@ -1,3 +1,3 @@
 
-AuthorizedKeysFile <%= pubkeys_directory %>/%u/authorized_keys
+AuthorizedKeysFile /var/lib/pubkeys/%u/authorized_keys
 
