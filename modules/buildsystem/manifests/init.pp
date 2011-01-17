@@ -6,6 +6,8 @@ class buildsystem {
 	$sched_login = "schedbot"
 	$sched_home_dir = "/home/$sched_login"
 	$repository_root = "/distrib/bootstrap"
+	$packagers_group = 'mga-packagers'
+	$createsrpm_path = '/usr/share/repsys/create-srpm'
 
 	include ssh::auth
 	ssh::auth::key { $build_login: } # declare a key for build bot: RSA, 2048 bits
@@ -152,6 +154,12 @@ class buildsystem {
             mode => 644,
             require => File["/etc/youri"],
             content => template("buildsystem/youri_acl.conf")
+        }
+
+	file { '/usr/local/bin/submit_package':
+	    ensure => present,
+	    mode => 755,
+	    content => template('buildsystem/submit_package')
         }
     }
 
