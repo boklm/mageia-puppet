@@ -187,6 +187,13 @@ class subversion {
 	    require => File["$name/hooks/pre-commit"],
         }
 
+        file { "$name/hooks/pre-revprop-change":
+            ensure => "$local_dir/pre-revprop-change"
+            owner => root,
+            group => root,
+            mode => 755,
+        } 
+
         if $commit_mail {
             file { "$name/hooks/post-commit.d/send_mail":
                 ensure => present,
