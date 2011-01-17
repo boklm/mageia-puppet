@@ -62,8 +62,8 @@ our $use_git = "0";
 our $bin_git = "/usr/bin/git-shell";
 
 our $use_pkgsubmit = "0";
-our $regexp_pkgsubmit = "^/usr/share/repsys/create-srpm ";
-our $bin_pkgsubmit = "/usr/share/repsys/create-srpm";
+our $regexp_pkgsubmit = "^/usr/share/repsys/create-srpm |^/usr/local/bin/submit_package";
+our $bin_pkgsubmit = "/usr/local/bin/submit_package";
 
 # Open configuration file
 if (-e "/etc/membersh-conf.pl") {
