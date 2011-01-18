@@ -39,7 +39,7 @@ class mirror {
 	    mode => 755,
 	}
     	file { "mirror_$name":
-	    path => "$bindir/$name",
+	    path => "$bindir/mirror_$name",
 	    ensure => present,
 	    owner => root,
 	    group => root,
@@ -50,7 +50,7 @@ class mirror {
 	cron { "mirror_$name":
 	    user => mirror,
 	    minute => [0, 10, 20, 30, 40, 50],
-	    command => "$bindir/$name",
+	    command => "$bindir/mirror_$name",
 	    require => File["mirror_$name"],
 	}
     }
