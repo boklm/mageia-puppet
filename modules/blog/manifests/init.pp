@@ -5,7 +5,7 @@ class blog {
     include apache::mod_php
     include mysql
 
-    package { ['wget','mod_rewrite','php-mysql']:
+    package { ['wget','php-mysql']:
         ensure => installed
     }
 
