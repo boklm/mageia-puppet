@@ -4,3 +4,5 @@
 /usr/sbin/urpmi.addmedia, \
 /usr/sbin/urpmi.removemedia, \
 /bin/rm
+
+%<%= isomakers_group %> ALL=(<%= bcd_login %>) SETENV: NOPASSWD: ALL

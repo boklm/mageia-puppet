@@ -2,6 +2,7 @@ class bcd {
     class variable {
         $bcd_login = 'bcd'
         $bcd_home = '/home/bcd'
+	$isomakers_group = 'mga-iso_makers'
     }
 
     class base inherits variable {
