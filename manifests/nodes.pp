@@ -148,5 +148,5 @@ node rabbit {
     include bcd
     include access_classes::iso_makers
     include openssh::ssh_keys_from_ldap
-    include mirror::base
+    include mirror::mirrorbootstrap
 }
