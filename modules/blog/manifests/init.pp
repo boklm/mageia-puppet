@@ -8,13 +8,22 @@ class blog {
         ensure => installed
     }
 
-	file { "check_new-blog-post":
+    file { "check_new-blog-post":
         path => "/usr/local/bin/check_new-blog-post.sh",
         ensure => present,
         owner => blog,
         group => blog,
         mode => 755,
         content => template("blog/check_new-blog-post.sh")
+    }
+
+    file { "01_blogs_vhosts.conf":
+        path => "/etc/httpd/conf/vhosts.d/",
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => 644,
+        content => template("blog/01_blogs_vhosts.conf")
     }
 
     file { "/var/lib/blog":
