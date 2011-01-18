@@ -145,7 +145,7 @@ node rabbit {
 # 
     include default_mageia_server
     timezone::timezone { "Europe/Paris": }
-    include bcd
+    include bcd::base
     include access_classes::iso_makers
     include openssh::ssh_keys_from_ldap
     include mirror::mirrorbootstrap
