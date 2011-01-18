@@ -1,13 +1,12 @@
 #TODO: 
 # - add the creation of the user 'blog' in puppet
 class blog {
-    include apache::mod_php
+	include apache::mod_php
     include mysql
 
     package { ['wget','php-mysql']:
         ensure => installed
     }
-
 
 	file { "check_new-blog-post":
         path => "/usr/local/bin/check_new-blog-post.sh",
@@ -24,7 +23,14 @@ class blog {
         group => blog,
         mode => 644,
     }
-
+    
+    file { "/var/www/html/blog.mageia.org":
+	ensure => directory,
+	owner => blog,
+	group => apache,
+	mode => 644,
+    }
+    
     cron { blog:
         user => blog,
         minute => '*/15',
