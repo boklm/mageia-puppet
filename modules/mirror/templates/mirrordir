@@ -1,0 +1,12 @@
+#!/bin/sh
+
+remoteurl="<%= remoteurl%>"
+localdir="<%= localdir %>"
+rsync_options="<%= rsync_options %>"
+lockfile="<%= lockfile %>"
+
+test -f "$lockfile" && exit
+touch "$lockfile"
+/usr/bin/rsync $rsync_options "$remoteurl" "$localdir"
+rm -f "$lockfile"
+

@@ -1,7 +1,15 @@
 class mirror {
     class base {
 	$bindir = '/home/mirror/bin'
+	$locksdir = '/home/mirror/locks'
 	file { "$bindir":
+	    ensure => directory,
+            owner => mirror,
+	    group => mirror,
+	    mode => 755
+	}
+
+	file { "$locksdir":
 	    ensure => directory,
             owner => mirror,
 	    group => mirror,
@@ -21,8 +29,15 @@ class mirror {
 	}
     }
 
-    define mirrordir ($remotehost, $remotedir, $localdir) {
+    define mirrordir ($remoteurl, $localdir, $rsync_options="-avH --delete") {
     	include base
+	lockfile="$locksdir/$name"
+	file { "$localdir":
+	    ensure => directory,
+            owner => mirror,
+	    group => mirror,
+	    mode => 755,
+	}
     	file { "mirror_$name":
 	    path => "$bindir/$name",
 	    ensure => present,
@@ -57,6 +72,13 @@ class mirror {
 	    minute => 14,
 	    command => "$bindir/update_timestamp",
 	    require => File["update_timestamp"],
+	}
+    }
+
+    class mirrorbootstrap inherits base {
+    	mirrordir { "bootstrap":
+	    remoteurl => 'rsync://valstar.mageia.org/bootstrap',
+	    localdir => '/distrib/bootstrap',
 	}
     }
 }
