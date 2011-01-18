@@ -31,7 +31,7 @@ class mirror {
 
     define mirrordir ($remoteurl, $localdir, $rsync_options="-avH --delete") {
     	include base
-	lockfile="$locksdir/$name"
+	$lockfile = "$locksdir/$name"
 	file { "$localdir":
 	    ensure => directory,
             owner => mirror,
