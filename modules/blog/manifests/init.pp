@@ -1,10 +1,11 @@
 #TODO: 
 # - add the creation of the user 'blog' in puppet
+# - add the user 'blog' to the 'apache' group (usermod -a -G apache blog)
 class blog {
-	include apache::mod_php
+    include apache::mod_php
     include mysql
 
-    package { ['wget','php-mysql']:
+    package { ['wget','mod_rewrite','php-mysql']:
         ensure => installed
     }
 
@@ -23,7 +24,7 @@ class blog {
 
     file { "/var/lib/blog":
         ensure => directory,
-        owner => blog,
+        owner => apache,
         group => blog,
         mode => 644,
     }
