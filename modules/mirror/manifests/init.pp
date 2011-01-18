@@ -81,4 +81,11 @@ class mirror {
 	    localdir => '/distrib/bootstrap',
 	}
     }
+
+    class mirrormageia inherits base {
+    	mirrordir { "mageia":
+	    remoteurl => 'rsync://valstar.mageia.org/mageia',
+	    localdir => '/distrib/mageia',
+	}
+    }
 }
