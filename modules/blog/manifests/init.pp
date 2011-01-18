@@ -17,7 +17,7 @@ class blog {
         content => template("blog/check_new-blog-post.sh")
     }
 
-    apache::vhost_other_app { "blog.$domain":
+    apache::vhost_other_app { "blog-test.$domain":
         vhost_file => "blog/01_blogs_vhosts.conf",
     }
 
