@@ -17,13 +17,8 @@ class blog {
         content => template("blog/check_new-blog-post.sh")
     }
 
-    file { "01_blogs_vhosts":
-        path => "/etc/httpd/conf/vhosts.d/01_blogs_vhosts.conf",
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
-        content => template("blog/01_blogs_vhosts.conf")
+    apache::vhost_other_app { "blog.$domain":
+        vhost_file => "/etc/httpd/conf/vhosts.d/01_blogs_vhosts.conf",
     }
 
     file { "/var/lib/blog":
