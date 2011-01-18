@@ -1,6 +1,7 @@
 class mirror {
     class base {
-	file { "/home/mirror/bin/":
+	$bindir = '/home/mirror/bin'
+	file { "$bindir":
 	    ensure => directory,
             owner => mirror,
 	    group => mirror,
@@ -20,13 +21,32 @@ class mirror {
 	}
     }
 
+    define mirrordir ($remotehost, $remotedir, $localdir) {
+    	include base
+    	file { "mirror_$name":
+	    path => "$bindir/$name",
+	    ensure => present,
+	    owner => root,
+	    group => root,
+	    mode => 755,
+	    content => template("mirror/mirrordir"),
+	}
+
+	cron { "mirror_$name":
+	    user => mirror,
+	    minute => [0, 10, 20, 30, 40, 50],
+	    command => "$bindir/$name",
+	    require => File["$name"],
+	}
+    }
+
     # For main Mageia mirror
     class main inherits base {
 	file { "update_timestamp":
-	    path => "/home/mirror/bin/update_timestamp",
+	    path => "$bindir/update_timestamp",
 	    ensure => present,
-	    owner => mirror,
-	    group => mirror,
+	    owner => root,
+	    group => root,
 	    mode => 755,
 	    content => template("mirror/update_timestamp")
 	}
@@ -35,7 +55,7 @@ class mirror {
 	    user => mirror,
 	    hour => 10,
 	    minute => 14,
-	    command => "~mirror/bin/update_timestamp",
+	    command => "$bindir/update_timestamp",
 	    require => File["update_timestamp"],
 	}
     }
