@@ -4,8 +4,8 @@ class mirror {
 	$locksdir = '/home/mirror/locks'
 	file { "$bindir":
 	    ensure => directory,
-            owner => mirror,
-	    group => mirror,
+            owner => root,
+	    group => root,
 	    mode => 755
 	}
 
