@@ -17,8 +17,8 @@ class blog {
         content => template("blog/check_new-blog-post.sh")
     }
 
-    file { "01_blogs_vhosts.conf":
-        path => "/etc/httpd/conf/vhosts.d/",
+    file { "01_blogs_vhosts":
+        path => "/etc/httpd/conf/vhosts.d/01_blogs_vhosts.conf",
         ensure => present,
         owner => root,
         group => root,
