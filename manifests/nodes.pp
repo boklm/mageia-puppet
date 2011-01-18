@@ -11,7 +11,7 @@ node valstar {
     include default_mageia_server
     timezone::timezone { "Europe/Paris": }
     include rsyncd
-    include mirror
+    include mirror::main
     include openldap::master 
     include subversion::client
     include subversion::server
