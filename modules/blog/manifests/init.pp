@@ -24,15 +24,15 @@ class blog {
 
     file { "/var/lib/blog":
         ensure => directory,
-        owner => apache,
+        owner => blog,
         group => blog,
         mode => 644,
     }
     
     file { "/var/www/html/blog.mageia.org":
 	ensure => directory,
-	owner => blog,
-	group => apache,
+	owner => apache,
+	group => blog,
 	mode => 644,
     }
     
