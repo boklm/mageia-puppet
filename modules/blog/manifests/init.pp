@@ -18,7 +18,7 @@ class blog {
     }
 
     apache::vhost_other_app { "blog.$domain":
-        vhost_file => "/etc/httpd/conf/vhosts.d/01_blogs_vhosts.conf",
+        vhost_file => "blog/01_blogs_vhosts.conf",
     }
 
     file { "/var/lib/blog":
