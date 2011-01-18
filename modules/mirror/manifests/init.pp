@@ -51,7 +51,7 @@ class mirror {
 	    user => mirror,
 	    minute => [0, 10, 20, 30, 40, 50],
 	    command => "$bindir/$name",
-	    require => File["$name"],
+	    require => File["mirror_$name"],
 	}
     }
 
