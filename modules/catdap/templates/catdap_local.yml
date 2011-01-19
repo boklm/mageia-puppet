@@ -29,3 +29,10 @@ authentication:
                 user_basedn: ou=People,<%= dc_suffix %>
                 role_basedn: <%= dc_suffix %>
 
+register:
+        login_blacklist:
+                - apache
+                - mirror
+                - bcd
+                - iurt
+                - schedbot
