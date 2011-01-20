@@ -279,7 +279,7 @@ class buildsystem {
             ensure => present,
             owner => root,
             group => root,
-            mode => 700,
+            mode => 755,
             source => "puppet:///modules/buildsystem/missing-deps.sh",
         }
     
