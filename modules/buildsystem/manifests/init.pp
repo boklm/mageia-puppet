@@ -27,6 +27,7 @@ class buildsystem {
         sshuser { $sign_login:
           homedir => $sign_home_dir,
           comment => "System user used to sign packages",
+	  groups => [$sched_login],
         }
 
         ssh::auth::client { $sched_login: }
