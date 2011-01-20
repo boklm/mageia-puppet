@@ -171,7 +171,8 @@ class buildsystem {
         }
     }
 
-    define sshuser($homedir, $comment) {
+    # $groups: array of secondary groups (only local groups, no ldap)
+    define sshuser($homedir, $comment, $groups = []) {
         group {"$title": 
             ensure => present,
         }
@@ -181,6 +182,7 @@ class buildsystem {
             comment => $comment,
             managehome => true,
             gid => $title,
+	    groups => $groups,
             shell => "/bin/bash",
             notify => Exec["unlock$title"],
             require => Group[$title],
