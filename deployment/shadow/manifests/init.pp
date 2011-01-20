@@ -3,6 +3,6 @@ class shadow {
     	owner => 'root',
 	group => 'shadow',
     	mode => 640,
-	source => 'shadow/login.defs',
+	source => 'puppet:///modules/shadow/login.defs',
     }
 }
