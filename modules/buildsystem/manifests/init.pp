@@ -5,6 +5,8 @@ class buildsystem {
 	$build_home_dir = "/home/$build_login"
 	$sched_login = "schedbot"
 	$sched_home_dir = "/home/$sched_login"
+	$sign_login = "signbot"
+	$sign_home_dir = "/var/lib/$sign_login"
 	$repository_root = "/distrib/bootstrap"
 	$packagers_group = 'mga-packagers'
 	$createsrpm_path = '/usr/share/repsys/create-srpm'
@@ -20,6 +22,11 @@ class buildsystem {
         sshuser { $sched_login:
           homedir => $sched_home_dir,
           comment => "System user used to schedule builds",
+        }
+
+        sshuser { $sign_login:
+          homedir => $sign_home_dir,
+          comment => "System user used to sign packages",
         }
 
         ssh::auth::client { $sched_login: }
