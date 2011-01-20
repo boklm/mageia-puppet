@@ -280,7 +280,7 @@ class buildsystem {
             owner => root,
             group => root,
             mode => 700,
-            content => "puppet:///modules/buildsystem/missing-deps.sh",
+            source => "puppet:///modules/buildsystem/missing-deps.sh",
         }
     
         # FIXME hardcoded path
