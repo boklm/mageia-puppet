@@ -93,6 +93,7 @@ class urpmi_update {
 class default_mageia_server_no_smtp {
     include timezone
 
+    include shadow
     include openssh::server
     include default_ssh_root_key
     include base_packages
