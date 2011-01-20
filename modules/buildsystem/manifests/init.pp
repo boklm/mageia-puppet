@@ -44,6 +44,7 @@ class buildsystem {
         include gatherer
         include mgarepo
         include youri_submit
+        include check_missing_deps 
     }
 
     class buildnode inherits base {
