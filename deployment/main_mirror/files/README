@@ -1,0 +1,24 @@
+Description of the directory
+
+bootstrap
+---------
+
+Used only for the initial release and bootstrapping.
+
+mageiatools
+-----------
+
+Mandriva repository holding our own tools, should be merged
+with cooker ( and others distribution too ).
+
+mandriva
+--------
+
+Local 2010.1 mandriva mirror used for initial bootstrapping, should be
+removed once bootstrap is finished.
+
+mirror
+------
+
+Main mageia mirror, shared on rsync for everybody.
+

@@ -1,0 +1,48 @@
+ __  __                  _
+|  \/  | __ _  __ _  ___(_) __ _
+| |\/| |/ _` |/ _` |/ _ \ |/ _` |
+| |  | | (_| | (_| |  __/ | (_| |
+|_|  |_|\__,_|\__, |\___|_|\__,_|
+              |___/
+
+This document describe the way to do a Mageia Mirror.
+
+1) Prerequise
+
+The expect size is around 700GB.
+
+You need rsync software to synchronise the tree.
+
+2) Official source
+
+If you plan to create a public we encourage you to use one our Tier1 mirror.
+
+This servers synchronise the tree directly from the Mageia rsync server.
+
+    o rsync://distrib-coffee.ipsl.jussieu.fr/mageia/
+      located in Paris (France)
+
+3) Rsync options
+
+Ensure you're using a least this options:
+
+    -a -H
+
+We apreciate if theses options are also used:
+
+   --delete-after -S
+
+Don't use compression and checksum option, they will overload the remote
+server
+
+4) Automate
+
+The tree must be synchronize at least every 2 hours.
+
+Please ensure another rsync process is not started while first one is
+still running. Use a lock file.
+
+5) Registering your mirror
+
+TODO
+
