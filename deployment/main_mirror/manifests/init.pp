@@ -1,4 +1,7 @@
 class main_mirror {
+    # FIXME shouldn't the various code in this module ?
+    include mirror::main
+
     $mirror = "/distrib"
     file { "$mirror":
         ensure => directory,
