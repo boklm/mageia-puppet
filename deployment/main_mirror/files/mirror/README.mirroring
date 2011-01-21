@@ -7,42 +7,47 @@
 
 This document describe the way to do a Mageia Mirror.
 
-1) Prerequise
+1) Prerequisite
+---------------
 
-The expect size is around 700GB.
+The expected size is around 700GB.
 
-You need rsync software to synchronise the tree.
+You will need rsync software to synchronise the tree.
 
 2) Official source
+------------------
 
-If you plan to create a public we encourage you to use one our Tier1 mirror.
+If you plan to create a public mirror, we encourage you to use 
+one of our Tier1 mirror.
 
-This servers synchronise the tree directly from the Mageia rsync server.
+Theses servers synchronise the tree directly from the Mageia rsync server.
 
     o rsync://distrib-coffee.ipsl.jussieu.fr/mageia/
       located in Paris (France)
 
 3) Rsync options
+----------------
 
-Ensure you're using a least this options:
+Ensure you're using a least theses options:
 
     -a -H
 
-We apreciate if theses options are also used:
+We would appreciate if theses options are also used:
 
    --delete-after -S
 
-Don't use compression and checksum option, they will overload the remote
+Don't use compression and checksum options, they will overload the remote
 server
 
-4) Automate
+4) Automation
+-------------
 
-The tree must be synchronize at least every 2 hours.
+The tree must be synchronized at least every 2 hours.
 
 Please ensure another rsync process is not started while first one is
-still running. Use a lock file.
+still running, by using a lock file.
 
 5) Registering your mirror
+--------------------------
 
 TODO
-
