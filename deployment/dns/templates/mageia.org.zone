@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2011011001	; Serial
+        2011012100	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -73,6 +73,8 @@ meetbot     IN  CNAME krampouezh
 
 donate      IN  CNAME alamut
 donation    IN  CNAME alamut
+
+tmp	    IN  CNAME alamut
 
 puppetmaster  IN  CNAME valstar
 pkgsubmit   IN CNAME valstar
