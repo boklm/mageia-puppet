@@ -1,2 +1,34 @@
 Description of the path on the mirror 
 
+distrib
+-------
+
+Contains the supported and developpement releases of 
+the distribution.
+
+Cauldron is the name of the developpement release.
+
+StableX are the stable releases.
+ 
+iso
+---
+  
+Contains the various isos used for burning and installation.
+
+mageia_timestamp  
+----------------
+
+Contains the timestamp, filled by cron every 5 minutes, used to check mirrors
+freshness.  
+
+people
+------
+
+Contains various file, as pushed by Mageia members. The goal and usage are not 
+yet decided. 
+
+software
+--------
+
+Contains the various tarballs of software produced by Mageia, to be reused
+on others systems and distributions.
