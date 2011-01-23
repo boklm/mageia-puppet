@@ -60,6 +60,15 @@ class openldap {
             content => template("openldap/mandriva-dit-access.conf"),
         }
 
+        $ldap_test_password = extlookup("ldap_test_password",'x')
+        $ldap_test_directory = "/var/lib/ldap/test"
+        file { "$ldap_test_directory":
+            ensure => directory,
+            group => ldap,
+            owner => ldap,
+            mode => 644,
+        }       
+ 
         file { '/etc/openldap/slapd.conf':
             content => template("openldap/slapd.conf"),
         }
