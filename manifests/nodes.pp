@@ -68,6 +68,7 @@ node alamut {
         host_aliases => [ "friteuse.$domaine" ],
         ensure => 'present',
     }
+    include libvirtd
 
     include lists
     include dns::server 
