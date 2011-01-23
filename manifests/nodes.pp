@@ -61,7 +61,14 @@ node alamut {
     include bugzilla
     include sympa::server
     include postfix::primary_smtp
-  
+
+    # temporary, just the time the vm is running there
+    host { 'friteuse':
+        ip => '192.168.122.131',
+        host_aliases => [ "friteuse.$domaine" ],
+        ensure => 'present',
+    }
+
     include lists
     include dns::server 
 }
