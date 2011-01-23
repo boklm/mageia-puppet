@@ -117,6 +117,12 @@ class buildsystem {
             mode => 1775,
             require => File["$sched_home_dir/repsys"],
         }
+
+        file { "$sched_home_dir/uploads":
+            ensure => "directory",
+            owner  => $sched_login,
+            require => File[$sched_home_dir],
+        }
     }
 
     class youri_submit {
