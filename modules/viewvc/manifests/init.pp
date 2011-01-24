@@ -10,6 +10,7 @@ class viewvc {
         path => '/etc/viewvc/viewvc.conf',
         content => template('viewvc/viewvc.conf'),
         notify => Service['apache'],
+        requires => Package['viewvc']
     }
 
     file { 'webapps.d/viewvc.conf':
