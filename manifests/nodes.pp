@@ -72,6 +72,7 @@ node alamut {
 
     include lists
     include dns::server 
+    include repositories::mirror
 }
 
 # buildnode
