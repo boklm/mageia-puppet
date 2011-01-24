@@ -62,7 +62,8 @@ class git {
         
         file { "$name/description":
             ensure => present,
-            content => $description
+            content => $description,
+            require => File["$name/git-daemon-export-ok"]
         }
     }
 
