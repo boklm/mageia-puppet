@@ -157,7 +157,7 @@ class apache {
         }
     }
 
-    define vhost_wsgi($wsgi_path) {
+    define vhost_wsgi($wsgi_path, $aliases = false) {
         include apache::mod_wsgi
         file { "$name.conf":
             path => "/etc/httpd/conf/vhosts.d/$name.conf",
