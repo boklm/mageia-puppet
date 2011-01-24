@@ -7,3 +7,5 @@ cd $name
 git --bare init --shared=group 
 chmod g+ws branches info objects refs 
 ( cd objects; chmod g+ws * )
+git config receive.denyNonFastForwards true
+
