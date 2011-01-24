@@ -51,13 +51,13 @@ class git {
         # TODO group permission should be handled here too
         exec { "/usr/local/bin/create_git_repo.sh $name":
             user => root,
-            group => $group
+            group => $group,
             creates => $name,
         }
 
         file { "$name/git-daemon-export-ok":
             ensure => present,
-            requires => Exec["/usr/local/bin/create_git_repo.sh $name"]
+            require => Exec["/usr/local/bin/create_git_repo.sh $name"]
         }
         
         file { "$name/description":
