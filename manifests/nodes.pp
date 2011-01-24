@@ -22,6 +22,7 @@ node valstar {
     include buildsystem::mgacreatehome
 
     include access_classes::committers
+    include restrictshell::allow_git
     include restrictshell::allow_svn
     include restrictshell::allow_pkgsubmit
     # disabled the ldap key here instead of disabling for the
@@ -29,6 +30,7 @@ node valstar {
     #include openssh::ssh_keys_from_ldap
 
     include repositories::subversion
+    include repositories::git
 
     subversion::snapshot { "/etc/puppet":
         source => "svn://svn.mageia.org/svn/adm/puppet/"
