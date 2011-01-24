@@ -123,6 +123,14 @@ class buildsystem {
             owner  => $sched_login,
             require => File[$sched_home_dir],
         }
+
+        # too tedious to create everything by hand
+        # so I prefered to used some puppet ruby module
+        # the exact content and directory name should IMHO be consolidated somewhere
+        import "create_upload_dir.rb"
+        create_upload_dir { "$sched_home_dir/uploads":
+            owner => $sched_login, 
+        } 
     }
 
     class youri_submit {
