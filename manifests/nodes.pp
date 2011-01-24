@@ -115,10 +115,9 @@ node krampouezh {
 # - secondary MX
 # - LDAP slave (for external traffic maybe)
 #
-    include default_mageia_server
-    # TODO uncomment when ready to be tested
-    #include default_mageia_server_no_smtp
-    #include postfix::secondary_smtp
+    #include default_mageia_server
+    include default_mageia_server_no_smtp
+    include postfix::secondary_smtp
 
     include dns::server 
     timezone::timezone { "Europe/Paris": }
