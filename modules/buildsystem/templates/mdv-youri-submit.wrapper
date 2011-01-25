@@ -31,6 +31,6 @@ open(STDOUT, "| tee -a $log_dir/$sudo_user.out");
 
 # call wrapped program
 print "Executing @prog --config /etc/youri/submit-todo.conf --define user=$sudo_user @options (sudo_user $sudo_user)\n";
-my $err = system(@prog, "-v", "--verbose", "--config", "/etc/youri/submit-todo.conf", "--define", "user=$sudo_user", @options) && ($? >> 8 || 1);
+my $err = system(@prog, "--config", "/etc/youri/submit-todo.conf", "--define", "user=$sudo_user", @options) && ($? >> 8 || 1);
 
 exit $err
