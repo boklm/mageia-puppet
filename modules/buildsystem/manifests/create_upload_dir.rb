@@ -3,7 +3,7 @@ define "create_upload_dir", :owner do
     states = ["todo","done","failure","queue","rejected"]
     releases = ["cauldron"]
     repositories = ["core","nonfree","tainted"]
-    medias = ['release']
+    medias = ['release','testing','backports_testing','backports','updates']
 
     for st in states do
         file [@name, st].join('/'), :ensure => 'directory', :owner => @owner    
