@@ -188,7 +188,7 @@ class subversion {
         }
 
         file { "$name/hooks/pre-revprop-change":
-            ensure => "$local_dir/pre-revprop-change",
+            ensure => "$subversion::server::local_dir/pre-revprop-change",
             owner => root,
             group => root,
             mode => 755,
