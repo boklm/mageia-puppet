@@ -137,6 +137,7 @@ node champagne {
     include default_mageia_server
     timezone::timezone { "Europe/Paris": }
     include blog
+    include planet
 }
 
 node friteuse {
