@@ -79,6 +79,15 @@ class apache {
             group => root,
             mode => 644,
         }
+
+        file { "/etc/httpd/conf.d/mod_wsgi.conf":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 644,
+            content => template('apache/mod_wsgi.conf')
+        }
+
     }
     
     class mod_proxy inherits base {
