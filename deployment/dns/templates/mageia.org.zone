@@ -64,6 +64,7 @@ www         IN  CNAME www-zarb
 www-test    IN  CNAME champagne
 blog        IN  CNAME www-zarb
 blog-test   IN  CNAME champagne
+planet      IN	CNAME champagne
 rsync       IN  CNAME valstar
 
 ldap        IN  CNAME valstar
