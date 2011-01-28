@@ -1,7 +1,7 @@
 #TODO: 
 # - add the creation of the user 'planet' in puppet
 # - add the user 'planet' to the 'apache' group (usermod -a -G apache blog)
-class blog {
+class planet {
     include apache::mod_php
 
     apache::vhost_other_app { "planet.$domain":
