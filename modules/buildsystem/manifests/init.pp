@@ -118,20 +118,20 @@ class buildsystem {
             require => File["$sched_home_dir/repsys"],
         }
 
-        file { "$sched_home_dir/uploads":
-            ensure => "directory",
-            owner  => $sched_login,
-            require => File[$sched_home_dir],
-        }
+	# FIXME: disabled temporarly as upload dir is a symlink to /var/lib/repsys/uploads
+        #file { "$sched_home_dir/uploads":
+        #    ensure => "directory",
+        #    owner  => $sched_login,
+        #    require => File[$sched_home_dir],
+        #}
 
         # too tedious to create everything by hand
         # so I prefered to used some puppet ruby module
         # the exact content and directory name should IMHO be consolidated somewhere
         import "create_upload_dir.rb"
-	# FIXME: disabled temporarly as upload dir is a symlink to /var/lib/repsys/uploads
-        #create_upload_dir { "$sched_home_dir/uploads":
-        #    owner => $sched_login, 
-        #} 
+        create_upload_dir { "$sched_home_dir/uploads":
+            owner => $sched_login, 
+        } 
     }
 
     class youri_submit {
