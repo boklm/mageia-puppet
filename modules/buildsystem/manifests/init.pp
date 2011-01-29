@@ -12,8 +12,12 @@ class buildsystem {
 	$createsrpm_path = '/usr/share/repsys/create-srpm'
 
 	include ssh::auth
-	ssh::auth::key { $build_login: } # declare a key for build bot: RSA, 2048 bits
-	ssh::auth::key { $sched_login: } # declare a key for sched bot: RSA, 2048 bits
+	ssh::auth::key { $build_login: # declare a key for build bot: RSA, 2048 bits
+		home => $build_home_dir,
+	}
+	ssh::auth::key { $sched_login: # declare a key for sched bot: RSA, 2048 bits
+		home => $sched_home_dir,
+	}
     }
 
     class mainnode inherits base {
