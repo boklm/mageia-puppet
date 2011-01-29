@@ -197,6 +197,7 @@ class buildsystem {
             ensure => present,
             comment => $comment,
             managehome => true,
+	    home => $homedir,
             gid => $title,
 	    groups => $groups,
             shell => "/bin/bash",
