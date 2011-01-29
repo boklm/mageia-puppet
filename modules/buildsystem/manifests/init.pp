@@ -128,9 +128,10 @@ class buildsystem {
         # so I prefered to used some puppet ruby module
         # the exact content and directory name should IMHO be consolidated somewhere
         import "create_upload_dir.rb"
-        create_upload_dir { "$sched_home_dir/uploads":
-            owner => $sched_login, 
-        } 
+	# FIXME: disabled temporarly as upload dir is a symlink to /var/lib/repsys/uploads
+        #create_upload_dir { "$sched_home_dir/uploads":
+        #    owner => $sched_login, 
+        #} 
     }
 
     class youri_submit {
