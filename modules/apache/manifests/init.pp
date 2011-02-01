@@ -205,6 +205,13 @@ class apache {
         } 
     } 
 
+    define vhost_redirect($url) {
+        include apache::base
+        vhost_base { $name:
+            content => template("apache/vhost_redirect.conf"),
+        } 
+    } 
+
     define vhost_reverse_proxy($url) {
         include apache::mod_proxy
         vhost_base { $name:
