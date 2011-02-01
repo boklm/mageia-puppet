@@ -175,13 +175,8 @@ class apache {
 
     define vhost_wsgi($wsgi_path, $aliases = {}) {
         include apache::mod_wsgi
-        file { "$name.conf":
-            path => "/etc/httpd/conf/vhosts.d/$name.conf",
-            ensure => "present",
-            owner => root,
-            group => root,
-            mode => 644,
-            notify => Service['apache'],
+        vhost_base { $name:
+            aliases => $aliases,
             content => template("apache/vhost_wsgi.conf")
         }
     }
