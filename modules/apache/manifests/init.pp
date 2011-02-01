@@ -96,6 +96,12 @@ class apache {
         }
     }
 
+    class mod_public_html inherits base {
+        package { "apache-mod_public_html":
+            ensure => installed
+        }
+    }
+
     define vhost_base($content = '',
                       $location = '/dev/null', 
                       $use_ssl = false,
