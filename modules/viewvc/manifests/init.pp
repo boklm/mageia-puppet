@@ -21,7 +21,9 @@ class viewvc {
     }
 
     # need newer version of viewvc
-    apache::vhost_wsgi{ "viewvc.$domain":
+    apache::vhost_wsgi{ "svbweb.$domain":
+        # remove this alias in mars 2011
+        server_aliases => "viewvc.$domain",
         wsgi_path => "/usr/share/viewvc/bin/wsgi/viewvc.wsgi",
         aliases => { "/viewvc" => "/var/www/viewvc/" }, 
     }
