@@ -105,7 +105,8 @@ class apache {
     define vhost_base($content = '',
                       $location = '/dev/null', 
                       $use_ssl = false,
-                      $vhost = false) {
+                      $vhost = false,
+                      $enable_public_html = false) {
         if ! $vhost {
             $real_vhost = $name
         } else {
@@ -118,6 +119,10 @@ class apache {
                 directory => "/etc/ssl/apache/",
                 before => File["$filename"],
             }
+        }
+
+        if $enable_public_html {
+            include apache::mod_public_html
         }
 
         $filename = "$name.conf"
