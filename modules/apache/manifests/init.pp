@@ -106,6 +106,7 @@ class apache {
                       $location = '/dev/null', 
                       $use_ssl = false,
                       $vhost = false,
+                      $aliases = {},
                       $enable_public_html = false) {
         if ! $vhost {
             $real_vhost = $name
@@ -172,7 +173,7 @@ class apache {
         }
     }
 
-    define vhost_wsgi($wsgi_path, $aliases = false) {
+    define vhost_wsgi($wsgi_path, $aliases = {}) {
         include apache::mod_wsgi
         file { "$name.conf":
             path => "/etc/httpd/conf/vhosts.d/$name.conf",
