@@ -107,6 +107,7 @@ class apache {
                       $use_ssl = false,
                       $vhost = false,
                       $aliases = {},
+                      $server_aliases = [],
                       $enable_public_html = false) {
         if ! $vhost {
             $real_vhost = $name
@@ -174,10 +175,11 @@ class apache {
         }
     }
 
-    define vhost_wsgi($wsgi_path, $aliases = {}) {
+    define vhost_wsgi($wsgi_path, $aliases = {}, $server_aliases = []) {
         include apache::mod_wsgi
         vhost_base { $name:
             aliases => $aliases,
+            server_aliases => $server_aliases,
             content => template("apache/vhost_wsgi.conf")
         }
     }
