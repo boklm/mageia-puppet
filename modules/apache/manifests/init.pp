@@ -96,14 +96,39 @@ class apache {
         }
     }
 
-    define vhost_redirect_ssl() {
-        file { "redirect_ssl_$name.conf":
-            path => "/etc/httpd/conf/vhosts.d/redirect_ssl_$name.conf",
+    define vhost_base($content = '',
+                      $location = '/dev/null', 
+                      $use_ssl = false,
+                      $vhost = false) {
+        if ! $vhost {
+            $real_vhost = $name
+        } else {
+            $real_vhost = $vhost
+        }
+
+        if $use_ssl {
+            include apache::mod_ssl
+            openssl::self_signed_cert{ "$name":
+                directory => "/etc/ssl/apache/",
+                before => File["$filename"],
+            }
+        }
+
+        $filename = "$name.conf"
+        file { "$filename":
+            path => "/etc/httpd/conf/vhosts.d/$filename",
             ensure => "present",
             owner => root,
             group => root,
             mode => 644,
             notify => Service['apache'],
+            content => template("apache/vhost_base.conf")
+        }
+    }
+
+    define vhost_redirect_ssl() {
+        vhost_base { "redirect_ssl_$name":
+            vhost => $name,
             content => template("apache/vhost_ssl_redirect.conf")
         }
     }
@@ -111,50 +136,20 @@ class apache {
     define vhost_catalyst_app($script, $location = '', $process = 4, $use_ssl = false) {
 
         include apache::mod_fastcgi 
-
-        if $use_ssl {
-            include apache::mod_ssl
-            openssl::self_signed_cert{ "$name":
-                directory => "/etc/ssl/apache/",
-                before => File["$name.conf"],
-            }
-        }
-
-        file { "$name.conf":
-            path => "/etc/httpd/conf/vhosts.d/$name.conf",
-            ensure => "present",
-            owner => root,
-            group => root,
-            mode => 644,
-            notify => Service['apache'],
+        vhost_base { $name:
+            use_ssl => $use_ssl,
             content => template("apache/vhost_catalyst_app.conf")
         }
     }
 
     define vhost_django_app($module = false, $module_path = false, $use_ssl = false) {
         include apache::mod_wsgi
-
-        if $use_ssl {
-            include apache::mod_ssl
-            openssl::self_signed_cert{ "$name":
-                directory => "/etc/ssl/apache/",
-                before => File["$name.conf"],
-            }
-        }
-
-        # module is a ruby reserved keyword, cannot be used in templates
-        $django_module = $module
-        file { "$name.conf":
-            path => "/etc/httpd/conf/vhosts.d/$name.conf",
-            ensure => "present",
-            owner => root,
-            group => root,
-            mode => 644,
-            notify => Service['apache'],
+        vhost_base { $name:
             content => template("apache/vhost_django_app.conf")
         }
-
-        # fichier django wsgi
+        
+        # module is a ruby reserved keyword, cannot be used in templates
+        $django_module = $module
         file { "$name.wsgi":
             path => "/usr/local/lib/wsgi/$name.wsgi",
             ensure => "present",
@@ -194,28 +189,16 @@ class apache {
 
     define vhost_simple($location) {
         include apache::base
-        file { "$name.conf":
-            path => "/etc/httpd/conf/vhosts.d/$name.conf",
-            ensure => "present",
-            owner => root,
-            group => root,
-            mode => 644,
-            notify => Service['apache'],
-            content => template("apache/vhost_simple.conf")
-        }
+        vhost_base { $name:
+            location => $location,
+        } 
     } 
 
     define vhost_reverse_proxy($url) {
         include apache::mod_proxy
-        file { "$name.conf":
-            path => "/etc/httpd/conf/vhosts.d/$name.conf",
-            ensure => "present",
-            owner => root,
-            group => root,
-            mode => 644,
-            notify => Service['apache'],
+        vhost_base { $name:
             content => template("apache/vhost_reverse_proxy.conf")
-        }
+        } 
     }
 
    define webapp_other($webapp_file) {
