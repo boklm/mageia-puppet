@@ -67,6 +67,37 @@ class git {
         }
     }
 
+    define svn_repository($source,
+                          $std_layout = true,
+                          $refresh = '*/5') {
+        include git::client
+        include git::server
+        # a cron job
+        # a exec
+        if $std_layout {
+            $options = "-s"
+        } else {
+            $options = " "
+        }
+
+        exec { "/usr/bin/git svn clone $options $source $name":
+            creates => $name,
+        }
+
+        cron { "update $name":
+            command => "cd $name && /usr/bin/git svn rebase" ,
+            minute => $refresh
+        }
+        # TODO find a way to prevent commit
+        file { "$name/.git/hooks/pre-receive":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            content => "#!bin/bash\nfalse"
+        }
+    }
+
     class client inherits common {
 
 
