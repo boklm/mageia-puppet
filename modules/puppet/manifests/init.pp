@@ -58,7 +58,14 @@ class puppet {
             group => root,
             mode => 644,
             content => template("puppet/tagmail.conf"),
-       } 
-        
+        }
+
+        tidy { "/var/lib/puppet/reports":
+            age     => "1m",
+            matches => "*.yaml",
+            recurse => true,
+            type    => "mtime",
+        }
+
     }
 }
