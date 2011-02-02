@@ -61,7 +61,7 @@ class puppet {
         }
 
         tidy { "/var/lib/puppet/reports":
-            age     => "1m",
+            age     => "4w",
             matches => "*.yaml",
             recurse => true,
             type    => "mtime",
