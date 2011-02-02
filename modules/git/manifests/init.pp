@@ -84,7 +84,8 @@ class git {
             alias => "git svn $name",
             creates => $name,
         }
-
+        # TODO what if there is 2 concurents jobs ?
+        # should we add a lock ( ie, a script + lock file for first sync )
         cron { "update $name":
             # done in 2 times, so fetch can fill the repo after init
             command => "cd $name && /usr/bin/git svn fetch && /usr/bin/git svn rebase" ,
@@ -96,7 +97,7 @@ class git {
             owner => root,
             group => root,
             mode => 755,
-            content => "#!/bin/bash\nfalse",
+            content => template('git/pre-receive'), 
             require => Exec["git svn $name"]
         }
     }
