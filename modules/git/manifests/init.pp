@@ -80,12 +80,14 @@ class git {
             $options = " "
         }
 
-        exec { "/usr/bin/git svn clone $options $source $name":
+        exec { "/usr/bin/git svn init $options $source $name":
+            alias => "git svn $name",
             creates => $name,
         }
 
         cron { "update $name":
-            command => "cd $name && /usr/bin/git svn rebase" ,
+            # done in 2 times, so fetch can fill the repo after init
+            command => "cd $name && /usr/bin/git svn fetch && /usr/bin/git svn rebase" ,
             minute => $refresh
         }
         # TODO find a way to prevent commit
@@ -94,7 +96,8 @@ class git {
             owner => root,
             group => root,
             mode => 755,
-            content => "#!bin/bash\nfalse"
+            content => "#!bin/bash\nfalse",
+            require => Exec["git svn $name"]
         }
     }
 
