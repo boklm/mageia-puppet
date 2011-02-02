@@ -70,7 +70,7 @@ class git {
     define svn_repository($source,
                           $std_layout = true,
                           $refresh = '*/5') {
-        include git::client
+        include git::svn
         include git::server
         # a cron job
         # a exec
@@ -101,6 +101,12 @@ class git {
     class client inherits common {
 
 
+    }
+
+    class svn inherits client {
+        package { "git-svn":
+            ensure => installed
+        }
     }
 
     define snapshot($source, $refresh ='*/5', $user = 'root') {
