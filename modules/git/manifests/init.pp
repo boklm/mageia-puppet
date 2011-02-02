@@ -84,14 +84,21 @@ class git {
             alias => "git svn $name",
             creates => $name,
         }
-        # TODO what if there is 2 concurents jobs ?
-        # should we add a lock ( ie, a script + lock file for first sync )
+        
+        file { "/usr/local/bin/update_git_svn.sh":
+             ensure => present,
+             owner => root,
+             group => root,
+             mode => 755,
+             source => 'puppet:///modules/git/update_git_svn.sh',
+        }
+
         cron { "update $name":
             # done in 2 times, so fetch can fill the repo after init
-            command => "cd $name && /usr/bin/git svn fetch && /usr/bin/git svn rebase" ,
+            command => "/usr/local/bin/update_git_svn.sh $name" ,
             minute => $refresh
         }
-        # TODO find a way to prevent commit
+
         file { "$name/.git/hooks/pre-receive":
             ensure => present,
             owner => root,
