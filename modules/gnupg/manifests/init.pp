@@ -34,21 +34,29 @@ class gnupg {
                  $key_name,
                  $key_type = 'RSA',
                  $key_length = '1024',
-                 $expire_date = '1m'
+                 $expire_date = '1m',
+		 $login = 'signbot',
+		 $batchdir = '/var/lib/signbot/batches',
+		 $keydir = '/var/lib/signbot/keys',
                  ) {
 
             include gnupg::client
             file { "$name.batch":
                 ensure => present,
-                path => "/etc/gnupg/batches/$name.batch",
+                path => "$batchdir/$name.batch",
                 content => template("gnupg/batch")
             }
 
-            # TODO make sure the perm are good  
-            exec { "/usr/local/bin/create_gnupg_keys.sh $name":
-                 user => root,
-                 creates => "/etc/gnupg/keys/$name.secring",
-                 require => File["/etc/gnupg/batches/$name.batch"]
+	    file { "$keydir":
+	    	ensure => directory,
+		owner => $login,
+		mode => 700,
+	    }
+
+            exec { "/usr/local/bin/create_gnupg_keys.sh $batchdir/$name.batch $keydir $batchdir/$name.done":
+                 user => $login,
+                 creates => "$batchdir/$name.done",
+                 require => [File["$keydir"], File["$batchdir/$name.batch"]],
             }
     }
 }
