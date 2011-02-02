@@ -96,7 +96,7 @@ class git {
             owner => root,
             group => root,
             mode => 755,
-            content => "#!bin/bash\nfalse",
+            content => "#!/bin/bash\nfalse",
             require => Exec["git svn $name"]
         }
     }
