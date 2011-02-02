@@ -2,11 +2,8 @@
 Key-Type: <%= key_type %>
 Key-Length: <%= key_length %>
 Name-Real: <%= key_name %>
-Name-Comment: Key made by puppet on <%= fqdn %> 
 Name-Email: <%= email %>
 Expire-Date: <%= expire_date %>
-%pubring <%= name %>.pub
-%secring <%= name %>.sec
 %commit
 %echo done
 
