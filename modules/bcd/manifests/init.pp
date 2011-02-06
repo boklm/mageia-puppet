@@ -22,7 +22,7 @@ class bcd {
         }
 
 	file { "/var/lib/bcd":
-	    ensure => directory
+	    ensure => directory,
 	    owner => $bcd_login,
 	    group => $bcd_login,
 	    mode => 755,
