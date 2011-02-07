@@ -73,6 +73,10 @@ class buildsystem {
 	  batchdir => "$sign_home_dir/batches",
 	  keydir => "$sign_home_dir/keys",
 	}
+
+	sudo::sudoers_config { "signpackage":
+            content => template("buildsystem/sudoers.signpackage")
+        }
     }
 
     class scheduler {
