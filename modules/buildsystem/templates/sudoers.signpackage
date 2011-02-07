@@ -1,1 +1,1 @@
-<%= build_login %>	ALL =(<%= sign_login %>) NOPASSWD: /usr/bin/mga-signpackage
+<%= sched_login %>	ALL =(<%= sign_login %>) NOPASSWD: /usr/bin/mga-signpackage
