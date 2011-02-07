@@ -42,6 +42,11 @@ class gnupg {
 		mode => 700,
 	    }
 
+	    file { "$batchdir":
+	    	ensure => directory,
+		owner => $login,
+	    }
+
             exec { "/usr/local/bin/create_gnupg_keys.sh $batchdir/$name.batch $keydir $batchdir/$name.done":
                  user => $login,
                  creates => "$batchdir/$name.done",
