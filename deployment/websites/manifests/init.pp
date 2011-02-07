@@ -5,4 +5,10 @@ class websites {
             vhost_file => "websites/vhost_donate.conf",
         }
     }
+
+    class svn {
+        apache::vhost_redirect { "svn.$domain":
+            url => "http://svnweb.$domain/",
+        }
+    }
 }
