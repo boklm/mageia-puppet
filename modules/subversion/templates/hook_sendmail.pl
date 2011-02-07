@@ -6,6 +6,7 @@
   handler: Alternative
   alternative: HTML::ColorDiff
   with-diff: 1
+  max_diff_length: 20000
   from: root@<%= domain %>
   to:
 <%- commit_mail.each do |mail|  -%>
