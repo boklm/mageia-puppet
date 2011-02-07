@@ -22,10 +22,6 @@ class gnupg {
              mode => 755,
              content => template('gnupg/create_gnupg_keys.sh')
         }
-
-	package { "rng-utils":
-	    ensure => installed
-	}
     }
 
     # debian recommend SHA2, with 4096
