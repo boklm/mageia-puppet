@@ -50,7 +50,7 @@ class gnupg {
             exec { "/usr/local/bin/create_gnupg_keys.sh $batchdir/$name.batch $keydir $batchdir/$name.done":
                  user => $login,
                  creates => "$batchdir/$name.done",
-                 require => [File["$keydir"], File["$batchdir/$name.batch", Package["rng-utils"]]],
+                 require => [File["$keydir"], File["$batchdir/$name.batch"], Package["rng-utils"]],
             }
     }
 }
