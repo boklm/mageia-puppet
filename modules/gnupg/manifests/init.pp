@@ -22,8 +22,8 @@ class gnupg {
     define keys( $email,
                  $key_name,
                  $key_type = 'RSA',
-                 $key_length = '1024',
-                 $expire_date = '1m',
+                 $key_length = '4096',
+                 $expire_date = '400d',
 		 $login = 'signbot',
 		 $batchdir = '/var/lib/signbot/batches',
 		 $keydir = '/var/lib/signbot/keys'
