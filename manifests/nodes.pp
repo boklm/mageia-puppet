@@ -32,6 +32,8 @@ node valstar {
     include repositories::subversion
     include repositories::git
 
+    include websites::svn
+
     subversion::snapshot { "/etc/puppet":
         source => "svn://svn.mageia.org/svn/adm/puppet/"
     }
