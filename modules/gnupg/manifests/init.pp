@@ -4,17 +4,6 @@ class gnupg {
             ensure => present,
         }
         
-        file { ["/etc/gnupg", "/etc/gnupg/batches"]:
-            ensure => directory,
-        }
-
-        file { "/etc/gnupg/keys":
-            ensure => directory,
-            mode => 600,
-            owner => root,
-            group => root
-        }
-
         file { "/usr/local/bin/create_gnupg_keys.sh":
              ensure => present,
              owner => root,
