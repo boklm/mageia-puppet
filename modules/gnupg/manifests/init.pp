@@ -26,7 +26,7 @@ class gnupg {
                  $expire_date = '1m',
 		 $login = 'signbot',
 		 $batchdir = '/var/lib/signbot/batches',
-		 $keydir = '/var/lib/signbot/keys',
+		 $keydir = '/var/lib/signbot/keys'
                  ) {
 
             include gnupg::client
