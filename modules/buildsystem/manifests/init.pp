@@ -28,12 +28,6 @@ class buildsystem {
           comment => "System user used to schedule builds",
         }
 
-        sshuser { $sign_login:
-          homedir => $sign_home_dir,
-          comment => "System user used to sign packages",
-	  groups => [$sched_login],
-        }
-
         ssh::auth::client { $sched_login: }
         ssh::auth::server { $sched_login: }
         ssh::auth::server { $build_login: }
@@ -57,10 +51,28 @@ class buildsystem {
         include mgarepo
         include youri_submit
         include check_missing_deps 
+	include signbot
     }
 
     class buildnode inherits base {
         include iurt
+    }
+
+    class signbot {
+	sshuser { $sign_login:
+          homedir => $sign_home_dir,
+          comment => "System user used to sign packages",
+	  groups => [$sched_login],
+        }
+
+	gnupg::keys{"packages":
+          email => "packages@$domain",
+	  #FIXME there should be a variable somewhere to change the name of the distribution
+  	  key_name => 'Mageia Packages',
+	  login => $sign_login,
+	  batchdir => "$sign_home_dir/batches",
+	  keydir => "$sign_home_dir/keys",
+	}
     }
 
     class scheduler {
