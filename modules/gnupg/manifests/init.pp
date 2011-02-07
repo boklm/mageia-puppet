@@ -22,6 +22,10 @@ class gnupg {
              mode => 755,
              content => template('gnupg/create_gnupg_keys.sh')
         }
+
+	package { "rng-utils":
+	    ensure => installed
+	}
     }
 
     # debian recommend SHA2, with 4096
@@ -56,7 +60,7 @@ class gnupg {
             exec { "/usr/local/bin/create_gnupg_keys.sh $batchdir/$name.batch $keydir $batchdir/$name.done":
                  user => $login,
                  creates => "$batchdir/$name.done",
-                 require => [File["$keydir"], File["$batchdir/$name.batch"]],
+                 require => [File["$keydir"], File["$batchdir/$name.batch", Package["rng-utils"]]],
             }
     }
 }
