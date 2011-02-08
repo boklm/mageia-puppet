@@ -7,6 +7,9 @@ class buildsystem {
 	$sched_home_dir = "/var/lib/$sched_login"
 	$sign_login = "signbot"
 	$sign_home_dir = "/var/lib/$sign_login"
+	$sign_keydir = "$sign_home_dir/keys"
+	# FIXME: maybe keyid should be defined at an other place
+	$sign_keyid = "80420F66"
 	$repository_root = "/distrib/bootstrap"
 	$packagers_group = 'mga-packagers'
 	$createsrpm_path = '/usr/share/repsys/create-srpm'
@@ -71,7 +74,7 @@ class buildsystem {
   	  key_name => 'Mageia Packages',
 	  login => $sign_login,
 	  batchdir => "$sign_home_dir/batches",
-	  keydir => "$sign_home_dir/keys",
+	  keydir => $sign_keydir,
 	}
 
 	sudo::sudoers_config { "signpackage":
