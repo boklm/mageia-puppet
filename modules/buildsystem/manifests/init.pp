@@ -151,6 +151,7 @@ class buildsystem {
         import "create_upload_dir.rb"
         create_upload_dir { "$sched_home_dir/uploads":
             owner => $sched_login, 
+	    group => $sched_login,
         } 
     }
 
