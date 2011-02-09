@@ -80,6 +80,14 @@ class buildsystem {
 	sudo::sudoers_config { "signpackage":
             content => template("buildsystem/sudoers.signpackage")
         }
+
+	file { "$sign_home_dir/.rpmmacros":
+	    ensure => present,
+	    owner => root,
+	    group => root,
+	    mode => 644,
+	    content => template("buildsystem/signbot-rpmmacros")
+	}
     }
 
     class scheduler {

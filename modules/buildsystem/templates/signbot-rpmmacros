@@ -1,0 +1,3 @@
+%__gpg_sign_cmd                 %{__gpg} \
+        gpg --batch --force-v3-sigs --no-verbose --no-armor --passphrase-fd 3 --no-secmem-warning \
+        -u "%{_gpg_name}" -sbo %{__signature_filename} %{__plaintext_filename}
