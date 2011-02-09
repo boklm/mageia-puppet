@@ -63,4 +63,12 @@ class lists {
             sender_email => "root@$domain",
             topics => "sysadmin",
         }
+
+        sympa::announce_list_email { "soft-commits":
+            subject => "List receiving automated reports from soft/ repositories",
+            # FIXME change once we migrate
+            reply_to => "mageia-dev@$domain",
+            sender_email => "root@$domain",
+            topics => "developers",
+        }
 }
