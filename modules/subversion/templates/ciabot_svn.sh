@@ -114,7 +114,6 @@ Subject: DeliverXML
             <author>$author</author>
             <files>$files</files>
             <log>$log</log>
-            <url>$url</url>
             <diffLines>$diff_lines</diffLines>
         </commit>
     </body>
