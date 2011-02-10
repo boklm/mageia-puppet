@@ -91,6 +91,8 @@ for file in `svnlook changed -r "$REV" "$REPOS" | cut -c 3- | sed 's/\&/\&amp;/g
     files="$files<file>$file</file>"
 done
 
+url="http://svnweb.<%= domain%>/${REPOS/\/svn\//}?view=revision&revision=$REV"
+
 # Send an email with the final XML message
 (cat <<EOF
 From: $return_address
@@ -112,6 +114,7 @@ Subject: DeliverXML
             <author>$author</author>
             <files>$files</files>
             <log>$log</log>
+            <url>$url</url>
             <diffLines>$diff_lines</diffLines>
         </commit>
     </body>
