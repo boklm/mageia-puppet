@@ -28,7 +28,7 @@ class libvirtd {
         file { "/etc/polkit-1/localauthority/50-local.d/50-$name-libvirt-remote-access.pkla":
             owner => root,
             group => root,
-            perms => 644,
+            mode => 644,
             ensure => present,
             content => template("libvirtd/50-template-libvirt-remote-access.pkla"),
         }
