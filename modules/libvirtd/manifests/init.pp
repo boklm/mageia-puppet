@@ -4,7 +4,7 @@ class libvirtd {
         # dnsmasq-base -> for nat network
         # netcat-openbsd -> for ssh remote access
         # iptables -> for dhcp, message error was quite puzzling
-        package { ["libvirtd","dnsmasq-base","netcat-openbsd","iptables"]:
+        package { ["libvirt-utils","dnsmasq-base","netcat-openbsd","iptables"]:
         }
 
         service { libvirtd:
