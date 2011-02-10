@@ -166,5 +166,5 @@ node rabbit {
 
     # for testing iso quickly
     include libvirtd::kvm
-    libvirtd::group_access { "mga-iso_makers" }
+    libvirtd::group_access { "mga-iso_makers": }
 }
