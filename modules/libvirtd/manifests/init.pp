@@ -20,4 +20,17 @@ class libvirtd {
         }
     
     }
+
+    # see http://wiki.libvirt.org/page/SSHPolicyKitSetup
+    define group_access() {
+        # to pull polkit and create the directory
+        include libvirtd::base
+        file { "/etc/polkit-1/localauthority/50-local.d/50-$name-libvirt-remote-access.pkla":
+            owner => root,
+            group => root,
+            perms => 644,
+            ensure => present,
+            content => template("libvirtd/50-template-libvirt-remote-access.pkla"),
+        }
+    }
 }
