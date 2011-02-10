@@ -164,4 +164,6 @@ node rabbit {
     include openssh::ssh_keys_from_ldap
     include mirror::mirrorbootstrap
     include mirror::mirrormageia
+    # for testing iso quickly
+    include libvirtd
 }
