@@ -24,6 +24,14 @@ class git {
              content => template('git/create_git_repo.sh')
         }
 
+        file { "/usr/local/bin/apply_git_puppet_config.sh":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            content => template('git/apply_git_puppet_config.sh')
+        }
+
 
         # TODO
         # define common syntax check, see svn 
@@ -64,6 +72,19 @@ class git {
             ensure => present,
             content => $description,
             require => File["$name/git-daemon-export-ok"]
+        }
+
+        file { "$name/config.puppet":
+            ensure => present,
+            require => File["$name/git-daemon-export-ok"],
+            notify => Exec['/usr/local/bin/apply_git_puppet_config.sh'],
+            content => template('git/config.puppet'),
+        }
+
+        exec { "/usr/local/bin/apply_git_puppet_config.sh":
+            cwd => $name,
+            user => "root",
+            refreshonly => true 
         }
     }
 
