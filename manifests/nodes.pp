@@ -72,7 +72,7 @@ node alamut {
         host_aliases => [ "friteuse.$domaine" ],
         ensure => 'present',
     }
-    include libvirtd
+    include libvirtd::kvm
 
     include lists
     include dns::server 
@@ -165,5 +165,5 @@ node rabbit {
     include mirror::mirrorbootstrap
     include mirror::mirrormageia
     # for testing iso quickly
-    include libvirtd
+    include libvirtd::kvm
 }
