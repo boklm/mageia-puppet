@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# FIXME the contrib/hooks should be in /usr/share/git-core
+# but this may cause issue with automated requirement
+. /usr/share/doc/git-core/contrib/hooks/post-receive-email
+

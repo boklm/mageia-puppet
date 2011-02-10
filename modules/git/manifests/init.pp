@@ -74,6 +74,15 @@ class git {
             require => File["$name/git-daemon-export-ok"]
         }
 
+        file { "$name/hooks/post-receive":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            content => template('git/post-receive'), 
+            require => File["$name/git-daemon-export-ok"]
+        }
+
         file { "$name/config.puppet":
             ensure => present,
             require => File["$name/git-daemon-export-ok"],
