@@ -73,7 +73,6 @@ node alamut {
         ensure => 'present',
     }
     include libvirtd::kvm
-
     include lists
     include dns::server 
     include repositories::mirror
@@ -164,6 +163,8 @@ node rabbit {
     include openssh::ssh_keys_from_ldap
     include mirror::mirrorbootstrap
     include mirror::mirrormageia
+
     # for testing iso quickly
     include libvirtd::kvm
+    libvirtd::group_access { "mga-iso_makers" }
 }
