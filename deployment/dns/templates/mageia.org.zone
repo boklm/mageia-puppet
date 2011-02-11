@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2011020700	; Serial
+        2011021100	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -63,6 +63,7 @@ ns1         IN  A       95.142.164.207
 www         IN  CNAME www-zarb
 www-test    IN  CNAME champagne
 static	    IN	CNAME champagne
+start	    IN	CNAME champagne
 blog        IN  CNAME www-zarb
 blog-test   IN  CNAME champagne
 planet      IN	CNAME champagne
