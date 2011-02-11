@@ -1,7 +1,7 @@
 class planet {
     user { "planet":
 	groups => apache,
-	comment => "This user is used for planet",
+	comment => "User running cronjob and deploying planet software",
 	ensure => present,
 	managehome => true,
     }
