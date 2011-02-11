@@ -3,7 +3,7 @@
 # - add the user 'planet' to the 'apache' group (usermod -a -G apache blog)
 class planet {
     user { "planet":
-	group => 'apache',
+	groups => 'apache',
 	commend => 'This user was created by Puppet',
 	ensure => 'present',
 	managed_home => 'false',
