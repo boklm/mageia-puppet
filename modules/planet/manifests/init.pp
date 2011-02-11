@@ -4,9 +4,9 @@
 class planet {
     user { "planet":
 	groups => 'apache',
-	comment => 'This user was created by Puppet',
+	comment => 'This user is used for planet.mageia.org',
 	ensure => 'present',
-	managed_home => 'false',
+	managed_homedir => 'false',
     }
     include apache::mod_php
 
