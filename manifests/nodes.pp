@@ -139,6 +139,7 @@ node champagne {
     timezone::timezone { "Europe/Paris": }
     include blog
     include planet
+    include websites::static
 }
 
 node friteuse {
