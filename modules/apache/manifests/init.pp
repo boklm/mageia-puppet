@@ -102,6 +102,12 @@ class apache {
         }
     }
 
+    class mod_deflate inherits base {
+   	package { "apache-mod_deflate":
+	    ensure => installed
+	}
+    }
+
     define vhost_base($content = '',
                       $location = '/dev/null', 
                       $use_ssl = false,
