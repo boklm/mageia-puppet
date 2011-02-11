@@ -272,6 +272,7 @@ class subversion {
         exec { "/usr/bin/svn co $source $name":
             creates => $name,           
             user => $user,  
+	    requires => Package[subversion]
         }
 
         cron { "update $name":
