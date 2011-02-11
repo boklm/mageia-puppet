@@ -4,7 +4,7 @@
 class planet {
     user { "planet":
 	groups => 'apache',
-	commend => 'This user was created by Puppet',
+	comment => 'This user was created by Puppet',
 	ensure => 'present',
 	managed_home => 'false',
     }
