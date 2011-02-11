@@ -7,6 +7,7 @@ class planet {
     }
 
     include apache::mod_php
+    include apache::mod_deflate
     apache::vhost_other_app { "planet.$domain":
         vhost_file => "planet/02_planet_vhosts.conf",
     }
@@ -18,7 +19,7 @@ class planet {
 	mode => 644,
     }
 
-    package { ['apache-mod_deflate']:
+    package { ['php-iconv']:
         ensure => installed
     }
 }
