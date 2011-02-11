@@ -6,7 +6,7 @@ class planet {
 	groups => 'apache',
 	comment => 'This user is used for planet.mageia.org',
 	ensure => 'present',
-	managed_homedir => 'false',
+	manages_homedir => 'false',
     }
     include apache::mod_php
 
