@@ -17,7 +17,7 @@ class repositories::subversion {
 
     subversion::repository { "/svn/soft/":
 	    group => "mga-packagers",
-	    commit_mail => ['mageia-sysadm@mageia.org',"soft-commits@ml.$domain"],
+	    commit_mail => ["soft-commits@ml.$domain"],
 	    cia_post => true,
 	    cia_module => "soft",
     }
