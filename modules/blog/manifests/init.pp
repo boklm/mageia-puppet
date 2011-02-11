@@ -1,12 +1,26 @@
-#TODO: 
-# - add the creation of the user 'blog' in puppet
-# - add the user 'blog' to the 'apache' group (usermod -a -G apache blog)
 class blog {
+    user { "blog":
+        groups => apache,
+        comment => "This user is used for blog.mageia.org",
+        ensure => present,
+        managehome => true,
+    }
+
     include apache::mod_php
     include mysql
+    apache::vhost_other_app { "blog-test.$domain":
+        vhost_file => "blog/01_blogs_vhosts.conf",
+    }
 
     package { ['wget','php-mysql']:
         ensure => installed
+    }
+
+    file { "/var/lib/blog":
+        ensure => directory,
+        owner => blog,
+        group => blog,
+        mode => 644,
     }
 
     file { "check_new-blog-post":
@@ -18,20 +32,9 @@ class blog {
         content => template("blog/check_new-blog-post.sh")
     }
 
-    apache::vhost_other_app { "blog-test.$domain":
-        vhost_file => "blog/01_blogs_vhosts.conf",
-    }
-
-    file { "/var/lib/blog":
-        ensure => directory,
-        owner => blog,
-        group => blog,
-        mode => 644,
-    }
-    
     file { "/var/www/html/blog.mageia.org":
 	ensure => directory,
-	owner => apache,
+	owner => blog,
 	group => blog,
 	mode => 644,
     }
