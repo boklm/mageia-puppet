@@ -17,4 +17,8 @@ class planet {
 	group => planet,
 	mode => 644,
     }
+
+    package { ['apache-mod_deflate,']:
+        ensure => installed
+    }
 }
