@@ -1,0 +1,16 @@
+#!/bin/sh
+
+file="$1"
+key="$2"
+keydir="$3"
+
+tmpfile=`/tmp/tmp.fMzaAHPDgM`
+cp -p "$file" "$tmpfile"
+rpm --delsign "$tmpfile"
+/usr/bin/mga-signpackage "$tmpfile" "$key" "$keydir"
+while rpmsign -Kv "$tmpfile" 2>&1 | grep BAD
+do
+    cp -p "$file" "$tmpfile"
+    /usr/bin/mga-signpackage "$tmpfile" "$key" "$keydir"
+done
+mv -f "$tmpfile" "$file"

@@ -88,6 +88,14 @@ class buildsystem {
 	    mode => 644,
 	    content => template("buildsystem/signbot-rpmmacros")
 	}
+
+	file { "/usr/local/bin/sign-check-package":
+	    ensure => present,
+	    owner => root,
+	    group => root,
+	    mode => 755,
+	    content => template("buildsystem/sign-check-package")
+	}
     }
 
     class scheduler {
