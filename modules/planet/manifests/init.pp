@@ -2,7 +2,7 @@
 # - add the user 'planet' to the 'apache' group (usermod -a -G apache blog)
 class planet {
     user { "planet":
-	group => apache,
+	groups => apache,
 	comment => "This user is used for planet.mageia.org",
 	ensure => present,
 	managehome => true,
@@ -15,8 +15,8 @@ class planet {
 
     file { "/var/www/html/planet.mageia.org":
 	ensure => directory,
-	owner => apache,
-	group => blog,
+	owner => planet,
+	group => planet,
 	mode => 644,
     }
 }
