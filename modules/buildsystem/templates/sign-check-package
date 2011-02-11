@@ -8,9 +8,16 @@ tmpfile=`mktemp`
 cp -pf "$file" "$tmpfile"
 rpm --delsign "$tmpfile"
 /usr/bin/mga-signpackage "$tmpfile" "$key" "$keydir"
+nbtry=0
 while rpmsign -Kv "$tmpfile" 2>&1 | grep BAD
 do
+    nbtry=$(($nbtry + 1))
+    if [ $nbtry -ge 15 ]
+    then
+	exit 1
+    fi
     cp -pf "$file" "$tmpfile"
+    rpm --delsign "$tmpfile"
     /usr/bin/mga-signpackage "$tmpfile" "$key" "$keydir"
 done
 mv -f "$tmpfile" "$file"
