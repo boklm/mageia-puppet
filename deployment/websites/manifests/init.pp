@@ -26,7 +26,12 @@ class websites {
 	    vhost_file => 'websites/vhost_static.conf',
 	}
 
-	subversion::snapshot { $vhostdir:
+	file { $vhostdir:
+	    ensure => directory,
+	    mode => 655,
+	}
+
+	subversion::snapshot { "$vhostdir/g":
 	    source => $svn_location
 	}
     }
