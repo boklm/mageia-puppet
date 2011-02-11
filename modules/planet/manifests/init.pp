@@ -1,9 +1,7 @@
-#TODO: 
-# - add the user 'planet' to the 'apache' group (usermod -a -G apache blog)
 class planet {
     user { "planet":
 	groups => apache,
-	comment => "This user is used for planet.mageia.org",
+	comment => "This user is used for planet",
 	ensure => present,
 	managehome => true,
     }
@@ -13,7 +11,7 @@ class planet {
         vhost_file => "planet/02_planet_vhosts.conf",
     }
 
-    file { "/var/www/html/planet.mageia.org":
+    file { "/var/www/html/planet.$domain":
 	ensure => directory,
 	owner => planet,
 	group => planet,
