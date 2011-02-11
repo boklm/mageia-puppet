@@ -32,7 +32,7 @@ class blog {
         content => template("blog/check_new-blog-post.sh")
     }
 
-    file { "/var/www/html/blog.mageia.org":
+    file { "/var/www/html/blog.$domain":
 	ensure => directory,
 	owner => blog,
 	group => blog,
