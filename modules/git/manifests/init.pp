@@ -17,11 +17,11 @@ class git {
         }
         
         file { "/usr/local/bin/create_git_repo.sh":
-             ensure => present,
-             owner => root,
-             group => root,
-             mode => 755,
-             content => template('git/create_git_repo.sh')
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            source => 'puppet:///modules/git/create_git_repo.sh',
         }
 
         file { "/usr/local/bin/apply_git_puppet_config.sh":
@@ -29,7 +29,7 @@ class git {
             owner => root,
             group => root,
             mode => 755,
-            content => template('git/apply_git_puppet_config.sh')
+            source => 'puppet:///modules/git/apply_git_puppet_config.sh',
         }
 
 
