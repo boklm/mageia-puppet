@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Initialization
-REPLYTO=mageia-blogteam@mageia.org
+REPLYTO=mageia-blogteam@$domain
 PATH_TO_FILE=${PATH_TO_FILE:-/var/lib/blog}
 /usr/bin/wget -qO $PATH_TO_FILE"/last_tmp" http://blog.mageia.org/?feed=rss2
 if [ $? -ne 0 ] 
@@ -38,14 +38,14 @@ if [ "$tmp_old" = "$tmp_new" ]
 				cat $PATH_TO_FILE"/last_check" > $PATH_TO_FILE"/last_need_translation"
 				echo $tmp_new >> $PATH_TO_FILE"/last_need_translation"
 				echo "YES - Modification" >> $PATH_TO_FILE"/last_check"
-				echo -e "Info: the last blog post had been modified and need to be checked.\nTitle: \"$tmp_new\"" | /bin/mail -s "Modification of the last entry on English Blog" mageia-blogteam@mageia.org
+				echo -e "Info: the last blog post had been modified and need to be checked.\nTitle: \"$tmp_new\"" | /bin/mail -s "Modification of the last entry on English Blog" mageia-blogteam@$domain
 				echo $DATE
 			else
 				# New post to translate
 				cat $PATH_TO_FILE"/last_check" > $PATH_TO_FILE"/last_need_translation"
 				echo $tmp_new >> $PATH_TO_FILE"/last_need_translation"
 				echo "YES - New entry" >> $PATH_TO_FILE"/last_check"
-				echo -e "Info: a new blog post is waiting for translation.\nTitle: \"$tmp_new\"" | /bin/mail -s "New entry on English Blog" mageia-blogteam@mageia.org
+				echo -e "Info: a new blog post is waiting for translation.\nTitle: \"$tmp_new\"" | /bin/mail -s "New entry on English Blog" mageia-blogteam@$domain
 				echo $DATE
 			fi
 	fi
