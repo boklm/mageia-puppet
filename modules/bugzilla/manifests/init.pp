@@ -46,11 +46,21 @@ class bugzilla {
 
     apache::webapp_other{"bugzilla":
         webapp_file => "bugzilla/webapp_bugzilla.conf",
-      }
-
-    apache::vhost_other_app { "bugs.$domain":
-      vhost_file => "bugzilla/vhost_bugs.conf",
     }
+
+    $bugs_vhost = "bugs.$domain"
+    $vhost_root = "/usr/share/bugzilla/www"
+
+    apache::redirect_ssl { "$bugs_vhost": }
+
+    apache::vhost_base { "$bugs_vhost":
+        aliases => { "/bugzilla/data" => "$lib_dir/bugzilla",
+                     "/bugzilla/" => $vhost_root },  
+        use_ssl => true,
+        location => $vhost_root,
+        vhost => $bugs_vhost,
+    }
+
     subversion::snapshot { $bugzilla_location:
       source => "svn://svn.mageia.org/svn/web/templates/bugzilla/trunk"
     }
