@@ -12,7 +12,7 @@ then
    if [ $? -ne 0 ]
        then
        echo "Syntax error in $files." 1>&2
-       echo "Check it with <%= check_cmd %>" 
+       echo "Check it with <%= check_cmd %>" 1>&2 
        exit 1
    fi
 fi
