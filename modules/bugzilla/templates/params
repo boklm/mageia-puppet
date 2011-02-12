@@ -45,7 +45,7 @@
            'globalwatchers' => '',
            'inbound_proxies' => '',
            'insidergroup' => '',
-           'letsubmitterchoosemilestone' => 1,
+           'letsubmitterchoosemilestone' => 0,
            'letsubmitterchoosepriority' => 1,
            'lxr_root' => '',
            'lxr_url' => '',
