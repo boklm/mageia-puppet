@@ -5,6 +5,7 @@ class blog {
         comment => "User running cron jobs for blog",
         ensure => present,
         managehome => true,
+        home => "/var/lib/blog",
     }
 
     include apache::mod_php
@@ -15,13 +16,6 @@ class blog {
 
     package { ['wget','php-mysql']:
         ensure => installed
-    }
-
-    file { "/var/lib/blog":
-        ensure => directory,
-        owner => blog,
-        group => blog,
-        mode => 644,
     }
 
     file { "check_new-blog-post":
