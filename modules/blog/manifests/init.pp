@@ -9,7 +9,7 @@ class blog {
     include apache::mod_php
     include mysql
     apache::vhost_other_app { "blog-test.$domain":
-        vhost_file => "blog/01_blogs_vhosts.conf",
+        vhost_file => "blog/blogs_vhosts.conf",
     }
 
     package { ['wget','php-mysql']:
