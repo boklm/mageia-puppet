@@ -30,11 +30,14 @@ class blog {
 
     include apache::mod_php
     include mysql
-    apache::vhost_other_app { "blog-test.$domain":
+
+    $blog_location = "/var/www/html/blog.$domain"
+    $blog_domain = "blog-test.$domain"
+    apache::vhost_other_app { "$blog_domain":
         vhost_file => "blog/blogs_vhosts.conf",
     }
 
-    file { "/var/www/html/blog.$domain":
+    file { "$blog_location":
 	    ensure => directory,
 	    owner => blog,
 	    # FIXME is the group created by puppet ?
