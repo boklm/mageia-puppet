@@ -92,6 +92,7 @@ class postgresql {
         exec { "createdb -O $user -U postgres $name '$description'":
             user => root,
             unless => "psql -A -t -U postgres -l | grep '^$name|'",
+            require => Service['postgresql'],
         }
     }
     
@@ -104,6 +105,7 @@ class postgresql {
             user => root,
             environment => "pass=$password", 
             unless => "psql -A -t -U postgres -c '\du $name' | grep '$name'",
+            require => Service['postgresql'],
         }
     }
 }
