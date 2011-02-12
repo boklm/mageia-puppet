@@ -1,7 +1,8 @@
 class blog {
+
     user { "blog":
         groups => apache,
-        comment => "This user is used for blog.mageia.org",
+        comment => "User running cron jobs for blog",
         ensure => present,
         managehome => true,
     }
