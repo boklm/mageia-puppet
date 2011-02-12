@@ -150,6 +150,7 @@ node friteuse {
 
     include default_mageia_server
     timezone::timezone { "Europe/Paris": }
+    include phpbb
 }
 
 node rabbit {
