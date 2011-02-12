@@ -3,7 +3,7 @@ class phpbb {
     include apache::mod_php
     include mysql
 
-    package { ["php-gd","php-xml","php-zlib","php-ftp","php-magickwand"
+    package { ["php-gd","php-xml","php-zlib","php-ftp","php-magickwand" ]
         ensure => installed
     }
 
