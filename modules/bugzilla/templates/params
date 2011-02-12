@@ -24,7 +24,7 @@
            'auth_env_realname' => '',
            'bonsai_url' => '',
            'chartgroup' => 'editbugs',
-           'commentonchange_resolution' => 0,
+           'commentonchange_resolution' => 1,
            'commentonduplicate' => 0,
            'confirmuniqueusermatch' => 1,
            'cookiedomain' => '',
