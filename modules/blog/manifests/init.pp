@@ -33,8 +33,17 @@ class blog {
 
     $blog_location = "/var/www/html/blog.$domain"
     $blog_domain = "blog-test.$domain"
-    apache::vhost_other_app { "$blog_domain":
-        vhost_file => "blog/blogs_vhosts.conf",
+
+    apache::vhost_base { "$blog_domain":
+        location => $blog_location,
+        content => template('blog/blogs_vhosts.conf'),
+    }
+
+    apache::vhost_base { "ssl_$blog_domain":
+        use_ssl => true,
+        vhost => $blog_domain,
+        location => $blog_location,
+        content => template('blog/blogs_vhosts.conf'),
     }
 
     file { "$blog_location":
