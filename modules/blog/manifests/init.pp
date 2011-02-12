@@ -21,8 +21,8 @@ class blog {
     file { "check_new-blog-post":
         path => "/usr/local/bin/check_new-blog-post.sh",
         ensure => present,
-        owner => blog,
-        group => blog,
+        owner => root,
+        group => root,
         mode => 755,
         content => template("blog/check_new-blog-post.sh")
     }
