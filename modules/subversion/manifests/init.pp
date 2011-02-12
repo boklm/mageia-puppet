@@ -106,7 +106,7 @@ class subversion {
 
         syntax_check{"check_puppet_templates":
             regexp_ext => "modules/.*/templates/.*$",
-            check_cmd => "erb -x -T - | ruby -c"
+            check_cmd => "erb -P -x -T - | ruby -c"
         }
     }
 
