@@ -37,7 +37,8 @@ class blog {
     file { "/var/www/html/blog.$domain":
 	    ensure => directory,
 	    owner => blog,
-	    group => blog,
+	    # FIXME is the group created by puppet ?
+        group => blog,
 	    mode => 644,
     }
 }
