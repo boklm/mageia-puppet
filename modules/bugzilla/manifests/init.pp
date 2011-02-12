@@ -10,6 +10,10 @@ class bugzilla {
        ensure => installed;
     }
 
+    package { 'perl-JSON-RPC':
+      ensure => installed;
+    }
+
     $pgsql_password = extlookup("bugzilla_pgsql",'x')
     $ldap_password = extlookup("bugzilla_ldap",'x')
 
