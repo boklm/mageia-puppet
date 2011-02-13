@@ -14,7 +14,7 @@
            'allow_attachment_deletion' => 0,
            'allow_attachment_display' => 0,
            'allowbugdeletion' => 0,
-           'allowemailchange' => 1,
+           'allowemailchange' => 0,
            'allowloginid' => '0',
            'allowuserdeletion' => 0,
            'announcehtml' => '',
