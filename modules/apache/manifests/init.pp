@@ -6,6 +6,10 @@ class apache {
             ensure => installed
         }
     
+        package { "apache-conf":
+            ensure => installed,
+        }
+
         service { httpd: 
             alias => apache,
             ensure => running,
@@ -16,7 +20,7 @@ class apache {
             ensure => present,
             path => "/etc/httpd/conf.d/customization.conf",
             content => template("apache/customization.conf"),
-            require => Package["apache"],
+            require => Package["apache-conf"],
             notify => Service["apache"],
             owner => root,
             group => root,
@@ -30,6 +34,7 @@ class apache {
             group => root,
             mode => 644,
             notify => Service['apache'],
+            require => Package["apache-conf"],
             content => template("apache/00_default_vhosts.conf")
         }
     }
@@ -85,6 +90,7 @@ class apache {
             owner => root,
             group => root,
             mode => 644,
+            require => Package['apache-conf'],
             content => template('apache/mod_wsgi.conf')
         }
 
@@ -141,6 +147,7 @@ class apache {
             group => root,
             mode => 644,
             notify => Service['apache'],
+            require => Package['apache-conf'],
             content => template("apache/vhost_base.conf")
         }
     }
@@ -199,6 +206,7 @@ class apache {
             group => root,
             mode => 644,
             notify => Service['apache'],
+            require => Package['apache-conf'],
             content => template($vhost_file)
         }
    }
@@ -234,6 +242,7 @@ class apache {
             group => root,
             mode => 644,
             notify => Service['apache'],
+            require => Package['apache-conf'],
             content => template($webapp_file)
         }
    }
