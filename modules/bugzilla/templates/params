@@ -94,7 +94,7 @@
            'usebugaliases' => 0,
            'useclassification' => 0,
            'usemenuforusers' => '0',
-           'useqacontact' => 0,
+           'useqacontact' => 1,
            'user_info_class' => 'CGI',
            'user_verify_class' => 'LDAP',
            'usestatuswhiteboard' => 1,
