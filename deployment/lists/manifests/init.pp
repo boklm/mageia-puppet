@@ -71,4 +71,13 @@ class lists {
             sender_email => "root@$domain",
             topics => "developers",
         }
+
+        sympa::announce_list_email { "bugs":
+            subject => "List receiving bugs reports from bugzilla ",
+            # FIXME change once we migrate
+            reply_to => "mageia-dev@$domain",
+            sender_email => "bugzilla-daemon@$domain",
+            topics => "developers",
+        }
+
 }
