@@ -1,4 +1,6 @@
 class phpbb {
+    $database = "phpbb"
+    $user = "phpbb"
 
     include apache::mod_php
     include mysql
@@ -14,13 +16,13 @@ class phpbb {
     # TODO git checkout 
 
     $pgsql_password = extlookup("phpbb_pgsql",'x')
-    @@postgresql::user { 'phpbb':
+    @@postgresql::user { $user:
         password => $pgsql_password,
     }
 
-    @@postgresql::database { 'phpbb':
+    @@postgresql::database { $database:
         description => "Phpbb database",
-        user => "phpbb",
-        require => Postgresql::User['phpbb']
+        user => $user,
+        require => Postgresql::User[$user]
     }
 }
