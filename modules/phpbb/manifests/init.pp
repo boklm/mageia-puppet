@@ -13,6 +13,14 @@ class phpbb {
 
     # TODO git checkout 
 
-    # TODO mysql vm creation
+    $pgsql_password = extlookup("phpbb_pgsql",'x')
+    @@postgresql::user { 'phpbb':
+        password => $pgsql_password,
+    }
 
+    @@postgresql::database { 'phpbb':
+        description => "Phpbb database",
+        user => "phpbb",
+        require => Postgresql::User['phpbb']
+    }
 }
