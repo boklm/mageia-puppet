@@ -19,10 +19,8 @@ class phpbb {
          source => 'puppet:///modules/phpbb/phpbb_apply_config.pl',
     }
 
-    # TODO ldap account configuration
-    # ldap_user
-    # ldap_server
-    # ldap_password ldap_base_dn cookie_domain 
+    # TODO phpbb config
+    # cookie_domain 
     # board_contact
     # 
     define phpbb_config($value) {
@@ -33,8 +31,29 @@ class phpbb {
         }
     }
 
-    # TODO git checkout 
+    phpbb_config { "ldap_user":
+        value => "ou=People,$dc_suffix",
+        value => "cn=phpbb-friteuse,ou=System Accounts,$dc_suffix",
+    }
 
+    phpbb_config { "ldap_server":
+        value => "ldap.$domain",
+    }
+
+    $ldap_password = extlookup("phpbb_ldap",'x')
+    phpbb_config { "ldap_password":
+        value => $ldap_password,
+    }
+
+    phpbb_config { "ldap_base_dn":
+        value => "ou=People,$dc_suffix",
+    }
+
+
+
+    # TODO git checkout of the code
+
+    # TODO phpbb database configuration
     $pgsql_password = extlookup("phpbb_pgsql",'x')
     @@postgresql::user { $user:
         password => $pgsql_password,
