@@ -32,7 +32,6 @@ class phpbb {
     }
 
     phpbb_config { "ldap_user":
-        value => "ou=People,$dc_suffix",
         value => "cn=phpbb-friteuse,ou=System Accounts,$dc_suffix",
     }
 
