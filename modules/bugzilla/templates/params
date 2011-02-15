@@ -42,7 +42,7 @@
            'emailregexp' => '^[\\w\\.\\+\\-=]+@[\\w\\.\\-]+\\.[\\w\\-]+$',
            'emailregexpdesc' => 'A legal address must contain exactly one \'@\', and at least one \'.\' after the @.',
            'emailsuffix' => '',
-           'globalwatchers' => 'bugs@ml.mageia.org',
+           'globalwatchers' => 'bugs@ml.<%= domain %>',
            'inbound_proxies' => '',
            'insidergroup' => '',
            'letsubmitterchoosemilestone' => 0,
