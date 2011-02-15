@@ -4,7 +4,7 @@ use warnings;
 use Env qw(VALUE);
 use DBI;
 
-my $key = $ARGV[O];
+my $key = $ARGV[0];
 
 # DBI will use default value coming from env
 # see puppet manifests 
