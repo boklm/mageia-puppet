@@ -57,6 +57,16 @@ class lists {
             topics => "i18n",
         }
 
+        sympa::public_list {"i18n-ro":
+            subject => "List about translation to Romanian",
+            topics => "i18n",
+        }
+
+        sympa::public_list {"i18n-zh_tw":
+            subject => "List about translation to Taiwanese",
+            topics => "i18n",
+        }
+
         sympa::announce_list_email {"sysadmin-commits":
             subject => "List receiving commits mail from sysadmin team repository",
             # FIXME change once we migrate
