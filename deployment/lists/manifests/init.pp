@@ -47,6 +47,15 @@ class lists {
             topics => "i18n",
         }
 
+        sympa::public_list {"i18n-it":
+            subject => "List about translation to Italian",
+            topics => "i18n",
+        }
+
+        sympa::public_list {"i18n-en":
+            subject => "List about translation to English",
+            topics => "i18n",
+        }
 
         sympa::announce_list_email {"sysadmin-commits":
             subject => "List receiving commits mail from sysadmin team repository",
