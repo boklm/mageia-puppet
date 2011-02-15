@@ -9,7 +9,9 @@ class phpbb {
         ensure => installed
     }
 
-    # TODO ldap account configuration
+    package { "perl-DBD-Pg":
+        ensure => installed
+    }
 
     file { "/usr/local/bin/phpbb_apply_config.pl":
          ensure => present,
