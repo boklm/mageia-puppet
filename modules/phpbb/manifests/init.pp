@@ -28,7 +28,7 @@ class phpbb {
     define phpbb_config($value) {
         exec { "/usr/local/bin/phpbb_apply_config.pl $name":
             user => root,
-            environment => "PGDATABASE=$database PGUSER=$user PGPASSWORD=$password PGHOST=pgsql.$domain VALUE=$value",
+            environment => "PGDATABASE=$database PGUSER=$user PGPASSWORD=$pgsql_password PGHOST=pgsql.$domain VALUE=$value",
             require => File["/usr/local/bin/phpbb_apply_config.pl"],
         }
     }
