@@ -4,10 +4,10 @@ use warnings;
 use Env qw(VALUE);
 use DBI;
 
+my $key = $ARGV[O];
+
 # DBI will use default value coming from env
 # see puppet manifests 
-my $key = $ARGV[1];
-
 my $dbh = DBI->connect("dbi:Pg:","","");
 
 my $table = "phpbb_config";
