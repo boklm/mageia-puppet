@@ -16,6 +16,12 @@ do
     then
 	exit 1
     fi
+
+    # Archive failed file for further analysis
+    mkdir -p "/tmp/failed-sign/"
+    failedfile="/tmp/failed-sign/$(basename "$file").$(date +%Y%m%d%H%M%S)"
+    cp -pf "$file" "$failedfile"
+
     cp -pf "$file" "$tmpfile"
     rpm --delsign "$tmpfile"
     /usr/bin/mga-signpackage "$tmpfile" "$key" "$keydir"
