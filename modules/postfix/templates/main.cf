@@ -38,10 +38,16 @@ relay_domains = <%= domain %>, ml.<%= domain %>
 
 mydestination = <%= fqdn %>
 <%- if all_tags.include?('postfix::primary_smtp') -%>
-# disabled as this prevent bugzilla from sending mail to 
-# zarb.org ml. I will reenable it once I find how to properly 
-# route everything
-                #<%= domain %>,
+                <%= domain %>,
+
+# local_recipient_maps is disabled, as we need to route all
+# non local email to ryu as long as mageia ml are hosted 
+# there. Hence the use of fallback_transport , but this is
+# taken in account only of local_recipient_maps is empty
+local_recipient_maps =
+# route ml to ryu ( ml being mageia-*@mageia )
+fallback_transport = regexp:/etc/postfix/transport_regexp
+
 
 alias_maps = hash:/etc/postfix/aliases
 	     # uncomment if we want to enable ldap based alias 
