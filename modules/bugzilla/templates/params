@@ -49,7 +49,7 @@
            'letsubmitterchoosepriority' => 1,
            'lxr_root' => '',
            'lxr_url' => '',
-           'mail_delivery_method' => 'Sendmail',
+           'mail_delivery_method' => 'SMTP',
            'mailfrom' => 'bugzilla-daemon',
            'makeproductgroups' => 0,
            'maxattachmentsize' => '1000',
