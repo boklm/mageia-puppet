@@ -53,6 +53,7 @@ class phpbb {
 
 
     # TODO git checkout of the code
+    include git::client
 
     # TODO phpbb database configuration
     $pgsql_password = extlookup("phpbb_pgsql",'x')
