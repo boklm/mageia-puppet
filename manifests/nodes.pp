@@ -69,7 +69,7 @@ node alamut {
     # temporary, just the time the vm is running there
     host { 'friteuse':
         ip => '192.168.122.131',
-        host_aliases => [ "friteuse.$domaine" ],
+        host_aliases => [ "friteuse.$domain" ],
         ensure => 'present',
     }
     include libvirtd::kvm
