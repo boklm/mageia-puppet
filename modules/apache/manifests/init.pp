@@ -225,10 +225,13 @@ class apache {
         } 
     } 
 
-    define vhost_reverse_proxy($url, $use_ssl = false) {
+    define vhost_reverse_proxy($url,
+                               $vhost = false, 
+                               $use_ssl = false) {
         include apache::mod_proxy
         vhost_base { $name:
             use_ssl => $use_ssl,
+            vhost => $vhost,
             content => template("apache/vhost_reverse_proxy.conf")
         } 
     }
