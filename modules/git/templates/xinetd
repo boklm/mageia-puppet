@@ -4,7 +4,7 @@ service git
         type            = UNLISTED
         port            = 9418
         socket_type     = stream
-        server          = /usr/<%= lib_dir %>/git-core/git-daemon
+        server          = <%= lib_dir %>/git-core/git-daemon
         wait            = no
         user            = nobody
         server_args     = --inetd --verbose --export-all --base-path=<%= git_base_path %>
