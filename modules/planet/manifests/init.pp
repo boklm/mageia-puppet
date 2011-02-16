@@ -15,7 +15,7 @@ class planet {
     include apache::mod_deflate
     apache::vhost_base { "$planet_domain":
 	location => $planet_location,
-        content => template('planet/02_planet_vhosts.conf')
+        content => template('planet/planet_vhosts.conf')
     }
 
     file { "/var/www/html/planet.$domain":
