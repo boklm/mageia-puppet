@@ -32,6 +32,7 @@ then
 		/bin/mkdir $FILE"cache"
 		/bin/chown -R planet:apache $FILE
 		/bin/chmod g+w $FILE"custom" $FILE"custom/people.opml" $FILE"admin/inc/pwd.inc.php" $FILE"cache"
+		echo -e "Info: a new Planet had been deployed.\nThe locale is: \"$locale\"" | /bin/mail -s "New planet Mageia deployed" mageia-webteam@<%= domain %>,mageia-marcom@<%= domain %>
 	fi
 else
 	echo "Aborted, please try again."
