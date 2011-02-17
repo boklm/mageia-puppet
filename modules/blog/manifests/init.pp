@@ -50,7 +50,7 @@ class blog {
 	    ensure => directory,
 	    owner => blog,
 	    # FIXME is the group created by puppet ?
-        group => blog,
+	    group => blog,
 	    mode => 644,
     }
 }
