@@ -31,7 +31,7 @@ then
 		/bin/tar zxvf $PATH_TO_FILE/moonmoon.tar.gz -C $FILE
 		/bin/mkdir $FILE"cache"
 		/bin/chown -R planet:apache $FILE
-		#/bin/chmod g+w $FILE"custom" $FILE"custom/people.opml" $FILE"admin/inc/pwd.inc.php" $FILE"cache"
+		/bin/chmod g+w $FILE"custom" $FILE"custom/people.opml" $FILE"admin/inc/pwd.inc.php" $FILE"cache"
 	fi
 else
 	echo "Aborted, please try again."
