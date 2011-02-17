@@ -49,8 +49,7 @@ class blog {
     file { "$blog_location":
 	    ensure => directory,
 	    owner => blog,
-	    # FIXME is the group created by puppet ?
-	    group => blog,
+	    group => apache,
 	    mode => 644,
     }
 }
