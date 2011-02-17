@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Initialization
-REPLYTO=mageia-blogteam@<%= domain %>
 PATH_TO_FILE=${PATH_TO_FILE:-/var/lib/blog}
 /usr/bin/wget -qO $PATH_TO_FILE"/last_tmp" http://blog.mageia.org/?feed=rss2
 if [ $? -ne 0 ] 
