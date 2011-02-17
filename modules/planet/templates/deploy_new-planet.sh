@@ -2,7 +2,7 @@
 
 # Initialization
 PATH_TO_FILE=${PATH_TO_FILE:-/var/lib/planet}
-PATH_TO_PLANET=${PATH_TO_FILE:-/var/www/html/planet<%= domain %>}
+PATH_TO_PLANET=${PATH_TO_PLANET:-/var/www/html/planet<%= domain %>}
 
 #Ask for new locale name if no parameter given
 echo -n "Locale name: "
@@ -13,7 +13,7 @@ echo -e -n "Do you confirm the entry: \"$locale\"? (y/n) "
 read answer
 if [ "$answer" == "y" ] 
 then
-	FILE="$PATH_TO_FILE/$locale/"
+	FILE="$PATH_TO_PLANET/$locale/"
 	if test -d $FILE
 	then
 		echo "Aborted, $FILE already exist."
