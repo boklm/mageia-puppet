@@ -2,6 +2,7 @@
 
 # Initialization
 PATH_TO_FILE=${PATH_TO_FILE:-/var/lib/planet}
+PATH_TO_PLANET=${PATH_TO_FILE:-/var/www/html/planet<%= domain %>}
 
 #Ask for new locale name if no parameter given
 echo -n "Locale name: "

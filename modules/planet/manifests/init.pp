@@ -18,6 +18,15 @@ class planet {
         content => template('planet/planet_vhosts.conf')
     }
 
+    file { "deploy_new-planet":
+        path => "/usr/local/bin/deploy_new-planet.sh",
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => 755,
+        content => template("planet/deploy_new-planet.sh")
+    }
+
     file { "/var/www/html/planet.$domain":
 	ensure => directory,
 	owner => planet,
