@@ -29,9 +29,9 @@ then
 			exit 2
 		fi
 		/bin/tar zxvf $PATH_TO_FILE/moonmoon.tar.gz -C $FILE
-		/bin/chmod g+w $FILEcustom $FILEcustom/people.opml $FILEadmin/inc/pwd.inc.php
-		/bin/mkdir $FILEcache
-		/bin/chown g+w $FILEcache
+		/bin/chmod g+w $FILE."custom" $FILE."custom/people.opml" $FILE."admin/inc/pwd.inc.php"
+		/bin/mkdir $FILE."cache"
+		/bin/chown g+w $FILE."cache"
 	fi
 else
 	echo "Aborted, please try again."
