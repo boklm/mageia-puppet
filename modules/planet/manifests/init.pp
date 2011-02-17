@@ -30,7 +30,7 @@ class planet {
     file { "/var/www/html/planet.$domain":
 	ensure => directory,
 	owner => planet,
-	group => planet,
+	group => apache,
 	mode => 644,
     }
 
