@@ -4,7 +4,7 @@
 PATH_TO_FILE=${PATH_TO_FILE:-/var/lib/planet}
 PATH_TO_PLANET=${PATH_TO_PLANET:-/var/www/html/planet.<%= domain %>}
 
-#Ask for new locale name if no parameter given
+#Ask for new locale name
 echo -n "Locale name: "
 read locale
 
@@ -19,7 +19,16 @@ then
 		echo "Aborted, $FILE already exist."
 		exit 2
 	else
+		# Deploy new planet with locale given
 		/bin/mkdir $FILE
+		/bin/chown planet:apache $FILE
+		/usr/bin/wget -O $PATH_TO_FILE"/moonmoon.tar.gz" http://damsweb.net/files/moonmoon_mageia.tar.gz
+		if [ $? -ne 0 ]
+		then
+			echo "Aborted, can't download GZIP file"
+			exit 2
+		fi
+		/bin/tar zxvf $PATH_TO_FILE/moonmoon.tar.gz -C $FILE
 	fi
 else
 	echo "Aborted, please try again."
