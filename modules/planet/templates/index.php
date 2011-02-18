@@ -9,7 +9,7 @@ function displayloc($path = ''){
 }
 
 foreach(displayloc('.') as $loc)
-	if(is_dir($loc) && $loc != "test" && $loc != "test2")
+	if(is_dir($loc) && $loc != "test" && $loc != "test-2")
 	{
 		echo '<li><a href="'.$loc.'">'.$loc.'</a></li>';
 	}
