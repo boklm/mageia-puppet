@@ -35,8 +35,8 @@ class planet {
     }
 
     file { "index":
-        path => "/var/www/html/planet.$location/index.php",
-        ensure => present,
+        path => "/var/www/html/$planet_location/index.php",
+        ensure => present
         owner => planet,
         group => apache,
         mode => 755,
