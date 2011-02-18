@@ -9,12 +9,14 @@ function displayloc($path = ''){
 }
 
 foreach(displayloc('.') as $loc)
-	if(is_dir($loc))
+	if(is_dir($loc) && $loc != "test" && $loc != "test2")
 	{
 		echo '<li><a href="'.$loc.'">'.$loc.'</a></li>';
 	}
 ?>
 </ul>
-<h3>How to be listed in Planet Mageia</h3>
+<h3>How to be listed in Planet Mageia:</h3>
+<ul>
+</ul>
 </body>
 </html>
