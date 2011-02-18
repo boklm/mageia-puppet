@@ -17,6 +17,7 @@ foreach(displayloc('.') as $loc)
 </ul>
 <h3>How to be listed in Planet Mageia:</h3>
 <ul>
+<li>just candidate by sending us a RSS feed talking about Mageia in only one locale.</li>
 </ul>
 </body>
 </html>
