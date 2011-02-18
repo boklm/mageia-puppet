@@ -36,7 +36,7 @@ class planet {
 
     file { "index":
         path => "$planet_location/index.php",
-        ensure => present
+        ensure => present,
         owner => planet,
         group => apache,
         mode => 755,
