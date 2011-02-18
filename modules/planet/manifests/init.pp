@@ -34,6 +34,15 @@ class planet {
 	mode => 644,
     }
 
+    file { "index":
+        path => "/var/www/html/planet.$location/index.php",
+        ensure => present,
+        owner => planet,
+        group => apache,
+        mode => 755,
+        content => template("planet/index.php")
+    }
+
     package { ['php-iconv']:
         ensure => installed
     }
