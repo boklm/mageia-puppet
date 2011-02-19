@@ -90,7 +90,7 @@
            'upgrade_notification' => 'latest_stable_release',
            'urlbase' => 'http://bugs.<%= domain %>/',
            'use_mailer_queue' => 0,
-           'use_see_also' => 0,
+           'use_see_also' => 1,
            'usebugaliases' => 0,
            'useclassification' => 0,
            'usemenuforusers' => '0',
