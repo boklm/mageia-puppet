@@ -1,0 +1,23 @@
+# Specify the binary to use
+# MEMCACHED_DAEMON="memcached-replication"
+MEMCACHED_DAEMON="memcached"
+
+# TCP port to listen on
+TCP_PORT="11211"
+# UDP port to listen on, can be disabled by setting it to 0
+UDP_PORT="11211"
+# User to run under
+USER="memcached"
+# Max simultaneous connections
+MAXCONN="1024"
+# MB memory max to use for object storage
+CACHESIZE="64"
+# IP address to listen on. Set to "INADDR_ANY" or "" to listen on all interfaces
+IPADDR="127.0.0.1"
+# Number of threads to use to process incoming requests
+THREADS="4"
+# Unix socket path to listen on (disables network support)
+#UNIX_SOCKET="/var/run/memcached/memcached.sock"
+# Additional options
+OPTIONS=""
+
