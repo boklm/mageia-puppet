@@ -74,7 +74,11 @@ class phpbb {
             require => Postgresql::User[$user]
         }
 
-
+        # TODO server_name => forums.$domain
+        # cookie_domain => forums.$domain
+        # auth_method => ldap
+        # ldap_uid => uid
+        # ldap_mail => mail
         phpbb_config { "ldap_user":
             value => "cn=phpbb-friteuse,ou=System Accounts,$dc_suffix",
         }
