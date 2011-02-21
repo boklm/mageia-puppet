@@ -22,10 +22,6 @@ class phpbb {
              source => 'puppet:///modules/phpbb/phpbb_apply_config.pl',
         }
 
-        # TODO phpbb config
-        # cookie_domain 
-        # board_contact
-        # 
         $pgsql_password = extlookup("phpbb_pgsql",'x')
         @@postgresql::user { $user:
             password => $pgsql_password,
@@ -37,7 +33,8 @@ class phpbb {
             owner => root,
             group => root,
         }
-
+        # TODO add a ssl counterpart
+        # TODO check that everything is locked down
         apache::vhost_base { "forums.$domain":
             content => template("phpbb/forums_vhost.conf"),
         }
@@ -67,6 +64,7 @@ class phpbb {
         $pgsql_password = $phpbb::base::pgsql_password
         $forums_dir = $phpbb::base::forums_dir
 
+        # TODO manage the permission of the various subdirectory
         exec { "git clone git://git.$domain/forum/ $lang":
             cwd => $forums_dir,
             creates => "$forums_dir/$lang",
@@ -88,11 +86,6 @@ class phpbb {
             require => Postgresql::User[$user]
         }
 
-        # TODO server_name => forums.$domain
-        # cookie_domain => forums.$domain
-        # auth_method => ldap
-        # ldap_uid => uid
-        # ldap_mail => mail
         phpbb_config { "ldap_user":
             value => "cn=phpbb-friteuse,ou=System Accounts,$dc_suffix",
         }
@@ -109,5 +102,27 @@ class phpbb {
         phpbb_config { "ldap_base_dn":
             value => "ou=People,$dc_suffix",
         }
+
+        phpbb_config { "auth_method":
+            value => "ldap",
+        }
+
+        phpbb_config { "ldap_mail":
+            value => "mail",
+        }
+
+        phpbb_config { "ldap_uid":
+            value => "uid",
+        }
+
+        phpbb_config { "cookie_domain":
+            value => "forums.$domain",
+        }
+
+        phpbb_config { "server_name":
+            value => "forums.$domain",
+        }
+
+
     }
 }
