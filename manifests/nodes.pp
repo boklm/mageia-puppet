@@ -69,9 +69,21 @@ node alamut {
     # temporary, just the time the vm is running there
     host { 'friteuse':
         ip => '192.168.122.131',
-        host_aliases => [ "friteuse.$domain" ],
+        host_aliases => [ "friteuse.$domain", "forums.$domain" ],
         ensure => 'present',
     }
+
+    apache::vhost_reverse_proxy { "forums.$domain":
+        url => "http://forums.$domain",
+    }
+
+    apache::vhost_reverse_proxy { "ssl_forums.$domain":
+        url => "http://forums.$domain",
+        vhost => "forums.$domain",
+        use_ssl => true,
+    }
+
+
     include libvirtd::kvm
     include lists
     include dns::server 
