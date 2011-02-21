@@ -37,6 +37,11 @@ class phpbb {
             owner => root,
             group => root,
         }
+
+        apache::vhost_base { "forums.$domain":
+            content => template("phpbb/forums_vhost.conf"),
+        }
+
     }
 
     define phpbb_config($value) {
