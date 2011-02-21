@@ -26,14 +26,6 @@ class phpbb {
         # cookie_domain 
         # board_contact
         # 
-        define phpbb_config($value) {
-            exec { "/usr/local/bin/phpbb_apply_config.pl $name":
-                user => root,
-                environment => ["PGDATABASE=$database", "PGUSER=$user", "PGPASSWORD=$pgsql_password", "PGHOST=pgsql.$domain", "VALUE=$value"],
-                require => File["/usr/local/bin/phpbb_apply_config.pl"],
-            }
-        }
-
         $pgsql_password = extlookup("phpbb_pgsql",'x')
         @@postgresql::user { $user:
             password => $pgsql_password,
@@ -47,6 +39,17 @@ class phpbb {
         }
     }
 
+    define phpbb_config($value) {
+        exec { "/usr/local/bin/phpbb_apply_config.pl $name":
+            user => root,
+            environment => ["PGDATABASE=$phpbb::base::database", 
+                            "PGUSER=$phpbb::base::user", 
+                            "PGPASSWORD=$phpbb::base::pgsql_password", 
+                            "PGHOST=pgsql.$domain", 
+                            "VALUE=$value"],
+            require => File["/usr/local/bin/phpbb_apply_config.pl"],
+        }
+    }
 
     # TODO find a way to avoid all the phpbb::base prefix
     define instance() {
