@@ -52,6 +52,7 @@ class phpbb {
         $database = "${db}_$lang"
 
         include git::client
+        include phpbb::base
 
         exec { "git clone git://git.$domain/forum/ $lang":
             cwd => $forums_dir,
@@ -66,7 +67,6 @@ class phpbb {
             content => template("phpbb/config.php"),
         }
 
-        include php::base
 
         @@postgresql::database { $database:
             description => "Phpbb database",
