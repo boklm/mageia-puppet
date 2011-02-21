@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2011021101	; Serial
+        2011021102	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -26,13 +26,10 @@ ml  IN      MX 20   krampouezh.mageia.org.
 ; machines
 mageia.org.	IN	A   	212.85.158.22
 www-zarb    IN  A       212.85.158.22
-; gandi vm 1
-vm-gandi     IN A       95.142.164.207
-kouign-amann IN A       95.142.164.207
+
 krampouezh   IN A       95.142.164.207
 champagne    IN A	217.70.188.116
 
-www-aufml   IN  A       91.121.11.63
 forum       IN  A       88.191.127.89
 
 ; lost oasis
@@ -95,6 +92,9 @@ transifex   IN CNAME alamut
 lists       IN CNAME alamut
 viewvc      IN CNAME alamut
 svnweb      IN CNAME alamut
+
+; temporary, until the vm is moved elsewhere
+forums      IN CNAME alamut
 ; temporary
 ;forum       IN A 140.211.167.148
 ;wiki            IN      A       88.191.83.84
