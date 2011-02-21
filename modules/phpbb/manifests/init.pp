@@ -55,15 +55,16 @@ class phpbb {
 
     # TODO find a way to avoid all the phpbb::base prefix
     define instance() {
+        include phpbb::base
+
         $lang = $name
         $database = "${phpbb::base::db}_$lang"
         
-        include git::client
-        include phpbb::base
         $user = $phpbb::base::user
         $pgsql_password = $phpbb::base::pgsql_password
         $forums_dir = $phpbb::base::forums_dir
 
+        include git::client
         # TODO manage the permission of the various subdirectory
         exec { "git clone git://git.$domain/forum/ $lang":
             cwd => $forums_dir,
