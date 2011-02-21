@@ -58,6 +58,9 @@ class phpbb {
         
         include git::client
         include phpbb::base
+        $user = $phpbb::base::user
+        $pgsql_password = $phpbb::base::pgsql_password
+        $forums_dir = $phpbb::base::forums_dir
 
         exec { "git clone git://git.$domain/forum/ $lang":
             cwd => $forums_dir,
