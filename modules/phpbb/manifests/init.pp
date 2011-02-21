@@ -64,7 +64,8 @@ class phpbb {
 
         exec { "git clone git://git.$domain/forum/ $lang":
             cwd => $forums_dir,
-            creates => "$forums_dir/$lang",   
+            creates => "$forums_dir/$lang",
+            require => File["$forums_dir"]
         }
 
         file { "$forums_dir/$lang/phpBB/config.php":
