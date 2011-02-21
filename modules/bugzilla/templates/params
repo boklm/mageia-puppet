@@ -100,7 +100,7 @@
            'usestatuswhiteboard' => 1,
            'usetargetmilestone' => 0,
            'usevisibilitygroups' => 0,
-           'usevotes' => 1,
+           'usevotes' => 0,
            'utf8' => 1,
            'webdotbase' => 'http://www.research.att.com/~north/cgi-bin/webdot.cgi/%urlbase%',
            'whinedays' => 7
