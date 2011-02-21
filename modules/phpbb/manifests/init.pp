@@ -47,7 +47,8 @@ class phpbb {
         }
     }
 
-    define php_instance($lang) {
+    define php_instance() {
+        $lang = $name
         $database = "${db}_$lang"
 
         include git::client
