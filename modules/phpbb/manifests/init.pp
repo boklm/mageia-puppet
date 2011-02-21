@@ -47,10 +47,12 @@ class phpbb {
         }
     }
 
-    define php_instance() {
-        $lang = $name
-        $database = "${db}_$lang"
 
+    # TODO find a way to avoid all the phpbb::base prefix
+    define instance() {
+        $lang = $name
+        $database = "${phpbb::base::db}_$lang"
+        
         include git::client
         include phpbb::base
 
