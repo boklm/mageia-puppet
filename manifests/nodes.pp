@@ -77,8 +77,11 @@ node alamut {
         url => "http://forums.$domain/",
     }
 
+    # connect to ssl so the proxy do not shoke if trying to 
+    # enforce ssl ( note that this has not been tested, maybe this
+    # is uneeded )
     apache::vhost_reverse_proxy { "ssl_forums.$domain":
-        url => "http://forums.$domain/",
+        url => "https://forums.$domain/",
         vhost => "forums.$domain",
         use_ssl => true,
     }
