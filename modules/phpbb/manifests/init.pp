@@ -72,6 +72,16 @@ class phpbb {
             require => File["$forums_dir"]
         }
 
+        # TODO manage the permission of the various subdirectories
+        $writable_dir = ['cache']
+        file { "$forums_dir/$lang/phpBB/$writable_dir":
+            ensure => directory,
+            owner => apache,
+            group => root,
+            mode => 755,
+            require => Exec["git_clone $lang"],
+        }
+
         file { "$forums_dir/$lang/phpBB/config.php":
             ensure => present,
             owner => root,
