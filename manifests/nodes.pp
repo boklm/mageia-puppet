@@ -74,11 +74,11 @@ node alamut {
     }
 
     apache::vhost_reverse_proxy { "forums.$domain":
-        url => "http://forums.$domain",
+        url => "http://forums.$domain/",
     }
 
     apache::vhost_reverse_proxy { "ssl_forums.$domain":
-        url => "http://forums.$domain",
+        url => "http://forums.$domain/",
         vhost => "forums.$domain",
         use_ssl => true,
     }
