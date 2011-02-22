@@ -76,7 +76,7 @@ class phpbb {
             cwd => $forums_dir,
             creates => "$forums_dir/$lang",
             require => File["$forums_dir"],
-            notify => "rm_install $lang",
+            notify => Exec["rm_install $lang"],
         }
 
         # remove this or the forum will not work ( 'board disabled' )
