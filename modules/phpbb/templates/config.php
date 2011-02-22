@@ -2,7 +2,7 @@
 // phpBB 3.0.x auto-generated configuration file
 // // Do not change anything in this file!
 $dbms = 'postgres';
-$dbhost = 'plsql.<%= domain %>';
+$dbhost = 'pgsql.<%= domain %>';
 $dbport = '';
 $dbname = '<%= database %>';
 $dbuser = '<%= user %>';
