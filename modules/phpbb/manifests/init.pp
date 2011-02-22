@@ -39,6 +39,12 @@ class phpbb {
             content => template("phpbb/forums_vhost.conf"),
         }
 
+        apache::vhost_base { "ssl_forums.$domain":
+            use_ssl => true,
+            vhost => "forums.$domain",
+            content => template("phpbb/forums_vhost.conf"),
+        }
+
     }
 
     define phpbb_config($value) {
