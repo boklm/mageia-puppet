@@ -123,7 +123,7 @@ class phpbb {
         }
 
         phpbb_config { "ldap_server":
-            value => "ldap.$domain",
+            value => "ldaps://ldap.$domain",
         }
 
         $ldap_password = extlookup("phpbb_ldap",'x')
