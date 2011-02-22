@@ -83,7 +83,7 @@ class phpbb {
         # maybe it would be better to move this elsehwere, I 
         # am not sure ( and in any case, that's still in git )
         exec { "rm_install $lang":
-            command => "rm -Rf $forums_dir/$lang/phpBB/install":
+            command => "rm -Rf $forums_dir/$lang/phpBB/install",
             onlyif => "test -d $forums_dir/$lang/phpBB/install",
         }
 
