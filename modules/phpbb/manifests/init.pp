@@ -65,8 +65,8 @@ class phpbb {
         $forums_dir = $phpbb::base::forums_dir
 
         include git::client
-        # TODO manage the permission of the various subdirectory
-        exec { "git clone git://git.$domain/forum/ $lang":
+        exec { "git_clone $lang":
+            command =>"git clone git://git.$domain/forum/ $lang",
             cwd => $forums_dir,
             creates => "$forums_dir/$lang",
             require => File["$forums_dir"]
