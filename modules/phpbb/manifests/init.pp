@@ -93,8 +93,13 @@ class phpbb {
             onlyif => "test -d $forums_dir/$lang/phpBB/install",
         }
 
-        # TODO manage the permission of the various subdirectories
-        $writable_dir = ['cache']
+        # list found by reading ./install/install_install.php
+        # end of check_server_requirements ( 2 loops )
+        $writable_dir = ['cache',
+                         'images/avatars/upload',
+                         'files',
+                         'store',
+                        ]
         file { "$forums_dir/$lang/phpBB/$writable_dir":
             ensure => directory,
             owner => apache,
