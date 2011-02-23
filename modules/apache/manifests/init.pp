@@ -51,6 +51,7 @@ class apache {
             mode => 644,
             require => Package['apache-conf'],
             content => template('apache/mod_php.conf')
+            notify => Service['apache'],
         }
     }
 
@@ -101,6 +102,7 @@ class apache {
             mode => 644,
             require => Package['apache-conf'],
             content => template('apache/mod_wsgi.conf')
+            notify => Service['apache'],
         }
 
     }
