@@ -1,6 +1,6 @@
 class transifex {
-  
-  package { ['transifex','python-psycopg2','python-django-auth-ldap']:
+  include django_application 
+  package { 'transifex':
     ensure => installed
   }
  
@@ -71,16 +71,6 @@ class transifex {
     mode => 644,
     content => template("transifex/50-project.conf"),
     require => Package['transifex'],
-    notify => Service['apache']
-  }
-
-  file { "custom_backend.py":
-    path => "/usr/local/lib/custom_backend.py",
-    ensure => present,
-    owner => root,
-    group => root,
-    mode => 644,
-    source => "puppet:///modules/transifex/custom_backend.py",
     notify => Service['apache']
   }
 
