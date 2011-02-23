@@ -65,6 +65,16 @@ class phpbb {
         }
     }
 
+    define apache_writable_dir() {
+        file { "$forums_dir/$lang/phpBB/$name":
+            ensure => directory,
+            owner => apache,
+            group => root,
+            mode => 755,
+            require => Exec["git_clone $lang"],
+        }
+    }
+
     # TODO find a way to avoid all the phpbb::base prefix
     define instance() {
         include phpbb::base
@@ -95,17 +105,10 @@ class phpbb {
 
         # list found by reading ./install/install_install.php
         # end of check_server_requirements ( 2 loops )
-        $writable_dir = ['cache',
+        apache_writable_dir { ['cache',
                          'images/avatars/upload',
                          'files',
-                         'store',
-                        ]
-        file { "$forums_dir/$lang/phpBB/$writable_dir":
-            ensure => directory,
-            owner => apache,
-            group => root,
-            mode => 755,
-            require => Exec["git_clone $lang"],
+                         'store' ]: 
         }
 
         file { "$forums_dir/$lang/phpBB/config.php":
