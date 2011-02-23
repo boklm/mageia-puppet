@@ -1,3 +1,6 @@
+# this class hold the common stuff for all django applications
+# as we cannot declare the same ressource twice ( ie, python-psycopg2 for example )
+# it is required to place this in a common class 
 class django_application {
     package { ['python-django','python-psycopg2','python-django-auth-ldap']:
         ensure => installed
