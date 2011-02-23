@@ -43,6 +43,15 @@ class apache {
         package { "apache-mod_php":
             ensure => installed
         }
+
+        file { "/etc/httpd/conf.d/mod_php.conf":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 644,
+            require => Package['apache-conf'],
+            content => template('apache/mod_php.conf')
+        }
     }
 
     class mod_perl inherits base {
