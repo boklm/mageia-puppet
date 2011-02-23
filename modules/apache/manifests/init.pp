@@ -50,7 +50,7 @@ class apache {
             group => root,
             mode => 644,
             require => Package['apache-conf'],
-            content => template('apache/mod_php.conf')
+            content => template('apache/mod_php.conf'),
             notify => Service['apache'],
         }
     }
@@ -101,7 +101,7 @@ class apache {
             group => root,
             mode => 644,
             require => Package['apache-conf'],
-            content => template('apache/mod_wsgi.conf')
+            content => template('apache/mod_wsgi.conf'),
             notify => Service['apache'],
         }
 
