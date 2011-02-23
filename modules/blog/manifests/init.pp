@@ -8,7 +8,7 @@ class blog {
         home => "/var/lib/blog",
     }
 
-    package { ['wget','php-mysql']:
+    package { ['wget','php-mysql','nail']:
         ensure => installed
     }
 
