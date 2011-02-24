@@ -1,0 +1,32 @@
+#
+# Master configuration file for Xymon
+#
+# This file defines several things:
+#
+# 1) By adding hosts to this file, you define hosts that are monitored by Xymon
+# 2) By adding "page", "subpage", "group" definitions, you define the layout
+#    of the Xymon webpages, and how hosts are divided among the various webpages 
+#    that Xymon generates.
+# 3) Several other definitions can be done for each host, see the bb-hosts(5)
+#    man-page.
+#
+# You need to define at least the Xymon server itself here.
+
+page visible Visible Services
+0.0.0.0		blog.mageia.org	# http://blog.mageia.org
+0.0.0.0		identity.mageia.org # https://identity.mageia.org
+0.0.0.0		bugs.mageia.org # https://bugs.mageia.org
+
+
+page servers Servers
+group-compress Marseille
+212.85.158.146	alamut.mageia.org	# testip bbd dns ssh
+212.85.158.147	valstar.mageia.org	# testip ssh rsync
+212.85.158.148	ecosse.mageia.org	# testip ssh
+212.85.158.149	jonund.mageia.org	# testip ssh
+#212.85.158.150	fiona.mageia.org	# testip ssh
+
+group-compress Gandi
+95.142.164.207	krampouezh.mageia.org	# ssh dns
+88.190.12.224	rabbit.mageia.org	# ssh
+217.70.188.116	champagne.mageia.org	# ssh
