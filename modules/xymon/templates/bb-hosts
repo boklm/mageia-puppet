@@ -28,5 +28,7 @@ group-compress Marseille
 
 group-compress Gandi
 95.142.164.207	krampouezh.mageia.org	# ssh dns
-88.190.12.224	rabbit.mageia.org	# ssh
 217.70.188.116	champagne.mageia.org	# ssh
+
+group-compress Dedibox
+88.190.12.224	rabbit.mageia.org	# ssh
