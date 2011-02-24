@@ -42,6 +42,7 @@ class xymon {
 	    owner => root,
 	    group => xymon,
 	    mode => 644,
+	    require => Package["xymon"],
 	    content => template("xymon/bb-hosts"),
 	}
 
@@ -54,6 +55,7 @@ class xymon {
 	    owner => root,
 	    group => xymon,
 	    mode => 644,
+	    require => Package["xymon"],
 	    content => template("xymon/hobbit-clients.cfg"),
 	}
 	# Configuration for the xymon clients, which log files to process etc.
@@ -63,6 +65,7 @@ class xymon {
 	    owner => root,
 	    group => xymon,
 	    mode => 644,
+	    require => Package["xymon"],
 	    content => template("xymon/client-local.cfg"),
 	}
 
@@ -73,6 +76,7 @@ class xymon {
 	    owner => root,
 	    group => xymon,
 	    mode => 644,
+	    require => Package["xymon"],
 	    content => template("xymon/hobbit-alerts.cfg"),
 	}
 	# Most changes should take effect immediately, but sometimes threshold
