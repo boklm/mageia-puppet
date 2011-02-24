@@ -92,4 +92,10 @@ class transifex {
     path => "/usr/share/transifex:/usr/share",
   }  
 
+  django_application::add_permission_to_group { ['add_project','change_project','delete_project']:
+    group => 'mga-i18n-committers',
+    module => "transifex",
+    path => "/usr/share/transifex:/usr/share",
+    require => Django_application::Create_group['mga-i18n-committers'],
+  }
 }
