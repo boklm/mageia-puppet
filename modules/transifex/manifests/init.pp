@@ -81,7 +81,8 @@ class transifex {
   apache::vhost_django_app { "transifex.$domain":
     module => "transifex",
     use_ssl => true,
-    module_path => ["/usr/share/transifex","/usr/share","/usr/local/lib/"] 
+    module_path => ["/usr/share/transifex","/usr/share","/usr/local/lib/"],
+    aliases => { "/site_media/static/admin/" => "/usr/lib/python2.6/site-packages/django/contrib/admin/media/", },
   }
 
   apache::vhost_redirect_ssl { "transifex.$domain": }
