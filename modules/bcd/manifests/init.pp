@@ -13,9 +13,9 @@ class bcd {
             comment => "User for creating ISOs",
 	}
 
-        package { bcd:
-	    ensure => 'installed',
-        }
+        #package { bcd:
+	#    ensure => 'installed',
+        #}
 
         sudo::sudoers_config { "bcd":
 	    content => template("bcd/sudoers.bcd")
