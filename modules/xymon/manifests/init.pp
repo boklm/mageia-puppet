@@ -2,11 +2,11 @@ class xymon {
 
     class client {
 	package { xymon-client:
-	    ensure => installed
+	    ensure => installed,
 	}
 	service { xymon-client:
-	    ensure => running
-	    path => '/etc/init.d/xymon-client'
+	    ensure => running,
+	    path => '/etc/init.d/xymon-client',
 	}
 	file { '/etc/sysconfig/xymon-client':
 	    content => template("xymon/xymon-client"),
@@ -15,7 +15,7 @@ class xymon {
 
     class server {
 	package { xymon:
-	    ensure => installed
+	    ensure => installed,
 	}
 	service { xymon:
 	    ensure => running,
@@ -32,7 +32,7 @@ class xymon {
 	    group => xymon,
 	    mode => 644,
 	    require => Package["xymon"],
-	    notify => [Service["xymon"],
+	    notify => Service["xymon"],
 	    content => template("xymon/hobbitserver.cfg"),
 	}
 	# Define hosts and web view layout, and lists tests to be run against
@@ -49,7 +49,7 @@ class xymon {
 	# disk, procs, ports, memory, as well as those which require some
 	# configuration server side to the client: files, msgs, 
 	file { 'hobbit-clients.cfg':
-	    path => '/etc/xymon/hobbit-clients.cfg'
+	    path => '/etc/xymon/hobbit-clients.cfg',
 	    ensure => present,
 	    user => root,
 	    group => xymon,
@@ -68,7 +68,7 @@ class xymon {
 
 	# Used for alerting, changes should be taken into effect immediately
 	file {'hobbit-alerts.cfg':
-	    path => '/etc/xymon/hobbit-alerts.cfg':
+	    path => '/etc/xymon/hobbit-alerts.cfg',
 	    ensure => present,
 	    user => root,
 	    group => xymon,
