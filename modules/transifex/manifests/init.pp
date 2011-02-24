@@ -86,5 +86,10 @@ class transifex {
   }
 
   apache::vhost_redirect_ssl { "transifex.$domain": }
-  
+
+  django_application::create_group { ["mga-i18n","mga-i18n-committers"]:
+    module => "transifex",
+    path => "/usr/share/transifex:/usr/share",
+  }  
+
 }
