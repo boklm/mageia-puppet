@@ -28,7 +28,7 @@ class xymon {
 	# kill hobbitd_rrd, hobbitlaunch will respawn it
 	file { '/etc/xymon/hobbitserver.cfg':
 	    ensure => present,
-	    user => root,
+	    owner => root,
 	    group => xymon,
 	    mode => 644,
 	    require => Package["xymon"],
@@ -39,7 +39,7 @@ class xymon {
 	# host by e.g. network tests from xymon server
 	file {'/etc/xymon/bb-hosts':
 	    ensure => present,
-	    user => root,
+	    owner => root,
 	    group => xymon,
 	    mode => 644,
 	    content => template("xymon/bb-hosts"),
@@ -51,7 +51,7 @@ class xymon {
 	file { 'hobbit-clients.cfg':
 	    path => '/etc/xymon/hobbit-clients.cfg',
 	    ensure => present,
-	    user => root,
+	    owner => root,
 	    group => xymon,
 	    mode => 644,
 	    content => template("xymon/hobbit-clients.cfg"),
@@ -60,7 +60,7 @@ class xymon {
 	file {'client-local.cfg':
 	    path => '/etc/xymon/client-local.cfg',
 	    ensure => present,
-	    user => root,
+	    owner => root,
 	    group => xymon,
 	    mode => 644,
 	    content => template("xymon/client-local.cfg"),
@@ -70,7 +70,7 @@ class xymon {
 	file {'hobbit-alerts.cfg':
 	    path => '/etc/xymon/hobbit-alerts.cfg',
 	    ensure => present,
-	    user => root,
+	    owner => root,
 	    group => xymon,
 	    mode => 644,
 	    content => template("xymon/hobbit-alerts.cfg"),
