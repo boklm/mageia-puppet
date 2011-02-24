@@ -79,6 +79,7 @@ class xymon {
 	# changes take effect sooner if hobbit is HUPd
 	exec { "service xymon reload":
             refreshonly => true,
+	    require => Package["xymon"],
             subscribe => [ 
 		File["hobbit-clients.cfg"],
 		File["hobbit-alerts.cfg"],
