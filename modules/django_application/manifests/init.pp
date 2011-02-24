@@ -15,4 +15,36 @@ class django_application {
         source => "puppet:///modules/django_application/custom_backend.py",
         notify => Service['apache']
     }
+
+    define script() { 
+        file { $name:
+            path => "/usr/local/bin/$name",
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            source => "puppet:///modules/django_application/$name",
+        }
+    }
+
+    script { ['django_create_group.py','django_add_permission_to_group.py']: 
+    }
+
+    define create_group($path,$module) {
+        exec { "/usr/local/bin/django_create_group.py $name":
+            user => root,
+            environment => ["DJANGO_SETTINGS_MODULE=$module.settings",
+                            "PYTHONPATH=$path" ],
+            require => Django_application::Script['django_create_group.py']
+        }
+    }
+
+    define add_permission_to_group($path,$module,$group) {
+        exec { "/usr/local/bin/django_add_permission_to_group.py $group $name":
+            user => root,
+            environment => ["DJANGO_SETTINGS_MODULE=$module.settings",
+                            "PYTHONPATH=$path" ],
+            require => Django_application::Script['django_add_permission_to_group.py']
+        }
+    }
 }
