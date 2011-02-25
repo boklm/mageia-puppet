@@ -87,12 +87,23 @@ class transifex {
 
   apache::vhost_redirect_ssl { "transifex.$domain": }
 
+  # the group are mapped from ldap, since AUTH_LDAP_FIND_GROUP_PERMS is set to yes
+  # but the group need to exist in django first 
   django_application::create_group { ["mga-i18n","mga-i18n-committers"]:
     module => "transifex",
     path => "/usr/share/transifex:/usr/share",
   }  
 
-  django_application::add_permission_to_group { ['add_project','change_project','delete_project']:
+  # allow the people in mga-i18n-committers to :
+  #  - manage projects
+  #  - manage ressources
+  django_application::add_permission_to_group { ['add_project',
+                                                 'change_project',
+                                                 'delete_project',
+                                                 'add_resource',
+                                                 'change_resource',
+                                                 'delete_resource',    
+                                                ]:
     group => 'mga-i18n-committers',
     module => "transifex",
     path => "/usr/share/transifex:/usr/share",
