@@ -39,8 +39,8 @@ class django_application {
         }
     }
 
-    define add_permission_to_group($path,$module,$group) {
-        exec { "/usr/local/bin/django_add_permission_to_group.py $group $name":
+    define add_permission_to_group($path,$module,$group, $app='') {
+        exec { "/usr/local/bin/django_add_permission_to_group.py $group $name $app":
             user => root,
             environment => ["DJANGO_SETTINGS_MODULE=$module.settings",
                             "PYTHONPATH=$path" ],
