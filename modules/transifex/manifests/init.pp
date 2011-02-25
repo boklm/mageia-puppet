@@ -97,16 +97,24 @@ class transifex {
   # allow the people in mga-i18n-committers to :
   #  - manage projects
   #  - manage ressources
-  django_application::add_permission_to_group { ['add_project',
-                                                 'change_project',
-                                                 'delete_project',
-                                                 'add_resource',
-                                                 'change_resource',
-                                                 'delete_resource',    
-                                                ]:
-    group => 'mga-i18n-committers',
-    module => "transifex",
-    path => "/usr/share/transifex:/usr/share",
-    require => Django_application::Create_group['mga-i18n-committers'],
+  define committers_permission($app='')
+  {
+    django_application::add_permission_to_group { $name:   
+       app => $app,    
+       group => 'mga-i18n-committers',
+       module => "transifex",
+       path => "/usr/share/transifex:/usr/share",
+       require => Django_application::Create_group['mga-i18n-committers'],
+    }
   }
+  
+  committers_permission { ['add_project',
+                           'change_project',
+                           'delete_project']: }
+
+  committers_permission { [ 'add_resource',
+                            'change_resource', 
+                            'delete_resource']:
+    app => "resources",
+  } 
 }
