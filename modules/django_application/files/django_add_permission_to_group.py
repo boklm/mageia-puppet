@@ -15,9 +15,12 @@ permissions = Permission.objects.filter(codename=permission)
 if app:
     permissions = permissions.filter(content_type__app_label__exact=app)
 
-if len(permissions) != 1:
+if len(permissions) > 1:
 	print "Error, result not unique, please give the application among :"
 	print ' '.join([p.content_type.app_label for p in permissions])
+	sys.exit(1)
+elif len(permissions) < 1:
+	print "Error, wrong codename"
 	sys.exit(1)
 
 group.permissions.add(permissions[0])
