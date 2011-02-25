@@ -94,11 +94,11 @@ class transifex {
     path => "/usr/share/transifex:/usr/share",
   }  
 
-  # allow the people in mga-i18n-committers to :
-  #  - manage projects
-  #  - manage ressources
   define committers_permission($app='')
   {
+    # using django_application::add_permission_to_group may cause problem
+    # if we install a 2nd django application with the same permission name ( as it need
+    # to be unique )
     django_application::add_permission_to_group { $name:   
        app => $app,    
        group => 'mga-i18n-committers',
