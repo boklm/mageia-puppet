@@ -9,12 +9,16 @@ if len(sys.argv) > 3:
         app = sys.argv[3]
 
 from django.contrib.auth.models import Group, Permission
-g = Group.objects.get(name=group_name)
+group = Group.objects.get(name=group_name)
 
-p = Permission.objects.filter(codename=permission)
+permissions = Permission.objects.filter(codename=permission)
 if app:
-    p = p.filter(content_type__app_label__exact=app)
-p = p[0]
+    permissions = permissions.filter(content_type__app_label__exact=app)
 
-g.permissions.add(p)
-g.save()
+if len(permissions) != 1:
+	print "Error, result not unique, please give the application among :"
+	print ' '.join([p.content_type.app_label for p in permissions])
+	sys.exit(1)
+
+group.permissions.add(permissions[0])
+group.save()
