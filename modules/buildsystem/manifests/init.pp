@@ -5,6 +5,7 @@ class buildsystem {
 	$build_home_dir = "/home/$build_login"
 	$sched_login = "schedbot"
 	$sched_home_dir = "/var/lib/$sched_login"
+	$packages_archivedir = "$sched_home_dir/old"
 	$sign_login = "signbot"
 	$sign_home_dir = "/var/lib/$sign_login"
 	$sign_keydir = "$sign_home_dir/keys"
@@ -133,6 +134,12 @@ class buildsystem {
           group => root,
           mode => 644,
           content => template("buildsystem/repsys.conf")
+        }
+
+        file { "$packages_archivedir":
+            ensure => "directory",
+            owner  => $sched_login,
+            require => File[$sched_home_dir],
         }
 
         file { "$sched_home_dir/repsys":
