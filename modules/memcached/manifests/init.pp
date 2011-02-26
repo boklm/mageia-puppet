@@ -15,7 +15,7 @@ class memcached {
          group => root,
          mode => 644,
          require => Package["memcached"],
-         content => template("memcached/memcached.sysconfig"),
+         source => "puppet:///modules/memcached/memcached.sysconfig",
          notify => Service["memcached"]
     }
 
