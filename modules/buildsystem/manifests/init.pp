@@ -179,6 +179,13 @@ class buildsystem {
             owner => $sched_login, 
 	    group => $sched_login,
         } 
+
+        tidy { "$packages_archivedir":
+            age     => "2d",
+            matches => "*.rpm",
+            recurse => true,
+            type    => "mtime",
+        }
     }
 
     class youri_submit {
