@@ -184,7 +184,7 @@ class buildsystem {
             age     => "1w",
             matches => "*.rpm",
             recurse => true,
-            type    => "mtime",
+            type    => "ctime",
         }
     }
 
