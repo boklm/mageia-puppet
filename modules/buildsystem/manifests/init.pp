@@ -181,7 +181,7 @@ class buildsystem {
         } 
 
         tidy { "$packages_archivedir":
-            age     => "2d",
+            age     => "1w",
             matches => "*.rpm",
             recurse => true,
             type    => "mtime",
