@@ -23,6 +23,10 @@ Theses servers synchronises the tree directly from the Mageia rsync server.
 
     o rsync://distrib-coffee.ipsl.jussieu.fr/mageia/
       located in Paris (France)
+    o rsync://ftp.LinuxCabal.org/Mageia/
+      located in Lucern (Switzerland)
+    o rsync://distro.ibiblio.org/mageia/
+      located in USA
 
 3) Rsync options
 ----------------
@@ -49,4 +53,5 @@ one is still running. Use a lock file.
 5) Registering your mirror
 --------------------------
 
-TODO
+Goto at http://mirrors.mageia.org/new and enter all possible protocol.
+
