@@ -37,6 +37,17 @@ class apache {
             require => Package["apache-conf"],
             content => template("apache/00_default_vhosts.conf")
         }
+
+	file { "01_default_ssl_vhost.conf"
+	    path => '/etc/httpd/conf/vhosts.d/01_default_ssl_vhost.conf',
+            ensure => "present",
+            owner => root,
+            group => root,
+            mode => 644,
+            notify => Service['apache'],
+            require => Package["apache-conf"],
+            content => template("apache/01_default_ssl_vhost.conf")
+	}
     }
     
     class mod_php inherits base {
