@@ -2,7 +2,7 @@ class blog {
 
     user { "blog":
         groups => apache,
-        comment => "User running cron jobs for blog",
+        comment => "Mageia blog",
         ensure => present,
         managehome => true,
         home => "/var/lib/blog",
