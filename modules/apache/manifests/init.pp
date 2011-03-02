@@ -38,7 +38,7 @@ class apache {
             content => template("apache/00_default_vhosts.conf")
         }
 
-	file { "01_default_ssl_vhost.conf"
+	file { "01_default_ssl_vhost.conf":
 	    path => '/etc/httpd/conf/vhosts.d/01_default_ssl_vhost.conf',
             ensure => "present",
             owner => root,
