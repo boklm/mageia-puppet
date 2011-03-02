@@ -31,6 +31,7 @@ class repositories::subversion {
     subversion::repository { "/svn/packages/":
         group => "mga-packagers-committers",
         no_binary => true,
+	    commit_mail => ["packages-commits@ml.$domain"],
         cia_post => true,
         cia_module => "packages",
         cia_ignore_author => '^schedbot$',
