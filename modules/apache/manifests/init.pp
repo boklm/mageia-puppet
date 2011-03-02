@@ -140,10 +140,12 @@ class apache {
 
         if $use_ssl {
             include apache::mod_ssl
-            openssl::self_signed_cert{ "$real_vhost":
-                directory => "/etc/ssl/apache/",
-                before => File["$filename"],
-            }
+	    if ! $wildcard_sslcert {
+		openssl::self_signed_cert{ "$real_vhost":
+		    directory => "/etc/ssl/apache/",
+		    before => File["$filename"],
+		}
+	    }
         }
 
         if $enable_public_html {
