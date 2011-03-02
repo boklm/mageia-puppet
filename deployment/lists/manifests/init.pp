@@ -67,6 +67,14 @@ class lists {
             topics => "i18n",
         }
 
+        sympa::announce_list_email {"packages-commits":
+            subject => "List receiving commits mail from packages repository",
+            # FIXME change once we migrate
+            reply_to => "mageia-dev@$domain",
+            sender_email => "root@$domain",
+            topics => "developers",
+        }
+
         sympa::announce_list_email {"sysadmin-commits":
             subject => "List receiving commits mail from sysadmin team repository",
             # FIXME change once we migrate
