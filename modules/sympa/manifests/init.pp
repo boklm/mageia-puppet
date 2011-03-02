@@ -56,14 +56,10 @@ class sympa {
    
         apache::vhost_redirect_ssl { "$vhost": }
  
-        apache::vhost_other_app { "$vhost":
-            vhost_file => "sympa/vhost_ml.conf",
+        apache::vhost_base { "$vhost":
+	    use_ssl => true,
+            content => template("sympa/vhost_ml.conf"),
         }
-
-        openssl::self_signed_cert{ "$vhost":
-            directory => "/etc/ssl/apache/"
-        }
-    
 
         @@postgresql::database { 'sympa':
             description => "Sympa database",
