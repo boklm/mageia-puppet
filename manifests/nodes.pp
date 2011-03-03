@@ -140,7 +140,7 @@ node krampouezh {
     #include default_mageia_server
     include default_mageia_server_no_smtp
     include postfix::secondary_smtp
-
+    include mysql
     include dns::server 
     timezone::timezone { "Europe/Paris": }
 # Other services running on this server :
@@ -153,6 +153,7 @@ node champagne {
 # TODO:
 # - setup mageia.org web site
 # - setup blog
+# - setup planet
 #
     include default_mageia_server
     timezone::timezone { "Europe/Paris": }
