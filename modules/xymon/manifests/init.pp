@@ -33,7 +33,7 @@ class xymon {
 	    owner => root,
 	    group => xymon,
 	    mode => 644,
-	    require => Package["xymon"],
+	    require => Package["xymon","fping"],
 	    notify => Service["xymon"],
 	    content => template("xymon/hobbitserver.cfg"),
 	}
