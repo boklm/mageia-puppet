@@ -8,9 +8,9 @@ Facter.add("wildcard_sslcert") do
 		sslfiles = '/etc/ssl/wildcard.' + Facter.value('domain')
 		if File.exist?(sslfiles + '.crt') and File.exist?(sslfiles + '.key') \
 			and File.exist?(sslfiles + '.pem')
-			true
+			'true'
 		else
-			false
+			'false'
 		end
 	end
 end
