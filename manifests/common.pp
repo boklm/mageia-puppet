@@ -100,6 +100,7 @@ class default_mageia_server_no_smtp {
     include ntp
     include urpmi_update
     include puppet::client
+    include xymon::client
 
 
 }
@@ -107,7 +108,6 @@ class default_mageia_server_no_smtp {
 class default_mageia_server inherits default_mageia_server_no_smtp {
 
     include postfix::simple_relay
-    include xymon::client
 #    include ssmtp
 }
 
