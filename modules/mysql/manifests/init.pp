@@ -4,10 +4,10 @@ class mysql {
             ensure => installed
         }
 
-        service { "mysql":
-            path => "/etc/init.d/mysqld",
+        service { mysqld:
+	    alias => mysql,
             ensure => running,
-            hasstatus => true, 
+	    subscribe => [ Package['mysql'] ],
         }
         
 #        file { "/etc/my.cnf":
