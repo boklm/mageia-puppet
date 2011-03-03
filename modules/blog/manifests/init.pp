@@ -2,7 +2,7 @@ class blog {
 
     user { "blog":
         groups => apache,
-        comment => "Mageia blog",
+        comment => "Mageia Blog",
         ensure => present,
         managehome => true,
         home => "/var/lib/blog",
@@ -29,7 +29,6 @@ class blog {
     }
 
     include apache::mod_php
-    include mysql
 
     $blog_location = "/var/www/html/blog.$domain"
     $blog_domain = "blog-test.$domain"
