@@ -140,6 +140,7 @@ node krampouezh {
     #include default_mageia_server
     include default_mageia_server_no_smtp
     include postfix::secondary_smtp
+    include blog::user
     include mysql::server
     include dns::server 
     timezone::timezone { "Europe/Paris": }
