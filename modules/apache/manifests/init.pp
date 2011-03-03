@@ -152,7 +152,7 @@ class apache {
 
         if $use_ssl {
             include apache::mod_ssl
-	    if ! $wildcard_sslcert {
+	    if $wildcard_sslcert != 'true' {
 		openssl::self_signed_cert{ "$real_vhost":
 		    directory => "/etc/ssl/apache/",
 		    before => File["$filename"],
