@@ -13,22 +13,26 @@
 # You need to define at least the Xymon server itself here.
 
 page visible Visible Services
-0.0.0.0		blog.mageia.org	# http://blog.mageia.org
-0.0.0.0		identity.mageia.org # https://identity.mageia.org
-0.0.0.0		bugs.mageia.org # https://bugs.mageia.org
-
+0.0.0.0		blog.<%= domain %>	# http://blog.<%= domain %>
+0.0.0.0		identity.<%= domain %> # https://identity.<%= domain %>
+0.0.0.0		bugs.<%= domain> # https://bugs.<%= domain %>
+0.0.0.0		ml.<%= domain> # https://ml.<%= domain %>
+0.0.0.0	    www.<%= domain> # http://www.<%= domain %>
+0.0.0.0	    svnweb.<%= domain> # http://svnweb.<%= domain %>
+0.0.0.0	    epoll.<%= domain> # https://epoll.<%= domain %>
+0.0.0.0	    transifex.<%= domain> # https://transifex.<%= domain %>
 
 page servers Servers
 group-compress Marseille
-212.85.158.146	alamut.mageia.org	# testip bbd dns ssh CLIENT:xymon.mageia.org
-212.85.158.147	valstar.mageia.org	# testip ssh rsync
-212.85.158.148	ecosse.mageia.org	# testip ssh
-212.85.158.149	jonund.mageia.org	# testip ssh
-#212.85.158.150	fiona.mageia.org	# testip ssh
+212.85.158.146	alamut.<%= domain %>	# testip bbd dns ssh CLIENT:xymon.mageia.org
+212.85.158.147	valstar.<%= domain %>	# testip ssh rsync
+212.85.158.148	ecosse.<%= domain %>	# testip ssh
+212.85.158.149	jonund.<%= domain %>	# testip ssh
+#212.85.158.150	fiona.<%= domain %>	# testip ssh
 
 group-compress Gandi
-95.142.164.207	krampouezh.mageia.org	# ssh dns
-217.70.188.116	champagne.mageia.org	# ssh
+95.142.164.207	krampouezh.<%= domain %>	# ssh dns
+217.70.188.116	champagne.<%= domain %>	# ssh
 
 group-compress Dedibox
-88.190.12.224	rabbit.mageia.org	# ssh
+88.190.12.224	rabbit.<%= domain %>	# ssh
