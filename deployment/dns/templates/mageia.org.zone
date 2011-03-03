@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2011021102	; Serial
+        2011030301	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -92,6 +92,7 @@ transifex   IN CNAME alamut
 lists       IN CNAME alamut
 viewvc      IN CNAME alamut
 svnweb      IN CNAME alamut
+xymon	    IN CNAME alamut
 
 ; temporary, until the vm is moved elsewhere
 forums      IN CNAME alamut

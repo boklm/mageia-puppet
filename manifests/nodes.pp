@@ -93,6 +93,9 @@ node alamut {
     include repositories::mirror
     include viewvc
     include xymon::server
+    apache::vhost_simple { "xymon.$domain":
+	location => "/var/lib/xymon/www",
+    }
 }
 
 # buildnode
