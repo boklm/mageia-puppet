@@ -20,7 +20,7 @@ page visible Visible Services
 
 page servers Servers
 group-compress Marseille
-212.85.158.146	alamut.mageia.org	# testip bbd dns ssh
+212.85.158.146	alamut.mageia.org	# testip bbd dns ssh CLIENT:xymon.mageia.org
 212.85.158.147	valstar.mageia.org	# testip ssh rsync
 212.85.158.148	ecosse.mageia.org	# testip ssh
 212.85.158.149	jonund.mageia.org	# testip ssh
