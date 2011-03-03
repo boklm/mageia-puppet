@@ -2,7 +2,7 @@ class planet {
 
     user { "planet":
 	groups => apache,
-	comment => "User running cronjob and deploying planet software",
+	comment => "Planet Mageia",
 	ensure => present,
 	managehome => true,
 	home => "/var/lib/planet",
