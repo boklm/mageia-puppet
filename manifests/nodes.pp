@@ -92,6 +92,7 @@ node alamut {
     include dns::server 
     include repositories::mirror
     include viewvc
+    include xymon:server
 }
 
 # buildnode
