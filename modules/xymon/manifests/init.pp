@@ -16,7 +16,8 @@ class xymon {
     }
 
     class server {
-	package { xymon:
+	$package_list = ["xymon","fping"]
+	package { $package_list:
 	    ensure => installed,
 	}
 	service { xymon:
@@ -33,10 +34,7 @@ class xymon {
 	    owner => root,
 	    group => xymon,
 	    mode => 644,
-	    require => [
-		Package["xymon"],
-		Package["fping"],
-	    ],
+	    require => Package["xymon"],
 	    notify => Service["xymon"],
 	    content => template("xymon/hobbitserver.cfg"),
 	}
