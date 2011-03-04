@@ -111,8 +111,8 @@ class subversion {
     }
 
    
-    # FIXME ugly
-    define pre_commit_link($scriptname) {
+    define pre_commit_link() {
+	$scriptname = regsubst($name,'^.*/', '')    
 	file { "${name}":
 	    ensure => "/usr/local/share/subversion/pre-commit.d/$scriptname",
 	    owner => root,
@@ -217,9 +217,7 @@ class subversion {
 	}
 
 	if $no_binary {
-	    pre_commit_link { "$name/hooks/pre-commit.d/no_binary":
-		scriptname => 'no_binary',
-	    }
+	    pre_commit_link { "$name/hooks/pre-commit.d/no_binary": }
 	}
 
         if $extract_dir {
@@ -233,16 +231,13 @@ class subversion {
             }
         }
 
-	pre_commit_link { "$name/hooks/pre-commit.d/no_empty_message":
-	    scriptname => 'no_empty_message',
-	}
-	pre_commit_link { "$name/hooks/pre-commit.d/no_root_commit":
-	    scriptname => 'no_root_commit',
-	}
+	pre_commit_link { "$name/hooks/pre-commit.d/no_empty_message": } 
+
+	pre_commit_link { "$name/hooks/pre-commit.d/no_root_commit": }
+
 	if $syntax_check {
-	    pre_commit_link { "$name/hooks/pre-commit.d/$syntax_check":
-		scriptname => $syntax_check,
-	    }
+	    $syntax_check_array = regsubst($syntax_check,'^',"$name/hooks/pre-commit.d/")
+	    pre_commit_link { $syntax_check_array: }
         }
     }
 
