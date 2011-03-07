@@ -34,7 +34,7 @@ class blog {
         include apache::mod_php
 
         $blog_location = "/var/www/html/blog.$domain"
-        $blog_domain = "blog-test.$domain"
+        $blog_domain = "blog.$domain"
 
         apache::vhost_base { "$blog_domain":
             location => $blog_location,
@@ -50,7 +50,7 @@ class blog {
 
         file { "$blog_location":
 	        ensure => directory,
-	        owner => blog,
+	        owner => apache,
 	        group => apache,
 	        mode => 644,
         }
