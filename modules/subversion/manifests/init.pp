@@ -273,7 +273,8 @@ class subversion {
         cron { "update $name":
            command => "cd $name && /usr/bin/svn update -q",
            user => $user,
-           minute => $refresh
+           minute => $refresh,
+           requires => Exec["/usr/bin/svn co $source $name"],
         }   
     }
     
@@ -300,6 +301,7 @@ class subversion {
         cron { "update $name":
            command => "/usr/bin/svnsync synchronize file://$name",
            minute => $refresh,
+           requires => Exec["/usr/local/bin/create_svn_mirror.sh $name $source"],
         }   
     } 
 }
