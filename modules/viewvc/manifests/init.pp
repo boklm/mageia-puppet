@@ -1,5 +1,5 @@
 class viewvc {
-    package { ['viewvc','python-svn']:
+    package { ['viewvc','python-svn','python-flup']:
         ensure => installed
     }
     # http_expiration_time = 600
