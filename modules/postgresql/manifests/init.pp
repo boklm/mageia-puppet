@@ -89,6 +89,28 @@ class postgresql {
     }
 
 
+    define remote_database($description = "", 
+                           $user = "postgresql", 
+                           $tag = "default")
+    {
+        @@postgresql::database { $name:
+            description => $description,
+            user => $user,
+            tag => $tag,
+            require => Postgresql::User[$user]
+        }
+    }
+
+    define remote_user($password, 
+                       $tag = "default")
+    {
+        @@postgresql::user { $name:
+            tag => $tag,
+            password => $password,
+        }
+    }
+
+
     # TODO convert it to a regular type ( so we can later change user and so on )
     define database($description="", $user="postgres") {
         exec { "createdb -O $user -U postgres $name '$description'":
