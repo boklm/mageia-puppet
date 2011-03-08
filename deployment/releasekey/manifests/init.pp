@@ -6,10 +6,18 @@ class releasekey {
     }
 
     class base inherits variable {
-	sshuser { $sign_login:
-	    homedir => $sign_home_dir,
+	group {"$sign_login":
+	    ensure => present,
+	}
+
+	user {"$sign_login":
+	    ensure => present,
 	    comment => "System user to sign Mageia Releases",
-	    groups => [$sched_login],
+	    managehome => true,
+	    home => $sign_home_dir,
+	    gid => $sign_login,
+	    shell => "/bin/bash",
+	    require => Group[$sign_login],
 	}
 
 	gnupg::keys{"release":
