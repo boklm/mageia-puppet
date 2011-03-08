@@ -21,11 +21,11 @@ class viewvc {
     }
 
     # need newer version of viewvc
-    apache::vhost_wsgi{ "svnweb.$domain":
-        # remove this alias in mars 2011
-        server_aliases => "viewvc.$domain",
-        wsgi_path => "/usr/share/viewvc/bin/wsgi/viewvc.wsgi",
-        aliases => { "/viewvc" => "/var/www/viewvc/" }, 
+    apache::vhost_base { "svnweb.$domain":
+        # TODO created a full fledged type
+        aliases => { "/viewvc" => "/var/www/viewvc/",
+                     "/" => "/usr/share/viewvc/bin/wsgi/viewvc.fcgi/" }, 
+        content => template("viewvc/vhost.conf")
     }
 }
 
