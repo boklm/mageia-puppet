@@ -1,7 +1,7 @@
 include_ldap_2level_query
         host     ldap.<%= domain %>
         use_ssl  yes
-        user     cn=sympa-alamut,ou=System Accounts,<%= dc_suffix %>
+        user     cn=sympa-<%= hostname %>,ou=System Accounts,<%= dc_suffix %>
         passwd   <%= ldap_password %>
         suffix1  ou=Group,<%= dc_suffix %>
         scope1   one
