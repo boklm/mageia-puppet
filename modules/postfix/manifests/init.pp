@@ -57,6 +57,16 @@ class postfix {
             mode => 644, 
             content => template("postfix/primary_master.cf"),
         }
+
+        
+        $ldap_password = extlookup("postfix_ldap",'x')
+        file { '/etc/postfix/ldap_aliases.conf':
+            ensure => present,
+            owner => root, 
+            group => root, 
+            mode => 644, 
+            content => template("postfix/ldap_aliases.conf"),
+        }
     }
 
     class secondary_smtp inherits smtp_server {

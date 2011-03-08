@@ -52,7 +52,7 @@ fallback_transport = regexp:/etc/postfix/transport_regexp
 alias_maps = hash:/etc/postfix/aliases
 	     # uncomment if we want to enable ldap based alias 
              # and create the file
-             #ldap:/etc/postfix/ldap_aliases.conf
+             ldap:/etc/postfix/ldap_aliases.conf
 <%- end -%>
 
 
