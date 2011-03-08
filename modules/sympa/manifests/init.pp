@@ -25,7 +25,7 @@ class sympa {
         $pgsql_password = extlookup("sympa_pgsql",'x')
         $ldap_password = extlookup("sympa_ldap",'x')
     
-        @@postgresql::user { 'sympa':
+        postgresql::remote_user { 'sympa':
             password => $pgsql_password,
         }
     
@@ -61,10 +61,9 @@ class sympa {
             content => template("sympa/vhost_ml.conf"),
         }
 
-        @@postgresql::database { 'sympa':
+        postgresql::remote_database { 'sympa':
             description => "Sympa database",
             user => "sympa",
-            require => Postgresql::User["sympa"]
         }
     
         subversion::snapshot { "/etc/sympa/web_tt2":

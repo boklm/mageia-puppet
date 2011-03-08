@@ -29,7 +29,7 @@ class phpbb {
         }
 
         $pgsql_password = extlookup("phpbb_pgsql",'x')
-        @@postgresql::user { $user:
+        postgresql::remote_user { $user:
             password => $pgsql_password,
         }
 
@@ -120,10 +120,9 @@ class phpbb {
         }
 
 
-        @@postgresql::database { $database:
+        postgresql::remote_database { $database:
             description => "Phpbb database",
             user => $user,
-            require => Postgresql::User[$user]
         }
 
         phpbb_config { "ldap_user":

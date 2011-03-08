@@ -9,14 +9,13 @@ class transifex {
 
   $templates_dir = "/var/lib/transifex/templates"
 
-  @@postgresql::user { 'transifex':
+  postgresql::remote_user { 'transifex':
         password => $pgsql_password,
   }
 
-  @@postgresql::database { 'transifex':
+  postgresql::remote_database { 'transifex':
         description => "Transifex database",
         user => "transifex",
-        require => Postgresql::User['transifex']
   }
 
   file { "20-engines.conf":
