@@ -79,11 +79,13 @@ class postgresql {
             content => template("postgresql/pg_ident.conf"),
             require => Package["postgresql-server"],
         }
+    }
 
+    define tagged() {
         # TODO add a system of tag so we can declare database on more than one
         # server 
-        Postgresql::User <<| |>>
-        Postgresql::Database <<| |>>
+        Postgresql::User <<| tag == $name |>>
+        Postgresql::Database <<| tag == $name |>>
     }
 
 
