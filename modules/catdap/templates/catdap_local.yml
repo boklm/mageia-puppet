@@ -1,7 +1,7 @@
 <%
 ldap_server = 'ldap.' + domain
 
-ldap_account = 'cn=catdap-valstar,ou=System Accounts,' + dc_suffix
+ldap_account = 'cn=catdap-' + hostname + ',ou=System Accounts,' + dc_suffix
 %>
 
 organisation: Mageia
