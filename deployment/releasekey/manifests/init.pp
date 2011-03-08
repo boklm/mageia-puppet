@@ -27,7 +27,7 @@ class releasekey {
 	    login => $sign_login,
 	    batchdir => "$sign_home_dir/batches",
 	    keydir => $sign_keydir,
-	    require => Sshuser[$sign_login],
+	    require => User[$sign_login],
 	}
     }
 }
