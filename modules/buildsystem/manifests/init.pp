@@ -46,8 +46,9 @@ class buildsystem {
             vhost_file => "buildsystem/vhost_repository.conf",
         }
 
-        apache::vhost_other_app { "pkgsubmit.$domain":
-            vhost_file => "buildsystem/vhost_pkgsubmit.conf",
+        apache::vhost_base { "pkgsubmit.$domain":
+            aliases => { "/uploads" => "$sched_home_dir/uploads" },
+            location => "/var/www/bs/",
         }
 
         include scheduler
