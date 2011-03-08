@@ -46,9 +46,14 @@ class buildsystem {
             vhost_file => "buildsystem/vhost_repository.conf",
         }
 
+        $location = "/var/www/bs"
         apache::vhost_base { "pkgsubmit.$domain":
             aliases => { "/uploads" => "$sched_home_dir/uploads" },
-            location => "/var/www/bs/",
+            location => $location,
+        }
+
+        subversion::snapshot { $location:
+            source => "svn://svn.$domain/soft/buildsystem/web/",
         }
 
         include scheduler
