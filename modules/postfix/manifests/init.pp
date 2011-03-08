@@ -58,7 +58,8 @@ class postfix {
             content => template("postfix/primary_master.cf"),
         }
 
-        
+
+        $aliases_group = ['mga-founders']        
         $ldap_password = extlookup("postfix_ldap",'x')
         file { '/etc/postfix/ldap_aliases.conf':
             ensure => present,
