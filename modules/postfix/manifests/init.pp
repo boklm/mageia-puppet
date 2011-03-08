@@ -58,6 +58,9 @@ class postfix {
             content => template("postfix/primary_master.cf"),
         }
 
+        package { "postfix-ldap":
+            ensure => installed
+        }
 
         $aliases_group = ['mga-founders']        
         $ldap_password = extlookup("postfix_ldap",'x')
