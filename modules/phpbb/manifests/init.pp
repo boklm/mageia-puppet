@@ -126,7 +126,7 @@ class phpbb {
         }
 
         phpbb_config { "ldap_user":
-            value => "cn=phpbb-friteuse,ou=System Accounts,$dc_suffix",
+            value => "cn=phpbb-$hostname,ou=System Accounts,$dc_suffix",
         }
 
         phpbb_config { "ldap_server":
