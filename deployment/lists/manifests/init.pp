@@ -91,6 +91,14 @@ class lists {
             topics => "sysadmin",
         }
 
+        sympa::announce_list_email { "sysadmin-bugs":
+            subject => "List receiving sysadmin bugs reports from bugzilla",
+            # FIXME change once we migrate
+            reply_to => "mageia-sysadm@$domain",
+            sender_email => "bugzilla-daemon@$domain",
+            topics => "sysadmin",
+        }
+
         sympa::announce_list_email { "soft-commits":
             subject => "List receiving automated reports from soft/ repositories",
             # FIXME change once we migrate
