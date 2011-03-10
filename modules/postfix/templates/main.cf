@@ -46,7 +46,7 @@ mydestination = <%= fqdn %>
 # taken in account only of local_recipient_maps is empty
 local_recipient_maps =
 # route ml to ryu ( ml being mageia-*@mageia )
-fallback_transport = regexp:/etc/postfix/transport_regexp
+fallback_transport_maps = regexp:/etc/postfix/transport_regexp
 
 
 alias_maps = hash:/etc/postfix/aliases
