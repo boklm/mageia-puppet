@@ -43,3 +43,13 @@ noauto:hdlist_tainted_backports.src.cz	media/../../SRPMS/tainted/backports	Taint
 noauto:hdlist_tainted_backports_testing.cz	media/tainted/backports_testing	Tainted Backports Testing
 noauto:hdlist_debug_tainted_backports_testing.cz	media/debug/tainted/backports_testing	Tainted Backports Testing Debug
 noauto:hdlist_tainted_backports_testing.src.cz	media/../../SRPMS/tainted/backports_testing	Tainted Backports Testing Sources
+hdlist_core32_release.cz	media/../../i586/media/core/release	Core 32bit Release
+noauto:hdlist_debug_core32_release.cz	media/../../i586/media/debug/core/release	Core 32bit Release Debug
+hdlist_core32_updates.cz	media/../../i586/media/core/updates	Core 32bit Updates
+noauto:hdlist_debug_core32_updates.cz	media/../../i586/media/debug/core/updates	Core 32bit Updates Debug
+noauto:hdlist_core32_updates_testing.cz	media/../../i586/media/core/updates_testing	Core 32bit Updates Testing
+noauto:hdlist_debug_core32_updates_testing.cz	media/../../i586/media/debug/core/updates_testing	Core 32bit Updates Testing Debug
+noauto:hdlist_core32_backports.cz	media/../../i586/media/core/backports	Core 32bit Backports
+noauto:hdlist_debug_core32_backports.cz	media/../../i586/media/debug/core/backports	Core 32bit Backports Debug
+noauto:hdlist_core32_backports_testing.cz	media/../../i586/media/core/backports_testing	Core 32bit Backports Testing
+noauto:hdlist_debug_core32_backports_testing.cz	media/../../i586/media/debug/core/backports_testing	Core 32bit Backports Testing Debug
