@@ -98,7 +98,7 @@
            'user_info_class' => 'CGI',
            'user_verify_class' => 'LDAP',
            'usestatuswhiteboard' => 1,
-           'usetargetmilestone' => 0,
+           'usetargetmilestone' => 1,
            'usevisibilitygroups' => 0,
            'usevotes' => 0,
            'utf8' => 1,
