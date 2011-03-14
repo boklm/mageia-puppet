@@ -45,7 +45,7 @@
            'globalwatchers' => 'bugs@ml.<%= domain %>',
            'inbound_proxies' => '',
            'insidergroup' => '',
-           'letsubmitterchoosemilestone' => 0,
+           'letsubmitterchoosemilestone' => 1,
            'letsubmitterchoosepriority' => 1,
            'lxr_root' => '',
            'lxr_url' => '',
