@@ -244,9 +244,13 @@ class apache {
         } 
     } 
 
-    define vhost_redirect($url) {
+    define vhost_redirect($url,
+    			  $vhost = false,
+			  $use_ssl = false) {
         include apache::base
         vhost_base { $name:
+            use_ssl => $use_ssl,
+            vhost => $vhost,
             content => template("apache/vhost_redirect.conf"),
         } 
     } 
