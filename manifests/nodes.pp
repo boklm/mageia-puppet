@@ -74,6 +74,14 @@ node alamut {
     }
 
     apache::vhost_redirect_ssl { "forums.$domain": }
+    vhost_redirect { "forum.$domain":
+    	url => "https://forums.$domain/",
+    }
+    vhost_redirect { "ssl_forum.$domain":
+    	url => "https://forums.$domain/",
+	vhost => "forum.$domain",
+	use_ssl => true,
+    }
 
     # connect to ssl so the proxy do not shoke if trying to 
     # enforce ssl ( note that this has not been tested, maybe this
