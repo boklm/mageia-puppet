@@ -74,10 +74,10 @@ node alamut {
     }
 
     apache::vhost_redirect_ssl { "forums.$domain": }
-    vhost_redirect { "forum.$domain":
+    apache::vhost_redirect { "forum.$domain":
     	url => "https://forums.$domain/",
     }
-    vhost_redirect { "ssl_forum.$domain":
+    apache::vhost_redirect { "ssl_forum.$domain":
     	url => "https://forums.$domain/",
 	vhost => "forum.$domain",
 	use_ssl => true,
