@@ -21,11 +21,16 @@ class draklive {
 	    content => template("draklive/sudoers.draklive")
         }
 
-	file { "/var/lib/draklive":
+	file { "$draklive_home/var-data":
 	    ensure => directory,
 	    owner => $draklive_login,
 	    group => $draklive_login,
 	    mode => 755,
+	}
+
+	file { "/var/lib/draklive":
+	     ensure => symlink,
+	     target => "$draklive_home/var-data",
 	}
 
     }
