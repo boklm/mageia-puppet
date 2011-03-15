@@ -73,9 +73,7 @@ node alamut {
         ensure => 'present',
     }
 
-    apache::vhost_reverse_proxy { "forums.$domain":
-        url => "http://forums.$domain/",
-    }
+    apache::vhost_redirect_ssl { "forums.$domain": }
 
     # connect to ssl so the proxy do not shoke if trying to 
     # enforce ssl ( note that this has not been tested, maybe this
