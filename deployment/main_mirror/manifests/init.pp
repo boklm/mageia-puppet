@@ -17,14 +17,14 @@ class main_mirror {
 
     }
 
-    file { "$mirror/mirror/README.mirroring":
+    file { "$mirror/mirror/mirror.readme":
         ensure => present,
-        source => "puppet:///modules/main_mirror/mirror/README.mirroring"         
+        source => "puppet:///modules/main_mirror/mirror/mirror.readme"         
     }
 
-    file { "$mirror/mirror/README.paths":
+    file { "$mirror/mirror/paths.readme":
         ensure => present,
-        source => "puppet:///modules/main_mirror/mirror/README.paths"         
+        source => "puppet:///modules/main_mirror/mirror/paths.readme"         
     }
 
 
