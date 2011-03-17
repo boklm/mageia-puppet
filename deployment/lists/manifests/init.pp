@@ -75,6 +75,14 @@ class lists {
             topics => "developers",
         }
 
+        sympa::announce_list_email {"mirrors-announce":
+            subject => "Important announces about mirrors updates",
+            # FIXME change once we migrate
+            reply_to => "mageia-sysadm@$domain",
+            sender_email => "root@$domain",
+            topics => "sysadmin",
+        }
+
         sympa::announce_list_email {"sysadmin-commits":
             subject => "List receiving commits mail from sysadmin team repository",
             # FIXME change once we migrate
