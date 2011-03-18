@@ -56,7 +56,7 @@ class blog {
         }
     }
     class db_backup inherits base {
-        file { "/var/lib/blog/backup/db":
+        file { "/var/lib/blog/backup":
                 ensure => directory,
                 owner => root,
                 group => root,
