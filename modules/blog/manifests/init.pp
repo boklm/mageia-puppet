@@ -74,7 +74,6 @@ class blog {
 
         cron { root:
             user => root,
-            day => '*/1',
             hour => '23',
             minute => '42',
             command => "/usr/local/bin/backup_blog-db.sh",
