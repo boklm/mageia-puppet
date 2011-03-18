@@ -24,7 +24,7 @@ class blog {
             content => template("blog/check_new-blog-post.sh")
         }
    
-        cron { blog:
+        cron { "Blog bot":
             user => blog,
             minute => '*/15',
             command => "/usr/local/bin/check_new-blog-post.sh",
@@ -72,7 +72,7 @@ class blog {
             content => template("blog/backup_blog-db.sh")
         }
 
-        cron { root:
+        cron { "Backup DB (blog)":
             user => root,
             hour => '23',
             minute => '42',
