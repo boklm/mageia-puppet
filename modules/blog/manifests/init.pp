@@ -10,7 +10,7 @@ class blog {
         }
     }
     
-    class champagne inherits base {
+    class files-bots inherits base {
         package { ['wget','php-mysql']:
             ensure => installed
         }
@@ -53,6 +53,32 @@ class blog {
 	        owner => apache,
 	        group => apache,
 	        mode => 644,
+        }
+    }
+    class db_backup inherits base {
+        file { "/var/lib/blog/backup/db":
+                ensure => directory,
+                owner => root,
+                group => root,
+                mode => 644,
+        }
+
+	file { "backup_blog-db":
+            path => "/usr/local/bin/backup_blog-db.sh",
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            content => template("blog/backup_blog-db.sh")
+        }
+
+        cron { root:
+            user => root,
+            day => '*',
+            hour => '23',
+            minute => '42',
+            command => "/usr/local/bin/backup_blog-db.sh",
+            require => [File["backup_blog-db"]],
         }
     }
 }

@@ -147,6 +147,7 @@ node krampouezh {
     include default_mageia_server_no_smtp
     include postfix::secondary_smtp
     include blog::base
+    include blog::db_backup
     include mysql::server
     include dns::server 
     timezone::timezone { "Europe/Paris": }
@@ -164,7 +165,8 @@ node champagne {
 #
     include default_mageia_server
     timezone::timezone { "Europe/Paris": }
-    include blog::champagne
+    include blog::files-bots
+    #include blog::files_backup
     include planet
     include websites::static
 }
