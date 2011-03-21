@@ -29,7 +29,7 @@ node valstar {
     # whole module ( see r698 )
     #include openssh::ssh_keys_from_ldap
 
-    include mirror::mirrormdv2010.1
+    include mirror::mirrormdv2010spring
 
     include repositories::subversion
     include repositories::git

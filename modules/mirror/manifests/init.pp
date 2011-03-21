@@ -89,7 +89,7 @@ class mirror {
 	}
     }
 
-    class mirrormdv2010.1 inherits base {
+    class mirrormdv2010spring inherits base {
     	mirrordir { "mdv2010.1":
 	    remoteurl => "rsync://distrib-coffee.ipsl.jussieu.fr/pub/linux/MandrivaLinux/official/2010.1",
 	    localdir => '/distrib/mandriva/2010.1',
