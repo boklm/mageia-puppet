@@ -131,4 +131,23 @@ class lists {
             topics => "developers",
         }
 
+        # rda asked for a list where posting is restricted to a ldap
+        # group, and where everybody can subscribe. While the name is not
+        # really reflecting the usage, the functionnal requirements are fullfilled
+        # FIXME people in the board group should be subscribed to this list
+        #      
+        sympa::announce_list_group { "board-public":
+            subject => "List for public board discussion",
+            reply_to => false,
+            sender_ldap_group => "mga-board", 
+            topics => "governance",
+        }
+
+        sympa::private_list { "board-private":
+            subject => "List for private board discussion",
+            sender_ldap_group => "mga-board", 
+            topics => "governance",
+        }
+ 
+        
 }
