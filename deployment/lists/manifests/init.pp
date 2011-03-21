@@ -145,7 +145,7 @@ class lists {
 
         sympa::private_list { "board-private":
             subject => "List for private board discussion",
-            sender_ldap_group => "mga-board", 
+            subscriber_ldap_group => "mga-board",
             topics => "governance",
         }
  
