@@ -37,6 +37,10 @@ relay_domains = <%= domain %>, ml.<%= domain %>
 <%- end -%>
 
 mydestination = <%= fqdn %>
+<%- if classes.include?('sympa::server') -%>
+                ml.<%= domain %>
+<%- end -%>
+
 <%- if all_tags.include?('postfix::primary_smtp') -%>
 
 virtual_mailbox_domains = <%= domain %>
