@@ -6,7 +6,7 @@ visibility noconceal
 
 lang <%= language %>
 
-<% if subscriber_ldap_group %>
+<% if subscriber_ldap_group and not subscription_open %>
 # TODO check scenari
 subscribe    closed
 

@@ -183,7 +183,8 @@ class sympa {
                 $sender_email = false,
                 $sender_ldap_group = false,
                 $subscriber_ldap_group = false,
-                $public_archive = true ) {
+                $public_archive = true,
+                $subscription_open = false ) {
 
         include sympa::variable
 
