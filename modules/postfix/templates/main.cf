@@ -38,7 +38,8 @@ relay_domains = <%= domain %>, ml.<%= domain %>
 
 mydestination = <%= fqdn %>
 <%- if all_tags.include?('postfix::primary_smtp') -%>
-                <%= domain %>,
+
+virtual_mailbox_domains = <%= domain %>
 
 # local_recipient_maps is disabled, as we need to route all
 # non local email to ryu as long as mageia ml are hosted 
@@ -50,9 +51,8 @@ fallback_transport_maps = regexp:/etc/postfix/transport_regexp
 
 
 alias_maps = hash:/etc/postfix/aliases
-	     # uncomment if we want to enable ldap based alias 
-             # and create the file
-             ldap:/etc/postfix/ldap_aliases.conf
+
+virtual_alias_maps = ldap:/etc/postfix/ldap_aliases.conf
 <%- end -%>
 
 
