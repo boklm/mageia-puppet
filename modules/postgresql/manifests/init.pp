@@ -90,6 +90,21 @@ class postgresql {
     }
 
 
+    define remote_db_and_user($description = "",
+                              $tag = "default",
+                              $password ) {
+
+        remote_database { $name:
+                          description => $description,
+                          user => $name,
+                          tag => $tag,
+        }
+
+        remote_user { $name:
+                      password => $password
+        }
+    }
+
     define remote_database($description = "", 
                            $user = "postgresql", 
                            $tag = "default")
