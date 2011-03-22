@@ -2,9 +2,7 @@ require 'puppet/rails'
 
 # function :
 #  list_exported_ressources($resource)
-#    -> renvoie un array de title
-#  get_fact($node,$fact)
-#    -> renvoie le fact
+#    -> return a array of title
 
 module Puppet::Parser::Functions
     newfunction(:list_exported_ressources, :type => :rvalue) do |args|
