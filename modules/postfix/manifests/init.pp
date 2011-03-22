@@ -71,7 +71,21 @@ class postfix {
             mode => 644, 
             content => template("postfix/ldap_aliases.conf"),
         }
+
+        file { '/etc/postfix/virtual_aliases':
+            ensure => present,
+            owner => root, 
+            group => root, 
+            mode => 644, 
+            content => template("postfix/virtual_aliases"),
+        }
+
+        exec { "postmap /etc/postfix/virtual_aliases":
+            refreshonly => true,
+            subscribe => File['/etc/postfix/virtual_aliases'],
+        }
     }
+
 
     class secondary_smtp inherits smtp_server {
     }
