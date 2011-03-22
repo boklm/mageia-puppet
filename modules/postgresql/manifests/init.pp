@@ -60,6 +60,7 @@ class postgresql {
         # TODO use augeas to manage this file once augeas 0.7.4 is installed
         # on our server, as this would allow use to autodeclare database in it without
         # much trouble
+        $db = list_exported_ressources('Postgresql::Database')
         file { 'pg_hba.conf':
             path => "$pgsql_data/pg_hba.conf",
             ensure => present,
