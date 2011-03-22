@@ -87,6 +87,7 @@ class postgresql {
         # server 
         Postgresql::User <<| tag == $name |>>
         Postgresql::Database <<| tag == $name |>>
+        Postgresql::Db_and_user <<| tag == $name |>>
     }
 
 
@@ -94,14 +95,10 @@ class postgresql {
                               $tag = "default",
                               $password ) {
 
-        remote_database { $name:
-                          description => $description,
-                          user => $name,
-                          tag => $tag,
-        }
-
-        remote_user { $name:
-                      password => $password
+        @@postgresql::db_and_user { $name:
+                                    tag => $tag,
+                                    description => $description,
+                                    password => $password
         }
     }
 
@@ -126,6 +123,18 @@ class postgresql {
         }
     }
 
+    define db_and_user($description = "",
+                       $password ) {
+
+        database { $name:
+                   description => $description,
+                   user => $name,
+        }
+
+        user { $name:
+               password => $password
+        }
+    }
 
     # TODO convert it to a regular type ( so we can later change user and so on )
     define database($description="", $user="postgres") {
