@@ -45,6 +45,10 @@ mydestination = <%= fqdn %>
 
 virtual_mailbox_domains = <%= domain %>
 
+# postfix complain if not set
+# Mar 22 23:51:20 alamut postfix/virtual[22952]: fatal: bad string length 0 < 1: virtual_mailbox_base = 
+virtual_mailbox_base = /var/lib/mail
+
 # local_recipient_maps is disabled, as we need to route all
 # non local email to ryu as long as mageia ml are hosted 
 # there. Hence the use of fallback_transport , but this is
