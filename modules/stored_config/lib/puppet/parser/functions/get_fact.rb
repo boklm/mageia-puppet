@@ -7,7 +7,8 @@ module Puppet::Parser::Functions
     newfunction(:get_fact, :type => :rvalue) do |args| 
         node = args[0]
         fact = args[1]
-
+        # TODO use 
+        # Puppet::Node::Facts.indirection.find(Puppet[:certname])
         Puppet::Rails.connect()
         return Puppet::Rails::FactValue.find( :first,
                                               :joins => [ :host, :fact_name ],
