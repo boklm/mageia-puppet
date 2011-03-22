@@ -16,7 +16,8 @@ class epoll {
      
     $pgsql_password = extlookup("epoll_pgsql",'x')
 
-    postgresql::remote_user { 'epoll':
+    postgresql::remote_db_and_user { 'epoll':
+        description => "Epoll database",
         password => $pgsql_password,
     }
 
@@ -28,11 +29,6 @@ class epoll {
         group => apache,
         mode => 640,
         content => template("epoll/epoll.yml")
-    }
-
-    postgresql::remote_database { 'epoll':
-        description => "Epoll database",
-        user => "epoll",
     }
 
 }

@@ -13,13 +13,9 @@ class mga-mirrors {
 
     $pgsql_password = extlookup("mga_mirror_pgsql",'x')
 
-    postgresql::remote_user { 'mirrors':
+    postgresql::remote_db_and_user { 'mirrors':
         password => $pgsql_password,
-    }
-
-    postgresql::remote_database { 'mirrors':
         description => "Mirrors database",
-        user => "mirrors",
     }
  
     file { "mga-mirrors.ini": 

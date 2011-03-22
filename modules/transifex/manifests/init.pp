@@ -9,13 +9,9 @@ class transifex {
 
   $templates_dir = "/var/lib/transifex/templates"
 
-  postgresql::remote_user { 'transifex':
-        password => $pgsql_password,
-  }
-
-  postgresql::remote_database { 'transifex':
+  postgresql::remote_db_and_user { 'transifex':
         description => "Transifex database",
-        user => "transifex",
+        password => $pgsql_password,
   }
 
   file { "20-engines.conf":

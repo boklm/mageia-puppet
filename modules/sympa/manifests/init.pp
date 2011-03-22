@@ -25,10 +25,11 @@ class sympa {
         $pgsql_password = extlookup("sympa_pgsql",'x')
         $ldap_password = extlookup("sympa_ldap",'x')
     
-        postgresql::remote_user { 'sympa':
+        postgresql::remote_db_and_user { 'sympa':
             password => $pgsql_password,
+            description => "Sympa database",
         }
-    
+  
         file { '/etc/sympa/sympa.conf':
             ensure => present,
     	# should be cleaner to have it root owned, but puppet do not support acl
@@ -60,12 +61,7 @@ class sympa {
 	    use_ssl => true,
             content => template("sympa/vhost_ml.conf"),
         }
-
-        postgresql::remote_database { 'sympa':
-            description => "Sympa database",
-            user => "sympa",
-        }
-    
+   
         subversion::snapshot { "/etc/sympa/web_tt2":
             source => "svn://svn.mageia.org/svn/web/templates/sympa/trunk"
         }
