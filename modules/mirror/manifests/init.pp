@@ -1,6 +1,6 @@
 class mirror {
     class base {
-	$bindir = '/home/mirror/bin'
+	$bindir = '/usr/local/bin'
 	$locksdir = '/home/mirror/locks'
 	file { "$bindir":
 	    ensure => directory,
