@@ -23,6 +23,7 @@ page visible Visible Services
 0.0.0.0	    transifex.<%= domain %> # https://transifex.<%= domain %>
 0.0.0.0	    planet.<%= domain %> # http://planet.<%= domain %>
 0.0.0.0	    forums.<%= domain %> # http://forums.<%= domain %>
+0.0.0.0	    check.<%= domain %> # http://forums.<%= domain %>
 
 page servers Servers
 group-compress Marseille
