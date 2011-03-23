@@ -32,7 +32,7 @@ class youri-check {
 	}
     }
 
-    class website {
+    class website($vhost="$vhost", $location="$location") {
 	file { "$location":
 	    ensure => directory,
             owner => apache,
