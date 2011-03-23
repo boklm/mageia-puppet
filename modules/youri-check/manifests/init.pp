@@ -25,6 +25,6 @@ class youri-check {
        ensure => present,
        owner => $user,
        mode => 640,
-       content => template("youri_check/check.conf"),
+       content => template("youri-check/check.conf"),
     }
 }
