@@ -1,30 +1,46 @@
 class youri-check {
+    $location = "/var/www/youri-check"
+    $vhost = "check.$domain"
 
-    $user = 'youri'
-    $home = '/var/tmp/youri'
-    $outdir = "$home/www"
-    $config = "/etc/youri/cauldron.conf"
+    class check {
+	$user = 'youri'
+	$home = '/var/tmp/youri'
+	$outdir = "$home/www"
+	$config = "/etc/youri/cauldron.conf"
 
-    user { $user:
-	comment => "Youri Check",
-	ensure => present,
-	managehome => true,
-	home => $home,
+	user { $user:
+	    comment => "Youri Check",
+	    ensure => present,
+	    managehome => true,
+	    home => $home,
+        }
+
+	package { ['perl-Youri-Media', 'youri-check', 'perl-DBD-SQLite'] :
+            ensure => installed
+	}
+
+	cron { 'check':
+	    command => "youri-check -c $config test && youri-check -c $config report",
+	    hour => 6,
+	}
+
+	file { "$config":
+	    ensure => present,
+	    owner => $user,
+	    mode => 640,
+	    content => template("youri-check/check.conf"),
+	}
     }
 
-    package { ['perl-Youri-Media', 'youri-check', 'perl-DBD-SQLite'] :
-        ensure => installed
-    }
+    class website {
+	file { "$location":
+	    ensure => directory,
+            owner => apache,
+	    mode => 755
+	}
 
-    cron { 'check':
-       command => "youri-check -c $config test && youri-check -c $config report",
-       hour => 6,
-    }
-
-    file { "$config":
-       ensure => present,
-       owner => $user,
-       mode => 640,
-       content => template("youri-check/check.conf"),
+        apache::vhost_simple { $vhost:
+            location => $location,
+        }
     }
 }

@@ -104,6 +104,7 @@ node alamut {
     apache::vhost_simple { "xymon.$domain":
 	location => "/var/lib/xymon/www",
     }
+    include youri-check::website
 }
 
 # buildnode
@@ -197,7 +198,7 @@ node rabbit {
     include openssh::ssh_keys_from_ldap
     include mirror::mirrormageia
     include releasekey::base
-    include youri-check
+    include youri-check::check
 
     # for testing iso quickly
     include libvirtd::kvm
