@@ -21,6 +21,7 @@ page visible Visible Services
 0.0.0.0	    svnweb.<%= domain %> # http://svnweb.<%= domain %>
 0.0.0.0	    epoll.<%= domain %> # https://epoll.<%= domain %>
 0.0.0.0	    transifex.<%= domain %> # https://transifex.<%= domain %>
+0.0.0.0	    planet.<%= domain %> # https://planet.<%= domain %>
 
 page servers Servers
 group-compress Marseille
