@@ -80,6 +80,14 @@ class transifex {
     aliases => { "/site_media/static/admin/" => "/usr/lib/python2.6/site-packages/django/contrib/admin/media/", },
   }
 
+  # tx need write access there when running in apache
+  file { "/var/lib/transifex/scratchdir/storage_files":
+    ensure => directory,
+    owner => apache,
+    group => apache,
+    require => Package['transifex'],
+  }
+
   apache::vhost_redirect_ssl { "transifex.$domain": }
 
   # the group are mapped from ldap, since AUTH_LDAP_FIND_GROUP_PERMS is set to yes
