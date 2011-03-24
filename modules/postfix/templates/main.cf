@@ -94,7 +94,8 @@ smtpd_etrn_restrictions = reject
 
 smtpd_helo_required = yes
 
-smtpd_data_restrictions = reject_unauth_pipelining 
+smtpd_data_restrictions = permit_mynetworks
+                          reject_unauth_pipelining 
                           reject_multi_recipient_bounce
 
 smtpd_recipient_restrictions = reject_non_fqdn_recipient
