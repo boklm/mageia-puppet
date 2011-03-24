@@ -7,3 +7,18 @@ secretary@<%= domain %> misc@<%= domain %>
 
 # later switch to a team alias
 root@<%= domain %> mageia-sysadm@<%= domain %>
+
+# TODO see http://www.ietf.org/rfc/rfc2142.txt
+#postmaster: root
+#hostmaster: 
+#abuse:      
+#noc:
+#security:
+#
+#webmaster:  webteam
+#www: 
+#
+# info, marketing, sales ?
+
+# for testing 
+MAILER-DAEMON@<%= domain %> misc@<%= domain %>
