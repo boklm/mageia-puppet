@@ -12,6 +12,9 @@ class buildsystem {
 	# FIXME: maybe keyid should be defined at an other place
 	$sign_keyid = "80420F66"
 	$repository_root = "/distrib/bootstrap"
+	$maintdb_url = 'http://www.maintdb2.mageia.org.uk/packages'
+	# FIXME: Test password. Real password should be in extdata.
+	$maintdb_key = 'm1g234'
 	$packagers_group = 'mga-packagers'
 	$createsrpm_path = '/usr/share/repsys/create-srpm'
 
