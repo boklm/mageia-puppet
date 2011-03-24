@@ -43,7 +43,8 @@ mydestination = <%= fqdn %>
 
 <%- if all_tags.include?('postfix::primary_smtp') -%>
 
-virtual_mailbox_domains = <%= domain %>
+virtual_mailbox_domains = <%= domain %>,
+                          group.<%= domain %>
 
 # postfix complain if not set
 # Mar 22 23:51:20 alamut postfix/virtual[22952]: fatal: bad string length 0 < 1: virtual_mailbox_base = 
@@ -61,6 +62,7 @@ fallback_transport_maps = regexp:/etc/postfix/transport_regexp
 alias_maps = hash:/etc/postfix/aliases
 
 virtual_alias_maps = ldap:/etc/postfix/ldap_aliases.conf
+                     ldap:/etc/postfix/group_aliases.conf
                      hash:/etc/postfix/virtual_aliases
 <%- end -%>
 

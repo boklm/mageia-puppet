@@ -72,6 +72,18 @@ class postfix {
             content => template("postfix/ldap_aliases.conf"),
         }
 
+        # TODO merge the file with the previous one, for common part (ldap, etc)
+        file { '/etc/postfix/group_aliases.conf':
+            ensure => present,
+            owner => root, 
+            group => root, 
+            mode => 644, 
+            content => template("postfix/group_aliases.conf"),
+        }
+
+
+
+
         file { '/etc/postfix/virtual_aliases':
             ensure => present,
             owner => root, 
