@@ -1,5 +1,5 @@
 host        ldap.<%= domain %>:636
-ldap_use_ssl  yes
+use_ssl  yes
 suffix      ou=People,<%= dc_suffix %>
 filter      (&(mail = [sender])(memberOf=cn=<%= name %>,ou=Group,<%= dc_suffix %>))
 scope       sub
