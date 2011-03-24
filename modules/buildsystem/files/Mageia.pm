@@ -320,7 +320,7 @@ sub _get_section {
         print "Section undefined, repository says it is '$section' for '$file'\n" if $self->{_verbose};
     }
     # FIXME: use debug_for info
-    if ($section && $section !~ m|debug/| && $package->is_debug()) {
+    if ($section && $section !~ m|debug/| && $arch ne 'src' && $package->is_debug()) {
 	$section = "debug/$section"
     }
 
