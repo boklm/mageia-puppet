@@ -249,6 +249,26 @@ class buildsystem {
 	    mode => 755,
 	    content => template('buildsystem/submit_package')
         }
+
+	# FIXME use the correct perl directory
+        file { "/usr/lib/perl5/site_perl/5.10.1/Youri/Repository":
+            ensure => "directory",
+        }
+
+	file { '/usr/lib/perl5/site_perl/5.10.1/Youri/Repository/Mageia.pm':
+            ensure => present,
+            mode => 644,
+            require => File["/usr/lib/perl5/site_perl/5.10.1/Youri/Repository"],
+            source => "puppet:///modules/buildsystem/Mageia.pm",
+        }
+
+        $package_list = ['perl-SVN', 'mdv-distrib-tools', 'perl-Youri-Media',
+                         'perl-Youri-Package', 'perl-Youri-Repository',
+                         'perl-Youri-Utils', 'perl-Youri-Config']
+
+        package { $package_list:
+            ensure => installed;
+        }
     }
 
     # $groups: array of secondary groups (only local groups, no ldap)
