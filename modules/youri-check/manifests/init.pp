@@ -1,8 +1,10 @@
 class youri-check {
-    $location = "/var/www/youri-check"
-    $vhost = "check.$domain"
+    class variable {
+        $location = "/var/www/youri-check"
+        $vhost = "check.$domain"
+    }
 
-    class check {
+    class check inherits variable {
 	$user = 'youri'
 	$home = '/var/tmp/youri'
 	$outdir = "$home/www"
@@ -32,7 +34,7 @@ class youri-check {
 	}
     }
 
-    class website($vhost="$vhost", $location="$location") {
+    class website inherits variable {
 	file { "$location":
 	    ensure => directory,
             owner => apache,
