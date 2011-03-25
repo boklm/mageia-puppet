@@ -80,6 +80,10 @@ include_ldap_query
     attrs mail
     select first
     scope one
+    use_ssl  yes
+    user     cn=sympa-<%= hostname %>,ou=System Accounts,<%= dc_suffix %>
+    passwd   <%= ldap_password %> 
+ 
 <% end %> 
 
 <%- if public_archive -%> 
