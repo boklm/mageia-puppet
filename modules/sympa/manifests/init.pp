@@ -23,6 +23,7 @@ class sympa {
         }
     
         $pgsql_password = extlookup("sympa_pgsql",'x')
+        $ldap_password = extlookup("sympa_ldap",'x')
     
         postgresql::remote_db_and_user { 'sympa':
             password => $pgsql_password,
