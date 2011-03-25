@@ -23,7 +23,6 @@ class sympa {
         }
     
         $pgsql_password = extlookup("sympa_pgsql",'x')
-        $ldap_password = extlookup("sympa_ldap",'x')
     
         postgresql::remote_db_and_user { 'sympa':
             password => $pgsql_password,
@@ -183,6 +182,7 @@ class sympa {
                 $subscription_open = false ) {
 
         include sympa::variable
+        $ldap_password = extlookup("sympa_ldap",'x')
 
         $xml_file = "/etc/sympa/lists_xml/$name.xml"
 
