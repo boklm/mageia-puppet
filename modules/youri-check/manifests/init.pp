@@ -24,6 +24,7 @@ class youri-check {
 	cron { 'check':
 	    command => "youri-check -c $config test && youri-check -c $config report",
 	    hour => 6,
+	    user => "$user",
 	}
 
 	file { "$config":
