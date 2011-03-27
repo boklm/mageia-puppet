@@ -12,6 +12,7 @@ class buildsystem {
 	# FIXME: maybe keyid should be defined at an other place
 	$sign_keyid = "80420F66"
 	$repository_root = "/distrib/bootstrap"
+	$mirror_root = "/distrib/mirror"
 	$maintdb_url = 'http://www.maintdb2.mageia.org.uk/maintainers_packages/create'
 	# FIXME: Test password. Real password should be in extdata.
 	$maintdb_key = 'm1g234'
