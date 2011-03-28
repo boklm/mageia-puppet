@@ -82,7 +82,7 @@ include_ldap_query
     scope one
     use_ssl  yes
     user     cn=sympa-<%= hostname %>,ou=System Accounts,<%= dc_suffix %>
-    passwd   <%= ldap_password %> 
+    passwd   <%= ldap_password %>
  
 <% end %> 
 
