@@ -1,4 +1,6 @@
 host        ldap.<%= domain %>:636
+bind_dn     cn=sympa-<%= hostname %>,ou=System Accounts,<%= dc_suffix %>
+bind_password <%= ldap_password %>
 use_ssl  yes
 suffix      ou=People,<%= dc_suffix %>
 filter      (&(mail=[sender])(memberOf=cn=<%= name %>,ou=Group,<%= dc_suffix %>))
