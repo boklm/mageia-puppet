@@ -2,4 +2,5 @@
 # but according to http://www.sympa.org/faq/postfix, we also need this one
 <% escaped_domain = ( 'ml.' + domain ).sub('.','\.') %>
 /^(.*)-owner\@<%= escaped_domain %>$/    $1+owner@ml.<%= domain %>
-
+# redirect the mail from the ml domain to sysadmin
+/^listmaster\@<%= escaped_domain %>$/    listmaster@<%= domain %>
