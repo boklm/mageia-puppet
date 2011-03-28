@@ -133,7 +133,6 @@ class lists {
 
         sympa::public_restricted_list { "board-public":
             subject => "List for public board discussion",
-            reply_to => false,
             sender_ldap_group => "mga-board", 
             topics => "governance",
         }
