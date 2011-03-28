@@ -149,5 +149,9 @@ class lists {
             topics => "governance",
         }
  
-        
+        sympa::public_restricted_list { "council":
+            subject => "Council list",
+            subscriber_ldap_group => "mga-council",
+            topics => "governance",
+        }        
 }
