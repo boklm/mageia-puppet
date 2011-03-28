@@ -58,12 +58,18 @@ local_recipient_maps =
 # route ml to ryu ( ml being mageia-*@mageia )
 fallback_transport_maps = regexp:/etc/postfix/transport_regexp
 
+# needed by sympa to handle bounce, according to the doc
+recipient_delimiter = +
+
 
 alias_maps = hash:/etc/postfix/aliases
 
 virtual_alias_maps = ldap:/etc/postfix/ldap_aliases.conf
                      ldap:/etc/postfix/group_aliases.conf
                      hash:/etc/postfix/virtual_aliases
+<%- if classes.include?('sympa::server') -%>
+                     regexp:/etc/postfix/sympa_aliases
+<%- end -%>
 <%- end -%>
 
 

@@ -81,6 +81,15 @@ class postfix {
             content => template("postfix/group_aliases.conf"),
         }
 
+        # TODO make it conditional to the presence of sympa
+        file { '/etc/postfix/sympa_aliases':
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 644,
+            content => template("postfix/sympa_aliases"),
+        }
+
 
 
 

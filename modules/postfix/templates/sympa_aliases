@@ -1,0 +1,5 @@
+# everything is handled with transports in postfix,
+# but according to http://www.sympa.org/faq/postfix, we also need this one
+<% escaped_domain = ( 'ml.' + domain ).sub('.','\.') %>
+/^(.*)-owner\@<%= escaped_domain %>$/    $1+owner@ml.<%= domain %>
+
