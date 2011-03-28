@@ -176,6 +176,22 @@ sub get_distribution_paths {
     return $self->_get_distribution_paths($package, $target);
 }
 
+=head2 get_distribution_roots()
+
+Returns distribution roots (ie install_root + target + arch)
+(it returns a list in case of noarch)
+
+=cut
+
+sub get_distribution_roots {
+    my ($self, $package, $target) = @_;
+    croak "Not a class method" unless ref $self;
+
+    map { 
+	$self->_get_dir($self->{_install_root}, $_);
+    } $self->_get_distribution_paths($package, $target);
+}
+
 sub get_archive_path {
     my ($self, $package, $target, $user_context, $app_context) = @_;
 
