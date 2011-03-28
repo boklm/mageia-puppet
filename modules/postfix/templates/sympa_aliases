@@ -4,3 +4,5 @@
 /^(.*)-owner\@<%= escaped_domain %>$/    $1+owner@ml.<%= domain %>
 # redirect the mail from the ml domain to sysadmin
 /^listmaster\@<%= escaped_domain %>$/    listmaster@<%= domain %>
+# errors are sent there, so that should also be redirected
+/^sympa-request\@<%= escaped_domain %>$/    listmaster@<%= domain %>
