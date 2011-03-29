@@ -6,20 +6,20 @@ president@<%= domain %> ennael@<%= domain %>
 secretary@<%= domain %> misc@<%= domain %>
 
 # later switch to a team alias
-root@<%= domain %> mageia-sysadm@<%= domain %>
+root@<%= domain %> sysadmin@group.<%= domain %>
 
 # TODO see http://www.ietf.org/rfc/rfc2142.txt
-#postmaster: root
-#hostmaster: 
-#abuse:      
-#noc:
-#security:
-#listmaster:
-#
-#webmaster:  webteam
-#www: 
-#
-# info, marketing, sales ?
+<%
+['postmaster','hostmaster','abuse','noc','security','listmaster','MAILER-DAEMON'].each { |a| 
+%>
+<%= a %>@<%= domain %> root@<%= domain %>
+<% 
+}
 
-# for testing 
-MAILER-DAEMON@<%= domain %> misc@<%= domain %>
+['webmaster','www'].each { |a| 
+%>
+<%= a %>@<%= domain %> web@group.<%= domain %>
+<% } %>
+
+# TODO :
+# info, marketing, sales -> marketing ( once we do have a team )
