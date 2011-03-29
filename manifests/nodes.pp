@@ -203,4 +203,20 @@ node rabbit {
     # for testing iso quickly
     include libvirtd::kvm
     libvirtd::group_access { "mga-iso_makers": }
+
+    # to ease the creation of test iso 
+    $netinst_iso_path = "/var/lib/libvirt/netboot"
+
+    libvirtd::storage { "netinst_iso":
+        path => $netinst_iso_path,
+    }
+
+    libvirtd::download::netboot_images { "mandriva":
+        path => $netinst_iso_path,
+        versions => ["2010.0","2010.1"],
+        archs => ['i586','x86_64'],
+        mirror_path => "ftp://ftp.free.fr/pub/Distributions_Linux/MandrivaLinux/official/%{version}/%{arch}/install/images/",
+        files => ['boot.iso'],
+    }
+
 }
