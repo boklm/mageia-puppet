@@ -1,5 +1,6 @@
 class libvirtd {
     class base {
+        import "download.rb"
         # make sure to use a recent enough version
         # dnsmasq-base -> for nat network
         # netcat-openbsd -> for ssh remote access
