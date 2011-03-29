@@ -4,7 +4,6 @@ class phpbb {
         $user = "phpbb"
 
         include apache::mod_php
-        include mysql
 
         package { ["php-gd",
                    "php-xml",
