@@ -10,7 +10,7 @@ define "libvirtd::download::netboot_images", :path, :versions, :archs, :mirror_p
             mirror_file_path = mirror_file_path.gsub(/%{version}/, v)
             for f in @files do 
                 file_name = "#{@path}/#{@name}_#{v}_#{a}_#{f}" 
-                create_resource(:exec, "wget -q #{mirror_file_path}/#{f} -o #{file_name}", 
+                create_resource(:exec, "wget -q #{mirror_file_path}/#{f} -O #{file_name}", 
                                 :creates => file_name) 
             end
         end
