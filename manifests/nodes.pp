@@ -207,8 +207,13 @@ node rabbit {
     # to ease the creation of test iso 
     $netinst_iso_path = "/var/lib/libvirt/netboot"
 
+    file { $netinst_iso_path:
+        ensure => directory,
+    }
+
     libvirtd::storage { "netinst_iso":
         path => $netinst_iso_path,
+        require => File[$netinst_iso_path],
     }
 
     libvirtd::download::netboot_images { "mandriva":
@@ -217,6 +222,7 @@ node rabbit {
         archs => ['i586','x86_64'],
         mirror_path => "ftp://ftp.free.fr/pub/Distributions_Linux/MandrivaLinux/official/%{version}/%{arch}/install/images/",
         files => ['boot.iso'],
+        require => File[$netinst_iso_path],
     }
 
 }
