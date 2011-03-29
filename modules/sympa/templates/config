@@ -76,7 +76,7 @@ include_ldap_query
     host ldap.<%= domain %>
     suffix ou=People,<%= dc_suffix %>
     timeout 10
-    filter (memberOf=<%= subscriber_ldap_group %>)
+    filter (memberOf=<%= subscriber_ldap_group %>,ou=Group,<%= dc_suffix %>)
     attrs mail
     select first
     scope one
