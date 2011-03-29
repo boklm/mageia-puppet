@@ -37,3 +37,15 @@ register:
                 - iurt
                 - schedbot
                 - signbot
+                - postmaster
+                - hostmaster
+                - abuse
+                - noc
+                - security
+                - listmaster
+                - MAILER-DAEMO
+                - webmaster
+                - www 
+                - treasurer
+                - president
+                - secretary
