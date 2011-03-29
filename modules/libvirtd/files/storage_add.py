@@ -24,5 +24,5 @@ storage_xml = """
 </pool>""" % ( name, path )
 
 c=libvirt.open("qemu:///system")
-c.storagePoolCreateXML(storage_xml,0)
+c.storagePoolDefineXML(storage_xml,0)
 
