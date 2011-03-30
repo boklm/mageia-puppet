@@ -27,7 +27,7 @@ class libvirtd {
             owner => root,
             group => root,
             mode => 755,
-            source => "puppet:///libvirtd/storage_add.py", 
+            source => "puppet:///modules/libvirtd/storage_add.py", 
         }
     }
 
