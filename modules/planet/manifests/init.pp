@@ -45,5 +45,31 @@ class planet {
 
     package { ['php-iconv']:
         ensure => installed
+    }    
+
+    class files_backup inherits base {
+        file { "/var/lib/planet/backup":
+                ensure => directory,
+                owner => root,
+                group => root,
+                mode => 644,
+        }
+
+        file { "backup_planet-files":
+            path => "/usr/local/bin/backup_planet-files.sh",
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            content => template("blog/backup_planet-files.sh")
+        }
+
+        cron { "Backup files (planet)":
+            user => root,
+            hour => '23',
+            minute => '42',
+            command => "/usr/local/bin/backup_planet-files.sh",
+            require => [File["backup_planet-files"]],
+        }
     }
 }

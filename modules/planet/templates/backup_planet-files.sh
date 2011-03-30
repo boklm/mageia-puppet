@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # Initialization
-PATH_TO_FILE=${PATH_TO_FILE:-/var/lib/blog/backup}
+PATH_TO_FILE=${PATH_TO_FILE:-/var/lib/planet/backup}
 [ ! -f $PATH_TO_FILE/count ] && echo 0 > $PATH_TO_FILE/count
 COUNT=$(cat "$PATH_TO_FILE/count")
 # Backup each locale
-for locale in de el en es fr it nl pl pt ro ru tr
+for locale in de en es fr it pl
 do
 	if [ ! -d $PATH_TO_FILE/$locale ]
 	then
 		/bin/mkdir $PATH_TO_FILE/$locale
 	fi
-	rsync -aHP --delete /var/www/html/blog.<%= domain %>/$locale $PATH_TO_FILE/$locale/$locale-$COUNT
+	rsync -aHP --delete /var/www/html/planet.<%= domain %>/$locale $PATH_TO_FILE/$locale/$locale-$COUNT
 done
 # Check count file to have a week of backup in the directory
 if [ $COUNT -ne 6 ]
