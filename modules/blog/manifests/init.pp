@@ -80,4 +80,29 @@ class blog {
             require => [File["backup_blog-db"]],
         }
     }
+    class files_backup inherits base {
+        file { "/var/lib/blog/backup":
+                ensure => directory,
+                owner => root,
+                group => root,
+                mode => 644,
+        }
+
+        file { "backup_blog-files":
+            path => "/usr/local/bin/backup_blog-files.sh",
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            content => template("blog/backup_blog-files.sh")
+        }
+
+        cron { "Backup files (blog)":
+            user => root,
+            hour => '23',
+            minute => '42',
+            command => "/usr/local/bin/backup_blog-files.sh",
+            require => [File["backup_blog-files"]],
+        }
+    }
 }
