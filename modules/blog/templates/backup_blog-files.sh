@@ -11,7 +11,7 @@ do
 	then
 		/bin/mkdir $PATH_TO_FILE/$locale
 	fi
-	rsync -avHP --delete /var/www/html/blog.mageia.org/$locale $PATH_TO_FILE/$locale/$locale-$COUNT
+	rsync -avHP --delete /var/www/html/blog.<%= domain %>/$locale $PATH_TO_FILE/$locale/$locale-$COUNT
 done
 # Check count file to have a week of backup in the directory
 if [ $COUNT -ne 6 ]
