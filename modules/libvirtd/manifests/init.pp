@@ -29,6 +29,15 @@ class libvirtd {
             mode => 755,
             source => "puppet:///modules/libvirtd/storage_add.py", 
         }
+ 
+        file { "/usr/local/bin/network_add.py":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            source => "puppet:///modules/libvirtd/network_add.py", 
+        }
+
     }
 
     class kvm inherits base {
