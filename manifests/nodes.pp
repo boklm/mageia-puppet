@@ -11,7 +11,7 @@ node valstar {
 # - setup maintainers database (with web interface)
 # - mirroring (Nanar)
 #
-    include default_mageia_server
+    include common::default_mageia_server
     timezone::timezone { "Europe/Paris": }
     include rsyncd
     include main_mirror
@@ -58,7 +58,7 @@ node alamut {
 # - pastebin
 # - LDAP slave
 # 
-    include default_mageia_server_no_smtp
+    include common::default_mageia_server_no_smtp
     include postgresql::server
     timezone::timezone { "Europe/Paris": }
 
@@ -114,7 +114,7 @@ node alamut {
 node jonund {
 # Location: IELO datacenter (marseille)
 #
-    include default_mageia_server
+    include common::default_mageia_server
     include buildsystem::buildnode
     timezone::timezone { "Europe/Paris": }
     include shorewall
@@ -125,7 +125,7 @@ node jonund {
 node ecosse {
 # Location: IELO datacenter (marseille)
 #
-    include default_mageia_server
+    include common::default_mageia_server
     include buildsystem::buildnode
     timezone::timezone { "Europe/Paris": }
 }
@@ -138,7 +138,7 @@ node fiona {
 # - buy the server
 # - install the server in datacenter
 # - install a backup system
-    include default_mageia_server
+    include common::default_mageia_server
 } 
 
 # gandi-vm
@@ -149,8 +149,8 @@ node krampouezh {
 # - secondary MX
 # - LDAP slave (for external traffic maybe)
 #
-    #include default_mageia_server
-    include default_mageia_server_no_smtp
+    #include common::default_mageia_server
+    include common::default_mageia_server_no_smtp
     include postfix::secondary_smtp
     include blog::base
     include blog::db_backup
@@ -169,7 +169,7 @@ node champagne {
 # - setup blog
 # - setup planet
 #
-    include default_mageia_server
+    include common::default_mageia_server
     timezone::timezone { "Europe/Paris": }
     include blog::files-bots
     include blog::files_backup
@@ -183,7 +183,7 @@ node friteuse {
 # TODO:
 # - setup forum
 
-    include default_mageia_server
+    include common::default_mageia_server
     timezone::timezone { "Europe/Paris": }
     include forums
 }
@@ -193,7 +193,7 @@ node rabbit {
 # 
 # - used to create isos ( and live, and so on )
 # 
-    include default_mageia_server
+    include common::default_mageia_server
     timezone::timezone { "Europe/Paris": }
     include bcd::base
     include draklive::base
