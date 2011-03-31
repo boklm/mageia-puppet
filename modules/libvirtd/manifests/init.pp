@@ -6,7 +6,7 @@ class libvirtd {
         # netcat-openbsd -> for ssh remote access
         # iptables -> for dhcp, message error was quite puzzling
         # python-* => needed for helper script
-        package { ["libvirt-utils","dnsmasq-base","netcat-openbsd","iptables","python-libvirt"]:
+        package { ["libvirt-utils","dnsmasq-base","netcat-openbsd","iptables","python-libvirt","python-IPy"]:
         }
 
         service { libvirtd:
@@ -75,6 +75,37 @@ class libvirtd {
         file { "/etc/libvirt/storage/autostart/$name.xml":
             ensure => $autostart ? {
                             true => "/etc/libvirt/storage/$name.xml",
+                            false => "absent"
+                      }
+        }
+    }
+
+    define network( $bridge_name = 'virbr0',
+                    $forward = 'nat',
+                    $forward_dev = 'eth0',
+                    $network = '192.168.122.0/24',
+                    $tftp_root = '',
+                    $disable_pxe = '', 
+                    $autostart = true, 
+                    $vm_type = 'qemu') {
+
+        exec { "/usr/local/bin/network_add.py":
+            environment => ["BRIDGE_NAME=$bridge_name",
+                            "FORWARD=$forward",
+                            "FORWARD_DEV=$forward_dev",
+                            "NETWORK=$network",
+                            "TFTP_ROOT=$tftp_root",
+                            "DISABLE_PXE=\"$disable_pxe\""], 
+            
+            creates => "/etc/libvirt/$vm_type/networks/$name.xml",
+            require => [File['/usr/local/bin/network_add.py'],
+                        Package['python-IPy'], Package["python-libvirt"] ]
+        }
+
+        #TODO use API of libvirt
+        file { "/etc/libvirt/$vm_type/networks/autostart/$name.xml":
+            ensure => $autostart ? {
+                            true => "/etc/libvirt/$vm_type/networks/$name.xml",
                             false => "absent"
                       }
         }
