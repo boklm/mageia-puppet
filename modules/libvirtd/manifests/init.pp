@@ -5,7 +5,8 @@ class libvirtd {
         # dnsmasq-base -> for nat network
         # netcat-openbsd -> for ssh remote access
         # iptables -> for dhcp, message error was quite puzzling
-        package { ["libvirt-utils","dnsmasq-base","netcat-openbsd","iptables"]:
+        # python-* => needed for helper script
+        package { ["libvirt-utils","dnsmasq-base","netcat-openbsd","iptables","python-libvirt"]:
         }
 
         service { libvirtd:
@@ -66,9 +67,11 @@ class libvirtd {
 
         exec { "/usr/local/bin/storage_add.py $name $path":
             creates => "/etc/libvirt/storage/$name.xml",
-            require => File['/usr/local/bin/storage_add.py'],
+            require => [File['/usr/local/bin/storage_add.py'],
+                        Package["python-libvirt"] ]
         }
 
+        #TODO use API of libvirt
         file { "/etc/libvirt/storage/autostart/$name.xml":
             ensure => $autostart ? {
                             true => "/etc/libvirt/storage/$name.xml",
