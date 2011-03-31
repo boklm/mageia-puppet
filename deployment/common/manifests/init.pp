@@ -92,10 +92,10 @@ class common {
 
         include shadow
         include openssh::server
-        include default_ssh_root_key
-        include base_packages
+        include common::default_ssh_root_key
+        include common::base_packages
         include ntp
-        include urpmi_update
+        include common::urpmi_update
         include puppet::client
         include xymon::client
 
