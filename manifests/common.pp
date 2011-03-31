@@ -1,7 +1,3 @@
-# to not repeat the setting everywhere 
-Exec { path => "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin/" }
-
-
 class base_packages {
     # packages installed everywhere 
     # asked by misc : screen, vim-enhanced, htop, lsof, tcpdump, less, lvm2, lshw, iotop
