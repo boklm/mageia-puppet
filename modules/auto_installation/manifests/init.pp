@@ -41,13 +41,29 @@ class auto_installation {
             ensure => directory,
         }
 
-        
+        # TODO make it tag aware
+        $menu_entries = list_exported_ressources('Auto_installation::Pxe_menu_base')
         # default file should have exported ressources
         file { "$pxe_dir/pxelinux.cfg/default":
             ensure => present,
             content => template('auto_installation/default'),
-        } 
-   
+        }
+        Auto_installation::Pxe_menu_base <<| tag == $fqdn |>> 
+    }
+
+    define pxe_menu_base($content) {
+        include auto_installation::variables
+        file { "$auto_installation::variables::pxe_menu_dir/$name":
+            ensure => present,
+            content => $content,
+        }
+    }
+
+    define pxe_menu_entry($kernel_path, $append) {
+        @@auto_installation::pxe_menu_base { $name: 
+            tag => $fqdn,   
+            content => template('auto_installation/menu'),
+        }
     }
 
     # define pxe_linux_entry 
