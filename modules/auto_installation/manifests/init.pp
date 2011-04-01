@@ -8,12 +8,15 @@
 #   - by name, with a valstart clone
 
 class auto_installation {
-    class pxe_menu {
+    class variables {
+        $pxe_dir = "/var/lib/pxe"
+    }
+
+    class pxe_menu inherits variables {
         package { 'syslinux':
 
         }
         
-        $pxe_dir = "/var/lib/pxe"
         file { $pxe_dir:
             ensure => directory,
         }
