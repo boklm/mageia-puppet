@@ -10,6 +10,9 @@
 class auto_installation {
     class variables {
         $pxe_dir = "/var/lib/pxe"
+        # m/  for menu. There is limitation on the path length so
+        # while we will likely not hit the limit, it may be easier
+        $pxe_menu_dir = "$pxe_dir/pxelinux.cfg/m/"
     }
 
     class pxe_menu inherits variables {
@@ -32,7 +35,13 @@ class auto_installation {
         file { "$pxe_dir/pxelinux.cfg":
             ensure => directory,
         }
+        # m for menu, there is some limitation on the path lenght so I 
+        # prefer to 
+        file { "$pxe_menu_dir":
+            ensure => directory,
+        }
 
+        
         # default file should have exported ressources
         file { "$pxe_dir/pxelinux.cfg/default":
             ensure => present,
