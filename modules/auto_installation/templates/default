@@ -1,0 +1,25 @@
+DEFAULT menu.c32
+PROMPT 10
+TIMEOUT 100
+NOESCAPE 1
+
+MENU SHIFTKEY 1
+MENU TITLE PXE Boot on <%= fqdn %>
+
+LABEL local
+        MENU LABEL Local
+        localboot 0
+<%
+# insert entry for remote boot :
+#  LABEL mdv2010.1
+#        MENU DEFAULT
+#        MENU LABEL Install mdv 2010.1
+#        kernel mdv_2010.1/vmlinuz  
+#
+#        append initrd=mdv_2010.1/all.rdz useless_thing_accepted=1 lang=fr automatic=int:eth0,netw:dhcp,met:ftp,ser:distrib-coffee.ipsl.jussieu.fr,dir:/pub/linux/MandrivaLinux/official/2010.1/i586/ kickstart=http://nanardon.zarb.org/~misc/auto_inst.cfg.pl
+#
+
+
+%>
+
+
