@@ -107,7 +107,7 @@ node alamut {
     apache::vhost_simple { "xymon.$domain":
 	location => "/var/lib/xymon/www",
     }
-    include youri-check::website
+    include youri-check::report
 }
 
 # buildnode
