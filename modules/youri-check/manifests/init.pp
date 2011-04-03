@@ -20,6 +20,10 @@ class youri-check {
         postgresql::remote_user { $pgsql_user:
             password => $pgsql_password,
         }
+        postgresql::remote_database { $pgsql_db:
+            description => "Youri Check results",
+            user => $pgsql_user,
+        }
 
         file { "$config":
             ensure => present,
