@@ -21,6 +21,12 @@ class youri-check {
             password => $pgsql_password,
         }
 
+        file { "$config":
+            ensure => present,
+            owner => $user,
+            mode => 640,
+            content => template("youri-check/check.conf"),
+        }
     }
 
     class check inherits base {
@@ -33,13 +39,6 @@ class youri-check {
             hour => [0, 6, 12, 18],
             minute => 4,
             user => "$user",
-        }
-
-        file { "$config":
-            ensure => present,
-            owner => $user,
-            mode => 640,
-            content => template("youri-check/check.conf"),
         }
     }
 
