@@ -67,6 +67,11 @@ class lists {
             topics => "i18n",
         }
 
+        sympa::public_list {"qa-discuss":
+            subject => "Discussions about QA tasks and requests",
+            topics => "qa",
+        }
+
         sympa::announce_list_email {"packages-commits":
             subject => "List receiving commits mail from packages repository",
             # FIXME change once we migrate
