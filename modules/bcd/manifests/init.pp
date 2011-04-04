@@ -29,4 +29,11 @@ class bcd {
 	}
 
     }
+
+    class web inherits base {
+        apache::vhost_base { "bcd.$domain":
+	    location => "$bcd_home/public_html",
+	    content => template('bcd/vhost_bcd.conf'),
+	}
+    }
 }
