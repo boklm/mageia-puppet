@@ -144,6 +144,7 @@ class apache {
                       $aliases = {},
                       $server_aliases = [],
                       $enable_public_html = false) {
+	include apache::base
         if ! $vhost {
             $real_vhost = $name
         } else {
