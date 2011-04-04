@@ -25,6 +25,7 @@ page visible Visible Services
 0.0.0.0	    forums.<%= domain %> # https://forums.<%= domain %>
 0.0.0.0	    check.<%= domain %> # http://check.<%= domain %>
 0.0.0.0	    pkgsubmit.<%= domain %> # http://pkgsubmit.<%= domain %>
+0.0.0.0	    bcd.<%= domain %> # http://bcd.<%= domain %>
 
 page servers Servers
 group-compress Marseille
