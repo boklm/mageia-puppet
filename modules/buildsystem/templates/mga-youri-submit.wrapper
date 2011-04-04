@@ -10,7 +10,7 @@ use MDK::Common;
 my $log_dir = "$ENV{HOME}/submit-logs";
 
 my $sudo_user = $ENV{SUDO_USER} or die "should be run through sudo";
-my @prog = ('perl', '-I/usr/share/mdv-youri-submit/lib', '/usr/share/mdv-youri-submit/bin/youri-submit');
+my @prog = ('perl', '-I/usr/share/mga-youri-submit/lib', '/usr/share/mga-youri-submit/bin/youri-submit');
 
 my @options;
 foreach my $arg (@ARGV) {

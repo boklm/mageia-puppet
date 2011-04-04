@@ -202,21 +202,21 @@ class buildsystem {
     class youri_submit {
         include sudo
 
-        file { "/usr/local/bin/mdv-youri-submit":
+        file { "/usr/local/bin/mga-youri-submit":
           owner  => root,
           group => root,
           mode => 755,
-          content => template("buildsystem/mdv-youri-submit")
+          content => template("buildsystem/mga-youri-submit")
         }
 
-        file { "/usr/local/bin/mdv-youri-submit.wrapper":
+        file { "/usr/local/bin/mga-youri-submit.wrapper":
           owner  => root,
           group => root,
           mode => 755,
-          content => template("buildsystem/mdv-youri-submit.wrapper")
+          content => template("buildsystem/mga-youri-submit.wrapper")
         }
 
-	sudo::sudoers_config { "mdv-youri-submit":
+	sudo::sudoers_config { "mga-youri-submit":
             content => template("buildsystem/sudoers.youri")
         }
 

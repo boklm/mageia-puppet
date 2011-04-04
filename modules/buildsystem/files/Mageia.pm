@@ -415,7 +415,7 @@ sub _get_section {
     if (!$section) {
         # debug packages should be found by previous specific version search
         # NOTE: as above, should/need we search here and add the 'debug_' prefix?
-        # ... probably... as at least mdv-youri-submit-force will process debug packages
+        # ... probably... as at least mga-youri-submit-force will process debug packages
         if ($package->is_debug() && $self->{_verbose}) {
             print "Warning: debug package $name with version $version-$release not found.\n";
         }
