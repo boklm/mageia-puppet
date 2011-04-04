@@ -265,7 +265,7 @@ class buildsystem {
 
         $package_list = ['perl-SVN', 'mdv-distrib-tools', 'perl-Youri-Media',
                          'perl-Youri-Package', 'perl-Youri-Repository',
-                         'perl-Youri-Utils', 'perl-Youri-Config']
+                         'perl-Youri-Utils', 'perl-Youri-Config', 'mga-youri-submit']
 
         package { $package_list:
             ensure => installed;
