@@ -233,8 +233,8 @@ node rabbit {
     # for testing pxe support of libvirt
     libvirtd::network {"pxe_network":
         network => "192.168.123.0/24",
-        tftp_root => auto_installation::variables::pxe_dir
-        bridge_name => "virbr1"
+        tftp_root => auto_installation::variables::pxe_dir,
+        bridge_name => "virbr1",
     }
 
     include auto_installation::pxe_menu
