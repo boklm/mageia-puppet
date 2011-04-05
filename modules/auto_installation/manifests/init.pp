@@ -63,7 +63,7 @@ class auto_installation {
         }
     }
 
-    define pxe_menu_entry($kernel_path, $append) {
+    define pxe_menu_entry($kernel_path, $append, $label) {
         @@auto_installation::pxe_menu_base { $name: 
             tag => $fqdn,   
             content => template('auto_installation/menu'),

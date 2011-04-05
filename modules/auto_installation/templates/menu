@@ -1,0 +1,5 @@
+LABEL <%= name %>
+      MENU DEFAULT
+      MENU LABEL Install <%= label %>
+      kernel <%= kernel_path %>
+      append <%= append %> 
