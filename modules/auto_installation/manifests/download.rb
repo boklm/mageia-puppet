@@ -1,4 +1,4 @@
-define "libvirtd::download::netboot_images", :path, :versions, :archs, :mirror_path, :files do
+define "auto_installation::download::netboot_images", :path, :versions, :archs, :mirror_path, :files do
     # example :
     # mandriva :
     # ftp://ftp.free.fr/pub/Distributions_Linux/MandrivaLinux/devel/%{version}/%{arch}/isolinux/alt0/
