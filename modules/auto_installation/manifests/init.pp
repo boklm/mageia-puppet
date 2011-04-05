@@ -90,6 +90,47 @@ class auto_installation {
         }
     }
 
+    define download_file($destination_path, $download_url) {
+            exec { "wget -q -O $destination_path/$name $download_url/$name":
+                creates =>  "$destination_path/$name",
+            }
+    }
+
+    define mandriva_installation_entry($version, $arch = 'x86_64') {
+        include netinst_storage
+        $protocol = "ftp"
+        $server = "ftp.free.fr"
+        $mirror_url_base = "/pub/Distributions_Linux/MandrivaLinux/"
+        $mirror_url_middle =  $version ? {
+            "cooker" => "devel/cooker/$arch/",
+            default => "official/$version/$arch/"
+        }
+        $mirror_url = "$mirror_url_base/$mirror_url_middle"
+
+        $mirror_url_end = "isolinux/alt0"
+
+        $destination_path = "$netinst_storage::netinst_path/$name"
+
+        file { "$destination_path":
+            ensure => directory,
+        }
+
+        $download_url = "$protocol\://$server/$mirror_url/$mirror_url_end"
+        
+
+        download_file { ['all.rdz','vmlinuz']:
+            destination_path => $destination_path,
+            download_url => $download_url,
+            require => File[$destination_path], 
+        }
+
+        pxe_menu_entry { "mandriva_$version_$arch":
+            kernel_path => "$name/vmlinuz",
+            label => "Mandriva $version $arch",
+            #TODO add autoinst.cfg
+            append => "$name/all.rdz  useless_thing_accepted=1 lang=fr automatic=int:eth0,netw:dhcp,met:$protocol,ser:$server,dir:$mirror_url ",
+        } 
+    }
     # 
     # define a template for autoinst
     #  - basic installation
