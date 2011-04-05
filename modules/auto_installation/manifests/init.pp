@@ -76,12 +76,23 @@ class auto_installation {
         #   label 
         #   kernel
         #   append
+    class netinst_storage {
+        # to ease the creation of test iso 
+        $netinst_path = "/var/lib/libvirt/netinst"
+
+        file { $netinst_path:
+            ensure => directory,
+        }
+
+        libvirtd::storage { "netinst":
+            path => $netinst_path,
+            require => File[$netinst_path],
+        }
+    }
 
     # 
     # define a template for autoinst
     #  - basic installation
     #  - server installation ( with server name as a parameter )
 
-
-    # TODO move here the downloader of boot.iso from libvirt module
 }
