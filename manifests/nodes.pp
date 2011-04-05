@@ -230,4 +230,16 @@ node rabbit {
         require => File[$netinst_iso_path],
     }
 
+    # for testing pxe support of libvirt
+    libvirtd::network {"pxe_network":
+        network => "192.168.123.0/24",
+        tftp_root => auto_installation::variables::pxe_dir
+        bridge_name => "virbr1"
+    }
+
+    include auto_installation::pxe_menu
+    auto_installation::mandriva_installation_entry { "pxe_test":
+        version => "2010.1",
+        arch => "i586",
+    }
 }
