@@ -49,7 +49,7 @@ class youri-check {
     class report inherits base {
         file { "$outdir":
             ensure => directory,
-            owner => apache,
+            owner => youri,
             mode => 755
         }
 
