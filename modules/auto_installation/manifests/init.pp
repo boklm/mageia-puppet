@@ -15,6 +15,10 @@ class auto_installation {
         $pxe_menu_dir = "$pxe_dir/pxelinux.cfg/m/"
     }
 
+    class download { 
+        import "download.rb"
+    }
+
     class pxe_menu inherits variables {
         package { 'syslinux':
 

@@ -220,7 +220,8 @@ node rabbit {
         require => File[$netinst_iso_path],
     }
 
-    libvirtd::download::netboot_images { "mandriva":
+    include auto_installation::download
+    auto_installation::download::netboot_images { "mandriva":
         path => $netinst_iso_path,
         versions => ["2010.0","2010.1"],
         archs => ['i586','x86_64'],
