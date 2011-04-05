@@ -159,15 +159,7 @@ class buildsystem {
             require => File[$sched_home_dir],
         }
 
-        file { "$sched_home_dir/repsys/tmp":
-            ensure => "directory",
-            owner  => $sched_login,
-            group => "mga-packagers",
-            mode => 1775,
-            require => File["$sched_home_dir/repsys"],
-        }
-
-        file { "$sched_home_dir/repsys/srpms":
+        file { ["$sched_home_dir/repsys/tmp", "$sched_home_dir/repsys/srpms"]:
             ensure => "directory",
             owner  => $sched_login,
             group => "mga-packagers",
