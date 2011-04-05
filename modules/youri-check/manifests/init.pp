@@ -40,6 +40,7 @@ class youri-check {
 
         cron { 'check':
             command => "youri-check -c $config test",
+            hour => "*",
             minute => 4,
             user => "$user",
         }
@@ -58,6 +59,7 @@ class youri-check {
 
         cron { 'check':
             command => "youri-check -c $config report",
+            hour => "*",
             minute => 10,
             user => "$user",
         }
