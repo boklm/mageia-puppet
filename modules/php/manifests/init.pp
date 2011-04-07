@@ -1,6 +1,7 @@
 class php {
     class base {
         $php_sender_email = "root@$domain"
+	$php_date_timezone = "UTC"
 
         package {"php-ini":
 	    ensure => installed,
