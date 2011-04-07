@@ -4,4 +4,4 @@ then
     echo 'this script should be run as root' >&2
     exit 1
 fi
-su - <%= build_login %> -c "iurt --no-rsync -r mandriva2010.1 x86_64 $@"
+su - <%= build_login %> -c "iurt --chrooted-urpmi -m contrib/release main/release -- http://repository.mageia.org/mandriva/ -r mandriva2010.1 x86_64 $@"
