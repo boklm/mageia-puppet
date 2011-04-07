@@ -382,4 +382,15 @@ class buildsystem {
             minute => "*/15",
         }
     }
+
+    class iurt20101 {
+       include iurt
+       file { "/usr/local/bin/iurt2010.1":
+           ensure => present,
+	   owner => root,
+	   group => root,
+	   mode => 755,
+	   source => template("buildsystem/iurt2010.1"),
+       }
+    }
 }
