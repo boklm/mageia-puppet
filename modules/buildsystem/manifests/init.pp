@@ -389,7 +389,7 @@ class buildsystem {
 	   owner => root,
 	   group => root,
 	   mode => 755,
-	   source => template("buildsystem/iurt2010.1"),
+	   content => template("buildsystem/iurt2010.1"),
        }
     }
 }
