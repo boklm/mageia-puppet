@@ -383,8 +383,7 @@ class buildsystem {
         }
     }
 
-    class iurt20101 {
-       include base
+    class iurt20101 inherits base {
        file { "/usr/local/bin/iurt2010.1":
            ensure => present,
 	   owner => root,
