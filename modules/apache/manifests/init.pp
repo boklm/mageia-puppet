@@ -43,7 +43,6 @@ class apache {
     }
     
     class mod_php inherits base {
-        include php::base
         package { "apache-mod_php":
             ensure => installed
         }
