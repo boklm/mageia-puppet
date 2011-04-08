@@ -43,7 +43,7 @@ class youri-check {
             hour => "*",
             minute => 4,
             user => "$user",
-	    environment => "MAILTO=root@$domain",
+	    environment => "MAILTO=root",
         }
     }
 
