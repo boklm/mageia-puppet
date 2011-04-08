@@ -11,7 +11,7 @@ class php {
 	    ensure => present,
 	    owner => root,
 	    group => root,
-	    mode => 755,
+	    mode => 644,
 	    require => Package['php-ini'],
 	    content => template('php/php.ini'),
 	}
