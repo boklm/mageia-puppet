@@ -1,6 +1,8 @@
 class apache {
 
     class base {
+	php_date_timezone = "UTC"
+
         package { "apache-mpm-prefork":
             alias => apache,
             ensure => installed
