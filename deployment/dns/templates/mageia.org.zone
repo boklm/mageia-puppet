@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2011040400	; Serial
+        2011040900	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -97,6 +97,12 @@ xymon	    IN CNAME alamut
 check	    IN CNAME alamut
 
 bcd	    IN CNAME rabbit
+
+; build nodes aliases
+jonund-build1 IN CNAME jonund
+jonund-build2 IN CNAME jonund
+ecosse-build1 IN CNAME ecosse
+ecosse-build2 IN CNAME ecosse
 
 ; temporary, until the vm is moved elsewhere
 forums      IN CNAME alamut
