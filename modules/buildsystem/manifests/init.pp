@@ -183,9 +183,8 @@ class buildsystem {
 	    group => $sched_login,
         } 
         
-        tidy { "$sched_home_dir/uploads/":
+        tidy { "$sched_home_dir/uploads":
             age     => "2w",
-            matches => "*",
             recurse => true,
             type    => "ctime",
         }
