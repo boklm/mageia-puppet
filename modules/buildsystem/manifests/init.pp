@@ -185,6 +185,7 @@ class buildsystem {
         
         tidy { "$sched_home_dir/uploads/":
             age     => "2w",
+            matches => "*",
             recurse => true,
             type    => "ctime",
         }
