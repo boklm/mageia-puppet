@@ -182,6 +182,12 @@ class buildsystem {
             owner => $sched_login, 
 	    group => $sched_login,
         } 
+        
+        tidy { "$sched_home_dir/uploads/":
+            age     => "2w",
+            recurse => true,
+            type    => "ctime",
+        }
 
         tidy { "$packages_archivedir":
             age     => "1w",
