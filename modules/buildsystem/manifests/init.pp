@@ -89,6 +89,15 @@ class buildsystem {
 	  keydir => $sign_keydir,
 	}
 
+	gnupg::keys{"software":
+          email => "software@$domain",
+	  #FIXME there should be a variable somewhere to change the name of the distribution
+  	  key_name => 'Mageia Software',
+	  login => $sign_login,
+	  batchdir => "$sign_home_dir/batches",
+	  keydir => $sign_keydir,
+	}
+
 	sudo::sudoers_config { "signpackage":
             content => template("buildsystem/sudoers.signpackage")
         }
