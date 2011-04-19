@@ -81,7 +81,7 @@ class phpbb {
         }
     }
 
-    define locale_db($tag = "default"
+    define locale_db($tag = "default",
                      $user = $phpbb::base::user) {
         postgresql::database { $name:
             description => "$lang db for phpbb forum",
