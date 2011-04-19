@@ -81,6 +81,16 @@ class phpbb {
         }
     }
 
+    define locale_db($tag = "default"
+                     $user = $phpbb::base::user) {
+        postgresql::database { $name:
+            description => "$lang db for phpbb forum",
+            user => $user,
+            tag => $tag,
+            require => Postgresql::User[$user]
+        }
+    }
+
     # TODO find a way to avoid all the phpbb::base prefix
     define instance() {
         include phpbb::base
@@ -135,9 +145,7 @@ class phpbb {
             content => template("phpbb/config.php"),
         }
 
-
-        postgresql::remote_database { $database:
-            description => "Phpbb database",
+        @@phpbb::locale_db { $database:
             user => $user,
         }
 
