@@ -210,6 +210,13 @@ class phpbb {
             value => "forums.$domain",
         }
 
+        phpbb_config { "default_lang/$lang":
+            database => $database,
+            key => "default_lang",
+            value => $lang,
+        }
+
+
 
     }
 }
