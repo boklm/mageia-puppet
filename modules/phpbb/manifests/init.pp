@@ -52,8 +52,8 @@ class phpbb {
 
     }
 
-    define phpbb_config($value) {
-        exec { "/usr/local/bin/phpbb_apply_config.pl $name":
+    define phpbb_config($key, $value) {
+        exec { "/usr/local/bin/phpbb_apply_config.pl $key":
             user => root,
             environment => ["PGDATABASE=$phpbb::base::database", 
                             "PGUSER=$phpbb::base::user", 
@@ -124,40 +124,49 @@ class phpbb {
             user => $user,
         }
 
-        phpbb_config { "ldap_user":
+        phpbb_config { "ldap_user/$lang":
+            key => "ldap_user",
             value => "cn=phpbb-$hostname,ou=System Accounts,$dc_suffix",
         }
 
-        phpbb_config { "ldap_server":
+        phpbb_config { "ldap_server/$lang":
+            key => "ldap_server",
             value => "ldaps://ldap.$domain",
         }
 
         $ldap_password = extlookup("phpbb_ldap",'x')
-        phpbb_config { "ldap_password":
+        phpbb_config { "ldap_password/$lang":
+            key => "ldap_password",
             value => $ldap_password,
         }
 
-        phpbb_config { "ldap_base_dn":
+        phpbb_config { "ldap_base_dn/$lang":
+            key => "ldap_base_dn",
             value => "ou=People,$dc_suffix",
         }
 
-        phpbb_config { "auth_method":
+        phpbb_config { "auth_method/$lang":
+            key => "auth_method",
             value => "ldap",
         }
 
-        phpbb_config { "ldap_mail":
+        phpbb_config { "ldap_mail/$lang":
+            key => "ldap_mail",
             value => "mail",
         }
 
-        phpbb_config { "ldap_uid":
+        phpbb_config { "ldap_uid/$lang":
+            key => "ldap_mail",
             value => "uid",
         }
 
-        phpbb_config { "cookie_domain":
+        phpbb_config { "cookie_domain/$lang":
+            key => "ldap_mail",
             value => "forums.$domain",
         }
 
-        phpbb_config { "server_name":
+        phpbb_config { "server_name/$lang":
+            key => "ldap_mail",
             value => "forums.$domain",
         }
 
