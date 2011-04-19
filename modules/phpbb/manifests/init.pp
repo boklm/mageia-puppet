@@ -77,6 +77,7 @@ class phpbb {
             group => root,
             mode => 644,
             content => template("phpbb/forums_redirect.conf"),
+            notify => Service['apache'],
         }
     }
 
