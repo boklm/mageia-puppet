@@ -53,7 +53,8 @@ class phpbb {
     }
 
     define phpbb_config($key, $value) {
-        exec { "/usr/local/bin/phpbb_apply_config.pl $key":
+        exec { "phpbb_apply $name":
+            command => "/usr/local/bin/phpbb_apply_config.pl $key",
             user => root,
             environment => ["PGDATABASE=$phpbb::base::database", 
                             "PGUSER=$phpbb::base::user", 
