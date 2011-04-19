@@ -91,7 +91,9 @@ class phpbb {
             description => "$lang db for phpbb forum",
             user => $user,
             tag => $tag,
-            require => Postgresql::User[$user]
+    # this break due to the way it is remotely declared
+    # this should only be a issue in case of bootstrapping again 
+    #        require => Postgresql::User[$user]
         }
     }
 
