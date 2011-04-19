@@ -58,6 +58,8 @@ class postgresql {
         }
         
         $db = list_exported_ressources('Postgresql::Db_and_user')
+
+        $forum_lang = list_exported_ressources('Phpbb::Locale_db')
         file { 'pg_hba.conf':
             path => "$pgsql_data/pg_hba.conf",
             ensure => present,
