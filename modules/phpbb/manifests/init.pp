@@ -69,6 +69,17 @@ class phpbb {
         }
     }
 
+    define redirection_instance($url) {
+        $lang = $name
+        file { "/etc/httpd/conf/vhosts.d/forums.d/redirect_$name.conf":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 644,
+            content => template("phpbb/forums_redirect.conf"),
+        }
+    }
+
     # TODO find a way to avoid all the phpbb::base prefix
     define instance() {
         include phpbb::base
