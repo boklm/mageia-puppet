@@ -50,6 +50,10 @@ class phpbb {
             content => template("phpbb/forums_vhost.conf"),
         }
 
+       file { "/etc/httpd/conf/vhosts.d/forums.d/":
+            ensure => directory,
+        } 
+
     }
 
     define phpbb_config($key, $value) {
