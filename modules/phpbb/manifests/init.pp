@@ -81,6 +81,10 @@ class phpbb {
         }
     }
 
+    define databases(){
+        Phpbb::Locale_db <<| |>>
+    }
+ 
     define locale_db($tag = "default",
                      $user = $phpbb::base::user) {
         postgresql::database { $name:
