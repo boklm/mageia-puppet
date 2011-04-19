@@ -56,11 +56,11 @@ class phpbb {
 
     }
 
-    define phpbb_config($key, $value) {
+    define phpbb_config($key, $value, $database) {
         exec { "phpbb_apply $name":
             command => "/usr/local/bin/phpbb_apply_config.pl $key",
             user => root,
-            environment => ["PGDATABASE=$phpbb::base::database", 
+            environment => ["PGDATABASE=$database", 
                             "PGUSER=$phpbb::base::user", 
                             "PGPASSWORD=$phpbb::base::pgsql_password", 
                             "PGHOST=pgsql.$domain", 
@@ -156,48 +156,57 @@ class phpbb {
         }
 
         phpbb_config { "ldap_user/$lang":
+            database => $database,
             key => "ldap_user",
             value => "cn=phpbb-$hostname,ou=System Accounts,$dc_suffix",
         }
 
         phpbb_config { "ldap_server/$lang":
+            database => $database,
             key => "ldap_server",
             value => "ldaps://ldap.$domain",
         }
 
         $ldap_password = extlookup("phpbb_ldap",'x')
         phpbb_config { "ldap_password/$lang":
+            database => $database,
             key => "ldap_password",
             value => $ldap_password,
         }
 
         phpbb_config { "ldap_base_dn/$lang":
+            database => $database,
             key => "ldap_base_dn",
             value => "ou=People,$dc_suffix",
         }
 
         phpbb_config { "auth_method/$lang":
+            database => $database,
             key => "auth_method",
             value => "ldap",
         }
 
         phpbb_config { "ldap_mail/$lang":
+            database => $database,
             key => "ldap_mail",
             value => "mail",
         }
 
         phpbb_config { "ldap_uid/$lang":
-            key => "ldap_mail",
+            database => $database,
+            key => "ldap_uid",
             value => "uid",
         }
 
         phpbb_config { "cookie_domain/$lang":
-            key => "ldap_mail",
+            database => $database,
+            key => "cookie_domain",
             value => "forums.$domain",
         }
 
         phpbb_config { "server_name/$lang":
-            key => "ldap_mail",
+            database => $database,
+            key => "server_name",
             value => "forums.$domain",
         }
 
