@@ -62,7 +62,7 @@ class postfix {
             ensure => installed
         }
 
-        $aliases_group = ['mga-founders','mga-packagers']        
+        $aliases_group = ['mga-founders','mga-packagers','mga-sysadmin']        
         $ldap_password = extlookup("postfix_ldap",'x')
         file { '/etc/postfix/ldap_aliases.conf':
             ensure => present,
