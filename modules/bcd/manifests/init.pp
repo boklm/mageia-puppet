@@ -2,6 +2,7 @@ class bcd {
     class variable {
         $bcd_login = 'bcd'
         $bcd_home = '/home/bcd'
+	$public_isos = "$bcd_home/public_html/isos"
 	$isomakers_group = 'mga-iso_makers'
     }
 
@@ -11,6 +12,13 @@ class bcd {
         buildsystem::sshuser { $bcd_login:
             homedir => $bcd_home,
             comment => "User for creating ISOs",
+	}
+
+	file { $public_isos:
+	    ensure => directory,
+	    owner => $bcd_login,
+	    group => $bcd_login,
+	    mode => 755,
 	}
 
         #package { bcd:
@@ -34,6 +42,12 @@ class bcd {
         apache::vhost_base { "bcd.$domain":
 	    location => "$bcd_home/public_html",
 	    content => template('bcd/vhost_bcd.conf'),
+	}
+    }
+
+    class rsync inherits base {
+        class { rsyncd:
+		rsyncd_conf => 'bcd/rsyncd.conf'
 	}
     }
 }
