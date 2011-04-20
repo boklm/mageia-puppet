@@ -3,7 +3,7 @@ class main_mirror {
     include mirror::main
 
     class { rsyncd:
-    	rsyncd_conf = 'main_mirror/rsyncd.conf'
+    	rsyncd_conf => 'main_mirror/rsyncd.conf'
     }
 
     $mirror = "/distrib"
