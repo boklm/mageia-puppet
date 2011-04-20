@@ -2,6 +2,10 @@ class main_mirror {
     # FIXME shouldn't the various code in this module ?
     include mirror::main
 
+    class { rsyncd:
+    	rsyncd_conf = 'main_mirror/rsyncd.conf'
+    }
+
     $mirror = "/distrib"
     file { "$mirror":
         ensure => directory,
