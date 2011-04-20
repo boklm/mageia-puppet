@@ -1,4 +1,4 @@
-class rsyncd {
+class rsyncd($rsyncd_conf = 'rsyncd/rsyncd.conf') {
 
     xinetd::service { "rsync":
         content => template("rsyncd/xinetd")
@@ -11,6 +11,6 @@ class rsyncd {
         group => root,
         mode => 644,
         require => Package["rsync"],
-        content => template("rsyncd/rsyncd.conf")
+        content => template($rsyncd_conf)
     }
 }
