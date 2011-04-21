@@ -23,7 +23,7 @@ class repositories::subversion {
     }
 
     subversion::repository { "/svn/web/":
-	    group => "mga-committers",
+	    group => "mga-web",
         cia_post => true,
         cia_module => "web",
     }
