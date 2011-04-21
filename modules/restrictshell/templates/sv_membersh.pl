@@ -155,6 +155,8 @@ unless (-e "/etc/membersh-errormsg") {
         print STDERR "You tried to run a interactive shell.\n"
     }
     print STDERR "Sorry, you are not allowed to execute that command.\n";
+    print STDERR "You are member of the following groups :\n";
+    print STDERR qx(groups);    
 } else {
     open(ERRORMSG, "< /etc/membersh-errormsg");
     while (<ERRORMSG>) {
