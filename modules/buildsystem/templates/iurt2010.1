@@ -4,4 +4,4 @@ then
     echo 'this script should be run as <%= build_login %>' >&2
     exit 1
 fi
-iurt --chrooted-urpmi -m contrib/release main/release -- http://repository.mageia.org/mandriva/ -r mandriva2010.1 x86_64 $@
+iurt --chrooted-urpmi -m contrib/release main/release ../../../2010.1-mgaserv/x86_64 -- http://repository.mageia.org/mandriva/ -r mandriva2010.1 x86_64 $@
