@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [ `whoami` != <%= sched_login %> ]
+then
+    echo 'this script should be run as <%= sched_login %>' >&2
+    exit 1
+fi
+
+cd /distrib/mandriva/2010.1-mgaserv || exit 1
+rsync -avH <%= build_login %>@jonund:/home/iurt/2010.1-SRPMS/ ./SRPMS
+cd x86_64 || exit 1
+rsync -avH <%= build_login %>@jonund:/home/iurt/iurt/mandriva2010.1/x86_64/*.rpm .
+ssh <%= build_login %>@jonund rm -f '/home/iurt/iurt/mandriva2010.1/x86_64/*.rpm'
+genhdlist2 .
+
