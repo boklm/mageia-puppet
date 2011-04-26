@@ -68,8 +68,7 @@ class mirror {
 
 	cron { mirror:
 	    user => mirror,
-	    hour => 10,
-	    minute => 14,
+	    minute => [0, 10, 20, 30, 40, 50],
 	    command => "$bindir/update_timestamp",
 	    require => File["update_timestamp"],
 	}
