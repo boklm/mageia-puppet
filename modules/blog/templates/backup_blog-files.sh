@@ -11,7 +11,7 @@ do
 	then
 		/bin/mkdir $PATH_TO_FILE/$locale
 	fi
-	tar zcf $PATH_TO_FILE/$locale/$locale-$COUNT.tar.gz /var/www/html/blog.<%= domain %>/$locale
+	tar Jcf $PATH_TO_FILE/$locale/$locale-$COUNT.tar.xz /var/www/html/blog.<%= domain %>/$locale
 done
 # Check count file to have a week of backup in the directory
 if [ $COUNT -ne 6 ]
