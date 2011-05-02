@@ -140,6 +140,7 @@ class subversion {
     define repository ($group = "svn",
                        $public = true,
                        $commit_mail = '',
+                       $i18n_mail = '',
                        $cia_post = true,
                        $cia_module = 'default',
 		       $cia_ignore_author = '',
