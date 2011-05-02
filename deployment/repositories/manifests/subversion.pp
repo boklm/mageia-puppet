@@ -20,6 +20,7 @@ class repositories::subversion {
 	    commit_mail => ["soft-commits@ml.$domain"],
 	    cia_post => true,
 	    cia_module => "soft",
+        i18n_mail => ["i18n@$domain"],
     }
 
     subversion::repository { "/svn/web/":
