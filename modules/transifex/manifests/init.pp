@@ -115,6 +115,10 @@ class transifex {
                            'change_project',
                            'delete_project']: }
 
+  committers_permission { ['add_release',
+                           'change_release',
+                           'delete_release']: }
+
   committers_permission { [ 'add_resource',
                             'change_resource', 
                             'delete_resource']:
