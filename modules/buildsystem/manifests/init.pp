@@ -69,28 +69,12 @@ class buildsystem {
 	    source => "puppet:///modules/buildsystem/i586/media.cfg",
 	}
 
-	file { "$repository_root/distrib/cauldron/i586/media/media_info/hdlists-raw":
-	    ensure => present,
-	    owner => $sched_login,
-	    group => $sched_login,
-	    mode => 644,
-	    source => "puppet:///modules/buildsystem/i586/hdlists",
-	}
-
 	file { "$repository_root/distrib/cauldron/x86_64/media/media_info/media.cfg-raw":
 	    ensure => present,
 	    owner => $sched_login,
 	    group => $sched_login,
 	    mode => 644,
 	    source => "puppet:///modules/buildsystem/x86_64/media.cfg",
-	}
-
-	file { "$repository_root/distrib/cauldron/x86_64/media/media_info/hdlists-raw":
-	    ensure => present,
-	    owner => $sched_login,
-	    group => $sched_login,
-	    mode => 644,
-	    source => "puppet:///modules/buildsystem/x86_64/hdlists",
 	}
 
         include scheduler
