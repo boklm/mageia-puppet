@@ -61,7 +61,7 @@ class buildsystem {
             source => "svn://svn.$domain/soft/buildsystem/web/",
         }
 
-	file { "$repository_root/distrib/cauldron/i586/media/media_info/media.cfg-raw":
+	file { "$repository_root/distrib/cauldron/i586/media/media_info/media.cfg":
 	    ensure => present,
 	    owner => $sched_login,
 	    group => $sched_login,
@@ -69,7 +69,7 @@ class buildsystem {
 	    source => "puppet:///modules/buildsystem/i586/media.cfg",
 	}
 
-	file { "$repository_root/distrib/cauldron/x86_64/media/media_info/media.cfg-raw":
+	file { "$repository_root/distrib/cauldron/x86_64/media/media_info/media.cfg":
 	    ensure => present,
 	    owner => $sched_login,
 	    group => $sched_login,
