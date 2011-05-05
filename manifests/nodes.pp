@@ -181,6 +181,7 @@ node champagne {
     include planet
     include websites::static
     include websites::hugs
+    include websites::releases
 }
 
 node friteuse {
