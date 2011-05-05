@@ -180,6 +180,7 @@ node champagne {
     include blog::files_backup
     include planet
     include websites::static
+    include websites::hugs
 }
 
 node friteuse {
