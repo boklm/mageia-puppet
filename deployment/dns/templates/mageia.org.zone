@@ -97,7 +97,6 @@ lists       IN CNAME alamut
 svnweb      IN CNAME alamut
 xymon	    IN CNAME alamut
 check	    IN CNAME alamut
-releases    IN CNAME alamut
 
 bcd	    IN CNAME rabbit
 
