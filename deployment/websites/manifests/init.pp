@@ -43,11 +43,6 @@ class websites {
 	    location => $vhostdir,
 	}
 
-	file { $vhostdir:
-	    ensure => directory,
-	    mode => 755,
-	}
-
 	subversion::snapshot { "$vhostdir":
 	    source => $svn_location
 	}
