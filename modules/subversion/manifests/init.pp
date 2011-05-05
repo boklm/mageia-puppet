@@ -108,6 +108,13 @@ class subversion {
             regexp_ext => "modules/.*/templates/.*$",
             check_cmd => "erb -P -x -T - | ruby -c"
         }
+
+        syntax_check{"check_po":
+            regexp_ext => "\.po$",
+            check_cmd => "msgfmt -c"
+        }
+
+
     }
 
    
