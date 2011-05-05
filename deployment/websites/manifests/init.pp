@@ -36,6 +36,23 @@ class websites {
 	}
     }
 
+    class hugs inherits base {
+        $vhostdir = "$webdatadir/hugs.$domain"
+	$svn_location = "svn://svn.$domain/svn/web/hugs/public/"
+    	apache::vhost_base { "hugs.$domain":
+	    location => $vhostdir,
+	}
+
+	file { $vhostdir:
+	    ensure => directory,
+	    mode => 755,
+	}
+
+	subversion::snapshot { "$vhostdir":
+	    source => $svn_location
+	}
+    }
+
     class svn {
         apache::vhost_redirect { "svn.$domain":
             url => "http://svnweb.$domain/",
