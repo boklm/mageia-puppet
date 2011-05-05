@@ -48,6 +48,18 @@ class websites {
 	}
     }
 
+    class releases inherits base {
+        $vhostdir = "$webdatadir/releases.$domain"
+	$svn_location = "svn://svn.$domain/svn/web/releases/"
+    	apache::vhost_base { "releases.$domain":
+	    location => $vhostdir,
+	}
+
+	subversion::snapshot { "$vhostdir":
+	    source => $svn_location
+	}
+    }
+
     class svn {
         apache::vhost_redirect { "svn.$domain":
             url => "http://svnweb.$domain/",
