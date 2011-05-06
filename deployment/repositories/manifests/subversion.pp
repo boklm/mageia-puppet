@@ -18,7 +18,7 @@ class repositories::subversion {
     subversion::repository { "/svn/soft/":
 	    group => "mga-packagers",
 	    commit_mail => ["soft-commits@ml.$domain"],
-        syntax_check => ['check_po'],
+#        syntax_check => ['check_po'],
 	    cia_post => true,
 	    cia_module => "soft",
         i18n_mail => ["i18n@$domain"],
