@@ -111,7 +111,7 @@ class subversion {
 
         syntax_check{"check_po":
             regexp_ext => "\.po$",
-            check_cmd => "msgfmt -c"
+            check_cmd => "msgfmt -c -"
         }
 
 
