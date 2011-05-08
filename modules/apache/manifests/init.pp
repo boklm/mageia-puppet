@@ -145,6 +145,7 @@ class apache {
                       $vhost = false,
                       $aliases = {},
                       $server_aliases = [],
+                      $options = [],
                       $enable_public_html = false) {
 	include apache::base
         if ! $vhost {
