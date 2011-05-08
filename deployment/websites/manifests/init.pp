@@ -53,6 +53,9 @@ class websites {
 	$svn_location = "svn://svn.$domain/svn/web/releases/"
     	apache::vhost_base { "releases.$domain":
 	    location => $vhostdir,
+	    content => "<Directory $vhostdir>
+	Options FollowSymLinks
+</Directory>"
 	}
 
 	subversion::snapshot { "$vhostdir":
