@@ -27,7 +27,7 @@ class planet {
         content => template("planet/deploy_new-planet.sh")
     }
 
-    file { "/var/www/html/planet.$domain":
+    file { "/var/www/vhosts/planet.$domain":
 	ensure => directory,
 	owner => planet,
 	group => apache,
