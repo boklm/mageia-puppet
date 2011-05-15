@@ -8,5 +8,6 @@ service rsync
         server          = /usr/bin/rsync
         server_args     = --daemon
         log_on_failure  += USERID
+	flags		= IPv6
 }
 
