@@ -1,14 +1,6 @@
 class websites {
     class base {
-       # FIXME :
-       # We should be able to define this path on each host.
-       # Maybe using Facter ?
-       $webdatadir = '/srv/web1-dd0/www'
-
-       file { "$webdatadir":
-          ensure => directory,
-	  mode => 755,
-       }
+       $webdatadir = '/var/www/vhosts'
     }
 
     # should expire on June 2011
