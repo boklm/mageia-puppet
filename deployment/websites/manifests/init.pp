@@ -55,6 +55,12 @@ class websites {
 	    location => $vhostdir,
 	    options => [ "FollowSymLinks" ]
 	}
+    	apache::vhost_base { "ssl_releases.$domain":
+	    vhost => "releases.$domain",
+	    use_ssl => true,
+	    location => $vhostdir,
+	    options => [ "FollowSymLinks" ]
+	}
 
 	subversion::snapshot { "$vhostdir":
 	    source => $svn_location
