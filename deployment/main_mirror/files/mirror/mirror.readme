@@ -25,6 +25,8 @@ Theses servers synchronises the tree directly from the Mageia rsync server.
       located in Paris (France)
     o rsync://ftp.LinuxCabal.org/Mageia/
       located in Lucern (Switzerland)
+    o rsync://mageia.c3sl.ufpr.br/mageia/
+      located in Curitiba (Brasil)
 
 3) Rsync options
 ----------------
