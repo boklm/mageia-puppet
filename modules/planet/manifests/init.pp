@@ -8,7 +8,7 @@ class planet {
 	home => "/var/lib/planet",
     }
 
-    $planet_location = "/var/www/html/planet.$domain"
+    $planet_location = "/var/www/vhosts/planet.$domain"
     $planet_domain = "planet.$domain"
 	
     include apache::mod_php
@@ -27,7 +27,7 @@ class planet {
         content => template("planet/deploy_new-planet.sh")
     }
 
-    file { "/var/www/vhosts/planet.$domain":
+    file { "$planet_location":
 	ensure => directory,
 	owner => planet,
 	group => apache,
