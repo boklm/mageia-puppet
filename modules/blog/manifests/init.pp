@@ -1,6 +1,9 @@
 class blog {
 
     class base {
+        $blog_location = "/var/www/vhosts/blog.$domain"
+        $blog_domain = "blog.$domain"
+
         user { "blog":
         groups => apache,
         comment => "Mageia Blog",
@@ -32,9 +35,6 @@ class blog {
         }
 
         include apache::mod_php
-
-        $blog_location = "/var/www/vhosts/blog.$domain"
-        $blog_domain = "blog.$domain"
 
         apache::vhost_base { "$blog_domain":
             location => $blog_location,
