@@ -3,6 +3,8 @@ class blog {
     class base {
         $blog_location = "/var/www/vhosts/blog.$domain"
         $blog_domain = "blog.$domain"
+	$blog_db_backupdir = "/var/lib/backups/blog_db"
+	$blog_files_backupdir = "/var/lib/backups/blog_files"
 
         user { "blog":
         groups => apache,
@@ -56,7 +58,7 @@ class blog {
         }
     }
     class db_backup inherits base {
-        file { "/var/lib/blog/backup":
+        file { $blog_db_backupdir:
                 ensure => directory,
                 owner => root,
                 group => root,
@@ -81,7 +83,7 @@ class blog {
         }
     }
     class files_backup inherits base {
-        file { "/var/lib/blog/backup":
+        file { $blog_files_backupdir:
                 ensure => directory,
                 owner => root,
                 group => root,

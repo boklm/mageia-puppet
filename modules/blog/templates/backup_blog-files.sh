@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Initialization
-PATH_TO_FILE=${PATH_TO_FILE:-/var/lib/blog/backup}
+PATH_TO_FILE=${PATH_TO_FILE:-<%= blog_files_backupdir %>}
 [ ! -f $PATH_TO_FILE/count ] && echo 0 > $PATH_TO_FILE/count
 COUNT=$(cat "$PATH_TO_FILE/count")
 # Backup each locale
