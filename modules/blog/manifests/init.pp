@@ -33,7 +33,7 @@ class blog {
 
         include apache::mod_php
 
-        $blog_location = "/var/www/html/blog.$domain"
+        $blog_location = "/var/www/vhosts/blog.$domain"
         $blog_domain = "blog.$domain"
 
         apache::vhost_base { "$blog_domain":
