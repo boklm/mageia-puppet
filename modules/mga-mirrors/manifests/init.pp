@@ -7,9 +7,18 @@ class mga-mirrors {
     }
 
     apache::vhost_catalyst_app { $vhost:
+        vhost => $vhost,
         script => "/usr/bin/mga_mirrors_fastcgi.pl", 
         require => Package['mga-mirrors'],
     }
+
+    apache::vhost_catalyst_app { "ssl_$vhost":
+        vhost => $vhost,
+        use_ssl => true,
+        script => "/usr/bin/mga_mirrors_fastcgi.pl", 
+        require => Package['mga-mirrors'],
+    }
+
 
     $pgsql_password = extlookup("mga_mirror_pgsql",'x')
 
