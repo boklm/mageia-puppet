@@ -8,7 +8,7 @@ class mga-mirrors {
 
     apache::vhost_catalyst_app { $vhost:
         script => "/usr/bin/mga_mirrors_fastcgi.pl", 
-        require => Package['mga-mirrors']
+        require => Package['mga-mirrors'],
 	use_ssl => true,
     }
 
