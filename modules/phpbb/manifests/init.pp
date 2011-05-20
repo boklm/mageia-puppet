@@ -9,6 +9,7 @@ class phpbb {
                    "php-xml",
                    "php-zlib",
                    "php-ftp",
+                   "php-apc",
                    "php-magickwand",
                    "php-pgsql",
                    "php-ldap", ] :

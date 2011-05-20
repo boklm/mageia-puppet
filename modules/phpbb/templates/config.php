@@ -8,7 +8,7 @@ $dbname = '<%= database %>';
 $dbuser = '<%= user %>';
 $dbpasswd = '<%= pgsql_password %>';
 $table_prefix = 'phpbb_';
-$acm_type = 'file';
+$acm_type = 'apc';
 $load_extensions = '';
 
 @define('PHPBB_INSTALLED', true);
