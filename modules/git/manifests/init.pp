@@ -86,7 +86,7 @@ class git {
         file { "$name/config.puppet":
             ensure => present,
             require => File["$name/git-daemon-export-ok"],
-            notify => Exec['/usr/local/bin/apply_git_puppet_config.sh'],
+            notify => Exec["/usr/local/bin/apply_git_puppet_config.sh $name"],
             content => template('git/config.puppet'),
         }
 
