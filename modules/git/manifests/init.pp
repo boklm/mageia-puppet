@@ -90,7 +90,8 @@ class git {
             content => template('git/config.puppet'),
         }
 
-        exec { "/usr/local/bin/apply_git_puppet_config.sh":
+        # $name is not really used, but this prevent duplicate declaration error
+        exec { "/usr/local/bin/apply_git_puppet_config.sh $name":
             cwd => $name,
             user => "root",
             refreshonly => true 
