@@ -69,7 +69,7 @@ class openssh {
         cron { 'sshkey2file':
             command => $sshkey2file,
             hour => "*",
-            minute => */10,
+            minute => "*/10",
             user => root,
             environment => "MAILTO=root",
 	    require => File[$sshkey2file],
