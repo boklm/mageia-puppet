@@ -2,7 +2,6 @@ class apache {
 
     class base {
 	$php_date_timezone = "UTC"
-	$httpd_logdir = "/var/log/httpd"
 
         package { "apache-mpm-prefork":
             alias => apache,
@@ -151,6 +150,7 @@ class apache {
                       $options = [],
                       $enable_public_html = false) {
 	include apache::base
+	$httpd_logdir = "/var/log/httpd"
         if ! $vhost {
             $real_vhost = $name
         } else {
