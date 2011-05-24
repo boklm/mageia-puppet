@@ -30,4 +30,10 @@ class access_classes {
       access_classes => ['mga-iso_makers','mga-sysadmin']
     }
   }
+
+  class web {
+    pam::multiple_ldap_access { "web":
+      access_classes => ['mga-web','mga-sysadmin']
+    }
+  }
 }
