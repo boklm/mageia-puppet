@@ -56,14 +56,23 @@ class openssh {
             mode => 700,
         }
 
+	$sshkey2file = "/usr/local/bin/ldap-sshkey2file.py"
         $ldap_pwfile = "/etc/ldap.secret"
-        file { '/usr/local/bin/ldap-sshkey2file.py':
+        file { $sshkey2file:
             ensure => present,
             owner => root,
             group => root,
             mode => 755,
             content => template("restrictshell/ldap-sshkey2file.py"),
             require => Package['python-ldap']
+        }
+        cron { 'sshkey2file':
+            command => $sshkey2file,
+            hour => "*",
+            minute => */10,
+            user => root,
+            environment => "MAILTO=root",
+	    require => File[$sshkey2file],
         }
     } 
 }
