@@ -40,6 +40,14 @@ class apache {
             content => template("apache/00_default_vhosts.conf")
         }
 
+	file { "/etc/logrotate.d/httpd":
+            ensure => "present",
+            owner => root,
+            group => root,
+            mode => 644,
+            content => template("apache/logrotate")
+	}
+
     }
     
     class mod_php inherits base {

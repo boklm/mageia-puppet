@@ -1,0 +1,13 @@
+/var/log/httpd/*_log /var/log/httpd/apache_runtime_status /var/log/httpd/ssl_mutex {
+    rotate 5
+    monthly
+    missingok
+    notifempty
+    nocompress
+    prerotate
+	/etc/rc.d/init.d/httpd closelogs > /dev/null 2>&1 || :
+    endscript
+    postrotate
+	/etc/rc.d/init.d/httpd closelogs > /dev/null 2>&1 || :
+    endscript
+}
