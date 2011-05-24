@@ -158,10 +158,14 @@ class apache {
         }
 
 	if ! $access_logfile {
-	    $access_logfile = "$httpd_logdir/access_log-$real_vhost"
+	    $real_access_logfile = "$httpd_logdir/access_log-$real_vhost"
+	} else {
+	    $real_access_logfile = $access_logfile
 	}
 	if ! $error_logfile {
-	    $error_logfile = "$httpd_logdir/error_log-$real_vhost"
+	    $real_error_logfile = "$httpd_logdir/error_log-$real_vhost"
+	} else {
+	    $real_error_logfile = $error_logfile
 	}
 
         if $use_ssl {
