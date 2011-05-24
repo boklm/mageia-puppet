@@ -3,6 +3,9 @@ class apache {
     class base {
 	$php_date_timezone = "UTC"
 
+	# number of time the log file are rotated before being removed
+	$httpdlogs_rotate = "24"
+
         package { "apache-mpm-prefork":
             alias => apache,
             ensure => installed
