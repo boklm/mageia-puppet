@@ -38,6 +38,10 @@ class websites {
 	subversion::snapshot { "$vhostdir":
 	    source => $svn_location
 	}
+
+	package { php-exif:
+	    ensure => "installed",
+	}
     }
 
     class releases inherits base {
