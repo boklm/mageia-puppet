@@ -405,6 +405,16 @@ class buildsystem {
         }
     }
 
+    class release {
+	subversion::snapshot { "/root/release":
+	    source => "svn://svn.$domain/soft/release/trunk/",
+	}
+
+        package { "hardlink":
+	    ensure => "installed",
+	}
+    }
+
     # A script to copy on valstar the 2010.1 rpms built on jonund
     class sync20101 inherits base {
        file { "/usr/local/bin/sync2010.1":
