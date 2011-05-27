@@ -63,7 +63,12 @@ class postfix {
         }
         # council is here until we fully decide who has aliases in com team, 
         # see https://bugs.mageia.org/show_bug.cgi?id=1345 
-        $aliases_group = ['mga-founders','mga-packagers','mga-sysadmin','mga-council']        
+        # alumini is a special group for tracking previous members of
+        # the project, so they keep their aliases for a time
+        $aliases_group = ['mga-founders','mga-packagers',
+                          'mga-sysadmin','mga-council',
+                          'mga-alumni',
+                         ]        
         $ldap_password = extlookup("postfix_ldap",'x')
         file { '/etc/postfix/ldap_aliases.conf':
             ensure => present,
