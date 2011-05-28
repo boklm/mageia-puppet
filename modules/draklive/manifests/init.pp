@@ -2,6 +2,7 @@ class draklive {
     class variable {
         $draklive_login = 'draklive'
         $draklive_home = '/home/draklive'
+        $live_config = "$draklive_home/live-config/"
 	$isomakers_group = 'mga-iso_makers'
     }
 
@@ -33,7 +34,7 @@ class draklive {
 	     target => "$draklive_home/var-data",
 	}
 
-        subversion::snapshot { "/etc/draklive":
+        subversion::snapshot { $live_config:
             source => "svn://svn.$domain/soft/images-config/draklive/trunk/",
         }
     }
