@@ -42,8 +42,8 @@ class draklive {
         cron { "build live images":
             command => "$draklive_config/tools/build_live.sh",
             user => $draklive_login,
-            hour => "14",
-            minute => "48",
+            hour => "4",
+            minute => "30",
         }
     }
 }
