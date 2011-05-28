@@ -3,6 +3,7 @@ class draklive {
         $draklive_login = 'draklive'
         $draklive_home = '/home/draklive'
         $live_config = "$draklive_home/live-config/"
+        $draklive_var_data = "$draklive_home/var-data"
 	$isomakers_group = 'mga-iso_makers'
     }
 
@@ -22,7 +23,7 @@ class draklive {
 	    content => template("draklive/sudoers.draklive")
         }
 
-	file { "$draklive_home/var-data":
+	file { $draklive_var_data:
 	    ensure => directory,
 	    owner => $draklive_login,
 	    group => $draklive_login,
@@ -31,7 +32,7 @@ class draklive {
 
 	file { "/var/lib/draklive":
 	     ensure => symlink,
-	     target => "$draklive_home/var-data",
+	     target => $draklive_var_data,
 	}
 
         subversion::snapshot { $live_config:
