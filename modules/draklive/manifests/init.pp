@@ -2,7 +2,7 @@ class draklive {
     class variable {
         $draklive_login = 'draklive'
         $draklive_home = '/home/draklive'
-        $draklive_config = "$draklive_home/live-config/"
+        $draklive_config = "$draklive_home/live-config"
         $draklive_var_data = "$draklive_home/var-data"
 	$isomakers_group = 'mga-iso_makers'
     }
