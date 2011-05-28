@@ -33,5 +33,8 @@ class draklive {
 	     target => "$draklive_home/var-data",
 	}
 
+        subversion::snapshot { "/etc/draklive":
+            source => "svn://svn.$domain/soft/images-config/draklive/trunk/",
+        }
     }
 }
