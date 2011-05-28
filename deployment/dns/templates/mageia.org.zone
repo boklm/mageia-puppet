@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2011050500	; Serial
+        2011050501	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -85,6 +85,8 @@ puppetmaster  IN  CNAME valstar
 pkgsubmit   IN CNAME valstar
 repository  IN CNAME valstar
 ldap        IN CNAME valstar
+ldap-master IN CNAME valstar
+; add later various slave 
 
 identity    IN CNAME alamut
 identity-trunk    IN CNAME alamut
