@@ -38,5 +38,11 @@ class draklive {
         subversion::snapshot { $draklive_config:
             source => "svn://svn.$domain/soft/images-config/draklive/trunk/",
         }
+
+        cron { "build live images":
+            command => "$draklive_config/tools/build_live.sh",
+            hour => "14",
+            minute => 45",
+        }
     }
 }
