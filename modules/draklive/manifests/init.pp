@@ -9,6 +9,7 @@ class draklive {
 
     class base inherits variable {
 	include sudo
+	include cron
 
         buildsystem::sshuser { $draklive_login:
             homedir => $draklive_home,
