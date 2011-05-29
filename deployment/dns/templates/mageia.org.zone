@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2011050501	; Serial
+        2011050502	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -70,8 +70,6 @@ hugs        IN  CNAME champagne
 releases    IN	CNAME champagne
 rsync       IN  CNAME valstar
 
-ldap        IN  CNAME valstar
-
 svn         IN  CNAME valstar
 git         IN  CNAME valstar
 meetbot     IN  CNAME krampouezh
@@ -85,8 +83,9 @@ puppetmaster  IN  CNAME valstar
 pkgsubmit   IN CNAME valstar
 repository  IN CNAME valstar
 ldap        IN CNAME valstar
+
 ldap-master IN CNAME valstar
-; add later various slave 
+ldap-slave-1 IN CNAME krampouezh
 
 identity    IN CNAME alamut
 identity-trunk    IN CNAME alamut
