@@ -77,4 +77,29 @@ class openldap {
             content => template("openldap/ldap.sysconfig"),
         }
     }
+
+    # TODO create the user for sync in ldap
+    # syntaxic sugar 
+    define slave_instance($rid) {
+        class { openldap::slave:
+                    rid => $rid,
+        }
+    }
+
+    class slave($rid) inherits common {
+        $sync_password = extlookup("ldap_syncuser-$hostname",'x');
+        
+        # same access rights as master
+        file { '/etc/openldap/mandriva-dit-access.conf':
+            content => template("openldap/mandriva-dit-access.conf"),
+        }
+
+        file { '/etc/openldap/slapd.conf':
+            content => template("openldap/slapd.conf",'openldap/slapd.syncrepl.conf'),
+        }
+
+        file { '/etc/sysconfig/ldap':
+            content => template("openldap/ldap.sysconfig"),
+        }
+    }
 }
