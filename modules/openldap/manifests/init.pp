@@ -70,7 +70,7 @@ class openldap {
         }       
  
         file { '/etc/openldap/slapd.conf':
-            content => template("openldap/slapd.conf"),
+            content => template("openldap/slapd.conf", "openldap/slapd.test.conf"),
         }
 
         file { '/etc/sysconfig/ldap':
