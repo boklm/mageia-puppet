@@ -7,6 +7,7 @@ class openldap {
         service { ldap:
             ensure => running,
             subscribe => [ Package['openldap-servers']],
+            requires => [ Openssl::Self_signed_cert['ldap.$domain']],
             path => "/etc/init.d/ldap"
         }
 
