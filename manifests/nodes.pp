@@ -163,6 +163,11 @@ node krampouezh {
     include mysql::server
     include dns::server 
     timezone::timezone { "Europe/Paris": }
+
+    openldap::slave_instance { "1":
+        rid => 1,
+    }
+
 # Other services running on this server :
 # - meetbot
 }
