@@ -165,7 +165,7 @@ class phpbb {
         phpbb_config { "ldap_server/$lang":
             database => $database,
             key => "ldap_server",
-            value => "ldaps://ldap.$domain",
+            value => "ldaps://ldap.$domain ldaps://ldap-slave-1.$domain",
         }
 
         $ldap_password = extlookup("phpbb_ldap",'x')
