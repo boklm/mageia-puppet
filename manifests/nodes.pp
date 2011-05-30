@@ -217,6 +217,7 @@ node rabbit {
     include access_classes::iso_makers
     include openssh::ssh_keys_from_ldap
     include mirror::mirrormageia
+    include mirror::mirrornewrelease
     include releasekey::base
     include youri-check::check
 
