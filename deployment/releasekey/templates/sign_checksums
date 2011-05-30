@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+	echo "Usage: $0 <directory>"
+fi
+
+directory=$1
+cd "$directory"
+for chksum in *.md5 *.sha1; do
+	gpg --homedir "<%= keydir %>" --yes --sign "$chksum"
+done

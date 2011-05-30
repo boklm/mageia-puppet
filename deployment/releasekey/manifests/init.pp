@@ -29,5 +29,12 @@ class releasekey {
 	    keydir => $sign_keydir,
 	    require => User[$sign_login],
 	}
+
+        file { "/usr/local/bin/sign_checksums":
+            ensure => present,
+            owner => $sign_login,
+            mode => 700,
+            content => template("releasekey/sign_checksums"),
+        }
     }
 }
