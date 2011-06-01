@@ -139,6 +139,7 @@ class subversion {
     #    cia_module : name of the module to send to cia.vc
     #    cia_ignore_author : a regexp to ignore commits from some authors
     #    no_binary : do not accept files with common binary extentions on this repository
+    #    restricted_to_user : restrict commits to select user
     #    syntax_check : array of pre-commit script with syntax check to add
     #    extract_dir : hash of directory to update upon commit ( with svn update ), 
     #            initial checkout is not handled, nor the permission
@@ -152,6 +153,7 @@ class subversion {
                        $cia_module = 'default',
 		       $cia_ignore_author = '',
 		       $no_binary = false,
+		       $restricted_to_user = false,
                        $syntax_check = '',
                        $extract_dir = '') {
         # check permissions
@@ -201,6 +203,16 @@ class subversion {
             group => root,
             mode => 755,
         } 
+	
+	if $restricted_to_user {
+            file { "$name/hooks/pre-commit.d/restricted_to_user":
+                ensure => present,
+                owner => root,
+                group => root,
+                mode => 755,
+                content => template("subversion/restricted_to_user"),
+	    }
+	}
 
         if $commit_mail {
             file { "$name/hooks/post-commit.d/send_mail":

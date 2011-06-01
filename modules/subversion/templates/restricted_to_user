@@ -1,0 +1,12 @@
+#!/bin/sh
+
+REP="$1"
+TXN="$2"
+
+author=$(svnlook author -t "$TXN" "$REP")
+
+if [ "$author" != '<%= restricted_to_user %>' ]; then
+    echo "this repository is restrected to user <%= restricted_to_user %>" >&2
+    exit 1
+fi
+
