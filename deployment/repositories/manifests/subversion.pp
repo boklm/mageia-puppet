@@ -37,6 +37,7 @@ class repositories::subversion {
         cia_post => true,
         cia_module => "packages",
         cia_ignore_author => '^schedbot$',
+	restricted_to_user => 'schedbot',
     }
 
     file { "/svn/binrepos/":
@@ -48,6 +49,7 @@ class repositories::subversion {
         cia_post => true,
         cia_module => "binrepos",
         cia_ignore_author => '^schedbot$',
+	restricted_to_user => 'schedbot',
     }
 
 }
