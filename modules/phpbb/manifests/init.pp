@@ -211,13 +211,10 @@ class phpbb {
             value => "forums.$domain",
         }
 
-        # this depend on the language pck being installed,
-        # and so far, we only have english one in git
         phpbb_config { "default_lang/$lang":
             database => $database,
             key => "default_lang",
-            # value => $lang,
-            value => "en",
+            value => $lang,
         }
 
 
