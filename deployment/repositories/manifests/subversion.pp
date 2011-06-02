@@ -26,6 +26,7 @@ class repositories::subversion {
 
     subversion::repository { "/svn/web/":
 	    group => "mga-web",
+        syntax_check => ['check_php'],
         cia_post => true,
         cia_module => "web",
     }
