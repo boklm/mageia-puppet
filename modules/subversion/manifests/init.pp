@@ -114,6 +114,10 @@ class subversion {
             check_cmd => "msgfmt -c -"
         }
 
+        syntax_check{"check_php":
+            regexp_ext => "\.php$",
+            check_cmd => "php -l"
+        }
 
     }
 
