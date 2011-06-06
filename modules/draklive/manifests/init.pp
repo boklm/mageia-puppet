@@ -45,5 +45,19 @@ class draklive {
             hour => "4",
             minute => "30",
         }
+
+        file { "/usr/local/bin/clean-live.sh":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            source => "puppet:///modules/draklive/clean-live.sh",
+        }
+    
+        cron { "clean live build data":
+            command => "/usr/local/bin/clean-live.sh",
+            hour => "4",
+            minute => "20",
+        }
     }
 }
