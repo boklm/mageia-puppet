@@ -2,7 +2,7 @@
 
 # clean old draklive build sets
 DRAKLIVE_ROOT=/var/lib/draklive
-RM="echo rm -rf"
+RM="rm -rf"
 
 # keep only chroot/build sets from previous day
 MAX_BUILD_AGE=1
