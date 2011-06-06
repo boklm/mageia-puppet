@@ -34,11 +34,11 @@ class repositories::subversion {
     subversion::repository { "/svn/packages/":
         group => "mga-packagers-committers",
         no_binary => true,
-#	    commit_mail => ["packages-commits@ml.$domain"],
+	    commit_mail => ["packages-commits@ml.$domain"],
         cia_post => true,
         cia_module => "packages",
         cia_ignore_author => '^schedbot$',
-	restricted_to_user => 'schedbot',
+#	restricted_to_user => 'schedbot',
     }
 
     file { "/svn/binrepos/":
@@ -50,7 +50,7 @@ class repositories::subversion {
         cia_post => true,
         cia_module => "binrepos",
         cia_ignore_author => '^schedbot$',
-	restricted_to_user => 'schedbot',
+#	restricted_to_user => 'schedbot',
     }
 
 }
