@@ -74,13 +74,6 @@ class mirror {
 	}
     }
 
-    class mirrorbootstrap inherits base {
-    	mirrordir { "bootstrap":
-	    remoteurl => "rsync://rsync.$domain/bootstrap",
-	    localdir => '/distrib/bootstrap',
-	}
-    }
-
     class mirrormageia inherits base {
     	mirrordir { "mageia":
 	    remoteurl => "rsync://rsync.$domain/mageia",
