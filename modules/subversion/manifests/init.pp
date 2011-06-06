@@ -216,6 +216,10 @@ class subversion {
                 mode => 755,
                 content => template("subversion/restricted_to_user"),
 	    }
+	} else {
+            file { "$name/hooks/pre-commit.d/restricted_to_user":
+                ensure => absent,
+	    }
 	}
 
         if $commit_mail {
@@ -227,7 +231,11 @@ class subversion {
                 content => template("subversion/hook_sendmail.pl"),
 	    	require => [Package['perl-SVN-Notify-Config']],
             }
-        }
+        } else {
+            file { "$name/hooks/post-commit.d/send_mail":
+	    	ensure => absent,
+	    }
+	}
 
 	if $cia_post {
 	    file { "$name/hooks/post-commit.d/cia.vc":
@@ -238,10 +246,18 @@ class subversion {
                 content => template("subversion/ciabot_svn.sh"),
             }
 		
+	} else {
+	    file { "$name/hooks/post-commit.d/cia.vc":
+		ensure => absent,
+	    }
 	}
 
 	if $no_binary {
 	    pre_commit_link { "$name/hooks/pre-commit.d/no_binary": }
+	} else {
+	    file { "$name/hooks/pre-commit.d/no_binary"
+	       ensure => absent,
+	    }
 	}
 
         if $extract_dir {
@@ -253,7 +269,11 @@ class subversion {
                 content => template("subversion/hook_extract.pl"),
 	    	require => [Package['perl-SVN-Notify-Mirror']],
             }
-        }
+        } else {
+            file { "$name/hooks/post-commit.d/extract_dir":
+                ensure => absent,
+	    }
+	}
 
 	pre_commit_link { "$name/hooks/pre-commit.d/no_empty_message": } 
 
