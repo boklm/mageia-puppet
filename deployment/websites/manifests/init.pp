@@ -3,13 +3,6 @@ class websites {
        $webdatadir = '/var/www/vhosts'
     }
 
-    # should expire on June 2011
-    class donate {
-        apache::vhost_other_app { "donate.$domain":
-            vhost_file => "websites/vhost_donate.conf",
-        }
-    }
-
     # vhost to host static files used by web sites
     class static inherits base {
         $vhostdir = "$webdatadir/static.$domain"
