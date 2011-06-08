@@ -27,7 +27,7 @@ class openssh {
 
     # root account authorized_keys will be symlinked
     # if you want to add symlink on other accounts, use $symlink_users parameter
-    class ssh_keys_from_ldap($symlink_users = false) inherits server {
+    class ssh_keys_from_ldap($symlink_users = []) inherits server {
 
         File ["/etc/ssh/sshd_config"] {
             content => template("openssh/sshd_config","openssh/sshd_config_ldap")
