@@ -67,7 +67,8 @@ class openssh {
 	        }   
 
 	        file { "$pubkeys_directory/$name/authorized_keys":
-		        ensure => "~$name/.ssh/authorized_keys",
+		        # FIXME : fragile approximation for $HOME
+		        ensure => "/home/$name/.ssh/authorized_keys",
 		        mode => 700,
 	        }
         }
