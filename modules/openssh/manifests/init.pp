@@ -58,19 +58,22 @@ class openssh {
             mode => 700,
         }
 
-	if $symlink_users {
-	    file { "$pubkeys_directory/$symlink_users":
-		ensure => directory,
-		owner => $symlink_users,
-		group => $symlink_users,
-		mode => 700,
-	    }
+        define symlink_user() {
+    	    file { "$pubkeys_directory/$name":
+	    	    ensure => directory,
+		        owner => $name,
+		        group => $name,
+		        mode => 700,
+	        }   
 
-	    file { "$pubkeys_directory/$symlink_users/authorized_keys":
-		ensure => "/home/$symlink_users/.ssh/authorized_keys",
-		mode => 700,
-	    }
-	}
+	        file { "$pubkeys_directory/$name/authorized_keys":
+		        ensure => "~$name/.ssh/authorized_keys",
+		        mode => 700,
+	        }
+        }
+
+        symlink_user { $symlink_users: } 
+
 
 	$sshkey2file = "/usr/local/bin/ldap-sshkey2file.py"
         $ldap_pwfile = "/etc/ldap.secret"
