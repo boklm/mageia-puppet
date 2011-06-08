@@ -9,5 +9,6 @@ service git
         user            = nobody
         server_args     = --inetd --verbose --export-all --base-path=<%= git_base_path %>
         log_on_failure  += HOST
+        flags           = IPv6
 }
 
