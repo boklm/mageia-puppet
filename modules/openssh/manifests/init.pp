@@ -25,7 +25,9 @@ class openssh {
         }
     }
 
-    class ssh_keys_from_ldap inherits server {
+    # root account authorized_keys will be symlinked
+    # if you want to add symlink on other accounts, use $symlink_users parameter
+    class ssh_keys_from_ldap($symlink_users = false) inherits server {
 
         File ["/etc/ssh/sshd_config"] {
             content => template("openssh/sshd_config","openssh/sshd_config_ldap")
@@ -55,6 +57,20 @@ class openssh {
             ensure => "/root/.ssh/authorized_keys",
             mode => 700,
         }
+
+	if $symlink_users {
+	    file { "$pubkeys_directory/$symlink_users":
+		ensure => directory,
+		owner => $symlink_users,
+		group => $symlink_users,
+		mode => 700,
+	    }
+
+	    file { "$pubkeys_directory/$symlink_users/authorized_keys":
+		ensure => "/home/$symlink_users/.ssh/authorized_keys",
+		mode => 700,
+	    }
+	}
 
 	$sshkey2file = "/usr/local/bin/ldap-sshkey2file.py"
         $ldap_pwfile = "/etc/ldap.secret"
