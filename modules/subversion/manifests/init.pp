@@ -14,6 +14,19 @@ class subversion {
         package { "subversion-server":
             ensure => installed,
         }
+        
+        $svn_base_path = '/svn/'
+
+        xinetd::service { "svnserve":
+            content => template('subversion/xinetd')
+        }
+
+        file { "$svn_base_path":
+            ensure => directory
+            owner => root,
+            group => root,
+            mode => 755, 
+        }
 
         package { ["perl-SVN-Notify-Config", "perl-SVN-Notify-Mirror"]:
             ensure => installed,

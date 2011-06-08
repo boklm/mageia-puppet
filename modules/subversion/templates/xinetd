@@ -1,0 +1,14 @@
+# default: off
+# description: svnserve is the server part of Subversion.
+service svnserve
+{
+    disable             = no
+    port                = 3690
+    socket_type         = stream
+    protocol            = tcp
+    wait                = no
+    user                = svn
+    server              = /usr/bin/svnserve
+    server_args         = -i -r <%= svn_base_path %>
+}
+

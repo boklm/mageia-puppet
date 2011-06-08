@@ -1,12 +1,5 @@
 class repositories::subversion {
 
-    file { "/svn":
-        ensure => directory,
-        owner => root,
-        group => root,
-        mode => 755, 
-    }
-
     subversion::repository { "/svn/adm/":
         group => "mga-sysadmin",
         commit_mail => ["sysadmin-commits@ml.$domain"],
