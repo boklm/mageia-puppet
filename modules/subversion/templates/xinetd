@@ -10,5 +10,6 @@ service svnserve
     user                = svn
     server              = /usr/bin/svnserve
     server_args         = -i -r <%= svn_base_path %>
+    flags           = IPv6
 }
 
