@@ -22,7 +22,7 @@ class subversion {
         }
 
         file { "$svn_base_path":
-            ensure => directory
+            ensure => directory,
             owner => root,
             group => root,
             mode => 755, 
