@@ -363,6 +363,15 @@ class buildsystem {
             content => template("buildsystem/iurt.cauldron.conf")
         }
 
+        file { "/etc/iurt/build/1.conf":
+            ensure => present,
+            owner => $build_login,
+            group => $build_login,
+            mode => 644,
+            require => File["/etc/iurt/build"],
+            content => template("buildsystem/iurt.1.conf")
+        }
+
         file { "/etc/iurt/build/mandriva2010.1.conf":
             ensure => present,
             owner => $build_login,
