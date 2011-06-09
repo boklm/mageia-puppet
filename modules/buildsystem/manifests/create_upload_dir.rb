@@ -1,7 +1,7 @@
 define "create_upload_dir", :owner, :group do
 
     states = ["todo","done","failure","queue","rejected"]
-    releases = ["cauldron"]
+    releases = ["cauldron", "1"]
     repositories = ["core","nonfree","tainted"]
     medias = ['release','updates_testing','backports_testing','backports','updates']
 
