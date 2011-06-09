@@ -46,4 +46,11 @@ class repositories::subversion {
 #	restricted_to_user => 'schedbot',
     }
 
+    subversion::repository { "/svn/binrepos/updates/1/":
+        group => "mga-packagers-committers",
+        cia_post => true,
+        cia_module => "binrepos_1",
+        cia_ignore_author => '^schedbot$',
+#	restricted_to_user => 'schedbot',
+    }
 }
