@@ -1,6 +1,6 @@
 class mediawiki {
     class base {
-        package { "mediawiki":
+        package { "mediawiki-minimal":
             ensure => installed,
         }
         
