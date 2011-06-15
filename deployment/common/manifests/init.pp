@@ -99,6 +99,11 @@ class common {
         include puppet::client
         include xymon::client
 
+        # provided by lsb-core, but it also pull
+        # various unneeded stuff for our server
+        file { "/srv/":
+            ensure => directory
+        }
 
     }
 
