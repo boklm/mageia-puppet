@@ -128,6 +128,13 @@ class lists {
             topics => "developers",
         }
 
+        sympa::announce_list_email { "updates-announce":
+            subject => "Packages update for stable release",
+            reply_to => "mageia-dev@$domain",
+            sender_email => "buildsystem-daemon@$domain",
+            topics => "developers",
+        }
+
         sympa::announce_list_email { "changelog":
             subject => "Announces for new packages uploaded",
             # FIXME change once we migrate
