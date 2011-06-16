@@ -12,7 +12,15 @@ class mediawiki {
         file { $root:
             ensure => directory,
         }
-       
+      
+        file { "/usr/local/bin/init_wiki.php":
+             ensure => present,
+             owner => root,
+             group => root,
+             mode => 755,
+             source => 'puppet:///modules/mediawiki/init_wiki.php',
+        }
+ 
         $user = "mediawiki"
  
         $pgsql_password = extlookup("mediawiki_pgsql",'x')
