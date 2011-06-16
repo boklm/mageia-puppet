@@ -24,7 +24,7 @@ class mediawiki {
         $user = "mediawiki"
  
         $pgsql_password = extlookup("mediawiki_pgsql",'x')
-        @@postgresql::user { $user:
+        postgresql::remote_user { $user:
             password => $pgsql_password,
         }
 
