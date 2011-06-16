@@ -80,7 +80,7 @@ class mediawiki {
         }
 
         exec { "deploy_db $name":
-            cmd => "php /usr/local/bin/init_wiki.php $wiki_root", 
+            command => "php /usr/local/bin/init_wiki.php $wiki_root", 
             refreshonly => true,
             onlyif => "test -d $wiki_root/config",
         }
