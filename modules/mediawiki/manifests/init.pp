@@ -74,7 +74,7 @@ class mediawiki {
             creates => "$wiki_root/index.php",
         }
 
-        postgresql::database { "$db_name":
+        postgresql::remote_database { "$db_name":
             user => $db_user,
             callback_notify => Exec["deploy_db $name"], 
         }
