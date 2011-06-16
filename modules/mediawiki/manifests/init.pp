@@ -76,6 +76,13 @@ class mediawiki {
 
         postgresql::database { "$db_name":
             user => $db_user,
+            callback_notify => Exec["deploy_db $name"], 
+        }
+
+        exec { "deploy_db $name":
+            cmd => "php /usr/local/bin/init_wiki.php $wiki_root", 
+            refreshonly => true,
+            onlyif => "test -d $wiki_root/config",
         }
 
         file { "$wiki_root/LocalSettings.php":
