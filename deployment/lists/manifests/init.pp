@@ -72,6 +72,13 @@ class lists {
             topics => "qa",
         }
 
+        sympa::public_list {"qa-bugs":
+            subject => "QA bug reports from bugzilla",
+            reply_to => "qa-discuss@ml.$domain",
+            sender_email => "bugzilla-daemon@$domain",
+            topics => "qa",
+        }
+
         sympa::announce_list_email {"packages-commits":
             subject => "Commits on packages repository",
             # FIXME change once we migrate
@@ -105,7 +112,7 @@ class lists {
         }
 
         sympa::announce_list_email { "sysadmin-bugs":
-            subject => "Sysadmin bugs reports from bugzilla",
+            subject => "Sysadmin bug reports from bugzilla",
             # FIXME change once we migrate
             reply_to => "mageia-sysadm@$domain",
             sender_email => "bugzilla-daemon@$domain",
