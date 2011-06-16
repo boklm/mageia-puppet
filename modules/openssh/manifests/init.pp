@@ -31,7 +31,7 @@ class openssh {
                              $config = '') inherits server {
 
         File ["/etc/ssh/sshd_config"] {
-            content => template("openssh/sshd_config","openssh/sshd_config_ldap", $config)
+            content => template("openssh/sshd_config","openssh/sshd_config_ldap")
         }
 
         package { 'python-ldap':
