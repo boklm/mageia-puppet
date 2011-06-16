@@ -72,7 +72,7 @@ class lists {
             topics => "qa",
         }
 
-        sympa::public_list {"qa-bugs":
+        sympa::announce_list_email {"qa-bugs":
             subject => "QA bug reports from bugzilla",
             reply_to => "qa-discuss@ml.$domain",
             sender_email => "bugzilla-daemon@$domain",
