@@ -183,7 +183,7 @@ class postgresql {
         exec { "psql -U postgres -c \"$sql\" ":
             user => root,
             environment => "pass=$password", 
-            unless => "psql -A -t -U postgres -c '\du $name' | grep '$name'",
+            unless => "psql -A -t -U postgres -c '\\du $name' | grep '$name'",
             require => Service['postgresql'],
         }
     }
