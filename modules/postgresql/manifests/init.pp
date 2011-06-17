@@ -137,13 +137,13 @@ class postgresql {
                        $callback_notify = "",
                        $password ) {
 
-        database { $name:
+        postgresql::database { $name:
                    callback_notify => $callback_notify, 
                    description => $description,
                    user => $name,
         }
 
-        user { $name:
+        postgresql::user { $name:
                password => $password
         }
         
