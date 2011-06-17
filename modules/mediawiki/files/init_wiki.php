@@ -20,5 +20,10 @@ $wgDatabase = $dbc->newFromParams($wgDBserver,
 $wgDatabase->initial_setup($wgDBpassword, $wgDBname);
 $wgDatabase->setup_database();
 
-rmdir("$wiki_root/config");
+$dir = "$wiki_root/config";
+foreach (scandir($dir) as $item) {
+        if (!is_dir($item) || is_link($item))
+                unlink($item); 
+}
+rmdir("$dir");
 ?>
