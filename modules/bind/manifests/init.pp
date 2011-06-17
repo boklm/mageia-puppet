@@ -47,14 +47,14 @@ class bind {
         }
     }
 
-    define zone_master(content = false) {
+    define zone_master($content = false) {
         $zone_subdir = "master"
         zone_base { $name : 
             content => $content 
         }
     }
 
-    define zone_reverse(content = false) {
+    define zone_reverse($content = false) {
         $zone_subdir = "reverse"
         zone_base { $name : 
             content => $content 
