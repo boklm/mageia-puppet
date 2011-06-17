@@ -64,6 +64,8 @@ node alamut {
 # 
     include common::default_mageia_server_no_smtp
     include postgresql::server
+    postgresql::tagged { "default": }
+
     timezone::timezone { "Europe/Paris": }
 
     include catdap
