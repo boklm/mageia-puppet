@@ -109,10 +109,12 @@ $wgDefaultSkin = 'monobook';
 ## appropriate copyright notice / icon. GNU Free Documentation
 ## License and Creative Commons licenses are supported so far.
 $wgEnableCreativeCommonsRdf = true;
+# TODO add a proper page
 $wgRightsPage = ""; # Set to the title of a wiki page that describes your license/copyright
-$wgRightsUrl = "http://www.gnu.org/copyleft/fdl.html";
-$wgRightsText = "GNU Free Documentation License 1.3";
-$wgRightsIcon = "${wgScriptPath}/skins/common/images/gnu-fdl.png";
+$wgRightsUrl = "http://creativecommons.org/licenses/by-sa/3.0/";
+$wgRightsText = "Creative Common - Attibution - ShareAlike 3.0";
+# TODO get the icon to host it on our server
+$wgRightsIcon = "http://i.creativecommons.org/l/by-sa/3.0/88x31.png";
 # $wgRightsCode = "gfdl1_3"; # Not yet used
 
 $wgDiff3 = "/usr/bin/diff3";
