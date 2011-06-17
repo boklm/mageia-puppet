@@ -103,33 +103,33 @@ class subversion {
 
 
         syntax_check{"check_perl":
-            regexp_ext => "\.p[lm]$",
-            check_cmd => "perl -c"
+            regexp_ext => '\.p[lm]$',
+            check_cmd => 'perl -c'
         }
 
         syntax_check{"check_puppet":
-            regexp_ext => "\.pp$",
-            check_cmd => "puppet --color=false --confdir=/tmp --vardir=/tmp --parseonly --ignoreimport"
+            regexp_ext => '\.pp$',
+            check_cmd => 'puppet --color=false --confdir=/tmp --vardir=/tmp --parseonly --ignoreimport'
         }
 
         syntax_check{"check_ruby":
-            regexp_ext => "\.rb$",
-            check_cmd => "ruby -c"
+            regexp_ext => '\.rb$',
+            check_cmd => 'ruby -c'
         }
 
         syntax_check{"check_puppet_templates":
-            regexp_ext => "modules/.*/templates/.*$",
-            check_cmd => "erb -P -x -T - | ruby -c"
+            regexp_ext => 'modules/.*/templates/.*$',
+            check_cmd => 'erb -P -x -T - | ruby -c'
         }
 
         syntax_check{"check_po":
-            regexp_ext => "\.po$",
-            check_cmd => "msgfmt -c -"
+            regexp_ext => '\.po$',
+            check_cmd => 'msgfmt -c -'
         }
 
         syntax_check{"check_php":
-            regexp_ext => "\.php$",
-            check_cmd => "php -l"
+            regexp_ext => '\.php$',
+            check_cmd => 'php -l'
         }
 
     }
