@@ -84,7 +84,7 @@ class postgresql {
     define tagged() {
         # TODO add a system of tag so we can declare database on more than one
         # server 
-        Postgresql::User <<| tag == $name |>>
+        Postgresql::Db_user <<| tag == $name |>>
         Postgresql::Database <<| tag == $name |>>
         Postgresql::Db_and_user <<| tag == $name |>>
     }
@@ -127,7 +127,7 @@ class postgresql {
     define remote_user($password, 
                        $tag = "default")
     {
-        @@postgresql::user { $name:
+        @@postgresql::db_user { $name:
             tag => $tag,
             password => $password,
         }
@@ -137,13 +137,13 @@ class postgresql {
                        $callback_notify = "",
                        $password ) {
 
-        database { $name:
+        postgresql::database { $name:
                    callback_notify => $callback_notify, 
                    description => $description,
                    user => $name,
         }
 
-        user { $name:
+        postgresql::db_user { $name:
                password => $password
         }
         
@@ -177,7 +177,7 @@ class postgresql {
     
     # TODO convert to a regular type, so we can later change password without erasing the 
     # current user
-    define user($password) {
+    define db_user($password) {
         $sql = "CREATE ROLE $name ENCRYPTED PASSWORD '\$pass' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;"
 
         exec { "psql -U postgres -c \"$sql\" ":
