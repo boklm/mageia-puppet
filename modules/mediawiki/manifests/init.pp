@@ -29,7 +29,6 @@ class mediawiki {
         }
 
         # TODO create the ldap user   
-        $ldap_password = extlookup('mediawiki_ldap','x')
 
         # TODO write the web configuration
         apache::vhost_base { "wiki.$domain":
@@ -84,6 +83,7 @@ class mediawiki {
             refreshonly => true,
             onlyif => "test -d $wiki_root/config",
         }
+        $ldap_password = extlookup('mediawiki_ldap','x')
 
         file { "$wiki_root/LocalSettings.php":
             ensure => present,

@@ -123,4 +123,27 @@ $wgDiff3 = "/usr/bin/diff3";
 # sure that cached pages are cleared.
 $wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) );
 
+require_once 'extensions/LdapAuthentication.php';
+$wgAuth = new LdapAuthenticationPlugin();
+ 
+$wgLDAPDomainNames = array( 'ldap');
 
+#TODO make it workable with more than one server
+$wgLDAPServerNames = array( 'ldap' => 'ldap.<%= domain %>' );
+ 
+$wgLDAPSearchStrings = array( 'ldap' => 'uid');
+ 
+$wgLDAPEncryptionType = array( 'ldap' => 'tls');
+
+$wgLDAPBaseDNs = array( 'ldap' => 'ou=People,<%= dc_suffix %>');
+
+$wgLDAPProxyAgent =  array( 'ldap' => 'cn=mediawiki-alamut,ou=System Accounts,<%= dc_suffix %>');
+ 
+$wgLDAPProxyAgentPassword = array( 'ldap' => '<%= ldap_password %>' );
+
+$wgLDAPUseLDAPGroups = array( "ldap" => true );
+$wgLDAPGroupNameAttribute = array( "ldap" => "cn" );
+
+$wgLDAPLowerCaseUsername = array( "ldap" => true );
+
+$wgMinimalPasswordLength = 1;
