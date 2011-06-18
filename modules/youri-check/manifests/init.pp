@@ -17,14 +17,7 @@ class youri-check {
         $pgsql_db = 'youri_check'
         $pgsql_user = 'youri'
         $pgsql_password = extlookup('youri_pgsql','x')
-        postgresql::remote_user { $pgsql_user:
-            password => $pgsql_password,
-        }
-        postgresql::remote_database { $pgsql_db:
-            description => "Youri Check results",
-            user => $pgsql_user,
-        }
-
+        
         file { "$config":
             ensure => present,
             owner => $user,
@@ -52,6 +45,15 @@ class youri-check {
             ensure => directory,
             owner => youri,
             mode => 755
+        }
+
+        postgresql::remote_user { $pgsql_user:
+            password => $pgsql_password,
+        }
+
+        postgresql::remote_database { $pgsql_db:
+            description => "Youri Check results",
+            user => $pgsql_user,
         }
 
         package { ['youri-check', 'perl-DBD-Pg'] :
