@@ -5,7 +5,7 @@ class mediawiki {
 
         include apache::mod_php
 
-        package { "mediawiki-minimal":
+        package { ['mediawiki-minimal','mediawiki-ldapauthentication'] :
             ensure => installed,
         }
 
