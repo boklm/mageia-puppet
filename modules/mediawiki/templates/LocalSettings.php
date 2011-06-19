@@ -125,7 +125,16 @@ $wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) )
 
 require_once 'extensions/LdapAuthentication/LdapAuthentication.php';
 $wgAuth = new LdapAuthenticationPlugin();
- 
+
+## uncomment to debug
+# $wgLDAPDebug = 10;
+# $wgDebugLogGroups["ldap"] = "/tmp/wiki_ldap.log";
+#
+# $wgDebugLogFile = "/tmp/wiki.log";
+#
+
+$wgLDAPUseLocal = false;
+
 $wgLDAPDomainNames = array( 'ldap');
 
 #TODO make it workable with more than one server
