@@ -123,7 +123,7 @@ $wgDiff3 = "/usr/bin/diff3";
 # sure that cached pages are cleared.
 $wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) );
 
-require_once 'extensions/LdapAuthentication.php';
+require_once 'extensions/LdapAuthentication/LdapAuthentication.php';
 $wgAuth = new LdapAuthenticationPlugin();
  
 $wgLDAPDomainNames = array( 'ldap');
