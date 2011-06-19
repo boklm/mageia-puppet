@@ -140,8 +140,8 @@ $wgLDAPDomainNames = array( 'ldap');
 #TODO make it workable with more than one server
 $wgLDAPServerNames = array( 'ldap' => 'ldap.<%= domain %>' );
  
-$wgLDAPSearchStrings = array( 'ldap' => 'uid');
- 
+$wgLDAPSearchStrings = array( 'ldap' => 'uid=USER-NAME,ou=People,<%= dc_suffix %>');
+
 $wgLDAPEncryptionType = array( 'ldap' => 'tls');
 
 $wgLDAPBaseDNs = array( 'ldap' => 'ou=People,<%= dc_suffix %>');
