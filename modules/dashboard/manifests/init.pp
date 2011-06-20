@@ -49,5 +49,11 @@ class dashboard {
 	apache::vhost_base { "dashboard.$domain":
 	    location => $dashboard_wwwdir,
 	}
+
+	cron { "update dashboard":
+	    command => "$dashboard_bindir/make_report",
+	    user => $dashboard_login,
+	    hour => "*/2",
+	}
     }
 }
