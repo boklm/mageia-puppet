@@ -87,7 +87,10 @@ class mediawiki {
 
         file { "$wiki_root/LocalSettings.php":
             ensure => present,
-            content => template("mediawiki/LocalSettings.php")
+            content => template("mediawiki/LocalSettings.php"),
+            # if LocalSettings is created first, the wikicreate script
+            # do not create a confg directory, and so it doesn't trigger deploy_db exec
+            require => Exec["wikicreate $name"],
         }
     }
 }
