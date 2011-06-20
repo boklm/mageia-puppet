@@ -17,5 +17,9 @@ class dashboard {
 	subversion::snapshot { $dashboard_dir:
 	    source => "svn://svn.$domain/soft/dashboard/",
 	}
+
+	package { "php-cli":
+	    ensure => 'installed',
+	}
     }
 }
