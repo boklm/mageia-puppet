@@ -24,7 +24,7 @@ class dashboard {
 	    ensure => 'installed',
 	}
 
-	file { $dashboard_www:
+	file { $dashboard_wwwdir:
 	    ensure => directory,
 	    owner => $dashboard_login,
 	    group => $dashboard_login,
