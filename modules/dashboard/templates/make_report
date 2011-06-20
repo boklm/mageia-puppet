@@ -1,0 +1,8 @@
+#!/bin/sh
+
+dashboard_dir='<%= dashboard_dir %>'
+dashboard_wwwdir='<%= dashboard_wwwdir %>'
+
+cd "$dashboard_dir"
+/usr/bin/php ./make_report.php > "$dashboard_wwwdir/index.html"
+
