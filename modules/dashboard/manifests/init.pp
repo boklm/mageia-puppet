@@ -11,7 +11,6 @@ class dashboard {
             comment => "dashboard system user",
             managehome => true,
             home => $dashboard_home_dir,
-            gid => $dashboard_login,
             shell => "/bin/bash",
         }
 
