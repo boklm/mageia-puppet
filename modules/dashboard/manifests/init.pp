@@ -54,6 +54,7 @@ class dashboard {
 	    command => "$dashboard_bindir/make_report",
 	    user => $dashboard_login,
 	    hour => "*/2",
+	    minute => '15',
 	}
     }
 }
