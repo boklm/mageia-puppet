@@ -3,4 +3,5 @@ ryu.zarb.org
 cthulhu.zarb.org
 # mageia
 *.<%= domain %>
-
+# for damsweb mail server
+*.mail-out.ovh.net
