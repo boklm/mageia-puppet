@@ -103,7 +103,7 @@ $wgSecretKey = "<%= secret_key %>";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, ie 'vector', 'monobook':
-$wgDefaultSkin = 'monobook';
+$wgDefaultSkin = 'modern';
 
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
