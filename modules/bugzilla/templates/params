@@ -103,5 +103,5 @@
            'usevotes' => 0,
            'utf8' => 1,
            'webdotbase' => 'http://www.research.att.com/~north/cgi-bin/webdot.cgi/%urlbase%',
-           'whinedays' => 7
+           'whinedays' => 0
          );
