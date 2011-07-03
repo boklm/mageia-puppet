@@ -6,14 +6,9 @@ class puppet {
         }
     
         service { puppet:
-            ensure => running,
+            enable => false,
             hasstatus => true,
             subscribe => [ Package[puppet]]
-        }
-
-        exec { "service puppet reload":
-            refreshonly => true,
-            subscribe => [ File["puppet.conf"] ],
         }
 
         file { "puppet.conf":
@@ -24,6 +19,13 @@ class puppet {
             mode => 644,
             content => template("puppet/puppet.conf"),
             require => Package[puppet]
+        }
+
+        cron { "puppet":
+            command => "/usr/sbin/puppetd --onetime --no-daemonize --logdest syslog > /dev/null 2>&1",
+            user => "root",
+            minute => fqdn_rand( 60 ),
+            ensure => present,
         }
     }
 
