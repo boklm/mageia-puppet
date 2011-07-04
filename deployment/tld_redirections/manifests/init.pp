@@ -7,4 +7,7 @@ class tld_redirections {
             url => "http://www.mageia.org/?fromtld=$name"
         }
     }
+
+    # domaine owned by Florin Catalin Russen
+    redirection { "ro": }
 }
