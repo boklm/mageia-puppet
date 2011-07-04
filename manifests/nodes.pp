@@ -105,6 +105,7 @@ node alamut {
         use_ssl => true,
     }
 
+    include tld_redirections
 
     include libvirtd::kvm
     include lists
