@@ -10,4 +10,7 @@ class tld_redirections {
 
     # domaine owned by Florin Catalin Russen
     redirection { "ro": }
+
+    # domain owned by the association
+    redirection { "fr": }
 }
