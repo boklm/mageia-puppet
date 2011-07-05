@@ -74,6 +74,14 @@ class subversion {
             content => template('subversion/no_empty_message') 
         }
 
+        file { "$local_dir/pre-commit.d/single_word_commit":
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 755,
+            content => template('subversion/single_word_commit') 
+        }
+
         file { "$local_dir/pre-revprop-change":
             ensure => present,
             owner => root,

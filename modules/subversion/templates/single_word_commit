@@ -1,0 +1,12 @@
+#!/bin/sh
+
+REP="$1"
+TXN="$2"
+
+LOG=$(svnlook log -t "$TXN" "$REP")
+
+if ! echo "$LOG" | grep -qvP '^\s*\b\S+\b\s*$'; then
+    echo "one word commit message not allowed" >&2
+    exit 1
+fi
+
