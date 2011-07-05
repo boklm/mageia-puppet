@@ -1,5 +1,20 @@
 #!/bin/sh
-for script in $0.d/*; do
+
+REP="$1"
+TXN="$2"
+
+author=$(svnlook author -t "$TXN" "$REP")
+
+# This is here only the time we use hook_sendmail.pl
+# We will be able to remove it when updating to a better send mail hook
+
+if [ "$author" = 'schedbot' ]; then
+  LIST= `ls $0.d/* | grep -v hook_sendmail.pl `
+else
+  LIST=`ls $0.d/*`
+fi
+ 
+for script in $LIST; do
     if [ ! -x "$script" ]; then
         continue
     fi
