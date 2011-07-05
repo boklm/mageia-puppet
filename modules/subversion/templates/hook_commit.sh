@@ -9,7 +9,7 @@ author=$(svnlook author -t "$TXN" "$REP")
 # We will be able to remove it when updating to a better send mail hook
 
 if [ "$author" = 'schedbot' ]; then
-  LIST= `ls $0.d/* | grep -v hook_sendmail.pl `
+  LIST= `ls $0.d/* | grep -v send_mail`
 else
   LIST=`ls $0.d/*`
 fi
