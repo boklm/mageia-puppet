@@ -26,6 +26,11 @@ page visible Visible Services
 0.0.0.0	    check.<%= domain %> # http://check.<%= domain %>
 0.0.0.0	    pkgsubmit.<%= domain %> # http://pkgsubmit.<%= domain %>
 0.0.0.0	    bcd.<%= domain %> # http://bcd.<%= domain %>
+0.0.0.0	    hugs.<%= domain %> # http://hugs.<%= domain %>
+0.0.0.0	    dashboard.<%= domain %> # http://dashboard.<%= domain %>
+0.0.0.0	    meetbot.<%= domain %> # http://meetbot.<%= domain %>
+0.0.0.0	    xymon.<%= domain %> # http://xymon.<%= domain %>
+
 
 page servers Servers
 group-compress Marseille
