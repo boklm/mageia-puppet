@@ -6,7 +6,7 @@ class bind {
 
         service { named:
             ensure => running,
-            path => "/etc/init.d/named",
+            restart => "service named restart", 
             subscribe => [ Package["bind"]]
         }
 
@@ -16,6 +16,11 @@ class bind {
             group => root,
             mode => 644,
             require => Package[bind]
+        }
+        
+        exec { "named_reload":
+            command => "service named reload":
+            refreshonly => true,
         } 
     }
 
@@ -42,7 +47,7 @@ class bind {
             mode => 644,
             content => $zone_content,
             require => Package[bind],
-            notify => Service[named]
+            notify => Exec[named_reload]
         }
     }
 
