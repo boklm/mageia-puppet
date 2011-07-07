@@ -5,12 +5,6 @@ class puppet {
             ensure => installed
         }
     
-        service { puppet:
-            enable => false,
-            hasstatus => true,
-            subscribe => [ Package[puppet]]
-        }
-
         file { "puppet.conf":
             path => "/etc/puppet/puppet.conf",
             ensure => present,
