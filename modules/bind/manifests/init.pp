@@ -19,7 +19,7 @@ class bind {
         }
         
         exec { "named_reload":
-            command => "service named reload":
+            command => "service named reload",
             refreshonly => true,
         } 
     }
