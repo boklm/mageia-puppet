@@ -46,3 +46,6 @@ group-compress Gandi
 
 group-compress Dedibox
 88.190.12.224	rabbit.<%= domain %>	# ssh
+
+group-compress VM Alamut
+192.168.122.131 friteuse.<%= domain %> # testip ssh http https
