@@ -146,6 +146,47 @@ class buildsystem {
             content => template("buildsystem/upload.conf")
         }
     }
+
+    class maintdb {
+        $maintdb_login = "maintdb"
+	$maintdb_homedir = "/var/lib/maintdb"
+	$maintdb_dbdir = "$maintdb_homedir/$db"
+	$maintdb_binpath = "/usr/local/sbin/maintdb"
+	$maintdb_wrappath = "/usr/local/bin/wrapper.maintdb"
+
+	user {"$maintdb_login":
+            ensure => present,
+            comment => "Maintainers database",
+	    managehome => true,
+	    gid => $maintdb_login,
+	    shell => "/bin/bash",
+	    home => "$maintdb_homedir",
+	}
+
+	file { "$maintdb_dbdir":
+	   ensure => directory,
+	   owner => "$maintdb_login",
+	   group => "$maintdb_login",
+	   mode => 700,
+	   require => User["$maintdb_login"],
+	}
+
+	file { "$maintdb_binpath":
+	   ensure => present,
+	   owner => root,
+	   group => root,
+	   mode => 755,
+	   content => template("buildsystem/maintdb")
+	}
+
+	file { "$maintdb_wrappath":
+	   ensure => present,
+	   owner => root,
+	   group => root,
+	   mode => 755,
+	   content => template("buildsystem/wrapper.maintdb")
+	}
+    }
     
     class mgarepo {
         package { 'mgarepo':
