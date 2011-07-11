@@ -1,0 +1,112 @@
+#!/bin/sh
+
+MAINTDBDIR=/tmp/maintdb
+
+function checkname()
+{
+    if [ -z "$1" ] ||
+	echo "$1" | grep -q '[/*{}%]' ||
+	echo "$1" | fgrep -q '..'
+    then
+	echo "Error: invalid package name." >&2
+	exit 1
+    fi
+}
+
+function maintnew()
+{
+    if [ a"$user" != "aroot" ]
+    then
+	echo "Error: new is only allowed to root." >&2
+	exit 1
+    fi
+    checkname "$1"
+    maintfile="$MAINTDBDIR/$1"
+    if [ -f "$maintfile" ]
+    then
+	exit 0
+    fi
+    echo "$2" > "$maintfile"
+}
+
+function maintset()
+{
+    checkname "$1"
+    maintfile="$MAINTDBDIR/$1"
+    newmaint="$2"
+    if ! [ -f "$maintfile" ]
+    then
+	echo "Error: package $1 does not exist in maintdb." >&2
+	exit 1
+    fi
+    curmaint=$(cat "$maintfile")
+    if [ a"$newmaint" = "anobody" ]
+    then
+	if [ a"$curmaint" = a"$user" ]
+	then
+	    echo "$newmaint" > "$maintfile"
+	    exit 0
+	else
+	    echo "Error: cannot set maintainer for $1." >&2
+	    exit 1
+	fi
+    elif [ a"$newmaint" = a"$user" ]
+    then
+	if [ a"$curmaint" = "anobody" ]
+	then
+	    echo "$newmaint" > "$maintfile"
+	    exit 0
+	else
+	    echo "Error: cannot set maintainer for $1." >&2
+	    exit 1
+	fi
+    else
+	echo "Error: cannot set someone else as maintainer." >&2
+	exit 1
+    fi
+}
+
+function maintgetall()
+{
+    cd "$MAINTDBDIR"
+    for file in *
+    do
+	echo "$file:$(cat $file)"
+    done
+    exit 0
+}
+
+function maintget()
+{
+    if [ -z "$1" ]
+    then
+	maintgetall
+    fi
+    checkname "$1"
+    maintfile="$MAINTDBDIR/$1"
+    if [ -f "$maintfile" ]
+    then
+	cat "$maintfile"
+    else
+	echo "Error: package $1 does not exist in maintdb." >&2
+	exit 1
+    fi
+}
+
+user="$1"
+action="$2"
+
+if [ a"$action" = "anew" ]
+then
+    maintnew "$3" "$4"
+elif [ a"$action" = "aset" ]
+then
+    maintset "$3" "$4"
+elif [ a"$action" = "aget" ]
+then
+    maintget "$3"
+else
+    echo "Error: unknow command." >&2
+    exit 2
+fi
+
