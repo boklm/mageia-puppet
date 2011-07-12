@@ -191,7 +191,7 @@ class buildsystem {
 	    content => template("buildsystem/sudoers.maintdb")
 	}
 
-	cron { "check missing deps":
+	cron { "update maintdb export":
 	    command => "sudo -u $maintdb_login $maintdb_binpath root get > /var/www/bs/data/maintdb.txt",
 	    minute => "10,40",
 	}
