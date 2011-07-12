@@ -150,7 +150,7 @@ class buildsystem {
     class maintdb {
         $maintdb_login = "maintdb"
 	$maintdb_homedir = "/var/lib/maintdb"
-	$maintdb_dbdir = "$maintdb_homedir/$db"
+	$maintdb_dbdir = "$maintdb_homedir/db"
 	$maintdb_binpath = "/usr/local/sbin/maintdb"
 	$maintdb_wrappath = "/usr/local/bin/wrapper.maintdb"
 
