@@ -154,9 +154,6 @@ class buildsystem {
 	$maintdb_binpath = "/usr/local/sbin/maintdb"
 	$maintdb_wrappath = "/usr/local/bin/wrapper.maintdb"
 
-	group {"$maintdb_login":
-	    ensure => present,
-	}
 	user {"$maintdb_login":
             ensure => present,
             comment => "Maintainers database",
@@ -164,7 +161,6 @@ class buildsystem {
 	    gid => $maintdb_login,
 	    shell => "/bin/bash",
 	    home => "$maintdb_homedir",
-	    Require => Group["$maintdb_login"],
 	}
 
 	file { "$maintdb_dbdir":
