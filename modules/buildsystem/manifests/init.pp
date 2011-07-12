@@ -158,7 +158,6 @@ class buildsystem {
             ensure => present,
             comment => "Maintainers database",
 	    managehome => true,
-	    gid => $maintdb_login,
 	    shell => "/bin/bash",
 	    home => "$maintdb_homedir",
 	}
