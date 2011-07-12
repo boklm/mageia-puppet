@@ -1,1 +1,2 @@
 %<%= packagers_group %>      ALL =(<%= maintdb_login %>) NOPASSWD: <%= maintdb_binpath %>
+<%= sched_login %>	ALL =(<%= maintdb_login %>) NOPASSWD: <%= maintdb_binpath %>
