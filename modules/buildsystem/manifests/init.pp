@@ -148,6 +148,7 @@ class buildsystem {
     }
 
     class maintdb {
+    	include sudo
         $maintdb_login = "maintdb"
 	$maintdb_homedir = "/var/lib/maintdb"
 	$maintdb_dbdir = "$maintdb_homedir/db"
@@ -185,6 +186,11 @@ class buildsystem {
 	   mode => 755,
 	   content => template("buildsystem/wrapper.maintdb")
 	}
+
+	sudo::sudoers_config { "maintdb":
+	    content => template("buildsystem/sudoers.maintdb")
+	}
+
     }
     
     class mgarepo {
