@@ -65,6 +65,10 @@ our $use_pkgsubmit = "0";
 our $regexp_pkgsubmit = "^/usr/share/repsys/create-srpm |^/usr/local/bin/submit_package ";
 our $bin_pkgsubmit = "/usr/local/bin/submit_package";
 
+our $use_maintdb = "0";
+our $regexp_maintdb = "^/usr/local/bin/wrapper.maintdb ";
+our $bin_maintdb = "/usr/local/bin/wrapper.maintdb";
+
 # Open configuration file
 if (-e "/etc/membersh-conf.pl") {
     do "/etc/membersh-conf.pl" or die "System misconfiguration, contact administrators. Exiting";
@@ -92,6 +96,8 @@ if (-e "/etc/membersh-conf.pl") {
 # $regexp_dir_rsync = "^(/upload)|(/var/ftp)";
 #
 # $use_pkgsubmit = "1";
+#
+# $use_maintdb = "1";
 
 
 if ($#ARGV == 1 and $ARGV[0] eq "-c") {
@@ -145,6 +151,10 @@ if ($#ARGV == 1 and $ARGV[0] eq "-c") {
 	my ($createsrpm, @rest) = split(' ', $ARGV[1]);
 
 	exec($bin_pkgsubmit, @rest) or die("Failed to exec $bin_pkgsubmit: $!");
+    } elsif ($use_maintdb and
+	$ARGV[1] =~ m:$regexp_maintdb:) {
+	my ($maintdb, @rest) = split(' ', $ARGV[1]);
+	exec($bin_maintdb, @rest) or die("Failed to exec $bin_maintdb: $!");
     }
 }
 

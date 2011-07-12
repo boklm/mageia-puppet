@@ -60,6 +60,10 @@ class restrictshell {
     class allow_sftp {
         allow{ "sftp": }
     }
+
+    class allow_maintdb {
+        allow{ "maintdb": }
+    }
     # technically, we could add cvs too
     # but I doubt we will use it one day
 
