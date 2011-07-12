@@ -24,6 +24,7 @@ node valstar {
     include buildsystem::mgacreatehome
     include buildsystem::sync20101
     include buildsystem::release
+    include buildsystem::maintdb
     include softwarekey::base
 
     include access_classes::committers
