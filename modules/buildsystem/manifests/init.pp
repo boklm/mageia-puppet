@@ -192,7 +192,8 @@ class buildsystem {
 	}
 
 	cron { "update maintdb export":
-	    command => "sudo -u $maintdb_login $maintdb_binpath root get > /var/www/bs/data/maintdb.txt",
+	    user => $maintdb_login,
+	    command => "$maintdb_binpath root get > /var/www/bs/data/maintdb.txt",
 	    minute => "*/30",
 	}
 
