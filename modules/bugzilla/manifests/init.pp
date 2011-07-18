@@ -2,7 +2,7 @@ class bugzilla {
 
    $bugzilla_location = "/usr/share/bugzilla/template/en/custom"
 
-    package { 'bugzilla':
+    package { ['bugzilla','graphviz']:
         ensure => installed;
     }
 
