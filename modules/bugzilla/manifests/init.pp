@@ -49,8 +49,7 @@ class bugzilla {
     apache::vhost_redirect_ssl { "$bugs_vhost": }
 
     apache::vhost_base { "$bugs_vhost":
-        aliases => { "/bugzilla/data" => "$lib_dir/bugzilla",
-                     "/bugzilla/" => $vhost_root },  
+        aliases => { "/bugzilla/" => $vhost_root },  
         use_ssl => true,
         location => $vhost_root,
         vhost => $bugs_vhost,
