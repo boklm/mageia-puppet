@@ -114,6 +114,9 @@ node alamut {
     include dns::server 
     include repositories::svn_mirror
     include viewvc
+
+    include repositories::git_mirror
+
     include xymon::server
     apache::vhost_simple { "xymon.$domain":
 	location => "/var/lib/xymon/www",
