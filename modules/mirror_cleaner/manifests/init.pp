@@ -12,7 +12,7 @@ class mirror_cleaner {
     define orphans($base) {
         include mirror_cleaner::base
 
-        $orphan_dir = "$base/$name"
+        $orphan_dir = "/distrib/archive/orphans/"
 
         file { $orphan_dir:
             ensure => directory
