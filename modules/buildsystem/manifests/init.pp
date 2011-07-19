@@ -154,6 +154,7 @@ class buildsystem {
 	$maintdb_dbdir = "$maintdb_homedir/db"
 	$maintdb_binpath = "/usr/local/sbin/maintdb"
 	$maintdb_wrappath = "/usr/local/bin/wrapper.maintdb"
+        $maintdb_dump = "/var/www/bs/data/maintdb.txt"
 
 	user {"$maintdb_login":
             ensure => present,
@@ -191,9 +192,15 @@ class buildsystem {
 	    content => template("buildsystem/sudoers.maintdb")
 	}
 
+        file { "$maintdb_dump":
+           ensure => present,
+	   owner => $maintdb_login,
+	   mode => 644,
+        }
+
 	cron { "update maintdb export":
 	    user => $maintdb_login,
-	    command => "$maintdb_binpath root get > /var/www/bs/data/maintdb.txt",
+	    command => "$maintdb_binpath root get > $maintdb_dump",
 	    minute => "*/30",
 	}
 
