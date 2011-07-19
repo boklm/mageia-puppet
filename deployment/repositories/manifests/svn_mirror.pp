@@ -1,4 +1,4 @@
-class repositories::mirror {
+class repositories::svn_mirror {
     file { "/svn":
         ensure => directory,
     }

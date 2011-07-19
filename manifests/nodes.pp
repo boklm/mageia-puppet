@@ -112,7 +112,7 @@ node alamut {
     include libvirtd::kvm
     include lists
     include dns::server 
-    include repositories::mirror
+    include repositories::svn_mirror
     include viewvc
     include xymon::server
     apache::vhost_simple { "xymon.$domain":
