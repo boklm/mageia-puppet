@@ -116,6 +116,7 @@ node alamut {
     include viewvc
 
     include repositories::git_mirror
+    include gitweb
 
     include xymon::server
     apache::vhost_simple { "xymon.$domain":
