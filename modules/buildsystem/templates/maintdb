@@ -71,7 +71,7 @@ function maintgetall()
     cd "$MAINTDBDIR"
     for file in *
     do
-	echo "$file:$(cat $file)"
+	echo "$file $(cat $file)"
     done
     exit 0
 }
