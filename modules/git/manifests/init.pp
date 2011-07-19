@@ -99,11 +99,17 @@ class git {
     }
 
     define mirror($source,
+                  $description,
                   $refresh = '*/5') {
 
         exec { "/usr/bin/git clone $source $name":
             alias => "git mirror $name",
             creates => $name,
+        }
+ 
+        file { "$name/description":
+            ensure => present,
+            content => $description,
         }
 
         cron { "update $name":
