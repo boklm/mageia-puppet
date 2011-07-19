@@ -98,6 +98,20 @@ class git {
         }
     }
 
+    define mirror($source,
+                  $refresh = '*/5') {
+
+        exec { "/usr/bin/git clone $source $name":
+            alias => "git mirror $name",
+            creates => $name,
+        }
+
+        cron { "update $name":
+            command => "/usr/bin/git pull $name" ,
+            minute => $refresh
+        }
+    }
+
     define svn_repository($source,
                           $std_layout = true,
                           $refresh = '*/5') {
