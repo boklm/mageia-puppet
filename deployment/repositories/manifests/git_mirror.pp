@@ -4,6 +4,7 @@ class repositories::git_mirror {
     }
 
     git::mirror { "/git/forum/":
+        description => "Reference code for forum.$domain",
         source => "git://git.$domain/forum/"
     }
 }
