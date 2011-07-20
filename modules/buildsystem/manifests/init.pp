@@ -293,6 +293,13 @@ class buildsystem {
             content => template("buildsystem/sudoers.youri")
         }
 
+        # directory that hold configuration auto extracted after upload
+        # of the rpmlint policy
+        file { "/etc/rpmlint/extracted.d/":
+            ensure => directory,
+            owner => $sched_login,
+        }
+
         file { "/etc/youri":
             ensure => "directory",
         }
