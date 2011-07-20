@@ -12,7 +12,7 @@
 <%- commit_mail.each do |mail|  -%>
     - <%= mail %>
 <%- end -%>
-<%- if i18n_mail -%>
+<%- if i18n_mail != '' -%>
 '.*\.pot$':
   PATH: "/usr/bin:/usr/local/bin"
   handler: Alternative
