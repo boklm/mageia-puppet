@@ -46,6 +46,10 @@ class repositories::subversion {
 #	restricted_to_user => 'schedbot',
     }
 
+    file { "/svn/binrepos/updates/":
+        ensure => directory
+    }
+
     subversion::repository { "/svn/binrepos/updates/1/":
         group => "mga-packagers-committers",
         cia_post => true,
