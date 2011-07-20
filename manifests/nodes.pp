@@ -115,7 +115,8 @@ node alamut {
     include repositories::svn_mirror
     include viewvc
 
-    include repositories::git_mirror
+    # disabled until fixed
+    #include repositories::git_mirror
     include gitweb
 
     include xymon::server
