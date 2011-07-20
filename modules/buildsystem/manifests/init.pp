@@ -51,6 +51,10 @@ class buildsystem {
         }
 
         $location = "/var/www/bs"
+        file { $location:
+            ensure => directory,
+        }
+
         apache::vhost_base { "pkgsubmit.$domain":
             aliases => { "/uploads" => "$sched_home_dir/uploads" },
             location => $location,
