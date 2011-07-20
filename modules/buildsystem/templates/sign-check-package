@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ $# != 3 ] ; then 
+    echo "missing arguments"
+    echo "usage : $0 file key_number key_directory"
+    exit 1
+fi
+ 
 file="$1"
 key="$2"
 keydir="$3"
