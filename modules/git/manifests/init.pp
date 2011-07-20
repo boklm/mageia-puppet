@@ -102,7 +102,7 @@ class git {
                   $description,
                   $refresh = '*/5') {
 
-        exec { "/usr/bin/git clone $source $name":
+        exec { "/usr/bin/git clone --bare $source $name":
             alias => "git mirror $name",
             creates => $name,
         }
