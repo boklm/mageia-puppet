@@ -114,7 +114,7 @@ class git {
         }
 
         cron { "update $name":
-            command => "cd $name ; /usr/bin/git pull -q" ,
+            command => "cd $name ; /usr/bin/git fetch -q",
             minute => $refresh
         }
     }
