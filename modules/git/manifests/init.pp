@@ -105,6 +105,7 @@ class git {
         exec { "/usr/bin/git clone --bare $source $name":
             alias => "git mirror $name",
             creates => $name,
+            before => File["$name/description"],
         }
  
         file { "$name/description":
