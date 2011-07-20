@@ -293,6 +293,15 @@ class buildsystem {
             content => template("buildsystem/sudoers.youri")
         }
 
+        package { "rpmlint": }
+
+        file { "/etc/rpmlint/config":
+            ensure => present,
+            mode => 644,
+            require => Package['rpmlint'],
+            content => template("buildsystem/rpmlint.conf")
+        }
+
         # directory that hold configuration auto extracted after upload
         # of the rpmlint policy
         file { "/etc/rpmlint/extracted.d/":
