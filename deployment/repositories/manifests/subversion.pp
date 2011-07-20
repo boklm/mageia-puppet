@@ -14,7 +14,7 @@ class repositories::subversion {
         syntax_check => ['check_po'],
 	    cia_post => true,
 	    cia_module => "soft",
-        i18n_mail => ["i18n@$domain"],
+        i18n_mail => ["mageia-i18n@$domain"],
     }
 
     subversion::repository { "/svn/web/":
