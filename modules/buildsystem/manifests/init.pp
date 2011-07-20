@@ -337,7 +337,7 @@ class buildsystem {
 	file { '/usr/local/bin/submit_package':
 	    ensure => present,
 	    mode => 755,
-	    content => template('buildsystem/submit_package')
+	    content => template('buildsystem/submit_package.pl')
         }
 
 	# FIXME use the correct perl directory
