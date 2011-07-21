@@ -140,6 +140,9 @@ class subversion {
             check_cmd => 'php -l'
         }
 
+	# needed for check_php
+        package { "php-cli": }
+
     }
 
    
