@@ -41,7 +41,7 @@ group-compress Marseille
 #212.85.158.150	fiona.<%= domain %>	# testip ssh
 
 group-compress Gandi
-95.142.164.207	krampouezh.<%= domain %>	# ssh dns ldap ldapssl
+95.142.164.207	krampouezh.<%= domain %>	# ssh dns ldap ldapssl smtp
 217.70.188.116	champagne.<%= domain %>	# ssh
 
 group-compress Dedibox
