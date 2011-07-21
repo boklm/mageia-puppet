@@ -7,9 +7,7 @@ node valstar {
 #
 # TODO:
 # - GIT server
-# - setup youri
 # - setup maintainers database (with web interface)
-# - mirroring (Nanar)
 #
     include common::default_mageia_server
     timezone::timezone { "Europe/Paris": }
@@ -56,10 +54,7 @@ node alamut {
 #
 # TODO:
 # - Review board
-# - nagios
 # - api
-# - mail server
-# - mailing list server
 # - wiki
 # - pastebin
 # - LDAP slave
@@ -163,9 +158,6 @@ node fiona {
 node krampouezh {
 # Location: gandi VM
 #
-# TODO:
-# - secondary MX
-# - LDAP slave (for external traffic maybe)
 #
     #include common::default_mageia_server
     include common::default_mageia_server_no_smtp
@@ -189,8 +181,6 @@ node champagne {
 #
 # TODO:
 # - setup mageia.org web site
-# - setup blog
-# - setup planet
 #
     include common::default_mageia_server
     timezone::timezone { "Europe/Paris": }
@@ -208,8 +198,6 @@ node champagne {
 node friteuse {
 # Location: VM hosted by nfrance (toulouse)
 # 
-# TODO:
-# - setup forum
 
     include common::default_mageia_server
     timezone::timezone { "Europe/Paris": }
