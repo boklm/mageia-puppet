@@ -88,7 +88,6 @@ class common {
     }
 
     class default_mageia_server_no_smtp {
-        include timezone
 
         include shadow
         include openssh::server

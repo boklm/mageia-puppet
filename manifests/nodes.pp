@@ -156,6 +156,7 @@ node fiona {
 # - install the server in datacenter
 # - install a backup system
     include common::default_mageia_server
+    timezone::timezone { "Europe/Paris": }
 } 
 
 # gandi-vm
