@@ -46,6 +46,11 @@ node valstar {
     subversion::snapshot { "/etc/puppet":
         source => "svn://svn.mageia.org/svn/adm/puppet/"
     }
+
+    mirror_cleaner::orphans {  "cauldron":
+        base => "/distrib/bootstrap/distrib/",
+    }
+
 }
 
 # web apps
