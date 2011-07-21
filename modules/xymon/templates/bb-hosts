@@ -48,4 +48,4 @@ group-compress Dedibox
 88.190.12.224	rabbit.<%= domain %>	# ssh
 
 group-compress VM Alamut
-192.168.122.131 friteuse.<%= domain %> # testip ssh http https
+192.168.122.131 friteuse.<%= domain %> # testip ssh http://forums.<%= domain %>=192.168.122.131/  https://forums.<%= domain %>=192.168.122.131/
