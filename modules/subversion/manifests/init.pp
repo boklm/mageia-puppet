@@ -137,7 +137,7 @@ class subversion {
 
         syntax_check{"check_php":
             regexp_ext => '\.php$',
-            check_cmd => 'php -l'
+            check_cmd => 'php -d display_errors=1 -d error_reporting="E_ALL|E_STRICT" -l'
         }
 
 	# needed for check_php
