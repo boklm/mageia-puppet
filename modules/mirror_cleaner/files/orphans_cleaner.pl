@@ -64,7 +64,7 @@ foreach my $a ( @arches ) {
 						( $dest_rpm = $rpm ) =~ s/$path/$dest_path/;
 						my $dir = dirname $dest_rpm;
 						make_path $dir if not -d $dir;
-						copy($rpm, $dest_rpm)
+						move($rpm, $dest_rpm)
 					}
                                 }	   
                         }
