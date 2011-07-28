@@ -2,6 +2,25 @@
 
 maintdbuser="<%= maintdb_login %>"
 maintdbpath="<%= maintdb_binpath %>"
+packagersgroup="<%= packagers_group %>"
+
+function isingroup()
+{
+  grp="$1"
+  for group in `groups`
+  do if [ "$grp" = "$group" ]
+     then
+        return 0
+     fi
+  done
+  return 1
+}
+
+if ! isingroup "$packagersgroup"
+then
+   echo "You are not in $packagersgroup group."
+   exit 1
+fi
 
 sudo -u "$maintdbuser" "$maintdbpath" $(whoami) $@
 
