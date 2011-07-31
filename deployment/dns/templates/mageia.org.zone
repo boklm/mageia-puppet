@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2011061003	; Serial
+        2011061004	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -38,12 +38,17 @@ champagne    IN A	217.70.188.116
 ; lost oasis
 alamut      IN  A       212.85.158.146
 alamut      IN  AAAA    2a02:2178:2:7::2
+alamut      IN SSHFP 1 1 ef093dc95002c4af6623f02238749fd59fe81eec
+alamut      IN SSHFP 2 1 179cfa0660550698c4d98f488772b7c7896d96b5
 ; since we have a subdomain, we cannot use a CNAME
 ml          IN  A       212.85.158.146
 ml          IN  AAAA    2a02:2178:2:7::2
 
 valstar     IN  A       212.85.158.147
 valstar     IN  AAAA    2a02:2178:2:7::3
+valstar     IN SSHFP 1 1 f08e336f678d7c4a8772f17770976af7dd4d7a4f
+valstar     IN SSHFP 2 1 c0c45ed25aa8a9f1723a1ae077dcee61677a56a6
+
 ecosse      IN  A       212.85.158.148
 ecosse      IN  AAAA    2a02:2178:2:7::4
 jonund      IN  A       212.85.158.149
