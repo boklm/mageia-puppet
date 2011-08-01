@@ -27,4 +27,12 @@ class mga-mirrors {
         content => template("mga-mirrors/mga-mirrors.ini"),
         require => Package['mga-mirrors']
     }
+
+    file { "/etc/cron.d/mga_mirrors":
+        ensure => "present",
+        owner => root,
+	group => root,
+        content => template("mga-mirrors/cron-mga_mirrors"),
+        require => Package['mga-mirrors']
+    }
 }

@@ -1,0 +1,2 @@
+MAILTO=root
+0 * * * *     apache    /usr/bin/check_mirror
