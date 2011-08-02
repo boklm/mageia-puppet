@@ -18,7 +18,7 @@ nbtry=0
 while rpmsign -Kv "$tmpfile" 2>&1 | grep BAD
 do
     nbtry=$(($nbtry + 1))
-    if [ $nbtry -ge 15 ]
+    if [ $nbtry -ge 30 ]
     then
 	exit 1
     fi
