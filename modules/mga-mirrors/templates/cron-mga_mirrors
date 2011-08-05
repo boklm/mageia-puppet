@@ -1,2 +1,2 @@
 MAILTO=root
-0 * * * *     apache    /usr/bin/check_mirror
+0 * * * *     apache    /usr/bin/check_mirror > /dev/null 2>&1
