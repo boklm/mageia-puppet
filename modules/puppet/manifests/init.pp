@@ -23,7 +23,6 @@ class puppet {
         }
 
 	service { puppet:
-	    ensure => stopped,
 	    enable => false,
 	    hasstatus => true,
 	}
