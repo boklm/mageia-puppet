@@ -21,6 +21,12 @@ class puppet {
             minute => fqdn_rand( 60 ),
             ensure => present,
         }
+
+	service { puppet:
+	    ensure => stopped,
+	    enable => false,
+	    hasstatus => true,
+	}
     }
 
     class master inherits client {
