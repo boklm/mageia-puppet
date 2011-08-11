@@ -29,12 +29,11 @@ page visible Visible Services
 0.0.0.0	    hugs.<%= domain %> # http://hugs.<%= domain %>
 0.0.0.0	    dashboard.<%= domain %> # http://dashboard.<%= domain %>
 0.0.0.0	    meetbot.<%= domain %> # http://meetbot.<%= domain %>
-0.0.0.0	    xymon.<%= domain %> # http://xymon.<%= domain %>
 
 
 page servers Servers
 group-compress Marseille
-212.85.158.146	alamut.<%= domain %>	# testip bbd dns smtp ssh
+212.85.158.146	alamut.<%= domain %>	# testip bbd dns smtp ssh CLIENT:xymon.<%= domain %> http://xymon.<%= domain %>
 212.85.158.147	valstar.<%= domain %>	# testip ssh rsync svn git ldapssl ldap
 212.85.158.148	ecosse.<%= domain %>	# testip ssh
 212.85.158.149	jonund.<%= domain %>	# testip ssh
