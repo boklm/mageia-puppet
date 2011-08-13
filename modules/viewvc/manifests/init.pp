@@ -20,6 +20,20 @@ class viewvc {
         notify => Service['apache'],
     }
 
+    $kill_viewvc_path = '/usr/local/sbin/kill_viewvc'
+    file { "$kill_viewvc_path":
+    	ensure => present,
+	content => template('viewvc/kill_viewvc.sh'),
+    }
+
+    cron { 'kill_viewvc':
+	command => "$kill_viewvc_path",
+	hour => "*",
+	minute => "*/5",
+	user => "apache",
+	environment => "MAILTO=root",
+    }
+
     # need newer version of viewvc
     apache::vhost_base { "svnweb.$domain":
         # TODO created a full fledged type
