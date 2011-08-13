@@ -23,6 +23,9 @@ class viewvc {
     $kill_viewvc_path = '/usr/local/sbin/kill_viewvc'
     file { "$kill_viewvc_path":
     	ensure => present,
+	mode => 755,
+	owner => root,
+	group => root,
 	content => template('viewvc/kill_viewvc.sh'),
     }
 
