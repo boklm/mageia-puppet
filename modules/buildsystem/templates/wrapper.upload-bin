@@ -1,0 +1,26 @@
+#!/bin/sh
+
+binrepouser="<%= binrepo_login %>"
+uploadbinpath="<%= uploadbinpath %>"
+packagerscommittersgroup="<%= packagers_committers_group %>"
+
+function isingroup()
+{
+  grp="$1"
+  for group in `groups`
+  do if [ "$grp" = "$group" ]
+     then
+        return 0
+     fi
+  done
+  return 1
+}
+
+if ! isingroup "$packagerscommittersgroup"
+then
+   echo "You are not in $packagerscommitersgroup group."
+   exit 1
+fi
+
+sudo -u "$binrepouser" "$uploadbinpath" $(whoami) $@
+

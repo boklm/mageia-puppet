@@ -1,0 +1,1 @@
+%<%= packagers_committers_group %>      ALL =(<%= binrepo_login %>) NOPASSWD: <%= uploadbinpath %>

@@ -17,6 +17,7 @@ class buildsystem {
 	# FIXME: Test password. Real password should be in extdata.
 	$maintdb_key = 'm1g234'
 	$packagers_group = 'mga-packagers'
+	$packagers_committers_group = 'mga-packagers-committers'
 	$createsrpm_path = '/usr/share/repsys/create-srpm'
 
 	include ssh::auth
@@ -211,10 +212,13 @@ class buildsystem {
     }
 
     class binrepo {
+        include sudo
         $binrepo_login = "binrepo"
 	$binrepo_homedir = "/var/lib/$binrepo_login"
         $binrepodir = "$binrepo_homedir/data"
 	$uploadinfosdir = "$binrepo_homedir/infos"
+	$uploadbinpath = '/usr/local/bin/upload-bin'
+	$uploadbinpathwrapper = '/usr/local/bin/wrapper.upload-bin'
 
 	user {"$binrepo_login":
 	    ensure => present,
@@ -238,12 +242,24 @@ class buildsystem {
 	    mode => 755,
 	}
 
-        file { '/usr/local/bin/upload-bin':
+        file { $uploadbinpath:
 	    ensure => present,
 	    owner => root,
 	    group => root,
 	    mode => 755,
 	    content => template('buildsystem/upload-bin'),
+	}
+
+        file { $uploadbinpathwrapper:
+	    ensure => present,
+	    owner => root,
+	    group => root,
+	    mode => 755,
+	    content => template('buildsystem/wrapper.upload-bin'),
+	}
+
+	sudo::sudoers_config { "binrepo":
+	    content => template("buildsystem/sudoers.binrepo")
 	}
     }
     
