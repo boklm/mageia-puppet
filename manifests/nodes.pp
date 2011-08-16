@@ -23,6 +23,7 @@ node valstar {
     include buildsystem::sync20101
     include buildsystem::release
     include buildsystem::maintdb
+    include buildsystem::binrepo
     include softwarekey::base
 
     include access_classes::committers
