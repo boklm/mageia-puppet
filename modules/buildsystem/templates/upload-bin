@@ -21,7 +21,8 @@ fi
 echo "$username:$comment" > "$uploadinfosdir/$sha1sum"
 echo "User $username uploaded file $sha1sum: $comment"
 
-/usr/bin/mailx -s "New file uploaded: $sha1sum - $comment" -S "from=$username <$mail_from>" "$mail_dest"
+echo "User $username uploaded file $sha1sum: $comment" | \
+    /usr/bin/mailx -s "New file uploaded: $sha1sum - $comment" -S "from=$username <$mail_from>" "$mail_dest"
 
 exit 0
 
