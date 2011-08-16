@@ -261,6 +261,11 @@ class buildsystem {
 	sudo::sudoers_config { "binrepo":
 	    content => template("buildsystem/sudoers.binrepo")
 	}
+
+	apache::vhost_base { "binrepo.$domain":
+	    location => $binrepodir,
+	    content => template("buildsystem/vhost_binrepo.conf"),
+	}
     }
     
     class mgarepo {
