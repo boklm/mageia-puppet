@@ -18,6 +18,7 @@ then
     exit 2
 fi
 /bin/mv "$tmpfile" "$binrepodir/$sha1sum"
+/bin/chmod 644 "$binrepodir/$sha1sum"
 echo "$username:$comment" > "$uploadinfosdir/$sha1sum"
 echo "User $username uploaded file $sha1sum: $comment"
 
