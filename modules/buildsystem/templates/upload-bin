@@ -1,0 +1,26 @@
+#!/bin/sh
+binrepodir=<%= binrepodir %>
+uploadinfosdir=<%= uploadinfosdir %>
+tmpfile=$(mktemp)
+mail_from="root@mageia.org"
+mail_dest="boklm@mars-attacks.org"
+
+username="$1"
+comment="$2"
+
+/bin/cat > "$tmpfile"
+sha1sum=$(/usr/bin/sha1sum "$tmpfile" | sed 's/ .*$//')
+if [ -f "$binrepodir/$sha1sum" ]
+then
+    echo "File $sha1sum already exists." >&2
+    /bin/rm -f "$tmpfile"
+    exit 2
+fi
+/bin/mv "$tmpfile" "$binrepodir/$sha1sum"
+echo "$username:$comment" > "$uploadinfosdir/$sha1sum"
+echo "User $username uploaded file $sha1sum: $comment"
+
+/usr/bin/mailx -s "New file uploaded: $sha1sum - $comment" -S "from=$username <$mail_from>" "$mail_dest"
+
+exit 0
+

@@ -209,6 +209,43 @@ class buildsystem {
 	}
 
     }
+
+    class binrepo {
+        $binrepo_login = "binrepo"
+	$binrepo_homedir = "/var/lib/$binrepo_login"
+        $binrepodir = "$binrepo_homedir/data"
+	$uploadinfosdir = "$binrepo_homedir/infos"
+
+	user {"$binrepo_login":
+	    ensure => present,
+	    comment => "Binary files repository",
+	    managehome => true,
+	    shell => "/bin/bash",
+	    home => "$binrepo_homedir",
+	}
+
+	file { $binrepodir:
+	    ensure => directory,
+	    owner => $binrepo_login,
+	    group => $binrepo_login,
+	    mode => 755,
+	}
+
+	file { $uploadinfosdir:
+	    ensure => directory,
+	    owner => $binrepo_login,
+	    group => $binrepo_login,
+	    mode => 755,
+	}
+
+        file { '/usr/local/bin/upload-bin':
+	    ensure => present,
+	    owner => root,
+	    group => root,
+	    mode => 755,
+	    content => template('buildsystem/upload-bin'),
+	}
+    }
     
     class mgarepo {
         package { 'mgarepo':
