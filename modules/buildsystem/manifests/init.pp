@@ -211,7 +211,7 @@ class buildsystem {
 
     }
 
-    class binrepo {
+    class binrepo inherits base {
         include sudo
         $binrepo_login = "binrepo"
 	$binrepo_homedir = "/var/lib/$binrepo_login"
