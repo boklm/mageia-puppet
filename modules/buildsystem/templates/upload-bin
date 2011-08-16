@@ -5,6 +5,7 @@ tmpfile=$(mktemp)
 mail_from="root@mageia.org"
 mail_dest="boklm@mars-attacks.org"
 
+test $# = 2 || exit 3
 username="$1"
 comment="$2"
 
