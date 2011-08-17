@@ -18,7 +18,7 @@ function isingroup()
 
 if ! isingroup "$packagerscommittersgroup"
 then
-   echo "You are not in $packagerscommitersgroup group."
+   echo "You are not in $packagerscommittersgroup group."
    exit 1
 fi
 
