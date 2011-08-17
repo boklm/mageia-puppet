@@ -27,7 +27,8 @@ class bugzilla {
       owner => root,
       group => apache,
       mode => 640,
-      content => template("bugzilla/localconfig")
+      content => template("bugzilla/localconfig"),
+      require => Package[bugzilla],
     }
 
 
@@ -37,6 +38,7 @@ class bugzilla {
       group => apache,
       mode => 640,
       content => template("bugzilla/params")
+      require => Package[bugzilla],
     }
 
     apache::webapp_other{"bugzilla":
@@ -56,7 +58,8 @@ class bugzilla {
     }
 
     subversion::snapshot { $bugzilla_location:
-      source => "svn://svn.mageia.org/svn/web/templates/bugzilla/trunk"
+      source => "svn://svn.mageia.org/svn/web/templates/bugzilla/trunk",
+      require => Package[bugzilla],
     }
 
     file { "custom":
