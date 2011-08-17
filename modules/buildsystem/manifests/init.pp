@@ -49,7 +49,7 @@ class buildsystem {
         }
 
         $location = "/var/www/bs"
-        file { $location:
+        file { ["$location","$location/data"]:
             ensure => directory,
         }
 
@@ -195,9 +195,10 @@ class buildsystem {
 	}
 
         file { "$maintdb_dump":
-           ensure => present,
-	   owner => $maintdb_login,
-	   mode => 644,
+            ensure => present,
+            owner => $maintdb_login,
+            mode => 644,
+            require => File["/var/www/bs/data"],
         }
 
 	cron { "update maintdb export":
