@@ -54,7 +54,7 @@ class openldap {
     }
 
     class master inherits common {
-        File { '/etc/openldap/mandriva-dit-access.conf':
+        File['/etc/openldap/mandriva-dit-access.conf'] {
             content => template("openldap/mandriva-dit-access.conf"),
         }
 
@@ -68,11 +68,11 @@ class openldap {
             before => Service['ldap'],
         }       
  
-        File { '/etc/openldap/slapd.conf':
+        File['/etc/openldap/slapd.conf'] {
             content => template("openldap/slapd.conf", "openldap/slapd.test.conf"),
         }
 
-        File { '/etc/sysconfig/ldap':
+        File['/etc/sysconfig/ldap'] {
             content => template("openldap/ldap.sysconfig"),
         }
     }
@@ -92,15 +92,15 @@ class openldap {
         $sync_password = extlookup("ldap_syncuser-$hostname",'x')
         
         # same access rights as master
-        File { '/etc/openldap/mandriva-dit-access.conf':
+        File['/etc/openldap/mandriva-dit-access.conf'] {
             content => template("openldap/mandriva-dit-access.conf"),
         }
 
-        File { '/etc/openldap/slapd.conf':
+        File['/etc/openldap/slapd.conf'] {
             content => template("openldap/slapd.conf",'openldap/slapd.syncrepl.conf'),
         }
 
-        File { '/etc/sysconfig/ldap':
+        File['/etc/sysconfig/ldap'] {
             content => template("openldap/ldap.sysconfig"),
         }
     }
