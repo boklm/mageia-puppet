@@ -64,6 +64,11 @@ class restrictshell {
     class allow_maintdb {
         allow{ "maintdb": }
     }
+
+    class allow_upload_bin {
+       allow{ "upload_bin": }
+    }
+
     # technically, we could add cvs too
     # but I doubt we will use it one day
 

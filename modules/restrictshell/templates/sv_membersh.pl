@@ -69,6 +69,10 @@ our $use_maintdb = "0";
 our $regexp_maintdb = "^/usr/local/bin/wrapper.maintdb ";
 our $bin_maintdb = "/usr/local/bin/wrapper.maintdb";
 
+our $use_upload_bin = "0";
+our $regexp_upload_bin = "^/usr/local/bin/wrapper.upload-bin ";
+our $bin_upload_bin = "/usr/local/bin/wrapper.upload-bin";
+
 # Open configuration file
 if (-e "/etc/membersh-conf.pl") {
     do "/etc/membersh-conf.pl" or die "System misconfiguration, contact administrators. Exiting";
@@ -98,6 +102,8 @@ if (-e "/etc/membersh-conf.pl") {
 # $use_pkgsubmit = "1";
 #
 # $use_maintdb = "1";
+#
+# $use_upload_bin = "1";
 
 
 if ($#ARGV == 1 and $ARGV[0] eq "-c") {
@@ -155,6 +161,10 @@ if ($#ARGV == 1 and $ARGV[0] eq "-c") {
 	$ARGV[1] =~ m:$regexp_maintdb:) {
 	my ($maintdb, @rest) = split(' ', $ARGV[1]);
 	exec($bin_maintdb, @rest) or die("Failed to exec $bin_maintdb: $!");
+    } elsif ($use_upload_bin and
+	$ARGV[1] =~ m:$regexp_upload_bin:) {
+	my ($upload_bin, @rest) = split(' ', $ARGV[1]);
+	exec($bin_upload_bin, @rest) or die("Failed to exec $bin_upload_bin: $!");
     }
 }
 
