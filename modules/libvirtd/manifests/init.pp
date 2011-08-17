@@ -16,6 +16,7 @@ class libvirtd {
         #TODO remove once libvirt package is fixed to manage the directory
         file { "/etc/libvirt/storage":
             ensure => directory,
+            require => Package['libvirt-utils'],
         }
 
         file { "/etc/libvirt/storage/autostart":
