@@ -21,43 +21,40 @@ class openldap {
         openssl::self_signed_cert{ "ldap.$domain":
             directory => "/etc/ssl/openldap/"
         }
+
+        file { '/etc/openldap/slapd.conf':
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 644,
+            require => Package["openldap-servers"],
+            content => "",
+            notify => [Service['ldap']]
+        }
+
+        file { '/etc/openldap/mandriva-dit-access.conf':
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 644,
+            require => Package["openldap-servers"],
+            content => "",
+            notify => [Service['ldap']]
+        }
+
+        file { '/etc/sysconfig/ldap':
+            ensure => present,
+            owner => root,
+            group => root,
+            mode => 644,
+            require => Package["openldap-servers"],
+            content => "",
+            notify => [Service['ldap']]
+        } 
     }
-
-    # /etc/
-    # 11:57:48|  blingme> misc: nothing special, just copy slapd.conf, mandriva-dit-access.conf across, slapcat one side, slapadd other side
-
-    file { '/etc/openldap/slapd.conf':
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
-        require => Package["openldap-servers"],
-        content => "",
-        notify => [Service['ldap']]
-    }
-
-    file { '/etc/openldap/mandriva-dit-access.conf':
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
-        require => Package["openldap-servers"],
-        content => "",
-        notify => [Service['ldap']]
-    }
-
-    file { '/etc/sysconfig/ldap':
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
-        require => Package["openldap-servers"],
-        content => "",
-        notify => [Service['ldap']]
-    } 
 
     class master inherits common {
-        file { '/etc/openldap/mandriva-dit-access.conf':
+        File { '/etc/openldap/mandriva-dit-access.conf':
             content => template("openldap/mandriva-dit-access.conf"),
         }
 
@@ -71,11 +68,11 @@ class openldap {
             before => Service['ldap'],
         }       
  
-        file { '/etc/openldap/slapd.conf':
+        File { '/etc/openldap/slapd.conf':
             content => template("openldap/slapd.conf", "openldap/slapd.test.conf"),
         }
 
-        file { '/etc/sysconfig/ldap':
+        File { '/etc/sysconfig/ldap':
             content => template("openldap/ldap.sysconfig"),
         }
     }
@@ -95,15 +92,15 @@ class openldap {
         $sync_password = extlookup("ldap_syncuser-$hostname",'x')
         
         # same access rights as master
-        file { '/etc/openldap/mandriva-dit-access.conf':
+        File { '/etc/openldap/mandriva-dit-access.conf':
             content => template("openldap/mandriva-dit-access.conf"),
         }
 
-        file { '/etc/openldap/slapd.conf':
+        File { '/etc/openldap/slapd.conf':
             content => template("openldap/slapd.conf",'openldap/slapd.syncrepl.conf'),
         }
 
-        file { '/etc/sysconfig/ldap':
+        File { '/etc/sysconfig/ldap':
             content => template("openldap/ldap.sysconfig"),
         }
     }
