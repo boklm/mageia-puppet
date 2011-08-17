@@ -70,7 +70,7 @@ class mirror {
 	    user => mirror,
 	    minute => '*/10',
 	    command => "$bindir/update_timestamp",
-	    require => File["update_timestamp"],
+	    require => [File["update_timestamp"] User['mirror']],
 	}
     }
 
