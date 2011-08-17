@@ -9,7 +9,7 @@ class xymon {
 	    path => '/etc/init.d/xymon-client',
 	}
         # TODO replace with a exported ressource
-        $server = extlookup('hobbit_server')  
+        $server = extlookup('hobbit_server','x')
 	file { '/etc/sysconfig/xymon-client':
 	    content => template("xymon/xymon-client"),
 	}
