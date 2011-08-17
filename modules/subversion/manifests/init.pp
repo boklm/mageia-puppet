@@ -230,6 +230,7 @@ class subversion {
             owner => root,
             group => root,
             mode => 755,
+            require => File["$name/hooks/pre-commit"],
         } 
 	
 	if $restricted_to_user {
