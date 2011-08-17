@@ -34,9 +34,14 @@ class puppet {
         }
 
         # for stored config
-        package { ["ruby-sqlite3","rails"]:
+        $rails_package = $lsbdistid ? {
+            Mageia => "ruby-rails",
+            MandrivaLinux => "rails"
+        }
+
+        package { ["ruby-sqlite3",$rails_package]:
             ensure => installed
-        }    
+        }
 
         service { puppetmaster:
             ensure => running,
