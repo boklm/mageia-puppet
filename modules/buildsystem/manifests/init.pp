@@ -366,6 +366,7 @@ class buildsystem {
         # of the rpmlint policy
         file { "/etc/rpmlint/extracted.d/":
             ensure => directory,
+            require => Package['rpmlint'],
             owner => $sched_login,
         }
 
