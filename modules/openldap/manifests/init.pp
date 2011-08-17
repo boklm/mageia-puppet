@@ -68,6 +68,7 @@ class openldap {
             group => ldap,
             owner => ldap,
             mode => 644,
+            before => Service['ldap'],
         }       
  
         file { '/etc/openldap/slapd.conf':
