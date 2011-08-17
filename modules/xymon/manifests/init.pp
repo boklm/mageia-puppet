@@ -4,10 +4,13 @@ class xymon {
 	package { xymon-client:
 	    ensure => installed,
 	}
+
 	service { xymon-client:
 	    ensure => running,
 	    path => '/etc/init.d/xymon-client',
+            require => Package['xymon-client'],
 	}
+
         # TODO replace with a exported ressource
         $server = extlookup('hobbit_server','x')
 	file { '/etc/sysconfig/xymon-client':
