@@ -31,6 +31,7 @@ node valstar {
     include restrictshell::allow_svn
     include restrictshell::allow_pkgsubmit
     include restrictshell::allow_maintdb
+    include restrictshell::allow_upload_bin
     # disabled the ldap key here instead of disabling for the
     # whole module ( see r698 )
     class { "openssh::ssh_keys_from_ldap":
