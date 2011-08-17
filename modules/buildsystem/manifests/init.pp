@@ -204,6 +204,7 @@ class buildsystem {
 	    user => $maintdb_login,
 	    command => "$maintdb_binpath root get > $maintdb_dump",
 	    minute => "*/30",
+        require => User[$maintdb_login],
 	}
 
     }
