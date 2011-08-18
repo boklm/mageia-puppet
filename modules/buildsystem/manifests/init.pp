@@ -15,7 +15,7 @@ class buildsystem {
 	$mirror_root = "/distrib/mirror"
 	$packagers_group = 'mga-packagers'
 	$packagers_committers_group = 'mga-packagers-committers'
-	$createsrpm_path = '/usr/share/repsys/create-srpm'
+	$createsrpm_path = '/usr/share/mgarepo/create-srpm'
 
 	include ssh::auth
 	ssh::auth::key { $build_login: # declare a key for build bot: RSA, 2048 bits
