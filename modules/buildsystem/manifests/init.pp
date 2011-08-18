@@ -223,6 +223,8 @@ class buildsystem {
 	$uploadinfosdir = "$binrepo_homedir/infos"
 	$uploadbinpath = '/usr/local/bin/upload-bin'
 	$uploadbinpathwrapper = '/usr/local/bin/wrapper.upload-bin'
+	$uploadmail_from = "root@$domain"
+	$uploadmail_to = "packages-commits@ml.$domain"
 
 	user {"$binrepo_login":
 	    ensure => present,
