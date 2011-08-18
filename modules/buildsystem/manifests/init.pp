@@ -280,12 +280,20 @@ class buildsystem {
         package { 'rpm-build':
         }
 
+        file { "mgarepo.conf":
+          path => "/etc/mgarepo.conf",
+          owner  => root,
+          group => root,
+          mode => 644,
+          content => template("buildsystem/mgarepo.conf")
+        }
+
         file { "repsys.conf":
           path => "/etc/repsys.conf",
           owner  => root,
           group => root,
           mode => 644,
-          content => template("buildsystem/repsys.conf")
+          content => template("buildsystem/mgarepo.conf")
         }
 
         file { "$packages_archivedir":
