@@ -35,7 +35,8 @@ class repositories::subversion {
     }
 
     file { "/svn/binrepos/":
-        ensure => directory
+        ensure => directory,
+	mode => 700,
     }
 
     subversion::repository { "/svn/binrepos/cauldron/":
