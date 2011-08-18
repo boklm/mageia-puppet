@@ -37,7 +37,7 @@ class bugzilla {
       owner => root,
       group => apache,
       mode => 640,
-      content => template("bugzilla/params")
+      content => template("bugzilla/params"),
       require => Package[bugzilla],
     }
 
@@ -69,6 +69,6 @@ class bugzilla {
       group => apache,
       mode => 640,
       recurse => true,
-      require => Subversion::Snapshot[$bugzilla_location]
+      require => Subversion::Snapshot[$bugzilla_location],
     }
 }
