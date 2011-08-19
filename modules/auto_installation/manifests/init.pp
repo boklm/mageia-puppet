@@ -82,6 +82,7 @@ class auto_installation {
 
         file { $netinst_path:
             ensure => directory,
+            require => Package[libvirt-utils],
         }
 
         libvirtd::storage { "netinst":
