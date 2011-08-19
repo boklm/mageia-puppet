@@ -14,6 +14,11 @@ class testvm
 	gid => $vmtest_login,
 	shell => "/bin/bash",
     }
+    
+    file { "$testvmdir/bin/":
+        ensure => directory,
+        require => User[$testvm_login],
+    }
 
     file { "$testvmdir/bin/_vm":
 	ensure => present,
@@ -21,6 +26,7 @@ class testvm
 	group => root,
 	mode => 644,
 	source => "puppet:///modules/testvm/_vm",
+        require => File["$testvmdir/bin"],
     }
 
     file { "$testvmdir/bin/vm-jonund":
@@ -29,5 +35,6 @@ class testvm
 	group => $testvm_login,
 	mode => 750,
 	source => "puppet:///modules/testvm/vm-jonund",
+        require => File["$testvmdir/bin"],
     }
 }
