@@ -138,7 +138,6 @@ node jonund {
     timezone::timezone { "Europe/Paris": }
     include shorewall
     include shorewall::default_firewall
-    include testvm
 }
 
 node ecosse {
