@@ -37,7 +37,8 @@ class sympa {
             owner => sympa,
             group => apache,
             mode => 640,
-            content => template("sympa/sympa.conf")
+            content => template("sympa/sympa.conf"),
+            require => Package[sympa],
         }
     
         file { '/etc/sympa/auth.conf':
@@ -46,7 +47,8 @@ class sympa {
             group => root,
             mode => 644,
             content => template("sympa/auth.conf"),
-            notify => Service['httpd']
+            require => Package[sympa],
+            notify => Service['httpd'],
         }
     
     
@@ -77,6 +79,7 @@ class sympa {
             purge => true,
             recurse => true,
             force => true,
+            require => Package[sympa],
         }
 
         file { ["/etc/sympa/scenari/subscribe.open_web_only_notify",
@@ -111,6 +114,7 @@ class sympa {
             group => root,
             mode => 755,
             source => "puppet:///modules/sympa/topics.conf",
+            require => Package[sympa],
         }
 
         define ldap_search_filter {
@@ -168,6 +172,7 @@ class sympa {
             owner => sympa,
             group => root,
             mode => 755,
+            require => Package[sympa],
         }
     }
 
@@ -197,6 +202,7 @@ class sympa {
             owner => root,
             group => root,
             content => template('sympa/list.xml')    
+            require => Package[sympa],
         }
 
         exec { "sympa.pl --create_list --robot=$sympa::variable::vhost --input_file=$xml_file":
