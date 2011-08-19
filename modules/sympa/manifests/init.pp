@@ -201,7 +201,7 @@ class sympa {
         file { "$xml_file":
             owner => root,
             group => root,
-            content => template('sympa/list.xml')    
+            content => template('sympa/list.xml'),
             require => Package[sympa],
         }
 
