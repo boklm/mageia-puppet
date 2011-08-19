@@ -59,6 +59,7 @@ class libvirtd {
             mode => 644,
             ensure => present,
             content => template("libvirtd/50-template-libvirt-remote-access.pkla"),
+            require => Package['libvirt-utils'],
         }
     }
 
@@ -77,6 +78,7 @@ class libvirtd {
                             true => "/etc/libvirt/storage/$name.xml",
                             false => "absent"
                       }
+            require => Package['libvirt-utils'],
         }
     }
 
@@ -108,6 +110,7 @@ class libvirtd {
                             true => "/etc/libvirt/$vm_type/networks/$name.xml",
                             false => "absent"
                       }
+            require => Package['libvirt-utils'],
         }
     }
 }
