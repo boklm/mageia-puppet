@@ -20,6 +20,7 @@ class gitweb {
         path => '/etc/httpd/conf/webapps.d/gitweb.conf',
         content => template('gitweb/webapp.conf'),
         notify => Service['apache'],
+        require => Package['apache'],
     }
    
     file { 'gitweb.wrapper.sh':

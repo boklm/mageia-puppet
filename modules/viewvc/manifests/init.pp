@@ -18,6 +18,7 @@ class viewvc {
         path => '/etc/httpd/conf/webapps.d/viewvc.conf',
         content => template('viewvc/webapp.conf'),
         notify => Service['apache'],
+        require => Package['apache'],
     }
 
     $kill_viewvc_path = '/usr/local/sbin/kill_viewvc'
