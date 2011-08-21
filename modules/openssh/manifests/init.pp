@@ -84,7 +84,7 @@ class openssh {
             owner => root,
             group => root,
             mode => 755,
-            content => template("restrictshell/ldap-sshkey2file.py"),
+            content => template("openssh/ldap-sshkey2file.py"),
             require => Package['python-ldap']
         }
         cron { 'sshkey2file':
