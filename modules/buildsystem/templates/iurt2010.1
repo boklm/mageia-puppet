@@ -5,4 +5,4 @@ then
     exit 1
 fi
 ARCH=$(rpm --eval %_target_cpu)
-iurt --chrooted-urpmi -m contrib/release main/release ../../../2010.1-mgaserv/$ARCH -- http://repository.mageia.org/mandriva/ -r mandriva2010.1 $ARCH $@
+iurt --chrooted-urpmi -m contrib/release main/release ../../../2010.1-mgaserv/$ARCH -- http://repository.<%= domain %>/mandriva/ -r mandriva2010.1 $ARCH $@
