@@ -97,6 +97,7 @@ class common {
         include common::urpmi_update
         include puppet::client
         include xymon::client
+        include cron 
 
         # provided by lsb-core, but it also pull
         # various unneeded stuff for our server
