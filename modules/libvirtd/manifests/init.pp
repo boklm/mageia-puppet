@@ -109,7 +109,7 @@ class libvirtd {
             ensure => $autostart ? {
                             true => "/etc/libvirt/$vm_type/networks/$name.xml",
                             false => "absent"
-                      }
+                      },
             require => Package['libvirt-utils'],
         }
     }
