@@ -77,7 +77,7 @@ class libvirtd {
             ensure => $autostart ? {
                             true => "/etc/libvirt/storage/$name.xml",
                             false => "absent"
-                      }
+                      },
             require => Package['libvirt-utils'],
         }
     }
