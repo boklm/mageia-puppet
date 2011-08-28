@@ -495,7 +495,7 @@ class buildsystem {
 
         $tidy_age = "2m"
         # remove old build directory
-        tidy { "$build_home_dir/iurt/":
+        tidy { "$build_home_dir/iurt":
             age => $tidy_age,
             recurse => true,
             matches => ['[0-9][0-9].*\..*\..*\.[0-9]*',"log","*.rpm","*.log","*.mga[0-9]+"],
