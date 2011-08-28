@@ -497,9 +497,9 @@ class buildsystem {
         # remove old build directory
         tidy { "$build_home_dir/iurt/":
             age => $tidy_age,
-            recurse => 1,
+            recurse => true,
             matches => ['[0-9][0-9].*\..*\..*\.[0-9]*',"log","*.rpm","*.log","*.mga[0-9]+"],
-            rmdirs => 1,
+            rmdirs => true,
         }
 
         # build node common settings
