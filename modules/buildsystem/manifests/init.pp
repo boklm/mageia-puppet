@@ -493,7 +493,7 @@ class buildsystem {
         ssh::auth::client { $build_login: }
         ssh::auth::server { $sched_login: user => $build_login }
 
-        $tidy_age = "2m"
+        $tidy_age = "8w"
         # remove old build directory
         tidy { "$build_home_dir/iurt":
             age => $tidy_age,
