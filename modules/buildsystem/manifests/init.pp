@@ -498,7 +498,7 @@ class buildsystem {
         tidy { "$build_home_dir/iurt/":
             age => $tidy_age,
             recurse => 1,
-            matches => ["[0-9][0-9].*\..*\..*\.[0-9]*","log","*.rpm","*.log","*.mga[0-9]+"]
+            matches => ['[0-9][0-9].*\..*\..*\.[0-9]*',"log","*.rpm","*.log","*.mga[0-9]+"],
             rmdirs => 1,
         }
 
