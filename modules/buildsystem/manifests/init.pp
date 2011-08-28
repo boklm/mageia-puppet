@@ -493,6 +493,15 @@ class buildsystem {
         ssh::auth::client { $build_login: }
         ssh::auth::server { $sched_login: user => $build_login }
 
+        $tidy_age = "2m"
+        # remove old build directory
+        tidy { "$build_home_dir/iurt/":
+            age => $tidy_age,
+            recurse => 1,
+            matches => ["[0-9][0-9].*\..*\..*\.[0-9]*","log","*.rpm","*.log","*.mga[0-9]+"]
+            rmdirs => 1,
+        }
+
         # build node common settings
         # we could have the following skip list to use less space:
         # '/(drakx-installer-binaries|drakx-installer-advertising|gfxboot|drakx-installer-stage2|mandriva-theme)/'
