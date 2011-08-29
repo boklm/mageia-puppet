@@ -185,7 +185,8 @@ class sympa {
                 $sender_ldap_group = false,
                 $subscriber_ldap_group = false,
                 $public_archive = true,
-                $subscription_open = false ) {
+                $subscription_open = false,
+    		$custom_subject = '') {
 
         include sympa::variable
         $ldap_password = extlookup("sympa_ldap",'x')
