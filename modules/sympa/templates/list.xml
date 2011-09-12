@@ -12,7 +12,4 @@
         <editor_include>
             <source>mga-ml_moderators</source>
         </editor_include>
-<%- if custom_subject != '' -%>
-	<custom_subject><%= custom_subject %></custom_subject>
-<%- end -%>
 </list>
