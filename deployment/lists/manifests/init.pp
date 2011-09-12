@@ -87,7 +87,6 @@ class lists {
 	sympa::public_list {"doc-discuss":
 	    subject => "Discussions about Mageia documentation",
 	    topics => "doc",
-	    custom_subject => "mageia-doc",
 	}
 
         sympa::announce_list_email {"packages-commits":
