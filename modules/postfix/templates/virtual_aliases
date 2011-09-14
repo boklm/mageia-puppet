@@ -12,7 +12,7 @@ security@<%= domain %> security_officers@group.<%= domain %>
 
 # TODO see http://www.ietf.org/rfc/rfc2142.txt
 <%
-['postmaster','hostmaster','abuse','noc','security','listmaster','MAILER-DAEMON'].each { |a| 
+['postmaster','hostmaster','abuse','noc','listmaster','MAILER-DAEMON'].each { |a| 
 %>
 <%= a %>@<%= domain %> root@<%= domain %>
 <% 
