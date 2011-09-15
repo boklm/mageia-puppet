@@ -47,18 +47,6 @@ class common {
             user => "root"
         }
 
-        ssh_authorized_key { "ssh_key_severine":
-            type => "ssh-rsa",
-            key => "AAAAB3NzaC1yc2EAAAABIwAAAgEAt9VHEteitx7bR2bg6KPfqkxgnTl/2QsqAZipqvI2axdi+gDDov+JIQP2q7HE7ZgUhlXKqHz6O0Bs894vTYtuT9hu6DaeFwuMELmH+M80CoCbJROvuQMjW7AeSXuE4llk464ubZmhyPzVHMUeKymtJxiMu5AxIV7KGoVO+dSgEMqJ66IeXLwho5uVJ/HELizY4LDm2yzbr4/gXAkYEI151PlKDMR/4FVPsGGp/vFZqIq68C4bSGeFv4e3OE9mBJQQukN1zdm0q0ssb50dEk0QU1ZWoChTip+b8FpuouQbXME8KDaNlCN9CHZwD8IfavY+urZBq5ofluihUewqzjNKPoUA6dj3MzyFZ5vQEYSwwDrSrKLXr92NrDb8QbSCLb7IqsbmXFhOa0JY4BGmqRz2r+ifinK4maZs73q1f15yj/dqBZfCCiKJsbs5GUBN2mqp2kijdpz5gpVTbBIZ3Smio0gF++VjZqVpc3e86/jJ4RwFh6I8fdalQxTIlBTkTk7TkHt0UN+7bSeV7MhpTx2FkKl2hqLCNs50c0KHomFtTrhwRi2czv/cJc+LLPPnjMFPSFv4kP8JTgSTxndPkDb6xMXIwcnk3JsPE45N6PM3zC9FoU2sY8x9U9ZZf1xtI08A+N68xGvSTxxjXJTnWU2ySCcYL3wStAewsLAJxE3O7ys=",
-            user => "root"
-        }
-
-        ssh_authorized_key { "ssh_key_boklm":
-            type => "ssh-dss",
-            key => "AAAAB3NzaC1kc3MAAACBAIGfoferrHXi7m8Hw3wY3HzIvWzlBKRu4aUpOjFgFTw+aPiS842F8B2bqjzUyLVAv13zHB5QjVeAB0YQ1TvMQbew+7CRAgAVWrY/ckMJxSdNk6eKnxlnLA295xBnyc+jdMhdTKisywtlkLP6Au+2eA/sDKELO8tiIQzSUithppU/AAAAFQCP/IlvpJjhxQwgA4UW1Mg7W3MPVwAAAIAc8BA7W9qDaA8/sQiOu6sSueEVnf7QmJzTJuT0ZJ9HDSB39+fQrwjPZqxiTpAfSboBTC0KiuG9ncCZyh6fAmn2i9WSZ6HYkoLBjHU3nu3u18qlT8LqwajUjgp15jgUKWB8OxvO1dPNaLEsvP1BKPTfDoPNPeUeQmb3WaX9S+pVGwAAAIA63gRktdobLeeuRFAfPdQQ7Imi1GwrfKa2QUgowksDxwgBBo796HN41+yF0W2AOZ2lx25KQRF0Wgc5Abm/TV8u3WbzosYbZgUBiGDqyVhIPU/xF+yPEHPYx3G3nwjEZAaxxf+LaeZkY1Yp15O6NAZAzdyV00iG/tO/ciWBPCMeJA==",
-            user => "root"
-        }
-
         ssh_authorized_key { "ssh_key_buchan":
             type => "ssh-dss",
             key => "AAAAB3NzaC1kc3MAAACBALpYDQtkZcfXdOILynCGa7IAbW4+etmzpIMjw6BfvZOfLT6UPfDwajhDBMBNSbgigxkxxEdsa0/UMIE3Yrpr8YivhbL79sFw2N/FeWCs3Vk8JXNjBGA6itAIz9nwfh6qCDUj2t8LTdOQdYrSFOO7x2dFgeCwi21V27Ga2vqsvkUnAAAAFQD708pfON6Itq/5S+4kkNdNNDKWCwAAAIEAkRQeugul6KmOC0C2EmgVJvKK1qImlwHir08W1LTESnujmRIWLRst8sDoKjJpNevFuHGybPQ3palvM9qTQ84k3NMsJYJZSjSexsKydHJbD4ErKk8W6k+Xo7GAtH4nUcNskbnLHUpfvzm0jWs2yeHS0TCrljuTQwX1UsvGKJanzEoAAACBAIurf3TAfN2FKKIpKt5vyNv2ENBVcxAHN36VH8JP4uDUERg/T0OyLrIxW8px9naI6AQ1o+fPLquJ3Byn9A1RZsvWAQJI/J0oUit1KQM5FKBtXNBuFhIMSLPwbtp5pZ+m0DAFo6IcY1pl1TimGa20ajrToUhDh1NpE2ZK//8fw2i7",
