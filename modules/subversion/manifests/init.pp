@@ -117,7 +117,7 @@ class subversion {
 
         syntax_check{"check_puppet":
             regexp_ext => '\.pp$',
-            check_cmd => 'puppet --color=false --confdir=/tmp --vardir=/tmp --parseonly --ignoreimport'
+            check_cmd => 'puppet parser validate -'
         }
 
         syntax_check{"check_ruby":
