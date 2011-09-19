@@ -73,5 +73,12 @@ class puppet {
             type    => "mtime",
         }
 
+        file { "/etc/puppet/autosign.conf":
+            ensure =>  $environment ? {
+                        'test' => 'present',
+                        default =>  'absent',
+            },
+            content => '*',
+        }
     }
 }
