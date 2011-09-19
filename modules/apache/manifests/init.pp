@@ -169,12 +169,12 @@ class apache {
         }
 
 	if ! $access_logfile {
-	    $real_access_logfile = "$httpd_logdir/$real_vhost-access_log"
+	    $real_access_logfile = "$httpd_logdir/${real_vhost}-access_log"
 	} else {
 	    $real_access_logfile = $access_logfile
 	}
 	if ! $error_logfile {
-	    $real_error_logfile = "$httpd_logdir/$real_vhost-error_log"
+	    $real_error_logfile = "$httpd_logdir/${real_vhost}-error_log"
 	} else {
 	    $real_error_logfile = $error_logfile
 	}
