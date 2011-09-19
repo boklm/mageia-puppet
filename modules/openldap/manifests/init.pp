@@ -65,6 +65,7 @@ class openldap {
             group => ldap,
             owner => ldap,
             mode => 644,
+            require => Package["openldap-servers"],
             before => Service['ldap'],
         }       
  
