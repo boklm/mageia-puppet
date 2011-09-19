@@ -547,32 +547,6 @@ class buildsystem {
         }
     }
 
-    class check_missing_deps {
-        file { "/usr/local/bin/missing-deps.sh":
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 755,
-            source => "puppet:///modules/buildsystem/missing-deps.sh",
-        }
-    
-        # FIXME hardcoded path
-        cron { "check missing deps":
-            command => "cd /var/www/bs/data && /usr/local/bin/missing-deps.sh",
-            minute => "*/15",
-        }
-    }
-
-    class release {
-	subversion::snapshot { "/root/release":
-	    source => "svn://svn.$domain/soft/release/trunk/",
-	}
-
-        package { "hardlink":
-	    ensure => "installed",
-	}
-    }
-
     # A script to copy on valstar the 2010.1 rpms built on jonund
     class sync20101 inherits base {
        file { "/usr/local/bin/sync2010.1":
