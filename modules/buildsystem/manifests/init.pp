@@ -88,7 +88,7 @@ class buildsystem {
         include gatherer
         include mgarepo
         include youri_submit
-        include check_missing_deps 
+        include buildsystem::check_missing_deps
 	include signbot
     }
 
