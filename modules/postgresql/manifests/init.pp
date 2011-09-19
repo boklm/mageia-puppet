@@ -6,12 +6,12 @@ class postgresql {
         # missing requires is corrected in cooker, 
         # should be removed
         # once the fix is in a stable release 
-        package { "postgresql$pg_version-plpgsql":
+        package { "postgresql${pg_version}-plpgsql":
             alias => "postgresql-plpgsql",
             ensure => installed,
         }
     
-        package { "postgresql$pg_version-server":
+        package { "postgresql${pg_version}-server":
             alias => "postgresql-server",
             ensure => installed,
             require => Package['postgresql-plpgsql'],
