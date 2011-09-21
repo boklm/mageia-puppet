@@ -42,6 +42,7 @@ node valstar {
 
     include repositories::subversion
     include repositories::git
+    include repositories::sparkleshare
 
     include websites::svn
 
