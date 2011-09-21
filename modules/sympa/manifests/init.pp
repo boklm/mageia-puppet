@@ -189,6 +189,7 @@ class sympa {
 
         include sympa::variable
         $ldap_password = extlookup("sympa_ldap",'x')
+	$custom_subject = $name
 
         $xml_file = "/etc/sympa/lists_xml/$name.xml"
 
