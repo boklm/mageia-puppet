@@ -4,7 +4,7 @@ class repositories::sparkleshare {
 	ensure => directory,
 	owner => root,
 	group => root,
-	more => 755,
+	mode => 755,
     }
 
     git::repository { "$sp_dir/test":
