@@ -162,6 +162,7 @@ class buildsystem {
 	$maintdb_binpath = "/usr/local/sbin/maintdb"
 	$maintdb_wrappath = "/usr/local/bin/wrapper.maintdb"
         $maintdb_dump = "/var/www/bs/data/maintdb.txt"
+	$maintdb_unmaintained = "/var/www/bs/data/unmaintained.txt"
 
 	user {"$maintdb_login":
             ensure => present,
@@ -208,7 +209,7 @@ class buildsystem {
 
 	cron { "update maintdb export":
 	    user => $maintdb_login,
-	    command => "$maintdb_binpath root get > $maintdb_dump",
+	    command => "$maintdb_binpath root get > $maintdb_dump; cat $maintdb_dump | grep ' nobody\$' > $maintdb_unmaintained",
 	    minute => "*/30",
         require => User[$maintdb_login],
 	}
