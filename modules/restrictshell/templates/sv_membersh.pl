@@ -147,7 +147,7 @@ if ($#ARGV == 1 and $ARGV[0] eq "-c") {
 	push( @args, @args_user );
 	exec($bin_svn, @args) or die("Failed to exec $bin_svn: $!");
 
-    } elsif ($use_git and $ARGV[1] =~ m:git-.+:) {
+    } elsif ($use_git and $ARGV[1] =~ m:^git-.+:) {
 	
 	# Delegate filtering to git-shell
         exec($bin_git, @ARGV) or die("Failed to exec $bin_git: $!");
