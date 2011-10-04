@@ -172,11 +172,19 @@ class buildsystem {
 	    home => "$maintdb_homedir",
 	}
 
+	file { "$maintdb_homedir":
+	    ensure => directory,
+	    owner => "$maintdb_login",
+	   group => "$maintdb_login",
+	   mode => 711,
+	   require => User["$maintdb_login"],
+	}
+
 	file { "$maintdb_dbdir":
 	   ensure => directory,
 	   owner => "$maintdb_login",
 	   group => "$maintdb_login",
-	   mode => 700,
+	   mode => 711,
 	   require => User["$maintdb_login"],
 	}
 
