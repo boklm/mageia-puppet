@@ -214,6 +214,10 @@ class buildsystem {
         require => User[$maintdb_login],
 	}
 
+	apache::vhost_base { "maintdb.$domain":
+	    location => $maintdb_dbdir,
+	    content => template("buildsystem/vhost_maintdb.conf"),
+	}
     }
 
     class binrepo inherits base {
