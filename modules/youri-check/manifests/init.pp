@@ -4,7 +4,7 @@ class youri-check {
         $user = 'youri'
         $config = '/etc/youri/cauldron.conf'
         $outdir = '/var/www/youri-check'
-        $home = '/var/tmp/youri'
+        $home = '/var/lib/youri'
 
         user { $user:
             comment => 'Youri Check',
@@ -12,6 +12,13 @@ class youri-check {
             managehome => true,
             home => $home,
         }
+
+	file { $home:
+	    ensure => directory,
+	    owner => $user,
+	    group => $user,
+	    mode => 755,
+	}
 
         $pgsql_server = "$vhost"
         $pgsql_db = 'youri_check'
