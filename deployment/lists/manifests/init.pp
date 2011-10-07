@@ -22,6 +22,11 @@ class lists {
             topics => "i18n",
         }
 
+        sympa::public_list {"i18n-el":
+            subject => "Translation to Greek",
+            topics => "i18n",
+        }
+
         sympa::public_list {"i18n-nl":
             subject => "Translation to Dutch",
             topics => "i18n",
