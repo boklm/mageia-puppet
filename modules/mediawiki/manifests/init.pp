@@ -1,4 +1,7 @@
 class mediawiki {
+    class config($pgsql_password, $secretkey, $ldap_password) {
+    }
+
     class base {
 
         $root = "/srv/wiki/"
@@ -23,9 +26,8 @@ class mediawiki {
  
         $user = "mediawiki"
  
-        $pgsql_password = extlookup("mediawiki_pgsql",'x')
         postgresql::remote_user { $user:
-            password => $pgsql_password,
+            password => $config::pgsql_password,
         }
 
         # TODO create the ldap user   
@@ -59,8 +61,8 @@ class mediawiki {
         $wiki_root = "$mediawiki::base::root/$path"
         $db_name = "mediawiki_$name"
         $db_user = "$mediawiki::base::user"
-        $db_password = "$mediawiki::base::pgsql_password"
-        $secret_key = extlookup("mediawiki_secretkey",'x')
+        $db_password = "$mediawiki::config::pgsql_password"
+        $secret_key = "$mediawiki::config::secretkey"
 
         file { "$wiki_root":
             ensure => directory 
@@ -83,7 +85,7 @@ class mediawiki {
             refreshonly => true,
             onlyif => "test -d $wiki_root/config",
         }
-        $ldap_password = extlookup('mediawiki_ldap','x')
+        $ldap_password = $config::ldap_password
 
         file { "$wiki_root/LocalSettings.php":
             ensure => present,
