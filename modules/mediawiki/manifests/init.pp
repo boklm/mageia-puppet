@@ -27,7 +27,7 @@ class mediawiki {
         $user = "mediawiki"
  
         postgresql::remote_user { $user:
-            password => $config::pgsql_password,
+            password => sprintf('%s', $config::pgsql_password),
         }
 
         # TODO create the ldap user   
