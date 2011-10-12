@@ -127,6 +127,8 @@ node alamut {
 	location => "/var/lib/xymon/www",
     }
     include youri-check::report
+
+    include wikis
 }
 
 # buildnode
