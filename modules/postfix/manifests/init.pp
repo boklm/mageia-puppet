@@ -67,7 +67,7 @@ class postfix {
         # the project, so they keep their aliases for a time
         $aliases_group = ['mga-founders','mga-packagers',
                           'mga-sysadmin','mga-council',
-                          'mga-alumni',
+                          'mga-alumni','mga-i18n-committers',
                          ]        
         $ldap_password = extlookup("postfix_ldap",'x')
         file { '/etc/postfix/ldap_aliases.conf':
