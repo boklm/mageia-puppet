@@ -57,6 +57,7 @@ fiona       IN  A       212.85.158.150
 fiona       IN  AAAA    2a02:2178:2:7::6
 
 rabbit      IN  A       88.190.12.224
+rabbit      IN  AAAA    2a01:e0b:1000:12:226:b9ff:fe81:407f
 
 
 ; alamut  
