@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2011100400	; Serial
+        2011101400	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
