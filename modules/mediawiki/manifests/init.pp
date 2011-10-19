@@ -2,7 +2,7 @@ class mediawiki {
     class config($pgsql_password, $secretkey, $ldap_password) {
     }
 
-    class base {
+    class base inherits config {
 
         $root = "/srv/wiki/"
 
