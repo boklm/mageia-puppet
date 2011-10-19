@@ -1,6 +1,4 @@
 class wikis {
-    include mediawiki::base
-
     class { "mediawiki::config":
 	pgsql_password => extlookup("mediawiki_pgsql",'x'),
 	secretkey => extlookup("mediawiki_secretkey",'x'),
