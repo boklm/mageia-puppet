@@ -7,5 +7,10 @@ class repositories::git_mirror {
         description => "Reference code for forum.$domain",
         source => "git://git.$domain/forum/"
     }
+
+    git::mirror { "/git/initscripts/":
+        description => "Reference code for Initscripts",
+        source => "git://git.$domain/initscripts/"
+    }
 }
 
