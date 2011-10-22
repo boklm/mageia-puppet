@@ -1,6 +1,10 @@
 class mediawiki {
-    class config($pgsql_password, $secretkey, $ldap_password) {
-    }
+    class config(
+	$pgsql_password,
+	$secretkey,
+	$ldap_password,
+	$vhost = "wiki.$domain"
+    ) { }
 
     class base inherits config {
 
@@ -32,9 +36,9 @@ class mediawiki {
 
         # TODO create the ldap user   
 
-	apache::vhost_redirect_ssl { "wiki.$domain": }
+	apache::vhost_redirect_ssl { $vhost: }
 
-        apache::vhost_base { "ssl_wiki.$domain":
+        apache::vhost_base { "ssl_$vhost":
             location => $root,
             use_ssl => true,
             vhost => "wiki.$domain",
