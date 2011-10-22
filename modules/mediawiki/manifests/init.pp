@@ -32,11 +32,7 @@ class mediawiki {
 
         # TODO create the ldap user   
 
-        # TODO write the web configuration
-        apache::vhost_base { "wiki.$domain":
-            location => $root,
-            content => template("mediawiki/wiki_vhost.conf"),
-        }
+	apache::vhost_redirect_ssl { "wiki.$domain": }
 
         apache::vhost_base { "ssl_wiki.$domain":
             location => $root,
