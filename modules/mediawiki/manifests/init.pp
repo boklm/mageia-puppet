@@ -85,6 +85,8 @@ class mediawiki {
 
         file { "$wiki_root/LocalSettings.php":
             ensure => present,
+	    owner => apache,
+	    mode => 600,
             content => template("mediawiki/LocalSettings.php"),
             # if LocalSettings is created first, the wikicreate script
             # do not create a confg directory, and so it doesn't trigger deploy_db exec
