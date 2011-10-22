@@ -144,7 +144,9 @@ $wgLDAPSearchStrings = array( 'ldap' => 'uid=USER-NAME,ou=People,<%= dc_suffix %
 
 $wgLDAPEncryptionType = array( 'ldap' => 'tls');
 
-$wgLDAPBaseDNs = array( 'ldap' => 'ou=People,<%= dc_suffix %>');
+$wgLDAPBaseDNs = array( 'ldap' => '<%= dc_suffix %>');
+$wgLDAPUserBaseDNs = array( 'ldap' => 'ou=People,<%= dc_suffix %>');
+$wgLDAPGroupBaseDNs = array ( 'ldap' => 'ou=Group,<%= dc_suffix %>' );
 
 $wgLDAPProxyAgent =  array( 'ldap' => 'cn=mediawiki-alamut,ou=System Accounts,<%= dc_suffix %>');
  
@@ -152,6 +154,10 @@ $wgLDAPProxyAgentPassword = array( 'ldap' => '<%= ldap_password %>' );
 
 $wgLDAPUseLDAPGroups = array( "ldap" => true );
 $wgLDAPGroupNameAttribute = array( "ldap" => "cn" );
+$wgLDAPGroupUseFullDN = array( 'ldap' => true );
+$wgLDAPLowerCaseUsername => array( 'ldap' => true );
+$wgLDAPGroupObjectclass => array( 'ldap' => 'posixGroup' );
+$wgLDAPGroupAttribute => array( 'ldap' => 'member' );
 
 $wgLDAPLowerCaseUsername = array( "ldap" => true );
 
