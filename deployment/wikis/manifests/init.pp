@@ -7,5 +7,6 @@ class wikis {
 
     mediawiki::instance { "en": 
         title => "Mageia wiki",
+	wiki_settings => template('wikis/wiki_settings'),
     }
 }
