@@ -48,7 +48,7 @@ class mediawiki {
 
     # do wiki basic installation
 
-    define instance($title) {
+    define instance($title, $wiki_settings = '') {
 
         include mediawiki::base
 
