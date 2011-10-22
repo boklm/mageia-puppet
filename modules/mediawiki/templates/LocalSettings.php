@@ -155,6 +155,8 @@ $wgLDAPGroupNameAttribute = array( "ldap" => "cn" );
 
 $wgLDAPLowerCaseUsername = array( "ldap" => true );
 
+$wgLDAPPreferences = array( "ldap" => array( "email"=>"mail","realname"=>"cn","nickname"=>"uid","language"=>"preferredlanguage") )
+
 $wgMinimalPasswordLength = 1;
 
 <%= wiki_settings %>
