@@ -3,12 +3,11 @@ class mediawiki {
 	$pgsql_password,
 	$secretkey,
 	$ldap_password,
-	$vhost = "wiki.$domain"
+	$vhost = "wiki.$domain",
+        $root = "/srv/wiki/"
     ) { }
 
     class base inherits config {
-
-        $root = "/srv/wiki/"
 
         include apache::mod_php
 
