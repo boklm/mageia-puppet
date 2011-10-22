@@ -41,7 +41,7 @@ class mediawiki {
         apache::vhost_base { "ssl_$vhost":
             location => $root,
             use_ssl => true,
-            vhost => "wiki.$domain",
+            vhost => $vhost,
             content => template("mediawiki/wiki_vhost.conf"),
         }
 
