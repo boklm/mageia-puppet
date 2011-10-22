@@ -1,3 +1,7 @@
 $wgGroupPermissions['*']['edit'] = false;
+$wgGroupPermissions['*']['createtalk'] = false;
+$wgGroupPermissions['*']['createpage'] = false;
+$wgGroupPermissions['*']['writeapi'] = false;
+$wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['user']['edit'] = true;
 
