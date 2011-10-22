@@ -20,6 +20,6 @@ class wikis {
 	location => '/dev/null',
 	use_ssl => true,
 	vhost => "wiki.$domain",
-	content => template("wiki/wiki_vhost.conf"),
+	content => template("wikis/wiki_vhost.conf"),
     }
 }
