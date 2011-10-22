@@ -128,6 +128,7 @@ node alamut {
     }
     include youri-check::report
 
+    include wikis
 }
 
 # buildnode
