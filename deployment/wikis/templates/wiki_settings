@@ -5,7 +5,7 @@ $wgGroupPermissions['*']['writeapi'] = false;
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['user']['edit'] = true;
 
-$wgScriptPath = "/mw-<%= name %>";
-$wgArticlePath = "/<%= name %>/$1";
+$wgScriptPath = "/mw-$wgLanguageCode";
+$wgArticlePath = "/$wgLanguageCode/$1";
 $wgUsePathInfo = true;
 
