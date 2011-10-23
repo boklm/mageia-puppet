@@ -155,9 +155,9 @@ $wgLDAPProxyAgentPassword = array( 'ldap' => '<%= ldap_password %>' );
 $wgLDAPUseLDAPGroups = array( "ldap" => true );
 $wgLDAPGroupNameAttribute = array( "ldap" => "cn" );
 $wgLDAPGroupUseFullDN = array( 'ldap' => true );
-$wgLDAPLowerCaseUsername => array( 'ldap' => true );
-$wgLDAPGroupObjectclass => array( 'ldap' => 'posixGroup' );
-$wgLDAPGroupAttribute => array( 'ldap' => 'member' );
+$wgLDAPLowerCaseUsername = array( 'ldap' => true );
+$wgLDAPGroupObjectclass = array( 'ldap' => 'posixGroup' );
+$wgLDAPGroupAttribute = array( 'ldap' => 'member' );
 
 $wgLDAPLowerCaseUsername = array( "ldap" => true );
 
