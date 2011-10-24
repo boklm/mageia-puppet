@@ -9,5 +9,6 @@ $wgScriptPath = "/mw-$wgLanguageCode";
 $wgArticlePath = "/$wgLanguageCode/$1";
 $wgUsePathInfo = true;
 $wgStylePath = "$wgScriptPath/skins";
-$wgLogo             = "$wgStylePath/common/images/wiki.png";
+$wgLogo = "$wgStylePath/common/images/wiki.png";
+$wgDefaultSkin = 'vector';
 
