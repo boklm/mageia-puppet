@@ -13,7 +13,7 @@ class wikis {
 	source => "svn://svn.$domain/svn/web/templates/mediawiki"
     }
 
-    $wiki_languages = [ 'en', 'fr' ]
+    $wiki_languages = [ 'en' ]
     mediawiki::instance { "en": 
         title => "Mageia wiki",
 	wiki_settings => template('wikis/wiki_settings'),
