@@ -17,6 +17,7 @@ class wikis {
     mediawiki::instance { "en": 
         title => "Mageia wiki",
 	wiki_settings => template('wikis/wiki_settings'),
+	skinsdir => "$wikis_templates/skins",
     }
 
     apache::vhost_redirect_ssl { "wiki.$domain": }
