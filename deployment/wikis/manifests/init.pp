@@ -10,7 +10,7 @@ class wikis {
     }
 
     subversion::snapshot { $wikis_templates:
-	source => "svn://svn.$domain/svn/web/templates/mediawiki'
+	source => "svn://svn.$domain/svn/web/templates/mediawiki"
     }
 
     $wiki_languages = [ 'en', 'fr' ]
