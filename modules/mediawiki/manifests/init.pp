@@ -53,7 +53,7 @@ class mediawiki {
 
     # do wiki basic installation
 
-    define instance($title, $wiki_settings = '') {
+    define instance($title, $wiki_settings = '', $skinsdir = '/usr/share/mediawiki/skins') {
 
         include mediawiki::base
 
@@ -68,6 +68,12 @@ class mediawiki {
         file { "$wiki_root":
             ensure => directory 
         }
+
+	file { "$wiki_root/skins":
+	    ensure => link,
+	    target => $skinsdir,
+	    require => File["$wiki_root"],
+	}
 
         exec { "wikicreate $name":
             command => "mediawiki-create $wiki_root",
