@@ -1,3 +1,5 @@
+$wgEnableUploads = true;
+
 $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['*']['createtalk'] = false;
 $wgGroupPermissions['*']['createpage'] = false;
