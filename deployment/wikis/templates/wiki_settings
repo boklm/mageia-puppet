@@ -9,6 +9,7 @@ $wgScriptPath = "/mw-$wgLanguageCode";
 $wgArticlePath = "/$wgLanguageCode/$1";
 $wgUsePathInfo = true;
 $wgStylePath = "$wgScriptPath/skins";
+$wgStyledirectory = '<%= wikis_templates %>/skins';
 $wgLogo = "";
 $wgDefaultSkin = 'cavendish';
 
