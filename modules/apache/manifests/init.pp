@@ -106,6 +106,17 @@ class apache {
             require => Package["apache-conf"],
             content => template("apache/01_default_ssl_vhost.conf")
 	}
+
+        file { "ssl.conf":
+            ensure => present,
+            path => "/etc/httpd/conf.d/ssl.conf",
+            content => template("apache/ssl.conf"),
+            require => Package["apache-conf"],
+            notify => Service["apache"],
+            owner => root,
+            group => root,
+            mode => 644,
+        }
     }
 
     class mod_wsgi inherits base {
