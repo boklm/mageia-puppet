@@ -248,7 +248,7 @@ class sympa {
     # public discussion list
     # reply_to is set to the list
     define public_list($subject, $language = 'en', $topics = false) {
-	include vhost::variable
+	include sympa::variable
         list { $name:
             subject => $subject,
            # profile => "public",
