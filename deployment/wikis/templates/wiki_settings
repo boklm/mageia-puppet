@@ -15,5 +15,4 @@ $wgStylePath = "$wgScriptPath/skins";
 $wgStyleDirectory = '<%= wikis_templates %>/skins';
 $wgLogo = "";
 $wgDefaultSkin = 'cavendish';
-$wgFavicon = 'https://www.mageia.org/g/favicon.png';
-
+$wgFavicon = '/mw-en/skins/cavendish/favicon.png';
