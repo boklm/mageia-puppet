@@ -94,6 +94,13 @@ class lists {
 	    topics => "doc",
 	}
 
+        sympa::announce_list_email { "doc-bugs":
+            subject => "Documentation bug reports from bugzilla",
+            reply_to => "doc-discuss@ml.$domain",
+            sender_email => "bugzilla-daemon@$domain",
+	    topics => "doc",
+        }
+
         sympa::announce_list_email {"packages-commits":
             subject => "Commits on packages repository",
             # FIXME change once we migrate
