@@ -60,6 +60,9 @@ class websites {
 	apache::vhost_redirect { "www.$domain":
 	    url => 'http://blog.mageia.org/en/2011/12/19/server-outage/#'
 	}
+	apache::vhost_redirect { "$domain":
+	    url => 'http://blog.mageia.org/en/2011/12/19/server-outage/#'
+	}
     }
 
     class svn {
