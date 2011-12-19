@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1D
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2011121900	; Serial
+        2011121901	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -29,7 +29,9 @@ group  IN      MX 20   krampouezh.mageia.org.
 ;@	IN	MX	10 mx0.zarb.org.
 
 ; machines
-mageia.org.	IN	A   	212.85.158.22
+;mageia.org.	IN	A   	212.85.158.22
+; mageia.org set to IP of champagne :
+mageia.org.	IN	A	217.70.188.116
 www-zarb    IN  A       212.85.158.22
 
 krampouezh   IN A       95.142.164.207
