@@ -56,6 +56,12 @@ class websites {
 	}
     }
 
+    class www_outage {
+	apache::vhost_redirect { "www.$domain":
+	    url => 'http://blog.mageia.org/en/2011/12/19/server-outage/#'
+	}
+    }
+
     class svn {
         apache::vhost_redirect { "svn.$domain":
             url => "http://svnweb.$domain/",

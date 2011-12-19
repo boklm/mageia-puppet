@@ -199,6 +199,7 @@ node champagne {
     include websites::static
     include websites::hugs
     include websites::releases
+    include websites::www_outage
     include dashboard::base
     include access_classes::web
     include openssh::ssh_keys_from_ldap
