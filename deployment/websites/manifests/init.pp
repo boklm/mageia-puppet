@@ -33,6 +33,7 @@ class websites {
 
 	apache::vhost_base { "www-test.$domain":
 	    content => template('websites/vhost_www.conf'),
+	    location => $vhostdir,
 	}
 
 	package { ['php-mbstring', 'php-mcrypt', 'php-gettext']:
