@@ -21,6 +21,25 @@ class websites {
 	}
     }
 
+    class www inherits base {
+	include apache::mod_php
+	include apache::mod_geoip
+	$vhostdir = "$webdatadir/www.$domain"
+	$svn_location = "svn://svn.$domain/svn/web/www/trunk"
+
+	subversion::snapshot { $vhostdir:
+	    source => $svn_location
+	}
+
+	apache::vhost_base { "www-test.$domain":
+	    content => template('websites/vhost_www.conf'),
+	}
+
+	package { ['php-mbstring', 'php-mcrypt', 'php-gettext']:
+	    ensure => "installed",
+	}
+    }
+
     class hugs inherits base {
         $vhostdir = "$webdatadir/hugs.$domain"
 	$svn_location = "svn://svn.$domain/svn/web/hugs/public/"

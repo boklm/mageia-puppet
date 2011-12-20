@@ -200,6 +200,7 @@ node champagne {
     include websites::hugs
     include websites::releases
     include websites::www_outage
+    include websites::www
     include dashboard::base
     include access_classes::web
     include openssh::ssh_keys_from_ldap
