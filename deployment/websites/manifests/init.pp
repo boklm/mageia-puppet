@@ -24,7 +24,7 @@ class websites {
     class www inherits base {
 	include apache::mod_php
 	include apache::mod_geoip
-	$vhost = "www-test.$domain"
+	$vhost = "www.$domain"
 	$vhostdir = "$webdatadir/www.$domain"
 	$svn_location = "svn://svn.$domain/svn/web/www/trunk"
 
@@ -50,6 +50,15 @@ class websites {
 	    content => template('websites/vhost_www.conf'),
 	    location => $vhostdir,
 	    options => ['FollowSymLinks'],
+	}
+
+	apache::vhost_redirect { $domain:
+	    url => 'http://www.mageia.org/',
+	}
+	apache::vhost_redirect { "ssl_$domain":
+	    use_ssl => true,
+	    vhost => $domain,
+	    url => 'https://www.mageia.org/',
 	}
 
 	package { ['php-mbstring', 'php-mcrypt', 'php-gettext']:
@@ -89,15 +98,6 @@ class websites {
 
 	subversion::snapshot { "$vhostdir":
 	    source => $svn_location
-	}
-    }
-
-    class www_outage {
-	apache::vhost_redirect { "www.$domain":
-	    url => 'http://blog.mageia.org/en/2011/12/19/server-outage/#'
-	}
-	apache::vhost_redirect { "$domain":
-	    url => 'http://blog.mageia.org/en/2011/12/19/server-outage/#'
 	}
     }
 

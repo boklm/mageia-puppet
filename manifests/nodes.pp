@@ -199,7 +199,6 @@ node champagne {
     include websites::static
     include websites::hugs
     include websites::releases
-    include websites::www_outage
     include websites::www
     include dashboard::base
     include access_classes::web
