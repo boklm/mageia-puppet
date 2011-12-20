@@ -6,6 +6,9 @@ class apache {
 	# number of time the log file are rotated before being removed
 	$httpdlogs_rotate = "24"
 
+	$apache_user = 'apache'
+	$apache_group = 'apache'
+
         package { "apache-mpm-prefork":
             alias => apache,
             ensure => installed
