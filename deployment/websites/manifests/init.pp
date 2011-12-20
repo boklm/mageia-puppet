@@ -24,6 +24,7 @@ class websites {
     class www inherits base {
 	include apache::mod_php
 	include apache::mod_geoip
+	$vhost = "www-test.$domain"
 	$vhostdir = "$webdatadir/www.$domain"
 	$svn_location = "svn://svn.$domain/svn/web/www/trunk"
 
@@ -31,7 +32,14 @@ class websites {
 	    source => $svn_location
 	}
 
-	apache::vhost_base { "www-test.$domain":
+	apache::vhost_base { "$vhost":
+	    content => template('websites/vhost_www.conf'),
+	    location => $vhostdir,
+	    options => ['FollowSymLinks'],
+	}
+	apache::vhost_base { "ssl_$vhost":
+	    use_ssl => true,
+	    vhost => $vhost,
 	    content => template('websites/vhost_www.conf'),
 	    location => $vhostdir,
 	    options => ['FollowSymLinks'],
