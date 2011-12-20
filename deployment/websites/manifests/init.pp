@@ -28,8 +28,17 @@ class websites {
 	$vhostdir = "$webdatadir/www.$domain"
 	$svn_location = "svn://svn.$domain/svn/web/www/trunk"
 
+	apache::apache_group
+
 	subversion::snapshot { $vhostdir:
 	    source => $svn_location
+	}
+
+	file { "$vhostdir/var/tmp/cache":
+	    ensure => directory,
+	    owner => root,
+	    group => $apache::base::apache_group,
+	    mode => 0660,
 	}
 
 	apache::vhost_base { "$vhost":
