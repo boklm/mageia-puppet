@@ -161,6 +161,12 @@ class apache {
 	}
     }
 
+    class mod_geoip inherits base {
+	package { "apache-mod_geoip":
+	    ensure => installed
+	}
+    }
+
     define vhost_base($content = '',
                       $location = '/dev/null', 
                       $use_ssl = false,
