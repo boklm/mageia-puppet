@@ -22,7 +22,6 @@ mail_owner = postfix
 
 myhostname = <%= fqdn %>
 mydomain = <%= domain %>
-myorigin = $mydomain
 inet_interfaces = localhost
 inet_protocols = all
 mynetworks_style = host
