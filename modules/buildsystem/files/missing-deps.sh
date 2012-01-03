@@ -21,5 +21,6 @@ missing() {
 
 for arch in i586 x86_64
 do
-	missing $arch > missing-deps.$arch.txt
+	missing $arch > missing-deps.$arch.txt.new
+	mv -f missing-deps.$arch.txt.new missing-deps.$arch.txt
 done
