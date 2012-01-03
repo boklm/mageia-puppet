@@ -217,7 +217,7 @@ class buildsystem {
 
 	cron { "update maintdb export":
 	    user => $maintdb_login,
-	    command => "$maintdb_binpath root get > $maintdb_dump; grep ' nobody\$' $maintdb_dump | sed 's/ nobody\$//' > $maintdb_unmaintained",
+	    command => "$maintdb_binpath root get > $maintdb_dump.new; mv -f $maintdb_dump.new $maintdb_dump; grep ' nobody\$' $maintdb_dump | sed 's/ nobody\$//' > $maintdb_unmaintained.new; mv -f $maintdb_unmaintained.new $maintdb_unmaintained",
 	    minute => "*/30",
         require => User[$maintdb_login],
 	}
