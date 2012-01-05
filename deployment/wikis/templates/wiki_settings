@@ -16,3 +16,4 @@ $wgStyleDirectory = '<%= wikis_templates %>/skins';
 $wgLogo = "";
 $wgDefaultSkin = 'cavendish';
 $wgFavicon = '/mw-en/skins/cavendish/favicon.png';
+$wgRightsIcon = 'https://i.creativecommons.org/l/by-sa/3.0/88x31.png';
