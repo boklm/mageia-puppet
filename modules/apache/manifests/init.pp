@@ -1,7 +1,6 @@
 class apache {
 
     class base {
-	$php_date_timezone = "UTC"
 
 	# number of time the log file are rotated before being removed
 	$httpdlogs_rotate = "24"
@@ -57,6 +56,7 @@ class apache {
     }
     
     class mod_php inherits base {
+        $php_date_timezone = "UTC"
         package { "apache-mod_php":
             ensure => installed
         }
