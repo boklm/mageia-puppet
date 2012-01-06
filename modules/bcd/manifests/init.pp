@@ -43,6 +43,22 @@ class bcd {
 	    location => "$bcd_home/public_html",
 	    content => template('bcd/vhost_bcd.conf'),
 	}
+	file {".htaccess":
+	    path => "$bcd_home/public_html/",
+	    ensure => present,
+	    owner => bcd,
+	    group => bcd,
+	    mode => 755,
+	    content => template("bcd/.htaccess")
+	}
+	file {".htpasswd":
+            path => "$bcd_home/public_html/",
+            ensure => present,
+            owner => bcd,
+            group => bcd,
+            mode => 755,
+            content => template("bcd/.htpasswd")
+        }
     }
 
     class rsync inherits base {
