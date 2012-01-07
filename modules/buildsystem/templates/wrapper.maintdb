@@ -2,7 +2,7 @@
 
 maintdbuser="<%= maintdb_login %>"
 maintdbpath="<%= maintdb_binpath %>"
-packagersgroup="<%= packagers_group %>"
+packagersgroup="<%= scope.lookupvar('buildsystem::base::packagers_group') %>"
 
 function isingroup()
 {
