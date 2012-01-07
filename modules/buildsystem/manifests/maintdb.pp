@@ -1,44 +1,36 @@
 class buildsystem {
     class maintdb {
     	include sudo
-        $maintdb_login = "maintdb"
-        $maintdb_homedir = "/var/lib/maintdb"
-        $maintdb_dbdir = "$maintdb_homedir/db"
-        $maintdb_binpath = "/usr/local/sbin/maintdb"
-        $maintdb_wrappath = "/usr/local/bin/wrapper.maintdb"
-        $maintdb_dump = "/var/www/bs/data/maintdb.txt"
+        $login = "maintdb"
+        $homedir = "/var/lib/maintdb"
+        $dbdir = "$maintdb_homedir/db"
+        $binpath = "/usr/local/sbin/maintdb"
+        $wrappath = "/usr/local/bin/wrapper.maintdb"
+        $dump = "/var/www/bs/data/maintdb.txt"
         $maintdb_unmaintained = "/var/www/bs/data/unmaintained.txt"
 
-        user {"$maintdb_login":
+        user {"$login":
             ensure => present,
             comment => "Maintainers database",
             managehome => true,
             shell => "/bin/bash",
-            home => "$maintdb_homedir",
+            home => "$homedir",
         }
 
-        file { "$maintdb_homedir":
+        file { ["$homedir","$dbdir"]:
             ensure => directory,
-            owner => "$maintdb_login",
-            group => "$maintdb_login",
+            owner => "$login",
+            group => "$login",
             mode => 711,
-            require => User["$maintdb_login"],
+            require => User["$login"],
         }
 
-        file { "$maintdb_dbdir":
-            ensure => directory,
-            owner => "$maintdb_login",
-            group => "$maintdb_login",
-            mode => 711,
-            require => User["$maintdb_login"],
-        }
-
-        file { "$maintdb_binpath":
+        file { "$binpath":
             mode => 755,
             content => template("buildsystem/maintdb")
         }
 
-        file { "$maintdb_wrappath":
+        file { "$wrappath":
             mode => 755,
             content => template("buildsystem/wrapper.maintdb")
         }
@@ -47,23 +39,23 @@ class buildsystem {
             content => template("buildsystem/sudoers.maintdb")
         }
 
-        file { ["$maintdb_dump","$maintdb_dump.new",
-                "$maintdb_unmaintained","$maintdb_unmaintained.new"]:
+        file { ["$dump","$dump.new",
+                "$unmaintained","$unmaintained.new"]:
             ensure => present,
-            owner => $maintdb_login,
+            owner => $login,
             mode => 644,
             require => File["/var/www/bs/data"],
         }
 
         cron { "update maintdb export":
-            user => $maintdb_login,
-            command => "$maintdb_binpath root get > $maintdb_dump.new; mv -f $maintdb_dump.new $maintdb_dump; grep ' nobody\$' $maintdb_dump | sed 's/ nobody\$//' > $maintdb_unmaintained.new; mv -f $maintdb_unmaintained.new $maintdb_unmaintained",
+            user => $login,
+            command => "$binpath root get > $dump.new; mv -f $dump.new $dump; grep ' nobody\$' $dump | sed 's/ nobody\$//' > $unmaintained.new; mv -f $unmaintained.new $unmaintained",
             minute => "*/30",
-            require => User[$maintdb_login],
+            require => User[$login],
         }
 
         apache::vhost_base { "maintdb.$domain":
-            location => $maintdb_dbdir,
+            location => $dbdir,
             content => template("buildsystem/vhost_maintdb.conf"),
         }
     }
