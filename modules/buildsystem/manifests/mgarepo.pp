@@ -54,17 +54,18 @@ class buildsystem {
             group => $sched_login,
         } 
 
-        tidy { "$sched_home_dir/uploads":
-            age     => "2w",
+        Tidy {
             recurse => true,
             type    => "ctime",
+        }
+
+        tidy { "$sched_home_dir/uploads":
+            age     => "2w",
         }
 
         tidy { "$packages_archivedir":
             age     => "1w",
             matches => "*.rpm",
-            recurse => true,
-            type    => "ctime",
         }
     }
 }
