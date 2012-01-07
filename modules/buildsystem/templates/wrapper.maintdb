@@ -1,7 +1,7 @@
 #!/bin/sh
 
-maintdbuser="<%= maintdb_login %>"
-maintdbpath="<%= maintdb_binpath %>"
+maintdbuser="<%= login %>"
+maintdbpath="<%= binpath %>"
 packagersgroup="<%= scope.lookupvar('buildsystem::base::packagers_group') %>"
 
 function isingroup()

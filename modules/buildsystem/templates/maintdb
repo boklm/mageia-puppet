@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MAINTDBDIR="<%= maintdb_dbdir %>"
+MAINTDBDIR="<%= dbdir %>"
 
 function checkname()
 {
