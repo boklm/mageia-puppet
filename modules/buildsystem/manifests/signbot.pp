@@ -27,12 +27,6 @@ class buildsystem {
             content => template("buildsystem/sudoers.signpackage")
         }
 
-        File {
-            ensure => present,
-	        owner => root,
-	        group => root,
-        }
-
         file { "$sign_home_dir/.rpmmacros":
 	        mode => 644,
 	        content => template("buildsystem/signbot-rpmmacros")
