@@ -1,6 +1,3 @@
-# to not repeat the setting everywhere
-Exec { path => "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin/" }
-
 # svn, big important server
 node valstar {
 # Location: IELO datacenter (marseille)
