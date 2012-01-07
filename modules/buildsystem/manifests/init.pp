@@ -85,6 +85,12 @@ class buildsystem {
         include youri_submit
         include buildsystem::check_missing_deps
         include buildsystem::signbot
+
+        cron { "dispatch jobs":
+            user => $sched_login,
+            command => "emi ; ulri",
+            minute => "*/2",
+        }
     }
 
     class buildnode inherits base {
