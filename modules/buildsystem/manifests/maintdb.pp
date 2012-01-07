@@ -1,5 +1,5 @@
 class buildsystem {
-    class maintdb inherits base {
+    class maintdb {
     	include sudo
         $maintdb_login = "maintdb"
         $maintdb_homedir = "/var/lib/maintdb"
