@@ -27,21 +27,20 @@ class buildsystem {
             content => template("buildsystem/sudoers.signpackage")
         }
 
-    	file { "$sign_home_dir/.rpmmacros":
-	        ensure => present,
+        File {
+            ensure => present,
 	        owner => root,
 	        group => root,
+        }
+
+        file { "$sign_home_dir/.rpmmacros":
 	        mode => 644,
 	        content => template("buildsystem/signbot-rpmmacros")
 	    }
 
         file { "/usr/local/bin/sign-check-package":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             content => template("buildsystem/sign-check-package")
         }
     }
 }
-
