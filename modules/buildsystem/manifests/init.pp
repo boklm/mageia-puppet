@@ -6,11 +6,6 @@ class buildsystem {
 	$sched_login = "schedbot"
 	$sched_home_dir = "/var/lib/$sched_login"
 	$packages_archivedir = "$sched_home_dir/old"
-	$sign_login = "signbot"
-	$sign_home_dir = "/var/lib/$sign_login"
-	$sign_keydir = "$sign_home_dir/keys"
-	# FIXME: maybe keyid should be defined at an other place
-	$sign_keyid = "80420F66"
 	$repository_root = "/distrib/bootstrap"
 	$mirror_root = "/distrib/mirror"
 	$packagers_group = 'mga-packagers'
@@ -89,48 +84,11 @@ class buildsystem {
         include buildsystem::mgarepo
         include youri_submit
         include buildsystem::check_missing_deps
-	include signbot
+        include buildsystem::signbot
     }
 
     class buildnode inherits base {
         include iurt
-    }
-
-    class signbot {
-	sshuser { $sign_login:
-          homedir => $sign_home_dir,
-          comment => "System user used to sign packages",
-	  groups => [$sched_login],
-        }
-
-	gnupg::keys{"packages":
-          email => "packages@$domain",
-	  #FIXME there should be a variable somewhere to change the name of the distribution
-  	  key_name => 'Mageia Packages',
-	  login => $sign_login,
-	  batchdir => "$sign_home_dir/batches",
-	  keydir => $sign_keydir,
-	}
-
-	sudo::sudoers_config { "signpackage":
-            content => template("buildsystem/sudoers.signpackage")
-        }
-
-	file { "$sign_home_dir/.rpmmacros":
-	    ensure => present,
-	    owner => root,
-	    group => root,
-	    mode => 644,
-	    content => template("buildsystem/signbot-rpmmacros")
-	}
-
-	file { "/usr/local/bin/sign-check-package":
-	    ensure => present,
-	    owner => root,
-	    group => root,
-	    mode => 755,
-	    content => template("buildsystem/sign-check-package")
-	}
     }
 
     class scheduler {
