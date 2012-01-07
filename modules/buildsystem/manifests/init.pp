@@ -166,7 +166,7 @@ class buildsystem {
 	    content => template("buildsystem/sudoers.maintdb")
 	}
 
-        file { "$maintdb_dump":
+        file { ["$maintdb_dump","$maintdb_dump.new"]:
             ensure => present,
             owner => $maintdb_login,
             mode => 644,
