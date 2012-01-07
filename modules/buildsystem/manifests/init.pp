@@ -528,34 +528,24 @@ class buildsystem {
             require => File["/etc/iurt"],
         }
 
-        file { "/etc/iurt/build/cauldron.conf":
-            ensure => present,
-            owner => $build_login,
-            group => $build_login,
-            mode => 644,
-            require => File["/etc/iurt/build"],
-            content => template("buildsystem/iurt.cauldron.conf")
+        define iurt_config() {
+
+            $distribution = $name
+            file { "/etc/iurt/build/$distribution.conf":
+                ensure => present,
+                owner => $build_login,
+                group => $build_login,
+                mode => 644,
+                require => File["/etc/iurt/build"],
+                content => template("buildsystem/iurt.$distribution.conf")
+            }
         }
 
-        file { "/etc/iurt/build/1.conf":
-            ensure => present,
-            owner => $build_login,
-            group => $build_login,
-            mode => 644,
-            require => File["/etc/iurt/build"],
-            content => template("buildsystem/iurt.1.conf")
-        }
+        iurt_config { "1": }
+        iurt_config { "mandriva2010.1": }
+        iurt_config { "cauldron": }
 
-        file { "/etc/iurt/build/mandriva2010.1.conf":
-            ensure => present,
-            owner => $build_login,
-            group => $build_login,
-            mode => 644,
-            require => File["/etc/iurt/build"],
-            content => template("buildsystem/iurt.mandriva2010.1.conf")
-        }
-
-	sudo::sudoers_config { "iurt":
+       	sudo::sudoers_config { "iurt":
             content => template("buildsystem/sudoers.iurt")
         }
     }
