@@ -42,13 +42,8 @@ class buildsystem {
         }
 
         $location = "/var/www/bs"
-        file { "$location":
+        file { ["$location","$location/data"]:
             ensure => directory,
-        }
-
-        file { "$location/data":
-            ensure => directory,
-            require => File[$location],
         }
 
         apache::vhost_base { "pkgsubmit.$domain":
