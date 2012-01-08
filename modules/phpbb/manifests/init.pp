@@ -12,18 +12,11 @@ class phpbb {
                    "php-apc",
                    "php-magickwand",
                    "php-pgsql",
-                   "php-ldap", ] :
-            ensure => installed
-        }
+                   "php-ldap", ] : }
 
-        package { "perl-DBD-Pg":
-            ensure => installed
-        }
+        package { "perl-DBD-Pg": }
 
         file { "/usr/local/bin/phpbb_apply_config.pl":
-             ensure => present,
-             owner => root,
-             group => root,
              mode => 755,
              source => 'puppet:///modules/phpbb/phpbb_apply_config.pl',
         }
@@ -36,8 +29,6 @@ class phpbb {
         $forums_dir = "/var/www/forums/"
         file { "$forums_dir":
             ensure => directory,
-            owner => root,
-            group => root,
         }
         # TODO add a ssl counterpart
         # TODO check that everything is locked down
@@ -73,10 +64,6 @@ class phpbb {
     define redirection_instance($url) {
         $lang = $name
         file { "/etc/httpd/conf/vhosts.d/forums.d/redirect_$name.conf":
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 644,
             content => template("phpbb/forums_redirect.conf"),
             notify => Service['apache'],
         }
@@ -139,16 +126,10 @@ class phpbb {
         file { $dir_names:
             ensure => directory,
             owner => apache,
-            group => root,
-            mode => 755,
             require => Exec["git_clone $lang"],
         }
 
         file { "$forums_dir/$lang/phpBB/config.php":
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 644,
             content => template("phpbb/config.php"),
         }
 
