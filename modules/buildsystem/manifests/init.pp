@@ -56,21 +56,16 @@ class buildsystem {
             source => "svn://svn.$domain/soft/buildsystem/web/",
         }
 
-	file { "$repository_root/distrib/cauldron/i586/media/media_info/media.cfg":
-	    ensure => present,
-	    owner => $sched_login,
-	    group => $sched_login,
-	    mode => 644,
-	    source => "puppet:///modules/buildsystem/i586/media.cfg",
-	}
+        define media_cfg() {
+            $arch = $name
+            file { "$repository_root/distrib/cauldron/$arch/media/media_info/media.cfg":
+	            owner => $sched_login,
+	            group => $sched_login,
+	            source => "puppet:///modules/buildsystem/$arch/media.cfg",
+	        }
+        }
 
-	file { "$repository_root/distrib/cauldron/x86_64/media/media_info/media.cfg":
-	    ensure => present,
-	    owner => $sched_login,
-	    group => $sched_login,
-	    mode => 644,
-	    source => "puppet:///modules/buildsystem/x86_64/media.cfg",
-	}
+        media_cfg { ["i586","x86_64"]: }
 
         include scheduler
         include gatherer
