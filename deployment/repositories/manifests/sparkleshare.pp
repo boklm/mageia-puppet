@@ -1,10 +1,7 @@
 class repositories::sparkleshare {
     $sp_dir = '/git/sparkleshare'
-    file {$sp_dir:
-	ensure => directory,
-	owner => root,
-	group => root,
-	mode => 755,
+    file { $sp_dir:
+	    ensure => directory,
     }
 
     git::repository { "$sp_dir/test":
