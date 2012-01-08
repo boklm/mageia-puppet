@@ -1,22 +1,14 @@
 class ntp {
-
-    package { ntp: 
-        ensure => installed
-    }
+    package { ntp: }
 
     service { ntpd:
         ensure => running,
         path => "/etc/init.d/ntpd",
-        subscribe => [ Package["ntp"], File["ntp.conf"] ]
+        subscribe => [Package["ntp"], File["ntp.conf"]],
     }
-    
-    file { "ntp.conf":
-        path => "/etc/ntp.conf",
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
+
+    file { "/etc/ntp.conf":
         require => Package["ntp"],
-        content => template("ntp/ntp.conf")
+        content => template("ntp/ntp.conf"),
     }
 }
