@@ -9,8 +9,6 @@ class blog {
         user { "blog":
         groups => apache,
         comment => "Mageia Blog",
-        ensure => present,
-        managehome => true,
         home => "/var/lib/blog",
         }
     }

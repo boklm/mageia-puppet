@@ -3,8 +3,6 @@ class planet {
     user { "planet":
         groups => apache,
         comment => "Planet Mageia",
-        ensure => present,
-        managehome => true,
         home => "/var/lib/planet",
     }
 

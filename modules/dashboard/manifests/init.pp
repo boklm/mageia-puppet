@@ -9,11 +9,8 @@ class dashboard {
 
     class base inherits variable {
         user {"$dashboard_login":
-            ensure => present,
             comment => "dashboard system user",
-            managehome => true,
             home => $dashboard_home_dir,
-            shell => "/bin/bash",
         }
 
 	subversion::snapshot { $dashboard_dir:

@@ -12,10 +12,7 @@ class buildsystem {
         $packagers_committers_group = $buildsystem::base::packagers_committers_group
 
         user {"$binrepo_login":
-            ensure => present,
             comment => "Binary files repository",
-            managehome => true,
-            shell => "/bin/bash",
             home => "$binrepo_homedir",
         }
 

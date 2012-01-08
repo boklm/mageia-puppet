@@ -9,10 +9,7 @@ class buildsystem {
         $unmaintained = "/var/www/bs/data/unmaintained.txt"
 
         user {"$login":
-            ensure => present,
             comment => "Maintainers database",
-            managehome => true,
-            shell => "/bin/bash",
             home => "$homedir",
         }
 

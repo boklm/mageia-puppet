@@ -16,6 +16,16 @@ File {
     mode => 644,
 }
 
+Group {
+    ensure => present,
+}
+
+User {
+    ensure => present,
+    managehome => true,
+    shell => "/bin/bash",
+}
+
 define local_script($content, 
                     $owner = "root", 
                     $group = 'root', 

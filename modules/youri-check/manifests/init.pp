@@ -8,8 +8,6 @@ class youri-check {
 
         user { $user:
             comment => 'Youri Check',
-            ensure => present,
-            managehome => true,
             home => $home,
         }
 

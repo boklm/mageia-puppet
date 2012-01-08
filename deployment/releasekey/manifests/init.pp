@@ -6,17 +6,12 @@ class releasekey {
     }
 
     class base inherits variable {
-	group {"$sign_login":
-	    ensure => present,
-	}
+	group {"$sign_login": }
 
 	user {"$sign_login":
-	    ensure => present,
 	    comment => "System user to sign Mageia Releases",
-	    managehome => true,
 	    home => $sign_home_dir,
 	    gid => $sign_login,
-	    shell => "/bin/bash",
 	    require => Group[$sign_login],
 	}
 
