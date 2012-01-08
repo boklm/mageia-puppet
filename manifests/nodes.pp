@@ -256,6 +256,7 @@ node rabbit {
     }
 
     # for testing pxe support of libvirt
+    include auto_installation::variables
     libvirtd::network {"pxe_network":
         network => "192.168.123.0/24",
         tftp_root => $auto_installation::variables::pxe_dir,
