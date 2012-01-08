@@ -32,14 +32,14 @@ class buildsystem {
             file { "/etc/iurt/build/$distribution.conf":
                 owner => $build_login,
                 group => $build_login,
-                content => template("buildsystem/iurt.$distribution.conf")
+                content => template("buildsystem/iurt/$distribution.conf")
             }
         }
 
         iurt_config { ["1","cauldron","mandriva2010.1"]: }
 
        	sudo::sudoers_config { "iurt":
-            content => template("buildsystem/sudoers.iurt")
+            content => template("buildsystem/iurt/sudoers.iurt")
         }
     }
 }
