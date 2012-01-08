@@ -5,7 +5,6 @@ class buildsystem {
         $homedir = "/var/lib/maintdb"
         $dbdir = "$homedir/db"
         $binpath = "/usr/local/sbin/maintdb"
-        $wrappath = "/usr/local/bin/wrapper.maintdb"
         $dump = "/var/www/bs/data/maintdb.txt"
         $unmaintained = "/var/www/bs/data/unmaintained.txt"
 
@@ -30,8 +29,7 @@ class buildsystem {
             content => template("buildsystem/maintdb/maintdb.bin")
         }
 
-        file { "$wrappath":
-            mode => 755,
+        local_script { "wrapper.maintdb":
             content => template("buildsystem/maintdb/wrapper.maintdb")
         }
 
