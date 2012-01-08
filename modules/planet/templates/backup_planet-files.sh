@@ -11,7 +11,7 @@ do
 	then
 		/bin/mkdir $PATH_TO_FILE/$locale
 	fi
-	rsync -aHP --delete <%= planet_location %>/$locale $PATH_TO_FILE/$locale/$locale-$COUNT
+	rsync -aHP --delete <%= location %>/$locale $PATH_TO_FILE/$locale/$locale-$COUNT
 done
 # Check count file to have a week of backup in the directory
 if [ $COUNT -ne 6 ]

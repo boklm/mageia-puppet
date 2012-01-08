@@ -1,66 +1,49 @@
 class planet {
 
     user { "planet":
-	groups => apache,
-	comment => "Planet Mageia",
-	ensure => present,
-	managehome => true,
-	home => "/var/lib/planet",
+        groups => apache,
+        comment => "Planet Mageia",
+        ensure => present,
+        managehome => true,
+        home => "/var/lib/planet",
     }
 
-    $planet_location = "/var/www/vhosts/planet.$domain"
-    $planet_domain = "planet.$domain"
+    $location = "/var/www/vhosts/planet.$domain"
+    $vhost = "planet.$domain"
 	
     include apache::mod_php
     include apache::mod_deflate
-    apache::vhost_base { "$planet_domain":
-	location => $planet_location,
+
+    apache::vhost_base { "$vhost":
+        location => $location,
         content => template('planet/planet_vhosts.conf')
     }
 
-    file { "deploy_new-planet":
-        path => "/usr/local/bin/deploy_new-planet.sh",
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 755,
+    local_script { "deploy_new-planet.sh":
         content => template("planet/deploy_new-planet.sh")
     }
 
     file { "$planet_location":
-	ensure => directory,
-	owner => planet,
-	group => apache,
-	mode => 644,
+        ensure => directory,
+        owner => planet,
+        group => apache,
     }
 
-    file { "index":
-        path => "$planet_location/index.php",
-        ensure => present,
+    file { "$planet_location/index.php":
         owner => planet,
         group => apache,
         mode => 755,
         content => template("planet/index.php")
     }
 
-    package { ['php-iconv']:
-        ensure => installed
-    }    
+    package { ['php-iconv']: }    
 
     class files_backup inherits base {
         file { "/var/lib/planet/backup":
                 ensure => directory,
-                owner => root,
-                group => root,
-                mode => 644,
         }
 
-        file { "backup_planet-files":
-            path => "/usr/local/bin/backup_planet-files.sh",
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 755,
+        local_script { "backup_planet-files.sh":
             content => template("blog/backup_planet-files.sh")
         }
 
