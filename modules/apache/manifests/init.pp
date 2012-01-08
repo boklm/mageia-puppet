@@ -2,7 +2,7 @@ class apache {
 
     define config($content) {
         file { $name:
-            content => $content
+            content => $content,
             require => Package["apache-conf"],
             notify => Service["apache"],
         }
