@@ -1,12 +1,8 @@
 class bugzilla {
 
-   $bugzilla_location = "/usr/share/bugzilla/template/en/custom"
+    $bugzilla_location = "/usr/share/bugzilla/template/en/custom"
 
-    package { ['bugzilla','graphviz']: }
-
-    package { 'perl-Test-Taint': }
-
-    package { 'perl-JSON-RPC': }
+    package { ['bugzilla','graphviz', 'perl-Test-Taint', 'perl-JSON-RPC']: }
 
     $pgsql_password = extlookup("bugzilla_pgsql",'x')
     $ldap_password = extlookup("bugzilla_ldap",'x')
@@ -17,8 +13,6 @@ class bugzilla {
     }
 
     file { '/etc/bugzilla/localconfig':
-      ensure => present,
-      owner => root,
       group => apache,
       mode => 640,
       content => template("bugzilla/localconfig"),
@@ -27,8 +21,6 @@ class bugzilla {
 
 
     file { '/var/lib/bugzilla/params':
-      ensure => present,
-      owner => root,
       group => apache,
       mode => 640,
       content => template("bugzilla/params"),
@@ -59,7 +51,6 @@ class bugzilla {
     file { "custom":
       path => "/usr/share/bugzilla/template/en/custom",
       ensure => directory,
-      owner => root,
       group => apache,
       mode => 640,
       recurse => true,
