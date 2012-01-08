@@ -111,7 +111,6 @@ class buildsystem {
         $binrepodir = "$binrepo_homedir/data"
 	$uploadinfosdir = "$binrepo_homedir/infos"
 	$uploadbinpath = '/usr/local/bin/upload-bin'
-	$uploadbinpathwrapper = '/usr/local/bin/wrapper.upload-bin'
 	$uploadmail_from = "root@$domain"
 	$uploadmail_to = "packages-commits@ml.$domain"
 
