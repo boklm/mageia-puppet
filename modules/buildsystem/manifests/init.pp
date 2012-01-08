@@ -107,10 +107,8 @@ class buildsystem {
 
     class iurtupload {
         file { "/etc/iurt/upload.conf":
-            ensure => present,
             owner => $build_login,
             group => $build_login,
-            mode => 644,
             require => File["/etc/iurt"],
             content => template("buildsystem/upload.conf")
         }
@@ -182,8 +180,6 @@ class buildsystem {
         package { "rpmlint": }
 
         file { "/etc/rpmlint/config":
-            ensure => present,
-            mode => 644,
             require => Package['rpmlint'],
             content => template("buildsystem/rpmlint.conf")
         }
@@ -232,10 +228,7 @@ class buildsystem {
             ensure => "directory",
         }
 
-	file { '/usr/lib/perl5/site_perl/5.10.1/Youri/Repository/Mageia.pm':
-            ensure => present,
-            mode => 644,
-            require => File["/usr/lib/perl5/site_perl/5.10.1/Youri/Repository"],
+        file { '/usr/lib/perl5/site_perl/5.10.1/Youri/Repository/Mageia.pm':
             source => "puppet:///modules/buildsystem/Mageia.pm",
         }
 
