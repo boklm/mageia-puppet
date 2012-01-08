@@ -137,35 +137,18 @@ class buildsystem {
 	    home => "$binrepo_homedir",
 	}
 
-	file { $binrepodir:
-	    ensure => directory,
-	    owner => $binrepo_login,
-	    group => $binrepo_login,
-	    mode => 755,
-	}
+        file { [$binrepodir, $uploadinfosdir]:
+            ensure => directory,
+            owner => $binrepo_login,
+        }
 
-	file { $uploadinfosdir:
-	    ensure => directory,
-	    owner => $binrepo_login,
-	    group => $binrepo_login,
-	    mode => 755,
-	}
+        local_script { "upload-bin":
+            content => template('buildsystem/upload-bin'),
+        }
 
-        file { $uploadbinpath:
-	    ensure => present,
-	    owner => root,
-	    group => root,
-	    mode => 755,
-	    content => template('buildsystem/upload-bin'),
-	}
-
-        file { $uploadbinpathwrapper:
-	    ensure => present,
-	    owner => root,
-	    group => root,
-	    mode => 755,
-	    content => template('buildsystem/wrapper.upload-bin'),
-	}
+        local_script { "wrapper.upload-bin":
+            content => template('buildsystem/wrapper.upload-bin'),
+        }
 
 	sudo::sudoers_config { "binrepo":
 	    content => template("buildsystem/sudoers.binrepo")
