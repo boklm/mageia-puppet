@@ -31,12 +31,9 @@ class buildsystem {
 	        content => template("buildsystem/signbot/signbot-rpmmacros")
 	    }
 
-        local_script { "sign-check-package":
-            content => template("buildsystem/signbot/sign-check-package")
-        }
-
-        local_script { "mga-signpackage":
-            content => template("buildsystem/signbot/mga-signpackage")
+        local_script {
+            "sign-check-package": content => template("buildsystem/signbot/sign-check-package");
+            "mga-signpackage": content => template("buildsystem/signbot/mga-signpackage");
         }
     }
 }
