@@ -39,9 +39,7 @@ class buildsystem {
 
         file { ["$dump","$dump.new",
                 "$unmaintained","$unmaintained.new"]:
-            ensure => present,
             owner => $login,
-            mode => 644,
             require => File["/var/www/bs/data"],
         }
 
