@@ -1,21 +1,26 @@
 class apache {
 
+    define config($content) {
+        file { $name:
+            content => $content
+            require => Package["apache-conf"],
+            notify => Service["apache"],
+        }
+    }
+
     class base {
 
-	# number of time the log file are rotated before being removed
-	$httpdlogs_rotate = "24"
+        # number of time the log file are rotated before being removed
+        $httpdlogs_rotate = "24"
 
-	$apache_user = 'apache'
-	$apache_group = 'apache'
+        $apache_user = 'apache'
+        $apache_group = 'apache'
 
         package { "apache-mpm-prefork":
             alias => apache,
-            ensure => installed
         }
     
-        package { "apache-conf":
-            ensure => installed,
-        }
+        package { "apache-conf": }
 
         service { httpd: 
             alias => apache,
@@ -23,71 +28,38 @@ class apache {
             subscribe => [ Package['apache-mpm-prefork'] ],
         }
 
-        file { "customization.conf":
-            ensure => present,
-            path => "/etc/httpd/conf.d/customization.conf",
-            content => template("apache/customization.conf"),
-            require => Package["apache-conf"],
-            notify => Service["apache"],
-            owner => root,
-            group => root,
-            mode => 644,
+        apache::config {
+            "/etc/httpd/conf.d/customization.conf":
+                content => template("apache/customization.conf");
+            "/etc/httpd/conf/vhosts.d/00_default_vhosts.conf":
+                content => template("apache/00_default_vhosts.conf");
         }
 
-        file { "00_default_vhosts.conf":
-            path => "/etc/httpd/conf/vhosts.d/00_default_vhosts.conf",
-            ensure => "present",
-            owner => root,
-            group => root,
-            mode => 644,
-            notify => Service['apache'],
-            require => Package["apache-conf"],
-            content => template("apache/00_default_vhosts.conf")
-        }
-
-	file { "/etc/logrotate.d/httpd":
-            ensure => "present",
-            owner => root,
-            group => root,
-            mode => 644,
+        file { "/etc/logrotate.d/httpd":
             content => template("apache/logrotate")
-	}
-
+        }
     }
     
     class mod_php inherits base {
         $php_date_timezone = "UTC"
-        package { "apache-mod_php":
-            ensure => installed
-        }
 
-        file { "/etc/httpd/conf.d/mod_php.conf":
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 644,
-            require => Package['apache-conf'],
+        package { "apache-mod_php": }
+
+        apache::config { "/etc/httpd/conf.d/mod_php.conf":
             content => template('apache/mod_php.conf'),
-            notify => Service['apache'],
         }
     }
 
     class mod_perl inherits base {
-        package { "apache-mod_perl":
-            ensure => installed
-        }
+        package { "apache-mod_perl": }
     }
 
     class mod_fcgid inherits base {
-        package { "apache-mod_fcgid":
-            ensure => installed
-        }
+        package { "apache-mod_fcgid": }
     }
 
     class mod_fastcgi inherits base {
-        package { "apache-mod_fastcgi":
-            ensure => installed
-        }
+        package { "apache-mod_fastcgi": }
     }
 
     class mod_ssl inherits base {
@@ -95,79 +67,42 @@ class apache {
             ensure => directory
         }
 
-        package { "apache-mod_ssl":
-            ensure => installed
-        }
+        package { "apache-mod_ssl": }
 
-	file { "01_default_ssl_vhost.conf":
-	    path => '/etc/httpd/conf/vhosts.d/01_default_ssl_vhost.conf',
-            ensure => "present",
-            owner => root,
-            group => root,
-            mode => 644,
-            notify => Service['apache'],
-            require => Package["apache-conf"],
-            content => template("apache/01_default_ssl_vhost.conf")
-	}
-
-        file { "ssl.conf":
-            ensure => present,
-            path => "/etc/httpd/conf.d/ssl.conf",
-            content => template("apache/ssl.conf"),
-            require => Package["apache-conf"],
-            notify => Service["apache"],
-            owner => root,
-            group => root,
-            mode => 644,
+        apache::config {
+            '/etc/httpd/conf/vhosts.d/01_default_ssl_vhost.conf':
+                content => template("apache/01_default_ssl_vhost.conf");
+            "/etc/httpd/conf.d/ssl.conf":
+                content => template("apache/ssl.conf");
         }
     }
 
     class mod_wsgi inherits base {
-        package { "apache-mod_wsgi":
-            ensure => installed
-        }
+        package { "apache-mod_wsgi": }
 
         file { "/usr/local/lib/wsgi":
             ensure => directory,
-            owner => root,
-            group => root,
-            mode => 644,
         }
 
-        file { "/etc/httpd/conf.d/mod_wsgi.conf":
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 644,
-            require => Package['apache-conf'],
+        apache::config { "/etc/httpd/conf.d/mod_wsgi.conf":
             content => template('apache/mod_wsgi.conf'),
-            notify => Service['apache'],
         }
-
     }
-    
+
     class mod_proxy inherits base {
-        package { "apache-mod_proxy":
-            ensure => installed
-        }
+        package { "apache-mod_proxy": }
     }
 
     class mod_public_html inherits base {
-        package { "apache-mod_public_html":
-            ensure => installed
-        }
+        package { "apache-mod_public_html": }
     }
 
     class mod_deflate inherits base {
-   	package { "apache-mod_deflate":
-	    ensure => installed
-	}
+        package { "apache-mod_deflate": }
     }
 
     class mod_geoip inherits base {
-	package { "apache-mod_geoip":
-	    ensure => installed
-	}
+        package { "apache-mod_geoip": }
     }
 
     define vhost_base($content = '',
@@ -176,37 +111,38 @@ class apache {
                       $vhost = false,
                       $aliases = {},
                       $server_aliases = [],
-		      $access_logfile = false,
-		      $error_logfile = false,
+                      $access_logfile = false,
+                      $error_logfile = false,
                       $options = [],
                       $enable_public_html = false) {
-	include apache::base
-	$httpd_logdir = "/var/log/httpd"
+        include apache::base
+        $httpd_logdir = "/var/log/httpd"
+
         if ! $vhost {
             $real_vhost = $name
         } else {
             $real_vhost = $vhost
         }
 
-	if ! $access_logfile {
-	    $real_access_logfile = "$httpd_logdir/${real_vhost}-access_log"
-	} else {
-	    $real_access_logfile = $access_logfile
-	}
-	if ! $error_logfile {
-	    $real_error_logfile = "$httpd_logdir/${real_vhost}-error_log"
-	} else {
-	    $real_error_logfile = $error_logfile
-	}
+        if ! $access_logfile {
+            $real_access_logfile = "$httpd_logdir/${real_vhost}-access_log"
+        } else {
+            $real_access_logfile = $access_logfile
+        }
+        if ! $error_logfile {
+            $real_error_logfile = "$httpd_logdir/${real_vhost}-error_log"
+        } else {
+            $real_error_logfile = $error_logfile
+        }
 
         if $use_ssl {
             include apache::mod_ssl
-	    if $wildcard_sslcert != 'true' {
-		openssl::self_signed_cert{ "$real_vhost":
-		    directory => "/etc/ssl/apache/",
-		    before => File["$filename"],
-		}
-	    }
+            if $wildcard_sslcert != 'true' {
+                openssl::self_signed_cert{ "$real_vhost":
+                    directory => "/etc/ssl/apache/",
+                    before => File["$filename"],
+                }
+            }
         }
 
         if $enable_public_html {
@@ -214,14 +150,7 @@ class apache {
         }
 
         $filename = "$name.conf"
-        file { "$filename":
-            path => "/etc/httpd/conf/vhosts.d/$filename",
-            ensure => "present",
-            owner => root,
-            group => root,
-            mode => 644,
-            notify => Service['apache'],
-            require => Package['apache-conf'],
+        apache::config { "/etc/httpd/conf/vhosts.d/$filename":
             content => template("apache/vhost_base.conf")
         }
     }
@@ -237,9 +166,9 @@ class apache {
 
         include apache::mod_fastcgi 
         vhost_base { $name:
-	    vhost => $vhost,
+            vhost => $vhost,
             use_ssl => $use_ssl,
-            content => template("apache/vhost_catalyst_app.conf")
+            content => template("apache/vhost_catalyst_app.conf"),
         }
     }
 
@@ -255,12 +184,9 @@ class apache {
         $django_module = $module
         file { "$name.wsgi":
             path => "/usr/local/lib/wsgi/$name.wsgi",
-            ensure => "present",
-            owner => root,
-            group => root,
             mode => 755,
             notify => Service['apache'],
-            content => template("apache/django.wsgi")
+            content => template("apache/django.wsgi"),
         }
     }
 
@@ -269,21 +195,14 @@ class apache {
         vhost_base { $name:
             aliases => $aliases,
             server_aliases => $server_aliases,
-            content => template("apache/vhost_wsgi.conf")
+            content => template("apache/vhost_wsgi.conf"),
         }
     }
 
    define vhost_other_app($vhost_file) {
         include apache::base
-        file { "$name.conf":
-            path => "/etc/httpd/conf/vhosts.d/$name.conf",
-            ensure => "present",
-            owner => root,
-            group => root,
-            mode => 644,
-            notify => Service['apache'],
-            require => Package['apache-conf'],
-            content => template($vhost_file)
+        apache::config { "/etc/httpd/conf/vhosts.d/$name.conf":
+            content => template($vhost_file),
         }
    }
 
@@ -295,8 +214,8 @@ class apache {
     } 
 
     define vhost_redirect($url,
-    			  $vhost = false,
-			  $use_ssl = false) {
+                          $vhost = false,
+                          $use_ssl = false) {
         include apache::base
         vhost_base { $name:
             use_ssl => $use_ssl,
@@ -316,18 +235,11 @@ class apache {
         } 
     }
 
-   define webapp_other($webapp_file) {
+    define webapp_other($webapp_file) {
         include apache::base
         $webappname = $name
-        file { "webapp_$name.conf":
-            path => "/etc/httpd/conf/webapps.d/$webappname.conf",
-            ensure => "present",
-            owner => root,
-            group => root,
-            mode => 644,
-            notify => Service['apache'],
-            require => Package['apache-conf'],
-            content => template($webapp_file)
+        apache::config { "/etc/httpd/conf/webapps.d/$webappname.conf":
+            content => template($webapp_file),
         }
-   }
+    }
 }
