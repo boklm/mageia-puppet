@@ -1,16 +1,9 @@
 
 class puppet {
     class client {
-        package { puppet:
-            ensure => installed
-        }
+        package { puppet: }
     
-        file { "puppet.conf":
-            path => "/etc/puppet/puppet.conf",
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 644,
+        file { "/etc/puppet/puppet.conf":
             content => template("puppet/puppet.conf"),
             require => Package[puppet]
         }
@@ -22,16 +15,13 @@ class puppet {
             ensure => present,
         }
 
-	service { puppet:
-	    enable => false,
-	    hasstatus => true,
-	}
+        service { puppet:
+            enable => false,
+            hasstatus => true,
+        }
     }
 
     class master inherits client {
-        package { puppet-server:
-            ensure => installed
-        }
 
         # for stored config
         $rails_package = $lsbdistid ? {
@@ -39,9 +29,7 @@ class puppet {
             MandrivaLinux => "rails"
         }
 
-        package { ["ruby-sqlite3",$rails_package]:
-            ensure => installed
-        }
+        package { ["ruby-sqlite3", "puppet-server", $rails_package]: }
 
         service { puppetmaster:
             ensure => running,
@@ -49,8 +37,7 @@ class puppet {
             subscribe => [ Package[puppet-server], File["puppet.conf"]]
         }
 
-        file { "extdata":
-            path => "/etc/puppet/extdata",
+        file { "/etc/puppet/extdata":
             ensure => directory,
             owner => puppet,
             group => puppet,
@@ -59,10 +46,6 @@ class puppet {
         }
 
         file { '/etc/puppet/tagmail.conf':
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 644,
             content => template("puppet/tagmail.conf"),
         }
 
