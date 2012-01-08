@@ -25,10 +25,7 @@ class releasekey {
 	    require => User[$sign_login],
 	}
 
-        file { "/usr/local/bin/sign_checksums":
-            ensure => present,
-            owner => $sign_login,
-            mode => 700,
+        local_script { "sign_checksums":
             content => template("releasekey/sign_checksums"),
         }
     }
