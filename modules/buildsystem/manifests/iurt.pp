@@ -2,8 +2,8 @@ class buildsystem {
     class iurt {
         include sudo
         include buildsystem::iurtuser
-        $build_login = $buildsystem::base::build_login;
-        $build_home_dir = $buildsystem::base::build_home_dir;
+        $build_login = $buildsystem::base::build_login
+        $build_home_dir = $buildsystem::base::build_home_dir
 
         ssh::auth::client { $build_login: }
         ssh::auth::server { $buildsystem::base::sched_login: user => $build_login }
