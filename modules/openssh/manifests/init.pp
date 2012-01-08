@@ -69,12 +69,12 @@ class openssh {
         }
 
         cron { 'sshkey2file':
-            command => "/usr/local/bin/ldap-sshkey2file.py"
+            command => "/usr/local/bin/ldap-sshkey2file.py",
             hour => "*",
             minute => "*/10",
             user => root,
             environment => "MAILTO=root",
 	        require => Local_script['ldap-sshkey2file.py'],
         }
-    } 
+    }
 }
