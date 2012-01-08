@@ -137,68 +137,34 @@ class phpbb {
             user => $user,
         }
 
-        phpbb_config { "ldap_user/$lang":
+        Phpbb_config {
             database => $database,
-            key => "ldap_user",
-            value => "cn=phpbb-$hostname,ou=System Accounts,$dc_suffix",
-        }
-
-        phpbb_config { "ldap_server/$lang":
-            database => $database,
-            key => "ldap_server",
-            value => "ldaps://ldap.$domain ldaps://ldap-slave-1.$domain",
         }
 
         $ldap_password = extlookup("phpbb_ldap",'x')
-        phpbb_config { "ldap_password/$lang":
-            database => $database,
-            key => "ldap_password",
-            value => $ldap_password,
+
+        phpbb_config {
+            "ldap_user/$lang":
+                key => "ldap_user", value => "cn=phpbb-$hostname,ou=System Accounts,$dc_suffix";
+            "ldap_server/$lang":
+                key => "ldap_server", value => "ldaps://ldap.$domain ldaps://ldap-slave-1.$domain";
+            "ldap_password/$lang":
+                key => "ldap_password", value => $ldap_password;
+            "ldap_base_dn/$lang":
+                key => "ldap_base_dn", value => "ou=People,$dc_suffix";
+            "auth_method/$lang":
+                key => "auth_method", value => "ldap";
+            "ldap_mail/$lang":
+                key => "ldap_mail", value => "mail";
+            "ldap_uid/$lang":
+                key => "ldap_uid", value => "uid";
+            "cookie_domain/$lang":
+                key => "cookie_domain", value => "forums.$domain";
+            "server_name/$lang":
+                key => "server_name", value => "forums.$domain";
+            "default_lang/$lang":
+                key => "default_lang", value => $lang;
         }
-
-        phpbb_config { "ldap_base_dn/$lang":
-            database => $database,
-            key => "ldap_base_dn",
-            value => "ou=People,$dc_suffix",
-        }
-
-        phpbb_config { "auth_method/$lang":
-            database => $database,
-            key => "auth_method",
-            value => "ldap",
-        }
-
-        phpbb_config { "ldap_mail/$lang":
-            database => $database,
-            key => "ldap_mail",
-            value => "mail",
-        }
-
-        phpbb_config { "ldap_uid/$lang":
-            database => $database,
-            key => "ldap_uid",
-            value => "uid",
-        }
-
-        phpbb_config { "cookie_domain/$lang":
-            database => $database,
-            key => "cookie_domain",
-            value => "forums.$domain",
-        }
-
-        phpbb_config { "server_name/$lang":
-            database => $database,
-            key => "server_name",
-            value => "forums.$domain",
-        }
-
-        phpbb_config { "default_lang/$lang":
-            database => $database,
-            key => "default_lang",
-            value => $lang,
-        }
-
-
 
     }
 }
