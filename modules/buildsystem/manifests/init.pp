@@ -35,9 +35,7 @@ class buildsystem {
 
         # FIXME Add again task-bs-cluster-main when it will require mgarepo instead of repsys
         $package_list = ['iurt']
-        package { $package_list:
-            ensure => "installed"
-        }
+        package { $package_list: }
 
         apache::vhost_other_app { "repository.$domain":
             vhost_file => "buildsystem/vhost_repository.conf",
@@ -245,9 +243,7 @@ class buildsystem {
                          'perl-Youri-Package', 'perl-Youri-Repository',
                          'perl-Youri-Utils', 'perl-Youri-Config', 'mga-youri-submit']
 
-        package { $package_list:
-            ensure => installed;
-        }
+        package { $package_list: }
     }
 
     # $groups: array of secondary groups (only local groups, no ldap)
