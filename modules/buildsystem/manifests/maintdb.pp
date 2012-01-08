@@ -3,11 +3,11 @@ class buildsystem {
     	include sudo
         $login = "maintdb"
         $homedir = "/var/lib/maintdb"
-        $dbdir = "$maintdb_homedir/db"
+        $dbdir = "$homedir/db"
         $binpath = "/usr/local/sbin/maintdb"
         $wrappath = "/usr/local/bin/wrapper.maintdb"
         $dump = "/var/www/bs/data/maintdb.txt"
-        $maintdb_unmaintained = "/var/www/bs/data/unmaintained.txt"
+        $unmaintained = "/var/www/bs/data/unmaintained.txt"
 
         user {"$login":
             ensure => present,
