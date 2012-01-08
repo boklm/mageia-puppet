@@ -82,7 +82,7 @@ class buildsystem {
     }
 
     class buildnode inherits base {
-        include iurt
+        include buildsystem::iurt
     }
 
     class scheduler {
@@ -244,48 +244,6 @@ class buildsystem {
 
         file { "/etc/iurt":
             ensure => "directory",
-        }
-    }
-
-    class iurt {
-        include sudo
-        include iurtuser
-        ssh::auth::client { $build_login: }
-        ssh::auth::server { $sched_login: user => $build_login }
-
-        $tidy_age = "8w"
-        # remove old build directory
-        tidy { "$build_home_dir/iurt":
-            age => $tidy_age,
-            recurse => true,
-            matches => ['[0-9][0-9].*\..*\..*\.[0-9]*',"log","*.rpm","*.log","*.mga[0-9]+"],
-            rmdirs => true,
-        }
-
-        # build node common settings
-        # we could have the following skip list to use less space:
-        # '/(drakx-installer-binaries|drakx-installer-advertising|gfxboot|drakx-installer-stage2|mandriva-theme)/'
-        $package_list = ['task-bs-cluster-chroot', 'iurt']
-        package { $package_list: }
-
-        file { "/etc/iurt/build":
-            ensure => "directory",
-        }
-
-        define iurt_config() {
-
-            $distribution = $name
-            file { "/etc/iurt/build/$distribution.conf":
-                owner => $build_login,
-                group => $build_login,
-                content => template("buildsystem/iurt.$distribution.conf")
-            }
-        }
-
-        iurt_config { ["1","cauldron","mandriva2010.1"]: }
-
-       	sudo::sudoers_config { "iurt":
-            content => template("buildsystem/sudoers.iurt")
         }
     }
 
