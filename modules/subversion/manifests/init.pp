@@ -4,16 +4,13 @@
 class subversion {
 
     class tools {
-        package { "subversion-tools":
-            ensure => installed,
-        }
+        package { "subversion-tools": }
     }
 
     class server {
         include subversion::tools
-        package { "subversion-server":
-            ensure => installed,
-        }
+
+        package { "subversion-server": }
         
         $svn_base_path = '/svn/'
 
@@ -23,69 +20,42 @@ class subversion {
 
         file { "$svn_base_path":
             ensure => directory,
-            owner => root,
-            group => root,
-            mode => 755, 
         }
 
-        package { ["perl-SVN-Notify-Config", "perl-SVN-Notify-Mirror"]:
-            ensure => installed,
-        }
+        package { ["perl-SVN-Notify-Config", "perl-SVN-Notify-Mirror"]: }
        
         $local_dir = "/usr/local/share/subversion/"
         $local_dirs = ["$local_dir/pre-commit.d", "$local_dir/post-commit.d"] 
         file { [$local_dir,$local_dirs]:
-             owner => root,
-             group => root,
-             mode => 755,
              ensure => directory,
         }
 
- 	# workaround the lack of umask command in puppet < 2.7
-	file { "/usr/local/bin/create_svn_repo.sh":
-             ensure => present,
-             owner => root,
-             group => root,
-             mode => 755,
+        # workaround the lack of umask command in puppet < 2.7
+        local_script { "create_svn_repo.sh":
              content => template('subversion/create_svn_repo.sh') 
-	} 
+        }
 
         file { "$local_dir/pre-commit.d/no_binary":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             content => template('subversion/no_binary') 
         }
 
         file { "$local_dir/pre-commit.d/no_root_commit":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             content => template('subversion/no_root_commit') 
         }
 
         file { "$local_dir/pre-commit.d/no_empty_message":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             content => template('subversion/no_empty_message') 
         }
 
         file { "$local_dir/pre-commit.d/single_word_commit":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             content => template('subversion/single_word_commit') 
         }
 
         file { "$local_dir/pre-revprop-change":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             content => template('subversion/pre-revprop-change') 
         }
@@ -101,9 +71,6 @@ class subversion {
 
         define syntax_check($regexp_ext,$check_cmd) {
             file { "$local_dir/pre-commit.d/$name":
-                ensure => present,
-                owner => root,
-                group => root,
                 mode => 755,
                 content => template('subversion/syntax_check.sh') 
             }
@@ -147,13 +114,11 @@ class subversion {
 
    
     define pre_commit_link() {
-	$scriptname = regsubst($name,'^.*/', '')    
-	file { "${name}":
-	    ensure => "/usr/local/share/subversion/pre-commit.d/$scriptname",
-	    owner => root,
-	    group => root,
-	    mode => 755,
-	}
+        $scriptname = regsubst($name,'^.*/', '')
+        file { "${name}":
+            ensure => "/usr/local/share/subversion/pre-commit.d/$scriptname",
+            mode => 755,
+        }
     } 
 
     # TODO 
@@ -209,9 +174,6 @@ class subversion {
         }
 
         file { ["$name/hooks/pre-commit","$name/hooks/post-commit"]:
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             content => template("subversion/hook_commit.sh"),
 	    require => Exec["/usr/local/bin/create_svn_repo.sh $name"],
@@ -219,42 +181,31 @@ class subversion {
 
         file { ["$name/hooks/post-commit.d", "$name/hooks/pre-commit.d"]:
             ensure => directory,
-            owner => root,
-            group => root,
-            mode => 755,
-	    require => File["$name/hooks/pre-commit"],
+            require => File["$name/hooks/pre-commit"],
         }
 
         file { "$name/hooks/pre-revprop-change":
             ensure => "$subversion::server::local_dir/pre-revprop-change",
-            owner => root,
-            group => root,
             mode => 755,
             require => File["$name/hooks/pre-commit"],
         } 
-	
-	if $restricted_to_user {
+
+        if $restricted_to_user {
             file { "$name/hooks/pre-commit.d/restricted_to_user":
-                ensure => present,
-                owner => root,
-                group => root,
                 mode => 755,
                 content => template("subversion/restricted_to_user"),
-	    }
-	} else {
+            }
+        } else {
             file { "$name/hooks/pre-commit.d/restricted_to_user":
                 ensure => absent,
-	    }
-	}
+            }
+        }
 
         if $commit_mail {
             file { "$name/hooks/post-commit.d/send_mail":
-                ensure => present,
-                owner => root,
-                group => root,
                 mode => 755,
                 content => template("subversion/hook_sendmail.pl"),
-	    	require => [Package['perl-SVN-Notify-Config']],
+                require => [Package['perl-SVN-Notify-Config']],
             }
         } else {
             file { "$name/hooks/post-commit.d/send_mail":
@@ -264,9 +215,6 @@ class subversion {
 
 	if $cia_post {
 	    file { "$name/hooks/post-commit.d/cia.vc":
-		ensure => present,
-                owner => root,
-                group => root,
                 mode => 755,
                 content => template("subversion/ciabot_svn.sh"),
             }
@@ -287,9 +235,6 @@ class subversion {
 
         if $extract_dir {
             file { "$name/hooks/post-commit.d/extract_dir":
-                ensure => present,
-                owner => root,
-                group => root,
                 mode => 755,
                 content => template("subversion/hook_extract.pl"),
 	    	require => [Package['perl-SVN-Notify-Mirror']],
@@ -312,21 +257,16 @@ class subversion {
 
 
     class client {
-        package { subversion:
-            ensure => installed,
-        }
         # svn spam log with 
         # Oct 26 13:30:01 valstar svn: No worthy mechs found
         # without it, source http://mail-index.netbsd.org/pkgsrc-users/2008/11/23/msg008706.html 
         #
-	$sasl2_package = $architecture ? {
+        $sasl2_package = $architecture ? {
         	x86_64 => "lib64sasl2-plug-anonymous",
         	default => "libsasl2-plug-anonymous"
     	}
  	
-        package {"$sasl2_package":
-            ensure => "installed"
-        }
+        package {['subversion', "$sasl2_package"]: }
     }
 
     define snapshot($source, $refresh = '*/5', $user = 'root')  {
@@ -349,11 +289,7 @@ class subversion {
     
     class mirror { 
         include subversion::tools
-        file { "/usr/local/bin/create_svn_mirror.sh":
-             ensure => present,
-             owner => root,
-             group => root,
-             mode => 755,
+        local_script { "create_svn_mirror.sh":
              content => template('subversion/create_svn_mirror.sh') 
         }
     }
