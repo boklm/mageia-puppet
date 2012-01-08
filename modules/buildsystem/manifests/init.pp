@@ -288,9 +288,7 @@ class buildsystem {
             }
         }
 
-        iurt_config { "1": }
-        iurt_config { "mandriva2010.1": }
-        iurt_config { "cauldron": }
+        iurt_config { ["1","cauldron","mandriva2010.1"]: }
 
        	sudo::sudoers_config { "iurt":
             content => template("buildsystem/sudoers.iurt")
