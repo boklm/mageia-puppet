@@ -7,7 +7,6 @@ class buildsystem {
 	$sched_home_dir = "/var/lib/$sched_login"
 	$packages_archivedir = "$sched_home_dir/old"
 	$repository_root = "/distrib/bootstrap"
-	$mirror_root = "/distrib/mirror"
 	$packagers_group = 'mga-packagers'
 	$packagers_committers_group = 'mga-packagers-committers'
 	$createsrpm_path = '/usr/share/mgarepo/create-srpm'
@@ -37,6 +36,7 @@ class buildsystem {
         $package_list = ['iurt']
         package { $package_list: }
 
+        $mirror_root = "/distrib/mirror"
         apache::vhost_other_app { "repository.$domain":
             vhost_file => "buildsystem/vhost_repository.conf",
         }
