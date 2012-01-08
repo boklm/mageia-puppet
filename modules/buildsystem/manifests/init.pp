@@ -293,6 +293,7 @@ class buildsystem {
 
         file { $homedir:
             ensure => "directory",
+            owner  => $title,
             require => User[$title],
         }
 
