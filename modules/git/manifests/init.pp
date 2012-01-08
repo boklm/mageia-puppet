@@ -1,7 +1,6 @@
 class git {
     class common {
-        package { 'git-core':
-        }
+        package { 'git-core': }
     }
 
     class server inherits common {
@@ -17,17 +16,11 @@ class git {
         }
         
         file { "/usr/local/bin/create_git_repo.sh":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             source => 'puppet:///modules/git/create_git_repo.sh',
         }
 
         file { "/usr/local/bin/apply_git_puppet_config.sh":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             source => 'puppet:///modules/git/apply_git_puppet_config.sh',
         }
@@ -64,27 +57,21 @@ class git {
         }
 
         file { "$name/git-daemon-export-ok":
-            ensure => present,
             require => Exec["/usr/local/bin/create_git_repo.sh $name"]
         }
         
         file { "$name/description":
-            ensure => present,
             content => $description,
             require => File["$name/git-daemon-export-ok"]
         }
 
         file { "$name/hooks/post-receive":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             content => template('git/post-receive'), 
             require => File["$name/git-daemon-export-ok"]
         }
 
         file { "$name/config.puppet":
-            ensure => present,
             require => File["$name/git-daemon-export-ok"],
             notify => Exec["/usr/local/bin/apply_git_puppet_config.sh $name"],
             content => template('git/config.puppet'),
@@ -109,7 +96,6 @@ class git {
         }
  
         file { "$name/description":
-            ensure => present,
             content => $description,
         }
 
@@ -138,9 +124,6 @@ class git {
         }
         
         file { "/usr/local/bin/update_git_svn.sh":
-             ensure => present,
-             owner => root,
-             group => root,
              mode => 755,
              source => 'puppet:///modules/git/update_git_svn.sh',
         }
@@ -152,9 +135,6 @@ class git {
         }
 
         file { "$name/.git/hooks/pre-receive":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             content => template('git/pre-receive'), 
             require => Exec["git svn $name"]
@@ -167,9 +147,7 @@ class git {
     }
 
     class svn inherits client {
-        package { "git-svn":
-            ensure => installed
-        }
+        package { "git-svn": }
     }
 
     define snapshot($source, $refresh ='*/5', $user = 'root') {
@@ -192,6 +170,3 @@ class git {
         }
     }
 }
-
-
-
