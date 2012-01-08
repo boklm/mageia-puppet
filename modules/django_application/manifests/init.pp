@@ -2,16 +2,9 @@
 # as we cannot declare the same ressource twice ( ie, python-psycopg2 for example )
 # it is required to place this in a common class 
 class django_application {
-    package { ['python-django','python-psycopg2','python-django-auth-ldap']:
-        ensure => installed
-    }
+    package { ['python-django','python-psycopg2','python-django-auth-ldap']: }
 
-    file { "custom_backend.py":
-        path => "/usr/local/lib/custom_backend.py",
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
+    file { "/usr/local/lib/custom_backend.py":
         source => "puppet:///modules/django_application/custom_backend.py",
         notify => Service['apache']
     }
@@ -19,16 +12,12 @@ class django_application {
     define script() { 
         file { $name:
             path => "/usr/local/bin/$name",
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             source => "puppet:///modules/django_application/$name",
         }
     }
 
-    script { ['django_create_group.py','django_add_permission_to_group.py']: 
-    }
+    script { ['django_create_group.py','django_add_permission_to_group.py']: }
 
     define create_group($path,$module) {
         exec { "/usr/local/bin/django_create_group.py $name":
