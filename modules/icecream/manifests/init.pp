@@ -1,8 +1,6 @@
 class icecream {
     class scheduler {
-        package { "icecream-scheduler":
-            ensure => installed,
-        }
+        package { "icecream-scheduler": }
 
         service { "icecream-scheduler": 
             ensure => running,
@@ -12,9 +10,7 @@ class icecream {
     }
 
     class client_common {
-        package { "icecream":
-            ensure => installed,
-        }
+        package { "icecream": }
 
         service { "icecream": 
             ensure => running,
@@ -26,10 +22,6 @@ class icecream {
     define client($host => '') {
         include icecream::client_common
         file { "/etc/sysconfig/icecream":
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 640,
             content => template("icecream/sysconfig"),
         }
     }
