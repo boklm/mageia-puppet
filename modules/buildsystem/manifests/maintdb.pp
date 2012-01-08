@@ -27,7 +27,7 @@ class buildsystem {
 
         file { "$binpath":
             mode => 755,
-            content => template("buildsystem/maintdb")
+            content => template("buildsystem/maintdb.bin")
         }
 
         file { "$wrappath":
