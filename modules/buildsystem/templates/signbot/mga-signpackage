@@ -1,0 +1,30 @@
+#!/usr/bin/perl -w
+
+use strict;
+use warnings;
+use RPM4::Sign;
+use File::Spec;
+
+sub signpackage {
+    my ($file, $name, $path) = @_;
+
+    # check if parent directory is writable
+    my $parent = (File::Spec->splitpath($file))[1];
+    die "Unsignable package, parent directory is read-only"
+        unless -w $parent;
+
+    my $sign = RPM4::Sign->new(
+        name => $name,
+        path => $path,
+	passphrase => '',
+    );
+
+    $sign->rpmssign($file)
+}
+
+if (@ARGV != 3) {
+    exit 1;
+}
+
+signpackage(@ARGV);
+

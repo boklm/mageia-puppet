@@ -13,7 +13,7 @@ keydir="$3"
 tmpfile=`mktemp`
 cp -pf "$file" "$tmpfile"
 rpm --delsign "$tmpfile"
-/usr/bin/mga-signpackage "$tmpfile" "$key" "$keydir"
+/usr/local/bin/mga-signpackage "$tmpfile" "$key" "$keydir"
 nbtry=0
 while rpmsign -Kv "$tmpfile" 2>&1 | grep BAD
 do
@@ -30,6 +30,6 @@ do
 
     cp -pf "$file" "$tmpfile"
     rpm --delsign "$tmpfile"
-    /usr/bin/mga-signpackage "$tmpfile" "$key" "$keydir"
+    /usr/local/bin/mga-signpackage "$tmpfile" "$key" "$keydir"
 done
 mv -f "$tmpfile" "$file"
