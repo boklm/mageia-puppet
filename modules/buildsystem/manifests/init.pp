@@ -97,8 +97,6 @@ class buildsystem {
 
     class iurtupload {
         file { "/etc/iurt/upload.conf":
-            owner => $build_login,
-            group => $build_login,
             require => File["/etc/iurt"],
             content => template("buildsystem/upload.conf")
         }
