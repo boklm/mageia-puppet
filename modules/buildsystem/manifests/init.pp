@@ -82,9 +82,9 @@ class buildsystem {
         include scheduler
         include gatherer
         include buildsystem::mgarepo
+        include buildsystem::signbot
         include youri_submit
         include buildsystem::check_missing_deps
-        include buildsystem::signbot
 
         cron { "dispatch jobs":
             user => $sched_login,
