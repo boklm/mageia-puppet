@@ -15,7 +15,6 @@ class youri-check {
 	    ensure => directory,
 	    owner => $user,
 	    group => $user,
-	    mode => 755,
 	}
 
         $pgsql_server = "$vhost"
