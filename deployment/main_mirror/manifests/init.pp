@@ -7,29 +7,13 @@ class main_mirror {
     }
 
     $mirror = "/distrib"
-    file { "$mirror":
+    file { "$mirror","$mirror/mirror"]:
         ensure => directory,
     }
 
-    file { "$mirror/README":
-        ensure => present,
-        source => "puppet:///modules/main_mirror/README"         
+    file {
+        "$mirror/README": source => "puppet:///modules/main_mirror/README";
+        "$mirror/mirror/mirror.readme": source => "puppet:///modules/main_mirror/mirror/mirror.readme";
+        "$mirror/mirror/paths.readme": source => "puppet:///modules/main_mirror/mirror/paths.readme";
     }
-
-    file { "$mirror/mirror":
-        ensure => directory,
-
-    }
-
-    file { "$mirror/mirror/mirror.readme":
-        ensure => present,
-        source => "puppet:///modules/main_mirror/mirror/mirror.readme"         
-    }
-
-    file { "$mirror/mirror/paths.readme":
-        ensure => present,
-        source => "puppet:///modules/main_mirror/mirror/paths.readme"         
-    }
-
-
 }
