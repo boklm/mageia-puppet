@@ -27,16 +27,16 @@ class buildsystem {
 
         file { "$binpath":
             mode => 755,
-            content => template("buildsystem/maintdb.bin")
+            content => template("buildsystem/maintdb/maintdb.bin")
         }
 
         file { "$wrappath":
             mode => 755,
-            content => template("buildsystem/wrapper.maintdb")
+            content => template("buildsystem/maintdb/wrapper.maintdb")
         }
 
         sudo::sudoers_config { "maintdb":
-            content => template("buildsystem/sudoers.maintdb")
+            content => template("buildsystem/maintdb/sudoers.maintdb")
         }
 
         file { ["$dump","$dump.new",
@@ -56,7 +56,7 @@ class buildsystem {
 
         apache::vhost_base { "maintdb.$domain":
             location => $dbdir,
-            content => template("buildsystem/vhost_maintdb.conf"),
+            content => template("buildsystem/maintdb/vhost_maintdb.conf"),
         }
     }
 }
