@@ -272,24 +272,18 @@ class buildsystem {
         # we could have the following skip list to use less space:
         # '/(drakx-installer-binaries|drakx-installer-advertising|gfxboot|drakx-installer-stage2|mandriva-theme)/'
         $package_list = ['task-bs-cluster-chroot', 'iurt']
-        package { $package_list:
-            ensure => installed;
-        }
+        package { $package_list: }
 
         file { "/etc/iurt/build":
             ensure => "directory",
-            require => File["/etc/iurt"],
         }
 
         define iurt_config() {
 
             $distribution = $name
             file { "/etc/iurt/build/$distribution.conf":
-                ensure => present,
                 owner => $build_login,
                 group => $build_login,
-                mode => 644,
-                require => File["/etc/iurt/build"],
                 content => template("buildsystem/iurt.$distribution.conf")
             }
         }
