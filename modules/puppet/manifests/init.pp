@@ -34,7 +34,7 @@ class puppet {
         service { puppetmaster:
             ensure => running,
             path => "/etc/init.d/puppetmaster",
-            subscribe => [ Package[puppet-server], File["puppet.conf"]]
+            subscribe => [ Package[puppet-server], File["/etc/puppet/puppet.conf"]]
         }
 
         file { "/etc/puppet/extdata":
