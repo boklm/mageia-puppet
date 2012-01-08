@@ -1,8 +1,6 @@
 class bind {
     class bind_base {
-        package { bind:
-            ensure => installed
-        }
+        package { bind: }
 
         service { named:
             ensure => running,
@@ -12,9 +10,6 @@ class bind {
 
         file { '/etc/named.conf':
             ensure => "/var/lib/named/etc/named.conf",
-            owner => root,
-            group => root,
-            mode => 644,
             require => Package[bind]
         }
         
@@ -25,10 +20,6 @@ class bind {
     }
 
     file { '/var/lib/named/etc/named.conf':
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
         require => Package["bind"],
         content => "",
         notify => [Service['named']]
@@ -41,10 +32,6 @@ class bind {
             $zone_content = $content
         }
         file { "/var/lib/named/var/named/$zone_subdir/$name.zone":
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 644,
             content => $zone_content,
             require => Package[bind],
             notify => Exec[named_reload]
@@ -81,5 +68,4 @@ class bind {
             content => template("bind/named_base.conf", "bind/named_slave.conf"),
         }
     }
-
 }
