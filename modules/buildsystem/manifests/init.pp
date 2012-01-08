@@ -159,21 +159,12 @@ class buildsystem {
     class youri_submit {
         include sudo
 
-        file { "/usr/local/bin/mga-youri-submit":
-          owner  => root,
-          group => root,
-          mode => 755,
-          content => template("buildsystem/mga-youri-submit")
+        local_script {
+            "mga-youri-submit": content => template("buildsystem/mga-youri-submit"),
+            "mga-youri-submit.wrapper": content => template("buildsystem/mga-youri-submit.wrapper"),
         }
 
-        file { "/usr/local/bin/mga-youri-submit.wrapper":
-          owner  => root,
-          group => root,
-          mode => 755,
-          content => template("buildsystem/mga-youri-submit.wrapper")
-        }
-
-	sudo::sudoers_config { "mga-youri-submit":
+        sudo::sudoers_config { "mga-youri-submit":
             content => template("buildsystem/sudoers.youri")
         }
 
@@ -192,38 +183,23 @@ class buildsystem {
             owner => $sched_login,
         }
 
+        # ordering is automatic :
+        # http://docs.puppetlabs.com/learning/ordering.html#autorequire
         file { "/etc/youri":
             ensure => "directory",
         }
 
-        file { "/etc/youri/submit-todo.conf":
-            ensure => present,
-            mode => 644,
-            require => File["/etc/youri"],
-            content => template("buildsystem/submit-todo.conf")
+        file {
+            "/etc/youri/submit-todo.conf": content => template("buildsystem/submit-todo.conf"),
+            "/etc/youri/submit-upload.conf": content => template("buildsystem/submit-upload.conf"),
+            "/etc/youri/acl.conf": content => template("buildsystem/youri_acl.conf")
         }
 
-        file { "/etc/youri/submit-upload.conf":
-            ensure => present,
-            mode => 644,
-            require => File["/etc/youri"],
-            content => template("buildsystem/submit-upload.conf")
+        local_script { 'submit_package':
+            content => template('buildsystem/submit_package.pl')
         }
 
-        file { "/etc/youri/acl.conf":
-            ensure => present,
-            mode => 644,
-            require => File["/etc/youri"],
-            content => template("buildsystem/youri_acl.conf")
-        }
-
-	file { '/usr/local/bin/submit_package':
-	    ensure => present,
-	    mode => 755,
-	    content => template('buildsystem/submit_package.pl')
-        }
-
-	# FIXME use the correct perl directory
+        # FIXME use the correct perl directory
         file { "/usr/lib/perl5/site_perl/5.10.1/Youri/Repository":
             ensure => "directory",
         }
