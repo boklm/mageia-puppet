@@ -10,7 +10,7 @@ class viewvc {
     }
 
     apache::webapp_other { 'viewvc':
-        content => template('viewvc/webapp.conf'),
+        webapp_file => 'viewvc/webapp.conf',
     }
 
     local_script { "kill_viewvc":
