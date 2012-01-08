@@ -4,7 +4,7 @@ class buildsystem {
         $sign_home_dir = "/var/lib/$sign_login"
         $sign_keydir = "$sign_home_dir/keys"
 	    # FIXME: maybe keyid should be defined at an other place
-	    $sign_keyid = "80420F66"
+	    $keyid = "80420F66"
         # FIXME refactor with base class ( once variables are placed in a separate module )
         $sched_login = "schedbot"
 	
@@ -28,12 +28,10 @@ class buildsystem {
         }
 
         file { "$sign_home_dir/.rpmmacros":
-	        mode => 644,
 	        content => template("buildsystem/signbot/signbot-rpmmacros")
 	    }
 
-        file { "/usr/local/bin/sign-check-package":
-            mode => 755,
+        local_script { "sign-check-package":
             content => template("buildsystem/signbot/sign-check-package")
         }
     }
