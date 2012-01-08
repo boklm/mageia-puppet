@@ -33,9 +33,6 @@ class mirror {
 	}
     	file { "mirror_$name":
 	    path => "$bindir/mirror_$name",
-	    ensure => present,
-	    owner => root,
-	    group => root,
 	    mode => 755,
 	    content => template("mirror/mirrordir"),
 	}
@@ -52,9 +49,6 @@ class mirror {
     class main inherits base {
 	file { "update_timestamp":
 	    path => "$bindir/update_timestamp",
-	    ensure => present,
-	    owner => root,
-	    group => root,
 	    mode => 755,
 	    content => template("mirror/update_timestamp")
 	}
