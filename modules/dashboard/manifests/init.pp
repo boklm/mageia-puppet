@@ -20,28 +20,19 @@ class dashboard {
 	    source => "svn://svn.$domain/soft/dashboard/",
 	}
 
-	package { "php-cli":
-	    ensure => 'installed',
-	}
+	package { "php-cli": }
 
 	file { $dashboard_wwwdir:
 	    ensure => directory,
 	    owner => $dashboard_login,
 	    group => $dashboard_login,
-	    mode => 755,
 	}
 
 	file { $dashboard_bindir:
 	    ensure => directory,
-	    owner => root,
-	    group => root,
-	    mode => 755,
 	}
 
 	file { "$dashboard_bindir/make_report":
-	    ensure => present,
-	    owner => root,
-	    group => root,
 	    mode => 755,
 	    content => template('dashboard/make_report'),
 	}
