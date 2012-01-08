@@ -150,9 +150,9 @@ class buildsystem {
         include sudo
 
         local_script {
-            "mga-youri-submit": content => template("buildsystem/mga-youri-submit"),
-            "mga-youri-submit.wrapper": content => template("buildsystem/mga-youri-submit.wrapper"),
-            "submit_package": content => template('buildsystem/submit_package.pl'),
+            "mga-youri-submit": content => template("buildsystem/mga-youri-submit");
+            "mga-youri-submit.wrapper": content => template("buildsystem/mga-youri-submit.wrapper");
+            "submit_package": content => template('buildsystem/submit_package.pl');
         }
 
         sudo::sudoers_config { "mga-youri-submit":
@@ -181,9 +181,9 @@ class buildsystem {
         }
 
         file {
-            "/etc/youri/submit-todo.conf": content => template("buildsystem/submit-todo.conf"),
-            "/etc/youri/submit-upload.conf": content => template("buildsystem/submit-upload.conf"),
-            "/etc/youri/acl.conf": content => template("buildsystem/youri_acl.conf")
+            "/etc/youri/submit-todo.conf": content => template("buildsystem/submit-todo.conf");
+            "/etc/youri/submit-upload.conf": content => template("buildsystem/submit-upload.conf");
+            "/etc/youri/acl.conf": content => template("buildsystem/youri_acl.conf");
         }
 
         # FIXME use the correct perl directory
