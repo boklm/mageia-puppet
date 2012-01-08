@@ -1,4 +1,4 @@
-class buildsystem {
+class websites {
     class www inherits base {
         $vhost = "www.$domain"
         $vhostdir = "$webdatadir/www.$domain"
