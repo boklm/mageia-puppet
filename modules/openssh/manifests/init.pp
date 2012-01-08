@@ -63,7 +63,7 @@ class openssh {
         symlink_user { $symlink_users: } 
 
         $ldap_pwfile = "/etc/ldap.secret"
-        local_script { "ldap-sshkey2file.py"
+        local_script { "ldap-sshkey2file.py":
             content => template("openssh/ldap-sshkey2file.py"),
             require => Package['python-ldap']
         }
