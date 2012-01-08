@@ -34,7 +34,7 @@ class mirror {
             user => mirror,
             minute => '*/10',
             command => "$bindir/mirror_$name",
-            require => File["mirror_$name"],
+            require => Local_script["mirror_$name"],
         }
     }
 
@@ -48,7 +48,7 @@ class mirror {
             user => mirror,
             minute => '*/10',
             command => "/usr/local/bin/update_timestamp",
-            require => [File["update_timestamp"], User['mirror']],
+            require => [Local_script["update_timestamp"], User['mirror']],
         }
     }
 
