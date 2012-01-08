@@ -128,12 +128,9 @@ class buildsystem {
             owner => $binrepo_login,
         }
 
-        local_script { "upload-bin":
-            content => template('buildsystem/upload-bin'),
-        }
-
-        local_script { "wrapper.upload-bin":
-            content => template('buildsystem/wrapper.upload-bin'),
+        local_script {
+            "upload-bin": content => template('buildsystem/upload-bin');
+            "wrapper.upload-bin": content => template('buildsystem/wrapper.upload-bin');
         }
 
 	sudo::sudoers_config { "binrepo":
