@@ -4,8 +4,6 @@ class buildsystem {
             source => "svn://svn.$domain/soft/release/trunk/",
         }
 
-        package { "hardlink":
-            ensure => "installed",
-        }
+        package { "hardlink": }
     }
 }
