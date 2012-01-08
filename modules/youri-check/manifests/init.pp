@@ -34,9 +34,7 @@ class youri-check {
     }
 
     class check inherits base {
-        package { ['perl-Youri-Media', 'youri-check', 'perl-DBD-Pg'] :
-            ensure => installed
-        }
+        package { ['perl-Youri-Media', 'youri-check', 'perl-DBD-Pg']: }
 
         cron { 'check':
             command => "youri-check -c $config test",
@@ -50,8 +48,7 @@ class youri-check {
     class report inherits base {
         file { "$outdir":
             ensure => directory,
-            owner => youri,
-            mode => 755
+            owner => $user,
         }
 
         postgresql::remote_user { $pgsql_user:
@@ -63,9 +60,7 @@ class youri-check {
             user => $pgsql_user,
         }
 
-        package { ['youri-check', 'perl-DBD-Pg'] :
-            ensure => installed
-        }
+        package { ['youri-check', 'perl-DBD-Pg']: }
 
         cron { 'check':
             command => "youri-check -c $config report",
