@@ -2,13 +2,6 @@ class mirror {
     class base {
 	$bindir = '/usr/local/bin'
 	$locksdir = '/home/mirror/locks'
-	file { "$bindir":
-	    ensure => directory,
-            owner => root,
-	    group => root,
-	    mode => 755
-	}
-
 	file { "$locksdir":
 	    ensure => directory,
             owner => mirror,
