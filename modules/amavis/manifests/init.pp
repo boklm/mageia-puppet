@@ -1,8 +1,5 @@
 class amavis {
-
-    package { "amavisd-new":
-        ensure => installed, 
-    }
+    package { "amavisd-new": }
 
     service { "amavisd":
         ensure => running,
@@ -10,12 +7,7 @@ class amavis {
         subscribe  => [Package["amavisd-new"], File["amavisd.conf"]], 
     }
 
-    file { "amavisd.conf":
-        path => "/etc/amavisd/amavisd.conf",
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
+    file { "/etc/amavisd/amavisd.conf":
         require => Package["amavisd-new"],
         content => template('amavis/amavisd.conf')
     }
