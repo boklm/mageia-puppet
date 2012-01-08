@@ -3,9 +3,7 @@ class openssh {
         # some trick to manage sftp server, who is arch dependent on mdv    
         $path_to_sftp = "$lib_dir/ssh/"
 
-        package { "openssh-server":
-            ensure => installed
-        }
+        package { "openssh-server": }
 
         service { sshd:
             ensure => running,
@@ -15,10 +13,6 @@ class openssh {
 
 
         file { "/etc/ssh/sshd_config":
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 644,
             require => Package["openssh-server"],
             content => template("openssh/sshd_config"),
             notify => Service["sshd"]
@@ -34,23 +28,15 @@ class openssh {
             content => template("openssh/sshd_config","openssh/sshd_config_ldap")
         }
 
-        package { 'python-ldap':
-            ensure => installed,
-        }
+        package { 'python-ldap': }
 
         $pubkeys_directory = "/var/lib/pubkeys"
         file { $pubkeys_directory:
             ensure => directory,
-            owner => root,
-            group => root,
-            mode => 755,
-        #    before => Class["openssh"] 
         }
 
         file { "$pubkeys_directory/root":
             ensure => directory,
-            owner => root,
-            group => root,
             mode => 700,
         }
 
@@ -76,24 +62,19 @@ class openssh {
 
         symlink_user { $symlink_users: } 
 
-
-	$sshkey2file = "/usr/local/bin/ldap-sshkey2file.py"
         $ldap_pwfile = "/etc/ldap.secret"
-        file { $sshkey2file:
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 755,
+        local_script { "ldap-sshkey2file.py"
             content => template("openssh/ldap-sshkey2file.py"),
             require => Package['python-ldap']
         }
+
         cron { 'sshkey2file':
-            command => $sshkey2file,
+            command => "/usr/local/bin/ldap-sshkey2file.py"
             hour => "*",
             minute => "*/10",
             user => root,
             environment => "MAILTO=root",
-	    require => File[$sshkey2file],
+	        require => Local_script['ldap-sshkey2file.py'],
         }
     } 
 }
