@@ -89,7 +89,7 @@ class buildsystem {
         cron { "dispatch jobs":
             user => $sched_login,
             command => "emi ; ulri",
-            minute => "*/2",
+            minute => "*",
         }
     }
 
