@@ -116,7 +116,7 @@ class auto_installation {
             ensure => directory,
         }
 
-        $download_url = "$protocol\://$server/$mirror_url/$mirror_url_end"
+        $download_url = "$protocol\\://$server/$mirror_url/$mirror_url_end"
         
 
         download_file { ['all.rdz','vmlinuz']:
