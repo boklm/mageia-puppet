@@ -1,5 +1,6 @@
 class mirror {
     class base {
+        $bindir = '/usr/local/bin'
         $locksdir = '/home/mirror/locks'
 
         file { "$locksdir":
