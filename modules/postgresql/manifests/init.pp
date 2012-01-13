@@ -8,12 +8,10 @@ class postgresql {
         # once the fix is in a stable release 
         package { "postgresql${pg_version}-plpgsql":
             alias => "postgresql-plpgsql",
-            ensure => installed,
         }
     
         package { "postgresql${pg_version}-server":
             alias => "postgresql-server",
-            ensure => installed,
             require => Package['postgresql-plpgsql'],
         }
     
@@ -25,9 +23,6 @@ class postgresql {
     
         exec { "service postgresql reload":
             refreshonly => true,
-            subscribe => [ File["postgresql.conf"], 
-                           File["pg_ident.conf"],
-                           File["pg_hba.conf"] ]
         }
    
         openssl::self_signed_splitted_cert { "pgsql.$domain":
@@ -40,45 +35,31 @@ class postgresql {
 
 
         file { '/etc/pam.d/postgresql':
-            ensure => present,
-            owner  => root,
-            group  => root,
-            mode   => 644,
             content => template("postgresql/pam"),
         }
-    
-        file { "postgresql.conf":
-            path => "$pgsql_data/postgresql.conf",
-            ensure => present,
-            owner => postgres,
-            group => postgres,
-            mode => 600,
-            content => template("postgresql/postgresql.conf"),
-            require => Package["postgresql-server"],
+
+        define config($content) {
+            file { "$name":
+                owner => postgres,
+                group => postgres,
+                mode => 600,
+                content => template("postgresql/postgresql.conf"),
+                require => Package["postgresql-server"],
+                notify => Exec['service postgresql reload'],
+            }
         }
-        
+
+
         $db = list_exported_ressources('Postgresql::Db_and_user')
 
         $forum_lang = list_exported_ressources('Phpbb::Locale_db')
-        file { 'pg_hba.conf':
-            path => "$pgsql_data/pg_hba.conf",
-            ensure => present,
-            owner => postgres,
-            group => postgres,
-            mode => 600,
-            content => template("postgresql/pg_hba.conf"),
-            require => Package["postgresql-server"],
+
+        config {
+            "$pgsql_data/pg_hba.conf": content => template("postgresql/pg_hba.conf");
+            "$pgsql_data/pg_ident.conf": content => template("postgresql/pg_ident.conf");
+            "$pgsql_data/postgresql.conf": content => template("postgresql/postgresql.conf");
         }
     
-        file { 'pg_ident.conf':
-            path => "$pgsql_data/pg_ident.conf",
-            ensure => present,
-            owner => postgres,
-            group => postgres,
-            mode => 600,
-            content => template("postgresql/pg_ident.conf"),
-            require => Package["postgresql-server"],
-        }
     }
 
     define tagged() {
