@@ -19,7 +19,7 @@ class websites {
         }
 
         apache::vhost_base { "$vhost":
-            content => template('websites/vhost_www.conf'),
+            content => template('websites/vhost_www.conf', "websites/vhost_proxy_mailman.conf"),
             location => $vhostdir,
             options => ['FollowSymLinks'],
         }
@@ -27,7 +27,7 @@ class websites {
         apache::vhost_base { "ssl_$vhost":
             use_ssl => true,
             vhost => $vhost,
-            content => template('websites/vhost_www.conf'),
+            content => template('websites/vhost_www.conf', "websites/vhost_proxy_mailman_ssl.conf"),
             location => $vhostdir,
             options => ['FollowSymLinks'],
         }
