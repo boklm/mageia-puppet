@@ -7,6 +7,10 @@ class websites {
         include apache::mod_php
         include apache::mod_geoip
 
+        # for mailman reverse proxy, on ssl
+        include apache::mod_proxy
+        include apache::mod_ssl
+
         subversion::snapshot { $vhostdir:
             source => $svn_location,
         }
