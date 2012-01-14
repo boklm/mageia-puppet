@@ -43,7 +43,7 @@ class postgresql {
                 owner => postgres,
                 group => postgres,
                 mode => 600,
-                content => template("postgresql/postgresql.conf"),
+                content => $content,
                 require => Package["postgresql-server"],
                 notify => Exec['service postgresql reload'],
             }
