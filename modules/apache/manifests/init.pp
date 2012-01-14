@@ -4,7 +4,7 @@ class apache {
         file { $name:
             content => $content,
             require => Package["apache-conf"],
-            notify => Service["apache"],
+            notify => Exec['service httpd configtest'],
         }
     }
 
@@ -26,6 +26,11 @@ class apache {
             alias => apache,
             ensure => running,
             subscribe => [ Package['apache-mpm-prefork'] ],
+        }
+
+        exec { "service httpd configtest":
+            refreshonly => true,
+            notify => Service["apache"],
         }
 
         apache::config {

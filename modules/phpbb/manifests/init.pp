@@ -65,7 +65,7 @@ class phpbb {
         $lang = $name
         file { "/etc/httpd/conf/vhosts.d/forums.d/redirect_$name.conf":
             content => template("phpbb/forums_redirect.conf"),
-            notify => Service['apache'],
+            notify => Exec['service httpd configtest'],
         }
     }
 
