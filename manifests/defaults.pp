@@ -26,6 +26,10 @@ User {
     shell => "/bin/bash",
 }
 
+Service {
+    ensure => running,
+}
+
 define local_script($content, 
                     $owner = "root", 
                     $group = 'root', 
