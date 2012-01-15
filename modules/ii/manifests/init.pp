@@ -19,6 +19,7 @@ class ii {
             provider => base,
             start => "su nobody -c 'ii -n $nick -i /var/lib/ii/$nick -s $server'",
             notify => Exec["join channel"],
+            require => Class['ii::base'],
         }
 
         exec { "join channel":
