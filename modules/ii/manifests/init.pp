@@ -17,7 +17,7 @@ class ii {
         # a custom wrappper is needed since ii do not fork in the
         # background, and bash is not able to properly do it
         local_script { "ii_$nick":
-            content => "ii/ii_wrapper.pl",
+            content => template("ii/ii_wrapper.pl"),
             require => Class['ii::base'],
         }
 
