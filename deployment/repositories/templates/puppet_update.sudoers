@@ -1,1 +1,1 @@
-%mga-sysadmin      ALL= NOPASSWD: /usr/bin/svn update /etc/puppet
+%mga-sysadmin      ALL= NOPASSWD: /usr/bin/svn update -q /etc/puppet
