@@ -12,6 +12,14 @@ class repositories::subversion {
         cia_module => "sysadm",
     }
 
+    sudo::sudoers_config { "puppet_update":
+        content => template("repositories/puppet_update.sudoers")
+    }
+
+    subversion::hook::post_commit { "/svn/adm/|puppet_update":
+        content => template("repositories/puppet_update.sh")
+    }
+
     subversion::repository { "/svn/soft/":
 	    group => "mga-packagers",
 	    commit_mail => ["soft-commits@ml.$domain"],
