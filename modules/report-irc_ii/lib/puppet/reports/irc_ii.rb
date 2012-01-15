@@ -19,7 +19,9 @@ Puppet::Reports.register_report(:irc_ii) do
     def process
         if self.status == 'failed'
             message = "Puppet run for #{self.host} #{self.status} at #{Time.now.asctime}."
-            Puppet::Util::SUIDManager.run_and_capture("echo #{message} > #{II_PATH}" , "nobody", "nogroup")
+            if File.exist?(II_PATH)
+                Puppet::Util::SUIDManager.run_and_capture("echo #{message} > #{II_PATH}" , "nobody", "nogroup")
+            end
         end
     end
 end
