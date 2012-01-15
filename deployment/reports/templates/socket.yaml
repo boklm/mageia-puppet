@@ -1,2 +1,2 @@
 ---
-:ii_path: '/var/lib/ii/<%= nick %>/<%= server %>/<%= channel %>/in
+ii_path: /var/lib/ii/<%= nick %>/<%= server %>/<%= channel %>/in
