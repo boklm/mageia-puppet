@@ -14,15 +14,21 @@ class ii {
         $nick = $name
 
         include ii::base
-
-        service { 'ii':
-            provider => base,
-            start => "su nobody -c 'nohup ii -n $nick -i /var/lib/ii/$nick -s $server'",
-            notify => Exec["join channel"],
+        # a custom wrappper is needed since ii do not fork in the
+        # background, and bash is not able to properly do it
+        local_script { "ii_$nick":
+            content => "ii/ii_wrapper.pl",
             require => Class['ii::base'],
         }
 
-        exec { "join channel":
+        service { 'ii':
+            provider => base,
+            start => "/usr/local/bin/ii_$nick",
+            notify => Exec["join channel $nick"],
+            require => Local_script["ii_$nick"],
+        }
+
+        exec { "join channel $nick":
             command => "echo '/j $channel' > /var/lib/ii/$nick/$server/in",
             user => nobody,
             refreshonly => true,
