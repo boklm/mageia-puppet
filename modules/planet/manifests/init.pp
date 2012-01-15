@@ -21,13 +21,13 @@ class planet {
         content => template("planet/deploy_new-planet.sh")
     }
 
-    file { "$planet_location":
+    file { "$location":
         ensure => directory,
         owner => planet,
         group => apache,
     }
 
-    file { "$planet_location/index.php":
+    file { "$location/index.php":
         owner => planet,
         group => apache,
         mode => 755,
