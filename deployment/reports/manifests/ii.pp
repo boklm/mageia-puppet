@@ -11,7 +11,7 @@ class reports {
         }
 
         file { "/etc/puppet/socket.yaml":
-            content => "reports/socket.yaml",
+            content => template("reports/socket.yaml"),
         }
     }
 }
