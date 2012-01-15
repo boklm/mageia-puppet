@@ -3,13 +3,13 @@ class subversion {
         define post_commit($content) {
             commit_hook { $name:
                 content => $content,
-                type => "postcommit",
+                type => "post-commit",
             }
         }
-        define post_commit($content) {
+        define pre_commit($content) {
             commit_hook { $name:
                 content => $content,
-                type => "postcommit",
+                type => "pre-commit",
             }
         }
   
