@@ -24,14 +24,14 @@ class ii {
         service { 'ii':
             provider => base,
             start => "/usr/local/bin/ii_$nick",
-            notify => Exec["join channel $nick"],
             require => Local_script["ii_$nick"],
         }
 
         exec { "join channel $nick":
             command => "echo '/j $channel' > /var/lib/ii/$nick/$server/in",
             user => nobody,
-            refreshonly => true,
+            unless => "test -d /var/lib/ii/$nick/$server/$channel",
+            require => Service['ii'],
         }
     }
 }
