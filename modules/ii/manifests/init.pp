@@ -18,7 +18,7 @@ class ii {
         service { 'ii':
             provider => base,
             start => "su nobody -c 'ii -n $nick -i /var/lib/ii/$nick -s $server'",
-            notify => "join channel",
+            notify => Exec["join channel"],
         }
 
         exec { "join channel":
