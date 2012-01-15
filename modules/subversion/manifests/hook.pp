@@ -17,7 +17,7 @@ class subversion {
             $array = split($name,'\|')
             $repo = $array[0]
             $script = $array[1]
-            file { "$repo/hook/$type.d/$script":
+            file { "$repo/hooks/$type.d/$script":
                 content => $content,
                 mode => 755,
             }
