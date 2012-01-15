@@ -13,6 +13,8 @@ node valstar {
     include subversion::client
     include subversion::server
     include puppet::master
+    include reports::ii
+
     include ssh::auth
     include ssh::auth::keymaster
     include buildsystem::mainnode
