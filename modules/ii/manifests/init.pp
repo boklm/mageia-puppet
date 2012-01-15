@@ -1,6 +1,6 @@
 class ii {
     class base {
-        package { "ii": }
+        package { ["ii", "perl-Proc-Daemon"]: }
 
         file { "/var/lib/ii/":
             ensure => directory,
