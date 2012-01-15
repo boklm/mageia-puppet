@@ -191,7 +191,7 @@ class subversion {
         } 
 
         if $restricted_to_user {
-            subversion::hook::pre_commit("$name|restricted_to_user":
+            subversion::hook::pre_commit { "$name|restricted_to_user":
                 content => template("subversion/restricted_to_user"),
             }
         } else {
@@ -201,7 +201,7 @@ class subversion {
         }
 
         if $commit_mail {
-            subversion::hook::post_commit("$name|send_mail":
+            subversion::hook::post_commit { "$name|send_mail":
                 content => template("subversion/hook_sendmail.pl"),
                 require => [Package['perl-SVN-Notify-Config']],
             }
@@ -212,7 +212,7 @@ class subversion {
 	}
 
 	if $cia_post {
-            subversion::hook::post_commit("$name|cia.vc":
+            subversion::hook::post_commit { "$name|cia.vc":
                 content => template("subversion/ciabot_svn.sh"),
             }
 		
@@ -231,15 +231,15 @@ class subversion {
 	}
 
         if $extract_dir {
-            subversion::hook::post_commit("$name|extract_dir":
+            subversion::hook::post_commit {"$name|extract_dir":
                 content => template("subversion/hook_extract.pl"),
-	    	require => [Package['perl-SVN-Notify-Mirror']],
+                require => [Package['perl-SVN-Notify-Mirror']],
             }
         } else {
             file { "$name/hooks/post-commit.d/extract_dir":
                 ensure => absent,
-	    }
-	}
+            }
+        }
 
 	pre_commit_link { "$name/hooks/pre-commit.d/no_empty_message": } 
 
