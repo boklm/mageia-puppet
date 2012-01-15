@@ -15,8 +15,8 @@ class subversion {
   
         define commit_hook($content, $type) {
             $array = split($name,'\|')
-            $repos = shift($array)
-            $script = shift($array)
+            $repos = $array[0]
+            $script = $array[1]
             file { "$repo/hook/$type.d/$script":
                 content => $content,
                 mode => 755,
