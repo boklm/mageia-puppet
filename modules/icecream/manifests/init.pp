@@ -3,9 +3,7 @@ class icecream {
         package { "icecream-scheduler": }
 
         service { "icecream-scheduler": 
-            ensure => running,
-            hasstatus => true,
-            subscribe => [Package['icecream-scheduler']],
+            subscribe => Package['icecream-scheduler'],
         }
     }
 
@@ -13,9 +11,7 @@ class icecream {
         package { "icecream": }
 
         service { "icecream": 
-            ensure => running,
-            hasstatus => true,
-            subscribe => [Package['icecream']],
+            subscribe => Package['icecream'],
         }    
     }
 
