@@ -2,9 +2,7 @@ class memcached {
     package { "memcached": }
 
     service { "memcached":
-        ensure => running,
-        path => "/etc/init.d/memcached",
-        subscribe => [ Package["memcached"] ]
+        require => Package["memcached"],
     }
 
     file { "/etc/sysconfig/memcached":
