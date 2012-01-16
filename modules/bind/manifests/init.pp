@@ -3,14 +3,13 @@ class bind {
         package { bind: }
 
         service { named:
-            ensure => running,
             restart => "service named restart", 
-            subscribe => [ Package["bind"]]
+            subscribe => Package["bind"],
         }
 
         file { '/etc/named.conf':
             ensure => "/var/lib/named/etc/named.conf",
-            require => Package[bind]
+            require => Package[bind],
         }
         
         exec { "named_reload":
