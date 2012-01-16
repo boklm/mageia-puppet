@@ -69,22 +69,17 @@ class sympa {
             force => true,
         }
 
-        file { ["/etc/sympa/scenari/subscribe.open_web_only_notify",
-                "/etc/sympa/scenari/unsubscribe.open_web_only_notify"]:
-            source => "puppet:///modules/sympa/scenari/open_web_only_notify",
-        }
-
-        file { ["/etc/sympa/scenari/send.subscriber_moderated"]:
-            source => "puppet:///modules/sympa/scenari/subscriber_moderated",
-        }
-
-        file { ["/etc/sympa/scenari/create_list.forbidden"]:
-            source => "puppet:///modules/sympa/scenari/forbidden",
-        }
-
-
-        file { ["/etc/sympa/topics.conf"]:
-            source => "puppet:///modules/sympa/topics.conf",
+        file {
+            "/etc/sympa/scenari/subscribe.open_web_only_notify":
+                source => "puppet:///modules/sympa/scenari/open_web_only_notify";
+            "/etc/sympa/scenari/unsubscribe.open_web_only_notify":
+                source => "puppet:///modules/sympa/scenari/open_web_only_notify";
+            "/etc/sympa/scenari/send.subscriber_moderated":
+                source => "puppet:///modules/sympa/scenari/subscriber_moderated";
+            "/etc/sympa/scenari/create_list.forbidden":
+                source => "puppet:///modules/sympa/scenari/forbidden";
+            "/etc/sympa/topics.conf":
+                source => "puppet:///modules/sympa/topics.conf";
         }
 
         define ldap_search_filter {
