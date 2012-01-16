@@ -23,7 +23,11 @@ class sympa {
             password => $pgsql_password,
             description => "Sympa database",
         }
-  
+
+        File {
+            require => Package['sympa'],
+        }
+
         file { '/etc/sympa/sympa.conf':
     	# should be cleaner to have it root owned, but puppet do not support acl
     	# and in any case, config will be reset if it change
@@ -31,12 +35,10 @@ class sympa {
             group => apache,
             mode => 640,
             content => template("sympa/sympa.conf"),
-            require => Package[sympa],
         }
     
         file { '/etc/sympa/auth.conf':
             content => template("sympa/auth.conf"),
-            require => Package[sympa],
             notify => Service['httpd'],
         }
     
@@ -65,7 +67,6 @@ class sympa {
             purge => true,
             recurse => true,
             force => true,
-            require => Package[sympa],
         }
 
         file { ["/etc/sympa/scenari/subscribe.open_web_only_notify",
@@ -88,7 +89,6 @@ class sympa {
         file { ["/etc/sympa/topics.conf"]:
             mode => 755,
             source => "puppet:///modules/sympa/topics.conf",
-            require => Package[sympa],
         }
 
         define ldap_search_filter {
@@ -132,7 +132,6 @@ class sympa {
         file { "/var/lib/sympa/expl/":
             ensure => directory,
             owner => sympa,
-            require => Package[sympa],
         }
     }
 
