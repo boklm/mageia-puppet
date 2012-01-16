@@ -6,9 +6,7 @@ class openssh {
         package { "openssh-server": }
 
         service { sshd:
-            ensure => running,
-            path => "/etc/init.d/sshd",
-            subscribe => [ Package["openssh-server"] ]
+            subscribe => Package["openssh-server"],
         }
 
 
