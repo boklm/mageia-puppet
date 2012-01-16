@@ -15,13 +15,13 @@ class bind {
         exec { "named_reload":
             command => "service named reload",
             refreshonly => true,
-        } 
-    }
+        }
 
-    file { '/var/lib/named/etc/named.conf':
-        require => Package["bind"],
-        content => "",
-        notify => [Service['named']]
+        file { '/var/lib/named/etc/named.conf':
+            require => Package["bind"],
+            content => "",
+            notify => Service['named'],
+        }
     }
 
     define zone_base($content = false) {
@@ -56,14 +56,14 @@ class bind {
         Tld_redirections::Domain <<| |>>
 
         $managed_tlds = list_exported_ressources('Tld_redirections::Domain')
-        file { '/var/lib/named/etc/named.conf':
+        File { '/var/lib/named/etc/named.conf':
             content => template("bind/named_base.conf", "bind/named_master.conf"),
         }
     }
 
     class bind_slave inherits bind_base {
         $managed_tlds = list_exported_ressources('Tld_redirections::Domain')
-        file { '/var/lib/named/etc/named.conf':
+        File { '/var/lib/named/etc/named.conf':
             content => template("bind/named_base.conf", "bind/named_slave.conf"),
         }
     }
