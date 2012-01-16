@@ -2,8 +2,6 @@ class postgrey {
     package { postgrey: }
     
     service { postgrey:
-        ensure => running,
-        path => "/etc/init.d/postgrey",
         subscribe => Package[postgrey],
     }
 
