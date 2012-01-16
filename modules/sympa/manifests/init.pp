@@ -71,43 +71,36 @@ class sympa {
 
         file { ["/etc/sympa/scenari/subscribe.open_web_only_notify",
                 "/etc/sympa/scenari/unsubscribe.open_web_only_notify"]:
-            mode => 755,
             source => "puppet:///modules/sympa/scenari/open_web_only_notify",
         }
 
         file { ["/etc/sympa/scenari/send.subscriber_moderated"]:
-            mode => 755,
             source => "puppet:///modules/sympa/scenari/subscriber_moderated",
         }
 
         file { ["/etc/sympa/scenari/create_list.forbidden"]:
-            mode => 755,
             source => "puppet:///modules/sympa/scenari/forbidden",
         }
 
 
         file { ["/etc/sympa/topics.conf"]:
-            mode => 755,
             source => "puppet:///modules/sympa/topics.conf",
         }
 
         define ldap_search_filter {
             file { "/etc/sympa/search_filters/$name.ldap":
-                mode => 755,
                 content => template('sympa/search_filters/group.ldap') 
             }
         }
 
         define ldap_group_datasource {
             file { "/etc/sympa/data_sources/$name.incl":
-                mode => 755,
                 content => template('sympa/data_sources/ldap_group.incl') 
             }
         }
 
         define scenario_sender_ldap_group {
             file { "/etc/sympa/scenari/send.restricted_$name":
-                mode => 755,
                 content => template('sympa/scenari/sender.ldap_group') 
             }
         }
@@ -115,7 +108,6 @@ class sympa {
         define scenario_sender_email {
             $sender_email_file = regsubst($name,'\@','-at-')
             file { "/etc/sympa/scenari/send.restricted_$sender_email_file":
-                mode => 755,
                 content => template('sympa/scenari/sender.email') 
             }
         }
