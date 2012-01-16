@@ -1,3 +1,9 @@
+# that's not for a real node called default, but
+# config applied to every node
+node default {
+    include common::default_mageia_server
+}
+
 # svn, big important server
 node valstar {
 # Location: IELO datacenter (marseille)
