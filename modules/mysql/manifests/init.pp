@@ -1,13 +1,10 @@
 class mysql {
     class server {
-        package { "mysql":
-            ensure => installed
-        }
+        package { "mysql": }
 
         service { mysqld:
-	    alias => mysql,
-            ensure => running,
-	    subscribe => [ Package['mysql'] ],
+	        alias => mysql,
+	        subscribe => Package['mysql'],
         }
         
 #        file { "/etc/my.cnf":
