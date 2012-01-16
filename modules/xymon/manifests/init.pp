@@ -3,8 +3,8 @@ class xymon {
         package { xymon-client: }
 
         service { xymon-client:
-            ensure => running,
-            path => '/etc/init.d/xymon-client',
+            hasstatus => false,
+            status => "/usr/lib64/xymon/client/runclient.sh status",
             require => Package['xymon-client'],
         }
 
