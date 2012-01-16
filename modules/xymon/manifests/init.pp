@@ -19,8 +19,9 @@ class xymon {
         package { ["xymon","fping"]: }
 
         service { xymon:
-                ensure => running,
-                path => '/etc/init.d/xymon',
+            hasstatus => false,
+            status => "su xymon -c '/usr/lib64/xymon/server/hobbit.sh status'",
+            require => Package['xymon'],
         }
 
         File {
