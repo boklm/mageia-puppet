@@ -16,9 +16,7 @@ class postgresql {
         }
     
         service { postgresql:
-            ensure => running,
             subscribe => Package["postgresql-server"],
-            hasstatus => true,
         }
     
         exec { "service postgresql reload":
