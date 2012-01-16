@@ -2,9 +2,7 @@ class xinetd {
     package { "xinetd": }
 
     service { xinetd:
-        ensure => running,
-        path => "/etc/init.d/xinetd",
-        subscribe => [ Package["xinetd"] ]
+        subscribe => Package["xinetd"]
     }
 
     define service($content) {
