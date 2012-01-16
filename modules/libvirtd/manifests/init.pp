@@ -9,32 +9,21 @@ class libvirtd {
         }
 
         service { libvirtd:
-            ensure => running,
-            path => "/etc/init.d/libvirtd",
+            require => Package['libvirt-utils'],
         }
 
         #TODO remove once libvirt package is fixed to manage the directory
-        file { "/etc/libvirt/storage":
+        file { ["/etc/libvirt/storage","/etc/libvirt/storage/autostart"]:
             ensure => directory,
             require => Package['libvirt-utils'],
         }
 
-        file { "/etc/libvirt/storage/autostart":
-            ensure => directory,
-        }
-        
         file { "/usr/local/bin/storage_add.py":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             source => "puppet:///modules/libvirtd/storage_add.py", 
         }
  
         file { "/usr/local/bin/network_add.py":
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             source => "puppet:///modules/libvirtd/network_add.py", 
         }
@@ -43,9 +32,7 @@ class libvirtd {
 
     class kvm inherits base {
         # pull cyrus-sasl, should be checked
-        package { "qemu":
-
-        }
+        package { "qemu": }
     
     }
 
@@ -54,10 +41,6 @@ class libvirtd {
         # to pull polkit and create the directory
         include libvirtd::base
         file { "/etc/polkit-1/localauthority/50-local.d/50-$name-libvirt-remote-access.pkla":
-            owner => root,
-            group => root,
-            mode => 644,
-            ensure => present,
             content => template("libvirtd/50-template-libvirt-remote-access.pkla"),
             require => Package['libvirt-utils'],
         }
