@@ -7,18 +7,12 @@ class sympa {
         # perl-CGI-Fast is needed for fast cgi
         # perl-Socket6 is required by perl-IO-Socket-SSL
         #  (optional requirement)
-        $package_list = ['sympa', 'sympa-www', 'perl-CGI-Fast',
-                         'perl-Socket6']
-    
-        package { $package_list:
-            ensure => installed;
-        }
-    
+        package { ['sympa', 'sympa-www', 'perl-CGI-Fast',
+                   'perl-Socket6']: }
+
         # sympa script start 5 differents script, I am not
         # sure that puppet will correctly handle this
         service { "sympa":
-            ensure => running,
-            hasstatus => true,
             subscribe => [ Package["sympa"], File['/etc/sympa/sympa.conf']]
         }
     
@@ -31,7 +25,6 @@ class sympa {
         }
   
         file { '/etc/sympa/sympa.conf':
-            ensure => present,
     	# should be cleaner to have it root owned, but puppet do not support acl
     	# and in any case, config will be reset if it change
             owner => sympa,
@@ -42,10 +35,6 @@ class sympa {
         }
     
         file { '/etc/sympa/auth.conf':
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 644,
             content => template("sympa/auth.conf"),
             require => Package[sympa],
             notify => Service['httpd'],
@@ -60,7 +49,7 @@ class sympa {
         apache::vhost_redirect_ssl { "$vhost": }
  
         apache::vhost_base { "$vhost":
-	    use_ssl => true,
+            use_ssl => true,
             content => template("sympa/vhost_ml.conf"),
         }
    
@@ -73,9 +62,6 @@ class sympa {
                 "/etc/sympa/data_sources/",
                 "/etc/sympa/search_filters/"]:
             ensure => directory,
-            owner => root,
-            group => root,
-            mode => 755,
             purge => true,
             recurse => true,
             force => true,
@@ -84,34 +70,22 @@ class sympa {
 
         file { ["/etc/sympa/scenari/subscribe.open_web_only_notify",
                 "/etc/sympa/scenari/unsubscribe.open_web_only_notify"]:
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             source => "puppet:///modules/sympa/scenari/open_web_only_notify",
         }
 
         file { ["/etc/sympa/scenari/send.subscriber_moderated"]:
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             source => "puppet:///modules/sympa/scenari/subscriber_moderated",
         }
 
         file { ["/etc/sympa/scenari/create_list.forbidden"]:
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             source => "puppet:///modules/sympa/scenari/forbidden",
         }
 
 
         file { ["/etc/sympa/topics.conf"]:
-            ensure => present,
-            owner => root,
-            group => root,
             mode => 755,
             source => "puppet:///modules/sympa/topics.conf",
             require => Package[sympa],
@@ -119,9 +93,6 @@ class sympa {
 
         define ldap_search_filter {
             file { "/etc/sympa/search_filters/$name.ldap":
-                ensure => present,
-                owner => root,
-                group => root,
                 mode => 755,
                 content => template('sympa/search_filters/group.ldap') 
             }
@@ -129,9 +100,6 @@ class sympa {
 
         define ldap_group_datasource {
             file { "/etc/sympa/data_sources/$name.incl":
-                ensure => present,
-                owner => root,
-                group => root,
                 mode => 755,
                 content => template('sympa/data_sources/ldap_group.incl') 
             }
@@ -139,9 +107,6 @@ class sympa {
 
         define scenario_sender_ldap_group {
             file { "/etc/sympa/scenari/send.restricted_$name":
-                ensure => present,
-                owner => root,
-                group => root,
                 mode => 755,
                 content => template('sympa/scenari/sender.ldap_group') 
             }
@@ -150,9 +115,6 @@ class sympa {
         define scenario_sender_email {
             $sender_email_file = regsubst($name,'\@','-at-')
             file { "/etc/sympa/scenari/send.restricted_$sender_email_file":
-                ensure => present,
-                owner => root,
-                group => root,
                 mode => 755,
                 content => template('sympa/scenari/sender.email') 
             }
@@ -170,8 +132,6 @@ class sympa {
         file { "/var/lib/sympa/expl/":
             ensure => directory,
             owner => sympa,
-            group => root,
-            mode => 755,
             require => Package[sympa],
         }
     }
@@ -200,8 +160,6 @@ class sympa {
         }
 
         file { "$xml_file":
-            owner => root,
-            group => root,
             content => template('sympa/list.xml'),
             require => Package[sympa],
         }
@@ -213,7 +171,6 @@ class sympa {
         }
 
         file { "/var/lib/sympa/expl/$name/config":
-            ensure => present,
             owner => sympa,
             group => sympa,
             mode => 750,
