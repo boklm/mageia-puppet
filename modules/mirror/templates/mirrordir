@@ -5,8 +5,12 @@ localdir="<%= localdir %>"
 rsync_options="<%= rsync_options %>"
 lockfile="<%= lockfile %>"
 
-test -f "$lockfile" && echo "sync already in progress" && exit
-touch "$lockfile"
+if [ -f "$lockfile" ]; then
+    # show error message when run from command line
+    [ -t 1 ] && cat $lockfile
+    exit
+fi
+echo "sync in progress since $(date)" > "$lockfile"
 /usr/bin/rsync $rsync_options "$remoteurl" "$localdir"
 rm -f "$lockfile"
 
