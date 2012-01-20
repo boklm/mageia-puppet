@@ -5,7 +5,7 @@ localdir="<%= localdir %>"
 rsync_options="<%= rsync_options %>"
 lockfile="<%= lockfile %>"
 
-test -f "$lockfile" && exit
+test -f "$lockfile" && echo "sync already in progress" && exit
 touch "$lockfile"
 /usr/bin/rsync $rsync_options "$remoteurl" "$localdir"
 rm -f "$lockfile"
