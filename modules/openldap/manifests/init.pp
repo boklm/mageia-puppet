@@ -3,7 +3,7 @@ class openldap {
         file { $name:
             require => Package["openldap-servers"],
             content => $content,
-            notify => [Service['ldap']]
+            notify => Exec["/etc/init.d/ldap check"],
         }
     }
 
@@ -13,6 +13,11 @@ class openldap {
         service { ldap:
             subscribe => Package['openldap-servers'],
             require => Openssl::Self_signed_cert["ldap.$domain"],
+        }
+
+        exec { "/etc/init.d/ldap check":
+            refreshonly => true,
+            notify => Service["ldap"],
         }
 
         file {"/etc/ssl/openldap/":
