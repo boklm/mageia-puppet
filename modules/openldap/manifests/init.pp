@@ -66,8 +66,8 @@ class openldap {
             }
 
             exec { "init_ldap.sh":
-                # taken arbirtrary among all possible file
-                create => "/var/lib/ldap/objectClass.bdb",
+                # taken arbitrary among all possible files
+                creates => "/var/lib/ldap/objectClass.bdb",
                 require => Local_script["init_ldap.sh"],
             }
         }
