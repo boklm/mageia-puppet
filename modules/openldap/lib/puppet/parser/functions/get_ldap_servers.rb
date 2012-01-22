@@ -8,6 +8,6 @@ module Puppet::Parser::Functions
               res << "slave-#{i}" 
         }
         res.map! { |x| "ldap-#{x}." + lookupvar("domain") }
-        return res.join(" ")
+        return res
     end
 end
