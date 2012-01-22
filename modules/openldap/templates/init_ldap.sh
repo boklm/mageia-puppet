@@ -16,10 +16,10 @@ objectClass: organizationalUnit
 <%
 gid = 5000
 for g in ['packagers','web','sysadmin'] %>
-dn: cn=mga-<% g %>,ou=Group,<%= dc_suffix %>
+dn: cn=mga-<%= g %>,ou=Group,<%= dc_suffix %>
 objectClass: groupOfNames
 objectClass: posixGroup
-cn: mga-<% g %>
+cn: mga-<%= g %>
 gidNumber: <%= gid %>
 member: cn=manager,<%= dc_suffix %>
 <%-
