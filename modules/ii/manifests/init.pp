@@ -30,7 +30,7 @@ class ii {
         exec { "join channel $nick":
             command => "echo '/j $channel' > /var/lib/ii/$nick/$server/in",
             user => nobody,
-            unless => "test -d /var/lib/ii/$nick/$server/$channel",
+            creates => "/var/lib/ii/$nick/$server/$channel/in",
             require => Service['ii'],
         }
     }
