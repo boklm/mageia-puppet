@@ -48,6 +48,7 @@ class postfix {
                           'mga-alumni','mga-i18n-committers',
                          ]        
         $ldap_password = extlookup("postfix_ldap",'x')
+        $ldap_servers = get_ldap_servers()
 
         file {
             '/etc/postfix/master.cf': content => template("postfix/primary_master.cf");
