@@ -7,19 +7,23 @@ objectClass: domain
 objectClass: domainRelatedObject
 associatedDomain: <%= domain %>
 
-dn: ou=People,<%= dc_suffix %>
-ou: People
+<% for g in ['People','Group'] %>
+dn: ou=<%= g%>,<%= dc_suffix %>
+ou: <%= g %>
 objectClass: organizationalUnit
+<% end %>
 
-dn: ou=Group,<%= dc_suffix %>
-ou: Group
-objectClass: organizationalUnit
-
-dn: cn=mga-packagers,ou=Group,<%= dc_suffix %>
+<%
+gid = 5000
+for g in ['packagers','web','sysadmin'] %>
+dn: cn=mga-<% g %>,ou=Group,<%= dc_suffix %>
 objectClass: groupOfNames
 objectClass: posixGroup
-cn: mga-packagers
-gidNumber: 5003
+cn: mga-<% g %>
+gidNumber: <%= gid %>
 member: cn=manager,<%= dc_suffix %>
+<%-
+gid+=1 
+end -%>
 
 EOF
