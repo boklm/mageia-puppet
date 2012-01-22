@@ -7,7 +7,7 @@ objectClass: domain
 objectClass: domainRelatedObject
 associatedDomain: <%= domain %>
 
-<% for g in ['People','Group'] %>
+<% for g in ['People','Group','Hosts'] %>
 dn: ou=<%= g%>,<%= dc_suffix %>
 ou: <%= g %>
 objectClass: organizationalUnit
