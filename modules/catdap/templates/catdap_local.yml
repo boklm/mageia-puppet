@@ -43,7 +43,7 @@ register:
                 - noc
                 - security
                 - listmaster
-                - MAILER-DAEMO
+                - MAILER-DAEMON
                 - webmaster
                 - www 
                 - treasurer
