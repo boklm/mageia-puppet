@@ -12,7 +12,10 @@ except ImportError, e:
 
 basedn="<%= dc_suffix %>"
 peopledn="ou=people,%s" % basedn
-uris=['ldap://ldap.<%= domain %>']
+<%-
+  ldap_servers.map! { |l| "'ldaps://#{l}'" }
+-%>
+uris=[<%= ldap_servers.join(", ") %>]
 random.shuffle(uris)
 uri = " ".join(uris)
 timeout=5
