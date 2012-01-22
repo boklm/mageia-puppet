@@ -7,7 +7,7 @@ class main_mirror {
     }
 
     $mirror = "/distrib"
-    file { ["$mirror","$mirror/mirror"]:
+    file { ["$mirror", "$mirror/mirror", "$mirror/archive"]:
         ensure => directory,
     }
 
