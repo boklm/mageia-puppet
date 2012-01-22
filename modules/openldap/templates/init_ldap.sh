@@ -15,7 +15,7 @@ objectClass: organizationalUnit
 
 <%
 gid = 5000
-for g in ['packagers','web','sysadmin'] %>
+for g in ['packagers','web','sysadmin','packagers-committers','forum-developers'] %>
 dn: cn=mga-<%= g %>,ou=Group,<%= dc_suffix %>
 objectClass: groupOfNames
 objectClass: posixGroup
