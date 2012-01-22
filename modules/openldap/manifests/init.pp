@@ -57,6 +57,20 @@ class openldap {
         Openldap::Config['/etc/sysconfig/ldap'] {
             content => template("openldap/ldap.sysconfig"),
         }
+
+        if $environment == "test" {
+            # if we ae in a test vm, we need to fill the directory
+            # with data
+            local_script { "init_ldap.sh":
+                content => template('openldap/init_ldap.sh'),
+            }
+
+            exec { "init_ldap.sh":
+                # taken arbirtrary among all possible file
+                create => "/var/lib/ldap/objectClass.bdb",
+                require => Local_script["init_ldap.sh"],
+            }
+        }
     }
 
     # TODO create the user for sync in ldap
