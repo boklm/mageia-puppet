@@ -61,8 +61,11 @@ class openldap {
         if $environment == "test" {
             # if we ae in a test vm, we need to fill the directory
             # with data
+            package { "openldap-clients": }
+
             local_script { "init_ldap.sh":
                 content => template('openldap/init_ldap.sh'),
+                require => Package["openldap-clients"],
             }
 
             exec { "init_ldap.sh":
