@@ -55,6 +55,10 @@ class buildsystem {
             source => "svn://svn.$domain/soft/buildsystem/web/",
         }
 
+        file { "$repository_root":
+            ensure => directory,
+        }
+
         define media_cfg() {
             $arch = $name
             file { "$repository_root/distrib/cauldron/$arch/media/media_info/media.cfg":
