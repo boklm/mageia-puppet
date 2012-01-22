@@ -8,7 +8,7 @@ my $server = "<%= server %>";
 
 
 Proc::Daemon::Init();
-my (undef, undef, $uid) = getpwname("nobody"); 
+my (undef, undef, $uid) = getpwnam("nobody");
 POSIX::setuid($uid);
 
 fork() || exec "ii -n $nick -i /var/lib/ii/$nick -s $server";
