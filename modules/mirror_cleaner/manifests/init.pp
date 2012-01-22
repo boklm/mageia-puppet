@@ -1,9 +1,6 @@
 class mirror_cleaner {
     class base {
         file { "/usr/local/bin/orphans_cleaner.pl":
-             ensure => present,
-             owner => root,
-             group => root,
              mode => 755,
              source => 'puppet:///modules/mirror_cleaner/orphans_cleaner.pl',
         }
