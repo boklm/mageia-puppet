@@ -76,6 +76,12 @@ class openldap {
         }
     }
 
+    # this define is here only to be exported by slave
+    # and later used by get_ldap_servers
+    define exported_slave {
+
+    }
+
     # TODO create the user for sync in ldap
     # syntaxic sugar 
     define slave_instance($rid) {
@@ -87,6 +93,8 @@ class openldap {
     }
 
     class slave($rid) inherits common {
+
+        @@openldap::exported_slave { $rid: }
 
         $sync_password = extlookup("ldap_syncuser-$hostname",'x')
         
