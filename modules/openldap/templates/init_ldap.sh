@@ -26,4 +26,15 @@ member: cn=manager,<%= dc_suffix %>
 gid+=1 
 end -%>
 
+
+<% # FIXME automatically get the list of servers
+for g in ['valstar','alamut'] %>
+dn: cn=<%= g%>.<%= domain %>,ou=Hosts,<%= dc_suffix %>
+objectClass: device
+objectClass: simpleSecurityObject
+cn: <%= g%>.<%= domain %>
+userPassword: x
+<% end %>
+
+
 EOF
