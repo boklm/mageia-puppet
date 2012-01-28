@@ -71,7 +71,8 @@ bindpw = get_pw(pwfile)
 try:
     ld = ldap.initialize(uri)
     ld.set_option(ldap.OPT_NETWORK_TIMEOUT, timeout)
-    ld.start_tls_s()
+    if uri.startswith("ldap:/"):
+        ld.start_tls_s()
     ld.bind_s(binddn, bindpw)
     res = ld.search_s(peopledn, ldap.SCOPE_ONELEVEL, filter, ['uid','sshPublicKey','uidNumber','gidNumber'])
     try:
