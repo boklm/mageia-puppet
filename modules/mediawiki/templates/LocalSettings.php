@@ -72,8 +72,10 @@ $wgMemCachedServers = array();
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
 $wgEnableUploads       = false;
-$wgUseImageMagick = true;
-$wgImageMagickConvertCommand = "/usr/bin/convert";
+# use gd, as convert do not work for big image 
+# see https://bugs.mageia.org/show_bug.cgi?id=3202
+$wgUseImageMagick = false;
+#$wgImageMagickConvertCommand = "/usr/bin/convert";
 
 ## If you use ImageMagick (or any other shell command) on a
 ## Linux server, this will need to be set to the name of an
