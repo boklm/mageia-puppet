@@ -11,18 +11,13 @@ class mediawiki {
 
         include apache::mod_php
 
-        package { ['mediawiki-minimal','mediawiki-ldapauthentication'] :
-            ensure => installed,
-        }
+        package { ['mediawiki-minimal','mediawiki-ldapauthentication']: }
 
         file { $root:
             ensure => directory,
         }
       
         file { "/usr/local/bin/init_wiki.php":
-             ensure => present,
-             owner => root,
-             group => root,
              mode => 755,
              source => 'puppet:///modules/mediawiki/init_wiki.php',
         }
@@ -95,7 +90,6 @@ class mediawiki {
         $ldap_password = $config::ldap_password
 
         file { "$wiki_root/LocalSettings.php":
-            ensure => present,
 	    owner => apache,
 	    mode => 600,
             content => template("mediawiki/LocalSettings.php"),
