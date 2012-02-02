@@ -1,7 +1,7 @@
 <%
-ldap_server = 'ldap-master.#{domain}'
+ldap_server = "ldap-master.#{domain}"
 
-ldap_account = 'cn=catdap-#{hostname},ou=System Accounts,#{dc_suffix}'
+ldap_account = "cn=catdap-#{hostname},ou=System Accounts,#{dc_suffix}"
 %>
 
 organisation: Mageia
