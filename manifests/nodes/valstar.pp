@@ -24,6 +24,7 @@ node valstar {
     include buildsystem::maintdb
     include buildsystem::binrepo
     include softwarekey::base
+    include mgasoft
 
     include access_classes::committers
     include restrictshell::allow_git
