@@ -33,6 +33,6 @@ class mgasoft(
 	source => $svn_soft_publish,
 	user => $mgasoft_login,
 	refresh => '0',
-	requires => User[$mgasoft_login],
+	require => User[$mgasoft_login],
     }
 }
