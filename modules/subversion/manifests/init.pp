@@ -275,12 +275,14 @@ class subversion {
             require => Package['subversion']
         }
 
-        cron { "update $name":
-           command => "cd $name && /usr/bin/svn update -q",
-           user => $user,
-           minute => $refresh,
-           require => Exec["/usr/bin/svn co $source $name"],
-        }   
+	if ($refresh != '0') {
+	    cron { "update $name":
+		command => "cd $name && /usr/bin/svn update -q",
+		user => $user,
+		minute => $refresh,
+		require => Exec["/usr/bin/svn co $source $name"],
+		} 
+	}
     }
     
     class mirror { 
