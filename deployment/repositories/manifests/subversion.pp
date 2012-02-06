@@ -28,6 +28,13 @@ class repositories::subversion {
         i18n_mail => ["mageia-i18n@$domain"],
     }
 
+    subversion::repository { "/svn/soft_publish/":
+	group => "mga-packagers",
+	commit_mail => ["soft-commits@ml.$domain"],
+	cia_post => true,
+	cia_module => "soft_publish",
+    }
+
     subversion::repository { "/svn/web/":
 	    group => "mga-web",
         syntax_check => ['check_php'],
