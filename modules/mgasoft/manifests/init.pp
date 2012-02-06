@@ -35,4 +35,10 @@ class mgasoft(
 	refresh => '0',
 	require => User[$mgasoft_login],
     }
+
+    cron { "mgasoft-publish":
+	command => '/usr/bin/mgasoft-publish',
+	user => $mgasoft_login,
+	minute => '*/5',
+    }
 }
