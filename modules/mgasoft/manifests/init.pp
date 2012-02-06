@@ -1,5 +1,5 @@
 class mgasoft(
-    $anonsvn_soft = 'svn+ssh://svn.mageia.org/svn/soft',
+    $anonsvn_soft = 'svn://svn.mageia.org/svn/soft',
     $pubinfodir = '/var/lib/mgasoft/infos',
     $pubmirrordir = '/distrib/mirror/software',
     $svn_soft_publish = 'svn+ssh://svn.mageia.org/svn/soft_publish',
