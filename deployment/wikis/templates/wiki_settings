@@ -1,5 +1,5 @@
 $wgEnableUploads = true;
-$wgFileExtensions = array('png','gif','jpg','jpeg','pdf','tiff','ps','odt','ods','odp','odg', 'txt');
+$wgFileExtensions = array('png','gif','jpg','jpeg','pdf','tiff','ps','odt','ods','odp','odg', 'ogm', 'txt');
 
 $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['*']['createtalk'] = false;
