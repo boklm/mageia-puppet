@@ -19,7 +19,7 @@ class buildsystem {
         # build node common settings
         # we could have the following skip list to use less space:
         # '/(drakx-installer-binaries|drakx-installer-advertising|gfxboot|drakx-installer-stage2|mandriva-theme)/'
-        $package_list = ['task-bs-cluster-chroot', 'iurt']
+        $package_list = ['iurt']
         package { $package_list: }
 
         file { "/etc/iurt/build":
