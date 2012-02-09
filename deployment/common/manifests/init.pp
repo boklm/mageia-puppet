@@ -8,6 +8,27 @@ class common {
         package { $package_list: }
     }
 
+    class export_ssh_keys {
+        @@sshkey { "$hostname": 
+            type => rsa, 
+	    key => $sshrsakey 
+        }
+	 
+	@@sshkey { "$fqdn": 
+            type => rsa, 
+            key => $sshrsakey 
+        }
+	 
+        @@sshkey { "$ipaddress": 
+            type => rsa, 
+            key => $sshrsakey 
+        } 
+    }
+
+    class import_ssh_keys {
+	Sshkey <<| |>>
+    }
+
     class default_ssh_root_key {
         Ssh_authorized_key {
             user => "root"
@@ -79,6 +100,8 @@ class common {
         include openssh::server
         include common::default_ssh_root_key
         include common::base_packages
+	include common::export_ssh_keys
+	include common::import_ssh_keys
         include ntp
         include common::urpmi_update
         include puppet::client
