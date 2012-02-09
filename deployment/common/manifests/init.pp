@@ -24,9 +24,10 @@ class common {
     }
 
     class export_ssh_keys {
-        @@sshkey { ["$hostname","$fqdn","$ipaddress"]:
-            type => rsa, 
-            key => $sshrsakey 
+        @@sshkey { $fqdn:
+            type => 'rsa',
+            key => $sshrsakey,
+            host_aliases => ["$ipaddress","$hostname"],
         }
     }
 
