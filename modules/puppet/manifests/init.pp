@@ -21,7 +21,8 @@ class puppet {
         }
     }
 
-    class master inherits client {
+    class master {
+        include puppet::client
 
         # for stored config
         $rails_package = $lsbdistid ? {
