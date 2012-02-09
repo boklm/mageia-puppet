@@ -14,6 +14,13 @@ class common {
         }
     }
 
+    class i18n {
+        # push the locale everywhere, as it affect facter
+        file { "/etc/sysconfig/i18n":
+            content => template("common/i18n"),
+        }
+    }
+
     class export_ssh_keys {
         @@sshkey { ["$hostname","$fqdn","$ipaddress"]:
             type => rsa, 

@@ -1,0 +1,20 @@
+<%- 
+# should not be changed
+locale = 'en_US.UTF-8' 
+
+-%>
+LC_TELEPHONE=<%= locale %>
+LC_CTYPE=<%= locale %>
+LANGUAGE=<%= locale %>:<%= locale.split('.')[0] %>:<%= locale.split('.')[0].split('_')[0] %>
+LC_MONETARY=<%= locale %>
+LC_ADDRESS=<%= locale %>
+LC_COLLATE=<%= locale %>
+LC_PAPER=<%= locale %>
+LC_NAME=<%= locale %>
+LC_NUMERIC=<%= locale %>
+SYSFONT=lat0-16
+LC_MEASUREMENT=<%= locale %>
+LC_TIME=<%= locale %>
+LANG=<%= locale %>
+LC_IDENTIFICATION=<%= locale %>
+LC_MESSAGES=<%= locale %>
