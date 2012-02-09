@@ -1,0 +1,8 @@
+ssl
+puppet.conf
+extdata
+tagmail.conf
+*~
+auth.conf
+socket.yaml
+autosign.conf
