@@ -33,8 +33,6 @@ class puppet {
         package { ["ruby-sqlite3", "puppet-server", $rails_package]: }
 
         service { puppetmaster:
-            ensure => running,
-            path => "/etc/init.d/puppetmaster",
             subscribe => [ Package[puppet-server], File["/etc/puppet/puppet.conf"]]
         }
 
