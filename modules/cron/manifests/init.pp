@@ -1,7 +1,7 @@
 class cron {
-    package { "cronie": }
+    package { 'cronie': }
 
-    service { crond:
-        subscribe => Package["cronie"],
+    service { 'crond':
+        subscribe => Package['cronie'],
     }
 }
