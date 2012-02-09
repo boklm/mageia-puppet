@@ -5,8 +5,8 @@ class puppet::queue {
 
     service { 'puppetqd':
         provider => base,
-        start => "/usr/sbin/puppetqd",
-        require => [Package['puppet-server'],
+        start    => '/usr/sbin/puppetqd',
+        require  => [Package['puppet-server'],
                     Package['ruby-stomp'],
                     File['/etc/puppet/puppet.conf']],
     }
