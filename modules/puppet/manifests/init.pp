@@ -24,13 +24,8 @@ class puppet {
     class master {
         include puppet::client
 
-        # for stored config
-        $rails_package = $lsbdistid ? {
-            Mageia => "ruby-rails",
-            MandrivaLinux => "rails"
-        }
-
-        package { ["ruby-sqlite3", "puppet-server", $rails_package]: }
+        # rails and sqlite3 are used for stored config
+        package { ['ruby-sqlite3', 'puppet-server', 'ruby-rails']: }
 
         service { puppetmaster:
             subscribe => [ Package[puppet-server], File["/etc/puppet/puppet.conf"]]
