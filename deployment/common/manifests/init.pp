@@ -15,24 +15,14 @@ class common {
     }
 
     class export_ssh_keys {
-        @@sshkey { "$hostname": 
-            type => rsa, 
-	    key => $sshrsakey 
-        }
-	 
-	@@sshkey { "$fqdn": 
+        @@sshkey { ["$hostname","$fqdn","$ipaddress"]:
             type => rsa, 
             key => $sshrsakey 
         }
-	 
-        @@sshkey { "$ipaddress": 
-            type => rsa, 
-            key => $sshrsakey 
-        } 
     }
 
     class import_ssh_keys {
-	Sshkey <<| |>>
+        Sshkey <<| |>>
     }
 
     class default_ssh_root_key {
