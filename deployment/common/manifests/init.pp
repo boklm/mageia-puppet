@@ -6,6 +6,12 @@ class common {
         $package_list = ['screen', 'vim-enhanced', 'htop', 'lsof', 'tcpdump', 'rsync', 'less','lshw', 'lvm2', 'iotop']
 
         package { $package_list: }
+
+        # removed as it mess up with our policy for password
+        # and is not really used
+        package { 'msec':
+            ensure => 'absent',
+        }
     }
 
     class export_ssh_keys {
