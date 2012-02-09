@@ -6,6 +6,6 @@ node jonund {
     include buildsystem::buildnode
     include buildsystem::iurt20101
     timezone::timezone { "Europe/Paris": }
-    include shorewall
-    include shorewall::default_firewall
+#    include shorewall
+#    include shorewall::default_firewall
 }
