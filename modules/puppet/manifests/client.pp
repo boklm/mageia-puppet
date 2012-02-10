@@ -1,4 +1,5 @@
 class puppet::client {
+    include puppet::stored_config
     package { 'puppet': }
 
     file { '/etc/puppet/puppet.conf':

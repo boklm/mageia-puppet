@@ -3,7 +3,7 @@ class puppet::master {
     include puppet::queue
 
     # rails and sqlite3 are used for stored config
-    package { ['ruby-sqlite3', 'puppet-server', 'ruby-rails']: }
+    package { 'puppet-server': }
 
     service { 'puppetmaster':
         subscribe => [Package['puppet-server'],
