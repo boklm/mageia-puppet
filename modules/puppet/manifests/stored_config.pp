@@ -21,7 +21,5 @@ class puppet::stored_config {
         $database = 'sqlite3'
 #    }
 #
-    package { ["ruby-$database", 'ruby-rails']: }
- 
     $db_config = template('puppet/db_config.pp')
 }

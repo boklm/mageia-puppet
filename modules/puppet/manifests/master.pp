@@ -1,6 +1,16 @@
 class puppet::master {
     include puppet::client
     include puppet::queue
+    include puppet::stored_config
+
+    package { ["ruby-$puppet::stored_config::database", 'ruby-rails']: }
+
+    File['/etc/puppet/puppet.conf'] {
+        content => template('puppet/puppet.conf',
+                            'puppet/puppet.agent.conf',
+                            'puppet/puppet.master.conf'),
+    }
+
 
     # rails and sqlite3 are used for stored config
     package { 'puppet-server': }
