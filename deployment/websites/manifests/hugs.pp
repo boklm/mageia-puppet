@@ -1,16 +1,16 @@
-class websites {
-    class hugs inherits base {
-        $vhostdir = "$webdatadir/hugs.$domain"
-        $svn_location = "svn://svn.$domain/svn/web/hugs/public/"
+class websites::hugs {
+    include websites::base
 
-    	apache::vhost_base { "hugs.$domain":
-	        location => $vhostdir,
-        }
+    $vhostdir = "$websites::base::webdatadir/hugs.$::domain"
+    $svn_location = "svn://svn.$::domain/svn/web/hugs/public/"
 
-        subversion::snapshot { "$vhostdir":
-            source => $svn_location
-        }
-
-        package { php-exif: }
+    apache::vhost_base { "hugs.$::domain":
+        location => $vhostdir,
     }
+
+    subversion::snapshot { $vhostdir:
+        source => $svn_location
+    }
+
+    package { 'php-exif': }
 }
