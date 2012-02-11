@@ -1,4 +1,4 @@
-class puppet::master {
+class puppet::master inherits puppet {
     include puppet::client
     include puppet::queue
     include puppet::stored_config

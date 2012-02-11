@@ -1,11 +1,10 @@
-class puppet::client {
+class puppet::client inherits puppet {
     include puppet::stored_config
 
     package { 'puppet': }
 
-    file { '/etc/puppet/puppet.conf':
+    File['/etc/puppet/puppet.conf'] {
         content => template('puppet/puppet.conf','puppet/puppet.agent.conf'),
-        require => Package[puppet],
     }
 
     cron { 'puppet':
