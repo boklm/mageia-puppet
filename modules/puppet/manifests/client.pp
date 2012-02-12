@@ -1,5 +1,4 @@
 class puppet::client inherits puppet {
-    include puppet::stored_config
 
     cron { 'puppet':
         ensure  => present,

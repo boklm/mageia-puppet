@@ -1,4 +1,5 @@
 class puppet {
+    include puppet::stored_config
 
     package { 'puppet': }
 
