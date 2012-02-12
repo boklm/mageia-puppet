@@ -37,7 +37,8 @@ group-compress Marseille
 212.85.158.147	valstar.<%= domain %>	# testip ssh rsync svn git ldapssl ldap
 212.85.158.148	ecosse.<%= domain %>	# testip ssh
 212.85.158.149	jonund.<%= domain %>	# testip ssh
-#212.85.158.150	fiona.<%= domain %>	# testip ssh
+212.85.158.150	fiona.<%= domain %>	# testip ssh
+212.85.158.151	sucuk.<%= domain %>	# testip ssh
 
 group-compress Gandi
 95.142.164.207	krampouezh.<%= domain %>	# ssh dns ldap ldapssl smtp
