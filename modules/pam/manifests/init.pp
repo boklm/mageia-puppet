@@ -3,8 +3,7 @@ class pam {
         package { ["pam_ldap","nss_ldap","nscd"]: }
 
         service { nscd:
-            ensure => running,
-            path => '/etc/init.d/nscd',
+            require => Package['nscd'],
         }
 
         file {
