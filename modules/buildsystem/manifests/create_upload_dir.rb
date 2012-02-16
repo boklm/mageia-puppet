@@ -27,7 +27,7 @@ define "create_upload_dir", :owner, :group do
         end
 
 	rel = 'infra_1'
-	rep = 'core'
+	rep = 'infra'
 	med = 'release'
 	file [@name, st, rel].join('/'), :ensure => 'directory', :owner => @owner, :group => @group
 	file [@name, st, rel, rep].join('/'), :ensure => 'directory', :owner => @owner, :group => @group
