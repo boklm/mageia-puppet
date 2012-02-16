@@ -201,17 +201,6 @@ class buildsystem {
         }
     }
 
-    class iurtuser {
-        sshuser { $build_login:
-          homedir => $build_home_dir,
-          comment => "System user used to run build bots",
-        }
-
-        file { "/etc/iurt":
-            ensure => "directory",
-        }
-    }
-
     # A script to copy on valstar the 2010.1 rpms built on jonund
     class sync20101 inherits base {
         local_script { "sync2010.1":
