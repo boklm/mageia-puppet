@@ -2,8 +2,6 @@ class youri-check {
     class base {
         $vhost = "check.$domain"
         $user = 'youri'
-        $config = '/etc/youri/cauldron.conf'
-        $outdir = '/var/www/youri-check'
         $home = '/var/lib/youri'
 
         user { $user:
@@ -17,57 +15,77 @@ class youri-check {
 	    group => $user,
 	}
 
-        $pgsql_server = "$vhost"
-        $pgsql_db = 'youri_check'
-        $pgsql_user = 'youri'
-        $pgsql_password = extlookup('youri_pgsql','x')
-        
-        file { "$config":
-            ensure => present,
-            owner => $user,
-            mode => 640,
-            content => template("youri-check/check.conf"),
-        }
+	$pgsql_server = "$vhost"
+
+	package { ['youri-check', 'perl-DBD-Pg', 'perl-Youri-Media']: }
+
     }
 
-    class check inherits base {
-        package { ['perl-Youri-Media', 'youri-check', 'perl-DBD-Pg']: }
+    define config($version) {
+	$config = "/etc/youri/$version.conf"
+	$outdir = "/var/www/youri-check/$version"
+	$pgsql_db = "youri_check_$version"
+	$pgsql_server = $base::pgsql_server
+	$pgsql_user = "youri$version"
+	$pgsql_password = extlookup('youri_pgsql','x')
 
-        cron { 'check':
-            command => "youri-check -c $config test",
-            hour => "*",
-            minute => 4,
-            user => "$user",
-	    environment => "MAILTO=root",
-        }
+	file { "$config":
+	    ensure => present,
+            owner => $base::user,
+	    mode => 640,
+	    content => template("youri-check/$version.conf"),
+	}
     }
 
-    class report inherits base {
-        file { "$outdir":
-            ensure => directory,
-            owner => $user,
-        }
+    define check($version, $hour = "*", $minute = 0) {
+	include youri-check::base
+	$config = "/etc/youri/$version.conf"
+	$pgsql_server = $base::pgsql_server
+	$pgsql_db = "youri_check_$version"
+	$pgsql_user = "youri$version"
+	$pgsql_password = extlookup('youri_pgsql','x')
 
         postgresql::remote_user { $pgsql_user:
-            password => $pgsql_password,
+            password => $base::pgsql_password,
         }
 
         postgresql::remote_database { $pgsql_db:
             description => "Youri Check results",
             user => $pgsql_user,
         }
+        cron { "check_$version":
+            command => "youri-check -c $config test",
+            hour => $hour,
+            minute => $minute,
+            user => $base::user,
+	    environment => "MAILTO=root",
+        }
+    }
 
-        package { ['youri-check', 'perl-DBD-Pg']: }
+    define report_www {
+        include youri-check::base
+	$outdir = "/var/www/youri-check/"
+        apache::vhost_simple { $base::vhost:
+            location => $outdir,
+        }
+    }
 
-        cron { 'check':
-            command => "youri-check -c $config report",
-            hour => "*",
-            minute => 24,
-            user => "$user",
+    define report($version, $hour = "*", $minute = 20) {
+        include youri-check::base
+
+	$config = "/etc/youri/$version.conf"
+
+	$outdir = "/var/www/youri-check/$version"
+        file { "$outdir":
+            ensure => directory,
+            owner => $base::user,
         }
 
-        apache::vhost_simple { $vhost:
-            location => $outdir,
+        cron { "check_$version":
+            command => "youri-check -c $config report",
+            hour => $hour,
+            minute => $minute,
+            user => $base::user,
         }
     }
 }
