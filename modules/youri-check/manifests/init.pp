@@ -79,6 +79,7 @@ class youri-check {
         file { "$outdir":
             ensure => directory,
             owner => $base::user,
+	    mode => 755,
         }
 
         cron { "check_$version":
