@@ -112,7 +112,7 @@ class common {
         include ntp
         include common::urpmi_update
         include puppet::client
-	#include xymon::client
+        include xymon::client
         include cron 
 
         # provided by lsb-core, but it also pull
