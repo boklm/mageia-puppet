@@ -22,6 +22,8 @@ class youri-check {
     }
 
     define config($version) {
+	include youri-check::base
+
 	$config = "/etc/youri/$version.conf"
 	$outdir = "/var/www/youri-check/$version"
 	$pgsql_db = "youri_check_$version"
