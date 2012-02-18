@@ -34,6 +34,7 @@ class buildsystem {
         #    require => File[$sched_home_dir],
         #}
 
+	#FIXME This config information should be moved out of this class
         $releases = {
             'cauldron' => { 
                 'core' => ['release','updates_testing','backports_testing','backports','updates'],
