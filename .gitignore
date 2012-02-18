@@ -6,3 +6,4 @@ tagmail.conf
 auth.conf
 socket.yaml
 autosign.conf
+hiera.yaml
