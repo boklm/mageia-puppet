@@ -1,23 +1,4 @@
-define "create_upload_dir", :owner, :group do
-
-    #FIXME: move this config info outside of this code
-    releases = {
-        'cauldron' => { 
-            'core' => ['release','updates_testing','backports_testing','backports','updates'],
-            'nonfree' => ['release','updates_testing','backports_testing','backports','updates'],
-            'tainted' => ['release','updates_testing','backports_testing','backports','updates'],
-        },
-        '1' => { 
-            'core' => ['release','updates_testing','backports_testing','backports','updates'],
-            'nonfree' => ['release','updates_testing','backports_testing','backports','updates'],
-            'tainted' => ['release','updates_testing','backports_testing','backports','updates'],
-        },
-        'infra_1' => { 
-            'infra' => ['release']
-        },
-    }
-             
-
+define "create_upload_dir", :owner, :group, :releases do
     states = ["todo","done","failure","queue","rejected"]
 
     file @name, :ensure => 'directory', :owner => @owner, :group => @group 
@@ -25,7 +6,7 @@ define "create_upload_dir", :owner, :group do
     for st in states do
         file [@name, st].join('/'), :ensure => 'directory', :owner => @owner, :group => @group 
         
-        releases.each{|rel, repositories|
+        @releases.each{|rel, repositories|
             file [@name, st, rel].join('/'), :ensure => 'directory', :owner => @owner, :group => @group
         
             repositories.each{|rep, medias|
