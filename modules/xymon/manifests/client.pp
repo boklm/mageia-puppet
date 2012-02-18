@@ -3,7 +3,7 @@ class xymon::client {
 
     service { 'xymon-client':
         hasstatus => false,
-        status    => '/usr/lib64/xymon/client/runclient.sh status',
+        status    => "$::lib_dir/xymon/client/runclient.sh status",
         require   => Package['xymon-client'],
     }
 
