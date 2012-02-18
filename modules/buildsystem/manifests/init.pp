@@ -145,12 +145,8 @@ class buildsystem {
             "/etc/youri/acl.conf": content => template("buildsystem/youri_acl.conf");
         }
 
-        # FIXME use the correct perl directory
-        file { "/usr/lib/perl5/site_perl/5.10.1/Youri/Repository":
-            ensure => "directory",
-        }
-
-        file { '/usr/lib/perl5/site_perl/5.10.1/Youri/Repository/Mageia.pm':
+        # FIXME use /usr/local/ once it will be in @INC
+        file { '/usr/lib/perl5/site_perl/5.12.3/Youri/Repository/Mageia.pm':
             source => "puppet:///modules/buildsystem/Mageia.pm",
         }
 
