@@ -40,5 +40,6 @@ class mgasoft(
 	command => '/usr/bin/mgasoft-publish',
 	user => $mgasoft_login,
 	minute => '*/5',
+        require => User[$mgasoft_login],
     }
 }
