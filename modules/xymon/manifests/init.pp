@@ -12,6 +12,8 @@ class xymon {
         $server = extlookup('hobbit_server','x')
         file { '/etc/sysconfig/xymon-client':
             content => template("xymon/xymon-client"),
+            notify => Service['xymon-client'],
+            require => Package['xymon-client'],
         }
     }
 
