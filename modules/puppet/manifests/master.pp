@@ -2,6 +2,7 @@ class puppet::master inherits puppet {
     include puppet::client
     include puppet::queue
     include puppet::stored_config
+    include puppet::hiera
 
     package { ["ruby-$puppet::stored_config::database", 'ruby-rails']: }
 
