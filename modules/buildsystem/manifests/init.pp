@@ -146,7 +146,7 @@ class buildsystem {
         }
 
         # FIXME use /usr/local/ once it will be in @INC
-        file { '/usr/lib/perl5/site_perl/5.12.3/Youri/Repository/Mageia.pm':
+        file { '/usr/lib/perl5/vendor_perl/5.12.3/Youri/Repository/Mageia.pm':
             source => "puppet:///modules/buildsystem/Mageia.pm",
         }
 
