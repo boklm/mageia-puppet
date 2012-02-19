@@ -9,6 +9,6 @@ class puppet::thin {
     }
    
     apache::config { "/etc/httpd/conf.d/puppet.conf":
-                content => "Listen 8140",
+        content => "Listen 8140",
     }
 }
