@@ -3,6 +3,8 @@ class puppet::master inherits puppet {
     include puppet::queue
     include puppet::stored_config
     include puppet::hiera
+#   do not enable until bug 4591 is solved
+#    include puppet::thin
 
     package { ["ruby-$puppet::stored_config::database", 'ruby-rails']: }
 
@@ -17,7 +19,9 @@ class puppet::master inherits puppet {
     package { 'puppet-server': }
 
     service { 'puppetmaster':
-        subscribe => [Package['puppet-server'],
+#   uncomment once thin is enabled
+#        ensure => stopped,
+         subscribe => [Package['puppet-server'],
                       File['/etc/puppet/puppet.conf']],
     }
 
