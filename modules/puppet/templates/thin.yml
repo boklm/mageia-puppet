@@ -1,0 +1,18 @@
+--- 
+daemonize: true
+require: []
+
+timeout: 30
+user: puppet
+group: puppet
+wait: 30
+log: /var/log/thin.log
+max_conns: 1024
+chdir: /etc/puppet
+address: 127.0.0.1
+servers: 3
+environment: production
+max_persistent_conns: 512
+pid: /var/run/puppet/puppetmaster.pid
+rackup: /usr/local/share/puppet.config.ru
+port: 18140

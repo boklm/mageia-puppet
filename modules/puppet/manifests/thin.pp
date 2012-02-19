@@ -11,4 +11,8 @@ class puppet::thin {
     apache::config { "/etc/httpd/conf.d/puppet.conf":
         content => "Listen 8140",
     }
+
+    file { '/etc/puppet/thin.yml':
+	content => template('puppet/thin.yml'),
+    }
 }
