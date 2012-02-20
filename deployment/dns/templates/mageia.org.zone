@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1h
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2012021301	; Serial
+        2012022001	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -116,7 +116,8 @@ xymon	    IN CNAME alamut
 check	    IN CNAME alamut
 wiki        IN CNAME alamut
 gitweb      IN CNAME alamut
-
+pkgcpan     IN CNAME alamut
+  
 bcd	    IN CNAME rabbit
 
 ; build nodes aliases

@@ -71,4 +71,5 @@ node alamut {
     include youri-check::report
 
     include wikis
+    include websites::pkgcpan
 }
