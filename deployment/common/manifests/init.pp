@@ -5,6 +5,10 @@ class common {
         # asked by nanar : rsync
         $package_list = ['screen', 'vim-enhanced', 'htop', 'lsof', 'tcpdump', 'rsync', 'less','lshw', 'lvm2', 'iotop']
 
+        if $arch == 'x86_64' {
+            $package_list += ['mcelog']
+        }
+
         package { $package_list: }
 
         # removed as it mess up with our policy for password
