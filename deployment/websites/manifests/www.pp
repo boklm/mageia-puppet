@@ -46,6 +46,6 @@ class websites {
             url => 'https://www.mageia.org/',
         }
 
-        package { ['php-mbstring', 'php-mcrypt', 'php-gettext']: }
+        package { ['php-mbstring', 'php-mcrypt', 'php-gettext', 'php-geoip']: }
     }
 }
