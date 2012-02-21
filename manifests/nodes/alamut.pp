@@ -68,7 +68,25 @@ node alamut {
         location => "/var/lib/xymon/www",
     }
 
-    include youri-check::report
+    youri-check::report_www {"check": }
+
+    youri-check::config {"config_cauldron":
+	version => "cauldron",
+    }
+    youri-check::report {"report_cauldron":
+	version => "cauldron",
+	hour => "*",
+	minute => 24
+    }
+
+    youri-check::config {"config_1":
+	version => "1",
+    }
+    youri-check::report {"report_1":
+	version => "1",
+	hour => "*",
+	minute => 54
+    }
 
     include wikis
     include websites::pkgcpan

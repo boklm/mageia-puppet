@@ -14,7 +14,23 @@ node rabbit {
     include mirror::mageia
     include mirror::newrelease
     include releasekey::base
-    include youri-check::check
+
+    youri-check::config {"config_cauldron":
+	version => "cauldron",
+    }
+    youri-check::check {"check_cauldron":
+	version => "cauldron",
+	hour => "*",
+	minute => 4
+    }
+    youri-check::config {"config_1":
+	version => "1",
+    }
+    youri-check::check {"check_1":
+	version => "1",
+	hour => "*/2",
+	minute => 30
+    }
 
     # for testing iso quickly
     include libvirtd::kvm
