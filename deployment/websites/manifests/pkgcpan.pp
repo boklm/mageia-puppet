@@ -28,6 +28,5 @@ class websites::pkgcpan {
         require => Package['perl-Module-Packaged-Generator'],
         command => "pkgcpan -q -f $vhostdir/cpan_Mageia.db -d Mageia",
 	user => $pkgcpan_login,
-	require => User[$pkgcpan_login],
     }
 }
