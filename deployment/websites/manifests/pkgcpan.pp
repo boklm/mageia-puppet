@@ -29,4 +29,10 @@ class websites::pkgcpan {
         command => "pkgcpan -q -f $vhostdir/cpan_Mageia.db -d Mageia",
 	user => $pkgcpan_login,
     }
+
+    file { $vhostdir/cpan_Mageia.db:
+    owner => $pkgcpan_login,
+    group => $pkgcpan_login,
+    }
+
 }
