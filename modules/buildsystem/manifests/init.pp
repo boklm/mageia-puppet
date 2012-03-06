@@ -75,7 +75,6 @@ class buildsystem {
         include buildsystem::mgarepo
         include buildsystem::signbot
         include youri_submit
-        include buildsystem::check_missing_deps
 
         cron { "dispatch jobs":
             user => $sched_login,
