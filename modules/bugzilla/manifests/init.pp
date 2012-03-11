@@ -2,7 +2,10 @@ class bugzilla {
 
     $bugzilla_location = "/usr/share/bugzilla/template/en/custom"
 
-    package { ['bugzilla','graphviz', 'perl-Test-Taint', 'perl-JSON-RPC']: }
+    package { ['bugzilla',
+               'graphviz', 
+               'perl-Test-Taint', 
+               'perl-JSON-RPC']: }
 
     $pgsql_password = extlookup("bugzilla_pgsql",'x')
     $ldap_password = extlookup("bugzilla_ldap",'x')
