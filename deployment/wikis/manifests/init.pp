@@ -14,7 +14,7 @@ class wikis {
     }
 
     $wiki_languages = [ 'en' ]
-    mediawiki::instance { 'en':
+    mediawiki::instance { $wiki_languages:
         title         => 'Mageia wiki',
         wiki_settings => template('wikis/wiki_settings'),
         skinsdir      => "$wikis_templates/skins",
