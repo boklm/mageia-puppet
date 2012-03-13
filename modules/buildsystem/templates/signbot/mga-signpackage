@@ -27,4 +27,5 @@ if (@ARGV != 3) {
 }
 
 signpackage(@ARGV);
+exit 0
 
