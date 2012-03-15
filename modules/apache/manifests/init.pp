@@ -112,6 +112,7 @@ class apache {
                       $enable_public_html = false) {
         include apache::base
         $httpd_logdir = "/var/log/httpd"
+        $filename = "$name.conf"
 
         if ! $vhost {
             $real_vhost = $name
@@ -135,7 +136,7 @@ class apache {
             if $wildcard_sslcert != 'true' {
                 openssl::self_signed_cert{ "$real_vhost":
                     directory => "/etc/ssl/apache/",
-                    before => File["$filename"],
+                    before => Apache::Config["/etc/httpd/conf/vhosts.d/$filename"],
                 }
             }
         }
@@ -144,7 +145,6 @@ class apache {
             include apache::mod_public_html
         }
 
-        $filename = "$name.conf"
         apache::config { "/etc/httpd/conf/vhosts.d/$filename":
             content => template("apache/vhost_base.conf")
         }
