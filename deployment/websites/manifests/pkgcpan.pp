@@ -2,12 +2,12 @@ class websites::pkgcpan {
     include websites::base
     $vhost = "pkgcpan.$::domain"
     $vhostdir = "$websites::base::webdatadir/$vhost"
-    $pkgcpan_login = 'pkgcpan'
-    $pkgcpan_homedir = "/var/lib/$pkgcpan_login"
+    $login = 'pkgcpan'
+    $homedir = "/var/lib/$login"
 
-    user { $pkgcpan_login:
+    user { $login:
         managehome => true,
-        home       => $pkgcpan_homedir,
+        home       => $homedir,
     }
 
     apache::vhost_base { $vhost:
@@ -17,8 +17,8 @@ class websites::pkgcpan {
 
     file { $vhostdir:
         ensure => directory,
-        owner  => $pkgcpan_login,
-        group  => $pkgcpan_login,
+        owner  => $login,
+        group  => $login,
     }
 
     package { 'perl-Module-Packaged-Generator': }
@@ -27,11 +27,11 @@ class websites::pkgcpan {
         hour    => 23,
         require => Package['perl-Module-Packaged-Generator'],
         command => "pkgcpan -q -f $vhostdir/cpan_Mageia.db -d Mageia",
-        user    => $pkgcpan_login,
+        user    => $login,
     }
 
     file { "$vhostdir/cpan_Mageia.db":
-        owner => $pkgcpan_login,
-        group => $pkgcpan_login,
+        owner => $login,
+        group => $login,
     }
 }
