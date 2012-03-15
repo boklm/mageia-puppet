@@ -1,18 +1,5 @@
 class phpbb {
-    define config($key, $value, $database) {
-        exec { "phpbb_apply $name":
-            command => "/usr/local/bin/phpbb_apply_config.pl $key",
-            user => root,
-            environment => ["PGDATABASE=$database", 
-                            "PGUSER=$phpbb::base::user", 
-                            "PGPASSWORD=$phpbb::base::pgsql_password", 
-                            "PGHOST=pgsql.$domain", 
-                            "VALUE=$value"],
-            require => File["/usr/local/bin/phpbb_apply_config.pl"],
-        }
-    }
-
-    define redirection_instance($url) {
+   define redirection_instance($url) {
         $lang = $name
         file { "/etc/httpd/conf/vhosts.d/forums.d/redirect_$name.conf":
             content => template("phpbb/forums_redirect.conf"),
