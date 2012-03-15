@@ -1,13 +1,4 @@
 class apache {
-
-    define config($content) {
-        file { $name:
-            content => $content,
-            require => Package["apache-conf"],
-            notify => Exec['service httpd configtest'],
-        }
-    }
-
     class base {
 
         # number of time the log file are rotated before being removed
