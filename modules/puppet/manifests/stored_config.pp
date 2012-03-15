@@ -21,5 +21,5 @@ class puppet::stored_config {
         $database = 'sqlite3'
 #    }
 #
-    $db_config = template('puppet/db_config.pp')
+    $db_config = template('puppet/db_config.erb')
 }
