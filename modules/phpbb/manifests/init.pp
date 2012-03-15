@@ -1,5 +1,5 @@
 class phpbb {
-    define phpbb_config($key, $value, $database) {
+    define config($key, $value, $database) {
         exec { "phpbb_apply $name":
             command => "/usr/local/bin/phpbb_apply_config.pl $key",
             user => root,
@@ -88,13 +88,13 @@ class phpbb {
             user => $user,
         }
 
-        Phpbb::Phpbb_config {
+        Phpbb::Config {
             database => $database,
         }
 
         $ldap_password = extlookup("phpbb_ldap",'x')
 
-        phpbb_config {
+        phpbb::config {
             "ldap_user/$lang":
                 key => "ldap_user", value => "cn=phpbb-$hostname,ou=System Accounts,$dc_suffix";
             "ldap_server/$lang":
