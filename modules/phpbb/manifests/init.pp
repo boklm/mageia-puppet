@@ -137,7 +137,7 @@ class phpbb {
             user => $user,
         }
 
-        Phpbb_config {
+        Phpbb::Phpbb_config {
             database => $database,
         }
 
