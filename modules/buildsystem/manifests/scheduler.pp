@@ -1,4 +1,4 @@
 class buildsystem::scheduler {
         # ulri
-        include iurtupload
+        include iurt::upload
 }

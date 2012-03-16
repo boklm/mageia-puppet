@@ -1,4 +1,4 @@
-class buildsystem::iurtupload {
+class buildsystem::iurt::upload {
     $login = $buildsystem::iurt::user::login
     $homedir = $buildsystem::iurt::user::homedir
 
