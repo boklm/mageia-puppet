@@ -11,7 +11,7 @@ class buildsystem::base {
     include ssh::auth
     ssh::auth::key { $buildsystem::iurt::user::login:
         # declare a key for build bot: RSA, 2048 bits
-        home => "$buildsystem::iurt::user::homedir"
+        home => $buildsystem::iurt::user::homedir,
     }
 
     ssh::auth::key { $sched_login:
