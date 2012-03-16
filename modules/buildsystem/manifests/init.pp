@@ -1,5 +1,8 @@
 class buildsystem {
     class youri_submit {
+
+        $packages_archivedir = "$sched_home_dir/old"
+
         include sudo
 
         local_script {
@@ -37,6 +40,19 @@ class buildsystem {
             "/etc/youri/submit-todo.conf": content => template("buildsystem/submit-todo.conf");
             "/etc/youri/submit-upload.conf": content => template("buildsystem/submit-upload.conf");
             "/etc/youri/acl.conf": content => template("buildsystem/youri_acl.conf");
+        }
+
+        file { $packages_archivedir:
+            ensure  => 'directory',
+            owner   => $sched_login,
+            require => File[$sched_home_dir],
+        }
+
+        tidy { $packages_archivedir:
+            type    => 'ctime',
+            recurse => true,
+            age     => '1w',
+            matches => '*.rpm',
         }
 
         # FIXME use /usr/local/ once it will be in @INC

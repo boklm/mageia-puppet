@@ -1,19 +1,12 @@
 class buildsystem::mgarepo {
     $sched_home_dir = $buildsystem::base::sched_home_dir
     $sched_login =    $buildsystem::base::sched_login
-    $packages_archivedir = $buildsystem::base::packages_archivedir
 
     package { ['mgarepo','rpm-build']: }
 
     file {
         '/etc/mgarepo.conf': content => template('buildsystem/mgarepo.conf');
         '/etc/repsys.conf':  content => template('buildsystem/mgarepo.conf');
-    }
-
-    file { $packages_archivedir:
-        ensure  => 'directory',
-        owner   => $sched_login,
-        require => File[$sched_home_dir],
     }
 
     file { "$sched_home_dir/repsys":
@@ -61,17 +54,10 @@ class buildsystem::mgarepo {
         releases => $releases,
     }
 
-    Tidy {
-        recurse => true,
-        type    => 'ctime',
-    }
-
     tidy { "$sched_home_dir/uploads":
+        type    => 'ctime',
+        recurse => true,
         age     => '2w',
     }
 
-    tidy { $packages_archivedir:
-        age     => '1w',
-        matches => '*.rpm',
-    }
 }
