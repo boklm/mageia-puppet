@@ -24,7 +24,7 @@ class buildsystem::youri_submit {
     # http://docs.puppetlabs.com/learning/ordering.html#autorequire
     file {
         '/etc/youri/':
-            ensure => 'directory',
+            ensure => 'directory';
         '/etc/youri/submit-todo.conf':
             content => template('buildsystem/youri/submit-todo.conf');
         '/etc/youri/submit-upload.conf':
