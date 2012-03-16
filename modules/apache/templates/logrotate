@@ -3,7 +3,7 @@
     monthly
     missingok
     notifempty
-    nocompress
+    compress
     prerotate
 	/etc/rc.d/init.d/httpd closelogs > /dev/null 2>&1 || :
     endscript
