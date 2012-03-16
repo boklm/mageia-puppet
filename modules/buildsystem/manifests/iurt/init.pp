@@ -5,6 +5,12 @@ class buildsystem::iurt {
     $login = $buildsystem::iurt::user::login
     $homedir = $buildsystem::iurt::user::homedir
 
+    include ssh::auth
+    ssh::auth::key { $login:
+        # declare a key for build bot: RSA, 2048 bits
+        home => $homedir,
+    }
+
     ssh::auth::client { $login: }
 
     ssh::auth::server { $buildsystem::base::sched_login:
