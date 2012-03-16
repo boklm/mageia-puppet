@@ -1,4 +1,8 @@
 class buildsystem::mgarepo {
+    $sched_home_dir = $buildsystem::base::sched_home_dir
+    $sched_login =    $buildsystem::base::sched_login
+    $packages_archivedir = $buildsystem::base::packages_archivedir
+
     package { ['mgarepo','rpm-build']: }
 
     file {
