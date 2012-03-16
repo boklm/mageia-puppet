@@ -11,7 +11,6 @@ class buildsystem::mainnode {
     $sched_home_dir = $buildsystem::scheduler::homedir
 
     $build_login = $buildsystem::iurt::user::login
-    $repository_root = $buildsystem::base::repository_root
 
     ssh::auth::client { $sched_login: }
 
@@ -20,10 +19,6 @@ class buildsystem::mainnode {
     $mirror_root = '/distrib/mirror'
     apache::vhost_other_app { "repository.$::domain":
         vhost_file => 'buildsystem/vhost_repository.conf',
-    }
-
-   file { $repository_root:
-        ensure => directory,
     }
 
     buildsystem::media_cfg { ['i586','x86_64']: }

@@ -1,10 +1,12 @@
 class buildsystem::youri_submit {
+    include sudo
+    include buildsystem::rpmlint
+    include buildsystem::repository
+
+    $repository_root = $buildsystem::repository::dir
     $sched_home_dir = $buildsystem::base::sched_home_dir
     $sched_login = $buildsystem::base::sched_login
     $packages_archivedir = "$sched_home_dir/old"
-
-    include sudo
-    include buildsystem::rpmlint
 
     local_script {
         'mga-youri-submit':

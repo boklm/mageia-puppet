@@ -3,8 +3,6 @@ class buildsystem::base {
     $sched_login = 'schedbot'
     $sched_home_dir = "/var/lib/$sched_login"
 
-    $repository_root = '/distrib/bootstrap'
-
     $packagers_group = 'mga-packagers'
     $packagers_committers_group = 'mga-packagers-committers'
 
