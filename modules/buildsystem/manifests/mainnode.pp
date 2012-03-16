@@ -1,6 +1,12 @@
 class buildsystem::mainnode {
     include buildsystem::base
     include buildsystem::iurt::user
+    include buildsystem::scheduler
+    include buildsystem::gatherer
+    include buildsystem::mgarepo
+    include buildsystem::signbot
+    include buildsystem::youri_submit
+
     $sched_login = $buildsystem::base::sched_login
     $sched_home_dir = $buildsystem::base::sched_home_dir
     $build_login = $buildsystem::iurt::user::login
@@ -45,12 +51,6 @@ class buildsystem::mainnode {
     }
 
     buildsystem::media_cfg { ['i586','x86_64']: }
-
-    include buildsystem::scheduler
-    include buildsystem::gatherer
-    include buildsystem::mgarepo
-    include buildsystem::signbot
-    include buildsystem::youri_submit
 
     cron { 'dispatch jobs':
         user    => $sched_login,
