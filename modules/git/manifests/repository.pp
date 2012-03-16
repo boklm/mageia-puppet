@@ -1,4 +1,4 @@
-class git::repository($group,
+define git::repository($group,
                       $description = '') {
 
     include git::server
