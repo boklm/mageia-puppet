@@ -1,6 +1,6 @@
 class buildsystem::base {
 
-    $sched_login = 'schedbot'
+    $sched_login = $buildsystem::scheduler::login
     $sched_home_dir = "/var/lib/$sched_login"
 
     $packagers_group = 'mga-packagers'
@@ -12,8 +12,4 @@ class buildsystem::base {
         home => $buildsystem::iurt::user::homedir,
     }
 
-    ssh::auth::key { $sched_login:
-        # declare a key for sched bot: RSA, 2048 bits
-        home => $sched_home_dir,
-    }
 }
