@@ -4,6 +4,7 @@ class buildsystem::youri_submit {
     $packages_archivedir = "$sched_home_dir/old"
 
     include sudo
+    include buildsystem::rpmlint
 
     local_script {
         'mga-youri-submit':
@@ -17,22 +18,6 @@ class buildsystem::youri_submit {
     sudo::sudoers_config { 'mga-youri-submit':
         content => template('buildsystem/sudoers.youri')
     }
-
-    package { 'rpmlint': }
-
-    file { '/etc/rpmlint/config':
-        require => Package['rpmlint'],
-        content => template('buildsystem/rpmlint.conf')
-    }
-
-    # directory that hold configuration auto extracted after upload
-    # of the rpmlint policy
-    file { '/etc/rpmlint/extracted.d/':
-        ensure  => directory,
-        require => Package['rpmlint'],
-        owner   => $sched_login,
-    }
-
     # ordering is automatic :
     # http://docs.puppetlabs.com/learning/ordering.html#autorequire
     file { '/etc/youri':
