@@ -36,7 +36,8 @@ class buildsystem::maintdb {
     file { [$dump,"$dump.new",
             $unmaintained,"$unmaintained.new"]:
         owner   => $login,
-        require => File['/var/www/bs/data'],
+# TODO uncomment once the situation with pkgsubmit module is cleared ( ie, maintdb depend on it )
+#        require => File['/var/www/bs/data'],
     }
 
     cron { 'update maintdb export':
