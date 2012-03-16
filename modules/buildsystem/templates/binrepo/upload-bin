@@ -1,5 +1,5 @@
 #!/bin/sh
-binrepodir=<%= binrepodir %>
+binrepodir=<%= repodir %>
 uploadinfosdir=<%= uploadinfosdir %>
 tmpfile=$(mktemp)
 mail_from="<%= uploadmail_from %>"

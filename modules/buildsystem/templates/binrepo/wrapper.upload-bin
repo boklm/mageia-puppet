@@ -1,6 +1,6 @@
 #!/bin/sh
 
-binrepouser="<%= binrepo_login %>"
+binrepouser="<%= login %>"
 uploadbinpath="<%= uploadbinpath %>"
 packagerscommittersgroup="<%= packagers_committers_group %>"
 
