@@ -1,4 +1,5 @@
 class buildsystem::scheduler {
-        # ulri
+        # until ulri is splitted from main iurt rpm
+        include iurt::package
         include iurt::upload
 }
