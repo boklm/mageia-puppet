@@ -2,7 +2,7 @@ class buildsystem::iurt::user {
     $login = 'iurt'
     $homedir = "/home/$login"
 
-    sshuser { $login:
+    buildsystem::sshuser { $login:
         homedir => $homedir,
         comment => 'System user used to run build bots',
     }
