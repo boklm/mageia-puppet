@@ -2,10 +2,11 @@ class buildsystem::youri_submit {
     include sudo
     include buildsystem::rpmlint
     include buildsystem::repository
+    include buildsystem::scheduler::var
 
     $repository_root = $buildsystem::repository::dir
-    $sched_home_dir = $buildsystem::base::sched_home_dir
-    $sched_login = $buildsystem::base::sched_login
+    $sched_home_dir = $buildsystem::scheduler::var::homedir
+    $sched_login = $buildsystem::scheduler::var::login
     $packages_archivedir = "$sched_home_dir/old"
 
     local_script {

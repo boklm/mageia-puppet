@@ -1,12 +1,11 @@
 class buildsystem::signbot {
+    include buildsystem::scheduler::var
     $login = 'signbot'
     $home_dir = "/var/lib/$login"
     $sign_keydir = "$home_dir/keys"
     # FIXME: maybe keyid should be defined at an other place
     $keyid = '80420F66'
-    # FIXME refactor with base class ( once variables are
-    # placed in a separate module )
-    $sched_login = 'schedbot'
+    $sched_login = $buildsystem::scheduler::var::login
 
     sshuser { $login:
         homedir => $home_dir,

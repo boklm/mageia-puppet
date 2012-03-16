@@ -1,7 +1,8 @@
 class buildsystem::base {
+    include buildsystem::scheduler::var
 
-    $sched_login = $buildsystem::scheduler::login
-    $sched_home_dir = "/var/lib/$sched_login"
+    $sched_login = $buildsystem::scheduler::var::login
+    $sched_home_dir = $buildsystem::scheduler::var::homedir
 
     $packagers_group = 'mga-packagers'
     $packagers_committers_group = 'mga-packagers-committers'

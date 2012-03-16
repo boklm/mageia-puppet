@@ -1,5 +1,6 @@
 class buildsystem::rpmlint {
-    $sched_login = $buildsystem::base::sched_login
+    include buildsystem::scheduler::var
+    $sched_login = $buildsystem::scheduler::var::login
 
     package { 'rpmlint': }
 

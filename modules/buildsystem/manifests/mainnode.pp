@@ -7,8 +7,8 @@ class buildsystem::mainnode {
     include buildsystem::signbot
     include buildsystem::youri_submit
 
-    $sched_login    = $buildsystem::scheduler::login
-    $sched_home_dir = $buildsystem::scheduler::homedir
+    $sched_login    = $buildsystem::scheduler::var::login
+    $sched_home_dir = $buildsystem::scheduler::var::homedir
 
     $build_login = $buildsystem::iurt::user::login
 
