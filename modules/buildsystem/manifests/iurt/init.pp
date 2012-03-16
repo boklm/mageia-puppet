@@ -1,42 +1,29 @@
 class buildsystem::iurt {
     include sudo
-    include buildsystem::iurtuser
-    $build_login = $buildsystem::base::build_login
-    $build_home_dir = $buildsystem::base::build_home_dir
+    include buildsystem::iurt::user
+    include buildsystem::iurt::package
+    $login = $buildsystem::iurt::user::login
+    $homedir = $buildsystem::iurt::user::homedir
 
-    ssh::auth::client { $build_login: }
+    ssh::auth::client { $login: }
+
     ssh::auth::server { $buildsystem::base::sched_login:
-                        user => $build_login
+                        user => $login
     }
 
     # remove old build directory
-    tidy { "$build_home_dir/iurt":
+    tidy { "$homedir/iurt":
         age     => '8w',
         recurse => true,
         matches => ['[0-9][0-9].*\..*\..*\.[0-9]*','log','*.rpm','*.log','*.mga[0-9]+'],
         rmdirs  => true,
     }
 
-# build node common settings
-# we could have the following skip list to use less space:
-# '/(drakx-installer-binaries|drakx-installer-advertising|gfxboot|drakx-installer-stage2|mandriva-theme)/'
-    package { 'iurt': }
-
     file { '/etc/iurt/build':
         ensure => directory,
     }
 
-    define iurt_config() {
-
-        $distribution = $name
-        file { "/etc/iurt/build/$distribution.conf":
-            owner   => $buildsystem::iurt::build_login,
-            group   => $buildsystem::iurt::build_login,
-            content => template("buildsystem/iurt/$distribution.conf")
-        }
-    }
-
-    iurt_config { ['1','cauldron','mandriva2010.1','infra_1']: }
+   buildsystem::iurt::config { ['1','cauldron','mandriva2010.1','infra_1']: }
 
     sudo::sudoers_config { 'iurt':
         content => template('buildsystem/iurt/sudoers.iurt')

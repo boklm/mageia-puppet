@@ -1,9 +1,9 @@
 class buildsystem::mainnode {
     include buildsystem::base
-    include buildsystem::iurtuser
+    include buildsystem::iurt::user
     $sched_login = $buildsystem::base::sched_login
     $sched_home_dir = $buildsystem::base::sched_home_dir
-    $build_login = $buildsystem::base::build_login
+    $build_login = $buildsystem::iurt::user::login
     $repository_root = $buildsystem::base::repository_root
 
     sshuser { $sched_login:
