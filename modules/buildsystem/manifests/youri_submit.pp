@@ -41,11 +41,11 @@ class buildsystem::youri_submit {
 
     file {
         '/etc/youri/submit-todo.conf':
-            content => template('buildsystem/submit-todo.conf');
+            content => template('buildsystem/youri/submit-todo.conf');
         '/etc/youri/submit-upload.conf':
-            content => template('buildsystem/submit-upload.conf');
+            content => template('buildsystem/youri/submit-upload.conf');
         '/etc/youri/acl.conf':
-            content => template('buildsystem/youri_acl.conf');
+            content => template('buildsystem/youri/acl.conf');
     }
 
     file { $packages_archivedir:
