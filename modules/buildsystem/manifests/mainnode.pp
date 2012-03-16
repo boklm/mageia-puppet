@@ -7,15 +7,11 @@ class buildsystem::mainnode {
     include buildsystem::signbot
     include buildsystem::youri_submit
 
-    $sched_login = $buildsystem::base::sched_login
-    $sched_home_dir = $buildsystem::base::sched_home_dir
+    $sched_login    = $buildsystem::scheduler::login
+    $sched_home_dir = $buildsystem::scheduler::homedir
+
     $build_login = $buildsystem::iurt::user::login
     $repository_root = $buildsystem::base::repository_root
-
-    sshuser { $sched_login:
-        homedir => $sched_home_dir,
-        comment => 'System user used to schedule builds',
-    }
 
     ssh::auth::client { $sched_login: }
 
