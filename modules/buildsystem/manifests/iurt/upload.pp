@@ -11,7 +11,7 @@ class buildsystem::iurt::upload {
 
     exec { 'check iurt config':
         refreshonly => true,
-        cmd         => 'perl -cw /etc/iurt/upload.conf',
+        command     => 'perl -cw /etc/iurt/upload.conf',
         logoutput   => 'on_failure',
     }
 }
