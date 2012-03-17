@@ -2,12 +2,7 @@
 # https://github.com/reductivelabs/puppet-vcsrepo
 # but not integrated in puppet directly for the moment
 class subversion {
-
-    class tools {
-        package { "subversion-tools": }
-    }
-
-    class server {
+   class server {
         include subversion::tools
 
         package { "subversion-server": }
@@ -113,14 +108,6 @@ class subversion {
     }
 
    
-    define pre_commit_link() {
-        $scriptname = regsubst($name,'^.*/', '')
-        file { "${name}":
-            ensure => "/usr/local/share/subversion/pre-commit.d/$scriptname",
-            mode => 755,
-        }
-    } 
-
     # TODO 
     #   deploy a cronjob to make a backup file ( ie, dump in some directory )
 
