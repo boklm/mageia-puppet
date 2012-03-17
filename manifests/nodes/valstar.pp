@@ -7,7 +7,7 @@ node valstar {
 # - setup maintainers database (with web interface)
 #
     include common::default_mageia_server
-    timezone::timezone { "Europe/Paris": }
+    timezone::timezone { 'Europe/Paris': }
     include main_mirror
     include openldap::master 
     include subversion::client
@@ -33,7 +33,7 @@ node valstar {
     include restrictshell::allow_upload_bin
     # disabled the ldap key here instead of disabling for the
     # whole module ( see r698 )
-    class { "openssh::ssh_keys_from_ldap":
+    class { 'openssh::ssh_keys_from_ldap':
     	symlink_users => ['schedbot', 'iurt']
     }
 
@@ -45,26 +45,24 @@ node valstar {
 
     include websites::svn
 
-    subversion::snapshot { "/etc/puppet":
-        source => "svn://svn.mageia.org/svn/adm/puppet/"
+    subversion::snapshot { '/etc/puppet':
+        source => 'svn://svn.mageia.org/svn/adm/puppet/'
     }
 
-    mirror_cleaner::orphans {  "cauldron":
-        base => "/distrib/bootstrap/distrib/",
+    mirror_cleaner::orphans {  'cauldron':
+        base => '/distrib/bootstrap/distrib/',
     }
 
     # TODO use a dns zone for that
     host { 'arm1':
-        ip => '10.10.10.11',
-        host_aliases => [ "arm1.$domain" ],
-        ensure => present,
+        ip           => '10.10.10.11',
+        host_aliases => [ "arm1.$::domain" ],
+        ensure       => present,
     }
 
     host { 'arm2':
-        ip => '10.10.10.12',
-        host_aliases => [ "arm2.$domain" ],
-        ensure => present,
+        ip           => '10.10.10.12',
+        host_aliases => [ "arm2.$::domain" ],
+        ensure       => present,
     }
-
-
 }
