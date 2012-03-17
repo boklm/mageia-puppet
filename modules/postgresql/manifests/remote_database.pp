@@ -1,7 +1,7 @@
-class postgresql::remote_database($description = '',
-                                  $user = 'postgresql',
-                                  $callback_notify = '',
-                                  $tag = 'default') {
+define postgresql::remote_database($description = '',
+                                   $user = 'postgresql',
+                                   $callback_notify = '',
+                                   $tag = 'default') {
     @@postgresql::database { $name:
         description     => $description,
         user            => $user,
