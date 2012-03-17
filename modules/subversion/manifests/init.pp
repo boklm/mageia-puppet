@@ -239,39 +239,4 @@ class subversion {
     }
 
 
-    define snapshot($source, $refresh = '*/5', $user = 'root')  {
-
-        include subversion::client
-
-        exec { "/usr/bin/svn co $source $name":
-            creates => $name,           
-            user => $user,
-            require => Package['subversion']
-        }
-
-	if ($refresh != '0') {
-	    cron { "update $name":
-		command => "cd $name && /usr/bin/svn update -q",
-		user => $user,
-		minute => $refresh,
-		require => Exec["/usr/bin/svn co $source $name"],
-		} 
-	}
-    }
-    
-    define mirror_repository($source,
-                             $refresh = '*/5') {
-        include subversion::mirror 
-
-        exec { "/usr/local/bin/create_svn_mirror.sh $name $source":
-            creates => $name,           
-            require => Package['subversion-tools']
-        }
-
-        cron { "update $name":
-           command => "/usr/bin/svnsync synchronize -q file://$name",
-           minute => $refresh,
-           require => Exec["/usr/local/bin/create_svn_mirror.sh $name $source"],
-        }   
-    } 
 }
