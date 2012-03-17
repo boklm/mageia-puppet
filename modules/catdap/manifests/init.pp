@@ -36,33 +36,12 @@ class catdap {
 
     $ldap_password = extlookup('catdap_ldap','x')
 
-    define catdap_snapshot($location, $svn_location) {
-        file { "$location/catdap_local.yml":
-            group   => apache,
-            mode    => '0640',
-            content => template('catdap/catdap_local.yml'),
-            require => Subversion::Snapshot[$location],
-        }
-
-        subversion::snapshot { $location:
-            source => $svn_location
-        }
-
-        apache::vhost_catalyst_app { $name:
-            script   => "$location/script/catdap_fastcgi.pl",
-            location => $location,
-            use_ssl  => true,
-        }
-
-        apache::vhost_redirect_ssl { $name: }
-    }
-
-    catdap_snapshot { "identity.$::domain":
+    catdap::snapshot { "identity.$::domain":
         location     => '/var/www/identity',
         svn_location => "$upstream_svn/branches/live"
     }
 
-    catdap_snapshot { "identity-trunk.$::domain":
+    catdap::snapshot { "identity-trunk.$::domain":
         location     => '/var/www/identity-trunk',
         svn_location => "$upstream_svn/trunk"
     }
