@@ -1,15 +1,14 @@
 class blog {
-
     class base {
-        $blog_location = "/var/www/vhosts/blog.$domain"
-        $blog_domain = "blog.$domain"
-	$blog_db_backupdir = "/var/lib/backups/blog_db"
-	$blog_files_backupdir = "/var/lib/backups/blog_files"
+        $blog_domain = "blog.$::domain"
+        $blog_location = "/var/www/vhosts/$blog_domain"
+        $blog_db_backupdir = "/var/lib/backups/blog_db"
+        $blog_files_backupdir = "/var/lib/backups/blog_files"
 
-        user { "blog":
-        groups => apache,
-        comment => "Mageia Blog",
-        home => "/var/lib/blog",
+        user { 'blog':
+            groups  => apache,
+            comment => 'User to run script checking for new blog post',
+            home    => '/var/lib/blog',
         }
     }
     
@@ -44,11 +43,10 @@ class blog {
             content => template('blog/blogs_vhosts.conf'),
         }
 
-        file { "$blog_location":
+        file { $blog_location:
 	        ensure => directory,
 	        owner => apache,
 	        group => apache,
-	        mode => 644,
         }
     }
 
