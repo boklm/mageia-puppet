@@ -83,9 +83,6 @@ class blog {
     class files_backup inherits base {
         file { $blog_files_backupdir:
                 ensure => directory,
-                owner => root,
-                group => root,
-                mode => 644,
         }
 
         file { "backup_blog-files":
