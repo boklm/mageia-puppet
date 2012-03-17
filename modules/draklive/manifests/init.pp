@@ -18,9 +18,7 @@ class draklive {
             comment    => 'User for creating live ISOs',
         }
 
-        package { draklive:
-	    ensure => 'installed',
-        }
+        package { 'draklive': }
 
         sudo::sudoers_config { "draklive":
 	    content => template("draklive/sudoers.draklive")
