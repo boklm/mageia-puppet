@@ -1,7 +1,7 @@
 class buildsystem::iurt {
     include sudo
     include buildsystem::iurt::user
-    include buildsystem::iurt::package
+    include buildsystem::iurt::packages
     $login = $buildsystem::iurt::user::login
     $homedir = $buildsystem::iurt::user::homedir
 
