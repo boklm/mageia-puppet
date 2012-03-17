@@ -1,6 +1,7 @@
 class bcd::web {
     include bcd::base 
-    $bcd_home = $bcd::variable::bcd_home
+    # TODO simplify this
+    $bcd_home = $bcd::home
 
     apache::vhost_base { "bcd.$::domain":
 	    location => "$bcd_home/public_html",
