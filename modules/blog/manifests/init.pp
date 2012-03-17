@@ -14,9 +14,10 @@ class blog {
     }
     
     class files-bots inherits base {
-        package { ['wget','php-mysql','php-ldap','unzip']:
-            ensure => installed
-        }
+        package { ['wget',
+                   'php-mysql',
+                   'php-ldap',
+                   'unzip']: }
 
         file { "check_new-blog-post":
             path => "/usr/local/bin/check_new-blog-post.sh",
