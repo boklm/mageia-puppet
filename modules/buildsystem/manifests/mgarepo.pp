@@ -19,7 +19,7 @@ class buildsystem::mgarepo {
     file { ["$sched_home_dir/repsys/tmp", "$sched_home_dir/repsys/srpms"]:
         ensure  => 'directory',
         owner   => $sched_login,
-        group   => 'mga-packagers',
+        group   => $buildsystem::base::packagers_group,
         mode    => '1775',
         require => File["$sched_home_dir/repsys"],
     }
