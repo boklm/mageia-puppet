@@ -64,9 +64,4 @@ class bcd {
         }
     }
 
-    class rsync inherits base {
-        class { rsyncd:
-		rsyncd_conf => 'bcd/rsyncd.conf'
-	}
-    }
 }
