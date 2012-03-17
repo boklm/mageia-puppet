@@ -55,51 +55,40 @@ class blog {
 	        mode => 644,
         }
     }
+
     class db_backup inherits base {
         file { $blog_db_backupdir:
                 ensure => directory,
-                owner => root,
-                group => root,
-                mode => 644,
         }
 
-	file { "backup_blog-db":
-            path => "/usr/local/bin/backup_blog-db.sh",
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 755,
-            content => template("blog/backup_blog-db.sh")
+	    local_script { 'backup_blog-db.sh':
+            content => template('blog/backup_blog-db.sh'),
         }
 
         cron { "Backup DB (blog)":
-            user => root,
-            hour => '23',
-            minute => '42',
-            command => "/usr/local/bin/backup_blog-db.sh",
-            require => [File["backup_blog-db"]],
+            user    => root,
+            hour    => '23',
+            minute  => '42',
+            command => '/usr/local/bin/backup_blog-db.sh',
+            require => Local_script['backup_blog-db'],
         }
     }
+
     class files_backup inherits base {
         file { $blog_files_backupdir:
                 ensure => directory,
         }
 
-        file { "backup_blog-files":
-            path => "/usr/local/bin/backup_blog-files.sh",
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 755,
-            content => template("blog/backup_blog-files.sh")
+        local_script { 'backup_blog-files.sh':
+            content => template('blog/backup_blog-files.sh'),
         }
 
-        cron { "Backup files (blog)":
-            user => root,
-            hour => '23',
-            minute => '42',
-            command => "/usr/local/bin/backup_blog-files.sh",
-            require => [File["backup_blog-files"]],
+        cron { 'Backup files (blog)':
+            user    => root,
+            hour    => '23',
+            minute  => '42',
+            command => '/usr/local/bin/backup_blog-files.sh',
+            require => Local_script['backup_blog-files'],
         }
     }
 }
