@@ -18,7 +18,6 @@ node valstar {
     include ssh::auth
     include ssh::auth::keymaster
     include buildsystem::mainnode
-    include buildsystem::mgacreatehome
     include buildsystem::sync20101
     include buildsystem::release
     include buildsystem::maintdb
