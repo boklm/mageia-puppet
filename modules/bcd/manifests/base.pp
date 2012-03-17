@@ -10,7 +10,7 @@ class bcd::base {
         comment    => 'User for creating ISOs',
     }
 
-    file { $bcd::public_isos:
+    file { [$bcd::public_isos, '/var/lib/bcd']:
         ensure => directory,
         owner  => $bcd::login,
         group  => $bcd::login,
@@ -24,12 +24,4 @@ class bcd::base {
     sudo::sudoers_config { 'bcd':
         content => template('bcd/sudoers.bcd')
     }
-
-    file { '/var/lib/bcd':
-        ensure => directory,
-        owner => $bcd::login,
-        group => $bcd::login,
-        mode => '0755',
-    }
 }
-
