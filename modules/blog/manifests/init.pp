@@ -19,20 +19,15 @@ class blog {
                    'php-ldap',
                    'unzip']: }
 
-        file { "check_new-blog-post":
-            path => "/usr/local/bin/check_new-blog-post.sh",
-            ensure => present,
-            owner => root,
-            group => root,
-            mode => 755,
-            content => template("blog/check_new-blog-post.sh")
+        local_script { 'check_new-blog-post.sh':
+            content => template('blog/check_new-blog-post.sh'),
         }
-   
-        cron { "Blog bot":
-            user => blog,
-            minute => '*/15',
-            command => "/usr/local/bin/check_new-blog-post.sh",
-            require => [File["check_new-blog-post"], User['blog']],
+
+        cron { 'Blog bot':
+            user    => 'blog',
+            minute  => '*/15',
+            command => '/usr/local/bin/check_new-blog-post.sh',
+            require => Local_script['check_new-blog-post.sh'],
         }
 
         include apache::mod_php
