@@ -1,5 +1,6 @@
 class bcd::base {
     include sudo
+    include bcd 
 
     group { $bcd::login: }
 
