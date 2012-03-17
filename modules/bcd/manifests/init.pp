@@ -9,10 +9,12 @@ class bcd {
     class base inherits variable {
 	include sudo
 
-        buildsystem::sshuser { $bcd_login:
+        group { $bcd_login: }
+
+        user { $bcd_login:
             homedir => $bcd_home,
             comment => "User for creating ISOs",
-	}
+	    }
 
 	file { $public_isos:
 	    ensure => directory,
