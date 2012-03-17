@@ -1,7 +1,7 @@
 class buildsystem::buildnode {
     include buildsystem::base
     include buildsystem::iurt
-    include buildsystem::scheduler::user
+    include buildsystem::scheduler::var
 
     ssh::auth::key { $buildsystem::scheduler::var::login:
         home => $buildsystem::scheduler::var::homedir,
