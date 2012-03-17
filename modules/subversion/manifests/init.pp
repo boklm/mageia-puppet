@@ -239,19 +239,6 @@ class subversion {
     }
 
 
-    class client {
-        # svn spam log with 
-        # Oct 26 13:30:01 valstar svn: No worthy mechs found
-        # without it, source http://mail-index.netbsd.org/pkgsrc-users/2008/11/23/msg008706.html 
-        #
-        $sasl2_package = $architecture ? {
-        	x86_64 => "lib64sasl2-plug-anonymous",
-        	default => "libsasl2-plug-anonymous"
-    	}
- 	
-        package {['subversion', "$sasl2_package"]: }
-    }
-
     define snapshot($source, $refresh = '*/5', $user = 'root')  {
 
         include subversion::client
@@ -272,13 +259,6 @@ class subversion {
 	}
     }
     
-    class mirror { 
-        include subversion::tools
-        local_script { "create_svn_mirror.sh":
-             content => template('subversion/create_svn_mirror.sh') 
-        }
-    }
-
     define mirror_repository($source,
                              $refresh = '*/5') {
         include subversion::mirror 
