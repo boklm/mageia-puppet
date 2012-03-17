@@ -12,8 +12,9 @@ class bcd {
         group { $bcd_login: }
 
         user { $bcd_login:
-            homedir => $bcd_home,
-            comment => "User for creating ISOs",
+            home       => $bcd_home,
+            managehome => true,
+            comment    => "User for creating ISOs",
 	    }
 
 	file { $public_isos:

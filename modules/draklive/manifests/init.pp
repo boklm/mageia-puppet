@@ -13,8 +13,9 @@ class draklive {
         group { $draklive_login: }
  
         user { $draklive_login:
-            homedir => $draklive_home,
-            comment => 'User for creating live ISOs',
+            home       => $draklive_home,
+            managehome => true,
+            comment    => 'User for creating live ISOs',
         }
 
         package { draklive:
