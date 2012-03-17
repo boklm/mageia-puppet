@@ -1,5 +1,5 @@
 AuthUserFile <%= bcd_home %>/public_html/.htpasswd
 AuthGroupFile /dev/null
-AuthName "Restricted acces! For a RSYNC account, please mail your 'Mageia Identity' login to dams@mageia.org"
+AuthName "Restricted access! For the password, please contact the QA team ( http://wiki.mageia.org/en/QA_Team )"
 AuthType Basic
 require valid-user
