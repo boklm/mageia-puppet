@@ -1,12 +1,4 @@
 class mediawiki {
-    class config(
-	$pgsql_password,
-	$secretkey,
-	$ldap_password,
-	$vhost = "wiki.$domain",
-        $root = "/srv/wiki/"
-    ) { }
-
     class base inherits config {
 
         include apache::mod_php
