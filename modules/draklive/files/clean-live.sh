@@ -12,4 +12,4 @@ find $DRAKLIVE_ROOT/{chroot/*,build/*/*} -maxdepth 0 -not -name dist -mtime +$(e
 MAX_DIST_AGE=20
 find $DRAKLIVE_ROOT/build/*/dist -maxdepth 0 -mtime +$(expr $MAX_DIST_AGE - 1) -exec $RM {} \;
 
-find /var/lib/draklive/build -maxdepth 1 -links 2 -exec rmdir {} \;
+find $DRAKLIVE_ROOT/build -maxdepth 1 -links 2 -exec rmdir {} \;
