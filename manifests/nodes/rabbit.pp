@@ -8,7 +8,7 @@ node rabbit {
     include bcd::base
     include bcd::web
     include bcd::rsync
-    include draklive::base
+    include draklive
     include access_classes::iso_makers
     include openssh::ssh_keys_from_ldap
     include mirror::mageia
