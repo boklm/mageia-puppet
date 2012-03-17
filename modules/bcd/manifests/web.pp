@@ -8,14 +8,9 @@ class bcd::web {
 	    content  => template('bcd/vhost_bcd.conf'),
 	}
 
-    # TODO should be merged with main file
-	file { "$bcd_home/public_html/.htaccess":
-	    content => template('bcd/htaccess')
-	}
-
     # not sure if that's useful, since the file is public and trivially 
     # bruteforced
-	file { "$bcd_home/public_html/.htpasswd":
+	file { "$bcd_home/htpasswd":
         content => template('bcd/htpasswd')
     }
 }

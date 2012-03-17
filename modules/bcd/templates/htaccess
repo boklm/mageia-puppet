@@ -1,5 +1,0 @@
-AuthUserFile <%= bcd_home %>/public_html/.htpasswd
-AuthGroupFile /dev/null
-AuthName "Restricted access! For the password, please contact the QA team ( http://wiki.mageia.org/en/QA_Team )"
-AuthType Basic
-require valid-user
