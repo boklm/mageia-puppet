@@ -3,6 +3,7 @@ puppet.conf
 extdata
 tagmail.conf
 *~
+.*.swp
 auth.conf
 socket.yaml
 autosign.conf
