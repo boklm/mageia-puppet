@@ -12,7 +12,6 @@ class draklive {
  
     user { $login:
         home       => $home,
-        managehome => true,
         comment    => 'User for creating live ISOs',
     }
 

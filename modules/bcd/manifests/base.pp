@@ -6,7 +6,6 @@ class bcd::base {
 
     user { $bcd::login:
         home       => $bcd::home,
-        managehome => true,
         comment    => 'User for creating ISOs',
     }
 
