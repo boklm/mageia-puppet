@@ -1,2 +1,2 @@
-<%= draklive_login %> ALL=(root) NOPASSWD: /usr/sbin/draklive
-%<%= isomakers_group %> ALL=(<%= draklive_login %>) SETENV: NOPASSWD: ALL
+<%= login %> ALL=(root) NOPASSWD: /usr/sbin/draklive
+%<%= isomakers_group %> ALL=(<%= login %>) SETENV: NOPASSWD: ALL
