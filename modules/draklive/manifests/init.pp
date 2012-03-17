@@ -10,10 +10,12 @@ class draklive {
     class base inherits variable {
 	include sudo
 
-        buildsystem::sshuser { $draklive_login:
+        group { $draklive_login: }
+ 
+        user { $draklive_login:
             homedir => $draklive_home,
-            comment => "User for creating live ISOs",
-	}
+            comment => 'User for creating live ISOs',
+        }
 
         package { draklive:
 	    ensure => 'installed',
