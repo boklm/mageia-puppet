@@ -10,12 +10,12 @@ class bcd::web {
 
     # TODO should be merged with main file
 	file { "$bcd_home/public_html/.htaccess":
-	    content => template('bcd/.htaccess')
+	    content => template('bcd/htaccess')
 	}
 
     # not sure if that's useful, since the file is public and trivially 
     # bruteforced
 	file { "$bcd_home/public_html/.htpasswd":
-        content => template('bcd/.htpasswd')
+        content => template('bcd/htpasswd')
     }
 }
