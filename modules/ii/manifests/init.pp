@@ -1,15 +1,16 @@
 class ii {
     class base {
-        package { ["ii", "perl-Proc-Daemon"]: }
+        package {['ii',
+                  'perl-Proc-Daemon']: }
 
-        file { "/var/lib/ii/":
+        file { '/var/lib/ii/':
             ensure => directory,
-            owner => nobody,
+            owner  => 'nobody',
         }
     }
 
-    define bot($server = 'irc.freenode.net',
-               $channel) {
+    define bot( $server = 'irc.freenode.net',
+                $channel) {
 
         $nick = $name
 
@@ -17,19 +18,19 @@ class ii {
         # a custom wrappper is needed since ii do not fork in the
         # background, and bash is not able to properly do it
         local_script { "ii_$nick":
-            content => template("ii/ii_wrapper.pl"),
+            content => template('ii/ii_wrapper.pl'),
             require => Class['ii::base'],
         }
 
         service { 'ii':
             provider => base,
-            start => "/usr/local/bin/ii_$nick",
-            require => Local_script["ii_$nick"],
+            start    => "/usr/local/bin/ii_$nick",
+            require  => Local_script["ii_$nick"],
         }
 
         exec { "join channel $nick":
             command => "echo '/j $channel' > /var/lib/ii/$nick/$server/in",
-            user => nobody,
+            user    => 'nobody',
             creates => "/var/lib/ii/$nick/$server/$channel/in",
             require => Service['ii'],
         }
