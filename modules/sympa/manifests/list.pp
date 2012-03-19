@@ -10,7 +10,7 @@ define sympa::list( $subject,
                     $subscription_open = false) {
 
     include sympa::variable
-    $ldap_password = extlookup(i'sympa_ldap','x')
+    $ldap_password = extlookup('sympa_ldap','x')
     $custom_subject = $name
 
     $xml_file = "/etc/sympa/lists_xml/$name.xml"
