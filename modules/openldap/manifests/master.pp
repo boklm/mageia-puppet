@@ -1,4 +1,4 @@
-class openldap::master inherits openldap::common {
+class openldap::master inherits openldap {
     Openldap::Config['/etc/openldap/mandriva-dit-access.conf'] {
         content => template('openldap/mandriva-dit-access.conf'),
     }

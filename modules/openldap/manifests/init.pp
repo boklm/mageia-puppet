@@ -1,21 +1,30 @@
 class openldap {
-   class slave($rid) inherits common {
+    package { 'openldap-servers': }
 
-        @@openldap::exported_slave { $rid: }
+    service { 'ldap':
+        subscribe => Package['openldap-servers'],
+        require   => Openssl::Self_signed_cert["ldap.$::domain"],
+    }
 
-        $sync_password = extlookup("ldap_syncuser-$hostname",'x')
-        
-        # same access rights as master
-        Openldap::Config['/etc/openldap/mandriva-dit-access.conf'] {
-            content => template("openldap/mandriva-dit-access.conf"),
-        }
+    exec { '/etc/init.d/ldap check':
+        refreshonly => true,
+        notify      => Service['ldap'],
+    }
 
-        Openldap::Config['/etc/openldap/slapd.conf'] {
-            content => template("openldap/slapd.conf",'openldap/slapd.syncrepl.conf'),
-        }
+    file { '/etc/ssl/openldap/':
+        ensure => directory,
+    }
 
-        Openldap::Config['/etc/sysconfig/ldap'] {
-            content => template("openldap/ldap.sysconfig"),
-        }
+    openssl::self_signed_cert{ "ldap.$::domain":
+        directory => '/etc/ssl/openldap/',
+    }
+
+    openldap::config {
+        '/etc/openldap/slapd.conf':
+            content => '';
+        '/etc/openldap/mandriva-dit-access.conf':
+            content => '';
+        '/etc/sysconfig/ldap':
+            content => '';
     }
 }
