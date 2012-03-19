@@ -1,5 +1,5 @@
 class mirror::mageia {
-    include mirrors::base
+    include mirror::base
     mirrordir { 'mageia':
         remoteurl => "rsync://rsync.$::domain/mageia",
         localdir  => '/distrib/mageia',
