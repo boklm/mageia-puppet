@@ -1,6 +1,6 @@
 # list where people cannot subscribe, where people from $ldap_group receive
 # mail, with public archive
-define sympa::restricted_list($subject,
+define sympa::list::restricted($subject,
                               $subscriber_ldap_group,
                               $language = 'en',
                               $topics = false) {
