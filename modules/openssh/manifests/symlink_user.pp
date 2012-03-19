@@ -1,4 +1,4 @@
-define symlink_user() {
+define openssh::symlink_user() {
     file { "$pubkeys_directory/$name":
         ensure => directory,
         owner  => $name,
