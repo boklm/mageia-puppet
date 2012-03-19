@@ -7,20 +7,20 @@ class gitweb {
 
     file { '/etc/gitweb.conf':
         content => template('gitweb/gitweb.conf'),
-        notify => Service['apache'],
+        notify  => Service['apache'],
         require => Package['gitweb'],
     }
 
     apache::webapp_other { 'gitweb':
         webapp_file => 'gitweb/webapp.conf',
     }
-   
+
     local_script { 'gitweb.wrapper.sh':
         content => template('gitweb/wrapper.sh'),
-        notify => Service['apache'],
+        notify  => Service['apache'],
     }
-     
-    apache::vhost_base { "gitweb.$domain":
-        content => template("gitweb/vhost.conf")
+
+    apache::vhost_base { "gitweb.$::domain":
+        content => template('gitweb/vhost.conf')
     }
 }
