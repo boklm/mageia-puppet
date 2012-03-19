@@ -15,10 +15,10 @@ class sympa {
         service { "sympa":
             subscribe => [ Package["sympa"], File['/etc/sympa/sympa.conf']]
         }
-    
+
         $pgsql_password = extlookup("sympa_pgsql",'x')
         $ldap_password = extlookup("sympa_ldap",'x')
-    
+
         postgresql::remote_db_and_user { 'sympa':
             password => $pgsql_password,
             description => "Sympa database",
@@ -36,25 +36,25 @@ class sympa {
             mode => 640,
             content => template("sympa/sympa.conf"),
         }
-    
+
         file { '/etc/sympa/auth.conf':
             content => template("sympa/auth.conf"),
             notify => Service['httpd'],
         }
-    
-    
+
+
         include apache::mod_fcgid
         apache::webapp_other{"sympa":
              webapp_file => "sympa/webapp_sympa.conf",
         }
-   
+
         apache::vhost_redirect_ssl { "$vhost": }
- 
+
         apache::vhost_base { "$vhost":
             use_ssl => true,
             content => template("sympa/vhost_ml.conf"),
         }
-   
+
         subversion::snapshot { "/etc/sympa/web_tt2":
             source => "svn://svn.mageia.org/svn/web/templates/sympa/trunk"
         }
@@ -84,30 +84,30 @@ class sympa {
 
         define ldap_search_filter {
             file { "/etc/sympa/search_filters/$name.ldap":
-                content => template('sympa/search_filters/group.ldap') 
+                content => template('sympa/search_filters/group.ldap')
             }
         }
 
         define ldap_group_datasource {
             file { "/etc/sympa/data_sources/$name.incl":
-                content => template('sympa/data_sources/ldap_group.incl') 
+                content => template('sympa/data_sources/ldap_group.incl')
             }
         }
 
         define scenario_sender_ldap_group {
             file { "/etc/sympa/scenari/send.restricted_$name":
-                content => template('sympa/scenari/sender.ldap_group') 
+                content => template('sympa/scenari/sender.ldap_group')
             }
         }
 
         define scenario_sender_email {
             $sender_email_file = regsubst($name,'\@','-at-')
             file { "/etc/sympa/scenari/send.restricted_$sender_email_file":
-                content => template('sympa/scenari/sender.email') 
+                content => template('sympa/scenari/sender.email')
             }
         }
 
-        # add each group that could be used in a sympa ml either as 
+        # add each group that could be used in a sympa ml either as
         # - owner
         # - editor ( moderation )
         ldap_group_datasource { "mga-sysadmin": }
@@ -122,8 +122,8 @@ class sympa {
         }
     }
 
-    define list($subject, 
-                $profile = false, 
+    define list($subject,
+                $profile = false,
                 $language = 'en',
                 $topics = false,
                 $reply_to = false,
@@ -141,8 +141,8 @@ class sympa {
 
         if $sender_email {
             $sender_email_file = regsubst($sender_email,'\@','-at-')
-        } else { 
-            $sender_email_file = '' 
+        } else {
+            $sender_email_file = ''
         }
 
         file { "$xml_file":
@@ -160,7 +160,7 @@ class sympa {
             owner => sympa,
             group => sympa,
             mode => 750,
-            content => template("sympa/config"), 
+            content => template("sympa/config"),
             notify => Service['sympa'],
         }
 
@@ -175,7 +175,7 @@ class sympa {
                 sympa::server::scenario_sender_email { $sender_email: }
             }
         }
-        
+
         if $subscriber_ldap_group {
             if ! defined(Sympa::Server::Ldap_search_filter[$subscriber_ldap_group]) {
                 sympa::server::ldap_search_filter { $subscriber_ldap_group: }
@@ -216,8 +216,8 @@ class sympa {
     }
 
 
-    # list where announce are sent by $email only 
-    # reply_to is set to $reply_to    
+    # list where announce are sent by $email only
+    # reply_to is set to $reply_to
     define announce_list_email($subject, $reply_to, $sender_email, $language = 'en', $topics = false) {
        list{ $name:
             subject => $subject,
@@ -266,7 +266,7 @@ class sympa {
             topics => $topics,
             subscriber_ldap_group => $subscriber_ldap_group,
             sender_ldap_group => $subscriber_ldap_group,
-        }        
+        }
     }
 
     # list with private archive, restricted to member of $ldap_group
@@ -278,20 +278,6 @@ class sympa {
             topics => $topics,
             subscriber_ldap_group => $subscriber_ldap_group,
             sender_ldap_group => $subscriber_ldap_group,
-            public_archive => false,
-        }
-    }
-    
-    # list with private archive, restricted to member of $ldap_group
-    # everybody can post 
-    # used for contact alias
-    define private_list_open($subject, $subscriber_ldap_group, $language ='en', $topics = false) {
-       list{ $name:
-            subject => $subject,
-            profile => "",
-            language => $language,
-            topics => $topics,
-            subscriber_ldap_group => $subscriber_ldap_group,
             public_archive => false,
         }
     }
