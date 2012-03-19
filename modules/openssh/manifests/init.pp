@@ -1,22 +1,4 @@
 class openssh {
-    class server {
-        # some trick to manage sftp server, who is arch dependent on mdv    
-        $path_to_sftp = "$lib_dir/ssh/"
-
-        package { "openssh-server": }
-
-        service { sshd:
-            subscribe => Package["openssh-server"],
-        }
-
-
-        file { "/etc/ssh/sshd_config":
-            require => Package["openssh-server"],
-            content => template("openssh/sshd_config"),
-            notify => Service["sshd"]
-        }
-    }
-
     # root account authorized_keys will be symlinked
     # if you want to add symlink on other accounts, use $symlink_users parameter
     class ssh_keys_from_ldap($symlink_users = [],
