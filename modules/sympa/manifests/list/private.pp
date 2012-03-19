@@ -1,5 +1,5 @@
 # list with private archive, restricted to member of $ldap_group
-define sympa::private_list( $subject,
+define sympa::list::private($subject,
                             $subscriber_ldap_group,
                             $language ='en',
                             $topics = false) {

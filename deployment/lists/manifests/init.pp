@@ -177,7 +177,7 @@ class lists {
         topics                => 'governance',
     }
 
-    sympa::private_list { 'board-private':
+    sympa::list::private { 'board-private':
         subject               => 'Private board discussion',
         subscriber_ldap_group => 'mga-board',
         topics                => 'governance',
