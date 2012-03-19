@@ -1,41 +1,5 @@
 class openldap {
-    define config($content) {
-        file { $name:
-            require => Package["openldap-servers"],
-            content => $content,
-            notify => Exec["/etc/init.d/ldap check"],
-        }
-    }
-
-    class common {
-        package { 'openldap-servers': }
-
-        service { ldap:
-            subscribe => Package['openldap-servers'],
-            require => Openssl::Self_signed_cert["ldap.$domain"],
-        }
-
-        exec { "/etc/init.d/ldap check":
-            refreshonly => true,
-            notify => Service["ldap"],
-        }
-
-        file {"/etc/ssl/openldap/":
-            ensure => directory,
-        }
-
-        openssl::self_signed_cert{ "ldap.$domain":
-            directory => "/etc/ssl/openldap/"
-        }
-
-        openldap::config {
-            '/etc/openldap/slapd.conf': content => "";
-            '/etc/openldap/mandriva-dit-access.conf': content => "";
-            '/etc/sysconfig/ldap': content => "";
-        } 
-    }
-
-    class master inherits common {
+   class master inherits common {
         Openldap::Config['/etc/openldap/mandriva-dit-access.conf'] {
             content => template("openldap/mandriva-dit-access.conf"),
         }
@@ -73,22 +37,6 @@ class openldap {
                 creates => "/var/lib/ldap/objectClass.bdb",
                 require => Local_script["init_ldap.sh"],
             }
-        }
-    }
-
-    # this define is here only to be exported by slave
-    # and later used by get_ldap_servers
-    define exported_slave {
-
-    }
-
-    # TODO create the user for sync in ldap
-    # syntaxic sugar 
-    define slave_instance($rid) {
-        # seems the inheritance do not work as I believe
-        include openldap::common
-        class { 'openldap::slave':
-                    rid => $rid,
         }
     }
 
