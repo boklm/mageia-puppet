@@ -1,18 +1,18 @@
 class spamassassin {
     # it should also requires make, bug fixed in cooker
-    package { "spamassassin-sa-compile":
-        notify => Exec["sa-compile"],
+    package { 'spamassassin-sa-compile':
+        notify => Exec['sa-compile'],
     }
 
-    package { "spamassassin": }
+    package { 'spamassassin': }
 
-    file { "/etc/mail/spamassassin/local.cf":
-        require => Package["spamassassin"],
+    file { '/etc/mail/spamassassin/local.cf':
+        require => Package['spamassassin'],
         content => template('spamassassin/local.cf')
     }
 
-    exec { "sa-compile":
+    exec { 'sa-compile':
         refreshonly => true,
-        require => [Package["spamassassin-sa-compile"],Package["spamassassin"]]
+        require     => [Package['spamassassin-sa-compile'],Package['spamassassin']]
     }
 }
