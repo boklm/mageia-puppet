@@ -94,19 +94,6 @@ class sympa {
             }
         }
 
-        define scenario_sender_ldap_group {
-            file { "/etc/sympa/scenari/send.restricted_$name":
-                content => template('sympa/scenari/sender.ldap_group')
-            }
-        }
-
-        define scenario_sender_email {
-            $sender_email_file = regsubst($name,'\@','-at-')
-            file { "/etc/sympa/scenari/send.restricted_$sender_email_file":
-                content => template('sympa/scenari/sender.email')
-            }
-        }
-
         # add each group that could be used in a sympa ml either as
         # - owner
         # - editor ( moderation )
