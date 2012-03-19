@@ -1,5 +1,1 @@
-class websites {
-    class base {
-       $webdatadir = '/var/www/vhosts'
-    }
-}
+class websites { }
