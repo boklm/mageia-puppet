@@ -39,38 +39,4 @@ class mirror {
         }
     }
 
-    # For main Mageia mirror
-    class main inherits base {
-        local_script { "update_timestamp":
-            content => template("mirror/update_timestamp")
-        }
-
-        cron { mirror:
-            user => mirror,
-            minute => '*/10',
-            command => "/usr/local/bin/update_timestamp",
-            require => [Local_script["update_timestamp"], User['mirror']],
-        }
-    }
-
-    class mageia inherits base {
-    	mirrordir { "mageia":
-            remoteurl => "rsync://rsync.$domain/mageia",
-            localdir => '/distrib/mageia',
-        }
-    }
-
-    class newrelease inherits base {
-    	mirrordir { "newrelease":
-            remoteurl => "rsync://rsync.$domain/newrelease",
-            localdir => '/distrib/newrelease',
-	    }
-    }
-
-    class mdv2010spring inherits base {
-    	mirrordir { "mdv2010.1":
-            remoteurl => "rsync://distrib-coffee.ipsl.jussieu.fr/pub/linux/MandrivaLinux/official/2010.1",
-            localdir => '/distrib/mandriva/',
-        }
-    }
 }
