@@ -4,14 +4,14 @@
     # to follow them
     # however, for testing purpose, 4096 is too strong,
     # this empty the entropy of my vm
-class gnupg::keys($email,
-                  $key_name,
-                  $key_type = 'RSA',
-                  $key_length = '4096',
-                  $expire_date = '400d',
-                  $login = 'signbot',
-                  $batchdir = '/var/lib/signbot/batches',
-                  $keydir = '/var/lib/signbot/keys') {
+define gnupg::keys($email,
+                   $key_name,
+                   $key_type = 'RSA',
+                   $key_length = '4096',
+                   $expire_date = '400d',
+                   $login = 'signbot',
+                   $batchdir = '/var/lib/signbot/batches',
+                   $keydir = '/var/lib/signbot/keys') {
 
     include gnupg::client
     file { "$name.batch":
