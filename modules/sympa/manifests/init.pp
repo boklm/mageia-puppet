@@ -84,12 +84,6 @@ class sympa {
                 source => 'puppet:///modules/sympa/topics.conf';
         }
 
-        define ldap_search_filter {
-            file { "/etc/sympa/search_filters/$name.ldap":
-                content => template('sympa/search_filters/group.ldap')
-            }
-        }
-
         # add each group that could be used in a sympa ml either as
         # - owner
         # - editor ( moderation )

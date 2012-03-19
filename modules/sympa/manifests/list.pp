@@ -53,8 +53,8 @@ define sympa::list( $subject,
     }
 
     if $subscriber_ldap_group {
-        if ! defined(Sympa::Server::Ldap_search_filter[$subscriber_ldap_group]) {
-            sympa::server::ldap_search_filter { $subscriber_ldap_group: }
+        if ! defined(Sympa::Search_filter::Ldap[$subscriber_ldap_group]) {
+            sympa::search_filter::ldap { $subscriber_ldap_group: }
         }
     }
 }
