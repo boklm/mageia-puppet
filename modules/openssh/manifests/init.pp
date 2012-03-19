@@ -21,7 +21,7 @@ class openssh {
         }
 
         file { "$pubkeys_directory/root/authorized_keys":
-            ensure => link
+            ensure => link,
             target => "/root/.ssh/authorized_keys",
             mode   => '0700',
         }
