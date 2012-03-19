@@ -13,7 +13,7 @@ node rabbit {
     include openssh::ssh_keys_from_ldap
     include mirror::mageia
     include mirror::newrelease
-    include releasekey::base
+    include releasekey
 
     youri-check::config {"config_cauldron":
 	version => "cauldron",
