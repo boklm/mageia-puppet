@@ -1,18 +1,4 @@
 class gnupg {
-    class client {
-        package { ["gnupg","rng-utils"]:
-            ensure => present,
-        }
-        
-        file { "/usr/local/bin/create_gnupg_keys.sh":
-             ensure => present,
-             owner => root,
-             group => root,
-             mode => 755,
-             content => template('gnupg/create_gnupg_keys.sh')
-        }
-    }
-
     # debian recommend SHA2, with 4096
     # http://wiki.debian.org/Keysigning
     # as they are heavy users of gpg, I will tend 
