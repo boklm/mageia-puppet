@@ -88,17 +88,11 @@ class sympa {
             }
         }
 
-        define ldap_group_datasource {
-            file { "/etc/sympa/data_sources/$name.incl":
-                content => template('sympa/data_sources/ldap_group.incl')
-            }
-        }
-
         # add each group that could be used in a sympa ml either as
         # - owner
         # - editor ( moderation )
-        ldap_group_datasource { "mga-sysadmin": }
-        ldap_group_datasource { "mga-ml_moderators": }
+        sympa::datasource::ldap_group { "mga-sysadmin": }
+        sympa::datasource::ldap_group { "mga-ml_moderators": }
 
 
         # directory that will hold the list data
