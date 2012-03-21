@@ -1,4 +1,3 @@
-# $Id: xinetd 319 2009-02-28 17:05:16Z guillomovitch $
 service rsync
 {
         disable         = no
@@ -8,6 +7,9 @@ service rsync
         server          = /usr/bin/rsync
         server_args     = --daemon
         log_on_failure  += USERID
-	flags		= IPv6
+        flags		= IPv6
+        # some mirorrs do not seems to use lock when downloading from
+        # us and try to download the same stuff 15 time in a row
+        per_source  = 4
 }
 
