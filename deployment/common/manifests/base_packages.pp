@@ -1,6 +1,7 @@
 class common::base_packages {
     # packages installed everywhere
-    # asked by misc : screen, vim-enhanced, htop, lsof, tcpdump, less, lvm2, lshw, iotop
+    # asked by misc : screen, vim-enhanced, htop, lsof, tcpdump, less,
+    #                 lvm2, lshw, iotop
     # asked by nanar : rsync
     $package_list= ['screen',
                     'vim-enhanced',
