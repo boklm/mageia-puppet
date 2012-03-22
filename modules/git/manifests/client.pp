@@ -1,1 +1,3 @@
-class git::client inherits git::common { }
+class git::client {
+    include git::common
+}

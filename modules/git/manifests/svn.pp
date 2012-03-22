@@ -1,3 +1,4 @@
-class git::svn inherits git::client {
+class git::svn {
+    include git::client
     package { 'git-svn': }
 }
