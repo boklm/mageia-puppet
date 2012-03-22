@@ -5,7 +5,7 @@ node krampouezh {
 #
     #include common::default_mageia_server
     include common::default_mageia_server_no_smtp
-    include postfix::secondary_smtp
+    include postfix::server::secondary
     include blog::base
     include blog::db_backup
     include mysql::server

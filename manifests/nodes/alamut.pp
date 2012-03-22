@@ -20,7 +20,7 @@ node alamut {
     include transifex
     include bugzilla
     include sympa::server
-    include postfix::primary_smtp
+    include postfix::server::primary
 
     # temporary, just the time the vm is running there
     host { 'friteuse':
