@@ -1,0 +1,16 @@
+service <%= name %>
+{
+        disable         = no
+        type            = UNLISTED
+<%- if protocol == 'tcp' -%>
+        socket_type     = stream
+<%- else -%>
+        socket_type     = dgram
+<%- end -%>
+        protocol        = <%= protocol %>
+        user            = nobody
+        wait            = no
+        redirect        = <%= target_ip %> <%= target_port %>
+        port            = <%= port %>
+}
+
