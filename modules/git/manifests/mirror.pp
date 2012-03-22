@@ -2,6 +2,7 @@ define git::mirror( $source,
                     $description,
                     $refresh = '*/5') {
 
+    include git::common
     exec { "/usr/bin/git clone --bare $source $name":
         alias   => "git mirror $name",
         creates => $name,
