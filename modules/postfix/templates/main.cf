@@ -32,7 +32,7 @@ myhostname = <%= fqdn %>
 mydomain = <%= domain %>
 mydestination = <%= fqdn %>
 myorigin = $mydomain
-<%- if all_tags.include?('postfix::secondary_smtp') -%>
+<%- if all_tags.include?('postfix::server::secondary') -%>
 relay_domains = <%= domain %>,
                 ml.<%= domain %>,
                 group.<%= domain %>
@@ -43,7 +43,7 @@ mydestination = <%= fqdn %>
                 ml.<%= domain %>
 <%- end -%>
 
-<%- if all_tags.include?('postfix::primary_smtp') -%>
+<%- if all_tags.include?('postfix::server::primary') -%>
 
 virtual_mailbox_domains = <%= domain %>,
                           group.<%= domain %>
@@ -75,7 +75,7 @@ virtual_alias_maps = ldap:/etc/postfix/ldap_aliases.conf
 <%- end -%>
 
 
-<%- if all_tags.include?('postfix::smtp_server') -%>
+<%- if all_tags.include?('postfix::server') -%>
 transport_maps = regexp:/etc/postfix/transport_regexp
 content_filter = smtp-filter:[127.0.0.1]:10025
 <%- end -%>
@@ -97,7 +97,7 @@ smtpd_use_tls = no
 #smtpd_tls_key_file = /etc/pki/tls/private/postfix.pem
 #smtpd_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt
 
-<%- if all_tags.include?('postfix::smtp_server') -%>
+<%- if all_tags.include?('postfix::server') -%>
 smtpd_etrn_restrictions = reject
 
 smtpd_helo_required = yes
