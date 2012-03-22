@@ -30,7 +30,6 @@ inet_protocols = all
 mynetworks_style = host
 myhostname = <%= fqdn %>
 mydomain = <%= domain %>
-mydestination = <%= fqdn %>
 myorigin = $mydomain
 <%- if all_tags.include?('postfix::server::secondary') -%>
 relay_domains = <%= domain %>,
