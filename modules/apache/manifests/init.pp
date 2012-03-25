@@ -35,19 +35,7 @@ class apache {
         }
     }
     
-    class mod_wsgi inherits base {
-        package { "apache-mod_wsgi": }
-
-        file { "/usr/local/lib/wsgi":
-            ensure => directory,
-        }
-
-        apache::config { "/etc/httpd/conf.d/mod_wsgi.conf":
-            content => template('apache/mod_wsgi.conf'),
-        }
-    }
-
-
+   
     define vhost_base($content = '',
                       $location = '/dev/null', 
                       $use_ssl = false,
@@ -116,7 +104,7 @@ class apache {
     }
 
     define vhost_django_app($module = false, $module_path = false, $use_ssl = false, $aliases= {}) {
-        include apache::mod_wsgi
+        include apache::mod::wsgi
         vhost_base { $name:
             use_ssl => $use_ssl,
             content => template("apache/vhost_django_app.conf"),
@@ -134,7 +122,7 @@ class apache {
     }
 
     define vhost_wsgi($wsgi_path, $aliases = {}, $server_aliases = []) {
-        include apache::mod_wsgi
+        include apache::mod::wsgi
         vhost_base { $name:
             aliases => $aliases,
             server_aliases => $server_aliases,
