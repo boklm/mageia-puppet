@@ -9,7 +9,7 @@ class planet {
     $location = "/var/www/vhosts/planet.$domain"
     $vhost = "planet.$domain"
 	
-    include apache::mod_php
+    include apache::mod::php
     include apache::mod::deflate
 
     apache::vhost_base { "$vhost":

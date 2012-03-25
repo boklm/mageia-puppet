@@ -1,5 +1,5 @@
 class mediawiki::base {
-    include apache::mod_php
+    include apache::mod::php
     $vhost = $mediawiki::config::vhost
     $root = $mediawiki::config::root
 

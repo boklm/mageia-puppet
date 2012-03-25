@@ -3,7 +3,7 @@ class phpbb::base {
     $user = 'phpbb'
     $forums_dir = '/var/www/forums/'
 
-    include apache::mod_php
+    include apache::mod::php
 
     package {['php-gd',
               'php-xml',

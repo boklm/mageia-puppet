@@ -29,7 +29,7 @@ class blog {
             require => Local_script['check_new-blog-post.sh'],
         }
 
-        include apache::mod_php
+        include apache::mod::php
 
         apache::vhost_base { "$blog_domain":
             location => $blog_location,

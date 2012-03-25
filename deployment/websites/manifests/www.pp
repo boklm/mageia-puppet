@@ -4,7 +4,7 @@ class websites::www {
     $vhostdir = "$websites::base::webdatadir/$vhost"
     $svn_location = "svn://svn.$::domain/svn/web/www/trunk"
 
-    include apache::mod_php
+    include apache::mod::php
     include apache::mod::geoip
 
     # for mailman reverse proxy, on ssl
