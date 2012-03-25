@@ -45,7 +45,7 @@ class sympa {
         }
 
 
-        include apache::mod_fcgid
+        include apache::mod::fcgid
         apache::webapp_other { 'sympa':
             webapp_file => 'sympa/webapp_sympa.conf',
         }

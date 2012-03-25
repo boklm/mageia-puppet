@@ -5,11 +5,11 @@ class websites::www {
     $svn_location = "svn://svn.$::domain/svn/web/www/trunk"
 
     include apache::mod_php
-    include apache::mod_geoip
+    include apache::mod::geoip
 
     # for mailman reverse proxy, on ssl
-    include apache::mod_proxy
-    include apache::mod_ssl
+    include apache::mod::proxy
+    include apache::mod::ssl
 
     subversion::snapshot { $vhostdir:
         source => $svn_location,

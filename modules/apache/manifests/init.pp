@@ -45,18 +45,6 @@ class apache {
         }
     }
 
-    class mod_perl inherits base {
-        package { "apache-mod_perl": }
-    }
-
-    class mod_fcgid inherits base {
-        package { "apache-mod_fcgid": }
-    }
-
-    class mod_fastcgi inherits base {
-        package { "apache-mod_fastcgi": }
-    }
-
     class mod_wsgi inherits base {
         package { "apache-mod_wsgi": }
 
@@ -69,21 +57,6 @@ class apache {
         }
     }
 
-    class mod_proxy inherits base {
-        package { "apache-mod_proxy": }
-    }
-
-    class mod_public_html inherits base {
-        package { "apache-mod_public_html": }
-    }
-
-    class mod_deflate inherits base {
-        package { "apache-mod_deflate": }
-    }
-
-    class mod_geoip inherits base {
-        package { "apache-mod_geoip": }
-    }
 
     define vhost_base($content = '',
                       $location = '/dev/null', 
@@ -127,7 +100,7 @@ class apache {
         }
 
         if $enable_public_html {
-            include apache::mod_public_html
+            include apache::mod::public_html
         }
 
         apache::config { "/etc/httpd/conf/vhosts.d/$filename":
@@ -207,7 +180,7 @@ class apache {
     define vhost_reverse_proxy($url,
                                $vhost = false, 
                                $use_ssl = false) {
-        include apache::mod_proxy
+        include apache::mod::proxy
         vhost_base { $name:
             use_ssl => $use_ssl,
             vhost => $vhost,
