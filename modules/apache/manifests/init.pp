@@ -1,56 +1,6 @@
 class apache {
-    define vhost_base($content = '',
-                      $location = '/dev/null', 
-                      $use_ssl = false,
-                      $vhost = false,
-                      $aliases = {},
-                      $server_aliases = [],
-                      $access_logfile = false,
-                      $error_logfile = false,
-                      $options = [],
-                      $enable_public_html = false) {
-        include apache::base
-        $httpd_logdir = "/var/log/httpd"
-        $filename = "$name.conf"
-
-        if ! $vhost {
-            $real_vhost = $name
-        } else {
-            $real_vhost = $vhost
-        }
-
-        if ! $access_logfile {
-            $real_access_logfile = "$httpd_logdir/${real_vhost}-access_log"
-        } else {
-            $real_access_logfile = $access_logfile
-        }
-        if ! $error_logfile {
-            $real_error_logfile = "$httpd_logdir/${real_vhost}-error_log"
-        } else {
-            $real_error_logfile = $error_logfile
-        }
-
-        if $use_ssl {
-            include apache::mod::ssl
-            if $wildcard_sslcert != 'true' {
-                openssl::self_signed_cert{ "$real_vhost":
-                    directory => "/etc/ssl/apache/",
-                    before => Apache::Config["/etc/httpd/conf/vhosts.d/$filename"],
-                }
-            }
-        }
-
-        if $enable_public_html {
-            include apache::mod::public_html
-        }
-
-        apache::config { "/etc/httpd/conf/vhosts.d/$filename":
-            content => template("apache/vhost_base.conf")
-        }
-    }
-
     define vhost_redirect_ssl() {
-        vhost_base { "redirect_ssl_$name":
+        apache::vhost::base { "redirect_ssl_$name":
             vhost => $name,
             content => template("apache/vhost_ssl_redirect.conf")
         }
@@ -59,7 +9,7 @@ class apache {
     define vhost_catalyst_app($script, $location = '', $process = 4, $use_ssl = false, $vhost = false) {
 
         include apache::mod::fastcgi
-        vhost_base { $name:
+        apache::vhost::base { $name:
             vhost => $vhost,
             use_ssl => $use_ssl,
             content => template("apache/vhost_catalyst_app.conf"),
@@ -68,7 +18,7 @@ class apache {
 
     define vhost_django_app($module = false, $module_path = false, $use_ssl = false, $aliases= {}) {
         include apache::mod::wsgi
-        vhost_base { $name:
+        apache::vhost::base { $name:
             use_ssl => $use_ssl,
             content => template("apache/vhost_django_app.conf"),
             aliases => $aliases,
@@ -86,7 +36,7 @@ class apache {
 
     define vhost_wsgi($wsgi_path, $aliases = {}, $server_aliases = []) {
         include apache::mod::wsgi
-        vhost_base { $name:
+        apache::vhost::base { $name:
             aliases => $aliases,
             server_aliases => $server_aliases,
             content => template("apache/vhost_wsgi.conf"),
@@ -102,7 +52,7 @@ class apache {
 
     define vhost_simple($location) {
         include apache::base
-        vhost_base { $name:
+        apache::vhost::base { $name:
             location => $location,
         } 
     } 
@@ -111,7 +61,7 @@ class apache {
                           $vhost = false,
                           $use_ssl = false) {
         include apache::base
-        vhost_base { $name:
+        apache::vhost::base { $name:
             use_ssl => $use_ssl,
             vhost => $vhost,
             content => template("apache/vhost_redirect.conf"),
@@ -122,7 +72,7 @@ class apache {
                                $vhost = false, 
                                $use_ssl = false) {
         include apache::mod::proxy
-        vhost_base { $name:
+        apache::vhost::base { $name:
             use_ssl => $use_ssl,
             vhost => $vhost,
             content => template("apache/vhost_reverse_proxy.conf")
