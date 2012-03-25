@@ -38,9 +38,9 @@ class bugzilla {
     $bugs_vhost = "bugs.$::domain"
     $vhost_root = '/usr/share/bugzilla/www'
 
-    apache::vhost_redirect_ssl { $bugs_vhost: }
+    apache::vhost::redirect_ssl { $bugs_vhost: }
 
-    apache::vhost_base { $bugs_vhost:
+    apache::vhost::base { $bugs_vhost:
         aliases  => { '/bugzilla/' => $vhost_root },
         use_ssl  => true,
         location => $vhost_root,

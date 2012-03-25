@@ -28,7 +28,7 @@ class viewvc {
         environment => 'MAILTO=root',
     }
 
-    apache::vhost_base { "svnweb.$::domain":
+    apache::vhost::base { "svnweb.$::domain":
         aliases => {'/viewvc' => '/var/www/viewvc/',
                     '/'       => '/usr/share/viewvc/bin/wsgi/viewvc.fcgi/'},
         content => template('viewvc/vhost.conf')

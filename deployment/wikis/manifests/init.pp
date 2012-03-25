@@ -20,9 +20,9 @@ class wikis {
         skinsdir      => "$wikis_templates/skins",
     }
 
-    apache::vhost_redirect_ssl { "wiki.$::domain": }
+    apache::vhost::redirect_ssl { "wiki.$::domain": }
 
-    apache::vhost_base { "ssl_wiki.$::domain":
+    apache::vhost::base { "ssl_wiki.$::domain":
         use_ssl => true,
         vhost   => "wiki.$::domain",
         content => template('wikis/wiki_vhost.conf'),

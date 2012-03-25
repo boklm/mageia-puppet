@@ -34,7 +34,7 @@ class dashboard {
 	    content => template('dashboard/make_report'),
 	}
 
-	apache::vhost_base { "dashboard.$domain":
+	apache::vhost::base { "dashboard.$domain":
 	    location => $dashboard_wwwdir,
 	}
 

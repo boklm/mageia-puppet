@@ -31,12 +31,12 @@ class blog {
 
         include apache::mod::php
 
-        apache::vhost_base { "$blog_domain":
+        apache::vhost::base { "$blog_domain":
             location => $blog_location,
             content => template('blog/blogs_vhosts.conf'),
         }
 
-        apache::vhost_base { "ssl_$blog_domain":
+        apache::vhost::base { "ssl_$blog_domain":
             use_ssl => true,
             vhost => $blog_domain,
             location => $blog_location,

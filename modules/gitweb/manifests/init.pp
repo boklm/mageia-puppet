@@ -20,7 +20,7 @@ class gitweb {
         notify  => Service['apache'],
     }
 
-    apache::vhost_base { "gitweb.$::domain":
+    apache::vhost::base { "gitweb.$::domain":
         content => template('gitweb/vhost.conf')
     }
 }

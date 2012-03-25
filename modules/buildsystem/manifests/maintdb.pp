@@ -47,7 +47,7 @@ class buildsystem::maintdb {
         require => User[$login],
     }
 
-    apache::vhost_base { "maintdb.$::domain":
+    apache::vhost::base { "maintdb.$::domain":
         location => $dbdir,
         content  => template('buildsystem/maintdb/vhost_maintdb.conf'),
     }

@@ -4,7 +4,7 @@ class websites::hugs {
     $vhostdir = "$websites::base::webdatadir/hugs.$::domain"
     $svn_location = "svn://svn.$::domain/svn/web/hugs/public/"
 
-    apache::vhost_base { "hugs.$::domain":
+    apache::vhost::base { "hugs.$::domain":
         location => $vhostdir,
     }
 

@@ -23,13 +23,13 @@ class websites::www {
 
     $mailman_content = template('websites/vhost_www.conf',
                                 'websites/vhost_proxy_mailman.conf')
-    apache::vhost_base { $vhost:
+    apache::vhost::base { $vhost:
         content  => $mailman_content,
         location => $vhostdir,
         options  => ['FollowSymLinks'],
     }
 
-    apache::vhost_base { "ssl_$vhost":
+    apache::vhost::base { "ssl_$vhost":
         use_ssl  => true,
         vhost    => $vhost,
         content  => $mailman_content,

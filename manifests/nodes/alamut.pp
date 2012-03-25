@@ -32,7 +32,7 @@ node alamut {
     # to create all phpbb database on alamut
     phpbb::databases { $fqdn: }
 
-    apache::vhost_redirect_ssl { "forums.$domain": }
+    apache::vhost::redirect_ssl { "forums.$domain": }
     apache::vhost_redirect { "forum.$domain":
         url => "https://forums.$domain/",
     }

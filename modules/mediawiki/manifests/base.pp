@@ -23,9 +23,9 @@ class mediawiki::base {
     # TODO create the ldap user
 
     if $vhost {
-        apache::vhost_redirect_ssl { $vhost: }
+        apache::vhost::redirect_ssl { $vhost: }
 
-        apache::vhost_base { "ssl_$vhost":
+        apache::vhost::base { "ssl_$vhost":
             location => $root,
             use_ssl  => true,
             vhost    => $vhost,

@@ -10,7 +10,7 @@ class websites::pkgcpan {
         home       => $homedir,
     }
 
-    apache::vhost_base { $vhost:
+    apache::vhost::base { $vhost:
         location => $vhostdir,
         options  => [ 'Indexes' ],
     }

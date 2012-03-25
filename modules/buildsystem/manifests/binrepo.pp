@@ -34,7 +34,7 @@ class buildsystem::binrepo {
         content => template('buildsystem/binrepo/sudoers.binrepo')
     }
 
-    apache::vhost_base { "binrepo.$::domain":
+    apache::vhost::base { "binrepo.$::domain":
         location => $repodir,
         content  => template('buildsystem/binrepo/vhost_binrepo.conf'),
     }

@@ -4,12 +4,12 @@ class websites::releases {
     $vhostdir = "$websites::base::webdatadir/$vhost"
     $svn_location = "svn://svn.$::domain/svn/web/releases/"
 
-    apache::vhost_base { $vhost:
+    apache::vhost::base { $vhost:
         location => $vhostdir,
         options  => [ 'FollowSymLinks' ],
     }
 
-    apache::vhost_base { "ssl_$vhost":
+    apache::vhost::base { "ssl_$vhost":
         vhost    => $vhost,
         use_ssl  => true,
         location => $vhostdir,

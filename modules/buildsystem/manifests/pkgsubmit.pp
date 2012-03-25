@@ -7,7 +7,7 @@ class buildsystem::pkgsubmit {
         ensure => directory,
     }
 
-    apache::vhost_base { "pkgsubmit.$::domain":
+    apache::vhost::base { "pkgsubmit.$::domain":
         aliases  => { '/uploads' => "$sched_home_dir/uploads" },
         location => $location,
         content  => template('buildsystem/vhost_pkgsubmit.conf'),

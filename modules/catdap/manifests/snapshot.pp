@@ -16,5 +16,5 @@ define catdap::snapshot($location, $svn_location) {
         use_ssl  => true,
     }
 
-    apache::vhost_redirect_ssl { $name: }
+    apache::vhost::redirect_ssl { $name: }
 }

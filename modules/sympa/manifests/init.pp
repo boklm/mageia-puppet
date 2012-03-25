@@ -50,9 +50,9 @@ class sympa {
             webapp_file => 'sympa/webapp_sympa.conf',
         }
 
-        apache::vhost_redirect_ssl { $sympa::variable::vhost: }
+        apache::vhost::redirect_ssl { $sympa::variable::vhost: }
 
-        apache::vhost_base { $sympa::variable::vhost:
+        apache::vhost::base { $sympa::variable::vhost:
             use_ssl => true,
             content => template('sympa/vhost_ml.conf'),
         }

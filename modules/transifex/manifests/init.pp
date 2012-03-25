@@ -50,7 +50,7 @@ class transifex {
         require => Package['transifex'],
     }
 
-    apache::vhost_redirect_ssl { "transifex.$::domain": }
+    apache::vhost::redirect_ssl { "transifex.$::domain": }
 
     # the group are mapped from ldap, since AUTH_LDAP_FIND_GROUP_PERMS is set to yes
     # but the group need to exist in django first

@@ -31,11 +31,11 @@ class phpbb::base {
     }
 
     # TODO check that everything is locked down
-    apache::vhost_base { "forums.$::domain":
+    apache::vhost::base { "forums.$::domain":
         content => template('phpbb/forums_vhost.conf'),
     }
 
-    apache::vhost_base { "ssl_forums.$::domain":
+    apache::vhost::base { "ssl_forums.$::domain":
         use_ssl => true,
         vhost   => "forums.$::domain",
         content => template('phpbb/forums_vhost.conf'),

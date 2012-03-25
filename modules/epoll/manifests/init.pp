@@ -10,7 +10,7 @@ class epoll {
         require => Package['Epoll']
     }
 
-    apache::vhost_redirect_ssl { $vhost: }
+    apache::vhost::redirect_ssl { $vhost: }
 
     $pgsql_password = extlookup('epoll_pgsql','x')
 
