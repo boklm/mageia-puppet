@@ -2,7 +2,7 @@ class websites::static {
     include websites::base
     $vhostdir = "$websites::base::webdatadir/static.$::domain"
 
-    apache::vhost_other_app { "static.$::domain":
+    apache::vhost::other_app { "static.$::domain":
         vhost_file => 'websites/vhost_static.conf',
     }
 

@@ -4,7 +4,7 @@ class puppet::thin {
     include apache::mod::ssl
     include apache::mod::proxy
 
-    apache::vhost_other_app { 'puppet_proxy':
+    apache::vhost::other_app { 'puppet_proxy':
         vhost_file => 'puppet/apache_proxy_vhost.conf',
     }
 

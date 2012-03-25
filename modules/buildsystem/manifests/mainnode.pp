@@ -17,7 +17,7 @@ class buildsystem::mainnode {
     ssh::auth::server { [$sched_login, $build_login]: }
 
     $mirror_root = '/distrib/mirror'
-    apache::vhost_other_app { "repository.$::domain":
+    apache::vhost::other_app { "repository.$::domain":
         vhost_file => 'buildsystem/vhost_repository.conf',
     }
 
