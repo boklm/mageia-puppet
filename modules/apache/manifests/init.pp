@@ -27,15 +27,6 @@ class apache {
         }
     }
 
-    define vhost_wsgi($wsgi_path, $aliases = {}, $server_aliases = []) {
-        include apache::mod::wsgi
-        apache::vhost::base { $name:
-            aliases => $aliases,
-            server_aliases => $server_aliases,
-            content => template("apache/vhost_wsgi.conf"),
-        }
-    }
-
    define vhost_other_app($vhost_file) {
         include apache::base
         apache::config { "/etc/httpd/conf/vhosts.d/$name.conf":
