@@ -1,7 +1,7 @@
 class puppet::thin {
     package { 'ruby-thin': }
 
-    include apache::mod_ssl
+    include apache::mod::ssl
     include apache::mod_proxy
 
     apache::vhost_other_app { 'puppet_proxy':
