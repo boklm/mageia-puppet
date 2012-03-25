@@ -35,16 +35,6 @@ class apache {
         }
     }
     
-    class mod_php inherits base {
-        $php_date_timezone = "UTC"
-
-        package { "apache-mod_php": }
-
-        apache::config { "/etc/httpd/conf.d/mod_php.conf":
-            content => template('apache/mod_php.conf'),
-        }
-    }
-
     class mod_wsgi inherits base {
         package { "apache-mod_wsgi": }
 
