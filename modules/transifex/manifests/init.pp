@@ -35,7 +35,7 @@ class transifex {
         source => 'svn://svn.mageia.org/svn/web/templates/transifex/trunk'
     }
 
-    apache::vhost_django_app { "transifex.$::domain":
+    apache::vhost::django_app { "transifex.$::domain":
         module      => 'transifex',
         use_ssl     => true,
         module_path => ['/usr/share/transifex','/usr/share','/usr/local/lib/'],
