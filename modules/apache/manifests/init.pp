@@ -1,11 +1,4 @@
 class apache {
-    define vhost_redirect_ssl() {
-        apache::vhost::base { "redirect_ssl_$name":
-            vhost => $name,
-            content => template("apache/vhost_ssl_redirect.conf")
-        }
-    }
-
     define vhost_catalyst_app($script, $location = '', $process = 4, $use_ssl = false, $vhost = false) {
 
         include apache::mod::fastcgi
