@@ -1,37 +1,37 @@
 class planet {
 
-    user { "planet":
-        groups => apache,
-        comment => "Planet Mageia",
-        home => "/var/lib/planet",
+    user { 'planet':
+        groups  => 'apache',
+        comment => 'Planet Mageia',
+        home    => '/var/lib/planet',
     }
 
-    $location = "/var/www/vhosts/planet.$domain"
-    $vhost = "planet.$domain"
+    $vhost = "planet.$::domain"
+    $location = "/var/www/vhosts/$vhost"
 	
     include apache::mod::php
     include apache::mod::deflate
 
-    apache::vhost::base { "$vhost":
+    apache::vhost::base { $vhost:
         location => $location,
-        content => template('planet/planet_vhosts.conf')
+        content  => template('planet/planet_vhosts.conf')
     }
 
-    local_script { "deploy_new-planet.sh":
-        content => template("planet/deploy_new-planet.sh")
+    local_script { 'deploy_new-planet.sh':
+        content => template('planet/deploy_new-planet.sh')
     }
 
-    file { "$location":
+    file { $location:
         ensure => directory,
-        owner => planet,
-        group => apache,
+        owner  => 'planet',
+        group  => 'apache',
     }
 
     file { "$location/index.php":
-        owner => planet,
-        group => apache,
-        mode => 755,
-        content => template("planet/index.php")
+        owner   => 'planet',
+        group   => 'apache',
+        mode    => '0755',
+        content => template('planet/index.php')
     }
 
     package { ['php-iconv']: }    
