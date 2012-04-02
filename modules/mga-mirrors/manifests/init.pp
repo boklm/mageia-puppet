@@ -4,7 +4,7 @@ class mga-mirrors {
 
     package { 'mga-mirrors': }
 
-    apache::vhost_catalyst_app { $vhost:
+    apache::vhost::catalyst_app { $vhost:
         script  => '/usr/bin/mga_mirrors_fastcgi.pl',
         require => Package['mga-mirrors'],
     }

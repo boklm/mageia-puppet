@@ -10,7 +10,7 @@ define catdap::snapshot($location, $svn_location) {
         source => $svn_location
     }
 
-    apache::vhost_catalyst_app { $name:
+    apache::vhost::catalyst_app { $name:
         script   => "$location/script/catdap_fastcgi.pl",
         location => $location,
         use_ssl  => true,

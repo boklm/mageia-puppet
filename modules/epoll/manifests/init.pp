@@ -4,7 +4,7 @@ class epoll {
 
     package { 'Epoll': }
 
-    apache::vhost_catalyst_app { $vhost:
+    apache::vhost::catalyst_app { $vhost:
         script  => '/usr/bin/epoll_fastcgi.pl',
         use_ssl => true,
         require => Package['Epoll']
