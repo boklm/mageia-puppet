@@ -82,7 +82,7 @@ class blog {
             hour    => '23',
             minute  => '42',
             command => '/usr/local/bin/backup_blog-files.sh',
-            require => Local_script['backup_blog-files'],
+            require => Local_script['backup_blog-files.sh'],
         }
     }
 }
