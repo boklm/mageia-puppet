@@ -1,8 +1,4 @@
 class sympa {
-    class variable {
-        $vhost = "ml.$::domain"
-    }
-
     class server inherits variable {
         # perl-CGI-Fast is needed for fast cgi
         # perl-Socket6 is required by perl-IO-Socket-SSL
