@@ -9,22 +9,7 @@ class openssh::ssh_keys_from_ldap($symlink_users = [],
 
     package { 'python-ldap': }
 
-    $pubkeys_directory = '/var/lib/pubkeys'
-    file { $pubkeys_directory:
-        ensure => directory,
-    }
-
-    file { "$pubkeys_directory/root":
-        ensure => directory,
-        mode   => '0700',
-    }
-
-    file { "$pubkeys_directory/root/authorized_keys":
-        ensure => link,
-        target => '/root/.ssh/authorized_keys',
-        mode   => '0700',
-    }
-
+    include openssh::pubkeys_directory
     symlink_user { $symlink_users: }
 
     $ldap_pwfile = '/etc/ldap.secret'

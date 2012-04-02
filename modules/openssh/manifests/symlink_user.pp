@@ -1,4 +1,6 @@
 define openssh::symlink_user() {
+    include openssh::pubkeys_directory
+    $pubkeys_directory = $openssh::pubkeys_directory::pubkeys_directory
     file { "$pubkeys_directory/$name":
         ensure => directory,
         owner  => $name,
