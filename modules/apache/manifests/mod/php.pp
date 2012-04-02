@@ -5,6 +5,6 @@ class apache::mod::php {
     package { 'apache-mod_php': }
 
     apache::config { '/etc/httpd/conf.d/mod_php.conf':
-        content => template('apache/mod_php.conf'),
+        content => template('apache/mod/php.conf'),
     }
 }

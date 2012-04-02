@@ -7,6 +7,6 @@ class apache::mod::wsgi {
     }
 
     apache::config { '/etc/httpd/conf.d/mod_wsgi.conf':
-        content => template('apache/mod_wsgi.conf'),
+        content => template('apache/mod/wsgi.conf'),
     }
 }
