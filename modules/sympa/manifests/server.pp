@@ -26,6 +26,7 @@ class sympa::server {
         require => Package['sympa'],
     }
 
+    $vhost = $sympa::variable::vhost
     file { '/etc/sympa/sympa.conf':
     # should be cleaner to have it root owned, but puppet do not support acl
     # and in any case, config will be reset if it change
