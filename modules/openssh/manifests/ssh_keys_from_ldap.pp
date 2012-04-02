@@ -10,6 +10,8 @@ class openssh::ssh_keys_from_ldap($symlink_users = [],
     package { 'python-ldap': }
 
     include openssh::pubkeys_directory
+    $pubkeys_directory = $openssh::pubkeys_directory::pubkeys_directory
+
     symlink_user { $symlink_users: }
 
     $ldap_pwfile = '/etc/ldap.secret'
