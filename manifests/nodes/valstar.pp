@@ -22,7 +22,7 @@ node valstar {
     include buildsystem::release
     include buildsystem::maintdb
     include buildsystem::binrepo
-    include softwarekey::base
+    include softwarekey
     include mgasoft
 
     include access_classes::committers
