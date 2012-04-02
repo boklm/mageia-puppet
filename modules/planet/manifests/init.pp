@@ -23,14 +23,9 @@ class planet {
 
     file { $location:
         ensure => directory,
-        owner  => 'planet',
-        group  => 'apache',
     }
 
     file { "$location/index.php":
-        owner   => 'planet',
-        group   => 'apache',
-        mode    => '0755',
         content => template('planet/index.php')
     }
 
