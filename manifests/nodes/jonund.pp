@@ -5,7 +5,7 @@ node jonund {
     include common::default_mageia_server
     include buildsystem::buildnode
     include buildsystem::iurt20101
-    timezone::timezone { "Europe/Paris": }
+    timezone::timezone { 'Europe/Paris': }
 #    include shorewall
 #    include shorewall::default_firewall
 }

@@ -3,5 +3,5 @@ node ecosse {
 #
     include common::default_mageia_server
     include buildsystem::buildnode
-    timezone::timezone { "Europe/Paris": }
+    timezone::timezone { 'Europe/Paris': }
 }

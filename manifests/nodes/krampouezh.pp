@@ -9,10 +9,10 @@ node krampouezh {
     include blog::base
     include blog::db_backup
     include mysql::server
-    include dns::server 
-    timezone::timezone { "Europe/Paris": }
+    include dns::server
+    timezone::timezone { 'Europe/Paris': }
 
-    openldap::slave_instance { "1":
+    openldap::slave_instance { '1':
         rid => 1,
     }
 

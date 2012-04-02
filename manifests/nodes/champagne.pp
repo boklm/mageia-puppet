@@ -5,7 +5,7 @@ node champagne {
 # - setup mageia.org web site
 #
     include common::default_mageia_server
-    timezone::timezone { "Europe/Paris": }
+    timezone::timezone { 'Europe/Paris': }
     include blog::files-bots
     include blog::files_backup
     include planet
