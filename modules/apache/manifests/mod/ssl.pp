@@ -15,6 +15,6 @@ class apache::mod::ssl {
         '/etc/httpd/conf/vhosts.d/01_default_ssl_vhost.conf':
             content => template('apache/01_default_ssl_vhost.conf');
         '/etc/httpd/conf.d/ssl.conf':
-            content => template('apache/ssl.conf');
+            content => template('apache/mod/ssl.conf');
     }
 }
