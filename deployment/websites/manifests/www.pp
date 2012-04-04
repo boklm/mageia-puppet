@@ -21,10 +21,9 @@ class websites::www {
         mode   => '0660',
     }
 
-    $mailman_content = template('websites/vhost_www.conf',
-                                'websites/vhost_proxy_mailman.conf')
     apache::vhost::base { $vhost:
-        content  => $mailman_content,
+        content  => template('websites/vhost_www.conf',
+	                     'websites/vhost_proxy_mailman.conf'),
         location => $vhostdir,
         options  => ['FollowSymLinks'],
     }
@@ -32,7 +31,8 @@ class websites::www {
     apache::vhost::base { "ssl_$vhost":
         use_ssl  => true,
         vhost    => $vhost,
-        content  => $mailman_content,
+        content  => template('websites/vhost_www.conf',
+	                     'websites/vhost_proxy_mailman_ssl.conf'),
         location => $vhostdir,
         options  => ['FollowSymLinks'],
     }
