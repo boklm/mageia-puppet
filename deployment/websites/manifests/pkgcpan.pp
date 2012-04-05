@@ -26,6 +26,7 @@ class websites::pkgcpan {
 
     cron { 'update cpanpkg':
         hour    => 23,
+	minute	=> 0,
         require => Package['perl-Module-Packaged-Generator'],
         command => "pkgcpan -q -f $vhostdir/cpan_Mageia.db -d Mageia",
         user    => $login,
