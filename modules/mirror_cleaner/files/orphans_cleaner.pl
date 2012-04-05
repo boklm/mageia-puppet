@@ -23,15 +23,16 @@ my %hash ;
 my ($filename, $srpm, $dest_rpm);
 
 
-my ($source_hdlist, $binary_hdlist, $rpm_path);
+my ($source_hdlist, $binary_hdlist, $rpm_path, $srpm_path);
 
 foreach my $a ( @arches ) {
         foreach my $s ( @sections ) {
                 foreach my $m ( @medias ) {
 
                         $rpm_path = "$path/$a/media/$s/$m";
+                        $srpm_path = "$path/SRPMS/$s/$m";
                         $binary_hdlist = "$rpm_path/media_info/hdlist.cz";
-                        $source_hdlist = "$path/SRPMS/$s/$m/media_info/hdlist.cz";
+                        $source_hdlist = "$srpm_path/media_info/hdlist.cz";
 
 			next if not -f $source_hdlist;
 			next if not -f $binary_hdlist;
@@ -54,9 +55,11 @@ foreach my $a ( @arches ) {
                         }
                         close($hdfh);
 
-                        foreach my $v ( values %hash ) 
+                        foreach my $s ( keys %hash )
                         {
-                                foreach my $rpm ( @{$v} ) {
+                                # Be safe, maybe hdlists were not in sync
+                                next if -f "$srpm_path/$s";
+                                foreach my $rpm ( @{$hash{$s}} ) {
 					$rpm = "$rpm_path/$rpm";
 					# sometimes, packages are removed without hdlist to be updated
 					next if not -f "$rpm";
@@ -66,7 +69,7 @@ foreach my $a ( @arches ) {
 						make_path $dir if not -d $dir;
 						move($rpm, $dest_rpm)
 					}
-                                }	   
+                                }
                         }
                 }
         }
