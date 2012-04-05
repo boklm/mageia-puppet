@@ -44,7 +44,8 @@ class websites::pkgcpan {
 
     # http://www.mageia.org/pipermail/mageia-sysadm/2012-March/004337.html
     cron { 'update pkgcpan stats':
-	hour	=> 24,
+	hour	=> 23,
+	minute	=> 30,
 	require => [ Package['magpie'], File[$statsdir] ],
 	command => "magpie webstatic -d $statsdir",
 	user	=> $login,
