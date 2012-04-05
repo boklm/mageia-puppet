@@ -2,6 +2,7 @@ class websites::pkgcpan {
     include websites::base
     $vhost = "pkgcpan.$::domain"
     $vhostdir = "$websites::base::webdatadir/$vhost"
+    $statsdir = "${vhostdir}/stats"
     $login = 'pkgcpan'
     $homedir = "/var/lib/$login"
 
@@ -21,7 +22,7 @@ class websites::pkgcpan {
         group  => $login,
     }
 
-    package { 'perl-Module-Packaged-Generator': }
+    package { ['perl-Module-Packaged-Generator', 'magpie']: }
 
     cron { 'update cpanpkg':
         hour    => 23,
@@ -33,5 +34,19 @@ class websites::pkgcpan {
     file { "$vhostdir/cpan_Mageia.db":
         owner => $login,
         group => $login,
+    }
+
+    file { $statsdir:
+	ensure => directory,
+	owner => $login,
+	group => $login,
+    }
+
+    # http://www.mageia.org/pipermail/mageia-sysadm/2012-March/004337.html
+    cron { 'update pkgcpan stats':
+	hour	=> 24,
+	require => [ Package['magpie'], File[$statsdir] ],
+	command => "magpie webstatic -d $statsdir",
+	user	=> $login,
     }
 }
