@@ -188,4 +188,9 @@ class lists {
         subscriber_ldap_group => 'mga-council',
         topics                => 'governance',
     }
+
+    sympa::public_list {'local-discuss':
+        subject => 'Discussions about Local Community Team',
+        topics  => 'local',
+    }
 }
