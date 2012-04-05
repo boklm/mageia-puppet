@@ -48,7 +48,7 @@ class websites::pkgcpan {
 	hour	=> 23,
 	minute	=> 30,
 	require => [ Package['magpie'], File[$statsdir] ],
-	command => "magpie webstatic -d $statsdir",
+	command => "magpie webstatic -q -d $statsdir",
 	user	=> $login,
     }
 }
