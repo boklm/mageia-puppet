@@ -15,6 +15,7 @@ define mirror_cleaner::orphans($base) {
     }
 
     tidy { $orphan_dir:
+        type    => 'ctime',
         age     => '4w',
         recurse => true,
         matches => ['*.rpm'],
