@@ -7,15 +7,9 @@ class buildsystem::repoctl {
 	$sectionsrepos = $buildsystem::config::sectionsrepos
 	$arches = $buildsystem::config::architectures
 
-	package{'repoctl':
-	    ensure => installed,
-	}
+	package{ 'repoctl': }
 
-	file {'/etc/repoctl.conf':
-	    ensure => present,
-	    mode => 644,
-	    owner => root,
-	    group => root,
+	file { '/etc/repoctl.conf':
 	    content => template('buildsystem/repoctl.conf'),
 	    require => Package['repoctl'],
 	}
