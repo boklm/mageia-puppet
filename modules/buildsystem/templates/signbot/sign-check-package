@@ -10,7 +10,8 @@ file="$1"
 key="$2"
 keydir="$3"
 
-tmpfile=`mktemp`
+tmpdir=`mktemp -d signbot-XXXXX`
+tmpfile="$tmpdir/$(basename $file)"
 cp -pf "$file" "$tmpfile"
 rpm --delsign "$tmpfile"
 /usr/local/bin/mga-signpackage "$tmpfile" "$key" "$keydir"
@@ -33,3 +34,4 @@ do
     /usr/local/bin/mga-signpackage "$tmpfile" "$key" "$keydir"
 done
 mv -f "$tmpfile" "$file"
+rmdir "$tmpdir"
