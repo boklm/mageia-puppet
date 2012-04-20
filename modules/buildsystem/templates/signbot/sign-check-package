@@ -10,7 +10,7 @@ file="$1"
 key="$2"
 keydir="$3"
 
-tmpdir=`mktemp -d signbot-XXXXX`
+tmpdir=`mktemp -d ${TMPDIR:-/tmp}/signbot-XXXXX`
 tmpfile="$tmpdir/$(basename $file)"
 cp -pf "$file" "$tmpfile"
 rpm --delsign "$tmpfile"
