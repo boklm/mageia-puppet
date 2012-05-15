@@ -1,9 +1,6 @@
 node champagne {
 # Location: gandi VM
 #
-# TODO:
-# - setup mageia.org web site
-#
     include common::default_mageia_server
     timezone::timezone { 'Europe/Paris': }
     include blog::files_bots
