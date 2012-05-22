@@ -1,6 +1,6 @@
 class websites::pkgcpan {
     include websites::base
-    $vhost = "pkgcpan.$::domain"
+    $vhost = "perl.$::domain"
     $vhostdir = "$websites::base::webdatadir/$vhost"
     $statsdir = "${vhostdir}/stats"
     $login = 'pkgcpan'

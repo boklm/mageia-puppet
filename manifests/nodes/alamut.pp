@@ -89,5 +89,5 @@ node alamut {
     }
 
     include wikis
-    include websites::pkgcpan
+    include websites::perl
 }
