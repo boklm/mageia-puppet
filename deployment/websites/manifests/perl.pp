@@ -1,4 +1,4 @@
-class websites::pkgcpan {
+class websites::perl {
     include websites::base
     $vhost = "perl.$::domain"
     $vhostdir = "$websites::base::webdatadir/$vhost"
