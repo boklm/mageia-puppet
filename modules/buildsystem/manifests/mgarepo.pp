@@ -43,6 +43,11 @@ class buildsystem::mgarepo {
             'nonfree' => ['release','updates_testing','backports_testing','backports','updates'],
             'tainted' => ['release','updates_testing','backports_testing','backports','updates'],
         },
+        '2'        => {
+            'core'    => ['release','updates_testing','backports_testing','backports','updates'],
+            'nonfree' => ['release','updates_testing','backports_testing','backports','updates'],
+            'tainted' => ['release','updates_testing','backports_testing','backports','updates'],
+        },
         'infra_1'  => {
             'infra' => ['release']
         },
