@@ -44,10 +44,8 @@ class repositories::subversion {
     subversion::repository { '/svn/packages/':
         group       => 'mga-packagers-committers',
         no_binary   => true,
-	#commit_mail => ["packages-commits@ml.$::domain"],
-	commit_mail => false,
+	commit_mail => ["packages-commits@ml.$::domain"],
         cia_module  => 'packages',
-	restricted_to_user => 'schedbot',
     }
 
     file { '/svn/binrepos/':
