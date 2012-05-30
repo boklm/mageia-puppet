@@ -171,6 +171,14 @@ class lists {
         topics       => 'developers',
     }
 
+    sympa::announce_list_email { 'board-commits':
+        subject               => 'Commits on Mageia.Org status and organisation documents',
+        reply_to              => "board-public@ml.$::domain",
+        sender_email          => "root@$::domain",
+        topics                => 'governance',
+        subscriber_ldap_group => 'mga-board',
+    }
+
     sympa::public_restricted_list { 'board-public':
         subject               => 'Public board discussion',
         subscriber_ldap_group => 'mga-board',
