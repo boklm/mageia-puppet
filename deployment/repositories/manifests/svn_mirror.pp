@@ -8,6 +8,7 @@ class repositories::svn_mirror {
         '/svn/soft/':     source => "svn://svn.$::domain/svn/soft/";
         '/svn/web/':      source => "svn://svn.$::domain/svn/web/";
         '/svn/packages/': source => "svn://svn.$::domain/svn/packages/";
+        '/svn/org/':      source => "svn://svn.$::domain/svn/org/";
     }
 
     # no binrepos, too big to mirror
