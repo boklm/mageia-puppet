@@ -17,3 +17,11 @@ $wgLogo = "";
 $wgDefaultSkin = 'cavendish';
 $wgFavicon = '/mw-en/skins/cavendish/favicon.png';
 $wgRightsIcon = 'https://i.creativecommons.org/l/by-sa/3.0/88x31.png';
+
+define('NS_FEATURE', 100);
+define('NS_FEATURE_TALK', 101);
+$wgExtraNamespaces[NS_FEATURE] = 'Feature';
+$wgExtraNamespaces[NS_FEATURE_TALK] = 'Feature_Talk';
+$wgContentNamespaces[] = NS_FEATURE;
+$wgNamespacesToBeSearchedDefault[NS_FEATURE] = true;
+
