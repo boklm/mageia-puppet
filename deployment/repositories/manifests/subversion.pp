@@ -20,6 +20,13 @@ class repositories::subversion {
         content => template('repositories/puppet_update.sh')
     }
 
+    subversion::repository { '/svn/org/':
+        group        => 'mga-board',
+        commit_mail  => ["board-commits@ml.$::domain"],
+	cia_post     => true,
+        cia_module   => 'org',
+    }
+
     subversion::repository { '/svn/soft/':
         group        => 'mga-packagers',
         commit_mail  => ["soft-commits@ml.$::domain"],
