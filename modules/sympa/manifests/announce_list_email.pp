@@ -3,6 +3,7 @@
 define sympa::announce_list_email($subject,
                                   $reply_to,
                                   $sender_email,
+				  $subscriber_ldap_group = false,
                                   $language = 'en',
                                   $topics = false) {
     list { $name:
@@ -12,5 +13,6 @@ define sympa::announce_list_email($subject,
         topics       => $topics,
         reply_to     => $reply_to,
         sender_email => $sender_email,
+	subscriber_ldap_group => $subscriber_ldap_group,
     }
 }
