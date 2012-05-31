@@ -16,6 +16,9 @@ node krampouezh {
         rid => 1,
     }
 
+    # temporary protection for CVE-2011-3192
+    include apache::cve-2011-3192
+
 # Other services running on this server :
 # - meetbot
 }
