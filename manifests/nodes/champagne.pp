@@ -15,4 +15,7 @@ node champagne {
     include dashboard
     include access_classes::web
     include openssh::ssh_keys_from_ldap
+
+    # temporary protection for CVE-2011-3192
+    include apache::CVE-2011-3192
 }
