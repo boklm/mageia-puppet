@@ -12,6 +12,7 @@ node champagne {
     include websites::www
     include websites::nav
     include websites::doc
+    include websites::start
     include dashboard
     include access_classes::web
     include openssh::ssh_keys_from_ldap
