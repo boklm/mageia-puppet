@@ -1,4 +1,9 @@
 class lists {
+    sympa::public_list {'atelier-discuss':
+        subject => 'Discussions about artwork, web, marketing, communication',
+        topics  => 'atelier',
+    }
+
     # please check that the list use the proper code for
     # language ( not to be confused with tld or country code )
     sympa::public_list {'i18n-af':
