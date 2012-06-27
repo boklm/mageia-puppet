@@ -28,7 +28,7 @@ class websites::perl {
         hour    => 23,
 	minute	=> 0,
         require => Package['perl-Module-Packaged-Generator'],
-        command => "pkgcpan -q -f $vhostdir/cpan_Mageia.db -d Mageia",
+        command => "pkgcpan -q -f $vhostdir/cpan_Mageia.db -d Mageia && chmod 644 $vhostdir/cpan_Mageia.db",
         user    => $login,
     }
 
