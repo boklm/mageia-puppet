@@ -25,9 +25,9 @@ $wgExtraNamespaces[NS_FEATURE_TALK] = 'Feature_Talk';
 $wgContentNamespaces[] = NS_FEATURE;
 $wgNamespacesToBeSearchedDefault[NS_FEATURE] = true;
 
-define('NS_TESTING_PROCEDURE', 102);
-define('NS_TESTING_PROCEDURE_TALK', 103);
-$wgExtraNamespaces[NS_TESTING_PROCEDURE] = 'Testing_procedure';
-$wgExtraNamespaces[NS_TESTING_PROCEDURE_TALK] = 'Testing_procedure_Talk';
-$wgContentNamespaces[] = NS_TESTING_PROCEDURE;
-$wgNamespacesToBeSearchedDefault[NS_TESTING_PROCEDURE] = true;
+define('NS_QA_PROCEDURE', 102);
+define('NS_QA_PROCEDURE_TALK', 103);
+$wgExtraNamespaces[NS_QA_PROCEDURE] = 'QA_procedure';
+$wgExtraNamespaces[NS_QA_PROCEDURE_TALK] = 'QA_procedure_Talk';
+$wgContentNamespaces[] = NS_QA_PROCEDURE;
+$wgNamespacesToBeSearchedDefault[NS_QA_PROCEDURE] = true;
