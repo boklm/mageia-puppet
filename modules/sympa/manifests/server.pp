@@ -1,4 +1,6 @@
-class sympa::server {
+class sympa::server(
+    $authentication_info_url = 'https://wiki.mageia.org/en/Mageia.org_user_account'
+    ) {
     include sympa::variable
     # perl-CGI-Fast is needed for fast cgi
     # perl-Socket6 is required by perl-IO-Socket-SSL
