@@ -19,4 +19,10 @@ class buildsystem::scheduler {
 	    mode => 0755,
 	    owner => $login,
 	}
+
+	cron { 'dispatch jobs':
+	    user    => $login,
+	    command => 'ulri; emi',
+	    minute  => '*',
+	}
 }

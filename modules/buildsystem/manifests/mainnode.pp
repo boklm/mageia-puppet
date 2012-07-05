@@ -22,10 +22,4 @@ class buildsystem::mainnode {
     }
 
     buildsystem::media_cfg { ['i586','x86_64']: }
-
-    cron { 'dispatch jobs':
-        user    => $sched_login,
-        command => 'ulri; emi',
-        minute  => '*',
-    }
 }
