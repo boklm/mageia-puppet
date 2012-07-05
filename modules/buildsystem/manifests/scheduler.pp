@@ -22,7 +22,7 @@ class buildsystem::scheduler {
 
 	cron { 'dispatch jobs':
 	    user    => $login,
-	    command => 'ulri; emi',
+	    command => "ULRI_LOG_FILE=$logdir/ulri.log ulri; EMI_LOG_FILE=$logdir/emi.log emi",
 	    minute  => '*',
 	}
 }
