@@ -7,9 +7,16 @@ class buildsystem::scheduler {
 
         $login = $buildsystem::scheduler::var::login
         $homedir = $buildsystem::scheduler::var::homedir        
+	$logdir = $buildsystem::scheduler::var::logdir
 
         buildsystem::sshuser { $login:
             homedir => $homedir,
             comment => 'System user used to schedule builds',
         }
+
+	file { $logdir:
+	    ensure => directory,
+	    mode => 0755,
+	    owner => $login,
+	}
 }
