@@ -60,4 +60,11 @@ class bugzilla {
       recurse => true,
       require => Subversion::Snapshot[$bugzilla_location],
     }
+
+    file { '/usr/share/bugzilla/www/robots.txt':
+      group   => 'apache',
+      mode    => '0640',
+      content => template('bugzilla/robots.txt'),
+      require => Package['bugzilla-extension-sitemap'],
+    }
 }
