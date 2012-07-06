@@ -30,6 +30,7 @@ authentication:
                 role_basedn: <%= dc_suffix %>
 
 register:
+        login_regex: ^[a-z][a-z0-9-]*$
         login_blacklist:
                 - apache
                 - mirror
