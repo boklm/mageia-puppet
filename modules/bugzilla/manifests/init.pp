@@ -3,6 +3,7 @@ class bugzilla {
     $bugzilla_location = '/usr/share/bugzilla/template/en/custom'
 
     package {['bugzilla',
+    	      'bugzilla-extension-sitemap',
               'graphviz',
               'perl-Template-GD', # needed for graphical_report support
               'perl-Test-Taint',
