@@ -32,6 +32,16 @@ node rabbit {
         minute  => 30
     }
 
+    youri-check::config {'config_2':
+        version => '2',
+    }
+
+    youri-check::check {'check_2':
+        version => '2',
+        hour    => '*/2',
+        minute  => 30
+    }
+
     # for testing iso quickly
     include libvirtd::kvm
     libvirtd::group_access { 'mga-iso_makers': }
