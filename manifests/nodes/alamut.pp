@@ -88,6 +88,15 @@ node alamut {
         minute  => '54'
     }
 
+    youri-check::config {'config_2':
+        version => '2',
+    }
+    youri-check::report {'report_2':
+        version => '2',
+        hour    => '*',
+        minute  => '9'
+    }
+
     include wikis
     include websites::perl
 }
