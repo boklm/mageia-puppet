@@ -39,7 +39,7 @@ node rabbit {
     youri-check::check {'check_2':
         version => '2',
         hour    => '*/2',
-        minute  => 30
+        minute  => 45
     }
 
     # for testing iso quickly
