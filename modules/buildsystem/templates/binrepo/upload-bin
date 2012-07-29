@@ -13,6 +13,7 @@ comment="$2"
 
 /bin/cat > "$tmpfile"
 sha1sum=$(/usr/bin/sha1sum "$tmpfile" | sed 's/ .*$//')
+test -n "$sha1sum"
 if [ -f "$binrepodir/$sha1sum" ]
 then
     echo "File $sha1sum already exists." >&2
