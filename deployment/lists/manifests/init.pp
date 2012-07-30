@@ -93,6 +93,13 @@ class lists {
         topics  => 'forums',
     }
 
+    sympa::announce_list_email {'forums-bugs':
+        subject      => 'Forums bug reports from bugzilla',
+        reply_to     => "forums-discuss@ml.$::domain",
+        sender_email => "bugzilla-daemon@$::domain",
+        topics       => 'forums',
+    }
+
     sympa::public_list {'doc-discuss':
         subject => 'Discussions about Mageia documentation',
         topics  => 'doc',
