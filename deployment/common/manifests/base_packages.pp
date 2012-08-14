@@ -1,8 +1,9 @@
 class common::base_packages {
     # packages installed everywhere
-    # asked by misc : screen, vim-enhanced, htop, lsof, tcpdump, less,
+    # asked by misc: screen, vim-enhanced, htop, lsof, tcpdump, less,
     #                 lvm2, lshw, iotop
-    # asked by nanar : rsync
+    # asked by nanar: rsync
+    # asked bu dams: watchdog, wget
     $package_list= ['screen',
                     'vim-enhanced',
                     'htop',
@@ -12,7 +13,9 @@ class common::base_packages {
                     'less',
                     'lshw',
                     'lvm2',
-                    'iotop']
+                    'iotop',
+		    'watchdog',
+		    'wget']
 
     if $::arch == 'x86_64' {
         $package_list += ['mcelog']
