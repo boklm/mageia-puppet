@@ -13,8 +13,7 @@ class blog {
     }
     
     class files_bots inherits base {
-        package { ['wget',
-                   'php-mysql',
+        package { ['php-mysql',
                    'php-ldap',
                    'unzip']: }
 
