@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1h
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2012051500	; Serial
+        2012082700	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -48,6 +48,9 @@ alamut      IN SSHFP 2 1 179cfa0660550698c4d98f488772b7c7896d96b5
 ; since we have a subdomain, we cannot use a CNAME
 ml          IN  A       212.85.158.146
 ml          IN  AAAA    2a02:2178:2:7::2
+; mga torrent server and tracker
+torrent      IN  A       212.85.158.146
+torrent      IN  AAAA    2a02:2178:2:7::2
 
 valstar     IN  A       212.85.158.147
 valstar     IN  AAAA    2a02:2178:2:7::3
