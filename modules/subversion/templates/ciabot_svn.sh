@@ -33,7 +33,7 @@
 #
 # --------------------------------------------------------------------------
 #
-# See http://cia.navi.cx for more information on what the CIA bot
+# See http://cia.vc for more information on what the CIA bot
 # is and how it works, and links to other client scripts.
 #
 # To use the CIA bot in your Subversion repository...
@@ -78,7 +78,7 @@ REPOS="$1"
 REV="$2"
 
 # The email address CIA lives at
-cia_address="cia@cia.navi.cx"
+cia_address="cia@cia.vc"
 
 author=`svnlook author -r "$REV" "$REPOS" | sed 's/\&/\&amp;/g;s/</\&lt;/g;s/>/\&gt;/g'`
 if test -n "$ignore_author" && echo "$author" | grep -q "$ignore_author"
