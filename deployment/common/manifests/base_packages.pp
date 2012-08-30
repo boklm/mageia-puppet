@@ -14,6 +14,7 @@ class common::base_packages {
                     'lshw',
                     'lvm2',
                     'iotop',
+		    'watchdog',
 		    'wget']
 
     if $::arch == 'x86_64' {
