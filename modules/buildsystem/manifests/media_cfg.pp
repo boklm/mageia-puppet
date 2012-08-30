@@ -3,7 +3,6 @@ define buildsystem::media_cfg() {
     include buildsystem::repository
     
     $arch = $name
-    $sched_login = $buildsystem::scheduler::var::login
     
     file { "$buildsystem::repository::dir/distrib/cauldron/$arch/media/media_info/media.cfg":
         owner  => $buildsystem::base::sched_login,
