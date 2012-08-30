@@ -51,6 +51,9 @@ class buildsystem::mgarepo {
         'infra_1'  => {
             'infra' => ['release']
         },
+        'infra_2'  => {
+            'infra' => ['release']
+        },
     }
 
     import 'create_upload_dir.rb'
