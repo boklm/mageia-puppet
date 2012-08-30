@@ -21,5 +21,12 @@ class buildsystem::mainnode {
         vhost_file => 'buildsystem/vhost_repository.conf',
     }
 
-    buildsystem::media_cfg { ['i586','x86_64']: }
+    buildsystem::media_cfg { "cauldron i586":
+	distro  => 'cauldron',
+	arch    => 'i586',
+    }
+    buildsystem::media_cfg { "cauldron x86_64":
+	distro  => 'cauldron',
+	arch    => 'x86_64',
+    }
 }
