@@ -33,9 +33,4 @@ define buildsystem::sshuser($homedir, $comment, $groups = []) {
         group   => $name,
         require => File[$homedir],
     }
-
-    ssh::auth::key { $name:
-            # declare a key for sched bot: RSA, 2048 bits
-            home => $homedir,
-    }
 }

@@ -6,6 +6,7 @@ class buildsystem::mainnode {
     include buildsystem::mgarepo
     include buildsystem::signbot
     include buildsystem::youri_submit
+    include buildsystem::sshkeys
 
     $sched_login    = $buildsystem::scheduler::var::login
     $sched_home_dir = $buildsystem::scheduler::var::homedir
