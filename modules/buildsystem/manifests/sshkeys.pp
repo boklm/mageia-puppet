@@ -1,4 +1,5 @@
 class buildsystem::sshkeys {
+    include ssh::auth
     include $buildsystem::scheduler::var
     include $buildsystem::iurt::user
 
