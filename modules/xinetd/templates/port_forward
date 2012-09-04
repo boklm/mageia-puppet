@@ -7,7 +7,7 @@ service <%= name %>
 <%- else -%>
         socket_type     = dgram
 <%- end -%>
-        protocol        = <%= protocol %>
+        protocol        = <%= proto %>
         user            = nobody
         wait            = no
         redirect        = <%= target_ip %> <%= target_port %>
