@@ -17,12 +17,7 @@ node valstar {
 
     include ssh::auth
     include ssh::auth::keymaster
-    include buildsystem::mainnode
-    include buildsystem::sync20101
-    include buildsystem::release
-    include buildsystem::maintdb
-    include buildsystem::binrepo
-    include buildsystem::repoctl
+    include mga_buildsystem::mainnode
     include softwarekey
     include mgasoft
 
