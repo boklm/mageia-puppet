@@ -2,7 +2,7 @@ service <%= name %>
 {
         disable         = no
         type            = UNLISTED
-<%- if protocol == 'tcp' -%>
+<%- if proto == 'tcp' -%>
         socket_type     = stream
 <%- else -%>
         socket_type     = dgram
