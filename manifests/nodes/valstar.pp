@@ -53,17 +53,4 @@ node valstar {
     mirror_cleaner::orphans {  'cauldron':
         base => '/distrib/bootstrap/distrib/',
     }
-
-    # TODO use a dns zone for that
-    host { 'arm1':
-        ensure       => present,
-        ip           => '10.10.10.11',
-        host_aliases => [ "arm1.$::domain" ],
-    }
-
-    host { 'arm2':
-        ensure       => present,
-        ip           => '10.10.10.12',
-        host_aliases => [ "arm2.$::domain" ],
-    }
 }
