@@ -7,7 +7,7 @@ class blog {
 
         user { 'blog':
             groups  => apache,
-            comment => 'User to run script checking for new blog post',
+            comment => 'Mageia Blog bot',
             home    => '/var/lib/blog',
         }
     }
