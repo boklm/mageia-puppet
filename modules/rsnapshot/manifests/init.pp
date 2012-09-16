@@ -60,7 +60,7 @@ class rsnapshot {
 		$rsnapshot_conf +> $conffile,
 	    }
 	}
-	if ($dweekly_interval != '0') {
+	if ($weekly_interval != '0') {
 	    Rsnapshot::Cron_file <| title == 'weekly' |> {
 		$rsnapshot_conf +> $conffile,
 	    }
