@@ -1,5 +1,5 @@
 class rsnapshot {
     class base {
-        package { ['rsnapshot']: }
-	}
+	package { ['rsnapshot']: }
+    }
 }
