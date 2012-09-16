@@ -19,5 +19,10 @@ class backups {
 	    snapshot_root => "${backups_dir}/alamut",
 	    backup => [ 'root@alamut.mageia.org:/srv/wiki wiki' ],
 	}
+
+	rsnapshot::backup{ 'krampouezh':
+	    snapshot_root => "${backups_dir}/krampouezh",
+	    backup => [ 'root@krampouezh.mageia.org:/home/irc_bots/meetings meetbot' ],
+	}
     }
 }
