@@ -17,7 +17,7 @@ class rsnapshot {
 
     define cron_file($rsnapshot_conf = []) {
 	$filepath = "/tmp/cron.${name}_rsnapshot-backups"
-	$rsnapshot_arg = ${name}
+	$rsnapshot_arg = $name
 	file { $filepath:
 	    ensure => present,
 	    content => template('rsnapshot/cron_file'),
