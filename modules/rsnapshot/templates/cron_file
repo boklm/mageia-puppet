@@ -1,0 +1,5 @@
+#!/bin/sh
+
+<%- for conf in @rsnapshot_conf -%>
+/usr/bin/rsnapshot -c <%= conf %> <%= rsnapshot_arg %>
+<%- end -%>
