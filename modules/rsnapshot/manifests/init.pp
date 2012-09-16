@@ -52,22 +52,22 @@ class rsnapshot {
 
 	if ($hourly_interval != '0') {
 	    Rsnapshot::Cron_file <| title == 'hourly' |> {
-		$rsnapshot_conf +> $conffile,
+		rsnapshot_conf +> $conffile,
 	    }
 	}
 	if ($daily_interval != '0') {
 	    Rsnapshot::Cron_file <| title == 'daily' |> {
-		$rsnapshot_conf +> $conffile,
+		rsnapshot_conf +> $conffile,
 	    }
 	}
 	if ($weekly_interval != '0') {
 	    Rsnapshot::Cron_file <| title == 'weekly' |> {
-		$rsnapshot_conf +> $conffile,
+		rsnapshot_conf +> $conffile,
 	    }
 	}
 	if ($monthly_interval != '0') {
 	    Rsnapshot::Cron_file <| title == 'monthly' |> {
-		$rsnapshot_conf +> $conffile,
+		rsnapshot_conf +> $conffile,
 	    }
 	}
     }
