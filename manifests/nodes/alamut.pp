@@ -60,7 +60,8 @@ node alamut {
     include viewvc
 
     # disabled until fixed
-    #include repositories::git_mirror
+    #Enable back to test.
+    include repositories::git_mirror
     include gitweb
 
     include xymon::server
