@@ -19,4 +19,9 @@ class mga_buildsystem::mainnode {
 	port => '4252',
 	proto => 'tcp',
     }
+
+    $rpmlint_packages = [ "rpmlint-mageia-policy", "rpmlint-mageia-mga2-policy"]
+    package { $rpmlint_packages:
+	ensure => installed,
+    }
 }
