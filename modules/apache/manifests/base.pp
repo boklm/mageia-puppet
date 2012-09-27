@@ -6,9 +6,7 @@ class apache::base {
     $apache_user = 'apache'
     $apache_group = 'apache'
 
-    package { 'apache-mpm-prefork':
-        alias => 'apache',
-    }
+    package { 'apache-mpm-prefork': }
 
     if ($lsbdistrelease == '1') or ($lsbdistrelease == '2010.0') {
 	package { 'apache-conf': }
