@@ -10,7 +10,9 @@ class apache::base {
         alias => 'apache',
     }
 
-    package { 'apache-conf': }
+    if ($lsbdistrelease == '1') or ($lsbdistrelease == '2010.0') {
+	package { 'apache-conf': }
+    }
 
     service { 'httpd':
         alias     => 'apache',
