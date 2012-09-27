@@ -12,6 +12,8 @@ class apache::base {
 
     if ($lsbdistrelease == '1') or ($lsbdistrelease == '2010.0') {
 	package { 'apache-conf': }
+    } else {
+	package { 'apache': }
     }
 
     service { 'httpd':
