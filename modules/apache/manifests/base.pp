@@ -8,7 +8,7 @@ class apache::base {
 
     package { 'apache-mpm-prefork': }
 
-    if ($lsbdistrelease == '1') or ($lsbdistrelease == '2010.0') {
+    if ($lsbdistrelease == '1') or ($lsbdistid == 'MandrivaLinux') {
 	package { 'apache-conf': }
     } else {
 	package { 'apache': }
