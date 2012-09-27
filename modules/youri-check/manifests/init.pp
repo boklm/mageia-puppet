@@ -36,6 +36,7 @@ class youri-check {
             owner => $base::user,
 	    mode => 640,
 	    content => template("youri-check/$version.conf"),
+	    require => User[$base::user],
 	}
     }
 
@@ -61,6 +62,7 @@ class youri-check {
             minute => $minute,
             user => $base::user,
 	    environment => "MAILTO=root",
+	    require => User[$base::user],
         }
     }
 
@@ -89,6 +91,7 @@ class youri-check {
             hour => $hour,
             minute => $minute,
             user => $base::user,
+	    require => User[$base::user],
         }
     }
 }
