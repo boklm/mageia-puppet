@@ -1,6 +1,6 @@
 $TTL 3D
 @   IN  SOA ns0.mageia.org. root.mageia.org. (
-        2010120102  ; Serial
+        2012092801  ; Serial
         3600        ; Refresh
         3600        ; Retry
         2419200     ; Expire
@@ -17,4 +17,5 @@ $TTL 3D
 4.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN  PTR ecosse.mageia.org.
 5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN  PTR jonund.mageia.org.
 6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN  PTR fiona.mageia.org.
-
+7.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN  PTR sucuk.mageia.org.
+8.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 IN  PTR rabbit.mageia.org.
