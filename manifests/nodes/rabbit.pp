@@ -11,7 +11,7 @@ node rabbit {
     include draklive
     include access_classes::iso_makers
     include openssh::ssh_keys_from_ldap
-    include mirror::mageia
+    # include mirror::mageia
     include releasekey
 
     youri-check::config {'config_cauldron':
