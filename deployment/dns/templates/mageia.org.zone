@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1h
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2012090400	; Serial
+        2012092900	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -127,7 +127,7 @@ pkgcpan     IN CNAME alamut
 perl	    IN CNAME alamut
 tmp	    IN CNAME alamut
   
-bcd	    IN CNAME old-rabbit
+bcd	    IN CNAME rabbit
 
 ; build nodes aliases
 jonund0 IN CNAME jonund
