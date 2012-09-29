@@ -2,6 +2,10 @@
 $wiki_root = $argv[1];
 $mw_root = '/usr/share/mediawiki';
 
+if (!is_dir("$wiki_root/config")) {
+    exit(1);
+}
+
 // DefaultSettings.php complain if not defined
 define('MEDIAWIKI',1);
 
