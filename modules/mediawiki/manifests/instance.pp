@@ -38,7 +38,7 @@ define mediawiki::instance( $title,
     exec { "deploy_db $name":
         command     => "php /usr/local/bin/init_wiki.php $wiki_root",
         refreshonly => true,
-        onlyif      => "test -d $wiki_root/config",
+        onlyif      => "/usr/bin/test -d $wiki_root/config",
     }
 
     file { "$wiki_root/LocalSettings.php":
