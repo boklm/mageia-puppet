@@ -39,13 +39,11 @@ group-compress Marseille
 212.85.158.149	jonund.<%= domain %>	# testip ssh
 212.85.158.150	fiona.<%= domain %>	# testip ssh
 212.85.158.151	sucuk.<%= domain %>	# testip ssh
+212.85.158.152	rabbit.<%= domain %>	# ssh
 
 group-compress Gandi
 95.142.164.207	krampouezh.<%= domain %>	# ssh dns ldap ldapssl smtp
 217.70.188.116	champagne.<%= domain %>	# ssh
-
-group-compress Dedibox
-88.190.12.224	rabbit.<%= domain %>	# ssh
 
 group-compress VM Alamut
 192.168.122.131 friteuse.<%= domain %> # testip ssh http://forums.<%= domain %>=192.168.122.131/  https://forums.<%= domain %>=192.168.122.131/
