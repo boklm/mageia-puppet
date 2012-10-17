@@ -3,11 +3,6 @@ class common::default_ssh_root_key {
         user => 'root'
     }
 
-    ssh_authorized_key { 'ssh_key_misc':
-        type => 'ssh-rsa',
-        key  => 'AAAAB3NzaC1yc2EAAAABIwAAAgEA4fpjTvcL09Yzv7iV40TPjiXGHOOS5MldSh5ezSk7AMLVjAAloiidl8O3xwlxwUnjUx5zv1+RlbV76sdiSD32lBht72OZPg0UqQIB8nHeVJBdJ8YpnQ3LynNPPYJ65dvdr0uE2KRlN/1emi2N+O+f2apwc1YiL8nySEK/zLvCKO5xj16bIVuGFilDdp75X/t3C/PDsZU+CUyWL5Ly3T2+ljGc+nEAK9P0PNnvl9bRK9dqu457xjca8nXwWVI1fd6Jnt1jISFdQXy6/+9326Z6aAxvWKCrCvmdg+tAUN3fEj0WXZEPZQ1Ot0tBxKYl+xhV1Jv/ILLbInT0JZkSEKNBnJn4G7O4v+syoMqA7myHre73oGn/ocRWGJskIM33aXrJkZkJ4LkF1GLJPFI4y7bzj024sPAVvBwDrV7inwsOy0DSQ5tCbfX25TTXbK+WMXzz0pBbSi6mPgjtzlSYsLZrTa7ARYhggDG2miuOAFrup8vP7/aH2yZ+hZuF70FsMh4lf/eXDGwfypyfYrjfVSkFfY0ZU294ouTBn3HtHmgFu82vOMvLNtI9UyERluCBpLBXOT8xgM97aWFeUJEKrVxkGIiNwVNylMEYp8r16njv810NdTLA3jZu9CLueVvME6GLsGve5idtGmaYuGYNRnSRx3PQuJZl1Nj7uQHsgAaWdiM=',
-    }
-
     ssh_authorized_key { 'ssh_key_dams':
         type => 'ssh-dss',
         key  => 'AAAAB3NzaC1kc3MAAACBAP7Dz4U90iWjb8SXVpMsC/snU0Albjsi5rSVFdK5IqG0jcQ3K5F/X8ufUN+yOHxpUKeE6FAPlvDxIQD8hHv53yAoObM4J4h2SVd7xXpIDTXhdQ9kMYbgIQzyI/2jptF77dxlwiH9TirmmpUSb680z55IkVutwSVJUOZCOWFXfa35AAAAFQDqYF7tWvnzM/zeSFsFZ9hqKCj47QAAAIBdmaPCyf4iU9xGUSWi1p7Y6OlUcfu2KgpETy8WdOmZ4lB3MXdGIoK5/LLeLeeGomAVwJMw3twOOzj4e1Hz16WM+fWsMVFnZftLFo9L2LvSQElIEznjIxqfmIsc2Id2c0gI+kEnigOWbBJ7h0O09uT7/eNBysqgseCMErzedy5ZnAAAAIAGrjfWjVtJQa888Sl8KjKM9MXXvgnyCDCBP9i4pncsFOWEWGMWPY0Z9CD0OZYDdvWLnFkrnoMaIvWQU7pb4/u/Tz9Dsm65eQzUaLSGFzROAX6OB47L7spMS4xd6SF+ASawy/aYiHf241zumJLvPkUpXceBv2s7QOp2g6S6qCtypA==',
