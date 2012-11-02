@@ -1,6 +1,6 @@
 $TTL 3D
 @   IN  SOA ns0.mageia.org. root.mageia.org. (
-        2012082900  ; Serial
+        2012110200  ; Serial
         3600        ; Refresh
         3600        ; Retry
         2419200     ; Expire
@@ -10,5 +10,3 @@ $TTL 3D
 ; nameservers
 @	IN      NS      ns0.mageia.org.
 @	IN      NS      ns1.mageia.org.
-
-f.7.0.4.1.8.e.f.f.f.9.b.6.2.2.0 IN  PTR old-rabbit.mageia.org.

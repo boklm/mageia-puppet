@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1h
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2012092900	; Serial
+        2012110200	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -67,9 +67,6 @@ sucuk       IN  A       212.85.158.151
 sucuk       IN  AAAA    2a02:2178:2:7::7
 rabbit	    IN  A	212.85.158.152
 rabbit	    IN	AAAA	2a02:2178:2:7::8
-
-old-rabbit      IN  A       88.190.12.224
-old-rabbit      IN  AAAA    2a01:e0b:1000:12:226:b9ff:fe81:407f
 
 arm1	    IN	A	10.42.0.51
 arm2	    IN	A	10.42.0.52
