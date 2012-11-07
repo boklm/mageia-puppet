@@ -19,6 +19,9 @@ class bcd::base {
     # svn version is used for now
     #package { bcd: }
 
+    # needed for qemu-over ssh
+    package { 'xauth': }
+
     $isomakers_group = 'mga-iso_makers'
     sudo::sudoers_config { 'bcd':
         content => template('bcd/sudoers.bcd')
