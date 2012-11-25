@@ -16,6 +16,8 @@ class buildsystem::youri_submit {
             content => template('buildsystem/mga-youri-submit.wrapper');
         'submit_package':
             content => template('buildsystem/submit_package.pl');
+        'mga-clean-distrib':
+            content => template('buildsystem/cleaner.rb');
     }
 
     sudo::sudoers_config { 'mga-youri-submit':
