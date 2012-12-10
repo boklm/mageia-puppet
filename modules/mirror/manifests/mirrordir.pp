@@ -10,7 +10,7 @@ define mirror::mirrordir ($remoteurl,
         group  => 'mirror',
     }
 
-    local_script { "mirror_$name":
+    mga-common::local_script { "mirror_$name":
         content => template('mirror/mirrordir'),
     }
 

@@ -1,7 +1,7 @@
 # For main Mageia mirror
 class mirror::main {
     include mirror::base
-    local_script { 'update_timestamp':
+    mga-common::local_script { 'update_timestamp':
         content => template('mirror/update_timestamp')
     }
 
