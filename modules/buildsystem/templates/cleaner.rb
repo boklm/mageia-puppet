@@ -28,7 +28,7 @@ opts = GetoptLong.new(
 base_path = "<%= repository_root %>/distrib"
 archs = [ "i586", "x86_64" ]
 media = "core/release"
-old_path = "<% $packages_archivedir %>"
+old_path = "<%= packages_archivedir %>"
 version = "cauldron"
 
 opts.each do |opt, arg|
