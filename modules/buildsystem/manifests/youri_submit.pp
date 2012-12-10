@@ -49,8 +49,15 @@ class buildsystem::youri_submit {
         matches => '*.rpm',
     }
 
-    # FIXME use /usr/local/ once it will be in @INC
-    file { '/usr/lib/perl5/vendor_perl/5.12.3/Youri/Repository/Mageia.pm':
+    include mga-common::var::perl
+    file { [ "${mga-common::var::perl::site_perl_dir}/Youri",
+             "${mga-common::var::perl::site_perl_dir}/Youri/Repository"]:
+        ensure => directory,
+        mode => 0755,
+        owner => root,
+        group => root,
+    }
+    file { "${mga-common::var::perl::site_perl_dir}/Youri/Repository/Mageia.pm":
         source => 'puppet:///modules/buildsystem/Mageia.pm',
     }
 
