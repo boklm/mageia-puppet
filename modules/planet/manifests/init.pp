@@ -17,7 +17,7 @@ class planet {
         content  => template('planet/planet_vhosts.conf')
     }
 
-    local_script { 'deploy_new-planet.sh':
+    mga-common::local_script { 'deploy_new-planet.sh':
         content => template('planet/deploy_new-planet.sh')
     }
 
@@ -36,7 +36,7 @@ class planet {
                 ensure => directory,
         }
 
-        local_script { "backup_planet-files.sh":
+        mga-common::local_script { "backup_planet-files.sh":
             content => template("blog/backup_planet-files.sh")
         }
 
