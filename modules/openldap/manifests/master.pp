@@ -26,7 +26,7 @@ class openldap::master inherits openldap {
         # with data
         package { 'openldap-clients': }
 
-        local_script { 'init_ldap.sh':
+        mga-common::local_script { 'init_ldap.sh':
             content => template('openldap/init_ldap.sh'),
             require => Package['openldap-clients'],
         }
