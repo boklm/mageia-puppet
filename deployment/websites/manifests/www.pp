@@ -4,6 +4,7 @@ class websites::www {
     $vhostdir = "$websites::base::webdatadir/$vhost"
     $svn_location = "svn://svn.$::domain/svn/web/www/trunk"
 
+    include apache::var
     include apache::mod::php
     include apache::mod::geoip
 
@@ -17,7 +18,7 @@ class websites::www {
 
     file { "$vhostdir/var/tmp/cache":
         ensure => directory,
-        group  => $apache::base::apache_group,
+        group  => $apache::var::apache_group,
         mode   => '0660',
     }
 

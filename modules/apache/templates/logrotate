@@ -1,5 +1,5 @@
 /var/log/httpd/*_log /var/log/httpd/apache_runtime_status /var/log/httpd/ssl_mutex {
-    rotate <%= httpdlogs_rotate %>
+    rotate <%= scope.lookupvar('apache::var::httpdlogs_rotate') %>
     monthly
     missingok
     notifempty

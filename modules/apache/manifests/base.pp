@@ -1,10 +1,5 @@
 class apache::base {
-
-    # number of time the log file are rotated before being removed
-    $httpdlogs_rotate = '24'
-
-    $apache_user = 'apache'
-    $apache_group = 'apache'
+    include apache::var
 
     package { 'apache-mpm-prefork': }
 
