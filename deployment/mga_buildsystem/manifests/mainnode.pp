@@ -5,6 +5,7 @@ class mga_buildsystem::mainnode {
     include buildsystem::maintdb
     include buildsystem::binrepo
     include buildsystem::repoctl
+    include buildsystem::pkgsubmit
 
     # Forward ports to arm1 and arm2 ssh, to access them from outside
     xinetd::port_forward {"forward_arm1":
