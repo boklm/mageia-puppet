@@ -3,11 +3,7 @@ class apache::base {
 
     package { 'apache-mpm-prefork': }
 
-    if ($lsbdistrelease == '1') or ($lsbdistid == 'MandrivaLinux') {
-	package { 'apache-conf': }
-    } else {
-	package { 'apache': }
-    }
+    package { $apache::var::pkg_conf: }
 
     service { 'httpd':
         alias     => 'apache',
