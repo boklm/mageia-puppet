@@ -17,9 +17,11 @@ class apache::base {
 
     apache::config {
         '/etc/httpd/conf.d/customization.conf':
-            content => template('apache/customization.conf');
+            content => template('apache/customization.conf'),
+            require => Package[$apache::var::pkg_conf];
         '/etc/httpd/conf/vhosts.d/00_default_vhosts.conf':
-            content => template('apache/00_default_vhosts.conf');
+            content => template('apache/00_default_vhosts.conf'),
+            require => Package[$apache::var::pkg_conf];
     }
 
     file { '/etc/logrotate.d/httpd':
