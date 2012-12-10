@@ -54,23 +54,4 @@ class repositories::subversion {
 	commit_mail => ["packages-commits@ml.$::domain"],
         cia_module  => 'packages',
     }
-
-    file { '/svn/binrepos/':
-        ensure => directory,
-        mode   => '0700',
-    }
-
-    subversion::repository { '/svn/binrepos/cauldron/':
-        group      => 'mga-packagers-committers',
-        cia_module => 'binrepos',
-    }
-
-    file { '/svn/binrepos/updates/':
-        ensure => directory
-    }
-
-    subversion::repository { '/svn/binrepos/updates/1/':
-        group      => 'mga-packagers-committers',
-        cia_module => 'binrepos_1',
-    }
 }
