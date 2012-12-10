@@ -21,7 +21,7 @@ class releasekey {
         require  => User[$sign_login],
     }
 
-    local_script { 'sign_checksums':
+    mga-common::local_script { 'sign_checksums':
         content => template('releasekey/sign_checksums'),
     }
 }
