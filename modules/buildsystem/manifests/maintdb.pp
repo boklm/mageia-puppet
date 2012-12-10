@@ -25,7 +25,7 @@ class buildsystem::maintdb {
         content => template('buildsystem/maintdb/maintdb.bin')
     }
 
-    local_script { 'wrapper.maintdb':
+    mga-common::local_script { 'wrapper.maintdb':
         content => template('buildsystem/maintdb/wrapper.maintdb')
     }
 

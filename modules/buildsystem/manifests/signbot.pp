@@ -31,7 +31,7 @@ class buildsystem::signbot {
         content => template('buildsystem/signbot/signbot-rpmmacros')
     }
 
-    local_script {
+    mga-common::local_script {
         'sign-check-package': content => template('buildsystem/signbot/sign-check-package');
         'mga-signpackage':    content => template('buildsystem/signbot/mga-signpackage');
     }

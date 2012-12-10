@@ -9,7 +9,7 @@ class buildsystem::youri_submit {
     $sched_login = $buildsystem::scheduler::var::login
     $packages_archivedir = "$sched_home_dir/old"
 
-    local_script {
+    mga-common::local_script {
         'mga-youri-submit':
             content => template('buildsystem/mga-youri-submit');
         'mga-youri-submit.wrapper':

@@ -3,7 +3,7 @@ class buildsystem {
     class sync20101 inherits base {
         $build_login = $buildsystem::iurt::user::login
         # TODO user iurt::user::homedir too
-        local_script { 'sync2010.1':
+        mga-common::local_script { 'sync2010.1':
 	        content => template('buildsystem/sync2010.1'),
         }
     }
@@ -11,7 +11,7 @@ class buildsystem {
     # a script to build 2010.1 packages. used on jonund
     class iurt20101 inherits base {
         $build_login = $buildsystem::iurt::user::login
-        local_script { 'iurt2010.1':
+        mga-common::local_script { 'iurt2010.1':
 	        content => template('buildsystem/iurt2010.1'),
         }
     }

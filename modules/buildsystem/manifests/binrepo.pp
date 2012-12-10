@@ -23,7 +23,7 @@ class buildsystem::binrepo {
         owner  => $login,
     }
 
-    local_script {
+    mga-common::local_script {
         'upload-bin':
             content => template('buildsystem/binrepo/upload-bin');
         'wrapper.upload-bin':
