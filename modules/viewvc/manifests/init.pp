@@ -16,7 +16,7 @@ class viewvc {
         webapp_file => 'viewvc/webapp.conf',
     }
 
-    local_script { 'kill_viewvc':
+    mga-common::local_script { 'kill_viewvc':
         content => template('viewvc/kill_viewvc.sh'),
     }
 
