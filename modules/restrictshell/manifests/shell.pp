@@ -3,7 +3,7 @@ class restrictshell::shell {
         ensure => directory,
     }
 
-    local_script { 'sv_membersh.pl':
+    mga-common::local_script { 'sv_membersh.pl':
         content => template('restrictshell/sv_membersh.pl'),
     }
 
