@@ -27,6 +27,6 @@ class openssh::ssh_keys_from_ldap($symlink_users = [],
         minute      => '*/10',
         user        => 'root',
         environment => 'MAILTO=root',
-        require     => Local_script['ldap-sshkey2file.py'],
+        require     => Mga-common::Local_script['ldap-sshkey2file.py'],
     }
 }

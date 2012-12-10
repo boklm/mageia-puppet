@@ -9,6 +9,6 @@ class mirror::main {
         user    => 'mirror',
         minute  => '*/10',
         command => '/usr/local/bin/update_timestamp',
-        require => [Local_script['update_timestamp'], User['mirror']],
+        require => [Mga-common::Local_script['update_timestamp'], User['mirror']],
     }
 }

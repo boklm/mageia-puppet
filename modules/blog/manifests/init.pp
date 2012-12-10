@@ -25,7 +25,7 @@ class blog {
             user    => 'blog',
             minute  => '*/15',
             command => '/usr/local/bin/check_new-blog-post.sh',
-            require => Local_script['check_new-blog-post.sh'],
+            require => Mga-common::Local_script['check_new-blog-post.sh'],
         }
 
         include apache::mod::php
@@ -63,7 +63,7 @@ class blog {
             hour    => '23',
             minute  => '42',
             command => '/usr/local/bin/backup_blog-db.sh',
-            require => Local_script['backup_blog-db.sh'],
+            require => Mga-common::Local_script['backup_blog-db.sh'],
         }
     }
 
@@ -81,7 +81,7 @@ class blog {
             hour    => '23',
             minute  => '42',
             command => '/usr/local/bin/backup_blog-files.sh',
-            require => Local_script['backup_blog-files.sh'],
+            require => Mga-common::Local_script['backup_blog-files.sh'],
         }
     }
 }
