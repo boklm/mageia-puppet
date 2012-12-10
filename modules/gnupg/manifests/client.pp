@@ -3,7 +3,7 @@ class gnupg::client {
               'rng-utils']:
     }
 
-    local_script { 'create_gnupg_keys.sh':
+    mga-common::local_script { 'create_gnupg_keys.sh':
         content => template('gnupg/create_gnupg_keys.sh')
     }
 }
