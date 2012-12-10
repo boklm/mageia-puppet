@@ -1,4 +1,5 @@
 class mga_buildsystem::mainnode {
+    include mga_buildsystem::config
     include buildsystem::mainnode
     include buildsystem::sync20101
     include buildsystem::release
