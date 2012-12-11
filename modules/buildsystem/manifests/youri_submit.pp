@@ -4,7 +4,7 @@ class buildsystem::youri_submit {
     include buildsystem::repository
     include buildsystem::var::scheduler
 
-    $repository_root = $buildsystem::var::repository::bootstrap_reporoot
+    $repository_root = $buildsystem::var::repository::bootstrap_root
     $sched_home_dir = $buildsystem::var::scheduler::homedir
     $sched_login = $buildsystem::var::scheduler::login
     $packages_archivedir = "$sched_home_dir/old"
