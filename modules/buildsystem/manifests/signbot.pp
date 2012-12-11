@@ -1,14 +1,10 @@
 class buildsystem::signbot {
     include buildsystem::scheduler::var
-    $login = 'signbot'
-    $home_dir = "/var/lib/$login"
-    $sign_keydir = "$home_dir/keys"
-    # FIXME: maybe keyid should be defined at an other place
-    $keyid = '80420F66'
+    include buildsystem::var::signbot
     $sched_login = $buildsystem::scheduler::var::login
 
-    sshuser { $login:
-        homedir => $home_dir,
+    sshuser { $buildsystem::var::signbot::login:
+        homedir => $buildsystem::var::signbot::home_dir,
         comment => 'System user used to sign packages',
         groups  => [$sched_login],
     }
@@ -18,9 +14,9 @@ class buildsystem::signbot {
         #FIXME there should be a variable somewhere to change
         # the name of the distribution
         key_name => 'Mageia Packages',
-        login    => $login,
-        batchdir => "$home_dir/batches",
-        keydir   => $sign_keydir,
+        login    => $buildsystem::var::signbot::login,
+        batchdir => "${buildsystem::var::signbot::home_dir}/batches",
+        keydir   => $buildsystem::var::signbot::sign_keydir,
     }
 
     sudo::sudoers_config { 'signpackage':

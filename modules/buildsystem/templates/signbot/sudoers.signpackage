@@ -1,2 +1,2 @@
-<%= sched_login %>	ALL =(<%= login %>) NOPASSWD: /usr/local/bin/mga-signpackage
-<%= sched_login %>	ALL =(<%= login %>) NOPASSWD: /usr/local/bin/sign-check-package
+<%= sched_login %>	ALL =(<%= scope.lookupvar('buildsystem::var::signbot::login') %>) NOPASSWD: /usr/local/bin/mga-signpackage
+<%= sched_login %>	ALL =(<%= scope.lookupvar('buildsystem::var::signbot::login') %>) NOPASSWD: /usr/local/bin/sign-check-package
