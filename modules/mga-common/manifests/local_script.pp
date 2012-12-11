@@ -1,11 +1,22 @@
-define mga-common::local_script($content,
+define mga-common::local_script(
+                $content = undef,
+                $source = undef,
 		$owner = 'root',
 		$group = 'root',
 		$mode = '0755') {
-    file { "/usr/local/bin/$name":
+    $filename = "/usr/local/bin/$name"
+    file { $filename:
 	owner   => $owner,
 	group   => $group,
 	mode    => $mode,
-	content => $content,
+    }
+    if ($source == undef) {
+	File[$filename] {
+	    content => $content,
+	}
+    } else {
+	File[$filename] {
+	    source => $source,
+	}
     }
 }
