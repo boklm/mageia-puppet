@@ -24,11 +24,11 @@ class buildsystem::signbot {
     }
 
     file { "$home_dir/.rpmmacros":
-        content => template('buildsystem/signbot/signbot-rpmmacros')
+        source => 'puppet:///modules/buildsystem/signbot/signbot-rpmmacros',
     }
 
     mga-common::local_script {
-        'sign-check-package': content => template('buildsystem/signbot/sign-check-package');
-        'mga-signpackage':    content => template('buildsystem/signbot/mga-signpackage');
+        'sign-check-package': source => 'puppet:///modules/buildsystem/signbot/sign-check-package';
+        'mga-signpackage':    source => 'puppet:///modules/buildsystem/signbot/mga-signpackage';
     }
 }
