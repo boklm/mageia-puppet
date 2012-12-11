@@ -3,11 +3,11 @@ class buildsystem::scheduler {
         include ssh::auth
         include buildsystem::iurt::packages
         include buildsystem::iurt::upload
-        include buildsystem::scheduler::var
+        include buildsystem::var::scheduler
 
-        $login = $buildsystem::scheduler::var::login
-        $homedir = $buildsystem::scheduler::var::homedir        
-	$logdir = $buildsystem::scheduler::var::logdir
+        $login = $buildsystem::var::scheduler::login
+        $homedir = $buildsystem::var::scheduler::homedir        
+	$logdir = $buildsystem::var::scheduler::logdir
 
         buildsystem::sshuser { $login:
             homedir => $homedir,

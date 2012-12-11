@@ -1,7 +1,7 @@
 class buildsystem::signbot {
-    include buildsystem::scheduler::var
+    include buildsystem::var::scheduler
     include buildsystem::var::signbot
-    $sched_login = $buildsystem::scheduler::var::login
+    $sched_login = $buildsystem::var::scheduler::login
 
     sshuser { $buildsystem::var::signbot::login:
         homedir => $buildsystem::var::signbot::home_dir,

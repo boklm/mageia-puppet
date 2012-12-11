@@ -8,8 +8,8 @@ class buildsystem::mainnode {
     include buildsystem::youri_submit
     include buildsystem::sshkeys
 
-    $sched_login    = $buildsystem::scheduler::var::login
-    $sched_home_dir = $buildsystem::scheduler::var::homedir
+    $sched_login    = $buildsystem::var::scheduler::login
+    $sched_home_dir = $buildsystem::var::scheduler::homedir
 
     $build_login = $buildsystem::iurt::user::login
 

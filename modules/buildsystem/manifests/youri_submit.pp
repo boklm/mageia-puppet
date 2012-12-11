@@ -2,11 +2,11 @@ class buildsystem::youri_submit {
     include sudo
     include buildsystem::rpmlint
     include buildsystem::repository
-    include buildsystem::scheduler::var
+    include buildsystem::var::scheduler
 
     $repository_root = $buildsystem::repository::dir
-    $sched_home_dir = $buildsystem::scheduler::var::homedir
-    $sched_login = $buildsystem::scheduler::var::login
+    $sched_home_dir = $buildsystem::var::scheduler::homedir
+    $sched_login = $buildsystem::var::scheduler::login
     $packages_archivedir = "$sched_home_dir/old"
 
     mga-common::local_script {

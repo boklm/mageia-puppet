@@ -1,7 +1,7 @@
 class buildsystem::mgarepo {
-    include buildsystem::scheduler::var
-    $sched_login = $buildsystem::scheduler::var::login
-    $sched_home_dir = $buildsystem::scheduler::var::homedir
+    include buildsystem::var::scheduler
+    $sched_login = $buildsystem::var::scheduler::login
+    $sched_home_dir = $buildsystem::var::scheduler::homedir
 
     package { ['mgarepo','rpm-build']: }
 

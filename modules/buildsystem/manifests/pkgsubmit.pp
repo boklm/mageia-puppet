@@ -1,6 +1,6 @@
 class buildsystem::pkgsubmit {
-    include buildsystem::scheduler::var
-    $sched_home_dir = $buildsystem::scheduler::var::homedir
+    include buildsystem::var::scheduler
+    $sched_home_dir = $buildsystem::var::scheduler::homedir
 
     $location = '/var/www/bs'
     file { [$location,"$location/data"]:
