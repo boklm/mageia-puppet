@@ -65,7 +65,7 @@
 #
 project_name="Mageia"
 module_name="<%= cia_module %>"
-return_address="root@<%= domain %>"
+return_address="root@<%= @domain %>"
 ignore_author="<%= cia_ignore_author %>"
 
 # System
@@ -91,7 +91,7 @@ for file in `svnlook changed -r "$REV" "$REPOS" | cut -c 3- | sed 's/\&/\&amp;/g
     files="$files<file>$file</file>"
 done
 
-url="http://svnweb.<%= domain%>/${REPOS/\/svn\//}?view=revision&amp;revision=$REV"
+url="http://svnweb.<%= @domain%>/${REPOS/\/svn\//}?view=revision&amp;revision=$REV"
 
 # Send an email with the final XML message
 (cat <<EOF

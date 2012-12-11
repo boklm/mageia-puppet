@@ -65,7 +65,7 @@ class subversion {
         #    - openldap , like named
 
         define syntax_check($regexp_ext,$check_cmd) {
-            file { "$local_dir/pre-commit.d/$name":
+            file { "${subversion::server::local_dir}/pre-commit.d/$name":
                 mode    => '0755',
                 content => template('subversion/syntax_check.sh')
             }

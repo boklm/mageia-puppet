@@ -7,7 +7,7 @@
   alternative: HTML::ColorDiff
   with-diff: 1
   max_diff_length: 20000
-  from: root@<%= domain %>
+  from: root@<%= @domain %>
   to:
 <%- commit_mail.each do |mail|  -%>
     - <%= mail %>
@@ -19,6 +19,6 @@
   alternative: HTML::ColorDiff
   with-diff: 1
   max_diff_length: 20000
-  from: root@<%= domain %>
+  from: root@<%= @domain %>
   to: <%= i18n_mail %>
 <%- end -%>
