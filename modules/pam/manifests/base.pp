@@ -1,4 +1,5 @@
 class pam::base {
+    include pam::multiple_ldap_access
     package { ['pam_ldap','nss_ldap','nscd']: }
 
     service { 'nscd':

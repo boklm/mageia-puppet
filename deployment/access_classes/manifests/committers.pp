@@ -7,7 +7,7 @@ class access_classes::committers {
     # so the file must exist
     # permission to use svn, git, etc must be added separatly
 
-    pam::multiple_ldap_access { 'committers':
+    class { pam::multiple_ldap_access:
         access_classes   => ['mga-shell_access'],
         restricted_shell => true,
     }

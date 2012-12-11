@@ -1,5 +1,5 @@
 class access_classes::web_and_artwork {
-    pam::multiple_ldap_access { 'web_artwork':
+    class { pam::multiple_ldap_access:
         access_classes => ['mga-web','mga-sysadmin','mga-artwork']
     }
 }
