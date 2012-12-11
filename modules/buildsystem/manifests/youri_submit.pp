@@ -3,11 +3,7 @@ class buildsystem::youri_submit {
     include buildsystem::rpmlint
     include buildsystem::repository
     include buildsystem::var::scheduler
-
-    $repository_root = $buildsystem::var::repository::bootstrap_root
-    $sched_home_dir = $buildsystem::var::scheduler::homedir
-    $sched_login = $buildsystem::var::scheduler::login
-    $packages_archivedir = "$sched_home_dir/old"
+    include buildsystem::var::youri
 
     mga-common::local_script {
         'mga-youri-submit':
@@ -29,20 +25,20 @@ class buildsystem::youri_submit {
         '/etc/youri/':
             ensure => 'directory';
         '/etc/youri/submit-todo.conf':
-            content => template('buildsystem/youri/submit-todo.conf');
+            content => template($buildsystem::var::youri::tmpl_youri_todo_conf);
         '/etc/youri/submit-upload.conf':
-            content => template('buildsystem/youri/submit-upload.conf');
+            content => template($buildsystem::var::youri::tmpl_youri_upload_conf);
         '/etc/youri/acl.conf':
             content => template('buildsystem/youri/acl.conf');
     }
 
-    file { $packages_archivedir:
+    file { $buildsystem::var::youri::packages_archivedir:
         ensure  => 'directory',
-        owner   => $sched_login,
-        require => File[$sched_home_dir],
+        owner   => $buildsystem::var::scheduler::login,
+        require => File[$buildsystem::var::scheduler::homedir],
     }
 
-    tidy { $packages_archivedir:
+    tidy { $buildsystem::var::youri::packages_archivedir:
         type    => 'ctime',
         recurse => true,
         age     => '1w',
