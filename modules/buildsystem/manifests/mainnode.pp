@@ -1,4 +1,5 @@
 class buildsystem::mainnode {
+    include buildsystem::var::repository
     include buildsystem::base
     include buildsystem::iurt::user
     include buildsystem::scheduler
@@ -17,7 +18,6 @@ class buildsystem::mainnode {
 
     ssh::auth::server { [$sched_login, $build_login]: }
 
-    $mirror_root = '/distrib/mirror'
     apache::vhost::other_app { "repository.$::domain":
         vhost_file => 'buildsystem/vhost_repository.conf',
     }

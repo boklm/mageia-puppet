@@ -1,6 +1,5 @@
 class buildsystem::repository {
-   $dir = '/distrib/bootstrap'
-   file { $dir:
+   file { $buildsystem::var::repository::bootstrap_reporoot:
         ensure => directory,
    }
 }
