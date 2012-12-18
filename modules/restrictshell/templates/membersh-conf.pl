@@ -11,7 +11,7 @@ $bin_rsync = "/usr/bin/rsync";
 $regexp_rsync = "^rsync --server";
 $regexp_dir_rsync = "^/.*";
 
-$bin_sftp = "<%= lib_dir %>/ssh/sftp-server";
+$bin_sftp = "<%= @lib_dir %>/ssh/sftp-server";
 $regexp_sftp = "^(/usr/lib{64,}/ssh/sftp-server|/usr/lib/sftp-server|/usr/libexec/sftp-server|/usr/lib/openssh/sftp-server)";
 
 foreach my $f (glob("/etc/membersh-conf.d/allow_*pl")) {
