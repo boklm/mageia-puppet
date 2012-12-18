@@ -11,6 +11,7 @@ auth    required     pam_deny.so
 account sufficient  pam_localuser.so
 # not sure if the following bring something useful
 account required  pam_ldap.so
+<%- access_classes = scope.lookupvar('pam::multiple_ldap_access::access_classes') -%>
 <%- if access_classes -%>
 <%- access_classes.each { |ldap_group| -%>
 account sufficient   pam_succeed_if.so quiet user ingroup <%= ldap_group %>
