@@ -6,4 +6,5 @@ node sucuk {
 
     include openssh::ssh_keys_from_ldap
     include access_classes::admin
+    include mga_buildsystem::buildnode
 }
