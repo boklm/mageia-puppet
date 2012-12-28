@@ -39,6 +39,8 @@ node valstar {
     include repositories::git
     include repositories::sparkleshare
 
+    include irkerd
+
     include websites::svn
 
     subversion::snapshot { '/etc/puppet':
