@@ -2,9 +2,6 @@
 #    group : group that have commit access on the svn
 #    public : boolean if the svn is readable by anybody or not
 #    commit_mail : array of people who will receive mail after each commit
-#    cia_post : send commits to cia.vc
-#    cia_module : name of the module to send to cia.vc
-#    cia_ignore_author : a regexp to ignore commits from some authors
 #    no_binary : do not accept files with common binary extensions 
 #                on this repository
 #    restricted_to_user : restrict commits to select user
@@ -17,9 +14,6 @@ define subversion::repository($group = 'svn',
                               $public = true,
                               $commit_mail = '',
                               $i18n_mail = '',
-                              $cia_post = false,
-                              $cia_module = 'default',
-                              $cia_ignore_author = '',
                               $no_binary = false,
                               $restricted_to_user = false,
                               $syntax_check = '',
@@ -82,17 +76,6 @@ define subversion::repository($group = 'svn',
         }
     } else {
         file { "$name/hooks/post-commit.d/send_mail":
-            ensure => absent,
-        }
-    }
-
-
-    if $cia_post {
-        subversion::hook::post_commit { "$name|cia.vc":
-            content => template('subversion/ciabot_svn.sh'),
-        }
-    } else {
-        file { "$name/hooks/post-commit.d/cia.vc":
             ensure => absent,
         }
     }
