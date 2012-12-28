@@ -2,6 +2,9 @@
 #    group : group that have commit access on the svn
 #    public : boolean if the svn is readable by anybody or not
 #    commit_mail : array of people who will receive mail after each commit
+#    irker_conf : hash containing irker config values. See man irkerhook
+#                 for possible values in irker.conf.
+#    irkerhook_path : path to irkerhook.py script
 #    no_binary : do not accept files with common binary extensions 
 #                on this repository
 #    restricted_to_user : restrict commits to select user
@@ -13,6 +16,8 @@
 define subversion::repository($group = 'svn',
                               $public = true,
                               $commit_mail = '',
+                              $irker_conf = undef,
+                              $irkerhook_path = '/usr/lib/irker/irkerhook.py',
                               $i18n_mail = '',
                               $no_binary = false,
                               $restricted_to_user = false,
@@ -76,6 +81,20 @@ define subversion::repository($group = 'svn',
         }
     } else {
         file { "$name/hooks/post-commit.d/send_mail":
+            ensure => absent,
+        }
+    }
+
+
+    if $irker_conf {
+        subversion::hook::post_commit { "$name|irker":
+            content => template('subversion/hook_irker'),
+        }
+        file { "$name/irker.conf":
+            content => template('subversion/irker.conf'),
+        }
+    } else {
+        file { "$name/hooks/post-commit.d/irker":
             ensure => absent,
         }
     }

@@ -1,0 +1,4 @@
+#!/bin/sh
+REPO=$1
+REV=$2
+<%= irkerhook_path %> --repository=$REPO $REV
