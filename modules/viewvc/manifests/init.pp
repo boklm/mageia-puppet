@@ -28,9 +28,18 @@ class viewvc {
         environment => 'MAILTO=root',
     }
 
+    $robotsfile = '/var/www/viewvc/robots.txt'
+    file { $robotsfile:
+        ensure => present,
+        mode   => 0644,
+        owner  => root,
+        group  => root,
+        source => 'puppet://modules/viewvc/robots.txt',
+    }
+
     apache::vhost::base { "svnweb.$::domain":
         aliases => {'/viewvc' => '/var/www/viewvc/',
-                    '/robots.txt' => '/var/www/viewvc/robots.txt',
+                    '/robots.txt' => $robotsfile,
                     '/'       => '/usr/share/viewvc/bin/wsgi/viewvc.fcgi/'},
         content => template('viewvc/vhost.conf')
     }
