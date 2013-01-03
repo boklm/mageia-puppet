@@ -5,7 +5,7 @@ User-agent: YandexBot
 User-agent: AhrefsBot
 User-agent: Mail.RU_Bot
 User-agent: MJ12bot
-Disallow: /viewvc/*/tags/
+Disallow: /*/tags/
 Disallow: *?view=annotate*
 Disallow: *?annotate=*
 Disallow: *?view=diff*
