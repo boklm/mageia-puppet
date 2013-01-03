@@ -34,7 +34,7 @@ class viewvc {
         mode   => 0644,
         owner  => root,
         group  => root,
-        source => 'puppet://modules/viewvc/robots.txt',
+        source => 'puppet:///modules/viewvc/robots.txt',
     }
 
     apache::vhost::base { "svnweb.$::domain":
