@@ -30,6 +30,7 @@ class viewvc {
 
     apache::vhost::base { "svnweb.$::domain":
         aliases => {'/viewvc' => '/var/www/viewvc/',
+                    '/robots.txt' => '/var/www/viewvc/robots.txt',
                     '/'       => '/usr/share/viewvc/bin/wsgi/viewvc.fcgi/'},
         content => template('viewvc/vhost.conf')
     }
