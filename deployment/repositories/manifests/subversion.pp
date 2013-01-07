@@ -41,4 +41,17 @@ class repositories::subversion {
         no_binary   => true,
 	commit_mail => ["packages-commits@ml.$::domain"],
     }
+
+    subversion::repository { '/svn/test-irker/':
+        group       => 'mga-packagers',
+        no_binary   => true,
+        commit_mail => ['boklm@mageia.org'],
+        irker_conf  => {
+            project   => 'mageia',
+            repo      => 'testrepo',
+            tinyifier => 'http://is.gd/create.php?format=simple&url=',
+            urlprefix => 'http://svnweb.mageia.org/%(repo)?view=revision&revision=',
+            channels  => '{irc://chat.freenode.net/commits, irc://chat.freenode.net/test-irker}',
+        },
+    }
 }
