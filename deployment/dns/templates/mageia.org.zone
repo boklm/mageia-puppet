@@ -3,7 +3,7 @@
 ; $Id$
 $TTL	1h
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2012123100	; Serial
+        2013011100	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -133,8 +133,10 @@ ecosse0 IN CNAME ecosse
 ecosse1 IN CNAME ecosse
 rabbit0 IN CNAME rabbit
 rabbit1 IN CNAME rabbit
+rabbit2 IN CNAME rabbit
 sucuk0  IN CNAME sucuk
 sucuk1  IN CNAME sucuk
+sucuk2  IN CNAME sucuk
 
 ; temporary, until the vm is moved elsewhere
 forums      IN CNAME alamut
