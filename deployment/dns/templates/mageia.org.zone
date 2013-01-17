@@ -30,33 +30,16 @@ group  IN      MX 20   krampouezh.mageia.org.
 
 
 ; machines
-; mageia.org set to IP of champagne :
-mageia.org.	IN	A	217.70.188.116
-www-zarb    IN  A       212.85.158.22
-
 krampouezh   IN A       95.142.164.207
 krampouezh   IN AAAA 2001:4b98:dc0:51:216:3eff:fe6b:4ea9
-
 champagne    IN A	217.70.188.116
 champagne    IN AAAA 2001:4b98:dc0:41:216:3eff:fe4f:5a18
 
 ; lost oasis
 alamut      IN  A       212.85.158.146
 alamut      IN  AAAA    2a02:2178:2:7::2
-alamut      IN SSHFP 1 1 ef093dc95002c4af6623f02238749fd59fe81eec
-alamut      IN SSHFP 2 1 179cfa0660550698c4d98f488772b7c7896d96b5
-; since we have a subdomain, we cannot use a CNAME
-ml          IN  A       212.85.158.146
-ml          IN  AAAA    2a02:2178:2:7::2
-; mga torrent server and tracker
-torrent      IN  A       212.85.158.146
-torrent      IN  AAAA    2a02:2178:2:7::2
-
 valstar     IN  A       212.85.158.147
 valstar     IN  AAAA    2a02:2178:2:7::3
-valstar     IN SSHFP 1 1 f08e336f678d7c4a8772f17770976af7dd4d7a4f
-valstar     IN SSHFP 2 1 c0c45ed25aa8a9f1723a1ae077dcee61677a56a6
-
 ecosse      IN  A       212.85.158.148
 ecosse      IN  AAAA    2a02:2178:2:7::4
 jonund      IN  A       212.85.158.149
@@ -67,14 +50,30 @@ sucuk       IN  A       212.85.158.151
 sucuk       IN  AAAA    2a02:2178:2:7::7
 rabbit	    IN  A	212.85.158.152
 rabbit	    IN	AAAA	2a02:2178:2:7::8
-
 arm1	    IN	A	10.42.0.51
 arm2	    IN	A	10.42.0.52
+
+;SSHFP
+alamut      IN SSHFP 1 1 ef093dc95002c4af6623f02238749fd59fe81eec
+alamut      IN SSHFP 2 1 179cfa0660550698c4d98f488772b7c7896d96b5
+valstar     IN SSHFP 1 1 f08e336f678d7c4a8772f17770976af7dd4d7a4f
+valstar     IN SSHFP 2 1 c0c45ed25aa8a9f1723a1ae077dcee61677a56a6
 
 ; alamut  
 ns0         IN  A       <%= nodes['alamut']['ipv4'] %>
 ; krampouezh            
 ns1         IN  A       <%= nodes['krampouezh']['ipv4'] %>
+
+; mageia.org set to IP of champagne :
+mageia.org.	IN	A	217.70.188.116
+www-zarb    IN  A       212.85.158.22
+
+; since we have a subdomain, we cannot use a CNAME
+ml          IN  A       212.85.158.146
+ml          IN  AAAA    2a02:2178:2:7::2
+; mga torrent server and tracker
+torrent      IN  A       212.85.158.146
+torrent      IN  AAAA    2a02:2178:2:7::2
 
 ; aliases
 www         IN  CNAME champagne
