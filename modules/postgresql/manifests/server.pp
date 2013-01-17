@@ -35,13 +35,9 @@ class postgresql::server {
         content => template('postgresql/pam'),
     }
 
-    $db = list_exported_ressources('Postgresql::Db_and_user')
-
-    $forum_lang = list_exported_ressources('Phpbb::Locale_db')
+    include postgresql::pg_hba
 
     postgresql::config {
-        "$pgsql_data/pg_hba.conf":
-            content => template('postgresql/pg_hba.conf');
         "$pgsql_data/pg_ident.conf":
             content => template('postgresql/pg_ident.conf');
         "$pgsql_data/postgresql.conf":
