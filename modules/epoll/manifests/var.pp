@@ -20,7 +20,7 @@
 #   password to connect to the database
 #
 class epoll::var (
-  $vhost       = "epoll.$::domain"
+  $vhost       = "epoll.$::domain",
   $db_hostname = 'localhost',
   $db_name     = 'epoll',
   $db_user     = 'epoll',
