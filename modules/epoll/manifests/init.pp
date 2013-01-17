@@ -11,7 +11,7 @@ class epoll {
 
     apache::vhost::redirect_ssl { $epoll::var::vhost: }
 
-    postgresql::remote_db_and_user { 'epoll':
+    postgresql::remote_db_and_user { $epoll::var::db_name:
         description => 'Epoll database',
         password    => $epoll::var::db_password,
     }
