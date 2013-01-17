@@ -30,28 +30,18 @@ group  IN      MX 20   krampouezh.mageia.org.
 
 
 ; machines
-krampouezh   IN A       95.142.164.207
-krampouezh   IN AAAA 2001:4b98:dc0:51:216:3eff:fe6b:4ea9
-champagne    IN A	217.70.188.116
-champagne    IN AAAA 2001:4b98:dc0:41:216:3eff:fe4f:5a18
-
-; lost oasis
-alamut      IN  A       212.85.158.146
-alamut      IN  AAAA    2a02:2178:2:7::2
-valstar     IN  A       212.85.158.147
-valstar     IN  AAAA    2a02:2178:2:7::3
-ecosse      IN  A       212.85.158.148
-ecosse      IN  AAAA    2a02:2178:2:7::4
-jonund      IN  A       212.85.158.149
-jonund      IN  AAAA    2a02:2178:2:7::5
-fiona       IN  A       212.85.158.150
-fiona       IN  AAAA    2a02:2178:2:7::6
-sucuk       IN  A       212.85.158.151
-sucuk       IN  AAAA    2a02:2178:2:7::7
-rabbit	    IN  A	212.85.158.152
-rabbit	    IN	AAAA	2a02:2178:2:7::8
-arm1	    IN	A	10.42.0.51
-arm2	    IN	A	10.42.0.52
+<%-
+  nodes_txt = ''
+  nodes.keys.sort.each{|nodename|
+    if nodes[nodename].has_key?('ipv4')
+      nodes_txt += nodename + ' IN A ' + nodes[nodename]['ipv4'] + "\n"
+    end
+    if nodes[nodename].has_key?('ipv6')
+      nodes_txt += nodename + ' IN AAAA ' + nodes[nodename]['ipv6'] + "\n"
+    end
+  }
+-%>
+<%= nodes_txt %>
 
 ;SSHFP
 alamut      IN SSHFP 1 1 ef093dc95002c4af6623f02238749fd59fe81eec
