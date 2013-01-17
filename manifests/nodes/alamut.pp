@@ -16,7 +16,12 @@ node alamut {
 
     include catdap
     include mga-mirrors
+
+    class {'epoll::var':
+        db_password => extlookup('epoll_pgsql','x'),
+    }
     include epoll
+
     include transifex
     include bugzilla
     include sympa::server

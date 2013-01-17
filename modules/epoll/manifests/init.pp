@@ -1,22 +1,19 @@
 class epoll {
-
-    $vhost = "epoll.$::domain"
+    include epoll::var
 
     package { 'Epoll': }
 
-    apache::vhost::catalyst_app { $vhost:
+    apache::vhost::catalyst_app { $epoll::var::vhost:
         script  => '/usr/bin/epoll_fastcgi.pl',
         use_ssl => true,
         require => Package['Epoll']
     }
 
-    apache::vhost::redirect_ssl { $vhost: }
-
-    $pgsql_password = extlookup('epoll_pgsql','x')
+    apache::vhost::redirect_ssl { $epoll::var::vhost: }
 
     postgresql::remote_db_and_user { 'epoll':
         description => 'Epoll database',
-        password    => $pgsql_password,
+        password    => $epoll::var::db_password,
     }
 
     file { 'epoll.yml':

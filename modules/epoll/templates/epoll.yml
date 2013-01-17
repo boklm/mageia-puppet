@@ -2,7 +2,7 @@
 name: Vote
 # db: connection, see libpq documentation
 # dbname=BASENAME;host=SERVER;user=USER;password=PASS
-db: dbname=epoll;host=localhost;user=epoll;password=<%= pgsql_password %>
+db: dbname=<%= scope.lookupvar('epoll::var::db_name') %>;host=<%= scope.lookupvar('epoll::var::db_hostname') %>;user=<%= scope.lookupvar('epoll::var::db_user') %>;password=<%= scope.lookupvar('epoll::var::db_password') %>
 # The smtp serveur to use, default is localhost
 # smtp:
 # This change the poll creation behavior, instead ask want confirmation by
