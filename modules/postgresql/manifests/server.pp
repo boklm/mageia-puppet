@@ -35,7 +35,7 @@ class postgresql::server {
         content => template('postgresql/pam'),
     }
 
-    include postgresql::pg_hba
+    postgresql::pg_hba { "${pgsql_data}/pg_hba.conf": }
 
     postgresql::config {
         "$pgsql_data/pg_ident.conf":
