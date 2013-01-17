@@ -146,3 +146,4 @@ sucuk2  IN CNAME sucuk
 forums      IN CNAME alamut
 forum       IN CNAME alamut
 ;wiki            IN      A       88.191.83.84
+<%# vim: set filetype=bindzone : -%>
