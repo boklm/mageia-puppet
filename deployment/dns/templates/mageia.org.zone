@@ -1,3 +1,6 @@
+<%-
+  nodes = scope.lookupvar('::nodes_ipaddr')
+-%>
 ; puppet-distributed file
 ; local modifications will be lost
 ; $Id$
@@ -72,9 +75,9 @@ arm1	    IN	A	10.42.0.51
 arm2	    IN	A	10.42.0.52
 
 ; alamut  
-ns0         IN  A       212.85.158.146
+ns0         IN  A       <%= nodes['alamut']['ipv4] %>
 ; krampouezh            
-ns1         IN  A       95.142.164.207 
+ns1         IN  A       <%= nodes['krampouezh']['ipv4'] %>
 
 ; aliases
 ;www         IN  CNAME www-zarb
