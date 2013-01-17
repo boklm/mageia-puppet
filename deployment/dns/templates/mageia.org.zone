@@ -65,15 +65,15 @@ ns0         IN  A       <%= nodes['alamut']['ipv4'] %>
 ns1         IN  A       <%= nodes['krampouezh']['ipv4'] %>
 
 ; mageia.org set to IP of champagne :
-mageia.org.	IN	A	217.70.188.116
+mageia.org.	IN	A	<%= nodes['champagne']['ipv4'] %>
 www-zarb    IN  A       212.85.158.22
 
 ; since we have a subdomain, we cannot use a CNAME
-ml          IN  A       212.85.158.146
-ml          IN  AAAA    2a02:2178:2:7::2
+ml          IN  A       <%= nodes['alamut']['ipv4'] %>
+ml          IN  AAAA    <%= nodes['alamut']['ipv6'] %>
 ; mga torrent server and tracker
-torrent      IN  A       212.85.158.146
-torrent      IN  AAAA    2a02:2178:2:7::2
+torrent      IN  A       <%= nodes['alamut']['ipv4'] %>
+torrent      IN  AAAA    <%= nodes['alamut']['ipv6'] %>
 
 ; aliases
 www         IN  CNAME champagne
