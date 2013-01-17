@@ -75,7 +75,7 @@ arm1	    IN	A	10.42.0.51
 arm2	    IN	A	10.42.0.52
 
 ; alamut  
-ns0         IN  A       <%= nodes['alamut']['ipv4] %>
+ns0         IN  A       <%= nodes['alamut']['ipv4'] %>
 ; krampouezh            
 ns1         IN  A       <%= nodes['krampouezh']['ipv4'] %>
 
