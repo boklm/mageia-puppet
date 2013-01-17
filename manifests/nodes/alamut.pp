@@ -21,6 +21,7 @@ node alamut {
         db_password => extlookup('epoll_pgsql','x'),
     }
     include epoll
+    include epoll::create_db
 
     include transifex
     include bugzilla
