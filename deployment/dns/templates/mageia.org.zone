@@ -1,4 +1,5 @@
 <%-
+  # nodes list defined in puppet/manifests/nodes_ip.pp
   nodes = scope.lookupvar('::nodes_ipaddr')
 -%>
 ; puppet-distributed file
