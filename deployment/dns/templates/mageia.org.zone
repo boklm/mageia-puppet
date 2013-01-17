@@ -29,11 +29,7 @@ group  IN      MX 10   alamut.mageia.org.
 group  IN      MX 20   krampouezh.mageia.org.
 
 
-; MX
-;@	IN	MX	10 mx0.zarb.org.
-
 ; machines
-;mageia.org.	IN	A   	212.85.158.22
 ; mageia.org set to IP of champagne :
 mageia.org.	IN	A	217.70.188.116
 www-zarb    IN  A       212.85.158.22
@@ -81,7 +77,6 @@ ns0         IN  A       <%= nodes['alamut']['ipv4'] %>
 ns1         IN  A       <%= nodes['krampouezh']['ipv4'] %>
 
 ; aliases
-;www         IN  CNAME www-zarb
 www         IN  CNAME champagne
 www-test    IN  CNAME champagne
 static	    IN	CNAME champagne
@@ -145,5 +140,4 @@ sucuk2  IN CNAME sucuk
 ; temporary, until the vm is moved elsewhere
 forums      IN CNAME alamut
 forum       IN CNAME alamut
-;wiki            IN      A       88.191.83.84
 <%# vim: set filetype=bindzone : -%>
