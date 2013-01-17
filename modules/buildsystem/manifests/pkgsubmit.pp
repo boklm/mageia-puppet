@@ -8,7 +8,10 @@ class buildsystem::pkgsubmit {
     }
 
     apache::vhost::base { "pkgsubmit.$::domain":
-        aliases  => { '/uploads' => "$sched_home_dir/uploads" },
+        aliases  => {
+            '/uploads' => "$sched_home_dir/uploads",
+            '/autobuild/cauldron/x86_64/core/log/status.core.log' => "$location/autobuild/broken.php"
+        },
         location => $location,
         content  => template('buildsystem/vhost_pkgsubmit.conf'),
     }
