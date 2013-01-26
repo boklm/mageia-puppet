@@ -17,3 +17,5 @@ Disallow: *?pathrev=*
 Disallow: *?*&view=log*
 Disallow: *view=log&*
 Disallow: *diff_format=*
+User-agent: *
+Crawl-delay: 30
