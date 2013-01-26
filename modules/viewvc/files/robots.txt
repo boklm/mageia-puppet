@@ -11,3 +11,5 @@ Disallow: *?annotate=*
 Disallow: *?view=diff*
 Disallow: *?r1=*
 Disallow: *?sortby=*
+Disallow: *?view=log&r1=*
+Disallow: *?revision=*&view=log*
