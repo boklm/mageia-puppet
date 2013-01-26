@@ -12,6 +12,8 @@ Disallow: *?view=diff*
 Disallow: *?r1=*
 Disallow: *?sortby=*
 Disallow: *?sortdir=*
-Disallow: *?view=log&*
-Disallow: *?revision=*&view=log*
 Disallow: *?revision=*&view=markup&*
+Disallow: *?pathrev=*
+Disallow: *?*&view=log*
+Disallow: *view=log&*
+Disallow: *diff_format=*
