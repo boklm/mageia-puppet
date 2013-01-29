@@ -8,7 +8,7 @@ secretary@<%= domain %> obgr_seneca@<%= domain %>
 # later switch to a team alias
 root@<%= domain %> sysadmin@group.<%= domain %>
 
-security@<%= domain %> security_officers@group.<%= domain %>
+security@<%= domain %> security@group.<%= domain %>
 
 # TODO see http://www.ietf.org/rfc/rfc2142.txt
 <%
