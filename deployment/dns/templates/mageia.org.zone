@@ -7,7 +7,7 @@
 ; $Id$
 $TTL	1h
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2013011100	; Serial
+        2013020200	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -102,7 +102,6 @@ mirrors     IN CNAME alamut
 epoll       IN CNAME alamut
 pgsql       IN CNAME alamut
 bugs        IN CNAME alamut
-transifex   IN CNAME alamut
 svnweb      IN CNAME alamut
 xymon	    IN CNAME alamut
 check	    IN CNAME alamut
