@@ -20,7 +20,6 @@ page visible Visible Services
 0.0.0.0	    www.<%= domain %> # http://www.<%= domain %>
 0.0.0.0	    svnweb.<%= domain %> # http://svnweb.<%= domain %>
 0.0.0.0	    epoll.<%= domain %> # https://epoll.<%= domain %>
-0.0.0.0	    transifex.<%= domain %> # https://transifex.<%= domain %>
 0.0.0.0	    planet.<%= domain %> # http://planet.<%= domain %>
 0.0.0.0	    forums.<%= domain %> # https://forums.<%= domain %>=212.85.158.146/
 0.0.0.0	    check.<%= domain %> # http://check.<%= domain %>

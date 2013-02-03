@@ -23,7 +23,6 @@ node alamut {
     include epoll
     include epoll::create_db
 
-    include transifex
     include bugzilla
     include sympa::server
     include postfix::server::primary
