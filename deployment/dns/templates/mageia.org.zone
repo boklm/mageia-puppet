@@ -7,7 +7,7 @@
 ; $Id$
 $TTL	1h
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2013020200	; Serial
+        2013020700	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -128,4 +128,8 @@ sucuk2  IN CNAME sucuk
 ; temporary, until the vm is moved elsewhere
 forums      IN CNAME alamut
 forum       IN CNAME alamut
+
+; SSL certificate validation
+5D729EF0D6641C333D6939FC30224679.mageia.org. 10800 IN CNAME 87718FD8BA2B44428D13A9B3BAFDE8E05D296DC8.comodoca.com.
+
 <%# vim: set filetype=bindzone : -%>
