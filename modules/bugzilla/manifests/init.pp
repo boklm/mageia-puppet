@@ -49,7 +49,7 @@ class bugzilla {
     }
 
     subversion::snapshot { $bugzilla_location:
-      source  => 'svn://svn.mageia.org/svn/web/templates/bugzilla/trunk',
+      source  => 'svn://svn.mageia.org/svn/web/templates/bugzilla/branches/4.0',
       require => Package['bugzilla'],
     }
 
