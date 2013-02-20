@@ -77,7 +77,6 @@
              'shadowdbhost' => '',
              'shadowdbport' => '3306',
              'shadowdbsock' => '',
-             'shutdownhtml' => 'Migration of bugzilla in progress, please wait, watch television or go out for some minutes, the sun is shining and the bees are flying ...',
              'smtp_debug' => 0,
              'smtp_password' => '',
              'smtp_username' => '',
