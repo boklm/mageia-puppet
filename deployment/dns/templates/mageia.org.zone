@@ -130,7 +130,4 @@ sucuk2  IN CNAME sucuk
 forums      IN CNAME alamut
 forum       IN CNAME alamut
 
-; SSL certificate validation
-5D729EF0D6641C333D6939FC30224679.mageia.org. 10800 IN CNAME 87718FD8BA2B44428D13A9B3BAFDE8E05D296DC8.comodoca.com.
-
 <%# vim: set filetype=bindzone : -%>
