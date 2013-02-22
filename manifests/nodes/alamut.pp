@@ -105,4 +105,12 @@ node alamut {
 
     include wikis
     include websites::perl
+
+    class { 'mgapeople':
+        ldap_server => 'ldap.mageia.org',
+        binddn      => 'cn=mgapeople-alamut,ou=System Accounts,dc=mageia,dc=org',
+        bindpw      => extlookup('mgapeople_ldap','x'),
+        vhost       => 'people.mageia.org',
+        vhostdir    => '/var/www/vhosts/people.mageia.org',
+    }
 }
