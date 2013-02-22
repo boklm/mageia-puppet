@@ -56,9 +56,10 @@ class mgapeople(
   }
 
   cron { '/usr/bin/mkpeople':
-    user   => $mgapeople_login,
-    hour   => '*/2',
-    minute => '10',
+    command => '/usr/bin/mkpeople',
+    user    => $mgapeople_login,
+    hour    => '*/2',
+    minute  => '10',
   }
 }
 # vim: sw=2
