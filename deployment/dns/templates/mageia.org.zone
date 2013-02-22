@@ -7,7 +7,7 @@
 ; $Id$
 $TTL	1h
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2013020700	; Serial
+        2013022200	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -110,6 +110,7 @@ gitweb      IN CNAME alamut
 pkgcpan     IN CNAME alamut
 perl	    IN CNAME alamut
 tmp	    IN CNAME alamut
+people      IN CNAME alamut
   
 bcd	    IN CNAME rabbit
 
