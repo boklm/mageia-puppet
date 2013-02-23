@@ -1,6 +1,7 @@
 class mgapeople(
   $site_name = 'people.mageia.org',
   $groupbase = 'ou=Group,dc=mageia,dc=org',
+  $maintdburl = undef,
   $ldap_server,
   $binddn,
   $bindpw,

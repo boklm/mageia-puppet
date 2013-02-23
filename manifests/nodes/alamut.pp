@@ -112,5 +112,6 @@ node alamut {
         bindpw      => extlookup('mgapeople_ldap','x'),
         vhost       => 'people.mageia.org',
         vhostdir    => '/var/www/vhosts/people.mageia.org',
+        maintdburl  => 'http://pkgsubmit.mageia.org/data/maintdb.txt',
     }
 }
