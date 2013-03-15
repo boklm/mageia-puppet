@@ -32,6 +32,7 @@
            'cookiepath' => '/',
            'createemailregexp' => '.*',
            'cvsroot' => '',
+           'debug_group' => 'editbugs',
            'cvsroot_get' => '',
            'default_search_limit' => '500',
            'defaultopsys' => 'Linux',
