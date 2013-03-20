@@ -1,7 +1,7 @@
 # do not forget to add $domain or it will not work
 # do not hardcode the domain, or it will be harvested by bot
 
-treasurer@<%= domain %> rda@<%= domain %>
+treasurer@<%= domain %> treasurer@group.<%= domain %>
 president@<%= domain %> ennael@<%= domain %>
 secretary@<%= domain %> obgr_seneca@<%= domain %>
 
