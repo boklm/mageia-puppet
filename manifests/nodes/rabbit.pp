@@ -10,6 +10,7 @@ node rabbit {
     include bcd::rsync
     include mga_buildsystem::buildnode
     include draklive
+    include git::svn
     include access_classes::iso_makers
     include openssh::ssh_keys_from_ldap
     # include mirror::mageia
