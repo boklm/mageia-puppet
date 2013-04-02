@@ -2,6 +2,8 @@ class bugzilla {
 
     $bugzilla_location = '/usr/share/bugzilla/template/en/custom'
 
+    $extension_location = '/usr/share/bugzilla/extensions'
+
     package {['bugzilla',
     	      'bugzilla-extension-sitemap',
               'graphviz',
@@ -60,6 +62,20 @@ class bugzilla {
       mode    => '0640',
       recurse => true,
       require => Subversion::Snapshot[$bugzilla_location],
+    }
+
+     subversion::snapshot { $extension_location:
+	source  => 'svn://svn.mageia.org/svn/web/templates/bugzilla/extensions',
+	require => Package['bugzilla'],
+    }
+
+    file { 'Mageia':
+      ensure  => directory,
+      path    => '/usr/share/bugzilla/extensions',
+      group   => 'apache',
+      mode    => '0640',
+      recurse => true,
+      require => Subversion::Snapshot[$extension_location],
     }
 
     file { '/usr/share/bugzilla/www/robots.txt':
