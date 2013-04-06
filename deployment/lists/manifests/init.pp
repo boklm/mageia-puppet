@@ -1,7 +1,46 @@
 class lists {
+    sympa::announce_list_email { 'announce':
+        subject      => 'Mageia announces',
+        reply_to     => "discuss@ml.$::domain",
+        sender_email => "root@$::domain",
+    }
+
     sympa::public_list {'atelier-discuss':
         subject => 'Discussions about artwork, web, marketing, communication',
         topics  => 'atelier',
+    }
+
+    sympa::public_list {'bugsquad-discuss':
+        subject => 'Bugsquad team discussions',
+        topics  => 'bugsquad',
+    }
+
+    sympa::public_list {'dev':
+        subject => 'Developement discussion list',
+        topics  => 'developers',
+    }
+
+    sympa::public_list {'discuss':
+        subject => 'General discussion list',
+    }
+
+    sympa::public_list {'i18n-discuss':
+        subject => 'Translation team discussions',
+        topics  => 'i18n',
+    }
+
+    sympa::announce_list_email { 'i18n-bugs':
+        subject      => 'Translation bug reports from bugzilla',
+        reply_to     => "i18n-discuss@ml.$::domain",
+        sender_email => "bugzilla-daemon@$::domain",
+        topics       => 'i18n',
+    }
+
+    sympa::announce_list_email {'i18n-reports':
+        subject      => 'Automated reports for translations',
+        reply_to     => "i18n-discuss@$ml.::domain",
+        sender_email => 'r2d2@vargas.calenco.com',
+        topics       => 'i18n',
     }
 
     # please check that the list use the proper code for
@@ -114,71 +153,68 @@ class lists {
 
     sympa::announce_list_email { 'packages-commits':
         subject      => 'Commits on packages repository',
-        # FIXME change once we migrate
-        reply_to     => "mageia-dev@$::domain",
+        reply_to     => "dev@ml.$::domain",
         sender_email => "root@$::domain",
         topics       => 'developers',
     }
 
     sympa::announce_list_email { 'mirrors-announce':
         subject      => 'Important announces about mirrors updates',
-        # FIXME change once we migrate
-        reply_to     => "mageia-sysadm@$::domain",
+        reply_to     => "sysadm-discuss@ml.$::domain",
         sender_email => "root@$::domain",
         topics       => 'sysadmin',
     }
 
     sympa::announce_list_email {'sysadmin-commits':
         subject      => 'Commits on sysadmin repository',
-        # FIXME change once we migrate
-        reply_to     => "mageia-sysadm@$::domain",
+        reply_to     => "sysadm-discuss@ml.$::domain",
         sender_email => "root@$::domain",
+        topics       => 'sysadmin',
+    }
+
+    sympa::public_list {'sysadmin-discuss':
+        subject      => 'Sysadmin team discussions',
         topics       => 'sysadmin',
     }
 
     sympa::announce_list_email {'sysadmin-reports':
         subject      => 'Automated reports from various pieces of infrastructure',
-        # FIXME change once we migrate
-        reply_to     => "mageia-sysadm@$::domain",
+        reply_to     => "sysadm-discuss@ml.$::domain",
         sender_email => "root@$::domain",
         topics       => 'sysadmin',
     }
 
     sympa::announce_list_email { 'sysadmin-bugs':
         subject      => 'Sysadmin bug reports from bugzilla',
-        # FIXME change once we migrate
-        reply_to     => "mageia-sysadm@$::domain",
+        reply_to     => "sysadm-discuss@ml.$::domain",
         sender_email => "bugzilla-daemon@$::domain",
         topics       => 'sysadmin',
     }
 
     sympa::announce_list_email { 'soft-commits':
         subject      => 'Commits on soft repository',
-        # FIXME change once we migrate
-        reply_to     => "mageia-dev@$::domain",
+        reply_to     => "dev@ml.$::domain",
         sender_email => "root@$::domain",
         topics       => 'developers',
     }
 
     sympa::announce_list_email { 'bugs':
         subject      => 'Bug reports from bugzilla',
-        # FIXME change once we migrate
-        reply_to     => "mageia-dev@$::domain",
+        reply_to     => "dev@ml.$::domain",
         sender_email => "bugzilla-daemon@$::domain",
         topics       => 'developers',
     }
 
     sympa::announce_list_email { 'updates-announce':
         subject      => 'Packages update for stable release',
-        reply_to     => "mageia-dev@$::domain",
+        reply_to     => "dev@ml.$::domain",
         sender_email => "buildsystem-daemon@$::domain",
         topics       => 'developers',
     }
 
     sympa::announce_list_email { 'changelog':
         subject      => 'Announces for new packages uploaded',
-        # FIXME change once we migrate
-        reply_to     => "mageia-dev@$::domain",
+        reply_to     => "dev@ml.$::domain",
         sender_email => "buildsystem-daemon@$::domain",
         topics       => 'developers',
     }
