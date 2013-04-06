@@ -43,6 +43,9 @@ $nodes_ipaddr = {
   arm2 => {
     ipv4 => '10.42.0.52',
   },
+  friteuse => {
+    ipv4 => '192.168.122.131',
+  },
 }
 
 # vim: sw=2
