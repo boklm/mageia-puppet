@@ -2,7 +2,7 @@ class lists {
     sympa::announce_list_email { 'announce':
         subject      => 'Mageia announces',
         reply_to     => "discuss@ml.$::domain",
-        sender_email => "root@$::domain",
+        sender_email => "sysadmin@group.$::domain",
     }
 
     sympa::public_list {'atelier-discuss':
