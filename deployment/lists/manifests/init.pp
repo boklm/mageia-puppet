@@ -5,6 +5,13 @@ class lists {
         sender_email => "sysadmin@group.$::domain",
     }
 
+    sympa::announce_list_email {'atelier-bugs':
+        subject      => 'Atelier bug reports from bugzilla',
+        reply_to     => "atelier-discuss@ml.$::domain",
+        sender_email => "bugzilla-daemon@$::domain",
+        topics       => 'atelier',
+    }
+
     sympa::public_list {'atelier-discuss':
         subject => 'Discussions about artwork, web, marketing, communication',
         topics  => 'atelier',
