@@ -1,5 +1,6 @@
 title.gettext Reserved to subscriber
 
+equal([sender], 'sysadmin@group.mageia.org') smtp,smime,md5 -> do_it
 is_subscriber([listname],[sender])   smtp,smime,md5    -> do_it
 true()                               smime,md5         -> do_it
 true()                               smtp              -> reject(reason='send_subscriber')
