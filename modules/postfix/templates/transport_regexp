@@ -6,12 +6,3 @@ ml_domain = 'ml\.' + domain.gsub('.','\.')
 /^.*\@<%= ml_domain %>$/       sympa:
 <%- end -%>
 
-# temporary work around for bugzilla being unable to send mail to webteam
-#
-# the current setup ( 13/02/2011 ) is that most active mls are on zarb.org,
-# using @mageia domain. But we want to start hosting aliases on the current
-# ml server ( and main smtp, ie alamut ). So we need to dispatch old mls
-# to zarb, and the rest on alamut. Old mls are all prefixed by mageia-*@mageia
-# this hack should be removed once all mls are migrated from zarb.org
-#
-/^mageia-.*\@<%= domain %>$/ smtp:ryu.zarb.org
