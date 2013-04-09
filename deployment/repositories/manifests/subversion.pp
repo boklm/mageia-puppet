@@ -33,6 +33,7 @@ class repositories::subversion {
 
     subversion::repository { '/svn/web/':
         group        => 'mga-web',
+        commit_mail  => ["atelier-commits@ml.$::domain"],
         syntax_check => ['check_php'],
     }
 
