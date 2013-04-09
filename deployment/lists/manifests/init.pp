@@ -12,6 +12,13 @@ class lists {
         topics       => 'atelier',
     }
 
+    sympa::announce_list_email {'atelier-commits':
+        subject      => 'Commits on atelier repositories (Artwork, Web, etc ...)',
+        reply_to     => "atelier-discuss@ml.$::domain",
+        sender_email => "root@$::domain",
+        topics       => 'atelier',
+    }
+
     sympa::public_list {'atelier-discuss':
         subject => 'Discussions about artwork, web, marketing, communication',
         topics  => 'atelier',
