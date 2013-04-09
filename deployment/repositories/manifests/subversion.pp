@@ -23,7 +23,7 @@ class repositories::subversion {
         group        => 'mga-packagers',
         commit_mail  => ["soft-commits@ml.$::domain"],
         syntax_check => ['check_po'],
-        i18n_mail    => ["mageia-i18n@$::domain"],
+        i18n_mail    => ["i18n-reports@ml.$::domain"],
     }
 
     subversion::repository { '/svn/soft_publish/':
