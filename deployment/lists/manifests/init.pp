@@ -1,4 +1,7 @@
 class lists {
+    # When adding a new list, also add it to the wiki page :
+    # https://wiki.mageia.org/en/Mailing_lists
+
     sympa::announce_list_email { 'announce':
         subject      => 'Mageia announces',
         reply_to     => "discuss@ml.$::domain",
