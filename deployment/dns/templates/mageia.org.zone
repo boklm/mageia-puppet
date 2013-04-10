@@ -7,7 +7,7 @@
 ; $Id$
 $TTL	1h
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2013040600	; Serial
+        2013041000	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -77,6 +77,7 @@ releases    IN	CNAME champagne
 dashboard   IN  CNAME champagne
 nav	    IN	CNAME champagne
 doc	    IN	CNAME champagne
+archives    IN  CNAME champagne
 rsync       IN  CNAME valstar
 
 svn         IN  CNAME valstar
@@ -111,7 +112,6 @@ pkgcpan     IN CNAME alamut
 perl	    IN CNAME alamut
 tmp	    IN CNAME alamut
 people      IN CNAME alamut
-archives    IN CNAME alamut
   
 bcd	    IN CNAME rabbit
 
