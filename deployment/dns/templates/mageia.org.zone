@@ -7,7 +7,7 @@
 ; $Id$
 $TTL	1h
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2013041000	; Serial
+        2013041100	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -18,8 +18,8 @@ $TTL	1h
 @	IN      NS      ns0.mageia.org.
 @	IN      NS      ns1.mageia.org.
 
-@   IN      MX 10   mx0.zarb.org.
-@   IN      MX 20   mx1.zarb.org.
+@   IN      MX 10   alamut.mageia.org.
+@   IN      MX 20   krampouezh.mageia.org.
 
 ; TODO use a loop here
 ml  IN      MX 10   alamut.mageia.org.
