@@ -24,6 +24,7 @@ class websites::www {
 
     apache::vhost::base { $vhost:
         content  => template('websites/vhost_www.conf',
+                             'websites/vhost_www_rewrite.conf',
 	                     'websites/vhost_proxy_mailman.conf'),
         location => $vhostdir,
         options  => ['FollowSymLinks'],
@@ -33,6 +34,7 @@ class websites::www {
         use_ssl  => true,
         vhost    => $vhost,
         content  => template('websites/vhost_www.conf',
+                             'websites/vhost_www_rewrite.conf',
 	                     'websites/vhost_proxy_mailman_ssl.conf'),
         location => $vhostdir,
         options  => ['FollowSymLinks'],
