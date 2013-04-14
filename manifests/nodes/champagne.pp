@@ -6,6 +6,7 @@ node champagne {
     include blog::files_bots
     include blog::files_backup
     include planet
+    include websites::archives
     include websites::static
     include websites::hugs
     include websites::releases
