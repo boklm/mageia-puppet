@@ -12,6 +12,13 @@ root@<%= domain %> sysadmin@group.<%= domain %>
 
 security@<%= domain %> security@group.<%= domain %>
 
+# Alias for old mailing list addresses
+mageia-dev@mageia.org dev@ml.mageia.org
+mageia-discuss@mageia.org discuss@ml.mageia.org
+mageia-sysadm@mageia.org sysadmin-discuss@ml.mageia.org
+mageia-i18n@mageia.org i18n-discuss@ml.mageia.org
+mageia-bugsquad@mageia.org bugsquad-discuss@ml.mageia.org
+
 # TODO see http://www.ietf.org/rfc/rfc2142.txt
 <%
 ['postmaster','hostmaster','abuse','noc','listmaster','MAILER-DAEMON'].each { |a| 
