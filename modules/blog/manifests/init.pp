@@ -4,6 +4,8 @@ class blog {
         $blog_location = "/var/www/vhosts/$blog_domain"
         $blog_db_backupdir = "/var/lib/backups/blog_db"
         $blog_files_backupdir = "/var/lib/backups/blog_files"
+        $blog_newpost_email_to = 'mageia-blogteam@mageia.org'
+        $blog_newpost_email_from = 'Mageia Blog bot <mageia-blogteam@mageia.org>'
 
         user { 'blog':
             groups  => apache,

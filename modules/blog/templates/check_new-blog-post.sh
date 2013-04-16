@@ -34,7 +34,7 @@ if [ "$tmp_old" = "$tmp_new" ]
 			then 
 				# Modification on lastest post
 				echo "YES - Modification" >> $PATH_TO_FILE"/last_check"
-				echo -e "The latest blog post has been modified and needs to be checked!\n\nTitle:\t$last_title\nAuthor:\t$last_creator\n-- \nMail sent by the script '$0' on `hostname`" | /bin/mail -r "Mageia Blog bot <mageia-blogteam@<%= domain %>>" -s "Modification of the lastest entry on English Blog" mageia-blogteam@<%= domain %>
+				echo -e "The latest blog post has been modified and needs to be checked!\n\nTitle:\t$last_title\nAuthor:\t$last_creator\n-- \nMail sent by the script '$0' on `hostname`" | /bin/mail -r '<%= blog_newpost_email_from %>' -s "Modification of the lastest entry on English Blog" <%= blog_newpost_email_to %>
 				echo $DATE
 			else
 				echo "NO" >> $PATH_TO_FILE"/last_check"
@@ -42,7 +42,7 @@ if [ "$tmp_old" = "$tmp_new" ]
 	else
 		# New post to translate
 		echo "YES - New entry" >> $PATH_TO_FILE"/last_check"
-		echo -e "A new blog post is waiting for translation:\n\nTitle:\t$last_title\nAuthor:\t$last_creator\n-- \nMail sent by the script '$0' on `hostname`" | /bin/mail -r "Mageia Blog bot <mageia-blogteam@<%= domain %>>" -s "New entry on English Blog" mageia-blogteam@<%= domain %>
+		echo -e "A new blog post is waiting for translation:\n\nTitle:\t$last_title\nAuthor:\t$last_creator\n-- \nMail sent by the script '$0' on `hostname`" | /bin/mail -r '<%= blog_newpost_email_from %>' -s "New entry on English Blog" <%= blog_newpost_email_to %>
 		echo $DATE
 fi
 
