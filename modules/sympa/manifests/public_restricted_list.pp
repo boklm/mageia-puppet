@@ -1,4 +1,4 @@
-# list where only people from the ldap_group can post, ad where
+# list where only people from the ldap_group can post, and where
 # they are subscribed by default, but anybody else can subscribe
 # to read and receive messages
 define sympa::public_restricted_list( $subject,
