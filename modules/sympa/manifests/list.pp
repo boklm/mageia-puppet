@@ -15,12 +15,6 @@ define sympa::list( $subject,
 
     $xml_file = "/etc/sympa/lists_xml/$name.xml"
 
-    if $sender_email {
-        $sender_email_file = regsubst($sender_email,'\@','-at-')
-    } else {
-        $sender_email_file = ''
-    }
-
     file { $xml_file:
         content => template('sympa/list.xml'),
         require => Package[sympa],
