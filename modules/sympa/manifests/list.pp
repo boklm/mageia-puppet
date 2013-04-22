@@ -41,14 +41,14 @@ define sympa::list( $subject,
     }
 
     if $sender_ldap_group {
-        if ! defined(Sympa::Scenario::Sender_ldap_group[$sender_ldap_group]) {
-            sympa::scenario::sender_ldap_group { $sender_ldap_group: }
+        sympa::scenario::sender_ldap_group { $name:
+            ldap_group => $sender_ldap_group,
         }
     }
 
     if $sender_email {
-        if ! defined(Sympa::Scenario::Sender_email[$sender_email]) {
-            sympa::scenario::sender_email { $sender_email: }
+        sympa::scenario::sender_email { $name:
+            email => $sender_email,
         }
     }
 

@@ -1,6 +1,5 @@
-define sympa::scenario::sender_email {
-    $sender_email_file = regsubst($name,'\@','-at-')
-    file { "/etc/sympa/scenari/send.restricted_$sender_email_file":
+define sympa::scenario::sender_email($email) {
+    file { "/etc/sympa/scenari/send.restricted_$name":
         content => template('sympa/scenari/sender.email')
     }
 }

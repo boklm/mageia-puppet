@@ -52,16 +52,10 @@ apply forced
 
 
 
-<% if sender_email  %>
-#TODO write scenari
-send restricted_<%= sender_email_file %>
-
-<% elsif sender_ldap_group %>
-#TODO write scenari
-send restricted_<%= sender_ldap_group %>
+<% if sender_email || sender_ldap_group %>
+send restricted_<%= @name %>
 
 <% else %>
-#TODO write scenari
 send subscriber_moderated
 
 <% end %>
