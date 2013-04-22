@@ -250,7 +250,7 @@ class lists {
         subscriber_ldap_group => 'mga-board',
     }
 
-    sympa::public_restricted_list { 'board-public':
+    sympa::list::public_restricted { 'board-public':
         subject               => 'Public board discussion',
         subscriber_ldap_group => 'mga-board',
         topics                => 'governance',
@@ -262,7 +262,7 @@ class lists {
         topics                => 'governance',
     }
 
-    sympa::public_restricted_list { 'council':
+    sympa::list::public_restricted { 'council':
         subject               => 'Council discussions',
         subscriber_ldap_group => 'mga-council',
         topics                => 'governance',
