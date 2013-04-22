@@ -59,14 +59,15 @@ class lists {
         topics       => 'i18n',
     }
 
-    sympa::list::announce {'i18n-reports':
-        subject      => 'Automated reports for translations',
-        reply_to     => "i18n-discuss@$ml.::domain",
-        sender_email => [
+    sympa::list {'i18n-reports':
+        subject           => 'Automated reports for translations',
+        reply_to          => "i18n-discuss@$ml.::domain",
+        sender_subscriber => true,
+        sender_email      => [
             'r2d2@vargas.calenco.com',
             'blog@mageia.org',
             ],
-        topics       => 'i18n',
+        topics            => 'i18n',
     }
 
     # please check that the list use the proper code for
