@@ -1,6 +1,6 @@
 # list where announce are sent by $email only
 # reply_to is set to $reply_to
-define sympa::announce_list_email($subject,
+define sympa::list::announce($subject,
                                   $reply_to,
                                   $sender_email,
 				  $subscriber_ldap_group = false,
