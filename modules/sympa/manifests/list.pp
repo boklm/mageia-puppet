@@ -34,15 +34,10 @@ define sympa::list( $subject,
         notify  => Service['sympa'],
     }
 
-    if $sender_ldap_group {
-        sympa::scenario::sender_ldap_group { $name:
+    if $sender_ldap_group or $sender_email {
+        sympa::scenario::sender_restricted { $name:
             ldap_group => $sender_ldap_group,
-        }
-    }
-
-    if $sender_email {
-        sympa::scenario::sender_email { $name:
-            email => $sender_email,
+            email      => $sender_email,
         }
     }
 

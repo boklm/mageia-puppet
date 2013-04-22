@@ -1,7 +1,12 @@
 title.gettext restricted list
 
-<%- for e in @email -%>
+<%- if @ldap_group -%>
+search(<%= @ldap_group %>.ldap)  smtp,md5,smime  -> do_it
+<%- end -%>
+<%- if @email -%>
+  <%- for e in @email -%>
 equal([sender], '<%= e %>') smtp,md5,smime -> do_it
+  <%- end -%>
 <%- end -%>
 true()                       smtp,md5,smime -> reject(reason='send_subscriber')
 

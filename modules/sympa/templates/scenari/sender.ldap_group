@@ -1,5 +1,0 @@
-title.gettext restricted to group <%= @ldap_group %>
-
-search(<%= @ldap_group %>.ldap)  smtp,md5,smime  -> do_it
-true()                    smtp,md5,smime  -> reject(reason='send_subscriber')
-
