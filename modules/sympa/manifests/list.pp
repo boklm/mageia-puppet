@@ -1,5 +1,4 @@
 define sympa::list( $subject,
-                    $profile = false,
                     $language = 'en',
                     $topics = false,
                     $reply_to = false,

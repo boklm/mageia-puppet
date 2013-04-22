@@ -8,7 +8,6 @@ define sympa::list::announce($subject,
                                   $topics = false) {
     list { $name:
         subject      => $subject,
-        profile      => '',
         language     => $language,
         topics       => $topics,
         reply_to     => $reply_to,

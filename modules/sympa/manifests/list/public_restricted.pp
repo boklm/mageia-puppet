@@ -7,7 +7,6 @@ define sympa::list::public_restricted($subject,
                                       $topics = false) {
     list { $name:
         subject               => $subject,
-        profile               => '',
         topics                => $topics,
         language              => $language,
         subscriber_ldap_group => $subscriber_ldap_group,

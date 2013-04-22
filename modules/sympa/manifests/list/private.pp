@@ -5,7 +5,6 @@ define sympa::list::private($subject,
                             $topics = false) {
     list { $name:
         subject               => $subject,
-        profile               => '',
         language              => $language,
         topics                => $topics,
         subscriber_ldap_group => $subscriber_ldap_group,
