@@ -27,6 +27,12 @@ class lists {
         topics  => 'atelier',
     }
 
+    sympa::list::private { 'blog-moderation':
+        subject               => 'Blog comments moderation',
+        subscriber_ldap_group => 'mga-blog-moderators',
+        topics                => 'atelier',
+    }
+
     sympa::public_list {'bugsquad-discuss':
         subject => 'Bugsquad team discussions',
         topics  => 'bugsquad',
