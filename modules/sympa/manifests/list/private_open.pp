@@ -11,6 +11,7 @@ define sympa::list::private_open( $subject,
         language              => $language,
         topics                => $topics,
         subscriber_ldap_group => $subscriber_ldap_group,
+        sender_subscriber     => true,
         public_archive        => false,
     }
 }

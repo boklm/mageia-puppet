@@ -75,8 +75,6 @@ class sympa::server(
             source => 'puppet:///modules/sympa/scenari/open_web_only_notify';
         '/etc/sympa/scenari/unsubscribe.open_web_only_notify':
             source => 'puppet:///modules/sympa/scenari/open_web_only_notify';
-        '/etc/sympa/scenari/send.subscriber_moderated':
-            source => 'puppet:///modules/sympa/scenari/subscriber_moderated';
         '/etc/sympa/scenari/create_list.forbidden':
             source => 'puppet:///modules/sympa/scenari/forbidden';
         '/etc/sympa/topics.conf':

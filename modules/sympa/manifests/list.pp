@@ -3,6 +3,7 @@ define sympa::list( $subject,
                     $language = 'en',
                     $topics = false,
                     $reply_to = false,
+                    $sender_subscriber = false,
                     $sender_email = false,
                     $sender_ldap_group = false,
                     $subscriber_ldap_group = false,
@@ -34,11 +35,10 @@ define sympa::list( $subject,
         notify  => Service['sympa'],
     }
 
-    if $sender_ldap_group or $sender_email {
-        sympa::scenario::sender_restricted { $name:
-            ldap_group => $sender_ldap_group,
-            email      => $sender_email,
-        }
+    sympa::scenario::sender_restricted { $name:
+        ldap_group              => $sender_ldap_group,
+        email                   => $sender_email,
+        allow_subscriber        => $sender_subscriber,
     }
 
     if $subscriber_ldap_group {

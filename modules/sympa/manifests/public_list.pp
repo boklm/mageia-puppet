@@ -5,9 +5,10 @@ define sympa::public_list($subject,
                           $topics = false) {
     include sympa::variable
     list { $name:
-        subject  => $subject,
-        language => $language,
-        topics   => $topics,
-        reply_to => "$name@$sympa::variable::vhost",
+        subject                 => $subject,
+        language                => $language,
+        topics                  => $topics,
+        sender_subscriber       => true,
+        reply_to                => "$name@$sympa::variable::vhost",
     }
 }

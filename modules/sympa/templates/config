@@ -52,14 +52,7 @@ apply forced
 
 
 
-<% if sender_email || sender_ldap_group %>
 send restricted_<%= @name %>
-
-<% else %>
-send subscriber_moderated
-
-<% end %>
-
 
 <% if topics %>
 topics <%= topics %>

@@ -8,5 +8,11 @@ search(<%= @ldap_group %>.ldap)  smtp,md5,smime  -> do_it
 equal([sender], '<%= e %>') smtp,md5,smime -> do_it
   <%- end -%>
 <%- end -%>
+<%- if allow_subscriber -%>
+equal([sender], 'sysadmin@group.mageia.org') smtp,smime,md5 -> do_it
+match([sender], /@mageia\.org$/)     smtp,smime,md5    -> do_it
+is_subscriber([listname],[sender])   smtp,smime,md5    -> do_it
+true()                               smime,md5         -> do_it
+<%- end -%>
 true()                       smtp,md5,smime -> reject(reason='send_subscriber')
 
