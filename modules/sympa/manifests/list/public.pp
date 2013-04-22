@@ -1,6 +1,6 @@
 # public discussion list
 # reply_to is set to the list
-define sympa::public_list($subject,
+define sympa::list::public($subject,
                           $language = 'en',
                           $topics = false) {
     include sympa::variable

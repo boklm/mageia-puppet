@@ -22,7 +22,7 @@ class lists {
         topics       => 'atelier',
     }
 
-    sympa::public_list {'atelier-discuss':
+    sympa::list::public {'atelier-discuss':
         subject => 'Discussions about artwork, web, marketing, communication',
         topics  => 'atelier',
     }
@@ -33,21 +33,21 @@ class lists {
         topics                => 'atelier',
     }
 
-    sympa::public_list {'bugsquad-discuss':
+    sympa::list::public {'bugsquad-discuss':
         subject => 'Bugsquad team discussions',
         topics  => 'bugsquad',
     }
 
-    sympa::public_list {'dev':
+    sympa::list::public {'dev':
         subject => 'Developement discussion list',
         topics  => 'developers',
     }
 
-    sympa::public_list {'discuss':
+    sympa::list::public {'discuss':
         subject => 'General discussion list',
     }
 
-    sympa::public_list {'i18n-discuss':
+    sympa::list::public {'i18n-discuss':
         subject => 'Translation team discussions',
         topics  => 'i18n',
     }
@@ -68,77 +68,77 @@ class lists {
 
     # please check that the list use the proper code for
     # language ( not to be confused with tld or country code )
-    sympa::public_list {'i18n-af':
+    sympa::list::public {'i18n-af':
         subject => 'Translation to Afrikaans',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-de':
+    sympa::list::public {'i18n-de':
         subject => 'Translation to German',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-et':
+    sympa::list::public {'i18n-et':
         subject => 'Translation to Estonian',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-fr':
+    sympa::list::public {'i18n-fr':
         subject => 'Translation to French',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-el':
+    sympa::list::public {'i18n-el':
         subject => 'Translation to Greek',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-nl':
+    sympa::list::public {'i18n-nl':
         subject => 'Translation to Dutch',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-pt_br':
+    sympa::list::public {'i18n-pt_br':
         subject => 'Translation to Brazilian Portuguese',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-pl':
+    sympa::list::public {'i18n-pl':
         subject => 'Translation to Polish',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-ru':
+    sympa::list::public {'i18n-ru':
         subject => 'Translation to Russian',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-tr':
+    sympa::list::public {'i18n-tr':
         subject => 'Translation to Turkish',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-it':
+    sympa::list::public {'i18n-it':
         subject => 'Translation to Italian',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-en':
+    sympa::list::public {'i18n-en':
         subject => 'Translation to English',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-ro':
+    sympa::list::public {'i18n-ro':
         subject => 'Translation to Romanian',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'i18n-zh_tw':
+    sympa::list::public {'i18n-zh_tw':
         subject => 'Translation to Taiwanese',
         topics  => 'i18n',
     }
 
-    sympa::public_list {'qa-discuss':
+    sympa::list::public {'qa-discuss':
         subject => 'Discussions about QA tasks and requests',
         topics  => 'qa',
     }
@@ -150,7 +150,7 @@ class lists {
         topics       => 'qa',
     }
 
-    sympa::public_list {'forums-discuss':
+    sympa::list::public {'forums-discuss':
         subject => 'Discuss forums matters, policies and processes, as well as publish summaries of notable events/feedback',
         topics  => 'forums',
     }
@@ -162,7 +162,7 @@ class lists {
         topics       => 'forums',
     }
 
-    sympa::public_list {'doc-discuss':
+    sympa::list::public {'doc-discuss':
         subject => 'Discussions about Mageia documentation',
         topics  => 'doc',
     }
@@ -195,7 +195,7 @@ class lists {
         topics       => 'sysadmin',
     }
 
-    sympa::public_list {'sysadmin-discuss':
+    sympa::list::public {'sysadmin-discuss':
         subject      => 'Sysadmin team discussions',
         topics       => 'sysadmin',
     }
@@ -268,7 +268,7 @@ class lists {
         topics                => 'governance',
     }
 
-    sympa::public_list {'local-discuss':
+    sympa::list::public {'local-discuss':
         subject => 'Discussions about Local Community Team',
         topics  => 'local',
     }
