@@ -5,20 +5,20 @@ class lists {
     sympa::announce_list_email { 'announce':
         subject      => 'Mageia announces',
         reply_to     => "discuss@ml.$::domain",
-        sender_email => "sysadmin@group.$::domain",
+        sender_email => [ "sysadmin@group.$::domain" ],
     }
 
     sympa::announce_list_email {'atelier-bugs':
         subject      => 'Atelier bug reports from bugzilla',
         reply_to     => "atelier-discuss@ml.$::domain",
-        sender_email => "bugzilla-daemon@$::domain",
+        sender_email => [ "bugzilla-daemon@$::domain" ],
         topics       => 'atelier',
     }
 
     sympa::announce_list_email {'atelier-commits':
         subject      => 'Commits on atelier repositories (Artwork, Web, etc ...)',
         reply_to     => "atelier-discuss@ml.$::domain",
-        sender_email => "root@$::domain",
+        sender_email => [ "root@$::domain" ],
         topics       => 'atelier',
     }
 
@@ -55,14 +55,14 @@ class lists {
     sympa::announce_list_email { 'i18n-bugs':
         subject      => 'Translation bug reports from bugzilla',
         reply_to     => "i18n-discuss@ml.$::domain",
-        sender_email => "bugzilla-daemon@$::domain",
+        sender_email => [ "bugzilla-daemon@$::domain" ],
         topics       => 'i18n',
     }
 
     sympa::announce_list_email {'i18n-reports':
         subject      => 'Automated reports for translations',
         reply_to     => "i18n-discuss@$ml.::domain",
-        sender_email => 'r2d2@vargas.calenco.com',
+        sender_email => [ 'r2d2@vargas.calenco.com' ],
         topics       => 'i18n',
     }
 
@@ -146,7 +146,7 @@ class lists {
     sympa::announce_list_email {'qa-bugs':
         subject      => 'QA bug reports from bugzilla',
         reply_to     => "qa-discuss@ml.$::domain",
-        sender_email => "bugzilla-daemon@$::domain",
+        sender_email => [ "bugzilla-daemon@$::domain" ],
         topics       => 'qa',
     }
 
@@ -158,7 +158,7 @@ class lists {
     sympa::announce_list_email {'forums-bugs':
         subject      => 'Forums bug reports from bugzilla',
         reply_to     => "forums-discuss@ml.$::domain",
-        sender_email => "bugzilla-daemon@$::domain",
+        sender_email => [ "bugzilla-daemon@$::domain" ],
         topics       => 'forums',
     }
 
@@ -170,28 +170,28 @@ class lists {
     sympa::announce_list_email { 'doc-bugs':
         subject      => 'Documentation bug reports from bugzilla',
         reply_to     => "doc-discuss@ml.$::domain",
-        sender_email => "bugzilla-daemon@$::domain",
+        sender_email => [ "bugzilla-daemon@$::domain" ],
         topics       => 'doc',
     }
 
     sympa::announce_list_email { 'packages-commits':
         subject      => 'Commits on packages repository',
         reply_to     => "dev@ml.$::domain",
-        sender_email => "root@$::domain",
+        sender_email => [ "root@$::domain" ],
         topics       => 'developers',
     }
 
     sympa::announce_list_email { 'mirrors-announce':
         subject      => 'Important announces about mirrors updates',
         reply_to     => "sysadm-discuss@ml.$::domain",
-        sender_email => "root@$::domain",
+        sender_email => [ "root@$::domain" ],
         topics       => 'sysadmin',
     }
 
     sympa::announce_list_email {'sysadmin-commits':
         subject      => 'Commits on sysadmin repository',
         reply_to     => "sysadm-discuss@ml.$::domain",
-        sender_email => "root@$::domain",
+        sender_email => [ "root@$::domain" ],
         topics       => 'sysadmin',
     }
 
@@ -203,49 +203,49 @@ class lists {
     sympa::announce_list_email {'sysadmin-reports':
         subject      => 'Automated reports from various pieces of infrastructure',
         reply_to     => "sysadm-discuss@ml.$::domain",
-        sender_email => "root@$::domain",
+        sender_email => [ "root@$::domain" ],
         topics       => 'sysadmin',
     }
 
     sympa::announce_list_email { 'sysadmin-bugs':
         subject      => 'Sysadmin bug reports from bugzilla',
         reply_to     => "sysadm-discuss@ml.$::domain",
-        sender_email => "bugzilla-daemon@$::domain",
+        sender_email => [ "bugzilla-daemon@$::domain" ],
         topics       => 'sysadmin',
     }
 
     sympa::announce_list_email { 'soft-commits':
         subject      => 'Commits on soft repository',
         reply_to     => "dev@ml.$::domain",
-        sender_email => "root@$::domain",
+        sender_email => [ "root@$::domain" ],
         topics       => 'developers',
     }
 
     sympa::announce_list_email { 'bugs':
         subject      => 'Bug reports from bugzilla',
         reply_to     => "dev@ml.$::domain",
-        sender_email => "bugzilla-daemon@$::domain",
+        sender_email => [ "bugzilla-daemon@$::domain" ],
         topics       => 'developers',
     }
 
     sympa::announce_list_email { 'updates-announce':
         subject      => 'Packages update for stable release',
         reply_to     => "dev@ml.$::domain",
-        sender_email => "buildsystem-daemon@$::domain",
+        sender_email => [ "buildsystem-daemon@$::domain" ],
         topics       => 'developers',
     }
 
     sympa::announce_list_email { 'changelog':
         subject      => 'Announces for new packages uploaded',
         reply_to     => "dev@ml.$::domain",
-        sender_email => "buildsystem-daemon@$::domain",
+        sender_email => [ "buildsystem-daemon@$::domain" ],
         topics       => 'developers',
     }
 
     sympa::announce_list_email { 'board-commits':
         subject               => 'Commits on Mageia.Org status and organisation documents',
         reply_to              => "board-public@ml.$::domain",
-        sender_email          => "root@$::domain",
+        sender_email          => [ "root@$::domain" ],
         topics                => 'governance',
         subscriber_ldap_group => 'mga-board',
     }

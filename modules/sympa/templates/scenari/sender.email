@@ -1,5 +1,7 @@
-title.gettext restricted to email <%= @email %>
+title.gettext restricted list
 
-equal([sender], '<%= @email %>') smtp,md5,smime -> do_it
+<%- for e in @email -%>
+equal([sender], '<%= e %>') smtp,md5,smime -> do_it
+<%- end -%>
 true()                       smtp,md5,smime -> reject(reason='send_subscriber')
 
