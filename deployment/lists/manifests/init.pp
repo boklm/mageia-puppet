@@ -62,7 +62,10 @@ class lists {
     sympa::list::announce {'i18n-reports':
         subject      => 'Automated reports for translations',
         reply_to     => "i18n-discuss@$ml.::domain",
-        sender_email => [ 'r2d2@vargas.calenco.com' ],
+        sender_email => [
+            'r2d2@vargas.calenco.com',
+            'blog@mageia.org',
+            ],
         topics       => 'i18n',
     }
 
