@@ -30,6 +30,7 @@ class lists {
     sympa::list::private { 'blog-moderation':
         subject               => 'Blog comments moderation',
         subscriber_ldap_group => 'mga-blog-moderators',
+        sender_email          => [ 'wordpress@blog.mageia.org' ],
         topics                => 'atelier',
     }
 
