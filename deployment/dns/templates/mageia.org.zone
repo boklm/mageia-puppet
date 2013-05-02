@@ -5,7 +5,7 @@
 ; puppet-distributed file
 ; local modifications will be lost
 ; $Id$
-$TTL	1h
+$TTL	30m
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
         2013041100	; Serial
         21600		; Refresh
