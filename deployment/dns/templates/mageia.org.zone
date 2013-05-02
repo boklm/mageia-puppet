@@ -78,11 +78,12 @@ dashboard   IN  CNAME champagne
 nav	    IN	CNAME champagne
 doc	    IN	CNAME champagne
 archives    IN  CNAME champagne
-rsync       IN  CNAME valstar
+meetbot     IN  CNAME krampouezh
+ldap-slave-1 IN CNAME krampouezh
 
+rsync       IN  CNAME valstar
 svn         IN  CNAME valstar
 git         IN  CNAME valstar
-meetbot     IN  CNAME krampouezh
 
 tmp	    IN  CNAME alamut
 
@@ -95,7 +96,6 @@ maintdb     IN CNAME valstar
 ldap        IN CNAME valstar
 
 ldap-master IN CNAME valstar
-ldap-slave-1 IN CNAME krampouezh
 
 identity    IN CNAME alamut
 identity-trunk    IN CNAME alamut
