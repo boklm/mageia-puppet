@@ -94,11 +94,11 @@ ldap        IN CNAME valstar
 ldap-master IN CNAME valstar
 pgsql       IN CNAME alamut
 bcd	    IN CNAME rabbit
+mirrors     IN CNAME alamut
 
 <%# Hostnames we can redirect while LO servers are offline start here -%>
 identity    IN CNAME alamut
 identity-trunk    IN CNAME alamut
-mirrors     IN CNAME alamut
 epoll       IN CNAME alamut
 bugs        IN CNAME alamut
 svnweb      IN CNAME alamut
@@ -117,7 +117,6 @@ forum       IN CNAME alamut
 ; temporary redirection to champagne while alamut is offline
 identity    IN CNAME champagne
 identity-trunk    IN CNAME champagne
-mirrors     IN CNAME champagne
 epoll       IN CNAME champagne
 bugs        IN CNAME champagne
 svnweb      IN CNAME champagne
