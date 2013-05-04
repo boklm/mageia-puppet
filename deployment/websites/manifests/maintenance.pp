@@ -13,7 +13,7 @@ class websites::maintenance {
         mode   => '0644',
         owner  => 'root',
         group  => 'root',
-        source => 'puppet:///deployment/websites/maintenance.html',
+        source => 'puppet:///modules/websites/maintenance.html',
     }
 
     apache::vhost::other_app { "maintenance.$::domain":
