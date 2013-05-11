@@ -55,4 +55,9 @@ class repositories::subversion {
             channels  => '{irc://chat.freenode.net/commits, irc://chat.freenode.net/test-irker}',
         },
     }
+
+    subversion::repository { '/svn/treasurer/':
+        group       => 'mga-treasurer',
+	commit_mail => ["treasurer-commits@ml.$::domain"],
+    }
 }
