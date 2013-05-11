@@ -4,11 +4,12 @@ class repositories::svn_mirror {
     }
 
     subversion::mirror_repository {
-        '/svn/adm/':      source => "svn://svn.$::domain/svn/adm/";
-        '/svn/soft/':     source => "svn://svn.$::domain/svn/soft/";
-        '/svn/web/':      source => "svn://svn.$::domain/svn/web/";
-        '/svn/packages/': source => "svn://svn.$::domain/svn/packages/";
-        '/svn/org/':      source => "svn://svn.$::domain/svn/org/";
+        '/svn/adm/':       source => "svn://svn.$::domain/svn/adm/";
+        '/svn/soft/':      source => "svn://svn.$::domain/svn/soft/";
+        '/svn/web/':       source => "svn://svn.$::domain/svn/web/";
+        '/svn/packages/':  source => "svn://svn.$::domain/svn/packages/";
+        '/svn/org/':       source => "svn://svn.$::domain/svn/org/";
+        '/svn/treasurer/': source => "svn://svn.$::domain/svn/treasurer/";
     }
 
     # no binrepos, too big to mirror
