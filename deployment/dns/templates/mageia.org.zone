@@ -7,7 +7,7 @@
 ; $Id$
 $TTL	30m
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2013041100	; Serial
+        2013051200	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -96,7 +96,6 @@ pgsql       IN CNAME alamut
 bcd	    IN CNAME rabbit
 mirrors     IN CNAME alamut
 
-<%# Hostnames we can redirect while LO servers are offline start here -%>
 identity    IN CNAME alamut
 identity-trunk    IN CNAME alamut
 epoll       IN CNAME alamut
@@ -112,25 +111,6 @@ tmp	    IN CNAME alamut
 people      IN CNAME alamut
 forums      IN CNAME alamut
 forum       IN CNAME alamut
-  
-<%# (commented)
-; temporary redirection to champagne while alamut is offline
-identity    IN CNAME champagne
-identity-trunk    IN CNAME champagne
-epoll       IN CNAME champagne
-bugs        IN CNAME champagne
-svnweb      IN CNAME champagne
-xymon	    IN CNAME champagne
-check	    IN CNAME champagne
-wiki        IN CNAME champagne
-gitweb      IN CNAME champagne
-pkgcpan     IN CNAME champagne
-perl	    IN CNAME champagne
-tmp	    IN CNAME champagne
-people      IN CNAME champagne
-forums      IN CNAME champagne
-forum       IN CNAME champagne
--%>
 
 ; build nodes aliases
 jonund0 IN CNAME jonund
