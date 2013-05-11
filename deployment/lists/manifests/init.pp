@@ -267,6 +267,13 @@ class lists {
         topics                => 'governance',
     }
 
+    sympa::list::announce {'treasurer-commits':
+        subject      => 'Commits on Mageia.Org association treasurer repository',
+        reply_to     => "treasurer@$::domain",
+        sender_email => [ "root@$::domain" ],
+        topics       => 'governance',
+    }
+
     sympa::list::public_restricted { 'council':
         subject               => 'Council discussions',
         subscriber_ldap_group => 'mga-council',
