@@ -7,7 +7,7 @@
 ; $Id$
 $TTL	30m
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2013051200	; Serial
+        2013051300	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -111,6 +111,7 @@ tmp	    IN CNAME alamut
 people      IN CNAME alamut
 forums      IN CNAME alamut
 forum       IN CNAME alamut
+treasurer   IN CNAME alamut
 
 ; build nodes aliases
 jonund0 IN CNAME jonund
