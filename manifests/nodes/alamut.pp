@@ -114,4 +114,9 @@ node alamut {
         vhostdir    => '/var/www/vhosts/people.mageia.org',
         maintdburl  => 'http://pkgsubmit.mageia.org/data/maintdb.txt',
     }
+
+    class { 'mga-treasurer':
+        $vhost    => 'treasurer.mageia.org',
+        $vhostdir => '/var/www/vhosts/treasurer.mageia.org',
+    }
 }
