@@ -116,7 +116,7 @@ node alamut {
     }
 
     class { 'mga-treasurer':
-        $vhost    => 'treasurer.mageia.org',
-        $vhostdir => '/var/www/vhosts/treasurer.mageia.org',
+        vhost    => 'treasurer.mageia.org',
+        vhostdir => '/var/www/vhosts/treasurer.mageia.org',
     }
 }
