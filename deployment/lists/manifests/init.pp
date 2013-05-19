@@ -5,7 +5,7 @@ class lists {
     sympa::list::announce { 'announce':
         subject      => 'Mageia announces',
         reply_to     => "discuss@ml.$::domain",
-        sender_email => [ "sysadmin@group.$::domain" ],
+        sender_email => [ "sysadmin@group.$::domain", 'ennael1@gmail.com' ],
     }
 
     sympa::list::announce {'atelier-bugs':
