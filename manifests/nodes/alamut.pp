@@ -105,6 +105,7 @@ node alamut {
 
     include wikis
     include websites::perl
+    include websites::www
 
     class { 'mgapeople':
         ldap_server => 'ldap.mageia.org',
