@@ -67,8 +67,8 @@ class mga-treasurer(
     require => User[$mgatres_login],
   }
 
-  cron { '/usr/bin/mktreasurer':
-    command => '/usr/bin/mktreasurer',
+  cron { $update_script:
+    command => $update_script,
     user    => $mgatres_login,
     hour    => '*/2',
     minute  => '10',
