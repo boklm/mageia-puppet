@@ -6,7 +6,6 @@ class websites::www {
 
     include apache::var
     include apache::mod::php
-    include apache::mod::geoip
 
     # for mailman reverse proxy, on ssl
     include apache::mod::proxy
