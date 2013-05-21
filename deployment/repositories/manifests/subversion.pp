@@ -40,6 +40,7 @@ class repositories::subversion {
     subversion::repository { '/svn/packages/':
         group       => 'mga-packagers-committers',
         no_binary   => true,
+        restricted_to_user => 'umeabot',
 	commit_mail => ["packages-commits@ml.$::domain"],
     }
 
