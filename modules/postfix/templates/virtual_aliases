@@ -6,6 +6,7 @@ president@<%= domain %> ennael@<%= domain %>
 secretary@<%= domain %> obgr_seneca@<%= domain %>
 
 contact@<%= domain %> council@group.mageia.org
+press@<%= domain %> council@group.mageia.org
 
 # later switch to a team alias
 root@<%= domain %> sysadmin@group.<%= domain %>
