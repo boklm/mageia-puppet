@@ -41,7 +41,7 @@ class repositories::subversion {
         group       => 'mga-packagers-committers',
         no_binary   => true,
         restricted_to_user => 'umeabot',
-	commit_mail => ["packages-commits@ml.$::domain"],
+        #commit_mail => ["packages-commits@ml.$::domain"],
     }
 
     subversion::repository { '/svn/test-irker/':
