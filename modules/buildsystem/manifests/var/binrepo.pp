@@ -3,6 +3,7 @@
 # $uploadmail_to:
 #   where binrepo email notifications are sent
 class buildsystem::var::binrepo(
+    $hostname = "binrepo.${::domain}",
     $login = 'binrepo',
     $homedir = '/var/lib/binrepo',
     $uploadmail_from,

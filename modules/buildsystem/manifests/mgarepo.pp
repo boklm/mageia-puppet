@@ -1,6 +1,7 @@
 class buildsystem::mgarepo {
     include buildsystem::var::scheduler
     include buildsystem::var::groups
+    include buildsystem::var::binrepo
     $sched_login = $buildsystem::var::scheduler::login
     $sched_home_dir = $buildsystem::var::scheduler::homedir
 
