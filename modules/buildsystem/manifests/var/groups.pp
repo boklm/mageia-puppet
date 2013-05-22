@@ -4,6 +4,6 @@
 #   name of group of users who are allowed to commit on packages
 class buildsystem::var::groups(
     $packagers,
-    $packagers_committers,
+    $packagers_committers
 ) {
 }
