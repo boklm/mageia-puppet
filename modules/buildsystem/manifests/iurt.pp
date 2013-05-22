@@ -4,8 +4,6 @@ class buildsystem::iurt {
     include buildsystem::iurt::packages
     include buildsystem::var::iurt
 
-    ssh::auth::client { $buildsystem::var::iurt::login: }
-
     # remove old build directory
     tidy { "${buildsystem::var::iurt::homedir}/iurt":
         age     => '8w',
