@@ -1,6 +1,5 @@
 class buildsystem::scheduler {
         # until ulri is splitted from main iurt rpm
-        include ssh::auth
         include buildsystem::iurt::packages
         include buildsystem::iurt::upload
         include buildsystem::var::scheduler
