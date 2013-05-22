@@ -8,4 +8,9 @@ class mga_buildsystem::config {
     class { 'buildsystem::var::youri':
         packages_archivedir => "${buildsystem::var::scheduler::homedir}/old",
     }
+
+    class { 'buildsystem::var::binrepo':
+	uploadmail_from => "root@${::domain}",
+	uploadmail_to => "packages-commits@ml.${::domain}",
+    }
 }

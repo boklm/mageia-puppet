@@ -1,7 +1,7 @@
 #!/bin/sh
 
-binrepouser="<%= login %>"
-uploadbinpath="<%= uploadbinpath %>"
+binrepouser="<%= scope.lookupvar('buildsystem::var::binrepo::login') %>"
+uploadbinpath="<%= scope.lookupvar('buildsystem::var::binrepo::uploadbinpath') %>"
 packagerscommittersgroup="<%= packagers_committers_group %>"
 
 function isingroup()

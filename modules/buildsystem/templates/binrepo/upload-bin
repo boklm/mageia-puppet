@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-binrepodir=<%= repodir %>
-uploadinfosdir=<%= uploadinfosdir %>
+binrepodir=<%= scope.lookupvar('buildsystem::var::binrepo::repodir') %>
+uploadinfosdir=<%= scope.lookupvar('buildsystem::var::binrepo::uploadinfosdir') %>
 tmpfile=$(mktemp)
-mail_from="<%= uploadmail_from %>"
-mail_dest="<%= uploadmail_to %>"
+mail_from="<%= scope.lookupvar('buildsystem::var::binrepo::uploadmail_from') %>"
+mail_dest="<%= scope.lookupvar('buildsystem::var::binrepo::uploadmail_to') %>"
 
 test $# = 2 || exit 3
 username="$1"

@@ -1,26 +1,19 @@
 class buildsystem::binrepo {
+    include buildsystem::var::binrepo
     include buildsystem::base
     include sudo
-    $login = 'binrepo'
-    $homedir = "/var/lib/$login"
-    $repodir = "$homedir/data"
-
-    $uploadinfosdir = "$homedir/infos"
-    $uploadbinpath = '/usr/local/bin/upload-bin'
-    $uploadmail_from = "root@$::domain"
-    $uploadmail_to = "packages-commits@ml.$::domain"
 
     # used in templates
     $packagers_committers_group = $buildsystem::base::packagers_committers_group
 
-    user { $login:
+    user { $buildsystem::var::binrepo::login:
         comment => 'Binary files repository',
-        home    => $homedir,
+        home    => $buildsystem::var::binrepo::homedir,
     }
 
-    file { [$repodir, $uploadinfosdir]:
+    file { [$buildsystem::var::binrepo::repodir, $buildsystem::var::binrepo::uploadinfosdir]:
         ensure => directory,
-        owner  => $login,
+        owner  => $buildsystem::var::binrepo::login,
     }
 
     mga-common::local_script {
@@ -34,8 +27,8 @@ class buildsystem::binrepo {
         content => template('buildsystem/binrepo/sudoers.binrepo')
     }
 
-    apache::vhost::base { "binrepo.$::domain":
-        location => $repodir,
+    apache::vhost::base { "binrepo.${::domain}":
+        location => $buildsystem::var::binrepo::repodir,
         content  => template('buildsystem/binrepo/vhost_binrepo.conf'),
     }
 }
