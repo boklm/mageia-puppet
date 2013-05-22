@@ -5,9 +5,8 @@ class buildsystem::mgarepo {
 
     package { ['mgarepo','rpm-build']: }
 
-    file {
-        '/etc/mgarepo.conf': content => template('buildsystem/mgarepo.conf');
-        '/etc/repsys.conf':  content => template('buildsystem/mgarepo.conf');
+    file { '/etc/mgarepo.conf':
+	content => template('buildsystem/mgarepo.conf'),
     }
 
     file { "$sched_home_dir/repsys":
