@@ -2,7 +2,7 @@
 
 binrepouser="<%= scope.lookupvar('buildsystem::var::binrepo::login') %>"
 uploadbinpath="<%= scope.lookupvar('buildsystem::var::binrepo::uploadbinpath') %>"
-packagerscommittersgroup="<%= packagers_committers_group %>"
+packagerscommittersgroup="<%= scope.lookupvar('buildsystem::var::groups::packagers_committers') %>"
 
 function isingroup()
 {

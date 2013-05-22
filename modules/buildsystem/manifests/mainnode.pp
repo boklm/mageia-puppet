@@ -1,6 +1,5 @@
 class buildsystem::mainnode {
     include buildsystem::var::repository
-    include buildsystem::base
     include buildsystem::iurt::user
     include buildsystem::scheduler
     include buildsystem::gatherer

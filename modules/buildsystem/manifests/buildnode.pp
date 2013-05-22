@@ -1,5 +1,4 @@
 class buildsystem::buildnode {
-    include buildsystem::base
     include buildsystem::iurt
     include buildsystem::var::scheduler
     include buildsystem::var::iurt

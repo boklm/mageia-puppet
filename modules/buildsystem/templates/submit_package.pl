@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 my $svn_server = 'svn.<%= domain %>';
-my $packagersgroup="<%= scope.lookupvar('buildsystem::base::packagers_group') %>";
+my $packagersgroup="<%= scope.lookupvar('buildsystem::var::groups::packagers') %>";
 
 my $login = getpwuid($<);
 my (undef, undef, undef, $members) = getgrnam $packagersgroup;

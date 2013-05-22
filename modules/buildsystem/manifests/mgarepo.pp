@@ -1,5 +1,6 @@
 class buildsystem::mgarepo {
     include buildsystem::var::scheduler
+    include buildsystem::var::groups
     $sched_login = $buildsystem::var::scheduler::login
     $sched_home_dir = $buildsystem::var::scheduler::homedir
 
@@ -18,7 +19,7 @@ class buildsystem::mgarepo {
     file { ["$sched_home_dir/repsys/tmp", "$sched_home_dir/repsys/srpms"]:
         ensure  => 'directory',
         owner   => $sched_login,
-        group   => $buildsystem::base::packagers_group,
+        group   => $buildsystem::var::groups::packagers,
         mode    => '1775',
         require => File["$sched_home_dir/repsys"],
     }

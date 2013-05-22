@@ -3,6 +3,11 @@ class mga_buildsystem::config {
 	keyid => '80420F66',
     }
 
+    class { 'buildsystem::var::groups':
+	packagers => 'mga-packagers',
+	packagers_committers => 'mga-packagers-committers',
+    }
+
     include buildsystem::var::scheduler
     include buildsystem::var::repository
     class { 'buildsystem::var::youri':

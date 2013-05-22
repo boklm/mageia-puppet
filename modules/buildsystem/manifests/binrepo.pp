@@ -1,10 +1,7 @@
 class buildsystem::binrepo {
     include buildsystem::var::binrepo
-    include buildsystem::base
+    include buildsystem::var::groups
     include sudo
-
-    # used in templates
-    $packagers_committers_group = $buildsystem::base::packagers_committers_group
 
     user { $buildsystem::var::binrepo::login:
         comment => 'Binary files repository',

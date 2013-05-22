@@ -1,4 +1,5 @@
 class buildsystem::maintdb {
+    include buildsystem::var::groups
     include sudo
     $login = 'maintdb'
     $homedir = '/var/lib/maintdb'

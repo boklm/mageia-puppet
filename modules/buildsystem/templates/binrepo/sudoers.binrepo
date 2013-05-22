@@ -1,1 +1,1 @@
-%<%= packagers_committers_group %>      ALL =(<%= scope.lookupvar('buildsystem::var::binrepo::login') %>) NOPASSWD: <%= scope.lookupvar('buildsystem::var::binrepo::uploadbinpath') %>
+%<%= scope.lookupvar('buildsystem::var::groups::packagers_committers') %>      ALL =(<%= scope.lookupvar('buildsystem::var::binrepo::login') %>) NOPASSWD: <%= scope.lookupvar('buildsystem::var::binrepo::uploadbinpath') %>
