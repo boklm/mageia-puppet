@@ -14,8 +14,6 @@ class buildsystem::mainnode {
 
     ssh::auth::client { $sched_login: }
 
-    ssh::auth::server { $sched_login: }
-
     apache::vhost::other_app { "repository.$::domain":
         vhost_file => 'buildsystem/vhost_repository.conf',
     }
