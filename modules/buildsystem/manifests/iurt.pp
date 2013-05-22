@@ -2,13 +2,12 @@ class buildsystem::iurt {
     include sudo
     include buildsystem::iurt::user
     include buildsystem::iurt::packages
-    $login = $buildsystem::iurt::user::login
-    $homedir = $buildsystem::iurt::user::homedir
+    include buildsystem::var::iurt
 
-    ssh::auth::client { $login: }
+    ssh::auth::client { $buildsystem::var::iurt::login: }
 
     # remove old build directory
-    tidy { "$homedir/iurt":
+    tidy { "${buildsystem::var::iurt::homedir}/iurt":
         age     => '8w',
         recurse => true,
         matches => ['[0-9][0-9].*\..*\..*\.[0-9]*','log','*.rpm','*.log','*.mga[0-9]+'],

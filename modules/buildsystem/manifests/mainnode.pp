@@ -12,7 +12,7 @@ class buildsystem::mainnode {
     $sched_login    = $buildsystem::var::scheduler::login
     $sched_home_dir = $buildsystem::var::scheduler::homedir
 
-    $build_login = $buildsystem::iurt::user::login
+    $build_login = $buildsystem::var::iurt::login
 
     ssh::auth::client { $sched_login: }
 
