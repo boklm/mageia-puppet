@@ -9,10 +9,7 @@ class buildsystem::mainnode {
     include buildsystem::youri_submit
     include buildsystem::sshkeys
 
-    $sched_login    = $buildsystem::var::scheduler::login
-    $sched_home_dir = $buildsystem::var::scheduler::homedir
-
-    ssh::auth::client { $sched_login: }
+    ssh::auth::client { $buildsystem::var::scheduler::login: }
 
     apache::vhost::other_app { "repository.$::domain":
         vhost_file => 'buildsystem/vhost_repository.conf',
