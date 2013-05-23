@@ -316,8 +316,8 @@ class mga_buildsystem::config {
 	'authorized_packages' => '^$',
 	'authorized_arches' => 'none',
 	'authorized_users' => "^${cauldron_authorized_users}\$",
-        #'mode' => 'normal',
-	'mode' => 'version_freeze',
+        'mode' => 'normal',
+        #'mode' => 'version_freeze',
 	#'mode' => 'freeze',
     }
 
