@@ -19,6 +19,21 @@ class mga_buildsystem::config {
 	uploadmail_to => "packages-commits@ml.${::domain}",
     }
 
+    class { 'buildsystem::var::mgarepo':
+	submit_host => "pkgsubmit.${::domain}",
+	svn_hostname => "svn.$::domain",
+	svn_root_packages => "svn://svn.${::domain}/svn/packages",
+	oldurl => "svn+ssh://svn.${::domain}/svn/packages/misc",
+	conf => {
+	    'global' => {
+		'ldap-server' => "ldap.${::domain}",
+		'ldap-base' => "ou=People,${::dc_suffix}",
+		'ldap-filterformat' => '(&(objectClass=inetOrgPerson)(uid=$username))',
+		'ldap-resultformat' => '$cn <$mail>',
+	    }
+	}
+    }
+
     $std_arch = ['i586', 'x86_64']
     $std_repos = {
 	'release' => {
@@ -69,6 +84,7 @@ class mga_buildsystem::config {
 	},
     }
     class { 'buildsystem::var::distros':
+	default_distro => 'cauldron',
 	distros => {
 	    'cauldron' => {
 		'arch' => $std_arch,

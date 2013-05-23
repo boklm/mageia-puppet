@@ -1,3 +1,5 @@
+# $default_distro:
+#   the name of the default distribution
 # $distros:
 #   a hash variable containing distributions informations indexed by
 #   distribution name. Each distribution is itself an hash containing
@@ -33,5 +35,6 @@
 #      },
 #    }
 class buildsystem::var::distros(
+    $default_distro,
     $distros
 ) { }

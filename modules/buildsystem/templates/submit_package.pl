@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-my $svn_server = 'svn.<%= domain %>';
+my $svn_server = '<%= scope.lookupvar('buildsystem::var::mgarepo::svn_hostname') %>';
 my $packagersgroup="<%= scope.lookupvar('buildsystem::var::groups::packagers') %>";
 
 my $login = getpwuid($<);
