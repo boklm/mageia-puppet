@@ -424,6 +424,32 @@ class mga_buildsystem::config {
 		},
 	    },
 
+            '3'        => {
+		'arch' => $std_arch,
+		'medias' => $std_medias,
+		'base_media' => $std_base_media,
+		'branch' => 'Official',
+		'version' => '3',
+		'submit_allowed' => "${svn_root_packages}/updates/3",
+		'macros' => $std_macros,
+		'repo_allow_from' => $repo_allow_from,
+		'youri' => {
+		    'upload' => {
+			'targets' => $std_youri_upload_targets,
+			'checks' => {
+			    'rpmlint' => $mga2_rpmlint,
+			},
+		    },
+		    'todo' => {
+			'targets' => $std_youri_todo_targets,
+			'checks' => {
+			    'rpmlint' => $mga2_rpmlint,
+			    'version' => $std_version_check,
+			},
+		    },
+		},
+	    },
+
 	    'infra_1'  => {
 		'arch' => $std_arch,
 		'medias' => $infra_medias,
