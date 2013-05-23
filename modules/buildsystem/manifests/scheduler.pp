@@ -25,9 +25,11 @@ class buildsystem::scheduler {
 	    minute  => '*',
 	}
 
-        tidy { "${buildsystem::var::scheduler::homedir}/uploads":
-            type    => 'ctime',
-            recurse => true,
-            age     => '2w',
+        if ($buildsystem::var::scheduler::clean_uploads_logs_age != '0') {
+            tidy { "${buildsystem::var::scheduler::homedir}/uploads":
+                type    => 'ctime',
+                recurse => true,
+                age     => $buildsystem::var::scheduler::clean_uploads_logs_age,
+            }
         }
 }
