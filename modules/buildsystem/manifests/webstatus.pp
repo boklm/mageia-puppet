@@ -1,4 +1,4 @@
-class buildsystem::pkgsubmit {
+class buildsystem::webstatus {
     include buildsystem::var::scheduler
     $sched_home_dir = $buildsystem::var::scheduler::homedir
 
@@ -13,7 +13,7 @@ class buildsystem::pkgsubmit {
             '/autobuild/cauldron/x86_64/core/log/status.core.log' => "$location/autobuild/broken.php"
         },
         location => $location,
-        content  => template('buildsystem/vhost_pkgsubmit.conf'),
+        content  => template('buildsystem/vhost_webstatus.conf'),
     }
 
     subversion::snapshot { $location:

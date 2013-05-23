@@ -5,7 +5,7 @@ class mga_buildsystem::mainnode {
     include buildsystem::maintdb
     include buildsystem::binrepo
     include buildsystem::repoctl
-    include buildsystem::pkgsubmit
+    include buildsystem::webstatus
 
     $rpmlint_packages = [ "rpmlint-mageia-policy", "rpmlint-mageia-mga2-policy"]
     package { $rpmlint_packages:
