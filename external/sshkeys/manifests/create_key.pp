@@ -5,7 +5,7 @@ define sshkeys::create_key (
   $keytype = "rsa",
   $length = 2048,
   $maxdays = "",
-  $mindate = "",
+  $mindate = ""
 ) {
   sshkeys::namecheck { "${title}-title": parm => "title", value => $title }
 
