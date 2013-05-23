@@ -4,9 +4,19 @@
 #   vhost name of the webstatus page
 # $location:
 #   path of the directory where the webstatus files are located
+# $package_commit_url:
+#   url to view a commit on a package. %d is replaced by the commit id.
+# $theme_name:
+#   name of the webstatus theme
+# $themes_dir:
+#   path of the directory where the themes are located. If you want
+#   to use a theme not included in webstatus, you need to change this.
 class buildsystem::var::webstatus(
     $svn_url = "svn://svn.mageia.org/soft/build_system/web/",
     $hostname = "pkgsubmit.$::domain",
-    $location = '/var/www/bs'
+    $location = '/var/www/bs',
+    $package_commit_url,
+    $theme_name = 'mageia',
+    $themes_dir = '/var/www/bs/themes/'
 ) {
 }

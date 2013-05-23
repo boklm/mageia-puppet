@@ -18,4 +18,12 @@ class buildsystem::webstatus {
     subversion::snapshot { $buildsystem::var::webstatus::location:
         source => $buildsystem::var::webstatus::svn_url,
     }
+
+    file { '/etc/bs-webstatus.conf':
+	ensure => present,
+	content => template('buildsystem/bs-webstatus.conf'),
+	mode => 0644,
+	owner => root,
+	group => root,
+    }
 }

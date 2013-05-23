@@ -10,6 +10,11 @@ class mga_buildsystem::config {
 	packagers_committers => 'mga-packagers-committers',
     }
 
+    class { 'buildsystem::var::webstatus' :
+	package_commit_url => 'http://svnweb.mageia.org/packages?view=revision&revision=%d',
+	theme_name => 'mageia',
+    }
+
     class { 'buildsystem::var::scheduler' :
 	admin_mail => 'mageia-sysadm@mageia.org',
 	build_nodes => {
