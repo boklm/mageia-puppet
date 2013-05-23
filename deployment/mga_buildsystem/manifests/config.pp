@@ -119,12 +119,12 @@ class mga_buildsystem::config {
 	'_real_vendor' => 'mageia',
     }
     $repo_allow_from = [
-	'2a02:2178:2:7::3/64', # valstar
-	'2a02:2178:2:7::4/64', # ecosse
-	'2a02:2178:2:7::5/64', # jonund
+	$::nodes_ipaddr[valstar][ipv6],
+	$::nodes_ipaddr[ecosse][ipv6],
+	$::nodes_ipaddr[jonund][ipv6],
 	".${::domain}",
 	'10.42.0',
-	'212.85.158.152',      #rabbit
+	$::nodes_ipaddr[rabbit][ipv4],      #rabbit
     ]
 
     # the list of checks, actions, posts for cauldron in youri-upload
