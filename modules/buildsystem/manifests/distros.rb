@@ -10,6 +10,13 @@ hostclass "buildsystem::distros" do
 	file [ bootstrap_reporoot, rel ].join('/'), :ensure => 'directory', 
 	    :owner => mirror_user, :group => mirror_user
 	for arch in distro['arch'] do
+	    # As ruby dsl cannot use defined resources, we have to use a
+	    # workaround with 'find_resource_type' as described in this
+	    # puppet issue: http://projects.puppetlabs.com/issues/11912
+	    scope.find_resource_type 'buildsystem::media_cfg'
+	    create_resource 'buildsystem::media_cfg',
+		[ rel, ' ', arch ].join('/'), :distro_name => rel,
+		:arch => arch
 	    file [ bootstrap_reporoot, rel, arch ].join('/'), 
 		:ensure => 'directory', :owner => mirror_user, 
 		:group => mirror_user

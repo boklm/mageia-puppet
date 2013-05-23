@@ -14,13 +14,4 @@ class buildsystem::mainnode {
     apache::vhost::other_app { "repository.$::domain":
         vhost_file => 'buildsystem/vhost_repository.conf',
     }
-
-    buildsystem::media_cfg { "cauldron i586":
-	distro  => 'cauldron',
-	arch    => 'i586',
-    }
-    buildsystem::media_cfg { "cauldron x86_64":
-	distro  => 'cauldron',
-	arch    => 'x86_64',
-    }
 }
