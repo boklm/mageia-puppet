@@ -6,6 +6,8 @@
 #   path of the directory where the webstatus files are located
 # $package_commit_url:
 #   url to view a commit on a package. %d is replaced by the commit id.
+# $max_modified:
+#   how much history should we display, in days
 # $theme_name:
 #   name of the webstatus theme
 # $themes_dir:
@@ -16,6 +18,7 @@ class buildsystem::var::webstatus(
     $hostname = "pkgsubmit.$::domain",
     $location = '/var/www/bs',
     $package_commit_url,
+    $max_modified = '2',
     $theme_name = 'mageia',
     $themes_dir = '/var/www/bs/themes/'
 ) {
