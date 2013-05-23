@@ -2,6 +2,7 @@ class buildsystem::mgarepo {
     include buildsystem::var::scheduler
     include buildsystem::var::groups
     include buildsystem::var::binrepo
+    include buildsystem::create_upload_dir
     $sched_login = $buildsystem::var::scheduler::login
     $sched_home_dir = $buildsystem::var::scheduler::homedir
 
@@ -31,33 +32,6 @@ class buildsystem::mgarepo {
     #    owner   => $sched_login,
     #    require => File[$sched_home_dir],
     #}
-
-    #FIXME This config information should be moved out of this class
-    $releases = {
-        'cauldron' => {
-            'core'    => ['release','updates_testing','backports_testing','backports','updates'],
-            'nonfree' => ['release','updates_testing','backports_testing','backports','updates'],
-            'tainted' => ['release','updates_testing','backports_testing','backports','updates'],
-        },
-        '1'        => {
-            'core'    => ['release','updates_testing','backports_testing','backports','updates'],
-            'nonfree' => ['release','updates_testing','backports_testing','backports','updates'],
-            'tainted' => ['release','updates_testing','backports_testing','backports','updates'],
-        },
-        '2'        => {
-            'core'    => ['release','updates_testing','backports_testing','backports','updates'],
-            'nonfree' => ['release','updates_testing','backports_testing','backports','updates'],
-            'tainted' => ['release','updates_testing','backports_testing','backports','updates'],
-        },
-        'infra_1'  => {
-            'infra' => ['release']
-        },
-        'infra_2'  => {
-            'infra' => ['release']
-        },
-    }
-
-    include buildsystem::create_upload_dir
 
     tidy { "$sched_home_dir/uploads":
         type    => 'ctime',
