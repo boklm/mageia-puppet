@@ -1,6 +1,7 @@
 class buildsystem::webstatus {
     include buildsystem::var::webstatus
     include buildsystem::var::scheduler
+    include apache::mod::php
 
     file { [ $buildsystem::var::webstatus::location, "${buildsystem::var::webstatus::location}/data" ]:
         ensure => directory,
