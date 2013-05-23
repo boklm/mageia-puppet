@@ -57,11 +57,7 @@ class buildsystem::mgarepo {
         },
     }
 
-    create_upload_dir { "$sched_home_dir/uploads":
-        owner    => $sched_login,
-        group    => $sched_login,
-        releases => $releases,
-    }
+    create_upload_dir { "$sched_home_dir/uploads": }
 
     tidy { "$sched_home_dir/uploads":
         type    => 'ctime',
