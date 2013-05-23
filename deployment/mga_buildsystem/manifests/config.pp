@@ -78,8 +78,8 @@ class mga_buildsystem::config {
     $infra_medias = {
 	'infra' => {
 	    'repos' => {
-		'release' => {
-		    'media_types' => [ 'release' ],
+		'updates' => {
+		    'media_types' => [ 'updates' ],
 		},
 	    },
 	    'media_types' => [ 'infra' ],
