@@ -1,5 +1,6 @@
 class buildsystem::repoctl {
     include buildsystem::var::distros
+    include buildsystem::var::repository
 
     package{ 'repoctl': }
 
