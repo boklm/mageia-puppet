@@ -3,6 +3,11 @@ class buildsystem::binrepo {
     include buildsystem::var::groups
     include sudo
 
+    # upload-bin script use the mailx command provided by nail
+    package { 'nail':
+	ensure => installed,
+    }
+
     user { $buildsystem::var::binrepo::login:
         comment => 'Binary files repository',
         home    => $buildsystem::var::binrepo::homedir,
