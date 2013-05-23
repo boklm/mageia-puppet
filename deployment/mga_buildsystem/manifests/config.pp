@@ -10,6 +10,10 @@ class mga_buildsystem::config {
 
     class { 'buildsystem::var::scheduler' :
 	admin_mail => 'mageia-sysadm@mageia.org',
+	build_nodes => {
+	    'i586' => [ 'jonund0', 'ecosse0', 'jonund1', 'ecosse1' ],
+	    'x86_64' => [ 'ecosse0', 'jonund0', 'ecosse1', 'jonund1' ],
+	},
     }
     include buildsystem::var::repository
     class { 'buildsystem::var::youri':
