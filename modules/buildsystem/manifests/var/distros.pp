@@ -32,6 +32,14 @@
 #         'branch' => 'Devel',
 #         # Version of the distribution
 #         'version' => '3',
+#         # SVN Urls allowed to submit
+#         'submit_allowed' => 'svn://svn.something/svn/packages/cauldron',
+#         # rpm macros to set when build source package
+#         'macros' => {
+#            'distsuffix' => '.mga',
+#            'distribution' => 'Mageia',
+#            'vendor' => 'Mageia.Org',
+#         }
 #      },
 #    }
 class buildsystem::var::distros(

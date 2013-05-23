@@ -19,10 +19,12 @@ class mga_buildsystem::config {
 	uploadmail_to => "packages-commits@ml.${::domain}",
     }
 
+    $svn_hostname = "svn.$::domain"
+    $svn_root_packages = "svn://${svn_hostname}/svn/packages"
     class { 'buildsystem::var::mgarepo':
 	submit_host => "pkgsubmit.${::domain}",
-	svn_hostname => "svn.$::domain",
-	svn_root_packages => "svn://svn.${::domain}/svn/packages",
+	svn_hostname => $svn_hostname,
+	svn_root_packages => $svn_root_packages,
 	oldurl => "svn+ssh://svn.${::domain}/svn/packages/misc",
 	conf => {
 	    'global' => {
@@ -83,6 +85,12 @@ class mga_buildsystem::config {
 	    'media_types' => [ 'infra' ],
 	},
     }
+    $std_macros = {
+	'distsuffix' => '.mga',
+	'distribution' => 'Mageia',
+	'vendor' => 'Mageia.Org',
+	'_real_vendor' => 'mageia',
+    }
     class { 'buildsystem::var::distros':
 	default_distro => 'cauldron',
 	distros => {
@@ -92,6 +100,8 @@ class mga_buildsystem::config {
 		'base_media' => $std_base_media,
 		'branch' => 'Devel',
 		'version' => '3',
+		'submit_allowed' => "${svn_root_packages}/cauldron",
+		'macros' => $std_macros,
 	    },
 
 	    '1'        => {
@@ -100,6 +110,8 @@ class mga_buildsystem::config {
 		'base_media' => $std_base_media,
 		'branch' => 'Official',
 		'version' => '1',
+		'submit_allowed' => "${svn_root_packages}/updates/1",
+		'macros' => $std_macros,
 	    },
 
 	    '2'        => {
@@ -108,6 +120,8 @@ class mga_buildsystem::config {
 		'base_media' => $std_base_media,
 		'branch' => 'Official',
 		'version' => '2',
+		'submit_allowed' => "${svn_root_packages}/updates/2",
+		'macros' => $std_macros,
 	    },
 
 	    'infra_1'  => {
@@ -116,6 +130,8 @@ class mga_buildsystem::config {
 		'base_media' => $std_base_media,
 		'branch' => 'Official',
 		'version' => '1',
+		'submit_allowed' => $svn_root_packages,
+		'macros' => $std_macros,
 	    },
 
 	    'infra_2'  => {
@@ -124,6 +140,8 @@ class mga_buildsystem::config {
 		'base_media' => $std_base_media,
 		'branch' => 'Official',
 		'version' => '2',
+		'submit_allowed' => $svn_root_packages,
+		'macros' => $std_macros,
 	    },
 	}
     }
