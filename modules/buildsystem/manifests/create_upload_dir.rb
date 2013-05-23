@@ -1,4 +1,4 @@
-define "create_upload_dir", :owner, :group, :releases do
+define "buildsystem::create_upload_dir", :owner, :group, :releases do
     states = ["todo","done","failure","queue","rejected"]
 
     file @name, :ensure => 'directory', :owner => @owner, :group => @group 
