@@ -16,7 +16,7 @@ class buildsystem::iurt {
         ensure => directory,
     }
 
-    buildsystem::iurt::config { ['2','1','cauldron','mandriva2010.1','infra_1', 'infra_2']: }
+    buildsystem::iurt::config { ['2','1','cauldron','infra_1', 'infra_2']: }
 
     sudo::sudoers_config { 'iurt':
         content => template('buildsystem/iurt/sudoers.iurt')
