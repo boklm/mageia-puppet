@@ -120,11 +120,15 @@ class mga_buildsystem::config {
     }
     $repo_allow_from = [
 	$::nodes_ipaddr[valstar][ipv6],
+	$::nodes_ipaddr[valstar][ipv4],
 	$::nodes_ipaddr[ecosse][ipv6],
+	$::nodes_ipaddr[ecosse][ipv4],
 	$::nodes_ipaddr[jonund][ipv6],
+	$::nodes_ipaddr[jonund][ipv4],
 	".${::domain}",
 	'10.42.0',
-	$::nodes_ipaddr[rabbit][ipv4],      #rabbit
+	$::nodes_ipaddr[rabbit][ipv4],
+	$::nodes_ipaddr[rabbit][ipv6],
     ]
 
     # the list of checks, actions, posts for cauldron in youri-upload
