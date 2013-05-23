@@ -8,7 +8,9 @@ class mga_buildsystem::config {
 	packagers_committers => 'mga-packagers-committers',
     }
 
-    include buildsystem::var::scheduler
+    class { 'buildsystem::var::scheduler' :
+	admin_mail => 'mageia-sysadm@mageia.org',
+    }
     include buildsystem::var::repository
     class { 'buildsystem::var::youri':
         packages_archivedir => "${buildsystem::var::scheduler::homedir}/old",
