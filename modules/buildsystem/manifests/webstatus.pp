@@ -10,7 +10,8 @@ class buildsystem::webstatus {
     apache::vhost::base { $buildsystem::var::webstatus::hostname:
         aliases  => {
             '/uploads' => "${buildsystem::var::scheduler::homedir}/uploads",
-            '/autobuild/cauldron/x86_64/core/log/status.core.log' => "$location/autobuild/broken.php"
+            '/autobuild/cauldron/x86_64/core/log/status.core.log' => "$location/autobuild/broken.php",
+	    '/themes' => $buildsystem::var::webstatus::themes_dir,
         },
         location => $buildsystem::var::webstatus::location,
         content  => template('buildsystem/vhost_webstatus.conf'),
