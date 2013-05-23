@@ -1,4 +1,5 @@
 class buildsystem::var::maintdb(
+    $hostname = "maintdb.$::domain",
     $login = 'maintdb',
     $homedir = '/var/lib/maintdb'
 ) {
