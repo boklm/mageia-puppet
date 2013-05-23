@@ -10,8 +10,4 @@ class buildsystem::mainnode {
     include buildsystem::distros
 
     ssh::auth::client { $buildsystem::var::scheduler::login: }
-
-    apache::vhost::other_app { $buildsystem::var::repository::hostname:
-        vhost_file => 'buildsystem/vhost_repository.conf',
-    }
 }
