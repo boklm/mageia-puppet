@@ -1,4 +1,5 @@
 class viewvc {
+    include apache::mod::fastcgi
     include viewvc::var
     package {['viewvc',
               'python-svn',
