@@ -143,6 +143,11 @@ class mga_buildsystem::config {
 		'version' => '1',
 		'submit_allowed' => $svn_root_packages,
 		'macros' => $std_macros,
+		'based_on' => {
+		    '1' => {
+			'core' => [ 'release', 'updates' ],
+		    },
+		},
 	    },
 
 	    'infra_2'  => {
@@ -153,6 +158,11 @@ class mga_buildsystem::config {
 		'version' => '2',
 		'submit_allowed' => $svn_root_packages,
 		'macros' => $std_macros,
+		'based_on' => {
+		    '2' => {
+			'core' => [ 'release', 'updates' ],
+		    },
+		},
 	    },
 	}
     }

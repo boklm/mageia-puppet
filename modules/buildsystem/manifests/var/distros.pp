@@ -44,6 +44,14 @@
 #         # repository. If you don't want to filter allowed IPs, don't set
 #         # this value
 #         'repo_allow_from' => [ '127.0.0.1', '10.0.0.1', '.mageia.org' ],
+#         Optionally, the distribution can be based on the repos from an other
+#         distribution. In this example we're saying that the distribution is
+#         based on 2/core/release and 2/core/updates.
+#         'based_on' => {
+#            '2' => {
+#                'core' => [ 'release', 'updates' ],
+#            },
+#         },
 #      },
 #    }
 class buildsystem::var::distros(

@@ -42,6 +42,26 @@ hostclass "buildsystem::distros" do
 			:group => schedbot_user
 		end
 	    }
+	    if distro['based_on'] != nil
+		distro['based_on'].each{|bdistroname, medias|
+		    file [ mediadir, bdistroname ].join('/'),
+			:ensure => 'directory', :owner => mirror_user,
+			:group => mirror_user
+		    medias.each{|medianame, media|
+			mdir = [ mediadir, bdistroname, medianame ].join('/')
+			file mdir, :ensure => 'directory',
+			    :owner => mirror_user, :group => mirror_user
+			for reponame in media
+			    file [ mdir, reponame ].join('/'),
+				:ensure => 'link',
+				:target => [ 
+				    '../../../../..', bdistroname, arch,
+				    'media', medianame, reponame ].join('/'),
+				:owner => mirror_user, :group => mirror_user
+			end
+		    }
+		}
+	    end
 	end
     }
 end
