@@ -454,7 +454,7 @@ sub get_upload_newer_revisions {
     my ($self, $package, $target, $user_context, $app_context) = @_;
     croak "Not a class method" unless ref $self;
     my $arch = $package->get_arch();
-    my $name = $package->get_full_name;
+    my $name = $package->as_string();
     $name =~ s/^\@\d+://;
     my $pattern = $self->get_package_class()->get_pattern($package->get_name(), undef, undef, $arch);
     my $media = $self->_get_media_config($target);
