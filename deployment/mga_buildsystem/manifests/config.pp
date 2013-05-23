@@ -16,6 +16,13 @@ class mga_buildsystem::config {
 	    'i586' => [ 'jonund0', 'ecosse0', 'jonund1', 'ecosse1' ],
 	    'x86_64' => [ 'ecosse0', 'jonund0', 'ecosse1', 'jonund1' ],
 	},
+	build_nodes_aliases => {
+	    'jonund0' => "jonund.${::domain}",
+	    'jonund1' => "jonund.${::domain}",
+	    'ecosse0' => "ecosse.${::domain}",
+	    'ecosse1' => "ecosse.${::domain}",
+	},
+	build_src_node => "valstar.${::domain}",
     }
     include buildsystem::var::repository
     class { 'buildsystem::var::binrepo':

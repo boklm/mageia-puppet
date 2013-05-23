@@ -26,6 +26,8 @@ class buildsystem::youri_submit {
             ensure => 'directory';
         '/etc/youri/acl.conf':
             content => template('buildsystem/youri/acl.conf');
+	'/etc/youri/host.conf':
+	    content => template('buildsystem/youri/host.conf');
     }
 
     buildsystem::youri_submit_conf{ 'upload':
