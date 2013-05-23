@@ -1,4 +1,5 @@
 class viewvc {
+    include viewvc::var
     package {['viewvc',
               'python-svn',
               'python-flup']: }
@@ -7,7 +8,7 @@ class viewvc {
     # svn_roots = admin: svn://svn.mageia.org/svn/adm/
 
     file { '/etc/viewvc/viewvc.conf':
-        content => template('viewvc/viewvc.conf'),
+        content => template($viewvc::var::tmpl_viewvc_conf),
         notify  => Service['apache'],
         require => Package['viewvc'],
     }
@@ -37,11 +38,11 @@ class viewvc {
         source => 'puppet:///modules/viewvc/robots.txt',
     }
 
-    apache::vhost::base { "svnweb.$::domain":
+    apache::vhost::base { $viewvc::var::hostname:
         aliases => {'/viewvc' => '/var/www/viewvc/',
                     '/robots.txt' => $robotsfile,
                     '/'       => '/usr/share/viewvc/bin/wsgi/viewvc.fcgi/'},
-        content => template('viewvc/vhost.conf')
+        content => template('viewvc/vhost.conf'),
     }
 }
 
