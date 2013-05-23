@@ -57,7 +57,7 @@ class buildsystem::mgarepo {
         },
     }
 
-    create_upload_dir { "$sched_home_dir/uploads": }
+    include buildsystem::create_upload_dir
 
     tidy { "$sched_home_dir/uploads":
         type    => 'ctime',
