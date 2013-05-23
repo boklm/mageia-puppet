@@ -18,6 +18,13 @@
 #                    'media_types' => [ 'release' ],
 #                    'noauto' => '1',
 #                 },
+#                 # the 'updates' repo
+#                 'release' => {
+#                    'media_types' => [ 'updates' ],
+#                    'noauto' => '1',
+#                    # the 'updates' repo requires the 'release' repo
+#                    'requires' => [ 'release' ],
+#                 },
 #               },
 #               # media_types for media.cfg
 #               'media_types' => [ 'official', 'free' ],
@@ -25,6 +32,15 @@
 #               # the option will be added to media.cfg
 #               'noauto' => '1',
 #            },
+#            # the 'non-free' media
+#            'non-free' => {
+#               'repos' => {
+#                     ...
+#               },
+#               'media_types' => [ 'official', 'non-free' ],
+#               # the 'non-free' media requires the 'core' media
+#               'requires' => [ 'core' ],
+#            }
 #         },
 #         # the list of media used by iurt to build the chroots
 #         'base_medias' => [ 'core/release' ],

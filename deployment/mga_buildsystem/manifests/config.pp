@@ -40,22 +40,27 @@ class mga_buildsystem::config {
     $std_repos = {
 	'release' => {
 	    'media_types' => [ 'release' ],
+	    'requires' => [],
 	},
 	'updates_testing' => {
 	    'media_types' => [ 'testing' ],
 	    'noauto' => '1',
+	    'requires' => [ 'updates' ],
 	},
 	'backports_testing' => {
 	    'media_types' => [ 'testing' ],
 	    'noauto' => '1',
+	    'requires' => [ 'backports' ],
 	},
 	'backports' => {
 	    'media_types' => [ 'backports' ],
 	    'noauto' => '1',
+	    'requires' => [ 'updates' ],
 	},
 	'updates' => {
 	    'media_types' => [ 'updates' ],
 	    'updates_for' => 'release',
+	    'requires' => [ 'release' ],
 	},
     }
     $std_medias = {
@@ -67,11 +72,13 @@ class mga_buildsystem::config {
 	    'repos' => $std_repos,
 	    'media_types' => [ 'official' ],
 	    'noauto' => '1',
+	    'requires' => [ 'core' ],
 	},
 	'tainted' => {
 	    'repos' => $std_repos,
 	    'media_types' => [ 'official' ],
 	    'noauto' => '1',
+	    'requires' => [ 'core' ],
 	},
     }
     $std_base_media = [ 'core/release', 'core/updates' ]
@@ -80,9 +87,11 @@ class mga_buildsystem::config {
 	    'repos' => {
 		'updates' => {
 		    'media_types' => [ 'updates' ],
+		    'requires' => [ 'release' ],
 		},
 	    },
 	    'media_types' => [ 'infra' ],
+	    'requires' => [ 'core' ],
 	},
     }
     $std_macros = {
