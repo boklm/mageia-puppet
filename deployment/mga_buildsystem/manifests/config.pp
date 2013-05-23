@@ -297,6 +297,45 @@ class mga_buildsystem::config {
             ],
     }
 
+    # rpmlint check options for Mageia 3
+    $mga3_rpmlint = {
+	'config' => '/usr/share/rpmlint/config',
+	'path' => '/usr/bin/rpmlint',
+        'results' => [
+            'buildprereq-use',
+            'no-description-tag',
+            'no-summary-tag',
+            'non-standard-group',
+            'non-xdg-migrated-menu',
+            'percent-in-conflicts',
+            'percent-in-dependency',
+            'percent-in-obsoletes',
+            'percent-in-provides',
+            'summary-ended-with-dot',
+            'unexpanded-macro',
+            'unknown-lsb-keyword',
+            'malformed-line-in-lsb-comment-block',
+            'empty-%postun',
+            'empty-%post',
+            'invalid-desktopfile',
+            'standard-dir-owned-by-package',
+            'use-tmp-in-%postun',
+            'bogus-variable-use-in-%posttrans',
+            'dir-or-file-in-usr-local',
+            'dir-or-file-in-tmp',
+            'dir-or-file-in-mnt',
+            'dir-or-file-in-opt',
+            'dir-or-file-in-home',
+            'dir-or-file-in-var-local',
+            'tmpfiles-conf-in-etc',
+            'non-ghost-in-run',
+            'non-ghost-in-var-run',
+            'non-ghost-in-var-lock',
+            'systemd-unit-in-etc',
+            'udev-rule-in-etc',
+        ],
+    }
+
     # rpmlint check options for cauldron
     $cauldron_rpmlint = {
 	'config' => '/usr/share/rpmlint/config',
@@ -464,13 +503,13 @@ class mga_buildsystem::config {
 		    'upload' => {
 			'targets' => $std_youri_upload_targets,
 			'checks' => {
-			    'rpmlint' => $mga2_rpmlint,
+			    'rpmlint' => $mga3_rpmlint,
 			},
 		    },
 		    'todo' => {
 			'targets' => $std_youri_todo_targets,
 			'checks' => {
-			    'rpmlint' => $mga2_rpmlint,
+			    'rpmlint' => $mga3_rpmlint,
 			    'version' => $std_version_check,
 			},
 		    },
