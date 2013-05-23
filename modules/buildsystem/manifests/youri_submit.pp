@@ -24,12 +24,15 @@ class buildsystem::youri_submit {
     file {
         '/etc/youri/':
             ensure => 'directory';
-        '/etc/youri/submit-todo.conf':
-            content => template($buildsystem::var::youri::tmpl_youri_todo_conf);
-        '/etc/youri/submit-upload.conf':
-            content => template($buildsystem::var::youri::tmpl_youri_upload_conf);
         '/etc/youri/acl.conf':
             content => template('buildsystem/youri/acl.conf');
+    }
+
+    buildsystem::youri_submit_conf{ 'upload':
+	tmpl_file => $buildsystem::var::youri::tmpl_youri_upload_conf,
+    }
+    buildsystem::youri_submit_conf{ 'todo':
+    	tmpl_file => $buildsystem::var::youri::tmpl_youri_todo_conf,
     }
 
     file { $buildsystem::var::youri::packages_archivedir:

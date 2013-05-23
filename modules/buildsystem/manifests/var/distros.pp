@@ -68,6 +68,38 @@
 #                'core' => [ 'release', 'updates' ],
 #            },
 #         },
+#         'youri' => {
+#            # Configuration for youri-upload
+#            'upload' => {
+#                # list of enabled checks, actions and posts
+#                'targets' => {
+#                    'checks' => [
+#                        ...
+#                    ],
+#                    'actions' => [
+#                        ...
+#                    ],
+#                    'posts' => [
+#                        ...
+#                    ],
+#                },
+#                'checks' => {
+#                    # rpmlint checks options
+#                    'rpmlint' => {
+#                        'config' => '/usr/share/rpmlint/config',
+#                        'path' => ''/usr/bin/rpmlint',
+#                    },
+#                },
+#                # options for actions
+#                'actions' => {
+#                    ...
+#                },
+#            },
+#            # Configuration for youri-todo
+#            'todo' => {
+#                ...
+#            },
+#         },
 #      },
 #    }
 class buildsystem::var::distros(

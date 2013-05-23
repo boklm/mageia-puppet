@@ -18,10 +18,6 @@ class mga_buildsystem::config {
 	},
     }
     include buildsystem::var::repository
-    class { 'buildsystem::var::youri':
-        packages_archivedir => "${buildsystem::var::scheduler::homedir}/old",
-    }
-
     class { 'buildsystem::var::binrepo':
 	uploadmail_from => "root@${::domain}",
 	uploadmail_to => "packages-commits@ml.${::domain}",
@@ -118,6 +114,219 @@ class mga_buildsystem::config {
 	'10.42.0',
 	'212.85.158.152',      #rabbit
     ]
+
+    # the list of checks, actions, posts for cauldron in youri-upload
+    $cauldron_youri_upload_targets = {
+	'checks' => [
+	    'version',
+	    'tag',
+	    'acl',
+	    'rpmlint',
+	    'recency',
+	],
+	'actions' => [
+	    'markrelease',
+	    'sign',
+	    'install',
+	    'link',
+	    'unpack_release_notes',
+	    'unpack_gfxboot_theme',
+	    'unpack_meta_task',
+	    'unpack_installer_images',
+	    'unpack_installer_images_nonfree',
+	    'unpack_installer_stage2',
+	    'unpack_installer_advertising',
+	    'unpack_installer_rescue',
+	    'unpack_syslinux',
+	    'archive',
+	    'mail',
+	    'maintdb',
+	],
+	'posts' => [
+	    'genhdlist2',
+	    'clean_rpmsrate',
+	    'mirror',
+	],
+    }
+
+    # the list of checks, actions, posts for stable distros in youri-upload
+    $std_youri_upload_targets = {
+	'checks' => [
+	    'version',
+	    'tag',
+	    'acl',
+	    'rpmlint',
+	    'recency',
+	],
+	'actions' => [
+	    'sign',
+	    'install',
+	    'link',
+	    'archive',
+	    'mail',
+	],
+	'posts' => [
+	    'genhdlist2',
+	    'clean_rpmsrate',
+	    'mirror',
+	],
+    }
+
+    # the list of checks, actions, posts for infra distros in youri-upload
+    $infra_youri_upload_targets = {
+	'checks' => [
+	    'version',
+	    'tag',
+	    'acl',
+	    'rpmlint',
+	    'recency',
+	],
+	'actions' => [
+	    'sign',
+	    'install',
+	    'link',
+	    'archive',
+	],
+	'posts' => [
+	    'genhdlist2',
+	],
+    }
+
+    # the list of checks, actions, posts for cauldron in youri-todo
+    $cauldron_youri_todo_targets = {
+	'checks' => [
+	    'source',
+	    'deps',
+	    'version',
+	    'tag',
+	    'acl',
+	    'host',
+	    'rpmlint',
+	    'recency',
+	    'queue_recency',
+	],
+	'actions' => [
+	    'send',
+	    'rpminfo',
+	],
+    }
+
+    # the list of checks, actions, posts for stable distros in youri-todo
+    $std_youri_todo_targets = {
+	'checks' => [
+	    'source',
+	    'version',
+	    'tag',
+	    'acl',
+	    'host',
+	    'rpmlint',
+	    'recency',
+	    'queue_recency',
+	],
+	'actions' => [
+	    'send',
+	    'rpminfo',
+	    'ulri',
+	],
+    }
+
+    # the list of checks, actions, posts for infra distros in youri-todo
+    $infra_youri_todo_targets = {
+	'checks' => [
+	    'source',
+	    'version',
+	    'tag',
+	    'acl',
+	    'rpmlint',
+	    'recency',
+	    'queue_recency',
+	],
+	'actions' => [
+	    'send',
+	    'rpminfo',
+	    'ulri',
+	],
+    }
+
+    # rpmlint check options for mageia <= 2
+    $mga2_rpmlint = {
+	'config' => '/usr/share/rpmlint/config.mga2',
+	'path' => '/usr/bin/mga2-rpmlint',
+    }
+
+    # rpmlint check options for cauldron
+    $cauldron_rpmlint = {
+	'config' => '/usr/share/rpmlint/config',
+	'path' => '/usr/bin/rpmlint',
+        'results' => [
+            'buildprereq-use',
+            'no-description-tag',
+            'no-summary-tag',
+            'non-standard-group',
+            'non-xdg-migrated-menu',
+            'percent-in-conflicts',
+            'percent-in-dependency',
+            'percent-in-obsoletes',
+            'percent-in-provides',
+            'summary-ended-with-dot',
+            'unexpanded-macro',
+            'unknown-lsb-keyword',
+            'malformed-line-in-lsb-comment-block',
+            'empty-%postun',
+            'empty-%post',
+            'invalid-desktopfile',
+            'standard-dir-owned-by-package',
+            'use-tmp-in-%postun',
+            'bogus-variable-use-in-%posttrans',
+            'dir-or-file-in-usr-local',
+            'dir-or-file-in-tmp',
+            'dir-or-file-in-mnt',
+            'dir-or-file-in-opt',
+            'dir-or-file-in-home',
+            'dir-or-file-in-var-local',
+            'tmpfiles-conf-in-etc',
+            'non-ghost-in-run',
+            'non-ghost-in-var-run',
+            'non-ghost-in-var-lock',
+            'systemd-unit-in-etc',
+            'udev-rule-in-etc',
+        ],
+    }
+
+    # list of users allowed to submit packages when cauldron is frozen
+    $cauldron_authorized_users = str_join(group_members('mga-release_managers'), '|')
+    $cauldron_version_check = {
+	'authorized_sections' => '^[a-z]+/updates_testing$',
+	'authorized_packages' => '^$',
+	'authorized_arches' => 'none',
+	'authorized_users' => "^${cauldron_authorized_users}\$",
+        #'mode' => 'normal',
+	'mode' => 'version_freeze',
+	#'mode' => 'freeze',
+    }
+
+    # for EOL distributions
+    $frozen_version_check = {
+	'authorized_packages' => 'none_package_authorized',
+	'authorized_sections' => 'none_section_authorized',
+	'authorized_arches' => 'none',
+	'mode' => 'freeze',
+    }
+
+    # for supported stable distributions
+    $std_version_check = {
+	'authorized_packages' => 'none_package_authorized',
+	'authorized_sections' => '^(core|nonfree|tainted)/(updates_testing|backports_testing)$',
+	'authorized_arches' => 'none',
+	'mode' => 'freeze',
+    }
+
+    $infra_authorized_users = str_join(group_members('mga-sysadmin'), '|')
+    $infra_version_check = {
+	'authorized_users' => "^${infra_authorized_users}\$",
+	'mode' => 'freeze',
+    }
+
     class { 'buildsystem::var::distros':
 	default_distro => 'cauldron',
 	distros => {
@@ -130,6 +339,21 @@ class mga_buildsystem::config {
 		'submit_allowed' => "${svn_root_packages}/cauldron",
 		'macros' => $std_macros,
 		'repo_allow_from' => $repo_allow_from,
+		'youri' => {
+		    'upload' => {
+			'targets' => $cauldron_youri_upload_targets,
+			'checks' => {
+			    'rpmlint' => $cauldron_rpmlint,
+			},
+		    },
+		    'todo' => {
+			'targets' => $cauldron_youri_todo_targets,
+			'checks' => {
+			    'rpmlint' => $cauldron_rpmlint,
+			    'version' => $cauldron_version_check,
+			},
+		    },
+		},
 	    },
 
 	    '1'        => {
@@ -141,6 +365,21 @@ class mga_buildsystem::config {
 		'submit_allowed' => "${svn_root_packages}/updates/1",
 		'macros' => $std_macros,
 		'repo_allow_from' => $repo_allow_from,
+		'youri' => {
+		    'upload' => {
+			'targets' => $std_youri_upload_targets,
+			'checks' => {
+			    'rpmlint' => $mga2_rpmlint,
+			},
+		    },
+		    'todo' => {
+			'targets' => $std_youri_todo_targets,
+			'checks' => {
+			    'rpmlint' => $mga2_rpmlint,
+			    'version' => $frozen_version_check,
+			},
+		    },
+		},
 	    },
 
 	    '2'        => {
@@ -152,6 +391,21 @@ class mga_buildsystem::config {
 		'submit_allowed' => "${svn_root_packages}/updates/2",
 		'macros' => $std_macros,
 		'repo_allow_from' => $repo_allow_from,
+		'youri' => {
+		    'upload' => {
+			'targets' => $std_youri_upload_targets,
+			'checks' => {
+			    'rpmlint' => $mga2_rpmlint,
+			},
+		    },
+		    'todo' => {
+			'targets' => $std_youri_todo_targets,
+			'checks' => {
+			    'rpmlint' => $mga2_rpmlint,
+			    'version' => $std_version_check,
+			},
+		    },
+		},
 	    },
 
 	    'infra_1'  => {
@@ -165,6 +419,21 @@ class mga_buildsystem::config {
 		'based_on' => {
 		    '1' => {
 			'core' => [ 'release', 'updates' ],
+		    },
+		},
+		'youri' => {
+		    'upload' => {
+			'targets' => $infra_youri_upload_targets,
+			'checks' => {
+			    'rpmlint' => $mga2_rpmlint,
+			},
+		    },
+		    'todo' => {
+			'targets' => $infra_youri_todo_targets,
+			'checks' => {
+			    'rpmlint' => $mga2_rpmlint,
+			    'version' => $infra_version_check,
+			},
 		    },
 		},
 	    },
@@ -182,8 +451,89 @@ class mga_buildsystem::config {
 			'core' => [ 'release', 'updates' ],
 		    },
 		},
+		'youri' => {
+		    'upload' => {
+			'targets' => $infra_youri_upload_targets,
+			'checks' => {
+			    'rpmlint' => $mga2_rpmlint,
+			},
+		    },
+		    'todo' => {
+			'targets' => $infra_youri_todo_targets,
+			'checks' => {
+			    'rpmlint' => $mga2_rpmlint,
+			    'version' => $infra_version_check,
+			},
+		    },
+		},
 	    },
 	}
     }
-
+    $checks_tag_options = {
+	'tags' => {
+	    'release' => inline_template("<%= std_macros['distsuffix'] %>\\d+"),
+	    'distribution' => inline_template("^<%= std_macros['distribution'] %>"),
+	    'vendor' => inline_template("^<%= std_macros['vendor'] %>$"),
+	},
+    }
+    class { 'buildsystem::var::youri':
+        packages_archivedir => "${buildsystem::var::scheduler::homedir}/old",
+	youri_conf => {
+	    'upload' => {
+		'checks' => {
+		    'tag' => {
+			'options' => $checks_tag_options,
+		    },
+		    'rpmlint' => {
+			'options' => {
+			    'results' => [
+				'buildprereq-use',
+				'no-description-tag',
+				'no-summary-tag',
+				'non-standard-group',
+				'non-xdg-migrated-menu',
+				'percent-in-conflicts',
+				'percent-in-dependency',
+				'percent-in-obsoletes',
+				'percent-in-provides',
+				'summary-ended-with-dot',
+				'unexpanded-macro',
+				'unknown-lsb-keyword',
+				'malformed-line-in-lsb-comment-block',
+				'empty-%postun',
+				'empty-%post',
+				'invalid-desktopfile',
+				'standard-dir-owned-by-package',
+				'use-tmp-in-%postun',
+				'bogus-variable-use-in-%posttrans',
+				'dir-or-file-in-usr-local',
+				'dir-or-file-in-tmp',
+				'dir-or-file-in-mnt',
+				'dir-or-file-in-opt',
+				'dir-or-file-in-home',
+				'dir-or-file-in-var-local',
+			    ],
+			},
+		    },
+		},
+		'actions' => {
+		    'mail' => {
+			'options' => {
+			    'to' => "changelog@ml.${::domain}",
+			    'reply_to' => "mageia-dev@${::domain}",
+			    'from' => "buildsystem-daemon@${::domain}",
+			    'prefix' => 'RPM',
+			},
+		    },
+		},
+	    },
+	    'todo' => {
+		'checks' => {
+		    'tag' => {
+			'options' => $checks_tag_options,
+		    },
+		},
+	    },
+	}
+    }
 }
