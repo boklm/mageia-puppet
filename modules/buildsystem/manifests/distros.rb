@@ -30,7 +30,7 @@ hostclass "buildsystem::distros" do
 	    file mediadir, :ensure => 'directory', :owner => mirror_user,
 		:group => mirror_user
 	    file [ mediadir, 'media_info' ].join('/'), :ensure => 'directory',
-		:owner => mirror_user, :group => mirror_user
+		:owner => schedbot_user, :group => schedbot_user
 	    file [ mediadir, 'debug' ].join('/'), :ensure => 'directory',
 		:owner => mirror_user, :group => mirror_user
 	    distro['medias'].each{|media, m|
