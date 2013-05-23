@@ -91,6 +91,14 @@ class mga_buildsystem::config {
 	'vendor' => 'Mageia.Org',
 	'_real_vendor' => 'mageia',
     }
+    $repo_allow_from = [
+	'2a02:2178:2:7::3/64', # valstar
+	'2a02:2178:2:7::4/64', # ecosse
+	'2a02:2178:2:7::5/64', # jonund
+	".${::domain}",
+	'10.42.0',
+	'212.85.158.152',      #rabbit
+    ]
     class { 'buildsystem::var::distros':
 	default_distro => 'cauldron',
 	distros => {
@@ -102,6 +110,7 @@ class mga_buildsystem::config {
 		'version' => '3',
 		'submit_allowed' => "${svn_root_packages}/cauldron",
 		'macros' => $std_macros,
+		'repo_allow_from' => $repo_allow_from,
 	    },
 
 	    '1'        => {
@@ -112,6 +121,7 @@ class mga_buildsystem::config {
 		'version' => '1',
 		'submit_allowed' => "${svn_root_packages}/updates/1",
 		'macros' => $std_macros,
+		'repo_allow_from' => $repo_allow_from,
 	    },
 
 	    '2'        => {
@@ -122,6 +132,7 @@ class mga_buildsystem::config {
 		'version' => '2',
 		'submit_allowed' => "${svn_root_packages}/updates/2",
 		'macros' => $std_macros,
+		'repo_allow_from' => $repo_allow_from,
 	    },
 
 	    'infra_1'  => {

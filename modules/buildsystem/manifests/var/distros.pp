@@ -39,7 +39,11 @@
 #            'distsuffix' => '.mga',
 #            'distribution' => 'Mageia',
 #            'vendor' => 'Mageia.Org',
-#         }
+#         },
+#         # list of IP or hostnames allowed to access this distro on the
+#         # repository. If you don't want to filter allowed IPs, don't set
+#         # this value
+#         'repo_allow_from' => [ '127.0.0.1', '10.0.0.1', '.mageia.org' ],
 #      },
 #    }
 class buildsystem::var::distros(
