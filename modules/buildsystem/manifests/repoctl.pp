@@ -1,11 +1,5 @@
 class buildsystem::repoctl {
-    include buildsystem::config
-
-    $distroreleases = [$buildsystem::config::dev_distros,
-    $buildsystem::config::stable_distros]
-    $distrosections = $buildsystem::config::distrosections
-    $sectionsrepos = $buildsystem::config::sectionsrepos
-    $arches = $buildsystem::config::architectures
+    include buildsystem::var::distros
 
     package{ 'repoctl': }
 
