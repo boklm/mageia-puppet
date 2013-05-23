@@ -7,6 +7,6 @@ define buildsystem::iurt::config() {
     file { "/etc/iurt/build/$distribution.conf":
         owner   => $build_login,
         group   => $build_login,
-        content => template("buildsystem/iurt/$distribution.conf")
+        content => template("buildsystem/iurt.conf")
     }
 }

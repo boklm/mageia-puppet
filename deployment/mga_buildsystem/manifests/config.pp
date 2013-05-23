@@ -25,6 +25,7 @@ class mga_buildsystem::config {
 	'nonfree' => $std_repos,
 	'tainted' => $std_repos,
     }
+    $std_base_media = [ 'core/release', 'core/updates' ]
     $infra_medias = {
 	'infra' => ['release'],
     }
@@ -32,22 +33,27 @@ class mga_buildsystem::config {
 	distros => {
 	    'cauldron' => {
 		'medias' => $std_medias,
+		'base_media' => $std_base_media,
 	    },
 
 	    '1'        => {
 		'medias' => $std_medias,
+		'base_media' => $std_base_media,
 	    },
 
 	    '2'        => {
 		'medias' => $std_medias,
+		'base_media' => $std_base_media,
 	    },
 
 	    'infra_1'  => {
 		'medias' => $infra_medias,
+		'base_media' => $std_base_media,
 	    },
 
 	    'infra_2'  => {
 		'medias' => $infra_medias,
+		'base_media' => $std_base_media,
 	    },
 	}
     }
