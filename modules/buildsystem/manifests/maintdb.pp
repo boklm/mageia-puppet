@@ -1,12 +1,13 @@
 class buildsystem::maintdb {
     include buildsystem::var::groups
+    include buildsystem::var::webstatus
     include sudo
     $login = 'maintdb'
     $homedir = '/var/lib/maintdb'
     $dbdir = "$homedir/db"
     $binpath = '/usr/local/sbin/maintdb'
-    $dump = '/var/www/bs/data/maintdb.txt'
-    $unmaintained = '/var/www/bs/data/unmaintained.txt'
+    $dump = "${buildsystem::var::webstatus::location}/data/maintdb.txt"
+    $unmaintained = "${buildsystem::var::webstatus::location}/data/unmaintained.txt"
 
     user { $login:
         comment => 'Maintainers database',
@@ -37,8 +38,7 @@ class buildsystem::maintdb {
     file { [$dump,"$dump.new",
             $unmaintained,"$unmaintained.new"]:
         owner   => $login,
-# TODO uncomment once the situation with pkgsubmit module is cleared ( ie, maintdb depend on it )
-#        require => File['/var/www/bs/data'],
+        require => File["${buildsystem::var::webstatus::location}/data"],
     }
 
     cron { 'update maintdb export':
