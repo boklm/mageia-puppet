@@ -1,6 +1,8 @@
 class mga_buildsystem::config {
     class { 'buildsystem::var::signbot':
 	keyid => '80420F66',
+	keyemail => "packages@${::domain}",
+	keyname => 'Mageia Packages',
     }
 
     class { 'buildsystem::var::groups':

@@ -10,10 +10,8 @@ class buildsystem::signbot {
     }
 
     gnupg::keys{ 'packages':
-        email    => "packages@$::domain",
-        #FIXME there should be a variable somewhere to change
-        # the name of the distribution
-        key_name => 'Mageia Packages',
+        email    => $buildsystem::var::signbot::keyemail,
+        key_name => $buildsystem::var::signbot::keyname,
         login    => $buildsystem::var::signbot::login,
         batchdir => "${buildsystem::var::signbot::home_dir}/batches",
         keydir   => $buildsystem::var::signbot::sign_keydir,
