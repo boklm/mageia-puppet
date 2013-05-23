@@ -27,7 +27,7 @@ class mga_buildsystem::config {
 	    'ecosse0' => "ecosse.${::domain}",
 	    'ecosse1' => "ecosse.${::domain}",
 	},
-	build_src_node => "valstar.${::domain}",
+	build_src_node => "valstar",
     }
     include buildsystem::var::repository
     class { 'buildsystem::var::binrepo':
