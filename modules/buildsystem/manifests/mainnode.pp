@@ -13,4 +13,9 @@ class buildsystem::mainnode {
 	home => $buildsystem::var::scheduler::homedir,
 	user => $buildsystem::var::scheduler::login,
     }
+    sshkeys::set_authorized_keys { 'scheduler-allow-scheduler':
+        keyname => $buildsystem::var::scheduler::login,
+        home => $buildsystem::var::scheduler::homedir,
+        user => $buildsystem::var::scheduler::login,
+    }
 }
