@@ -1,2 +1,2 @@
-%<%= scope.lookupvar('buildsystem::var::groups::packagers') %>      ALL =(<%= login %>) NOPASSWD: <%= binpath %>
-<%=  scope.lookupvar('buildsystem::var::scheduler::login') %>	ALL =(<%= login %>) NOPASSWD: <%= binpath %>
+%<%= scope.lookupvar('buildsystem::var::groups::packagers') %>      ALL =(<%= scope.lookupvar('buildsystem::var::maintdb::login') %>) NOPASSWD: <%= scope.lookupvar('buildsystem::var::maintdb::binpath') %>
+<%=  scope.lookupvar('buildsystem::var::scheduler::login') %>	ALL =(<%= scope.lookupvar('buildsystem::var::maintdb::login') %>) NOPASSWD: <%= scope.lookupvar('buildsystem::var::maintdb::binpath') %>

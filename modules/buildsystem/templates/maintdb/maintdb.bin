@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MAINTDBDIR="<%= dbdir %>"
+MAINTDBDIR="<%= scope.lookupvar('buildsystem::var::maintdb::dbdir') %>"
 
 function checkname()
 {

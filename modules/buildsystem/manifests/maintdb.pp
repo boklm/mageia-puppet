@@ -1,28 +1,23 @@
 class buildsystem::maintdb {
+    include buildsystem::var::maintdb
     include buildsystem::var::groups
     include buildsystem::var::webstatus
     include sudo
-    $login = 'maintdb'
-    $homedir = '/var/lib/maintdb'
-    $dbdir = "$homedir/db"
-    $binpath = '/usr/local/sbin/maintdb'
-    $dump = "${buildsystem::var::webstatus::location}/data/maintdb.txt"
-    $unmaintained = "${buildsystem::var::webstatus::location}/data/unmaintained.txt"
 
-    user { $login:
+    user { $buildsystem::var::maintdb::login:
         comment => 'Maintainers database',
-        home    => $homedir,
+        home    => $buildsystem::var::maintdb::homedir,
     }
 
-    file { [$homedir,$dbdir]:
+    file { [$buildsystem::var::maintdb::homedir,$buildsystem::var::maintdb::dbdir]:
         ensure  => directory,
-        owner   => $login,
-        group   => $login,
+        owner   => $buildsystem::var::maintdb::login,
+        group   => $buildsystem::var::maintdb::login,
         mode    => '0711',
-        require => User[$login],
+        require => User[$buildsystem::var::maintdb::login],
     }
 
-    file { $binpath:
+    file { $buildsystem::var::maintdb::binpath:
         mode    => '0755',
         content => template('buildsystem/maintdb/maintdb.bin')
     }
@@ -35,21 +30,23 @@ class buildsystem::maintdb {
         content => template('buildsystem/maintdb/sudoers.maintdb')
     }
 
-    file { [$dump,"$dump.new",
-            $unmaintained,"$unmaintained.new"]:
-        owner   => $login,
+    file { [$buildsystem::var::maintdb::dump,
+            "${buildsystem::var::maintdb::dump}.new",
+            $buildsystem::var::maintdb::unmaintained,
+	    "${buildsystem::var::maintdb::unmaintained}.new"]:
+        owner   => $buildsystem::var::maintdb::login,
         require => File["${buildsystem::var::webstatus::location}/data"],
     }
 
     cron { 'update maintdb export':
-        user    => $login,
-        command => "$binpath root get > $dump.new; cp -f $dump.new $dump; grep ' nobody\$' $dump | sed 's/ nobody\$//' > $unmaintained.new; cp -f $unmaintained.new $unmaintained",
+        user    => $buildsystem::var::maintdb::login,
+        command => "${buildsystem::var::maintdb::binpath} root get > ${buildsystem::var::maintdb::dump}.new; cp -f ${buildsystem::var::maintdb::dump}.new ${buildsystem::var::maintdb::dump}; grep ' nobody\$' ${buildsystem::var::maintdb::dump} | sed 's/ nobody\$//' > ${buildsystem::var::maintdb::unmaintained}.new; cp -f ${buildsystem::var::maintdb::unmaintained}.new ${buildsystem::var::maintdb::unmaintained}",
         minute  => '*/30',
-        require => User[$login],
+        require => User[$buildsystem::var::maintdb::login],
     }
 
     apache::vhost::base { "maintdb.$::domain":
-        location => $dbdir,
+        location => $buildsystem::var::maintdb::dbdir,
         content  => template('buildsystem/maintdb/vhost_maintdb.conf'),
     }
 }
