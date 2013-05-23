@@ -43,7 +43,13 @@ hostclass "buildsystem::distros" do
 		    file [ mediadir, media, repo ].join('/'),
 			:ensure => 'directory', :owner => schedbot_user,
 			:group => schedbot_user
+		    file [ mediadir, media, repo, 'media_info' ].join('/'),
+			:ensure => 'directory', :owner => schedbot_user,
+			:group => schedbot_user
 		    file [ mediadir, 'debug', media, repo ].join('/'),
+			:ensure => 'directory', :owner => schedbot_user,
+			:group => schedbot_user
+		    file [ mediadir, 'debug', media, repo, 'media_info' ].join('/'),
 			:ensure => 'directory', :owner => schedbot_user,
 			:group => schedbot_user
 		end
