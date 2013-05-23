@@ -3,6 +3,7 @@ class buildsystem::iurt {
     include buildsystem::iurt::user
     include buildsystem::iurt::packages
     include buildsystem::var::iurt
+    include buildsystem::var::distros
 
     # remove old build directory
     tidy { "${buildsystem::var::iurt::homedir}/iurt":
@@ -16,7 +17,8 @@ class buildsystem::iurt {
         ensure => directory,
     }
 
-    buildsystem::iurt::config { ['2','1','cauldron','infra_1', 'infra_2']: }
+    $distros_list = hash_keys($buildsystem::var::distros::distros)
+    buildsystem::iurt::config { $distros_list: }
 
     sudo::sudoers_config { 'iurt':
         content => template('buildsystem/sudoers.iurt')
