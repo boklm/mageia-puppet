@@ -19,6 +19,6 @@ class buildsystem::iurt {
     buildsystem::iurt::config { ['2','1','cauldron','infra_1', 'infra_2']: }
 
     sudo::sudoers_config { 'iurt':
-        content => template('buildsystem/iurt/sudoers.iurt')
+        content => template('buildsystem/sudoers.iurt')
     }
 }
