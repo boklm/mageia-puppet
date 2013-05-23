@@ -351,7 +351,7 @@ class mga_buildsystem::config {
 		'medias' => $std_medias,
 		'base_media' => $std_base_media,
 		'branch' => 'Devel',
-		'version' => '3',
+		'version' => '4',
 		'submit_allowed' => "${svn_root_packages}/cauldron",
 		'macros' => $std_macros,
 		'repo_allow_from' => $repo_allow_from,
