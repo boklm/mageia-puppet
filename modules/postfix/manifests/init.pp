@@ -1,5 +1,5 @@
 class postfix {
-    package { ['postfix', 'nail']: }
+    package { postfix: }
 
     service { 'postfix':
         subscribe => Package['postfix'],
