@@ -63,5 +63,19 @@ hostclass "buildsystem::distros" do
 		}
 	    end
 	end
+	# SRPMS
+	srpmsdir = [ bootstrap_reporoot, rel, 'SRPMS' ].join('/')
+	file srpmsdir,
+	    :ensure => 'directory', :owner => mirror_user, 
+	    :group => mirror_user
+	distro['medias'].each{|media, m|
+	    file [ srpmsdir, media ].join('/'), :ensure => 'directory', 
+		:owner => schedbot_user, :group => schedbot_user
+	    for repo in m['repos'].keys do
+		file [ srpmsdir, media, repo ].join('/'),
+		    :ensure => 'directory', :owner => schedbot_user,
+		    :group => schedbot_user
+	    end
+	}
     }
 end
