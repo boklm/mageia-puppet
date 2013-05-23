@@ -15,8 +15,7 @@ node valstar {
     include puppet::master
     include reports::ii
 
-    include ssh::auth
-    include ssh::auth::keymaster
+    include sshkeys::keymaster
     include mga_buildsystem::mainnode
     include softwarekey
     include mgasoft

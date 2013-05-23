@@ -9,5 +9,8 @@ class buildsystem::mainnode {
     include buildsystem::sshkeys
     include buildsystem::distros
 
-    ssh::auth::client { $buildsystem::var::scheduler::login: }
+    sshkeys::set_client_key_pair { $buildsystem::var::scheduler::login:
+	home => $buildsystem::var::scheduler::homedir,
+	user => $buildsystem::var::scheduler::login,
+    }
 }
