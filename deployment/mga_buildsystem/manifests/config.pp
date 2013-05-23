@@ -20,15 +20,31 @@ class mga_buildsystem::config {
     }
 
     $std_arch = ['i586', 'x86_64']
-    $std_repos = ['release','updates_testing','backports_testing','backports','updates']
+    $std_repos = {
+	'release' => {},
+	'updates_testing' => {},
+	'backports_testing' => {},
+	'backports' => {},
+	'updates' => {},
+    }
     $std_medias = {
-	'core'    => $std_repos,
-	'nonfree' => $std_repos,
-	'tainted' => $std_repos,
+	'core'    => {
+	    'repos' => $std_repos,
+	},
+	'nonfree' => {
+	    'repos' => $std_repos,
+	},
+	'tainted' => {
+	    'repos' => $std_repos,
+	},
     }
     $std_base_media = [ 'core/release', 'core/updates' ]
     $infra_medias = {
-	'infra' => ['release'],
+	'infra' => {
+	    'repos' => {
+		'release' => {},
+	    },
+	},
     }
     class { 'buildsystem::var::distros':
 	distros => {

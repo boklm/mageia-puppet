@@ -14,10 +14,10 @@ hostclass "buildsystem::create_upload_dir" do
         scope.lookupvar('buildsystem::var::distros::distros').each{|rel, distro|
             file [uploads_dir, st, rel].join('/'), :ensure => 'directory', :owner => owner, :group => group
 	    medias = distro['medias']
-            medias.each{|media, repos|
+            medias.each{|media, m|
                 file [uploads_dir, st, rel, media].join('/'), :ensure => 'directory', :owner => owner, :group => group
         
-                for repo in repos do
+                for repo in m['repos'].keys do
                     if st == 'done'
                        file [uploads_dir, st, rel, media, repo].join('/'), :ensure => 'directory', :owner => owner, :group => group, :mode => 0775
                     else
