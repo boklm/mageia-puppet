@@ -29,11 +29,13 @@ class mga_buildsystem::config {
 
     $svn_hostname = "svn.$::domain"
     $svn_root_packages = "svn://${svn_hostname}/svn/packages"
+    $svn_root_packages_ssh = "svn+ssh://${svn_hostname}/svn/packages"
     class { 'buildsystem::var::mgarepo':
 	submit_host => "pkgsubmit.${::domain}",
 	svn_hostname => $svn_hostname,
 	svn_root_packages => $svn_root_packages,
-	oldurl => "svn+ssh://svn.${::domain}/svn/packages/misc",
+	svn_root_packages_ssh => $svn_root_packages_ssh,
+	oldurl => "${svn_root_packages_ssh}/misc",
 	conf => {
 	    'global' => {
 		'ldap-server' => "ldap.${::domain}",
