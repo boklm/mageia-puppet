@@ -1,7 +1,6 @@
 class buildsystem::webstatus {
     include buildsystem::var::webstatus
     include buildsystem::var::scheduler
-    $sched_home_dir = $buildsystem::var::scheduler::homedir
 
     file { [ $buildsystem::var::webstatus::location, "${buildsystem::var::webstatus::location}/data" ]:
         ensure => directory,
@@ -9,7 +8,7 @@ class buildsystem::webstatus {
 
     apache::vhost::base { $buildsystem::var::webstatus::hostname:
         aliases  => {
-            '/uploads' => "$sched_home_dir/uploads",
+            '/uploads' => "${buildsystem::var::scheduler::homedir}/uploads",
             '/autobuild/cauldron/x86_64/core/log/status.core.log' => "$location/autobuild/broken.php"
         },
         location => $buildsystem::var::webstatus::location,
