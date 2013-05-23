@@ -24,4 +24,10 @@ class buildsystem::scheduler {
 	    command => "ULRI_LOG_FILE=$logdir/ulri.log ulri; EMI_LOG_FILE=$logdir/emi.log emi",
 	    minute  => '*',
 	}
+
+        tidy { "${buildsystem::var::scheduler::homedir}/uploads":
+            type    => 'ctime',
+            recurse => true,
+            age     => '2w',
+        }
 }

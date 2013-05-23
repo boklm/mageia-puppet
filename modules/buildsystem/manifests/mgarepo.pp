@@ -32,11 +32,4 @@ class buildsystem::mgarepo {
     #    owner   => $sched_login,
     #    require => File[$sched_home_dir],
     #}
-
-    tidy { "$sched_home_dir/uploads":
-        type    => 'ctime',
-        recurse => true,
-        age     => '2w',
-    }
-
 }
