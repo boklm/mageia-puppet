@@ -44,6 +44,9 @@
 #         },
 #         # the list of media used by iurt to build the chroots
 #         'base_medias' => [ 'core/release' ],
+#         # optionally, a media.cfg template file can be specified, if
+#         # the default one should not be used
+#         'tmpl_media.cfg' => 'buildsystem/something',
 #         # branch is Devel or Official. Used in media.cfg.
 #         'branch' => 'Devel',
 #         # Version of the distribution

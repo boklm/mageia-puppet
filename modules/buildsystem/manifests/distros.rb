@@ -14,9 +14,15 @@ hostclass "buildsystem::distros" do
 	    # workaround with 'find_resource_type' as described in this
 	    # puppet issue: http://projects.puppetlabs.com/issues/11912
 	    scope.find_resource_type 'buildsystem::media_cfg'
+	    media_cfg_args = {
+		:distro_name => rel,
+		:arch => arch,
+	    }
+	    if distro['tmpl_media.cfg'] != nil
+		media_cfg_args['templatefile'] = distro['tmpl_media.cfg']
+	    end
 	    create_resource 'buildsystem::media_cfg',
-		[ rel, ' ', arch ].join('/'), :distro_name => rel,
-		:arch => arch
+		[ rel, ' ', arch ].join('/'), media_cfg_args
 	    file [ bootstrap_reporoot, rel, arch ].join('/'), 
 		:ensure => 'directory', :owner => mirror_user, 
 		:group => mirror_user
