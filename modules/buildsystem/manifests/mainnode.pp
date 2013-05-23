@@ -7,6 +7,7 @@ class buildsystem::mainnode {
     include buildsystem::signbot
     include buildsystem::youri_submit
     include buildsystem::sshkeys
+    include buildsystem::distros
 
     ssh::auth::client { $buildsystem::var::scheduler::login: }
 
