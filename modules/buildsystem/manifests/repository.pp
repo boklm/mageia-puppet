@@ -1,5 +1,6 @@
 class buildsystem::repository {
-    file { $buildsystem::var::repository::bootstrap_root:
+    file { [ $buildsystem::var::repository::bootstrap_root,
+             $buildsystem::var::repository::bootstrap_reporoot ] :
 	ensure => directory,
     }
 
