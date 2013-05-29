@@ -57,26 +57,26 @@ class mga_buildsystem::config {
     $std_arch = ['i586', 'x86_64']
     $std_repos = {
 	'release' => {
-	    'media_types' => [ 'release' ],
+	    'media_type' => [ 'release' ],
 	    'requires' => [],
 	},
 	'updates_testing' => {
-	    'media_types' => [ 'testing' ],
+	    'media_type' => [ 'testing' ],
 	    'noauto' => '1',
 	    'requires' => [ 'updates' ],
 	},
 	'backports_testing' => {
-	    'media_types' => [ 'testing' ],
+	    'media_type' => [ 'testing' ],
 	    'noauto' => '1',
 	    'requires' => [ 'backports' ],
 	},
 	'backports' => {
-	    'media_types' => [ 'backports' ],
+	    'media_type' => [ 'backports' ],
 	    'noauto' => '1',
 	    'requires' => [ 'updates' ],
 	},
 	'updates' => {
-	    'media_types' => [ 'updates' ],
+	    'media_type' => [ 'updates' ],
 	    'updates_for' => 'release',
 	    'requires' => [ 'release' ],
 	},
@@ -84,17 +84,17 @@ class mga_buildsystem::config {
     $std_medias = {
 	'core'    => {
 	    'repos' => $std_repos,
-	    'media_types' => [ 'official', 'free' ],
+	    'media_type' => [ 'official', 'free' ],
 	},
 	'nonfree' => {
 	    'repos' => $std_repos,
-	    'media_types' => [ 'official' ],
+	    'media_type' => [ 'official' ],
 	    'noauto' => '1',
 	    'requires' => [ 'core' ],
 	},
 	'tainted' => {
 	    'repos' => $std_repos,
-	    'media_types' => [ 'official' ],
+	    'media_type' => [ 'official' ],
 	    'noauto' => '1',
 	    'requires' => [ 'core' ],
 	},
@@ -104,11 +104,11 @@ class mga_buildsystem::config {
 	'infra' => {
 	    'repos' => {
 		'updates' => {
-		    'media_types' => [ 'updates' ],
+		    'media_type' => [ 'updates' ],
 		    'requires' => [ 'release' ],
 		},
 	    },
-	    'media_types' => [ 'infra' ],
+	    'media_type' => [ 'infra' ],
 	    'requires' => [ 'core' ],
 	},
     }

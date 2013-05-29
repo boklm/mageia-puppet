@@ -15,19 +15,19 @@
 #               'repos' => {
 #                 # the 'release' repo in the 'core' media
 #                 'release' => {
-#                    'media_types' => [ 'release' ],
+#                    'media_type' => [ 'release' ],
 #                    'noauto' => '1',
 #                 },
 #                 # the 'updates' repo
 #                 'release' => {
-#                    'media_types' => [ 'updates' ],
+#                    'media_type' => [ 'updates' ],
 #                    'noauto' => '1',
 #                    # the 'updates' repo requires the 'release' repo
 #                    'requires' => [ 'release' ],
 #                 },
 #               },
-#               # media_types for media.cfg
-#               'media_types' => [ 'official', 'free' ],
+#               # media_type for media.cfg
+#               'media_type' => [ 'official', 'free' ],
 #               # if noauto is set to '1' either in medias or repos,
 #               # the option will be added to media.cfg
 #               'noauto' => '1',
@@ -37,7 +37,7 @@
 #               'repos' => {
 #                     ...
 #               },
-#               'media_types' => [ 'official', 'non-free' ],
+#               'media_type' => [ 'official', 'non-free' ],
 #               # the 'non-free' media requires the 'core' media
 #               'requires' => [ 'core' ],
 #            }
