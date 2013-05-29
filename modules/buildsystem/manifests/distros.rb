@@ -21,8 +21,10 @@ hostclass "buildsystem::distros" do
 	    if distro['tmpl_media.cfg'] != nil
 		media_cfg_args['templatefile'] = distro['tmpl_media.cfg']
 	    end
-	    create_resource 'buildsystem::media_cfg',
-		[ rel, ' ', arch ].join('/'), media_cfg_args
+            if ! distro['no_media_cfg_update']
+                create_resource 'buildsystem::media_cfg',
+                    [ rel, ' ', arch ].join('/'), media_cfg_args
+            end
 	    file [ bootstrap_reporoot, rel, arch ].join('/'), 
 		:ensure => 'directory', :owner => mirror_user, 
 		:group => mirror_user

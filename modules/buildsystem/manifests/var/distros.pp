@@ -9,6 +9,8 @@
 #      'cauldron' => {
 #         # list of arch supported by 'cauldron'
 #         'arch' => [ 'i586', 'x86_64' ],
+#         # Set this if you don't want media.cfg to be generated
+#         'no_media_cfg_update' => true,
 #         'medias' => {
 #            # the 'core' media
 #            'core' => {
