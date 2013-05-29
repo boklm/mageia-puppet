@@ -450,6 +450,7 @@ class mga_buildsystem::config {
 
 	    '1'        => {
 		'arch' => $std_arch,
+                'no_media_cfg_update' => true,
 		'medias' => $std_medias,
 		'base_media' => $std_base_media,
 		'branch' => 'Official',
@@ -476,6 +477,7 @@ class mga_buildsystem::config {
 
 	    '2'        => {
 		'arch' => $std_arch,
+                'no_media_cfg_update' => true,
 		'medias' => $std_medias,
 		'base_media' => $std_base_media,
 		'branch' => 'Official',
