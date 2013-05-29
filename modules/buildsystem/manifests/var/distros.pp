@@ -17,13 +17,17 @@
 #                 'release' => {
 #                    'media_type' => [ 'release' ],
 #                    'noauto' => '1',
+#                    # the 'release' repo should be listed first in media.cfg
+#                    'order' => 0,
 #                 },
 #                 # the 'updates' repo
-#                 'release' => {
+#                 'updates' => {
 #                    'media_type' => [ 'updates' ],
 #                    'noauto' => '1',
 #                    # the 'updates' repo requires the 'release' repo
 #                    'requires' => [ 'release' ],
+#                    # the 'updates' repo should be listed after 'release' in media.cfg
+#                    'order' => 1,
 #                 },
 #               },
 #               # media_type for media.cfg
@@ -31,6 +35,8 @@
 #               # if noauto is set to '1' either in medias or repos,
 #               # the option will be added to media.cfg
 #               'noauto' => '1',
+#               # list 'core' first in media.cfg
+#               'order' => 0,
 #            },
 #            # the 'non-free' media
 #            'non-free' => {
@@ -40,6 +46,8 @@
 #               'media_type' => [ 'official', 'non-free' ],
 #               # the 'non-free' media requires the 'core' media
 #               'requires' => [ 'core' ],
+#               # list 'non-free' second
+#               'order' => 1,
 #            }
 #         },
 #         # the list of media used by iurt to build the chroots

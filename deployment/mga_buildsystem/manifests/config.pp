@@ -59,44 +59,52 @@ class mga_buildsystem::config {
 	'release' => {
 	    'media_type' => [ 'release' ],
 	    'requires' => [],
-	},
-	'updates_testing' => {
-	    'media_type' => [ 'testing' ],
-	    'noauto' => '1',
-	    'requires' => [ 'updates' ],
-	},
-	'backports_testing' => {
-	    'media_type' => [ 'testing' ],
-	    'noauto' => '1',
-	    'requires' => [ 'backports' ],
-	},
-	'backports' => {
-	    'media_type' => [ 'backports' ],
-	    'noauto' => '1',
-	    'requires' => [ 'updates' ],
+            'order' => 0,
 	},
 	'updates' => {
 	    'media_type' => [ 'updates' ],
 	    'updates_for' => 'release',
 	    'requires' => [ 'release' ],
+            'order' => 1,
+	},
+	'updates_testing' => {
+	    'media_type' => [ 'testing' ],
+	    'noauto' => '1',
+	    'requires' => [ 'updates' ],
+            'order' => 2,
+	},
+	'backports' => {
+	    'media_type' => [ 'backports' ],
+	    'noauto' => '1',
+	    'requires' => [ 'updates' ],
+            'order' => 3,
+	},
+	'backports_testing' => {
+	    'media_type' => [ 'testing' ],
+	    'noauto' => '1',
+	    'requires' => [ 'backports' ],
+            'order' => 4,
 	},
     }
     $std_medias = {
 	'core'    => {
 	    'repos' => $std_repos,
 	    'media_type' => [ 'official', 'free' ],
+            'order' => 0,
 	},
 	'nonfree' => {
 	    'repos' => $std_repos,
 	    'media_type' => [ 'official' ],
 	    'noauto' => '1',
 	    'requires' => [ 'core' ],
+            'order' => 1,
 	},
 	'tainted' => {
 	    'repos' => $std_repos,
 	    'media_type' => [ 'official' ],
 	    'noauto' => '1',
 	    'requires' => [ 'core' ],
+            'order' => 2,
 	},
     }
     $std_base_media = [ 'core/release', 'core/updates' ]
@@ -106,10 +114,12 @@ class mga_buildsystem::config {
 		'updates' => {
 		    'media_type' => [ 'updates' ],
 		    'requires' => [ 'release' ],
+                    'order' => 0,
 		},
 	    },
 	    'media_type' => [ 'infra' ],
 	    'requires' => [ 'core' ],
+            'order' => 0,
 	},
     }
     $std_macros = {
