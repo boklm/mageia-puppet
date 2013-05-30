@@ -46,6 +46,7 @@ class lists {
 
     sympa::list::public {'discuss':
         subject => 'General discussion list',
+        topics  => 'users',
     }
 
     sympa::list::public {'i18n-discuss':
