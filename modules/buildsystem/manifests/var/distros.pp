@@ -69,6 +69,8 @@
 #            'distribution' => 'Mageia',
 #            'vendor' => 'Mageia.Org',
 #         },
+#         # set this if you want iurt to use bootstrap URL
+#         'iurt_use_bootstrap' => true,
 #         # list of IP or hostnames allowed to access this distro on the
 #         # repository. If you don't want to filter allowed IPs, don't set
 #         # this value
