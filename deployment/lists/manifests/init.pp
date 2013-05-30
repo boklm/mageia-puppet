@@ -284,4 +284,12 @@ class lists {
         subject => 'Discussions about Local Community Team',
         topics  => 'local',
     }
+
+    sympa::list::public {'discuss-fr':
+        subject => 'French discussions about Mageia',
+        topics  => 'users',
+    }
+
+
 }
+
