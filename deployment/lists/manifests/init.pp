@@ -188,14 +188,14 @@ class lists {
 
     sympa::list::announce { 'mirrors-announce':
         subject      => 'Important announces about mirrors updates',
-        reply_to     => "sysadm-discuss@ml.$::domain",
+        reply_to     => "sysadmin-discuss@ml.$::domain",
         sender_email => [ "root@$::domain" ],
         topics       => 'sysadmin',
     }
 
     sympa::list::announce {'sysadmin-commits':
         subject      => 'Commits on sysadmin repository',
-        reply_to     => "sysadm-discuss@ml.$::domain",
+        reply_to     => "sysadmin-discuss@ml.$::domain",
         sender_email => [ "root@$::domain" ],
         topics       => 'sysadmin',
     }
@@ -207,14 +207,14 @@ class lists {
 
     sympa::list::announce {'sysadmin-reports':
         subject      => 'Automated reports from various pieces of infrastructure',
-        reply_to     => "sysadm-discuss@ml.$::domain",
+        reply_to     => "sysadmin-discuss@ml.$::domain",
         sender_email => [ "root@$::domain" ],
         topics       => 'sysadmin',
     }
 
     sympa::list::announce { 'sysadmin-bugs':
         subject      => 'Sysadmin bug reports from bugzilla',
-        reply_to     => "sysadm-discuss@ml.$::domain",
+        reply_to     => "sysadmin-discuss@ml.$::domain",
         sender_email => [ "bugzilla-daemon@$::domain" ],
         topics       => 'sysadmin',
     }
