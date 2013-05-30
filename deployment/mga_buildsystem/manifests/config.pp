@@ -504,6 +504,7 @@ class mga_buildsystem::config {
 
             '3'        => {
 		'arch' => $std_arch,
+		'no_media_cfg_update' => true,
 		'medias' => $std_medias,
 		'base_media' => $std_base_media,
 		'branch' => 'Official',
