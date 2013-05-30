@@ -532,7 +532,7 @@ class mga_buildsystem::config {
 	    'infra_1'  => {
 		'arch' => $std_arch,
 		'medias' => $infra_medias,
-		'base_media' => $std_base_media,
+		'base_media' => [ '1/core/release', '1/core/updates', 'infra/updates' ],
 		'branch' => 'Official',
 		'version' => '1',
 		'submit_allowed' => $svn_root_packages,
@@ -563,7 +563,7 @@ class mga_buildsystem::config {
 	    'infra_2'  => {
 		'arch' => $std_arch,
 		'medias' => $infra_medias,
-		'base_media' => $std_base_media,
+		'base_media' => [ '2/core/release', '2/core/updates', 'infra/updates' ],
 		'branch' => 'Official',
 		'version' => '2',
 		'submit_allowed' => $svn_root_packages,
