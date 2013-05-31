@@ -69,8 +69,6 @@
 #            'distribution' => 'Mageia',
 #            'vendor' => 'Mageia.Org',
 #         },
-#         # set this if you want iurt to use bootstrap URL
-#         'iurt_use_bootstrap' => true,
 #         # set this if the distro is not mirrored. This is used to add
 #         # an Alias in the vhost.
 #         'no_mirror' => true,

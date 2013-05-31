@@ -557,7 +557,6 @@ class mga_buildsystem::config {
 			},
 		    },
 		},
-                'iurt_use_bootstrap' => true,
                 'no_mirror' => true,
 	    },
 
@@ -589,7 +588,6 @@ class mga_buildsystem::config {
 			},
 		    },
 		},
-                'iurt_use_bootstrap' => true,
                 'no_mirror' => true,
 	    },
 	}
