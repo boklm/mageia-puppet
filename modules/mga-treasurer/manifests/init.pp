@@ -49,6 +49,7 @@ class mga-treasurer(
       "/${grisbi_filename}" => $grisbi_path,
       "/static" => '/usr/share/mga-treasurer/static',
     },
+    content  => template('mga-treasurer/vhost_mga-treasurer.conf'),
     require  => File[$vhostdir],
   }
 
