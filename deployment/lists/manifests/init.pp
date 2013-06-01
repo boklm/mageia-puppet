@@ -291,6 +291,9 @@ class lists {
         topics  => 'users',
     }
 
-
+    sympa::list::public {'discuss-pt-br'':
+        subject => 'Discussions about Mageia in Brazilian Portuguese',
+        topics  => 'users',
+    }
 }
 
