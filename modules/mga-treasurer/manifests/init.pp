@@ -55,6 +55,7 @@ class mga-treasurer(
 
   apache::vhost::base { "ssl_$vhost":
     use_ssl  => true,
+    vhost    => $vhost,
     location => $vhostdir,
     aliases  => {
       "/${grisbi_filename}" => $grisbi_path,
