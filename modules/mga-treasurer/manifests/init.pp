@@ -53,6 +53,17 @@ class mga-treasurer(
     require  => File[$vhostdir],
   }
 
+  apache::vhost::base { "ssl_$vhost":
+    use_ssl  => true,
+    location => $vhostdir,
+    aliases  => {
+      "/${grisbi_filename}" => $grisbi_path,
+      "/static" => '/usr/share/mga-treasurer/static',
+    },
+    content  => template('mga-treasurer/vhost_mga-treasurer.conf'),
+    require  => File[$vhostdir],
+  }
+
   file { $update_script:
     ensure  => present,
     owner   => root,
