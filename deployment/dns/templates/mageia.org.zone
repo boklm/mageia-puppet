@@ -7,7 +7,7 @@
 ; $Id$
 $TTL	30m
 @       IN      SOA     ns0.mageia.org.   root.mageia.org.  (
-        2013051900	; Serial
+        2013060600	; Serial
         21600		; Refresh
         3600		; Retry
         2419200		; Expire
@@ -92,6 +92,7 @@ repository  IN CNAME valstar
 maintdb     IN CNAME valstar
 ldap        IN CNAME valstar
 ldap-master IN CNAME valstar
+advisories  IN CNAME valstar
 pgsql       IN CNAME alamut
 bcd	    IN CNAME rabbit
 mirrors     IN CNAME alamut
