@@ -1,6 +1,6 @@
 class mga-advisories(
   $advisories_svn = 'svn://svn.mageia.org/svn/advisories',
-  $vhost,
+  $vhost
 ){
   $mgaadv_login = 'mga-advisories'
   $mgaadv_homedir = "/var/lib/${mgaadv_login}"
