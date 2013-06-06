@@ -42,6 +42,10 @@ node valstar {
 
     include websites::svn
 
+    class { 'mga-advisories':
+        vhost => 'advisories.mageia.org',
+    }
+
     subversion::snapshot { '/etc/puppet':
         source => 'svn://svn.mageia.org/svn/adm/puppet/'
     }
