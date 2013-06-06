@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+
+cd <%= @advisories_dir %>
+svn up
+exec /usr/bin/mkadvisories
