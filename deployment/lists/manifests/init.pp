@@ -159,7 +159,7 @@ class lists {
     sympa::list::announce {'qa-reports':
         subject      => 'Automated reports from QA tools',
         reply_to     => "qa-discuss@ml.$::domain",
-        sender_email => [ "root@$::domain" ],
+        sender_email => [ "buildsystem-daemon@mageia.org" ],
         topics       => 'qa',
     }
 
