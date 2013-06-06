@@ -6,6 +6,10 @@ class repositories::subversion {
         syntax_check => ['check_puppet_templates','check_puppet'],
     }
 
+    subversion::repository { '/svn/advisories':
+        group        => 'mga-packagers',
+    }
+
     sudo::sudoers_config { 'puppet_update':
         content => template('repositories/puppet_update.sudoers')
     }
