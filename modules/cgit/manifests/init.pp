@@ -15,7 +15,7 @@ class cgit {
         content => template('cgit/filter.commit-links.sh'),
     }
 
-    apache::vhost::base { "cgit.$::domain":
+    apache::vhost::base { "gitweb.$::domain":
         content => template('cgit/vhost.conf')
     }
 }
