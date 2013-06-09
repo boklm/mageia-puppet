@@ -67,7 +67,7 @@ node alamut {
     # disabled until fixed
     #Enable back to test.
     include repositories::git_mirror
-    include gitweb
+    include cgit
 
     include xymon::server
     apache::vhost_simple { "xymon.$domain":
