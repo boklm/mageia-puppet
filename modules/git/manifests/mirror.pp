@@ -3,7 +3,7 @@ define git::mirror( $source,
                     $refresh = '*/5') {
 
     include git::common
-    exec { "/usr/bin/git clone --bare $source $name":
+    exec { "/usr/bin/git clone --mirror $source $name":
         alias   => "git mirror $name",
         creates => $name,
         before  => File["$name/description"],
