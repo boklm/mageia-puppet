@@ -54,11 +54,11 @@ max-stats=quarter
 
 
 # Set the title and heading of the repository index page
-#root-title=example.com git repositories
+root-title=Mageia git Repositories
 
 
 # Set a subheading for the repository index page
-#root-desc=tracking the foobar development
+root-desc=A web frontend to the git repositories of the Mageia project
 
 
 # Include some more info about example.com on the index page
