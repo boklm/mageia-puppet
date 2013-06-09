@@ -7,7 +7,7 @@ cache-size=1000
 
 
 # Specify some default clone urls using macro expansion
-#clone-url=git://foo.org/$CGIT_REPO_URL git@foo.org:$CGIT_REPO_URL
+clone-url=git://git.mageia.org/$CGIT_REPO_URL ssh://git.mageia.org/git/$CGIT_REPO_URL
 
 # Specify the css url
 css=/cgit-data/cgit.css
