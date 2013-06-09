@@ -83,7 +83,7 @@ mimetype.svg=image/svg+xml
 
 
 # Highlight source code with python pygments-based highligher
-source-filter=/usr/libexec/cgit/filters/syntax-highlighting.py
+source-filter=/usr/libexec/cgit/filters/syntax-highlighting.sh
 
 # Format markdown, restructuredtext, manpages, text files, and html files
 # through the right converters
