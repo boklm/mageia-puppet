@@ -3,4 +3,4 @@ set -e
 
 cd <%= @advisories_dir %>
 svn up
-exec /usr/bin/mkadvisories
+exec /usr/bin/mgaadv mksite
