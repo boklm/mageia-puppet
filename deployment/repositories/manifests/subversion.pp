@@ -8,6 +8,7 @@ class repositories::subversion {
 
     subversion::repository { '/svn/advisories':
         group        => 'mga-packagers',
+        commit_mail  => ["qa-commits@ml.$::domain"],
     }
 
     sudo::sudoers_config { 'puppet_update':
