@@ -163,6 +163,13 @@ class lists {
         topics       => 'qa',
     }
 
+    sympa::list::announce {'qa-commits':
+        subject      => 'Update advisories commits',
+        reply_to     => "qa-discuss@ml.$::domain",
+        sender_email => [ "root@$::domain" ],
+        topics       => 'qa',
+    }
+
     sympa::list::public {'forums-discuss':
         subject => 'Discuss forums matters, policies and processes, as well as publish summaries of notable events/feedback',
         topics  => 'forums',
