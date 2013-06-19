@@ -26,7 +26,7 @@ class subversion {
         }
 
         # workaround the lack of umask command in puppet < 2.7
-        mga-common::local_script { 'create_svn_repo.sh':
+        mga_common::local_script { 'create_svn_repo.sh':
             content => template('subversion/create_svn_repo.sh')
         }
 

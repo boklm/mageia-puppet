@@ -15,7 +15,7 @@ class gitweb {
         webapp_file => 'gitweb/webapp.conf',
     }
 
-    mga-common::local_script { 'gitweb.wrapper.sh':
+    mga_common::local_script { 'gitweb.wrapper.sh':
         content => template('gitweb/wrapper.sh'),
         notify  => Service['apache'],
     }

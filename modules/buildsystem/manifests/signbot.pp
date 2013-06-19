@@ -25,7 +25,7 @@ class buildsystem::signbot {
         source => 'puppet:///modules/buildsystem/signbot/signbot-rpmmacros',
     }
 
-    mga-common::local_script {
+    mga_common::local_script {
         'sign-check-package': source => 'puppet:///modules/buildsystem/signbot/sign-check-package';
         'mga-signpackage':    source => 'puppet:///modules/buildsystem/signbot/mga-signpackage';
     }

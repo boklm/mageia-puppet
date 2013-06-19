@@ -11,7 +11,7 @@ class cgit {
         webapp_file => 'cgit/webapp.conf',
     }
 
-    mga-common::local_script { 'cgit.filter.commit-links.sh':
+    mga_common::local_script { 'cgit.filter.commit-links.sh':
         content => template('cgit/filter.commit-links.sh'),
     }
 

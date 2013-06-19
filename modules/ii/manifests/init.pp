@@ -17,7 +17,7 @@ class ii {
         include ii::base
         # a custom wrappper is needed since ii do not fork in the
         # background, and bash is not able to properly do it
-        mga-common::local_script { "ii_$nick":
+        mga_common::local_script { "ii_$nick":
             content => template('ii/ii_wrapper.pl'),
             require => Class['ii::base'],
         }

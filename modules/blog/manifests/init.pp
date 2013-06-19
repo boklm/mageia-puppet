@@ -19,7 +19,7 @@ class blog {
                    'php-ldap',
                    'unzip']: }
 
-        mga-common::local_script { 'check_new-blog-post.sh':
+        mga_common::local_script { 'check_new-blog-post.sh':
             content => template('blog/check_new-blog-post.sh'),
         }
 
@@ -56,7 +56,7 @@ class blog {
                 ensure => directory,
         }
 
-	    mga-common::local_script { 'backup_blog-db.sh':
+	    mga_common::local_script { 'backup_blog-db.sh':
             content => template('blog/backup_blog-db.sh'),
         }
 
@@ -74,7 +74,7 @@ class blog {
                 ensure => directory,
         }
 
-        mga-common::local_script { 'backup_blog-files.sh':
+        mga_common::local_script { 'backup_blog-files.sh':
             content => template('blog/backup_blog-files.sh'),
         }
 

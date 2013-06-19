@@ -16,7 +16,7 @@ class openssh::ssh_keys_from_ldap($symlink_users = [],
 
     $ldap_pwfile = '/etc/ldap.secret'
     $ldap_servers = get_ldap_servers()
-    mga-common::local_script { 'ldap-sshkey2file.py':
+    mga_common::local_script { 'ldap-sshkey2file.py':
         content => template('openssh/ldap-sshkey2file.py'),
         require => Package['python-ldap']
     }

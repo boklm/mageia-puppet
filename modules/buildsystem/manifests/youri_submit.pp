@@ -5,7 +5,7 @@ class buildsystem::youri_submit {
     include buildsystem::var::scheduler
     include buildsystem::var::youri
 
-    mga-common::local_script {
+    mga_common::local_script {
         'mga-youri-submit':
             content => template('buildsystem/mga-youri-submit');
         'mga-youri-submit.wrapper':
@@ -50,15 +50,15 @@ class buildsystem::youri_submit {
         matches => '*.rpm',
     }
 
-    include mga-common::var::perl
-    file { [ "${mga-common::var::perl::site_perl_dir}/Youri",
-             "${mga-common::var::perl::site_perl_dir}/Youri/Repository"]:
+    include mga_common::var::perl
+    file { [ "${mga_common::var::perl::site_perl_dir}/Youri",
+             "${mga_common::var::perl::site_perl_dir}/Youri/Repository"]:
         ensure => directory,
         mode => 0755,
         owner => root,
         group => root,
     }
-    file { "${mga-common::var::perl::site_perl_dir}/Youri/Repository/Mageia.pm":
+    file { "${mga_common::var::perl::site_perl_dir}/Youri/Repository/Mageia.pm":
         source => 'puppet:///modules/buildsystem/Mageia.pm',
     }
 

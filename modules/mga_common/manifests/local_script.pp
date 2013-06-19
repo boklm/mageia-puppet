@@ -1,4 +1,4 @@
-define mga-common::local_script(
+define mga_common::local_script(
                 $content = undef,
                 $source = undef,
 		$owner = 'root',
