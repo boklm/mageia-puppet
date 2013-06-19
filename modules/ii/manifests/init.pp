@@ -25,7 +25,7 @@ class ii {
         service { 'ii':
             provider => base,
             start    => "/usr/local/bin/ii_$nick",
-            require  => Mga-common::Local_script["ii_$nick"],
+            require  => Mga_common::Local_script["ii_$nick"],
         }
 
         exec { "join channel $nick":

@@ -18,6 +18,6 @@ define mirror::mirrordir ($remoteurl,
         user    => mirror,
         minute  => '*/10',
         command => "/usr/local/bin/mirror_$name",
-        require => Mga-common::Local_script["mirror_$name"],
+        require => Mga_common::Local_script["mirror_$name"],
     }
 }

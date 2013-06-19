@@ -34,7 +34,7 @@ class openldap::master inherits openldap {
         exec { 'init_ldap.sh':
             # taken arbitrary among all possible files
             creates => '/var/lib/ldap/objectClass.bdb',
-            require => Mga-common::Local_script['init_ldap.sh'],
+            require => Mga_common::Local_script['init_ldap.sh'],
         }
     }
 }
