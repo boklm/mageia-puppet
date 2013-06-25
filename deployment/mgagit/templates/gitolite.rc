@@ -126,7 +126,7 @@
             # 'upstream',
 
             # updates 'description' file instead of 'gitweb.description' config item
-            # 'cgit',
+            'cgit',
 
         # performance, logging, monitoring...
 
