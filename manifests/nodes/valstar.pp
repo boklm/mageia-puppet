@@ -53,4 +53,10 @@ node valstar {
     mirror_cleaner::orphans {  'cauldron':
         base => '/distrib/bootstrap/distrib/',
     }
+
+    class { 'mgagit':
+        ldap_server => 'ldap.mageia.org',
+        binddn      => 'cn=mgagit-valstar,ou=System Accounts,dc=mageia,dc=org',
+        bindpw      => extlookup('mgagit_ldap','x'),
+    }
 }
