@@ -24,7 +24,7 @@ class mgagit(
     comment     => 'Git user',
     home        => $git_homedir,
     managedhome => true,
-    git         => $git_login,
+    gid         => $git_login,
   }
 
   file { '/etc/mgagit.conf':
