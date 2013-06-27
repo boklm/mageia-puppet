@@ -7,10 +7,6 @@ class git::server {
         content => template('git/xinetd')
     }
 
-    file { $git_base_path:
-        ensure => directory
-    }
-
     file { '/usr/local/bin/create_git_repo.sh':
         mode   => '0755',
         source => 'puppet:///modules/git/create_git_repo.sh',
