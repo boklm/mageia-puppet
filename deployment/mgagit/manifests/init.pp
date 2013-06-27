@@ -1,4 +1,5 @@
 class mgagit(
+  $git_dir = '/git',
   $ldap_server = 'ldap.mageia.org',
   $binddn = 'uid=mgagit,ou=People,dc=mageia,dc=org',
   $bindpw
@@ -57,6 +58,18 @@ class mgagit(
     group   => $git_login,
     mode    => '0600',
     content => inline_template('<%= @bindpw %>'),
+  }
+
+  file { $git_dir:
+    ensure => directory,
+    owner  => $git_login,
+    group  => $git_login,
+    mode   => '0755',
+  }
+
+  file { "$git_homedir/repositories":
+    ensure => 'link',
+    target => $git_dir,
   }
 }
 # vim: sw=2
