@@ -95,6 +95,9 @@ smtpd_use_tls = no
 #smtpd_tls_cert_file = /etc/pki/tls/certs/postfix.pem
 #smtpd_tls_key_file = /etc/pki/tls/private/postfix.pem
 #smtpd_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt
+# enable opportunistic TLS when sending
+smtp_tls_security_level = may
+smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt
 
 <%- if all_tags.include?('postfix::server') -%>
 smtpd_etrn_restrictions = reject
