@@ -1,4 +1,4 @@
-class openssh::ssh_keys_from_ldap($config = '') inherits server {
+class openssh::ssh_keys_from_ldap inherits server {
     package { 'python-ldap': }
 
     $ldap_pwfile = '/etc/ldap.secret'
