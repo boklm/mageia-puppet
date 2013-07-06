@@ -24,7 +24,7 @@ class mgagit(
     ensure      => present,
     comment     => 'Git user',
     home        => $git_homedir,
-    managehome => true,
+    managehome  => true,
     gid         => $git_login,
   }
 
