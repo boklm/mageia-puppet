@@ -13,10 +13,12 @@ define git::snapshot( $source,
         user    => $user
     }
 
-    cron { "update $name":
-        # FIXME no -q ?
-        command => "cd $name && /usr/bin/git pull",
-        user    => $user,
-        minute  => $refresh
+    if ($refresh != '0') {
+        cron { "update $name":
+            # FIXME no -q ?
+            command => "cd $name && /usr/bin/git pull",
+            user    => $user,
+            minute  => $refresh
+        }
     }
 }
