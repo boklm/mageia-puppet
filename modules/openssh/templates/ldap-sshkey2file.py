@@ -3,6 +3,7 @@
 import sys
 import os
 import random
+import shutil
 
 try:
     import ldap
@@ -24,7 +25,7 @@ pwfile="<%= ldap_pwfile %>"
 # filter out disabled accounts also
 # too bad uidNumber doesn't support >= filters
 filter="(&(objectClass=inetOrgPerson)(objectClass=ldapPublicKey)(objectClass=posixAccount)(sshPublicKey=*))"
-keypathprefix="<%= pubkeys_directory %>"
+keypathprefix='/home'
 
 def usage():
     print "%s" % sys.argv[0]
@@ -48,19 +49,27 @@ def get_pw(pwfile):
     return pw
 
 def write_keys(keys, user, uid, gid):
+    if not os.path.isdir("%s/%s" % (keypathprefix,user)):
+       shutil.copytree('/etc/skel', "%s/%s" % (keypathprefix,user))
+       os.chown("%s/%s" % (keypathprefix,user), uid, gid)
+       for root, dirs, files in os.walk("%s/%s" % (keypathprefix,user)):
+           for d in dirs:
+               os.chown(os.path.join(root, d), uid, gid)
+           for f in files:
+               os.chown(os.path.join(root, f), uid, gid)
     try:
-        os.makedirs("%s/%s" % (keypathprefix,user), 0700)
+        os.makedirs("%s/%s/.ssh" % (keypathprefix,user), 0700)
     except:
         pass
-    keyfile = "%s/%s/authorized_keys" % (keypathprefix,user)
+    keyfile = "%s/%s/.ssh/authorized_keys" % (keypathprefix,user)
     f = open(keyfile, 'w')
     for key in keys:
         f.write(key.strip() + "\n")
     f.close()
     os.chmod(keyfile, 0600)
     os.chown(keyfile, uid, gid)
-    os.chmod("%s/%s" % (keypathprefix,user), 0700)
-    os.chown("%s/%s" % (keypathprefix,user), uid, gid)
+    os.chmod("%s/%s/.ssh" % (keypathprefix,user), 0700)
+    os.chown("%s/%s/.ssh" % (keypathprefix,user), uid, gid)
 
 if len(sys.argv) != 1:
     usage()
