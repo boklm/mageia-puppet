@@ -43,6 +43,9 @@ class mga-advisories(
 
   apache::vhost::base { $vhost:
     location => $vhostdir,
+    aliases  => {
+      "/static" => '/usr/share/mga-advisories/static',
+    },
     require  => File[$vhostdir],
   }
 
