@@ -54,6 +54,9 @@ class mgapeople(
   apache::vhost::base { $vhost:
     location => $vhostdir,
     require  => File[$vhostdir],
+    aliases  => {
+      '/static' => '/usr/share/mgapeople/static',
+    },
   }
 
   cron { '/usr/bin/mkpeople':
