@@ -140,6 +140,7 @@ readme=:install
 
 commit-filter=/usr/local/bin/cgit.filter.commit-links.sh
 
+enable-git-config=1
 section-from-path=-1
 case-sensitive-sort=0
 remove-suffix=1
