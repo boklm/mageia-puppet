@@ -142,4 +142,5 @@ commit-filter=/usr/local/bin/cgit.filter.commit-links.sh
 
 section-from-path=-1
 case-sensitive-sort=0
+remove-suffix=1
 scan-path=/git
