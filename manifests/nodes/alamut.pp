@@ -134,4 +134,11 @@ node alamut {
 	port => '4252',
 	proto => 'tcp',
     }
+
+    # temporary rsync of git repos
+    cron { sync_git:
+        command => '/usr/bin/rsync -aH --delete rsync://valstar.mageia.org/git/ /git/',
+        user    => 'git',
+        minute  => '*/5',
+    }
 }
