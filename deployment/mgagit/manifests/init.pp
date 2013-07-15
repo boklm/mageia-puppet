@@ -13,7 +13,6 @@ class mgagit(
   $gitoliterc = "$git_homedir/.gitolite.rc"
   $bindpwfile = '/etc/mgagit.secret'
   $reposconf_dir = "${git_homedir}/repos-config"
-  $reposconf_list = ['software']
 
   package { ['mgagit', 'gitolite']:
     ensure => installed,
@@ -61,8 +60,6 @@ class mgagit(
     mode    => '0600',
     content => inline_template('<%= @bindpw %>'),
   }
-
-  mgagit::reposconfig { $reposconf_list: }
 
   file { $git_dir:
     ensure => directory,
