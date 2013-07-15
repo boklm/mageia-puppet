@@ -2,6 +2,7 @@ class mgagit(
   $git_dir = '/git',
   $ldap_server = 'ldap.mageia.org',
   $binddn = 'uid=mgagit,ou=People,dc=mageia,dc=org',
+  $vhost = 'projects.mageia.org',
   $bindpw
 ){
   $git_login = 'git'
@@ -13,6 +14,7 @@ class mgagit(
   $gitoliterc = "$git_homedir/.gitolite.rc"
   $bindpwfile = '/etc/mgagit.secret'
   $reposconf_dir = "${git_homedir}/repos-config"
+  $vhostdir = "$git_homedir/www"
 
   package { ['mgagit', 'gitolite']:
     ensure => installed,
@@ -38,7 +40,8 @@ class mgagit(
     require => Package['mgagit'],
   }
 
-  file { [$gitolite_dir, $gitolite_keydir, $gitolite_confdir, $reposconf_dir]:
+  file { [$gitolite_dir, $gitolite_keydir, $gitolite_confdir,
+          $reposconf_dir, $vhostdir]:
     ensure => directory,
     owner  => $git_login,
     group  => $git_login,
@@ -72,5 +75,9 @@ class mgagit(
     ensure => 'link',
     target => $git_dir,
   }
+
+  apache::vhost::base { $vhost:
+    location => $vhostdir,
+  },
 }
 # vim: sw=2
