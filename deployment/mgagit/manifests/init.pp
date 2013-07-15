@@ -78,6 +78,6 @@ class mgagit(
 
   apache::vhost::base { $vhost:
     location => $vhostdir,
-  },
+  }
 }
 # vim: sw=2
