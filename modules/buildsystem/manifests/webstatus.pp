@@ -7,7 +7,20 @@ class buildsystem::webstatus {
         ensure => directory,
     }
 
-    apache::vhost::base { $buildsystem::var::webstatus::hostname:
+    $vhost = $buildsystem::var::webstatus::hostname
+    apache::vhost::base { $vhost:
+        aliases  => {
+            '/uploads' => "${buildsystem::var::scheduler::homedir}/uploads",
+            '/autobuild/cauldron/x86_64/core/log/status.core.log' => "$location/autobuild/broken.php",
+	    '/themes' => $buildsystem::var::webstatus::themes_dir,
+        },
+        location => $buildsystem::var::webstatus::location,
+        content  => template('buildsystem/vhost_webstatus.conf'),
+    }
+
+    apache::vhost::base { "ssl_${vhost}":
+        vhost    => $vhost,
+        use_ssl  => true,
         aliases  => {
             '/uploads' => "${buildsystem::var::scheduler::homedir}/uploads",
             '/autobuild/cauldron/x86_64/core/log/status.core.log' => "$location/autobuild/broken.php",
