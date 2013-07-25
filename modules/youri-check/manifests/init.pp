@@ -69,7 +69,12 @@ class youri-check {
     define report_www {
         include youri-check::base
 	$outdir = "/var/www/youri-check/"
-        apache::vhost_simple { $base::vhost:
+        apache::vhost::base { $base::vhost:
+            location => $outdir,
+        }
+        apache::vhost::base { "ssl_${base::vhost}":
+            vhost   => $base::vhost,
+            use_ssl => true,
             location => $outdir,
         }
     }
