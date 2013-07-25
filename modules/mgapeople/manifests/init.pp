@@ -51,12 +51,20 @@ class mgapeople(
     mode   => '0755',
   }
 
+  $vhost_aliases = {
+    '/static' => '/usr/share/mgapeople/static',
+  },
   apache::vhost::base { $vhost:
     location => $vhostdir,
     require  => File[$vhostdir],
-    aliases  => {
-      '/static' => '/usr/share/mgapeople/static',
-    },
+    aliases  => $vhost_aliases,
+  }
+  apache::vhost::base { "ssl_${vhost}":
+    vhost   => $vhost,
+    use_ssl => true,
+    location => $vhostdir,
+    require  => File[$vhostdir],
+    aliases  => $vhost_aliases,
   }
 
   cron { '/usr/bin/mkpeople':
