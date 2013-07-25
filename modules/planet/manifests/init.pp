@@ -17,6 +17,13 @@ class planet {
         content  => template('planet/planet_vhosts.conf')
     }
 
+    apache::vhost::base { "ssl_$vhost":
+        use_ssl  => true,
+        vhost    => $vhost,
+        location => $location,
+        content  => template('planet/planet_vhosts.conf')
+    }
+
     mga_common::local_script { 'deploy_new-planet.sh':
         content => template('planet/deploy_new-planet.sh')
     }
