@@ -41,17 +41,19 @@ class mga-advisories(
     mode   => '0755',
   }
 
+  $vhost_aliases = {
+    "/static" => '/usr/share/mga-advisories/static',
+  }
   apache::vhost::base { $vhost:
     location => $vhostdir,
-    aliases  => {
-      "/static" => '/usr/share/mga-advisories/static',
-    },
+    aliases  => $vhost_aliases,
     require  => File[$vhostdir],
   }
 
   apache::vhost::base { "ssl_$vhost":
     use_ssl  => true,
     vhost    => $vhost,
+    aliases  => $vhost_aliases,
     location => $vhostdir,
     require  => File[$vhostdir],
   }
