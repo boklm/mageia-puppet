@@ -6,10 +6,4 @@ class bcd::web {
         location => $location,
         content  => template('bcd/vhost_bcd.conf'),
     }
-
-    # not sure if that's useful, since the file is public and trivially
-    # bruteforced
-    file { "$bcd::home/htpasswd":
-        content => template('bcd/htpasswd')
-    }
 }
