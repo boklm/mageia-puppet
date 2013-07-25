@@ -53,7 +53,7 @@ class mgapeople(
 
   $vhost_aliases = {
     '/static' => '/usr/share/mgapeople/static',
-  },
+  }
   apache::vhost::base { $vhost:
     location => $vhostdir,
     require  => File[$vhostdir],
