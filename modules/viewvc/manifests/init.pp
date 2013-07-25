@@ -39,11 +39,19 @@ class viewvc {
         source => 'puppet:///modules/viewvc/robots.txt',
     }
 
+    $vhost_aliases = {
+        '/viewvc' => '/var/www/viewvc/',
+        '/robots.txt' => $robotsfile,
+        '/'       => '/usr/share/viewvc/bin/wsgi/viewvc.fcgi/'
+    }
     apache::vhost::base { $viewvc::var::hostname:
-        aliases => {'/viewvc' => '/var/www/viewvc/',
-                    '/robots.txt' => $robotsfile,
-                    '/'       => '/usr/share/viewvc/bin/wsgi/viewvc.fcgi/'},
+        aliases => $vhost_aliases,
         content => template('viewvc/vhost.conf'),
+    }
+    apache::vhost::base { "ssl_${viewvc::var::hostname}":
+        vhost   => $viewvc::var::hostname,
+        use_ssl => true,
+        aliases => $vhost_aliases,
     }
 }
 
