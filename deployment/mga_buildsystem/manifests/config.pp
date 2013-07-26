@@ -18,8 +18,8 @@ class mga_buildsystem::config {
     class { 'buildsystem::var::scheduler' :
 	admin_mail => 'mageia-sysadm@mageia.org',
 	build_nodes => {
-	    'i586' => [ 'jonund0', 'ecosse0', 'jonund1', 'ecosse1' ],
-	    'x86_64' => [ 'ecosse0', 'jonund0', 'ecosse1', 'jonund1' ],
+	    'i586' => [ 'jonund0', 'ecosse0', 'rabbit0', 'jonund1', 'ecosse1', 'rabbit1' ],
+	    'x86_64' => [ 'ecosse0', 'jonund0', 'rabbit0', 'ecosse1', 'jonund1', 'rabbit1' ],
 	},
 	build_nodes_aliases => {
 	    'jonund0' => "jonund.${::domain}",
