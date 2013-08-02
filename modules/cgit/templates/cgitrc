@@ -105,12 +105,7 @@ readme=:INSTALL.txt
 readme=:INSTALL
 
 # Special Case mainly for initscrpipts git repo where we cannot write to master
-readme=distro/mga9:README.md
-readme=distro/mga8:README.md
-readme=distro/mga7:README.md
-readme=distro/mga6:README.md
-readme=distro/mga5:README.md
-readme=distro/mga4:README.md
+readme=distro/mga:README.md
 
 ##
 ## List of repositories.
