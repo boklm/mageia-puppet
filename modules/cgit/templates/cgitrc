@@ -94,33 +94,23 @@ about-filter=/usr/libexec/cgit/filters/about-formatting.sh
 ## for coming up with the about page:
 ##
 readme=:README.md
-readme=:readme.md
-readme=:README.mkd
-readme=:readme.mkd
 readme=:README.rst
-readme=:readme.rst
 readme=:README.html
-readme=:readme.html
-readme=:README.htm
-readme=:readme.htm
 readme=:README.txt
-readme=:readme.txt
 readme=:README
-readme=:readme
 readme=:INSTALL.md
-readme=:install.md
-readme=:INSTALL.mkd
-readme=:install.mkd
 readme=:INSTALL.rst
-readme=:install.rst
 readme=:INSTALL.html
-readme=:install.html
-readme=:INSTALL.htm
-readme=:install.htm
 readme=:INSTALL.txt
-readme=:install.txt
 readme=:INSTALL
-readme=:install
+
+# Special Case mainly for initscrpipts git repo where we cannot write to master
+readme=distro/mga9:README.md
+readme=distro/mga8:README.md
+readme=distro/mga7:README.md
+readme=distro/mga6:README.md
+readme=distro/mga5:README.md
+readme=distro/mga4:README.md
 
 ##
 ## List of repositories.
