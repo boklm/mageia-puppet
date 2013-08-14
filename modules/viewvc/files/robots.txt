@@ -2,7 +2,6 @@ User-agent: Googlebot
 User-agent: Baiduspider
 User-agent: bingbot
 User-agent: YandexBot
-User-agent: AhrefsBot
 User-agent: Mail.RU_Bot
 User-agent: MJ12bot
 Disallow: /*/tags/
@@ -17,5 +16,7 @@ Disallow: *?pathrev=*
 Disallow: *?*&view=log*
 Disallow: *view=log&*
 Disallow: *diff_format=*
+User-agent: AhrefsBot
+Disallow: /
 User-agent: *
 Crawl-delay: 30
