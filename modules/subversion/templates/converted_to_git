@@ -1,0 +1,16 @@
+#!/bin/sh
+
+REPOS="$1"
+TXN="$2"
+
+if [ ! -f "$REPOS/conf/git.conf" ]; then
+    exit 0
+fi
+
+REGEX=$(cat "$REPOS/conf/git.conf" | grep -v "^#" | grep -v "^ *$" | xargs | sed 's/ /|/g')
+
+if (svnlook dirs-changed -t $TXN "$REPOS" | grep -qE "^($REGEX)"); then
+    echo "The subversion path you have attempted to commit to has been converted to git." >&2
+    echo "Please see: https://wiki.mageia.org/en/Git_Migration" >&2
+    exit 1
+fi

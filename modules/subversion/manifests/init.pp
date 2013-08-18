@@ -55,6 +55,11 @@ class subversion {
             content => template('subversion/pre-revprop-change')
         }
 
+        file { "$local_dir/pre-commit.d/converted_to_git":
+            mode    => '0755',
+            content => template('subversion/converted_to_git')
+        }
+
         # TODO : add check for
         #    - ym       perl -MYAML -e 'YAML::LoadFile("-");'
         #    - tt       ( do not seem to be possible, but this would be great )

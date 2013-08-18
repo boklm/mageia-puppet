@@ -123,6 +123,8 @@ define subversion::repository($group = 'svn',
 
     pre_commit_link { "$name/hooks/pre-commit.d/no_root_commit": }
 
+    pre_commit_link { "$name/hooks/pre-commit.d/converted_to_git": }
+
     if $syntax_check {
         $syntax_check_array = regsubst($syntax_check,'^',"$name/hooks/pre-commit.d/")
         pre_commit_link { $syntax_check_array: }
