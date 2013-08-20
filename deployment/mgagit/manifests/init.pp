@@ -61,24 +61,14 @@ class mgagit(
     content => template('mgagit/repodef_repo.gl'),
   }
 
-  $repogroup = 'packagers'
-  $repoml = 'soft'
-  file { "$gitolite_tmpldir/soft_repo.gl":
-    ensure  => present,
-    owner   => root,
-    group   => root,
-    mode    => '0644',
-    content => template('mgagit/group_owned_repo.gl'),
+  define mgagit::tmpl { 'soft':
+    tmpdir => $gitolite_tmpldir,
+    group => 'packages',
   }
 
-  $repogroup = 'web'
-  $repoml = 'atelier'
-  file { "$gitolite_tmpldir/web_repo.gl":
-    ensure  => present,
-    owner   => root,
-    group   => root,
-    mode    => '0644',
-    content => template('mgagit/group_owned_repo.gl'),
+  define mgagit::tmpl { 'web':
+    tmpdir => $gitolite_tmpldir,
+    ml => 'atelier',
   }
 
   file { [$gitolite_dir, $gitolite_keydir, $gitolite_confdir,

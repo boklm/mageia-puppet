@@ -5,10 +5,10 @@ repo [% repo %]
    RW  topic/     = [% maintainer %]
    RW  refs/tags/ = [% maintainer %]
 [% IF r.repos.$repo.lockdown != 'yes' -%]
-   RW  master$    = @mga-<%= @repogroup %>
-   RW  distro/    = @mga-<%= @repogroup %>
-   RW  topic/     = @mga-<%= @repogroup %>
-   RW  refs/tags/ = @mga-<%= @repogroup %>
+   RW  master$    = @mga-<%= @group %>
+   RW  distro/    = @mga-<%= @group %>
+   RW  topic/     = @mga-<%= @group %>
+   RW  refs/tags/ = @mga-<%= @group %>
 [% END -%]
    RW+ user/USER/ = @all
    R              = @all
@@ -18,7 +18,7 @@ repo [% repo %]
 [% IF r.repos.$repo.mailinglist -%]
    config hooks.mailinglist = "[% r.repos.$repo.mailinglist %]"
 [% ELSE -%]
-   config hooks.mailinglist = "<%= @repoml %>-commits@ml.mageia.org"
+   config hooks.mailinglist = "<%= @ml %>-commits@ml.mageia.org"
 [% END -%]
 [% END -%]
    config hooks.emailprefix = "[% repo %] "
