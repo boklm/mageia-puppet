@@ -1,0 +1,28 @@
+[% SET maintainer = r.repos.$repo.maintainer %]
+repo [% repo %]
+   RW  master$    = [% maintainer %]
+   RW  distro/    = [% maintainer %]
+   RW  topic/     = [% maintainer %]
+   RW  refs/tags/ = [% maintainer %]
+[% IF r.repos.$repo.lockdown != 'yes' -%]
+   RW  master$    = @mga-<%= @repogroup %>
+   RW  distro/    = @mga-<%= @repogroup %>
+   RW  topic/     = @mga-<%= @repogroup %>
+   RW  refs/tags/ = @mga-<%= @repogroup %>
+[% END -%]
+   RW+ user/USER/ = @all
+   R              = @all
+[% IF r.repos.$repo.noemail -%]
+   config hooks.mailinglist = ""
+[% ELSE -%]
+[% IF r.repos.$repo.mailinglist -%]
+   config hooks.mailinglist = "[% r.repos.$repo.mailinglist %]"
+[% ELSE -%]
+   config hooks.mailinglist = "<%= @repoml %>-commits@ml.mageia.org"
+[% END -%]
+[% END -%]
+   config hooks.emailprefix = "[% repo %] "
+   config gitweb.description = "[% r.repos.$repo.description %]"
+[% IF r.users.$maintainer -%]
+   config gitweb.owner = "[% r.users.$maintainer.cn.0 %] [[% maintainer %]]"
+[% END -%]

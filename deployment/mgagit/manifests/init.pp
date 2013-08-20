@@ -9,6 +9,7 @@ class mgagit(
   $git_homedir = "/var/lib/${git_login}"
   $gitolite_dir = "${git_homedir}/.gitolite"
   $gitolite_keydir = "${gitolite_dir}/keydir"
+  $gitolite_tmpldir = "/etc/mgagit/tmpl"
   $gitolite_confdir = "${gitolite_dir}/conf"
   $gitolite_conf = "${gitolite_confdir}/gitolite.conf"
   $gitoliterc = "$git_homedir/.gitolite.rc"
@@ -38,6 +39,46 @@ class mgagit(
     mode    => '0644',
     content => template('mgagit/mgagit.conf'),
     require => Package['mgagit'],
+  }
+
+  file { $gitolite_tmpldir:
+    ensure  => directory,
+    owner   => root,
+    group   => root,
+    mode    => '0755',
+  }
+
+  file { "$gitolite_tmpldir/group.gl":
+    ensure => 'link',
+    target => '/usr/share/mgagit/tmpl/group.gl',
+  }
+
+  file { "$gitolite_tmpldir/repodef_repo.gl":
+    ensure  => present,
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    content => template('mgagit/repodef_repo.gl'),
+  }
+
+  $repogroup = 'packagers'
+  $repoml = 'soft'
+  file { "$gitolite_tmpldir/soft_repo.gl":
+    ensure  => present,
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    content => template('mgagit/group_owned_repo.gl'),
+  }
+
+  $repogroup = 'web'
+  $repoml = 'atelier'
+  file { "$gitolite_tmpldir/web_repo.gl":
+    ensure  => present,
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    content => template('mgagit/group_owned_repo.gl'),
   }
 
   file { [$gitolite_dir, $gitolite_keydir, $gitolite_confdir,
