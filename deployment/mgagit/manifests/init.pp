@@ -63,7 +63,7 @@ class mgagit(
 
   mgagit::tmpl { 'soft':
     tmpldir => $gitolite_tmpldir,
-    group => 'packages',
+    group => 'packagers',
   }
 
   mgagit::tmpl { 'web':
