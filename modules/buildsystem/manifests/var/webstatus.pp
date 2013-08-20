@@ -1,5 +1,5 @@
-# $svn_url:
-#   svn url where the sources of webstatus are located
+# $git_url:
+#   git url where the sources of webstatus are located
 # $hostname:
 #   vhost name of the webstatus page
 # $location:
@@ -14,7 +14,7 @@
 #   path of the directory where the themes are located. If you want
 #   to use a theme not included in webstatus, you need to change this.
 class buildsystem::var::webstatus(
-    $svn_url = "svn://svn.mageia.org/soft/build_system/web/",
+    $git_url = "git://git.mageia.org/web/pkgsubmit",
     $hostname = "pkgsubmit.$::domain",
     $location = '/var/www/bs',
     $package_commit_url,

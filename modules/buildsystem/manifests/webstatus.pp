@@ -30,8 +30,8 @@ class buildsystem::webstatus {
         content  => template('buildsystem/vhost_webstatus.conf'),
     }
 
-    subversion::snapshot { $buildsystem::var::webstatus::location:
-        source => $buildsystem::var::webstatus::svn_url,
+    git::snapshot { $buildsystem::var::webstatus::location:
+        source => $buildsystem::var::webstatus::git_url,
     }
 
     file { '/etc/bs-webstatus.conf':
