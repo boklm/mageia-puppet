@@ -61,12 +61,12 @@ class mgagit(
     content => template('mgagit/repodef_repo.gl'),
   }
 
-  define mgagit::tmpl { 'soft':
+  mgagit::tmpl { 'soft':
     tmpdir => $gitolite_tmpldir,
     group => 'packages',
   }
 
-  define mgagit::tmpl { 'web':
+  mgagit::tmpl { 'web':
     tmpdir => $gitolite_tmpldir,
     ml => 'atelier',
   }
