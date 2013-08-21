@@ -4,4 +4,5 @@ repo [% repo %]
    R              = @all
    config hooks.mailinglist = sysadmin-commits@ml.mageia.org
    config hooks.emailprefix = [% repo %]
+   config hooks.envelopesender = "root@mageia.org"
    config gitweb.description = [% r.repos.$repo.description %]

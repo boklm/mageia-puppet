@@ -22,6 +22,7 @@ repo [% repo %]
 [% END -%]
 [% END -%]
    config hooks.emailprefix = "[% repo %] "
+   config hooks.envelopesender = "root@mageia.org"
    config gitweb.description = "[% r.repos.$repo.description %]"
 [% IF r.users.$maintainer -%]
    config gitweb.owner = "[% r.users.$maintainer.cn.0 %] [[% maintainer %]]"
