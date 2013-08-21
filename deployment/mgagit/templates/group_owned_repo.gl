@@ -21,7 +21,7 @@ repo [% repo %]
    config hooks.mailinglist = "<%= @ml %>-commits@ml.mageia.org"
 [% END -%]
 [% END -%]
-   config hooks.emailprefix = "[% repo %] "
+   config hooks.emailprefix = "[[% repo %]] "
    config hooks.envelopesender = "root@mageia.org"
    config gitweb.description = "[% r.repos.$repo.description %]"
 [% IF r.users.$maintainer -%]
