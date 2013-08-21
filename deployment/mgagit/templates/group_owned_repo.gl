@@ -23,6 +23,7 @@ repo [% repo %]
 [% END -%]
    config hooks.emailprefix = "[[% repo %]] "
    config hooks.envelopesender = "root@mageia.org"
+   config hooks.showrev = "t=%s; echo '-----------------------------------------------------------------------';echo; printf 'http://gitweb.mageia.org/'$GL_REPO'/commit/?id=%%s' $t; echo;echo; git show -C $t; echo"
    config gitweb.description = "[% r.repos.$repo.description %]"
 [% IF r.users.$maintainer -%]
    config gitweb.owner = "[% r.users.$maintainer.cn.0 %] [[% maintainer %]]"
