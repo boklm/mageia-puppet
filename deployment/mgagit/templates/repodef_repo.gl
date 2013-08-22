@@ -5,5 +5,5 @@ repo [% repo %]
    config hooks.mailinglist = "sysadmin-commits@ml.mageia.org"
    config hooks.emailprefix = "[[% repo %]] "
    config hooks.envelopesender = "root@mageia.org"
-   config hooks.showrev = "t=%s; echo '-----------------------------------------------------------------------';echo; printf 'http://gitweb.mageia.org/'$GL_REPO'/commit/?id=%%s' $t; echo;echo; git show -C $t; echo"
+   config hooks.showrev = "/usr/local/bin/mgagit-format-commit-email %s"
    config gitweb.description = "[% r.repos.$repo.description %]"
