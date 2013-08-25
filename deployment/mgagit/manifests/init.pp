@@ -26,7 +26,7 @@ class mgagit(
   }
   user { $git_login:
     ensure      => present,
-    comment     => 'Git user',
+    comment     => 'Mageia Git',
     home        => $git_homedir,
     managehome  => true,
     gid         => $git_login,
