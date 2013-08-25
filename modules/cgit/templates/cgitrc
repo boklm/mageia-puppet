@@ -48,6 +48,8 @@ branch-sort=age
 # Use a custom logo
 logo=//nav.mageia.org/css/mageia-logo-nav-3.png
 
+# Try to avoid pagination on the mail page (until we have too many software repos)
+max-repo-count=100
 
 # Enable statistics per week, month and quarter
 max-stats=quarter
