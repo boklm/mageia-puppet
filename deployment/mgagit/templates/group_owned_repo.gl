@@ -1,5 +1,9 @@
 [% SET maintainer = r.repos.$repo.maintainer %]
 repo [% repo %]
+   RW+ master$    = @mga-sysadmin
+   RW+ distro/    = @mga-sysadmin
+   RW+ topic/     = @mga-sysadmin
+   RW+ refs/tags/ = @mga-sysadmin
    RW  master$    = [% maintainer %]
    RW  distro/    = [% maintainer %]
    RW  topic/     = [% maintainer %]
