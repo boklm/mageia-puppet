@@ -21,7 +21,6 @@ node valstar {
     include mgasoft
 
     include access_classes::committers
-    include restrictshell::allow_git
     include restrictshell::allow_svn
     include restrictshell::allow_pkgsubmit
     include restrictshell::allow_maintdb
