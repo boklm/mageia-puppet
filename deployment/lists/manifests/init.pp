@@ -79,6 +79,11 @@ class lists {
         topics  => 'i18n',
     }
 
+    sympa::list::public {'i18n-ar':
+        subject => 'Translation to Arabic',
+        topics  => 'i18n',
+    }
+
     sympa::list::public {'i18n-de':
         subject => 'Translation to German',
         topics  => 'i18n',
