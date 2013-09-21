@@ -84,4 +84,11 @@ class bugzilla {
       content => template('bugzilla/robots.txt'),
       require => Package['bugzilla-extension-sitemap'],
     }
+
+    cron { 'collectstats':
+        command => '/usr/share/bugzilla/bin/collectstats.pl',
+        user    => 'apache',
+        hour    => 2,
+        minute  => 30,
+    }
 }
