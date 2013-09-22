@@ -13,6 +13,9 @@ repo [% repo %]
    RW  distro/    = @mga-<%= @group %>
    RW  topic/     = @mga-<%= @group %>
    RW  refs/tags/ = @mga-<%= @group %>
+   RW  master$    = @mga-i18n-committers
+   RW  distro/    = @mga-i18n-committers
+   RW  topic/     = @mga-i18n-committers
 [% END -%]
    RW+ user/USER/ = @all
    R              = @all
