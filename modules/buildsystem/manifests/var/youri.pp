@@ -220,10 +220,10 @@ class buildsystem::var::youri(
 		    'class' => 'Youri::Submit::Action::RebuildPackage',
 		    'options' => {
 			'rules' => {
-			    'drakx-installer-binaries' => qw(drakx-installer-images),
-			    'kernel' => qw(drakx-installer-images kmod-virtualbox kmod-xtables-addons),
-			    'perl' => qw(drakx-installer-stage2),
-			    'rpm' => qw(drakx-installer-stage2),
+			    'drakx-installer-binaries' => ['drakx-installer-images'],
+			    'kernel' => ['drakx-installer-images', 'kmod-virtualbox', 'kmod-xtables-addons'],
+			    'perl' => ['drakx-installer-stage2'],
+			    'rpm' => ['drakx-installer-stage2'],
 			},
 		    },
 		},
