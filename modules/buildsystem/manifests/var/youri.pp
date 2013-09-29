@@ -216,6 +216,17 @@ class buildsystem::var::youri(
 		'maintdb' => {
 		    'class' => 'Youri::Submit::Action::UpdateMaintDb',
 		},
+		'rebuild' => {
+		    'class' => 'Youri::Submit::Action::RebuildPackage',
+		    'options' => {
+			'rules' => {
+			    'drakx-installer-binaries' => qw(drakx-installer-images),
+			    'kernel' => qw(drakx-installer-images kmod-virtualbox kmod-xtables-addons),
+			    'perl' => qw(drakx-installer-stage2),
+			    'rpm' => qw(drakx-installer-stage2),
+			},
+		    },
+		},
 	    },
 	    'posts' => {
 		'genhdlist2' => {
