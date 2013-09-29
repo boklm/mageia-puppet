@@ -171,7 +171,6 @@ class mga_buildsystem::config {
 	    'archive',
 	    'mail',
 	    'maintdb',
-	    'rebuild',
 	],
 	'posts' => [
 	    'genhdlist2',
