@@ -55,6 +55,7 @@ node alamut {
         vhost   => "forums.$domain",
         use_ssl => true,
         content => '
+        RewriteEngine On
         RewriteCond %{QUERY_STRING} mode=register
         RewriteRule .*ucp.php - [forbidden]
         ',
