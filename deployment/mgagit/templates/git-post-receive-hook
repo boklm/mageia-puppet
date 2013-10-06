@@ -1,0 +1,103 @@
+#! /usr/bin/env python2
+
+import sys
+import os
+import re
+
+LIBDIR = '/usr/local/bin'
+sys.path.insert(0, LIBDIR)
+
+import git_multimail
+
+# When editing this list, remember to edit the same list in
+# modules/cgit/templates/filter.commit-links.sh
+BUG_REFS = {
+  'Mageia':       { 're': re.compile('mga#([0-9]+)'),           'replace': 'https://bugs.mageia.org/show_bug.cgi?id=%s' },
+  'Red Hat':      { 're': re.compile('rhbz#([0-9]+)'),          'replace': 'https://bugzilla.redhat.com/show_bug.cgi?id=%s' },
+  'Free Desktop': { 're': re.compile('fdo#([0-9]+)'),           'replace': 'https://bugs.freedesktop.org/show_bug.cgi?id=%s' },
+  'KDE':          { 're': re.compile('(?:bko|kde)#([0-9]+)'),   'replace': 'https://bugs.kde.org/show_bug.cgi?id=%s' },
+  'GNOME':        { 're': re.compile('(?:bgo|gnome)#([0-9]+)'), 'replace': 'https://bugzilla.gnome.org/show_bug.cgi?id=%s' },
+  'Launchpad':    { 're': re.compile('lp#([0-9]+)'),            'replace': 'https://launchpad.net/bugs/%s' },
+}
+
+COMMIT_RE = re.compile('^commit ([a-f0-9]{40})')
+COMMIT_REPLACE = 'http://gitweb.mageia.org/%s/commit/?id=%s'
+
+
+
+git_multimail.FOOTER_TEMPLATE = """\
+
+-- \n\
+Mageia Git Monkeys.
+"""
+git_multimail.REVISION_FOOTER_TEMPLATE = git_multimail.FOOTER_TEMPLATE
+
+# Override the Environment class to generate an apporpriate short name which is
+# used in git links and as an email prefix
+class LinksEnvironment(git_multimail.Environment):
+    REPO_NAME_RE = re.compile(r'^/git/(?P<name>.+?)$')
+
+    def get_repo_shortname(self):
+        """Use the last part of the repo path, with ".git" stripped off if present."""
+
+        basename = os.path.abspath(self.get_repo_path())
+        m = self.REPO_NAME_RE.match(basename)
+        print self.REPO_NAME_RE
+        if m:
+            return m.group('name')
+        else:
+            return basename
+
+git_multimail.Environment = LinksEnvironment
+
+# Override the Reviesion class to inject gitweb/cgit links and any referenced
+# bug URLs
+class LinksRevision(git_multimail.Revision):
+    def generate_email_body(self, push):
+        """Show this revision."""
+
+        output = git_multimail.read_git_lines(
+            ['log'] + self.environment.commitlogopts + ['-1', self.rev.sha1],
+            keepends=True,
+            )
+        bugs = {}
+        commit = None
+        idx = 0
+        for line in output:
+            idx+=1
+            if line == "---\n":
+                if commit and COMMIT_REPLACE:
+                    output.insert(idx, "\n")
+                    output.insert(idx, "   %s\n" % (COMMIT_REPLACE % (self.environment.get_repo_shortname(), commit)))
+                    output.insert(idx, " Commit Link:\n")
+                    idx+=3
+                if bugs:
+                    output.insert(idx, " Bug links:\n")
+                    idx+=1
+                    for tracker,bugnos in bugs.items():
+                        output.insert(idx, "   %s\n" % tracker)
+                        idx+=1
+                        for bugno in bugnos:
+                            output.insert(idx, "      %s\n" % (BUG_REFS[tracker]['replace'] % bugno))
+                            idx+=1
+                    output.insert(idx, "\n")
+                    idx+=1
+                break
+            m = COMMIT_RE.search(line)
+            if m:
+                commit = m.group(1);
+            for tracker in BUG_REFS.keys():
+                m = BUG_REFS[tracker]['re'].search(line)
+                if m:
+                    bug = m.group(1)
+                    if not tracker in bugs:
+                        bugs[tracker] = [bug]
+                    elif not bug in bugs[tracker]:
+                        bugs[tracker].append(bug)
+
+        return output
+
+git_multimail.Revision = LinksRevision
+
+if __name__ == '__main__':
+    git_multimail.main(sys.argv[1:])
