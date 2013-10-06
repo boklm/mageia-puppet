@@ -54,6 +54,10 @@ node alamut {
         url     => "https://forums.$domain/",
         vhost   => "forums.$domain",
         use_ssl => true,
+        content => '
+        RewriteCond %{QUERY_STRING} mode=register
+        RewriteRule ^ucp.php - [forbidden]
+        ',
     }
 
     include tld_redirections
