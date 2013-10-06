@@ -1,6 +1,7 @@
 define apache::vhost::reverse_proxy($url,
                                     $vhost = false,
-                                    $use_ssl = false) {
+                                    $use_ssl = false,
+                                    $content = '') {
     include apache::mod::proxy
     apache::vhost::base { $name:
         use_ssl => $use_ssl,
