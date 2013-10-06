@@ -30,8 +30,6 @@ node valstar {
     include mirror::mdv2010spring
 
     include repositories::subversion
-    include repositories::git
-    include repositories::sparkleshare
 
     include irkerd
 
