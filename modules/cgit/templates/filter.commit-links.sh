@@ -22,6 +22,8 @@ regex=$regex'
 s|\b([0-9a-fA-F]{7,40})\b|<a href="./?id=\1">\1</a>|g'
 
 # This expression generates links various common bugtrackers.
+# When editing this list, remember to edit the same list in
+# deployment/mgagit/templates/git-post-receive-hook
 regex=$regex'
 s|mga#([0-9]+)\b|<a href="https://bugs.mageia.org/show_bug.cgi?id=\1">mga#\1</a>|g'
 regex=$regex'
