@@ -56,7 +56,7 @@ node alamut {
         use_ssl => true,
         content => '
         RewriteCond %{QUERY_STRING} mode=register
-        RewriteRule ^ucp.php - [forbidden]
+        RewriteRule .*ucp.php - [forbidden]
         ',
     }
 
