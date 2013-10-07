@@ -43,10 +43,6 @@ class mgagit(
     require => Package['mgagit'],
   }
 
-  mga_common::local_script { 'mgagit-format-commit-email':
-    content => template('mgagit/format-commit-email.sh'),
-  }
-
   file { "$gitolite_commonhooksdir/git_multimail.py":
     ensure  => present,
     owner   => $git_login,
