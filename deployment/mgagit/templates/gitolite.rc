@@ -21,7 +21,7 @@
     UMASK                           =>  0022,
 
     # look for "git-config" in the documentation
-    GIT_CONFIG_KEYS                 =>  'gitweb\.description gitweb\.owner hooks\.mailinglist hooks\.emailprefix hooks\.envelopesender hooks\.showrev',
+    GIT_CONFIG_KEYS                 =>  'gitweb\.description gitweb\.owner hooks\.mailinglist hooks\.emailprefix hooks\.envelopesender hooks\.showrev multimailhook\.mailinglist multimailhook\.emailDomain multimailhook\.envelopeSender',
 
     # comment out if you don't need all the extra detail in the logfile
     LOG_EXTRA                       =>  1,

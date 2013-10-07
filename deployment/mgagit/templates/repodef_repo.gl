@@ -2,8 +2,7 @@ repo [% repo %]
    RW  master$    = [% r.repos.$repo.maintainer %]
    RW+ user/USER/ = @all
    R              = @all
-   config hooks.mailinglist = "sysadmin-commits@ml.mageia.org"
-   config hooks.emailprefix = "[[% repo %]] "
-   config hooks.envelopesender = "root@mageia.org"
-   config hooks.showrev = "/usr/local/bin/mgagit-format-commit-email %s"
+   config multimailhook.mailinglist = "sysadmin-commits@ml.mageia.org"
+   config multimailhook.emailDomain = "mageia.org"
+   config multimailhook.envelopeSender = "root@mageia.org"
    config gitweb.description = "[% r.repos.$repo.description %]"

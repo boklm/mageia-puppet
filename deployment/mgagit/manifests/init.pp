@@ -45,6 +45,14 @@ class mgagit(
     content => template('mgagit/format-commit-email.sh'),
   }
 
+  mga_common::local_script { 'git_multimail.py':
+    content => template('mgagit/git_multimail.py'),
+  }
+
+  mga_common::local_script { 'mgagit-post-receive-hook':
+    content => template('mgagit/git-post-receive-hook'),
+  }
+
   file { $gitolite_tmpldir:
     ensure  => directory,
     owner   => root,

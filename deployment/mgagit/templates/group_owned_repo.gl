@@ -20,17 +20,16 @@ repo [% repo %]
    RW+ user/USER/ = @all
    R              = @all
 [% IF r.repos.$repo.noemail -%]
-   config hooks.mailinglist = ""
+   config multimailhook.mailinglist = ""
 [% ELSE -%]
 [% IF r.repos.$repo.mailinglist -%]
-   config hooks.mailinglist = "[% r.repos.$repo.mailinglist %]"
+   config multimailhook.mailinglist = "[% r.repos.$repo.mailinglist %]"
 [% ELSE -%]
-   config hooks.mailinglist = "<%= @ml %>-commits@ml.mageia.org"
+   config multimailhook.mailinglist = "<%= @ml %>-commits@ml.mageia.org"
 [% END -%]
 [% END -%]
-   config hooks.emailprefix = "[[% repo %]] "
-   config hooks.envelopesender = "root@mageia.org"
-   config hooks.showrev = "/usr/local/bin/mgagit-format-commit-email %s"
+   config multimailhook.emailDomain = "mageia.org"
+   config multimailhook.envelopeSender = "root@mageia.org"
    config gitweb.description = "[% r.repos.$repo.description %]"
 [% IF r.users.$maintainer -%]
    config gitweb.owner = "[% r.users.$maintainer.cn.0 %] [[% maintainer %]]"
