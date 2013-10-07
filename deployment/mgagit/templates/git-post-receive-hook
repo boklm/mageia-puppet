@@ -4,7 +4,7 @@ import sys
 import os
 import re
 
-LIBDIR = '/usr/local/bin'
+LIBDIR = '<%= @gitolite_commonhooksdir %>'
 sys.path.insert(0, LIBDIR)
 
 import git_multimail

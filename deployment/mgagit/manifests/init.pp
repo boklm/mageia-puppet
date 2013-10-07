@@ -47,12 +47,22 @@ class mgagit(
     content => template('mgagit/format-commit-email.sh'),
   }
 
-  mga_common::local_script { 'git_multimail.py':
+  file { "$gitolite_commonhooksdir/git_multimail.py":
+    ensure  => present,
+    owner   => $git_login,
+    group   => $git_login,
+    mode    => '0644',
     content => template('mgagit/git_multimail.py'),
+    require => File[$gitolite_commonhooksdir],
   }
 
-  mga_common::local_script { 'mgagit-post-receive-hook':
+  file { "$gitolite_commonhooksdir/post-receive":
+    ensure  => present,
+    owner   => $git_login,
+    group   => $git_login,
+    mode    => '0755',
     content => template('mgagit/git-post-receive-hook'),
+    require => File[$gitolite_commonhooksdir],
   }
 
   file { "$gitolite_commonhooksdir/post-update":
