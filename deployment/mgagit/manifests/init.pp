@@ -11,6 +11,8 @@ class mgagit(
   $gitolite_keydir = "${gitolite_dir}/keydir"
   $gitolite_tmpldir = "/etc/mgagit/tmpl"
   $gitolite_confdir = "${gitolite_dir}/conf"
+  $gitolite_hooksdir = "${gitolite_dir}/hooks"
+  $gitolite_commonhooksdir = "${gitolite_hooksdir}/common"
   $gitolite_conf = "${gitolite_confdir}/gitolite.conf"
   $gitoliterc = "$git_homedir/.gitolite.rc"
   $bindpwfile = '/etc/mgagit.secret'
@@ -53,6 +55,15 @@ class mgagit(
     content => template('mgagit/git-post-receive-hook'),
   }
 
+  file { "$gitolite_commonhooksdir/post-update":
+    ensure  => present,
+    owner   => $git_login,
+    group   => $git_login,
+    mode    => '0755',
+    content => template('mgagit/git-post-update-hook'),
+    require => File[$gitolite_commonhooksdir],
+  }
+
   file { $gitolite_tmpldir:
     ensure  => directory,
     owner   => root,
@@ -84,6 +95,7 @@ class mgagit(
   }
 
   file { [$gitolite_dir, $gitolite_keydir, $gitolite_confdir,
+          $gitolite_hooksdir, $gitolite_commonhooksdir,
           $reposconf_dir, $vhostdir]:
     ensure => directory,
     owner  => $git_login,

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$GL_REPO" == "infrastructure/repositories/software" -o "$GL_REPO" == "infrastructure/repositories/web" ]; then
+	OK=no
+	(unset GIT_DIR && mgagit glconf && mgagit glrun) >/dev/null 2>&1 && OK=yes
+	if [ "$OK" == "yes" ]; then
+		echo
+		echo "  *** Repository definitions updated"
+		echo
+	fi
+fi
+exit 0
